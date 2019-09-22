@@ -6,6 +6,5 @@ variable custom_domain_name {}
 variable backend_domain {
   type = "list"
 }
-variable "common_tags" {}
 variable "waf_mode" {}
-variable "frontend_with_disabled_waf_ruless" {}
+variable "frontend_with_disabled_waf_rules" {}

@@ -1,22 +1,24 @@
-resource "azurerm_frontdoor_firewall_policy" "default" {
-  name                              = "default"
-  resource_group_name               = azurerm_resource_group.main.name
-  enabled                           = true
-  mode                              = var.waf_mode
+resource "azurerm_frontdoor_firewall_policy" "custom" {
+  count               = length(var.frontend_with_disabled_waf_rules)
+  name                = lookup(element(var.frontend_with_disabled_waf_rules, count.index), "name")
+  resource_group_name = "dmz-frontdoor-rg"
+  enabled             = true
+  mode                = "Detection"
 
   managed_rule {
     type    = "DefaultRuleSet"
     version = "1.0"
 
     dynamic "override" {
-      iterator = rules
-      for_each = var.disabled_waf_rules
+      iterator = rulesets
+      for_each = lookup(element(var.frontend_with_disabled_waf_rules, count.index), "rules")
 
       content {
-        rule_group_name = rules.key
+        rule_group_name = rulesets.key
+
         dynamic "rule" {
           iterator = rule_id
-          for_each = rules.value
+          for_each = rulesets.value
 
           content {
             rule_id = rule_id.value
@@ -25,11 +27,12 @@ resource "azurerm_frontdoor_firewall_policy" "default" {
           }
         }
       }
+
     }
   }
 
-    managed_rule {
-        type      = "BotProtection"
-        version   = "preview-0.1"
-    }
+  managed_rule {
+    type    = "BotProtection"
+    version = "preview-0.1"
   }
+}

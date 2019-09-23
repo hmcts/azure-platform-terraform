@@ -13,7 +13,7 @@ resource "azurerm_frontdoor" "main" {
 
   dynamic "frontend_endpoint" {
     iterator = host
-    for_each = var.frontend_with_disabled_waf_rules
+    for_each = var.frontends
     content {
       name                                    = "${lookup(host.value, "name")}"
       host_name                               = "${lookup(host.value, "name")}.${var.custom_domain_name}"
@@ -27,7 +27,7 @@ resource "azurerm_frontdoor" "main" {
 
   dynamic "backend_pool_load_balancing" {
     iterator = host
-    for_each = var.frontend_with_disabled_waf_rules
+    for_each = var.frontends
     content {
       name                            = "loadBalancingSettings-${lookup(host.value, "name")}"
       sample_size                     = 4
@@ -38,7 +38,7 @@ resource "azurerm_frontdoor" "main" {
 
   dynamic "backend_pool_health_probe" {
     iterator = host
-    for_each = var.frontend_with_disabled_waf_rules
+    for_each = var.frontends
     content {
       name                = "healthProbeSettings-${lookup(host.value, "name")}"
       interval_in_seconds = 30
@@ -49,15 +49,15 @@ resource "azurerm_frontdoor" "main" {
 
   dynamic "backend_pool" {
     iterator = host
-    for_each = var.frontend_with_disabled_waf_rules
+    for_each = var.frontends
     content {
       name = "${lookup(host.value, "name")}"
       dynamic "backend" {
         iterator = domain
         for_each = var.backend_domain
         content {
-          host_header = "${lookup(host.value, "name")}.${var.env}.${domain.value}"
-          address     = "${lookup(host.value, "name")}.${var.env}.${domain.value}"
+          host_header = "${lookup(host.value, "name")}.${domain.value}"
+          address     = "${lookup(host.value, "name")}.${domain.value}"
           http_port   = 80
           https_port  = 443
           priority    = 1
@@ -72,7 +72,7 @@ resource "azurerm_frontdoor" "main" {
 
   dynamic "routing_rule" {
     iterator = host
-    for_each = var.frontend_with_disabled_waf_rules
+    for_each = var.frontends
     content {
       name               = "${lookup(host.value, "name")}Rule"
       accepted_protocols = ["Http", "Https"]

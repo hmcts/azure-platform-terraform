@@ -1,6 +1,6 @@
 resource "azurerm_frontdoor_firewall_policy" "custom" {
-  count               = length(var.frontend_with_disabled_waf_rules)
-  name                = lookup(element(var.frontend_with_disabled_waf_rules, count.index), "name")
+  count               = length(var.frontends)
+  name                = lookup(element(var.frontends, count.index), "name")
   resource_group_name = azurerm_resource_group.main.name
   enabled             = true
   mode                = var.waf_mode
@@ -11,7 +11,7 @@ resource "azurerm_frontdoor_firewall_policy" "custom" {
 
     dynamic "override" {
       iterator = rulesets
-      for_each = lookup(element(var.frontend_with_disabled_waf_rules, count.index), "rules")
+      for_each = lookup(element(var.frontends, count.index), "disabled_rules")
 
       content {
         rule_group_name = rulesets.key

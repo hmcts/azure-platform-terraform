@@ -4,18 +4,18 @@ location  = "uksouth"
 env       = "sandbox"
 waf_mode  = "Detection"
 
-custom_domain_name = "platform.hmcts.net"
+custom_domain_name = "sandbox.platform.hmcts.net"
 
 backend_domain = [
-  "uksouth.platform.hmcts.net",
-  "ukwest.platform.hmcts.net",
+  "uksouth.sandbox.platform.hmcts.net",
+  "ukwest.sandbox.platform.hmcts.net",
 ]
 
 # Sample data
-frontend_with_disabled_waf_rules = [
+frontends = [
   {
     name = "cmc"
-    rules = {
+    disabled_rules = {
       PHP  = ["933160"],
       LFI  = ["930130"],
       RFI  = ["931130"],
@@ -26,14 +26,14 @@ frontend_with_disabled_waf_rules = [
   },
   {
     name = "demo"
-    rules = {
+    disabled_rules = {
       PHP = ["933160"],
       LFI = ["930130"],
       RFI = ["931130"],
     }
   },
   {
-    name  = "idam"
-    rules = {}
+    name           = "idam"
+    disabled_rules = {}
   }
 ]

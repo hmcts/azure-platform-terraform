@@ -8,4 +8,4 @@ variable backend_domain {
 }
 variable "common_tags" {}
 variable "waf_mode" {}
-variable "frontend_with_disabled_waf_rules" {}
+variable "frontends" {}

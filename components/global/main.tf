@@ -5,8 +5,8 @@ module "landing_zone" {
   project            = var.project
   component          = var.component
   location           = var.location
-  custom_domain_name = var.custom_domain_name
-  backend_domain     = var.backend_domain
   waf_mode           = var.waf_mode
   frontends          = var.frontends
+  enablessl          = var.enablessl
+  subscription_id    = data.azurerm_subscription.current.subscription_id
 }

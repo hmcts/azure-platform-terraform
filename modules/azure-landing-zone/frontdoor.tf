@@ -16,12 +16,9 @@ resource "azurerm_frontdoor" "main" {
     for_each = var.frontends
     content {
       name                                    = "${lookup(host.value, "name")}"
-      host_name                               = "${lookup(host.value, "name")}.${var.custom_domain_name}"
-      custom_https_provisioning_enabled       = true
-      web_application_firewall_policy_link_id = "${lookup(host.value, "name")}"
-      custom_https_configuration {
-        certificate_source = "FrontDoor"
-      }
+      host_name                               = "${lookup(host.value, "name")}.${lookup(host.value, "custom_domain")}"
+      custom_https_provisioning_enabled       = var.enablessl
+      web_application_firewall_policy_link_id = "/subscriptions/${var.subscription_id}/resourcegroups/${azurerm_resource_group.main.name}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/${lookup(host.value, "name")}"
     }
   }
 
@@ -54,9 +51,9 @@ resource "azurerm_frontdoor" "main" {
       name = "${lookup(host.value, "name")}"
       dynamic "backend" {
         iterator = domain
-        for_each = var.backend_domain
+        for_each = lookup(host.value, "backend_domain")
         content {
-          host_header = "${lookup(host.value, "name")}.${domain.value}"
+          host_header = "${lookup(host.value, "name")}.${lookup(host.value, "custom_domain")}"
           address     = "${lookup(host.value, "name")}.${domain.value}"
           http_port   = 80
           https_port  = 443
@@ -90,7 +87,6 @@ resource "azurerm_frontdoor" "main" {
   }
 
   tags = "${var.common_tags}"
-  depends_on = [
-    azurerm_frontdoor_firewall_policy.custom
-  ]
+
+  depends_on = [azurerm_frontdoor_firewall_policy.custom]
 }

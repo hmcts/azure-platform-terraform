@@ -2,10 +2,8 @@ variable env {}
 variable project {}
 variable component {}
 variable location {}
-variable custom_domain_name {}
-variable backend_domain {
-  type = "list"
-}
 variable "common_tags" {}
 variable "waf_mode" {}
 variable "frontends" {}
+variable "subscription_id" {}
+variable "enablessl" {}

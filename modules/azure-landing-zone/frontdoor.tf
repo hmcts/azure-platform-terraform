@@ -1,3 +1,7 @@
+locals {
+  isSSL = var.enablessl ? [1] : []
+}
+
 resource "azurerm_frontdoor" "main" {
   name                                         = "${var.project}-${var.env}"
   location                                     = "global"
@@ -19,6 +23,12 @@ resource "azurerm_frontdoor" "main" {
       host_name                               = "${lookup(host.value, "name")}.${lookup(host.value, "custom_domain")}"
       custom_https_provisioning_enabled       = var.enablessl
       web_application_firewall_policy_link_id = "/subscriptions/${var.subscription_id}/resourcegroups/${azurerm_resource_group.main.name}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/${lookup(host.value, "name")}"
+      dynamic "custom_https_configuration" {
+        for_each = local.isSSL
+        content {
+          certificate_source = "FrontDoor"
+        }
+      }
     }
   }
 

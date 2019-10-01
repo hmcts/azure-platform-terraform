@@ -1,5 +1,5 @@
-firewall_location   = ["uksouth","ukwest"]
-vnet_cidr           = ["10.102.0.0/24","10.104.0.0/24"]
+firewall_location   = ["uksouth"]
+vnet_cidr           = ["10.102.0.0/24"]
 env                 = "sandbox"
 project             = "hmcts"
 common_tags         = {
@@ -12,3 +12,4 @@ common_tags         = {
     "environment"        = "sandbox"
     "criticality"        = "Medium"
   }
+

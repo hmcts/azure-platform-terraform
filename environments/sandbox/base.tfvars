@@ -13,3 +13,17 @@ common_tags         = {
     "criticality"        = "Medium"
   }
 
+aks = [
+  {
+    vnet_name = "core-sbox-vnet",
+    rg_name = "aks-infra-sbox-rg"
+    rt_name = "aks-route-table"
+  },
+]
+
+dnat_rules = [
+  {
+    location = "uksouth"
+    aks_lb   = [ "10.10.1.250", "10.10.3.250"]
+  },
+]

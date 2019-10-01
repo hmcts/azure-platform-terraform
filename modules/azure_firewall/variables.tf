@@ -4,4 +4,4 @@ variable "firewall_location" {}
 variable "vnet_cidr" {}
 variable "project" {}
 variable "aks" {}
-variable "routing" {}
+variable "dnat_rules" {}

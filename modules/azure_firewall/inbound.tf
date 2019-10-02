@@ -20,7 +20,7 @@ resource "azurerm_firewall_nat_rule_collection" "main" {
       name = "rule-${rules.value}"
 
       source_addresses = [
-        "147.243.0.0/16",
+        "*",
       ]
 
       destination_ports = [
@@ -36,7 +36,7 @@ resource "azurerm_firewall_nat_rule_collection" "main" {
       ]
 
       translated_address = rules.value
-      translated_port = "80"
+      translated_port    = "80"
 
     }
   }

@@ -1,0 +1,9 @@
+variable env {}
+variable project {}
+variable component {}
+variable location {}
+variable "common_tags" {}
+variable "waf_mode" {}
+variable "frontends" {}
+variable "subscription_id" {}
+variable "enablessl" {}

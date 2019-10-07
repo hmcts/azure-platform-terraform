@@ -5,7 +5,7 @@ data "azurerm_route_table" "default" {
 }
 
 resource "azurerm_route" "default" {
-  count                  = "${length(var.firewall_location)}"
+  count                  = length(var.firewall)
   name                   = "defaultOutbound"
   resource_group_name    = lookup(var.aks[count.index], "rg_name")
   route_table_name       = data.azurerm_route_table.default[count.index].name

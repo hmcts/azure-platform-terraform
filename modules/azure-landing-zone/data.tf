@@ -1,4 +1,4 @@
-# KeyVault for the certificate should be in the same subscription as Frontdoor.
+# KeyVault for the certificate must be in the same subscription as Frontdoor.
 data "azurerm_key_vault" "certificate_vault" {
   name                = "cftapps-${var.env}"
   resource_group_name = "core-infra-${var.env}-rg"

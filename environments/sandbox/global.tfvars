@@ -9,7 +9,7 @@ frontends = [
   {
     name           = "plum"
     custom_domain  = "sandbox.platform.hmcts.net"
-    backend_domain = ["service.core-compute-sandbox.internal"]
+    backend_domain = ["uksouth.sandbox.platform.hmcts.net"]
     disabled_rules = {}
   },
 ]

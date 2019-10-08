@@ -5,6 +5,10 @@ env       = "sandbox"
 waf_mode  = "Detection"
 enablessl = false
 
+sslMode   = "FrontDoor"
+keyVault_name = "cftapps-sbox"
+keyVault_rg   = "core-infra-sbox-rg"
+
 frontends = [
   {
     name           = "plum"

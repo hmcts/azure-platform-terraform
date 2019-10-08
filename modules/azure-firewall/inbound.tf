@@ -6,7 +6,7 @@ data "azurerm_public_ip" "pip" {
 
 resource "azurerm_firewall_nat_rule_collection" "main" {
   count               = length(var.firewall)
-  name                = "dnat-${lookup(element(var.firewall, count.index), "name")}"
+  name                = "dnat-${lookup(var.common_tags, "activityName")}"
   azure_firewall_name = azurerm_firewall.main[count.index].name
   resource_group_name = azurerm_resource_group.main[count.index].name
   priority            = lookup(element(var.firewall, count.index), "priority")
@@ -14,10 +14,10 @@ resource "azurerm_firewall_nat_rule_collection" "main" {
 
   dynamic "rule" {
     iterator = rules
-    for_each = lookup(element(var.firewall, count.index), "dnat_rules")
+    for_each = lookup(element(var.firewall, count.index), "aks_dnat_rules")
 
     content {
-      name = "${lookup(element(var.common_tags, 0), "activityName")}-${rules.value}"
+      name = "${lookup(var.common_tags, "activityName")}-${rules.value}"
 
       source_addresses = [
         "*",

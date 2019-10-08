@@ -5,7 +5,7 @@ resource "azurerm_firewall" "main" {
   resource_group_name = azurerm_resource_group.main[count.index].name
 
   ip_configuration {
-    name                 = lookup(element(var.common_tags, 0), "activityName")
+    name                 = lookup(var.common_tags, "activityName")
     subnet_id            = azurerm_subnet.main[count.index].id
     public_ip_address_id = azurerm_public_ip.main[count.index].id
   }

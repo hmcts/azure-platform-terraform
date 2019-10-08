@@ -8,8 +8,6 @@ module "landing_zone" {
   waf_mode           = var.waf_mode
   frontends          = var.frontends
   enablessl          = var.enablessl
-  keyVault_name      = var.keyVault_name
-  keyVault_rg        = var.keyVault_rg
   sslMode            = var.sslMode
   subscription_id    = data.azurerm_subscription.current.subscription_id
 }

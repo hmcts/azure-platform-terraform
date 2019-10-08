@@ -5,6 +5,4 @@ variable location {}
 variable "waf_mode" {}
 variable "frontends" {}
 variable "enablessl" {}
-variable "keyVault_name" {}
-variable "keyVault_rg" {}
 variable "sslMode" {}

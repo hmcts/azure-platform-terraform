@@ -4,6 +4,7 @@ location  = "uksouth"
 env       = "sandbox"
 waf_mode  = "Detection"
 enablessl = false
+sslMode   = "FrontDoor"
 
 frontends = [
   {

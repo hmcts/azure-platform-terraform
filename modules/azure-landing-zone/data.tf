@@ -6,6 +6,6 @@ data "azurerm_key_vault" "certificate_vault" {
 
 data "azurerm_key_vault_secret" "certificate" {
   count        = length(var.frontends)
-  name         = "STAR-${replace(lookup(element(var.frontends, count.index), "custom_domain"), ".", "-")}"
-  key_vault_id = "${data.azurerm_key_vault.certificate_vault.id}"
+  name         = lookup(element(var.frontends, count.index), "certificate_name")
+  key_vault_id = data.azurerm_key_vault.certificate_vault.id
 }

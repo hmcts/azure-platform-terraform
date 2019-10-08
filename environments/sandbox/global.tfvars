@@ -4,12 +4,14 @@ location  = "uksouth"
 env       = "sandbox"
 waf_mode  = "Detection"
 enablessl = false
+sslMode   = "FrontDoor"
 
 frontends = [
   {
-    name           = "plum"
-    custom_domain  = "sandbox.platform.hmcts.net"
-    backend_domain = ["uksouth.sandbox.platform.hmcts.net"]
+    name             = "plum"
+    custom_domain    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["uksouth.sandbox.platform.hmcts.net"]
+    certificate_name = "STAR-sandbox-platform-hmcts-net"
     disabled_rules = {}
   },
 ]

@@ -7,3 +7,4 @@ variable "waf_mode" {}
 variable "frontends" {}
 variable "subscription_id" {}
 variable "enablessl" {}
+variable "sslMode" {}

@@ -3,4 +3,5 @@
 **/*.tfstate.backup
 **/.terraform
 **/.terraform/*
+**/.DS_Store
 

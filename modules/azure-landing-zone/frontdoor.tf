@@ -121,7 +121,7 @@ resource "azurerm_frontdoor" "main" {
     for_each = var.frontends
     content {
       name               = "${lookup(host.value, "name")}Rule"
-      accepted_protocols = ["Http", "Https"]
+      accepted_protocols = ["Https"]
       patterns_to_match  = ["/*"]
       frontend_endpoints = [lookup(host.value, "name")]
 
@@ -133,6 +133,18 @@ resource "azurerm_frontdoor" "main" {
         custom_forwarding_path                = ""
       }
     }
+  }
+
+# Default routing rule to be added for Http redirect to Https for all the frontend configuration
+  routing_rule {
+      name                    = "HttpToHttpsRedirect"
+      accepted_protocols      = ["Http"]
+      patterns_to_match       = ["/*"]
+      frontend_endpoints      = [ for frontend in var.frontends: "${lookup(frontend.value, "name")}.${lookup(frontend.value, "custom_domain")}" ]
+      redirect_configuration {
+        redirect_protocol   = "HTTPSOnly"
+        redirect_type       = "Found"
+      }
   }
 
   tags = "${var.common_tags}"

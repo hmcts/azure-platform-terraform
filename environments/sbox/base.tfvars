@@ -1,5 +1,7 @@
 env                 = "sbox"
 project             = "hmcts"
+component           = "lz"
+ddosplan            = "basic"
 
 aks = [
   {
@@ -11,9 +13,9 @@ aks = [
 
 firewall = [
   {
-    hub_vnet   = "10.102.0.0/24"
-    priority   = "200"
-    location   = "uksouth"
+    hub_vnet       = "10.102.0.0/24"
+    priority       = "200"
+    location       = "uksouth"
     aks_dnat_rules = [ "10.10.1.250", "10.10.3.250"]
   }
 ]

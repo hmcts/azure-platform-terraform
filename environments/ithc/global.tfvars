@@ -1,9 +1,10 @@
 project   = "hmcts"
-component = "frontdoor"
+component = "lz"
 location  = "uksouth"
 env       = "ithc"
+subscription = "ithc"
 waf_mode  = "Detection"
 enablessl = false
-sslMode   = "FrontDoor"
+sslMode   = "AzureKeyVault"
 
 frontends = []

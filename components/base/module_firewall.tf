@@ -5,4 +5,6 @@ module "firewall" {
   project            = var.project
   aks                = var.aks
   firewall           = var.firewall
+  component          = var.component
+  ddosplan           = var.ddosplan
 }

@@ -1,4 +1,5 @@
 variable env {}
+variable "subscription" {}
 variable project {}
 variable component {}
 variable location {}
@@ -8,3 +9,4 @@ variable "frontends" {}
 variable "subscription_id" {}
 variable "enablessl" {}
 variable "sslMode" {}
+variable "resource_group" {}

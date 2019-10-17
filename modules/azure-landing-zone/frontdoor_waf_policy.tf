@@ -1,7 +1,7 @@
 resource "azurerm_frontdoor_firewall_policy" "custom" {
   count               = length(var.frontends)
   name                = lookup(element(var.frontends, count.index), "name")
-  resource_group_name = azurerm_resource_group.main.name
+  resource_group_name = var.resource_group
   enabled             = true
   mode                = var.waf_mode
 

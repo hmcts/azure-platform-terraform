@@ -15,7 +15,9 @@ resource "azurerm_monitor_diagnostic_setting" "firewall_diagnostics" {
 
   dynamic "log" {
     iterator = log
-    for_each = data.azurerm_monitor_diagnostic_categories.diagnostic_categories.logs
+    for_each = [for category in data.azurerm_monitor_diagnostic_categories.diagnostic_categories.logs : {
+      category = category
+    }]
 
     content {
       category = log.value.category
@@ -29,7 +31,9 @@ resource "azurerm_monitor_diagnostic_setting" "firewall_diagnostics" {
 
   dynamic "metric" {
     iterator = metric
-    for_each = data.azurerm_monitor_diagnostic_categories.diagnostic_categories.metrics
+    for_each = [for category in data.azurerm_monitor_diagnostic_categories.diagnostic_categories.metrics : {
+      category = category
+    }]
 
     content {
       category = metric.value.category

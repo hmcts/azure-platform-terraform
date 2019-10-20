@@ -7,7 +7,7 @@ data "azurerm_virtual_network" "aks" {
 resource "azurerm_virtual_network_peering" "hub_to_aks" {
   count                        = length(var.firewall)
   name                         = "hub_to_${lookup(var.common_tags, "activityName")}"
-  resource_group_name          = azurerm_resource_group.main[count.index].name
+  resource_group_name          = data.azurerm_resource_group.lz-fw[count.index].name
   virtual_network_name         = azurerm_virtual_network.main[count.index].name
   remote_virtual_network_id    = data.azurerm_virtual_network.aks[count.index].id
   allow_virtual_network_access = true

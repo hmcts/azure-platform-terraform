@@ -8,7 +8,7 @@ resource "azurerm_firewall_nat_rule_collection" "main" {
   count               = length(var.firewall)
   name                = "dnat-${lookup(var.common_tags, "activityName")}"
   azure_firewall_name = azurerm_firewall.main[count.index].name
-  resource_group_name = azurerm_resource_group.main[count.index].name
+  resource_group_name = data.azurerm_resource_group.lz-fw[count.index].name
   priority            = lookup(element(var.firewall, count.index), "priority")
   action              = "Dnat"
 

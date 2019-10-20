@@ -5,16 +5,52 @@ locals {
 resource "azurerm_frontdoor" "main" {
   name                                         = "${var.project}-${var.env}"
   location                                     = "global"
-  resource_group_name                          = azurerm_resource_group.main.name
+  resource_group_name                          = var.resource_group
   enforce_backend_pools_certificate_name_check = true
   friendly_name                                = "${var.project}-${var.env}"
 
+# Default frontend host
   frontend_endpoint {
     name                              = "${var.project}-${var.env}-azurefd-net"
     host_name                         = "${var.project}-${var.env}.azurefd.net"
     custom_https_provisioning_enabled = false
   }
+  
+  backend_pool_load_balancing {
+    name = "defaultLoadBalancing"
+  }
 
+  backend_pool_health_probe {
+    name = "defaultHealthProbe"
+  }
+
+# Default backend
+  backend_pool {
+    name            = "defaultBackend"
+    backend {
+      host_header = "www.bing.com"
+      address     = "www.bing.com"
+      http_port   = 80
+      https_port  = 443
+    }
+
+    load_balancing_name = "defaultLoadBalancing"
+    health_probe_name   = "defaultHealthProbe"
+  }
+
+# Defualt routing rule for default frontend host
+  routing_rule {
+    name                    = "defaultRouting"
+    accepted_protocols      = ["Http", "Https"]
+    patterns_to_match       = ["/*"]
+    frontend_endpoints      = ["${var.project}-${var.env}-azurefd-net"]
+    forwarding_configuration {
+      forwarding_protocol   = "MatchRequest"
+      backend_pool_name     = "defaultBackend"
+    }
+  }
+
+# Custom frontdoor configuration for applications start here
   dynamic "frontend_endpoint" {
     iterator = host
     for_each = var.frontends
@@ -22,7 +58,7 @@ resource "azurerm_frontdoor" "main" {
       name                                    = "${lookup(host.value, "name")}"
       host_name                               = "${lookup(host.value, "name")}.${lookup(host.value, "custom_domain")}"
       custom_https_provisioning_enabled       = var.enablessl
-      web_application_firewall_policy_link_id = "/subscriptions/${var.subscription_id}/resourcegroups/${azurerm_resource_group.main.name}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/${lookup(host.value, "name")}"
+      web_application_firewall_policy_link_id = "/subscriptions/${var.subscription_id}/resourcegroups/${var.resource_group}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/${lookup(host.value, "name")}"
       dynamic "custom_https_configuration" {
         for_each = local.isSSL
         content {

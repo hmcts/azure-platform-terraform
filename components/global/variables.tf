@@ -1,4 +1,5 @@
 variable env {}
+variable "subscription" {}
 variable project {}
 variable component {}
 variable location {}

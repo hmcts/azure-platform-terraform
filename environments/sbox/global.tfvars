@@ -1,10 +1,11 @@
 project   = "hmcts"
-component = "frontdoor"
+component = "lz"
 location  = "uksouth"
-env       = "sandbox"
+env       = "sbox"
+subscription = "sbox"
 waf_mode  = "Detection"
 enablessl = false
-sslMode   = "FrontDoor"
+sslMode   = "AzureKeyVault"
 
 frontends = [
   {

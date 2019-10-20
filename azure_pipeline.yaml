@@ -1,0 +1,217 @@
+# Docs:
+# https://aka.ms/yaml
+
+trigger:
+  - master
+variables:
+  terraformVersion: 0.12.9
+  agentPool: 'ubuntu-16.04'
+  action: 
+
+stages:
+  - stage: GetArtifacts
+    jobs:
+      - job: Validate
+        pool:
+          vmImage: ${{ variables.agentPool }}
+        steps:
+          - task: TerraformInstaller@0
+            inputs:
+              terraformVersion: ${{ variables.terraformVersion }}
+
+          - template: pipeline-templates/terraform-plan.yaml
+            parameters:
+              environment: 'sbox'
+              component: 'base'
+              build: $(Build.BuildNumber)
+              agentPool: ${{ variables.agentPool }}
+
+          - template: pipeline-templates/terraform-plan.yaml
+            parameters:
+              environment: 'ithc'
+              component: 'base'
+              build: $(Build.BuildNumber)
+              agentPool: ${{ variables.agentPool }}
+
+          - template: pipeline-templates/terraform-plan.yaml
+            parameters:
+              environment: 'test'
+              component: 'base'
+              build: $(Build.BuildNumber)
+              agentPool: ${{ variables.agentPool }}
+
+          - template: pipeline-templates/terraform-plan.yaml
+            parameters:
+              environment: 'stg'
+              component: 'base'
+              build: $(Build.BuildNumber)
+              agentPool: ${{ variables.agentPool }}
+
+          # - template: pipeline-templates/terraform-plan.yaml
+          #   parameters:
+          #     environment: 'prod'
+          #     component: 'base'
+          #     build: $(Build.BuildNumber)
+          #     agentPool: ${{ variables.agentPool }}
+
+          - template: pipeline-templates/terraform-plan.yaml
+            parameters:
+              environment: 'sbox'
+              component: 'global'
+              build: $(Build.BuildNumber)
+              agentPool: ${{ variables.agentPool }}
+
+          - template: pipeline-templates/terraform-plan.yaml
+            parameters:
+              environment: 'ithc'
+              component: 'global'
+              build: $(Build.BuildNumber)
+              agentPool: ${{ variables.agentPool }}
+              terraformVersion: ${{ variables.terraformVersion }}
+
+          - template: pipeline-templates/terraform-plan.yaml
+            parameters:
+              environment: 'test'
+              component: 'global'
+              agentPool: ${{ variables.agentPool }}
+              terraformVersion: ${{ variables.terraformVersion }}
+
+          - template: pipeline-templates/terraform-plan.yaml
+            parameters:
+              environment: 'stg'
+              component: 'global'
+              agentPool: ${{ variables.agentPool }}
+              terraformVersion: ${{ variables.terraformVersion }}
+
+          # - template: pipeline-templates/terraform-plan.yaml
+          #   parameters:
+          #     environment: 'prod'
+          #     component: 'global'
+          #     agentPool: ${{ variables.agentPool }}
+          #     terraformVersion: ${{ variables.terraformVersion }}
+              
+          - task: CopyFiles@2
+            displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+            inputs:
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Artifact: drop'
+
+  - stage: applyBaseSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'sbox'
+          component: 'base'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+  - stage: applyBaseITHC
+    dependsOn: applyBaseSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'ithc'
+          component: 'base'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+  - stage: applyBasePerfTest
+    dependsOn: applyBaseSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'test'
+          component: 'base'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+  - stage: applyBaseAAT
+    dependsOn: applyBaseSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'stg'
+          component: 'base'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+  # - stage: applyBaseProd
+  #   dependsOn: applyBaseAAT
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'prod'
+  #         component: 'base'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
+
+  - stage: applyGlobalSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'sbox'
+          component: 'global'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+  - stage: applyGlobalITHC
+    dependsOn: applyGlobalSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'ithc'
+          component: 'global'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+  - stage: applyGlobalPerfTest
+    dependsOn: applyGlobalSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'test'
+          component: 'global'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+  - stage: applyGlobalAAT
+    dependsOn: applyGlobalSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'stg'
+          component: 'global'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+  # - stage: applyGlobalProd
+  #   dependsOn: applyGlobalAAT
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'prod'
+  #         component: 'global'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}

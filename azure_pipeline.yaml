@@ -73,6 +73,7 @@ stages:
             parameters:
               environment: 'test'
               component: 'global'
+              build: $(Build.BuildNumber)
               agentPool: ${{ variables.agentPool }}
               terraformVersion: ${{ variables.terraformVersion }}
 
@@ -80,6 +81,7 @@ stages:
             parameters:
               environment: 'stg'
               component: 'global'
+              build: $(Build.BuildNumber)
               agentPool: ${{ variables.agentPool }}
               terraformVersion: ${{ variables.terraformVersion }}
 
@@ -87,6 +89,7 @@ stages:
           #   parameters:
           #     environment: 'prod'
           #     component: 'global'
+          #     build: $(Build.BuildNumber)
           #     agentPool: ${{ variables.agentPool }}
           #     terraformVersion: ${{ variables.terraformVersion }}
               

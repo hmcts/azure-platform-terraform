@@ -123,8 +123,7 @@ resource "azurerm_frontdoor" "main" {
       name               = "${lookup(host.value, "name")}Rule"
       accepted_protocols = ["Http", "Https"]
       patterns_to_match  = ["/*"]
-      frontend_endpoints = [
-        lookup(host.value, "name")]
+      frontend_endpoints = [lookup(host.value, "name")]
 
       forwarding_configuration {
         forwarding_protocol                   = "MatchRequest"

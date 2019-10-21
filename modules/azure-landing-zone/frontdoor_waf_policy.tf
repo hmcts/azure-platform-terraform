@@ -1,6 +1,6 @@
 resource "azurerm_frontdoor_firewall_policy" "custom" {
   count               = length(var.frontends)
-  name                = replace(lookup(var.frontends[count.index], "name"), "-", "")
+  name                = "${replace(lookup(var.frontends[count.index], "name"), "-", "")}${replace(var.env, "-", "")}"
   resource_group_name = var.resource_group
   enabled             = true
   mode                = var.waf_mode

@@ -11,7 +11,7 @@ resource "azurerm_frontdoor_firewall_policy" "custom" {
 
     dynamic "override" {
       iterator = rulesets
-      for_each = lookup(element(var.frontends, count.index), "disabled_rules")
+      for_each = lookup(var.frontends[count.index], "disabled_rules")
 
       content {
         rule_group_name = rulesets.key

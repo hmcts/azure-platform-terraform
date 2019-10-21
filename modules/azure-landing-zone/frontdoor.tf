@@ -15,7 +15,7 @@ resource "azurerm_frontdoor" "main" {
     host_name                         = "${var.project}-${var.env}.azurefd.net"
     custom_https_provisioning_enabled = false
   }
-  
+
   backend_pool_load_balancing {
     name = "defaultLoadBalancing"
   }
@@ -55,7 +55,7 @@ resource "azurerm_frontdoor" "main" {
     iterator = host
     for_each = var.frontends
     content {
-      name                                    = "${lookup(host.value, "name")}"
+      name                                    = lookup(host.value, "name")
       host_name                               = "${lookup(host.value, "name")}.${lookup(host.value, "custom_domain")}"
       custom_https_provisioning_enabled       = var.enablessl
       web_application_firewall_policy_link_id = "/subscriptions/${var.subscription_id}/resourcegroups/${var.resource_group}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/${lookup(host.value, "name")}"
@@ -123,11 +123,11 @@ resource "azurerm_frontdoor" "main" {
       name               = "${lookup(host.value, "name")}Rule"
       accepted_protocols = ["Http", "Https"]
       patterns_to_match  = ["/*"]
-      frontend_endpoints = ["${lookup(host.value, "name")}"]
+      frontend_endpoints = [lookup(host.value, "name")]
 
       forwarding_configuration {
         forwarding_protocol                   = "MatchRequest"
-        backend_pool_name                     = "${lookup(host.value, "name")}"
+        backend_pool_name                     = lookup(host.value, "name")
         cache_query_parameter_strip_directive = "StripNone"
         cache_use_dynamic_compression         = false
         custom_forwarding_path                = ""

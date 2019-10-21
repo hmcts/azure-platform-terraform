@@ -4,9 +4,9 @@
 trigger:
   - master
 variables:
-  terraformVersion: 0.12.9
+  terraformVersion: 0.12.12
   agentPool: 'ubuntu-16.04'
-  action: 
+  action:
 
 stages:
   - stage: GetArtifacts
@@ -92,7 +92,7 @@ stages:
           #     build: $(Build.BuildNumber)
           #     agentPool: ${{ variables.agentPool }}
           #     terraformVersion: ${{ variables.terraformVersion }}
-              
+
           - task: CopyFiles@2
             displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
             inputs:

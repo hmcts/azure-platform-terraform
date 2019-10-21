@@ -9,14 +9,14 @@ sslMode   = "AzureKeyVault"
 
 frontends = [
   {
-    name             = "decress-nisi-aks"
+    name             = "decree-nisi-aks"
     custom_domain    = "aat.platform.hmcts.net"
     backend_domain   = ["uksouth.aat.platform.hmcts.net"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {}
   },
   {
-    name             = "decress-absolute-aks"
+    name             = "decree-absolute-aks"
     custom_domain    = "aat.platform.hmcts.net"
     backend_domain   = ["uksouth.aat.platform.hmcts.net"]
     certificate_name = "wildcard-aat-platform-hmcts-net"

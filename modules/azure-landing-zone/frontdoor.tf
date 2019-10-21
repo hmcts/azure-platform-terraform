@@ -58,7 +58,7 @@ resource "azurerm_frontdoor" "main" {
       name                                    = lookup(host.value, "name")
       host_name                               = "${lookup(host.value, "name")}.${lookup(host.value, "custom_domain")}"
       custom_https_provisioning_enabled       = var.enablessl
-      web_application_firewall_policy_link_id = "/subscriptions/${var.subscription_id}/resourcegroups/${var.resource_group}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/${lookup(host.value, "name")}"
+      web_application_firewall_policy_link_id = "/subscriptions/${var.subscription_id}/resourcegroups/${var.resource_group}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/${replace(lookup(host.value, "name"), "-", "")}"
       dynamic "custom_https_configuration" {
         for_each = local.isSSL
         content {
@@ -123,7 +123,8 @@ resource "azurerm_frontdoor" "main" {
       name               = "${lookup(host.value, "name")}Rule"
       accepted_protocols = ["Http", "Https"]
       patterns_to_match  = ["/*"]
-      frontend_endpoints = [lookup(host.value, "name")]
+      frontend_endpoints = [
+        lookup(host.value, "name")]
 
       forwarding_configuration {
         forwarding_protocol                   = "MatchRequest"

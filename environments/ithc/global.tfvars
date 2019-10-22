@@ -4,8 +4,9 @@ location  = "uksouth"
 env       = "ithc"
 subscription = "ithc"
 waf_mode  = "Prevention"
-enablessl = true
+enable_ssl = true
 sslMode   = "AzureKeyVault"
+certificate_key_vault_name = "cftapps-ithc"
 
 frontends = [
   {

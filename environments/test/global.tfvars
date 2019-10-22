@@ -4,7 +4,8 @@ location  = "uksouth"
 env       = "perftest"
 subscription = "test"
 waf_mode  = "Detection"
-enablessl = false
+enable_ssl = false
 sslMode   = "AzureKeyVault"
+certificate_key_vault_name = "cftapps-test"
 
 frontends = []

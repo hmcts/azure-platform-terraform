@@ -1,5 +1,5 @@
 locals {
-  isSSL = var.enablessl ? [1] : []
+  isSSL = var.enable_ssl ? [1] : []
 }
 
 resource "azurerm_frontdoor" "main" {
@@ -57,7 +57,7 @@ resource "azurerm_frontdoor" "main" {
     content {
       name                                    = lookup(host.value, "name")
       host_name                               = "${lookup(host.value, "name")}.${lookup(host.value, "custom_domain")}"
-      custom_https_provisioning_enabled       = var.enablessl
+      custom_https_provisioning_enabled       = var.enable_ssl
       web_application_firewall_policy_link_id = "/subscriptions/${var.subscription_id}/resourcegroups/${var.resource_group}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/${replace(lookup(host.value, "name"), "-", "")}${replace(var.env, "-", "")}"
       dynamic "custom_https_configuration" {
         for_each = local.isSSL

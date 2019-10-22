@@ -7,6 +7,7 @@ variable "common_tags" {}
 variable "waf_mode" {}
 variable "frontends" {}
 variable "subscription_id" {}
-variable "enablessl" {}
+variable "enable_ssl" {}
 variable "sslMode" {}
 variable "resource_group" {}
+variable "certificate_key_vault_name" {}

@@ -11,7 +11,7 @@ frontends = [
   {
     name             = "plum"
     custom_domain    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["uksouth.sandbox.platform.hmcts.net"]
+    backend_domain   = ["uksouth.cloudapp.azure.com"]
     certificate_name = "STAR-sandbox-platform-hmcts-net"
     disabled_rules = {}
   },

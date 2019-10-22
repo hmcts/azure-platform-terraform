@@ -4,7 +4,7 @@ location  = "uksouth"
 env       = "ithc"
 subscription = "ithc"
 waf_mode  = "Prevention"
-enablessl = false
+enablessl = true
 sslMode   = "AzureKeyVault"
 
 frontends = [

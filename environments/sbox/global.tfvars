@@ -4,7 +4,7 @@ location  = "uksouth"
 env       = "sbox"
 subscription = "sbox"
 waf_mode  = "Detection"
-enablessl = false
+enablessl = true
 sslMode   = "AzureKeyVault"
 
 frontends = [

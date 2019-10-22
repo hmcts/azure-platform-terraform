@@ -4,7 +4,7 @@ location  = "uksouth"
 env       = "aat"
 subscription = "stg"
 waf_mode  = "Prevention"
-enablessl = false
+enablessl = true
 sslMode   = "AzureKeyVault"
 
 frontends = [

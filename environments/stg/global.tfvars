@@ -4,8 +4,9 @@ location  = "uksouth"
 env       = "aat"
 subscription = "stg"
 waf_mode  = "Prevention"
-enablessl = true
+enable_ssl = true
 sslMode   = "AzureKeyVault"
+certificate_key_vault_name = "cftapps-stg"
 
 frontends = [
   {

@@ -8,7 +8,7 @@ module "landing_zone" {
   location           = var.location
   waf_mode           = var.waf_mode
   frontends          = var.frontends
-  enablessl          = var.enablessl
+  enable_ssl          = var.enable_ssl
   sslMode            = var.sslMode
   resource_group     = data.azurerm_resource_group.main.name
   subscription_id    = data.azurerm_subscription.current.subscription_id

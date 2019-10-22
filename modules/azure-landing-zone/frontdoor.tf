@@ -137,5 +137,5 @@ resource "azurerm_frontdoor" "main" {
 
   tags = "${var.common_tags}"
 
-  depends_on = [azurerm_frontdoor_firewall_policy.custom]
+  depends_on = [azurerm_frontdoor_firewall_policy.custom, azurerm_key_vault_access_policy.frontdoor_kv_access]
 }

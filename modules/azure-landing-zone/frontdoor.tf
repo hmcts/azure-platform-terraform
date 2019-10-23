@@ -126,7 +126,7 @@ resource "azurerm_frontdoor" "main" {
       frontend_endpoints = [lookup(host.value, "name")]
 
       forwarding_configuration {
-        forwarding_protocol                   = "MatchRequest"
+        forwarding_protocol                   = "HTTPOnly"
         backend_pool_name                     = lookup(host.value, "name")
         cache_query_parameter_strip_directive = "StripNone"
         cache_use_dynamic_compression         = false

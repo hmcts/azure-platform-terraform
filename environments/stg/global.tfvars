@@ -14,27 +14,35 @@ frontends = [
     custom_domain    = "aat.platform.hmcts.net"
     backend_domain   = ["uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
-    disabled_rules = {}
+    disabled_rules = {
+      RFI  = ["931130"],
+    }
   },
   {
     name             = "decree-absolute-aks"
     custom_domain    = "aat.platform.hmcts.net"
     backend_domain   = ["uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
-    disabled_rules = {}
+    disabled_rules = {
+      RFI  = ["931130"],
+    }
   },
   {
     name             = "respond-divorce-aks"
     custom_domain    = "aat.platform.hmcts.net"
     backend_domain   = ["uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
-    disabled_rules = {}
+    disabled_rules = {
+      RFI  = ["931130"],
+    }
   },
   {
     name             = "petitioner-frontend-aks"
     custom_domain    = "aat.platform.hmcts.net"
     backend_domain   = ["uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
-    disabled_rules = {}
+    disabled_rules = {
+      RFI  = ["931130"],
+    }
   },
 ]

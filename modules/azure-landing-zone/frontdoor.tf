@@ -93,6 +93,7 @@ resource "azurerm_frontdoor" "main" {
     }
   }
 
+# AKS configuration
   dynamic "backend_pool" {
     iterator = host
     for_each = var.frontends
@@ -151,6 +152,71 @@ resource "azurerm_frontdoor" "main" {
     }
   }
 
+# Palo Configuration
+  dynamic "backend_pool_load_balancing" {
+    iterator = host
+    for_each = var.paloConfig
+    content {
+      name                            = "loadBalancingSettings-${lookup(host.value, "frontend")}-palo"
+      sample_size                     = 4
+      successful_samples_required     = 2
+      additional_latency_milliseconds = 0
+    }
+  }
+
+  dynamic "backend_pool_health_probe" {
+    iterator = host
+    for_each = var.paloConfig
+    content {
+      name                = "healthProbeSettings-${lookup(host.value, "frontend")}-palo"
+      interval_in_seconds = 30
+      path                = "/"
+      protocol            = "Https"
+    }
+  }
+
+  dynamic "backend_pool" {
+    iterator = host
+    for_each = var.paloConfig
+    content {
+      name = "${lookup(host.value, "frontend")}-palo"
+      dynamic "backend" {
+        iterator = domain
+        for_each = lookup(host.value, "backend_domain")
+        content {
+          host_header = "${lookup(host.value, "frontend")}.${lookup(host.value, "custom_domain")}"
+          address     = "${lookup(host.value, "backend")}.${domain.value}"
+          http_port   = 80
+          https_port  = 443
+          priority    = 1
+          weight      = 50
+        }
+      }
+
+      load_balancing_name = "loadBalancingSettings-${lookup(host.value, "frontend")}-palo"
+      health_probe_name   = "healthProbeSettings-${lookup(host.value, "frontend")}-palo"
+    }
+  }
+
+  dynamic "routing_rule" {
+    iterator = host
+    for_each = var.paloConfig
+    content {
+      name               = "${lookup(host.value, "frontend")}PaloRule"
+      accepted_protocols = ["Http", "Https"]
+      patterns_to_match  = ["${lookup(host.value, "url_pattern")}"]
+      frontend_endpoints = [lookup(host.value, "name")]
+
+      forwarding_configuration {
+        forwarding_protocol                   = "HttpOnly"
+        backend_pool_name                     = "${lookup(host.value, "frontend")}-palo"
+        cache_query_parameter_strip_directive = "StripNone"
+        cache_use_dynamic_compression         = false
+        custom_forwarding_path                = ""
+      }
+    }
+  }
+  
   tags = "${var.common_tags}"
 
   depends_on = [azurerm_frontdoor_firewall_policy.custom, azurerm_key_vault_access_policy.frontdoor_kv_access]

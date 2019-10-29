@@ -140,7 +140,7 @@ resource "azurerm_frontdoor" "main" {
       name                    = "HttpToHttpsRedirect"
       accepted_protocols      = ["Http"]
       patterns_to_match       = ["/*"]
-      frontend_endpoints      = [ for frontend in var.frontends: "${lookup(frontend.value, "name")}.${lookup(frontend.value, "custom_domain")}" ]
+      frontend_endpoints      = [ for host in var.frontends: "${lookup(host, "name")}.${lookup(host, "custom_domain")}" ]
       redirect_configuration {
         redirect_protocol   = "HTTPSOnly"
         redirect_type       = "Found"

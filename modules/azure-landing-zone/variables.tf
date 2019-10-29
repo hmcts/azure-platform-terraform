@@ -11,3 +11,4 @@ variable "enable_ssl" {}
 variable "sslMode" {}
 variable "resource_group" {}
 variable "certificate_key_vault_name" {}
+variable "paloConfig" {}

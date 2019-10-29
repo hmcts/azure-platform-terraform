@@ -205,7 +205,7 @@ resource "azurerm_frontdoor" "main" {
       name               = "${lookup(host.value, "frontend")}PaloRule"
       accepted_protocols = ["Http", "Https"]
       patterns_to_match  = lookup(host.value, "url_pattern")
-      frontend_endpoints = [lookup(host.value, "name")]
+      frontend_endpoints = [lookup(host.value, "frontend")]
 
       forwarding_configuration {
         forwarding_protocol                   = "HttpOnly"

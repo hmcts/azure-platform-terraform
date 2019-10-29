@@ -76,9 +76,6 @@ resource "azurerm_frontdoor" "main" {
     for_each = var.frontends
     content {
       name                            = "loadBalancingSettings-${lookup(host.value, "name")}"
-      sample_size                     = 4
-      successful_samples_required     = 2
-      additional_latency_milliseconds = 0
     }
   }
 
@@ -87,9 +84,6 @@ resource "azurerm_frontdoor" "main" {
     for_each = var.frontends
     content {
       name                = "healthProbeSettings-${lookup(host.value, "name")}"
-      interval_in_seconds = 30
-      path                = "/"
-      protocol            = "Https"
     }
   }
 
@@ -158,9 +152,6 @@ resource "azurerm_frontdoor" "main" {
     for_each = var.paloConfig
     content {
       name                            = "loadBalancingSettings-${lookup(host.value, "frontend")}-palo"
-      sample_size                     = 4
-      successful_samples_required     = 2
-      additional_latency_milliseconds = 0
     }
   }
 
@@ -169,9 +160,6 @@ resource "azurerm_frontdoor" "main" {
     for_each = var.paloConfig
     content {
       name                = "healthProbeSettings-${lookup(host.value, "frontend")}-palo"
-      interval_in_seconds = 30
-      path                = "/"
-      protocol            = "Https"
     }
   }
 
@@ -203,9 +191,9 @@ resource "azurerm_frontdoor" "main" {
     for_each = var.paloConfig
     content {
       name               = "${lookup(host.value, "frontend")}PaloRule"
-      accepted_protocols = ["Http", "Https"]
+      accepted_protocols = ["Https"]
       patterns_to_match  = lookup(host.value, "url_pattern")
-      frontend_endpoints = [lookup(host.value, "frontend")]
+      frontend_endpoints = [lookup(host.value, "frontend").lookup(host.value, "custom_domain")]
 
       forwarding_configuration {
         forwarding_protocol                   = "HttpOnly"

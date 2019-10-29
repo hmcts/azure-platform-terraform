@@ -140,10 +140,10 @@ resource "azurerm_frontdoor" "main" {
       name                    = "HttpToHttpsRedirect"
       accepted_protocols      = ["Http"]
       patterns_to_match       = ["/*"]
-      frontend_endpoints      = [ for host in var.frontends: "${lookup(host, "name")}.${lookup(host, "custom_domain")}" ]
+      frontend_endpoints      = [ "plum.sandbox.platform.hmcts.net" ]
       redirect_configuration {
         redirect_protocol   = "HttpsOnly"
-        redirect_type       = "Found"
+        redirect_type       = "Moved"
       }
   }
 

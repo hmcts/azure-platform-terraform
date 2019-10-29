@@ -142,7 +142,7 @@ resource "azurerm_frontdoor" "main" {
       patterns_to_match       = ["/*"]
       frontend_endpoints      = [ for host in var.frontends: "${lookup(host, "name")}.${lookup(host, "custom_domain")}" ]
       redirect_configuration {
-        redirect_protocol   = "HTTPSOnly"
+        redirect_protocol   = "HttpsOnly"
         redirect_type       = "Found"
       }
   }

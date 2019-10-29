@@ -54,7 +54,7 @@ paloConfig = [
     frontend       = "petitioner-frontend-aks"
     custom_domain  = "ithc.platform.hmcts.net"
     backend_domain = ["uksouth.cloudapp.azure.com"]
-    backend        = "hmcts-dmz-test-palo-inet-out"
+    backend        = "hmcts-dmz-nonprodi-palo-inet-out"
     url_pattern    = ["/petitioner-respondent/marriage-certificate-upload"]
   },
 ]

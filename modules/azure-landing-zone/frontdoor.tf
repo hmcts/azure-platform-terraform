@@ -135,16 +135,20 @@ resource "azurerm_frontdoor" "main" {
     }
   }
 
-# Default routing rule to be added for Http redirect to Https for all the frontend configuration
-  routing_rule {
-      name                    = "HttpToHttpsRedirect"
-      accepted_protocols      = ["Http"]
-      patterns_to_match       = ["/*"]
-      frontend_endpoints      = [ "plum.sandbox.platform.hmcts.net" ]
+  dynamic "routing_rule" {
+    iterator = host
+    for_each = var.frontends
+    content {
+      name               = "${lookup(host.value, "name")}HttpsRedirect"
+      accepted_protocols = ["Http"]
+      patterns_to_match  = ["/*"]
+      frontend_endpoints = [lookup(host.value, "name")]
+
       redirect_configuration {
         redirect_protocol   = "HttpsOnly"
         redirect_type       = "Moved"
       }
+    }
   }
 
   tags = "${var.common_tags}"

@@ -121,7 +121,7 @@ resource "azurerm_frontdoor" "main" {
     for_each = var.frontends
     content {
       name               = "${lookup(host.value, "name")}Rule"
-      accepted_protocols = ["Http", "Https"]
+      accepted_protocols = ["Https"]
       patterns_to_match  = ["/*"]
       frontend_endpoints = [lookup(host.value, "name")]
 
@@ -131,6 +131,22 @@ resource "azurerm_frontdoor" "main" {
         cache_query_parameter_strip_directive = "StripNone"
         cache_use_dynamic_compression         = false
         custom_forwarding_path                = ""
+      }
+    }
+  }
+
+  dynamic "routing_rule" {
+    iterator = host
+    for_each = var.frontends
+    content {
+      name               = "${lookup(host.value, "name")}HttpsRedirect"
+      accepted_protocols = ["Http"]
+      patterns_to_match  = ["/*"]
+      frontend_endpoints = [lookup(host.value, "name")]
+
+      redirect_configuration {
+        redirect_protocol   = "HttpsOnly"
+        redirect_type       = "Moved"
       }
     }
   }

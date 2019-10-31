@@ -147,7 +147,7 @@ resource "azurerm_frontdoor" "main" {
   }
 
 # Palo Configuration
-  backend_pool_load_balancing {
+  dynamic "backend_pool_load_balancing" {
     iterator = host
     for_each = [for s in var.frontends : s if lookup(s,"paloConfig",{}) != {}]
 
@@ -156,7 +156,7 @@ resource "azurerm_frontdoor" "main" {
     }
   }
 
-  backend_pool_health_probe {
+  dynamic "backend_pool_health_probe" {
     iterator = host
     for_each = [for s in var.frontends : s if lookup(s,"paloConfig",{}) != {}]
 

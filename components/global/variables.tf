@@ -8,4 +8,3 @@ variable "frontends" {}
 variable "enable_ssl" {}
 variable "sslMode" {}
 variable "certificate_key_vault_name" {}
-variable "paloConfig" {}

@@ -13,5 +13,4 @@ module "landing_zone" {
   resource_group             = data.azurerm_resource_group.main.name
   subscription_id            = data.azurerm_subscription.current.subscription_id
   certificate_key_vault_name = var.certificate_key_vault_name
-  paloConfig                 = var.paloConfig
 }

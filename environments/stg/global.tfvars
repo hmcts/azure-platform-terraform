@@ -44,17 +44,9 @@ frontends = [
     disabled_rules = {
       RFI  = ["931130"],
     }
-  },
-]
-
-# Palo Configuration for traffic to PaloAlto firewall
-# this is kept separate as not all frontend traffic will go through Palo Alto firewall
-paloConfig = [
-  {
-    frontend       = "petitioner-frontend-aks"
-    custom_domain  = "aat.platform.hmcts.net"
-    backend_domain = ["uksouth.cloudapp.azure.com"]
-    backend        = "hmcts-dmz-nonprodi-palo-inet-out"
-    url_pattern    = ["/petitioner-respondent/marriage-certificate-upload"]
+    paloConfig       = {
+      backend = "hmcts-dmz-prodi-palo-inet-out",
+      url_pattern = "/petitioner-respondent/marriage-certificate-upload",
+    }
   },
 ]

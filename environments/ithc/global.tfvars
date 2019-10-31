@@ -41,20 +41,12 @@ frontends = [
     custom_domain    = "ithc.platform.hmcts.net"
     backend_domain   = ["uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
+    paloConfig       = {
+      backend = "hmcts-dmz-nonprodi-palo-inet-out",
+      url_pattern = ["/petitioner-respondent/marriage-certificate-upload"]
+    }
     disabled_rules = {
       RFI  = ["931130"],
     }
-  },
-]
-
-# Palo Configuration for traffic to PaloAlto firewall
-# this is kept separate as not all frontend traffic will go through Palo Alto firewall
-paloConfig = [
-  {
-    frontend       = "petitioner-frontend-aks"
-    custom_domain  = "ithc.platform.hmcts.net"
-    backend_domain = ["uksouth.cloudapp.azure.com"]
-    backend        = "hmcts-dmz-nonprodi-palo-inet-out"
-    url_pattern    = ["/petitioner-respondent/marriage-certificate-upload"]
   },
 ]

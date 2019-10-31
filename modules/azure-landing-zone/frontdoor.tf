@@ -75,7 +75,7 @@ resource "azurerm_frontdoor" "main" {
     iterator = host
     for_each = var.frontends
     content {
-      name                            = "loadBalancingSettings-${lookup(host.value, "name")}"
+      name = "loadBalancingSettings-${lookup(host.value, "name")}"
     }
   }
 
@@ -83,7 +83,7 @@ resource "azurerm_frontdoor" "main" {
     iterator = host
     for_each = var.frontends
     content {
-      name                = "healthProbeSettings-${lookup(host.value, "name")}"
+      name = "healthProbeSettings-${lookup(host.value, "name")}"
     }
   }
 
@@ -92,7 +92,7 @@ resource "azurerm_frontdoor" "main" {
     iterator = host
     for_each = var.frontends
     content {
-      name = "${lookup(host.value, "name")}"
+      name = lookup(host.value, "name")
       dynamic "backend" {
         iterator = domain
         for_each = lookup(host.value, "backend_domain")
@@ -147,33 +147,26 @@ resource "azurerm_frontdoor" "main" {
   }
 
 # Palo Configuration
-  dynamic "backend_pool_load_balancing" {
-    iterator = host
-    for_each = var.paloConfig
-    content {
-      name                            = "loadBalancingSettings-${lookup(host.value, "frontend")}-palo"
-    }
+  backend_pool_load_balancing {
+    name = "loadBalancingSettings-palo"
   }
 
-  dynamic "backend_pool_health_probe" {
-    iterator = host
-    for_each = var.paloConfig
-    content {
-      name                = "healthProbeSettings-${lookup(host.value, "frontend")}-palo"
-    }
+  backend_pool_health_probe {
+    name = "healthProbeSettings-palo"
   }
 
   dynamic "backend_pool" {
     iterator = host
-    for_each = var.paloConfig
+    for_each = [for s in var.frontends : s if lookup(s,"paloConfig",{}) != {}]
+
     content {
-      name = "${lookup(host.value, "frontend")}-palo"
+      name = "${lookup(host.value, "name")}-palo"
       dynamic "backend" {
-        iterator = domain
+        iterator = d
         for_each = lookup(host.value, "backend_domain")
         content {
-          host_header = "${lookup(host.value, "frontend")}.${lookup(host.value, "custom_domain")}"
-          address     = "${lookup(host.value, "backend")}.${domain.value}"
+          host_header = "${lookup(host.value, "name")}.${lookup(host.value,"custom_domain")}"
+          address     = "${lookup(lookup(host.value, "paloConfig"),"backend")}.${d.value}"
           http_port   = 80
           https_port  = 443
           priority    = 1
@@ -181,27 +174,8 @@ resource "azurerm_frontdoor" "main" {
         }
       }
 
-      load_balancing_name = "loadBalancingSettings-${lookup(host.value, "frontend")}-palo"
-      health_probe_name   = "healthProbeSettings-${lookup(host.value, "frontend")}-palo"
-    }
-  }
-
-  dynamic "routing_rule" {
-    iterator = host
-    for_each = var.paloConfig
-    content {
-      name               = "${lookup(host.value, "frontend")}PaloRule"
-      accepted_protocols = ["Https"]
-      patterns_to_match  = lookup(host.value, "url_pattern")
-      frontend_endpoints = ["${lookup(host.value, "frontend")}.${lookup(host.value, "custom_domain")}"]
-
-      forwarding_configuration {
-        forwarding_protocol                   = "HttpOnly"
-        backend_pool_name                     = "${lookup(host.value, "frontend")}-palo"
-        cache_query_parameter_strip_directive = "StripNone"
-        cache_use_dynamic_compression         = false
-        custom_forwarding_path                = ""
-      }
+      load_balancing_name = "loadBalancingSettings-palo"
+      health_probe_name   = "healthProbeSettings-palo"
     }
   }
   

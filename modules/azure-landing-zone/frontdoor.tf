@@ -148,11 +148,21 @@ resource "azurerm_frontdoor" "main" {
 
 # Palo Configuration
   backend_pool_load_balancing {
-    name = "loadBalancingSettings-palo"
+    iterator = host
+    for_each = [for s in var.frontends : s if lookup(s,"paloConfig",{}) != {}]
+
+    content {
+      name = "loadBalancingSettings-${lookup(host.value, "name")}-palo"
+    }
   }
 
   backend_pool_health_probe {
-    name = "healthProbeSettings-palo"
+    iterator = host
+    for_each = [for s in var.frontends : s if lookup(s,"paloConfig",{}) != {}]
+
+    content {
+      name = "healthProbeSettings-${lookup(host.value, "name")}-palo"
+    }
   }
 
   dynamic "backend_pool" {
@@ -174,8 +184,8 @@ resource "azurerm_frontdoor" "main" {
         }
       }
 
-      load_balancing_name = "loadBalancingSettings-palo"
-      health_probe_name   = "healthProbeSettings-palo"
+      load_balancing_name = "loadBalancingSettings-${lookup(host.value, "name")}-palo"
+      health_probe_name   = "healthProbeSettings-${lookup(host.value, "name")}-palo"
     }
   }
   

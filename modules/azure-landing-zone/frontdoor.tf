@@ -103,7 +103,7 @@ resource "azurerm_frontdoor" "main" {
         for_each = lookup(host.value, "backend_domain")
         content {
           host_header = "${lookup(host.value, "name")}.${lookup(host.value, "custom_domain")}"
-          address     = "firewall-${var.env}.${domain.value}"
+          address     = domain.value
           http_port   = 80
           https_port  = 443
           priority    = 1

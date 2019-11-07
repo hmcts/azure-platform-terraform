@@ -1,0 +1,35 @@
+jobs:
+  - deployment: Deploy
+    pool:
+      vmImage: ${{ parameters.agentPool }}
+    environment: ${{ parameters.environment }}
+    strategy:
+      # default deployment strategy
+      runOnce:
+        deploy:
+          steps:
+            - download: current
+              artifact: drop
+            
+            - task: TerraformInstaller@0
+              inputs:
+                terraformVersion: ${{ parameters.terraformVersion }}
+            - task: TerraformCLI@0
+              displayName: Init - ${{ parameters.environment }} - ${{ parameters.zone }}
+              inputs:
+                command: 'init'
+                backendType: 'azurerm'
+                backendServiceArm: ''
+                backendAzureRmResourceGroupName: 'reformmgmtrg'
+                backendAzureRmStorageAccountName: 'reformmgmt${{ parameters.zone }}'
+                backendAzureRmContainerName: 'tfstate'
+                backendAzureRmKey: '${{ parameters.environment }}/${{ parameters.zone }}.tfstate'
+                workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.environment }}'
+
+            - task: TerraformCLI@0
+              displayName: Apply - ${{ parameters.environment }} - ${{ parameters.zone }}
+              inputs:
+                command: 'apply'
+                commandOptions: '${{ parameters.environment }}${{ parameters.zone }}${{ parameters.build }}plan'
+                environmentServiceName: ''
+                workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.environment }}'

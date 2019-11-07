@@ -1,4 +1,3 @@
-env = "ithc"
 resource_group_name = "reformmgmtrg"
 
 ithc-platform-hmcts-net = [

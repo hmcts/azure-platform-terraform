@@ -8,7 +8,6 @@ This module creates/updates DNS zone and recordsets in a given zone.
 ```hcl
 module "public-dns" {
   source = "hmcts/azure-platform-terraform/modules/azure-public-dns"
-  env                = var.env
   project            = var.project
 }
 ```
@@ -65,7 +64,6 @@ terraform plan -var-file=azure-public-dns.tfvars
   DNS zone where the records will be added.
 - `dns_zone_name` is the name of the DNS zone within the given resource group
   where the records will be added.
-- `env` is environment that the infrastructure is created / managed in.
 
 This module requires the `azurerm` provider.
 

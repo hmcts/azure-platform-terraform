@@ -1,0 +1,27 @@
+steps:
+  - task: TerraformCLI@0
+    displayName: Init - ${{ parameters.environment }} - ${{ parameters.zone }}
+    inputs:
+      command: 'init'
+      commandOptions: '-lock=false' # don't lock on PRs / validate phase
+      backendType: 'azurerm'
+      backendServiceArm: '' # Need to find these values 
+      backendAzureRmResourceGroupName: 'reformmgmtrg'
+      backendAzureRmStorageAccountName: 'reformmgmt${{ parameters.zone }}'
+      backendAzureRmContainerName: 'tfstate'
+      backendAzureRmKey: '${{ parameters.environment }}/${{ parameters.zone }}.tfstate'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.environment }}'
+  - task: TerraformCLI@0
+    displayName: Plan - ${{ parameters.environment }} - ${{ parameters.zone }}
+    inputs:
+      command: 'plan'
+      commandOptions: '-out=${{ parameters.environment }}${{ parameters.zone }}${{ parameters.build }}plan -var-file=$(System.DefaultWorkingDirectory)/environments/${{ parameters.environment }}/${{ parameters.zone }}.tfvars'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.environment }}'
+      environmentServiceName: ''
+  - task: Bash@3
+    displayName: "Remove local tfstate"
+    inputs:
+      targetType: 'inline'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.environment }}'
+      script: |
+        rm -f terraform.tfstate* && rm -rf .terraform/

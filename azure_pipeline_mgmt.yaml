@@ -1,0 +1,40 @@
+---
+trigger:
+  - master
+variables:
+  terraformVersion: 0.12.12
+  agentPool: 'ubuntu-16.04'
+  action: plan
+
+stages:
+  - stage: Mgmt_dns_zones
+    displayName: Mgmt_dns_zones
+    jobs:
+      - job: Validate
+        pool:
+          vmImage: ${{ variables.agentPool }}
+        steps:
+          - template: pipeline_template/terraform-plan-mgmt.yaml
+            parameters:
+              environment: 'mgmt'
+              zone: 'ithc'
+              build: $(Build.BuildNumber)
+              agentPool: ${{ variables.agentPool }}
+              azureSubscription: 'Reform-CFT-Mgmt'
+              subscription_id: 'ed302caf-ec27-4c64-a05e-85731c3ce90e'
+
+  - stage: applyBaseSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply-mgmt.yaml
+        parameters:
+          environment: 'mgmt'
+          zone: 'ithc'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+          azureSubscription: 'Reform-CFT-Mgmt'
+          subscription_id: 'ed302caf-ec27-4c64-a05e-85731c3ce90e'
+
+
+

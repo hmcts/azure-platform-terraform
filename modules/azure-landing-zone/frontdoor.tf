@@ -9,7 +9,7 @@ resource "azurerm_frontdoor" "main" {
   enforce_backend_pools_certificate_name_check = true
   friendly_name                                = "${var.project}-${var.env}"
 
-  # Default frontend host
+  ######## Defaults ########
   frontend_endpoint {
     name                              = "${var.project}-${var.env}-azurefd-net"
     host_name                         = "${var.project}-${var.env}.azurefd.net"
@@ -49,8 +49,9 @@ resource "azurerm_frontdoor" "main" {
       backend_pool_name   = "defaultBackend"
     }
   }
+  ######## End defaults ########
 
-  # Custom frontdoor configuration for applications start here
+  ######## Regular frontends ########
   dynamic "frontend_endpoint" {
     iterator = host
     for_each = var.frontends
@@ -151,6 +152,9 @@ resource "azurerm_frontdoor" "main" {
     }
   }
 
+  ######## End regular frontends ########
+
+  ######## Palo frontends ########
   dynamic "backend_pool_load_balancing" {
     iterator = host
     for_each = var.frontends_with_palo
@@ -215,28 +219,7 @@ resource "azurerm_frontdoor" "main" {
     }
   }
 
-
-  dynamic "backend_pool_load_balancing" {
-    iterator = host
-    for_each = var.frontends
-    content {
-      name                            = "loadBalancingSettings-${host.value["name"]}"
-      sample_size                     = 4
-      successful_samples_required     = 2
-      additional_latency_milliseconds = 0
-    }
-  }
-
-  dynamic "backend_pool_health_probe" {
-    iterator = host
-    for_each = var.frontends
-    content {
-      name                = "healthProbeSettings-${host.value["name"]}"
-      interval_in_seconds = 30
-      path                = "/"
-      protocol            = "Https"
-    }
-  }
+  ######## End Palo frontends ########
 
   tags = var.common_tags
 

@@ -46,3 +46,5 @@ frontends = [
     }
   },
 ]
+
+frontends_with_palo = []

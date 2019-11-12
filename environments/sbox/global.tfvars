@@ -17,3 +17,5 @@ frontends = [
     disabled_rules = {}
   },
 ]
+
+frontends_with_palo = []

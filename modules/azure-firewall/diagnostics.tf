@@ -37,7 +37,7 @@ resource "azurerm_monitor_diagnostic_setting" "firewall_diagnostics" {
 
     content {
       category = metric.value.category
-      enabled = true
+      enabled  = true
 
       retention_policy {
         enabled = true

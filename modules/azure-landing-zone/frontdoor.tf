@@ -55,10 +55,10 @@ resource "azurerm_frontdoor" "main" {
     iterator = host
     for_each = var.frontends
     content {
-      name                                    = lookup(host.value, "name")
-      host_name                               = "${lookup(host.value, "name")}.${lookup(host.value, "custom_domain")}"
+      name                                    = host.value["name"]
+      host_name                               = "${host.value["name"]}.${host.value["custom_domain"]}"
       custom_https_provisioning_enabled       = var.enable_ssl
-      web_application_firewall_policy_link_id = "/subscriptions/${var.subscription_id}/resourcegroups/${var.resource_group}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/${replace(lookup(host.value, "name"), "-", "")}${replace(var.env, "-", "")}"
+      web_application_firewall_policy_link_id = "/subscriptions/${var.subscription_id}/resourcegroups/${var.resource_group}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/${replace(host.value["name"], "-", "")}${replace(var.env, "-", "")}"
       dynamic "custom_https_configuration" {
         for_each = local.isSSL
         content {
@@ -75,7 +75,7 @@ resource "azurerm_frontdoor" "main" {
     iterator = host
     for_each = var.frontends
     content {
-      name                            = "loadBalancingSettings-${lookup(host.value, "name")}"
+      name                            = "loadBalancingSettings-${host.value["name"]}"
       sample_size                     = 4
       successful_samples_required     = 2
       additional_latency_milliseconds = 0
@@ -86,7 +86,7 @@ resource "azurerm_frontdoor" "main" {
     iterator = host
     for_each = var.frontends
     content {
-      name                = "healthProbeSettings-${lookup(host.value, "name")}"
+      name                = "healthProbeSettings-${host.value["name"]}"
       interval_in_seconds = 30
       path                = "/health"
       protocol            = "Http"
@@ -97,12 +97,12 @@ resource "azurerm_frontdoor" "main" {
     iterator = host
     for_each = var.frontends
     content {
-      name = lookup(host.value, "name")
+      name = host.value["name"]
       dynamic "backend" {
         iterator = domain
-        for_each = lookup(host.value, "backend_domain")
+        for_each = host.value["backend_domain"]
         content {
-          host_header = "${lookup(host.value, "name")}.${lookup(host.value, "custom_domain")}"
+          host_header = "${host.value["name"]}.${host.value["custom_domain"]}"
           address     = domain.value
           http_port   = 80
           https_port  = 443
@@ -111,8 +111,8 @@ resource "azurerm_frontdoor" "main" {
         }
       }
 
-      load_balancing_name = "loadBalancingSettings-${lookup(host.value, "name")}"
-      health_probe_name   = "healthProbeSettings-${lookup(host.value, "name")}"
+      load_balancing_name = "loadBalancingSettings-${host.value["name"]}"
+      health_probe_name   = "healthProbeSettings-${host.value["name"]}"
     }
   }
 
@@ -120,14 +120,14 @@ resource "azurerm_frontdoor" "main" {
     iterator = host
     for_each = var.frontends
     content {
-      name               = lookup(host.value, "name")
+      name               = host.value["name"]
       accepted_protocols = ["Https"]
       patterns_to_match  = lookup(host.value, "url_patterns", ["/*"])
-      frontend_endpoints = [lookup(host.value, "name")]
+      frontend_endpoints = [host.value["name"]]
 
       forwarding_configuration {
         forwarding_protocol                   = "HttpOnly"
-        backend_pool_name                     = lookup(host.value, "name")
+        backend_pool_name                     = host.value["name"]
         cache_query_parameter_strip_directive = "StripNone"
         cache_use_dynamic_compression         = false
         custom_forwarding_path                = ""
@@ -139,10 +139,10 @@ resource "azurerm_frontdoor" "main" {
     iterator = host
     for_each = var.frontends
     content {
-      name               = "${lookup(host.value, "name")}HttpsRedirect"
+      name               = "${host.value["name"]}HttpsRedirect"
       accepted_protocols = ["Http"]
       patterns_to_match  = ["/*"]
-      frontend_endpoints = [lookup(host.value, "name")]
+      frontend_endpoints = [host.value["name"]]
 
       redirect_configuration {
         redirect_protocol = "HttpsOnly"
@@ -155,7 +155,7 @@ resource "azurerm_frontdoor" "main" {
     iterator = host
     for_each = var.frontends_with_palo
     content {
-      name                            = "loadBalancingSettings-${lookup(host.value, "name")}Palo"
+      name                            = "loadBalancingSettings-${host.value["name"]}Palo"
       sample_size                     = 4
       successful_samples_required     = 2
       additional_latency_milliseconds = 0
@@ -166,7 +166,7 @@ resource "azurerm_frontdoor" "main" {
     iterator = host
     for_each = var.frontends_with_palo
     content {
-      name                = "healthProbeSettings-${lookup(host.value, "name")}Palo"
+      name                = "healthProbeSettings-${host.value["name"]}Palo"
       interval_in_seconds = 30
       path                = "/health"
       protocol            = "Http"
@@ -177,12 +177,12 @@ resource "azurerm_frontdoor" "main" {
     iterator = host
     for_each = var.frontends_with_palo
     content {
-      name = "${lookup(host.value, "name")}Palo"
+      name = "${host.value["name"]}Palo"
       dynamic "backend" {
         iterator = domain
-        for_each = lookup(host.value, "backend_domain")
+        for_each = host.value["backend_domain"]
         content {
-          host_header = "${lookup(host.value, "name")}.${lookup(host.value, "custom_domain")}"
+          host_header = "${host.value["name"]}.${host.value["custom_domain"]}"
           address     = domain.value
           http_port   = 80
           https_port  = 443
@@ -191,8 +191,8 @@ resource "azurerm_frontdoor" "main" {
         }
       }
 
-      load_balancing_name = "loadBalancingSettings-${lookup(host.value, "name")}"
-      health_probe_name   = "healthProbeSettings-${lookup(host.value, "name")}"
+      load_balancing_name = "loadBalancingSettings-${host.value["name"]}"
+      health_probe_name   = "healthProbeSettings-${host.value["name"]}"
     }
   }
 
@@ -200,14 +200,14 @@ resource "azurerm_frontdoor" "main" {
     iterator = host
     for_each = var.frontends_with_palo
     content {
-      name               = "${lookup(host.value, "name")}Palo"
+      name               = "${host.value["name"]}Palo"
       accepted_protocols = ["Https"]
       patterns_to_match  = lookup(host.value, "url_patterns", ["/*"])
-      frontend_endpoints = [lookup(host.value, "name")]
+      frontend_endpoints = [host.value["name"]]
 
       forwarding_configuration {
         forwarding_protocol                   = "HttpOnly"
-        backend_pool_name                     = lookup(host.value, "name")
+        backend_pool_name                     = host.value["name"]
         cache_query_parameter_strip_directive = "StripNone"
         cache_use_dynamic_compression         = false
         custom_forwarding_path                = ""
@@ -220,7 +220,7 @@ resource "azurerm_frontdoor" "main" {
     iterator = host
     for_each = var.frontends
     content {
-      name                            = "loadBalancingSettings-${lookup(host.value, "name")}"
+      name                            = "loadBalancingSettings-${host.value["name"]}"
       sample_size                     = 4
       successful_samples_required     = 2
       additional_latency_milliseconds = 0
@@ -231,7 +231,7 @@ resource "azurerm_frontdoor" "main" {
     iterator = host
     for_each = var.frontends
     content {
-      name                = "healthProbeSettings-${lookup(host.value, "name")}"
+      name                = "healthProbeSettings-${host.value["name"]}"
       interval_in_seconds = 30
       path                = "/"
       protocol            = "Https"

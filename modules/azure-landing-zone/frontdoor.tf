@@ -9,7 +9,7 @@ resource "azurerm_frontdoor" "main" {
   enforce_backend_pools_certificate_name_check = true
   friendly_name                                = "${var.project}-${var.env}"
 
-# Default frontend host
+  # Default frontend host
   frontend_endpoint {
     name                              = "${var.project}-${var.env}-azurefd-net"
     host_name                         = "${var.project}-${var.env}.azurefd.net"
@@ -24,9 +24,9 @@ resource "azurerm_frontdoor" "main" {
     name = "defaultHealthProbe"
   }
 
-# Default backend
+  # Default backend
   backend_pool {
-    name            = "defaultBackend"
+    name = "defaultBackend"
     backend {
       host_header = "www.bing.com"
       address     = "www.bing.com"
@@ -38,19 +38,19 @@ resource "azurerm_frontdoor" "main" {
     health_probe_name   = "defaultHealthProbe"
   }
 
-# Defualt routing rule for default frontend host
+  # Defualt routing rule for default frontend host
   routing_rule {
-    name                    = "defaultRouting"
-    accepted_protocols      = ["Http", "Https"]
-    patterns_to_match       = ["/*"]
-    frontend_endpoints      = ["${var.project}-${var.env}-azurefd-net"]
+    name               = "defaultRouting"
+    accepted_protocols = ["Http", "Https"]
+    patterns_to_match  = ["/*"]
+    frontend_endpoints = ["${var.project}-${var.env}-azurefd-net"]
     forwarding_configuration {
-      forwarding_protocol   = "MatchRequest"
-      backend_pool_name     = "defaultBackend"
+      forwarding_protocol = "MatchRequest"
+      backend_pool_name   = "defaultBackend"
     }
   }
 
-# Custom frontdoor configuration for applications start here
+  # Custom frontdoor configuration for applications start here
   dynamic "frontend_endpoint" {
     iterator = host
     for_each = var.frontends
@@ -145,8 +145,8 @@ resource "azurerm_frontdoor" "main" {
       frontend_endpoints = [host.value["name"]]
 
       redirect_configuration {
-        redirect_protocol   = "HttpsOnly"
-        redirect_type       = "Moved"
+        redirect_protocol = "HttpsOnly"
+        redirect_type     = "Moved"
       }
     }
   }

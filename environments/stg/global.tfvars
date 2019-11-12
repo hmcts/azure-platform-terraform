@@ -1,11 +1,11 @@
-project   = "hmcts"
-component = "lz"
-location  = "uksouth"
-env       = "aat"
-subscription = "stg"
-waf_mode  = "Prevention"
-enable_ssl = true
-sslMode   = "AzureKeyVault"
+project                    = "hmcts"
+component                  = "lz"
+location                   = "uksouth"
+env                        = "aat"
+subscription               = "stg"
+waf_mode                   = "Prevention"
+enable_ssl                 = true
+sslMode                    = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-stg"
 
 frontends = [
@@ -15,7 +15,7 @@ frontends = [
     backend_domain   = ["firewall-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
-      RFI  = ["931130"],
+      RFI = ["931130"],
     }
   },
   {
@@ -24,7 +24,7 @@ frontends = [
     backend_domain   = ["firewall-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
-      RFI  = ["931130"],
+      RFI = ["931130"],
     }
   },
   {
@@ -33,7 +33,7 @@ frontends = [
     backend_domain   = ["firewall-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
-      RFI  = ["931130"],
+      RFI = ["931130"],
     }
   },
   {
@@ -42,7 +42,7 @@ frontends = [
     backend_domain   = ["firewall-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
-      RFI  = ["931130"],
+      RFI = ["931130"],
     }
   },
 ]

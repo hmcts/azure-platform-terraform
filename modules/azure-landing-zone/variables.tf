@@ -6,7 +6,6 @@ variable location {}
 variable "common_tags" {}
 variable "waf_mode" {}
 variable "frontends" {}
-variable "frontends_with_palo" {}
 variable "subscription_id" {}
 variable "enable_ssl" {}
 variable "sslMode" {}

@@ -12,10 +12,8 @@ frontends = [
   {
     name             = "plum"
     custom_domain    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-aks-sbox.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "STAR-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   },
 ]
-
-frontends_with_palo = []

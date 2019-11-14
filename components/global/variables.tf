@@ -5,7 +5,6 @@ variable component {}
 variable location {}
 variable "waf_mode" {}
 variable "frontends" {}
-variable "frontends_with_palo" {}
 variable "enable_ssl" {}
 variable "sslMode" {}
 variable "certificate_key_vault_name" {}

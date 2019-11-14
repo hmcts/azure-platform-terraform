@@ -9,5 +9,3 @@ sslMode                    = "AzureKeyVault"
 certificate_key_vault_name = "cft-apps-prod"
 
 frontends = []
-
-frontends_with_palo = []

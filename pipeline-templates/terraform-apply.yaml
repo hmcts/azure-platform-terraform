@@ -17,7 +17,7 @@ jobs:
               inputs:
                 targetType: 'inline'
                 script: 'ls -lash'
-                workingDirectory: '$(Pipeline.Workspace)'
+                workingDirectory: '$(Pipeline.Workspace)/${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan'
             - task: CopyFiles@2
               inputs:
                 Contents: '$(Pipeline.Workspace)/${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan/${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan'

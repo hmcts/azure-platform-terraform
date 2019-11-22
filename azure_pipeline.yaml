@@ -48,7 +48,7 @@ stages:
               agentPool: ${{ variables.agentPool }}
 
           - template: pipeline-templates/terraform-plan.yaml
-           parameters:
+            parameters:
              environment: 'prod'
              component: 'base'
              build: $(Build.BuildNumber)
@@ -86,7 +86,7 @@ stages:
               terraformVersion: ${{ variables.terraformVersion }}
 
           - template: pipeline-templates/terraform-plan.yaml
-           parameters:
+            parameters:
              environment: 'prod'
              component: 'global'
              build: $(Build.BuildNumber)
@@ -208,9 +208,9 @@ stages:
           terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: applyGlobalProd
-   dependsOn: applyGlobalAAT
-   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-   jobs:
+    dependsOn: applyGlobalAAT
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
      - template: pipeline-templates/terraform-apply.yaml
        parameters:
          environment: 'prod'

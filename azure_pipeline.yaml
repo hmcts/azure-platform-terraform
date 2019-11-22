@@ -137,7 +137,7 @@ stages:
           terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: ApplyBaseITHC
-    dependsOn: applyBaseSandbox
+    dependsOn: ApplyBaseSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -149,7 +149,7 @@ stages:
           terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: ApplyBasePerfTest
-    dependsOn: applyBaseSandbox
+    dependsOn: ApplyBaseSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -161,7 +161,7 @@ stages:
           terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: ApplyBaseAAT
-    dependsOn: applyBaseSandbox
+    dependsOn: ApplyBaseSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -173,7 +173,7 @@ stages:
           terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: ApplyBaseProd
-    dependsOn: applyBaseAAT
+    dependsOn: ApplyBaseAAT
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
      - template: pipeline-templates/terraform-apply.yaml
@@ -196,7 +196,7 @@ stages:
           terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: ApplyGlobalITHC
-    dependsOn: applyGlobalSandbox
+    dependsOn: ApplyGlobalSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -208,7 +208,7 @@ stages:
           terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: ApplyGlobalPerfTest
-    dependsOn: applyGlobalSandbox
+    dependsOn: ApplyGlobalSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -220,7 +220,7 @@ stages:
           terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: ApplyGlobalAAT
-    dependsOn: applyGlobalSandbox
+    dependsOn: ApplyGlobalSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -232,7 +232,7 @@ stages:
           terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: ApplyGlobalProd
-    dependsOn: applyGlobalAAT
+    dependsOn: ApplyGlobalAAT
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
      - template: pipeline-templates/terraform-apply.yaml

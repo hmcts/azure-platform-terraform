@@ -34,26 +34,26 @@ stages:
             condition: always()
 
 
-          - template: pipeline-templates/terraform-plan.yaml
-            parameters:
-              environment: 'sbox'
-              component: 'base'
-              build: $(Build.BuildNumber)
-              agentPool: ${{ variables.agentPool }}
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
+          environment: 'sbox'
+          component: 'base'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
 
-          - template: pipeline-templates/terraform-plan.yaml
-            parameters:
-              environment: 'ithc'
-              component: 'base'
-              build: $(Build.BuildNumber)
-              agentPool: ${{ variables.agentPool }}
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
+          environment: 'ithc'
+          component: 'base'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
 
-          - template: pipeline-templates/terraform-plan.yaml
-            parameters:
-              environment: 'test'
-              component: 'base'
-              build: $(Build.BuildNumber)
-              agentPool: ${{ variables.agentPool }}
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
+          environment: 'test'
+          component: 'base'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
 
       - template: pipeline-templates/terraform-plan.yaml
         parameters:

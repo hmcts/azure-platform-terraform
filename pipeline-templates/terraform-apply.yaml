@@ -10,7 +10,8 @@ jobs:
           steps:
             - download: current
               artifact: drop
-            
+            - download: current
+              artifact: ${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan
             - task: TerraformInstaller@0
               inputs:
                 terraformVersion: ${{ parameters.terraformVersion }}
@@ -25,16 +26,6 @@ jobs:
                 backendAzureRmContainerName: 'tfstate'
                 backendAzureRmKey: '${{ parameters.component }}/${{ parameters.environment }}.tfstate'
                 workingDirectory: '$(Pipeline.Workspace)/drop/components/${{ parameters.component }}'
-            # - task: PowerShell@2
-            #   displayName: 'Copy plan'
-            #   inputs:
-            #     targetType: 'inline'
-            #     script: |
-            #       $storageAccount = Get-AzStorageAccount -ResourceGroupName core-infra-${{ parameters.environment }}-rg -Name cftapps${{ parameters.environment }}
-            #       $ctx = $storageAccount.Context
-            #       Get-AzStorageBlobContent -Blob "${{ parameters.component }}/${{ parameters.environment }}${{ parameters.build }}plan" -Container tfstate -Destination $(Pipeline.Workspace)/drop/components/${{ parameters.component }}/${{ parameters.environment }}${{ parameters.build }}plan -Context $ctx
-            #     failOnStderr: true
-            #     pwsh: true
             - task: TerraformCLI@0
               displayName: Apply - ${{ parameters.environment }} - ${{ parameters.component }}
               inputs:

@@ -9,15 +9,11 @@ jobs:
         deploy:
           steps:
             - download: current
+              displayName: 'Download artifacts'
               artifact: drop
             - download: current
+              displayName: 'Download tfplan'
               artifact: ${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan
-            - task: Bash@3
-              displayName: 'Show files'
-              inputs:
-                targetType: 'inline'
-                script: 'ls -lash'
-                workingDirectory: '$(Pipeline.Workspace)/${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan'
             - task: CopyFiles@2
               inputs:
                 sourceFolder: '$(Pipeline.Workspace)/${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan'

@@ -32,3 +32,5 @@ jobs:
           workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
           script: |
             rm -f terraform.tfstate* && rm -rf .terraform/
+      - publish: $(System.DefaultWorkingDirectory)/components/${{ parameters.component }}/${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan
+        artifact: ${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan

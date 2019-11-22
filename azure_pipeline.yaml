@@ -125,7 +125,7 @@ stages:
           - task: PublishBuildArtifacts@1
             displayName: 'Publish Artifact: drop'
 
-  - stage: applyBaseSandbox
+  - stage: ApplyBaseSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -136,8 +136,8 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: applyBaseITHC
-    dependsOn: applyBaseSandbox
+  - stage: ApplyBaseITHC
+    dependsOn: ApplyBaseSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -148,8 +148,8 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: applyBasePerfTest
-    dependsOn: applyBaseSandbox
+  - stage: ApplyBasePerfTest
+    dependsOn: ApplyBaseSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -160,8 +160,8 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: applyBaseAAT
-    dependsOn: applyBaseSandbox
+  - stage: ApplyBaseAAT
+    dependsOn: ApplyBaseSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -172,8 +172,8 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: applyBaseProd
-    dependsOn: applyBaseAAT
+  - stage: ApplyBaseProd
+    dependsOn: ApplyBaseAAT
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
      - template: pipeline-templates/terraform-apply.yaml
@@ -184,7 +184,7 @@ stages:
          agentPool: ${{ variables.agentPool }}
          terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: applyGlobalSandbox
+  - stage: ApplyGlobalSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -195,8 +195,8 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: applyGlobalITHC
-    dependsOn: applyGlobalSandbox
+  - stage: ApplyGlobalITHC
+    dependsOn: ApplyGlobalSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -207,8 +207,8 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: applyGlobalPerfTest
-    dependsOn: applyGlobalSandbox
+  - stage: ApplyGlobalPerfTest
+    dependsOn: ApplyGlobalSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -219,8 +219,8 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: applyGlobalAAT
-    dependsOn: applyGlobalSandbox
+  - stage: ApplyGlobalAAT
+    dependsOn: ApplyGlobalSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -231,8 +231,8 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: applyGlobalProd
-    dependsOn: applyGlobalAAT
+  - stage: ApplyGlobalProd
+    dependsOn: ApplyGlobalAAT
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
      - template: pipeline-templates/terraform-apply.yaml

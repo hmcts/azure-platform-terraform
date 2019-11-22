@@ -20,8 +20,8 @@ jobs:
                 workingDirectory: '$(Pipeline.Workspace)/${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan'
             - task: CopyFiles@2
               inputs:
-                Contents: '$(Pipeline.Workspace)/${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan/${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan'
-                TargetFolder: '$(Pipeline.Workspace)/drop/components/${{ parameters.component }}'
+                sourceFolder: '$(Pipeline.Workspace)/${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan'
+                targetFolder: '$(Pipeline.Workspace)/drop/components/${{ parameters.component }}'
             - task: TerraformInstaller@0
               inputs:
                 terraformVersion: ${{ parameters.terraformVersion }}

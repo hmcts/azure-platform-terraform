@@ -1,7 +1,7 @@
 jobs:
   - job: Plan_${{ parameters.environment }}_${{ parameters.component }}
     pool:
-      vmImage: ${{ variables.agentPool }}
+      vmImage: ${{ parameters.agentPool }}
     steps:
       - task: TerraformInstaller@0
         inputs:

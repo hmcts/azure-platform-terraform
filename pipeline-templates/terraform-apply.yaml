@@ -12,6 +12,15 @@ jobs:
               artifact: drop
             - download: current
               artifact: ${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan
+            - task: Bash@3
+              displayName: 'Show files'
+              inputs:
+                targetType: 'inline'
+                script: 'ls -lash'
+            - task: CopyFiles@2
+              inputs:
+                Contents: '${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan'
+                TargetFolder: '$(Pipeline.Workspace)/drop/components/${{ parameters.component }}'
             - task: TerraformInstaller@0
               inputs:
                 terraformVersion: ${{ parameters.terraformVersion }}

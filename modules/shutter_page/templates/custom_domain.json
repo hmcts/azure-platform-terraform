@@ -20,12 +20,6 @@
             "name": "[parameters('name')]",
             "properties": "[variables('properties')]",
             "type": "microsoft.cdn/profiles/endpoints/customdomains"
-        },
-        {
-            "apiVersion": "2019-04-15",
-            "name": "[parameters('name')]",
-            "properties": "[variables('properties')]",
-            "type": "Microsoft.Cdn/profiles/endpoints/customdomains/enableCustomHttps"
         }
     ]
 }

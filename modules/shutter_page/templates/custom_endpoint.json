@@ -1,0 +1,99 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "profile_name": {
+            "defaultValue": "hmcts-shutter-page-nonprod",
+            "type": "String"
+        },
+        "endpoint_name": {
+            "type": "String"
+        },
+        "originHostHeader": {
+            "type": "String"
+        },
+        "originPath": {
+            "type": "String"
+        },
+        "originStorageBlob": {
+            "type": "String"
+        }
+    },
+    "variables": {
+        "endpoint": "[concat(parameters('profile_name'), '/', parameters('endpoint_name'))]",
+        "storageBlob": "[replace(parameters('originStorageBlob'),'.', '-')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Cdn/profiles/endpoints",
+            "apiVersion": "2019-04-15",
+            "name": "[variables('endpoint')]",
+            "location": "WestUs",
+            "properties": {
+                "originHostHeader": "[parameters('originHostHeader')]",
+                "isHttpAllowed": false,
+                "isHttpsAllowed": true,
+                "queryStringCachingBehavior": "NotSet",
+                "originPath": "[parameters('originPath')]",
+                "origins": [
+                    {
+                        "name": "[variables('storageBlob')]",
+                        "properties": {
+                            "hostName": "[parameters('originStorageBlob')]",
+                            "httpPort": 80,
+                            "httpsPort": 443
+                        }
+                    }
+                ],
+                "deliveryPolicy": {
+                    "description": "Redirect Http to HTTPs",
+                    "rules": [
+                        {
+                            "name": "redirect_http_to_https",
+                            "order": "1",
+                            "conditions": [
+                                {
+                                    "name": "RequestScheme",
+                                    "parameters": {
+                                        "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleRequestSchemeConditionParameters",
+                                        "operator": "Equal",
+                                        "matchValues": [
+                                           "HTTP"
+                                        ]
+                                    }
+                                }
+                            ],
+                            "actions":[
+                                {
+                                    "name": "UrlRedirect",
+                                    "parameters": {
+                                        "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlRedirectActionParameters",
+                                        "customHostname": "/hmcts-shutter-apps-sbox",
+                                        "customPath": "/(.*)",
+                                        "redirectType": "Moved",
+                                        "destinationProtocol": "Https"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "contentTypesToCompress": [],
+                "isCompressionEnabled": false
+            }
+        },
+        {
+            "type": "Microsoft.Cdn/profiles/endpoints/origins",
+            "apiVersion": "2016-04-02",
+            "name": "[concat(variables('endpoint'), '/', variables('storageBlob'))]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Cdn/profiles/endpoints', parameters('profile_name'), parameters('endpoint_name'))]"
+            ],
+            "properties": {
+                "hostName": "[parameters('originStorageBlob')]",
+                "httpPort": 80,
+                "httpsPort": 443
+            }
+        }
+    ]
+}

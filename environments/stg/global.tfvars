@@ -16,6 +16,7 @@ frontends = [
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
       RFI = ["931130"],
+      SQLI = ["942440"]
     }
   },
   {
@@ -25,6 +26,7 @@ frontends = [
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
       RFI = ["931130"],
+      SQLI = ["942440"]
     }
   },
   {
@@ -34,6 +36,7 @@ frontends = [
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
       RFI = ["931130"],
+      SQLI = ["942440"]
     }
   },
   {
@@ -43,6 +46,7 @@ frontends = [
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
       RFI = ["931130"],
+      SQLI = ["942440"]
     }
   },
 ]

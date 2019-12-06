@@ -43,6 +43,14 @@ stages:
 
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
+          environment: 'sbox'
+          component: 'shutter'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
           environment: 'ithc'
           component: 'global'
           build: $(Build.BuildNumber)

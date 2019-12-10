@@ -30,7 +30,7 @@ jobs:
                 backendAzureRmResourceGroupName: 'core-infra-${{ parameters.environment }}-rg'
                 backendAzureRmStorageAccountName: 'cftapps${{ parameters.environment }}'
                 backendAzureRmContainerName: 'tfstate'
-                backendAzureRmKey: '${{ parameters.environment }}/${{ parameters.component }}.tfstate'
+                backendAzureRmKey: '${{ parameters.component }}.tfstate'
                 workingDirectory: '$(Pipeline.Workspace)/drop/components/${{ parameters.component }}'
             - task: TerraformCLI@0
               displayName: Apply - ${{ parameters.environment }} - ${{ parameters.component }}

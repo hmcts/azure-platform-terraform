@@ -16,7 +16,7 @@ jobs:
           backendAzureRmResourceGroupName: 'core-infra-${{ parameters.environment }}-rg'
           backendAzureRmStorageAccountName: 'cftapps${{ parameters.environment }}'
           backendAzureRmContainerName: 'tfstate'
-          backendAzureRmKey: '${{ parameters.component }}/${{ parameters.environment }}.tfstate'
+          backendAzureRmKey: '${{ parameters.environment }}/${{ parameters.component }}.tfstate'
           workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
       - task: TerraformCLI@0
         displayName: Plan - ${{ parameters.environment }} - ${{ parameters.component }}

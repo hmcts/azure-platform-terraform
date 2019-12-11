@@ -32,10 +32,17 @@ jobs:
                 backendAzureRmContainerName: 'tfstate'
                 backendAzureRmKey: '${{ parameters.component }}.tfstate'
                 workingDirectory: '$(Pipeline.Workspace)/drop/components/${{ parameters.component }}'
+            - task: AzureCLI@1
+              displayName: 'Azure CLI '
+              inputs:
+                azureSubscription: 'DCD-CFTAPPS-SBOX'
+                scriptLocation: inlineScript
+                inlineScript: 'az account show --query name --verbose -o tsv'
             - task: TerraformCLI@0
               displayName: Apply - ${{ parameters.environment }} - ${{ parameters.component }}
               inputs:
                 command: 'apply'
+                environmentServiceName: 'dcd-cftapps-${{ parameters.environment }}'
                 commandOptions: '${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan'
                 environmentServiceName: 'dcd-cftapps-${{ parameters.environment }}'
                 workingDirectory: '$(Pipeline.Workspace)/drop/components/${{ parameters.component }}'

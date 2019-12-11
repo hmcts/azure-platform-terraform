@@ -93,6 +93,7 @@ stages:
             displayName: 'Publish Artifact: drop'
 
   - stage: ApplyGlobalSandbox
+    dependsOn: GetArtifacts
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -104,6 +105,7 @@ stages:
           terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: ApplyShutterSandbox
+    dependsOn: GetArtifacts
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml

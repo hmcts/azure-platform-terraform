@@ -26,6 +26,7 @@ jobs:
               inputs:
                 command: 'init'
                 backendType: 'azurerm'
+                ensureBackend: true
                 backendServiceArm: 'dcd-cftapps-${{ parameters.environment }}'
                 backendAzureRmResourceGroupName: 'core-infra-${{ parameters.environment }}-rg'
                 backendAzureRmStorageAccountName: 'cftapps${{ parameters.environment }}'

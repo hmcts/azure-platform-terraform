@@ -5,7 +5,7 @@ The following module will deploy the necessary infrastructue for enaling the shu
     * Storage account for the shutter page
     * Enable Azure static website for the above storage account
     * Azure CDN profile
-    * Azure CDN endoint for each application
+    * Azure CDN endpoint for each application
     * Azure custom domain attached to each endpoint
     * Enable CDN managed ssl certificates
 
@@ -13,7 +13,7 @@ The following module will deploy the necessary infrastructue for enaling the shu
 
 In order to use the module you need to follow the steps below in order:
 
-**Step 1** A default shutter infrastructure is provide. If your application's shutter does not require any customization and want to re-use the default shutter page, add comma separated application's FQDN in the respective environments shutter tfvars file `environments/<env>/shutter.tfvars` page e.g.
+**Step 1** A default shutter infrastructure is provided. If your application's shutter does not require any customization and want to re-use the default shutter page, add comma separated application's FQDN in the respective environments shutter tfvars file `environments/<env>/shutter.tfvars` page e.g.
 
 ```
 shutter_apps = [
@@ -59,7 +59,7 @@ env                 = "sbox"
 cdn_sku             = "Standard_Verizon"
 resource_group_name = "shutter-app-rg"
 
-# This is to create a storage account for your teams shutetr page that can be used for multiple applications.
+# This is to create a storage account for your teams shutter page that can be used for multiple applications.
 
 <team>_shutter_storage     = "<team-name"
 

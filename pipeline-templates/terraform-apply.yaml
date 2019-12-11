@@ -26,6 +26,7 @@ jobs:
               inputs:
                 command: 'init'
                 backendType: 'azurerm'
+                ensureBackend: true
                 backendServiceArm: 'dcd-cftapps-${{ parameters.environment }}'
                 backendAzureRmResourceGroupName: 'core-infra-${{ parameters.environment }}-rg'
                 backendAzureRmStorageAccountName: 'cftapps${{ parameters.environment }}'
@@ -36,7 +37,6 @@ jobs:
               displayName: Apply - ${{ parameters.environment }} - ${{ parameters.component }}
               inputs:
                 command: 'apply'
-                environmentServiceName: 'dcd-cftapps-${{ parameters.environment }}'
                 commandOptions: '${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan'
                 environmentServiceName: 'dcd-cftapps-${{ parameters.environment }}'
                 workingDirectory: '$(Pipeline.Workspace)/drop/components/${{ parameters.component }}'

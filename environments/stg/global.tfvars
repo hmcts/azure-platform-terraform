@@ -49,4 +49,12 @@ frontends = [
       SQLI = ["942440"]
     }
   },
+  {
+    name             = "pet-app1"
+    custom_domain    = "aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+    disabled_rules = {
+    }
+  },
 ]

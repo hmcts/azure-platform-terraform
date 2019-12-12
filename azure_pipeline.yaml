@@ -44,7 +44,7 @@ stages:
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
           environment: 'sbox'
-          component: 'cftapps_cluster-lb'
+          component: 'cftapps_cluster_lb'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -68,7 +68,7 @@ stages:
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
           environment: 'ithc'
-          component: 'cftapps_cluster-lb'
+          component: 'cftapps_cluster_lb'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -84,7 +84,7 @@ stages:
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
           environment: 'test'
-          component: 'cftapps_cluster-lb'
+          component: 'cftapps_cluster_lb'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -100,7 +100,7 @@ stages:
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
           environment: 'stg'
-          component: 'cftapps_cluster-lb'
+          component: 'cftapps_cluster_lb'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -116,7 +116,7 @@ stages:
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
           environment: 'prod'
-          component: 'cftapps_cluster-lb'
+          component: 'cftapps_cluster_lb'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -152,7 +152,7 @@ stages:
       - template: pipeline-templates/terraform-apply.yaml
         parameters:
           environment: 'sbox'
-          component: 'cftapps_cluster-lb'
+          component: 'cftapps_cluster_lb'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -189,7 +189,7 @@ stages:
       - template: pipeline-templates/terraform-apply.yaml
         parameters:
           environment: 'ithc'
-          component: 'cftapps_cluster-lb'
+          component: 'cftapps_cluster_lb'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -214,7 +214,7 @@ stages:
       - template: pipeline-templates/terraform-apply.yaml
         parameters:
           environment: 'test'
-          component: 'cftapps_cluster-lb'
+          component: 'cftapps_cluster_lb'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -239,7 +239,7 @@ stages:
       - template: pipeline-templates/terraform-apply.yaml
         parameters:
           environment: 'stg'
-          component: 'cftapps_cluster-lb'
+          component: 'cftapps_cluster_lb'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -264,7 +264,7 @@ stages:
       - template: pipeline-templates/terraform-apply.yaml
         parameters:
           environment: 'prod'
-          component: 'cftapps_cluster-lb'
+          component: 'cftapps_cluster_lb'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}

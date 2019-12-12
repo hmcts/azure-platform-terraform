@@ -27,12 +27,12 @@ variable "private_ip_address" {
 }
 
 variable "destinations" {
-  type = list(string)
+  type        = list(string)
   description = "List of IP addresses to direct traffic to"
 }
 
 variable "frontends" {
   type = list(object({
-    name=string, custom_domain=string
+    name = string, custom_domain = string
   }))
 }

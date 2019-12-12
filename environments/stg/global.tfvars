@@ -15,7 +15,7 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
-      RFI = ["931130"],
+      RFI  = ["931130"],
       SQLI = ["942440"]
     }
   },
@@ -25,7 +25,7 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
-      RFI = ["931130"],
+      RFI  = ["931130"],
       SQLI = ["942440"]
     }
   },
@@ -35,7 +35,7 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
-      RFI = ["931130"],
+      RFI  = ["931130"],
       SQLI = ["942440"]
     }
   },
@@ -45,7 +45,7 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
-      RFI = ["931130"],
+      RFI  = ["931130"],
       SQLI = ["942440"]
     }
   },

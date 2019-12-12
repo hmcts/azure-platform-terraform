@@ -86,7 +86,7 @@ resource "azurerm_application_gateway" "ag" {
 
   dynamic "http_listener" {
     for_each = [for app in var.frontends : {
-      name = app.name
+      name          = app.name
       custom_domain = app.custom_domain
     }]
 

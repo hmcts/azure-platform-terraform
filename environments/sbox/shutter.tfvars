@@ -6,7 +6,7 @@ resource_group_name = "shutter-app-sbox-rg"
 # Applications associated with default storage account shutter static website.
 # Teams that need a default shutter page should add their app frontend names to the list below.
 shutter_apps = [
-    "plum.sandbox.platform.hmcts.net"
+  "plum.sandbox.platform.hmcts.net"
 ]
 
 

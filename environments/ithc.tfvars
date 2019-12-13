@@ -1,11 +1,10 @@
 project                    = "hmcts"
-component                  = "lz"
 location                   = "uksouth"
 env                        = "ithc"
 subscription               = "ithc"
 waf_mode                   = "Prevention"
 enable_ssl                 = true
-ssl_mode                    = "AzureKeyVault"
+ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-ithc"
 
 cft_apps_ag_ip_address = "10.10.7.124"

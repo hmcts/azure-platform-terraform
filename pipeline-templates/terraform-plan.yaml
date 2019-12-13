@@ -22,7 +22,7 @@ jobs:
         displayName: Plan - ${{ parameters.environment }} - ${{ parameters.component }}
         inputs:
           command: 'plan'
-          commandOptions: '-out=${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan -var-file=$(System.DefaultWorkingDirectory)/environments/${{ parameters.environment }}.tfvars'
+          commandOptions: '-out=${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan -var-file=$(System.DefaultWorkingDirectory)/environments/sbox.tfvars'
           workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
           environmentServiceName: 'dcd-cftapps-${{ parameters.environment }}'
       - task: Bash@3

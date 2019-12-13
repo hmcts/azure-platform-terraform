@@ -6,7 +6,7 @@ resource "azurerm_application_gateway" "ag" {
   location            = var.location
   tags                = local.tags
 
-  count = 1
+  count = length(var.frontends) != 0 ? 1 : 0
 
   sku {
     name = "Standard_v2"
@@ -30,7 +30,7 @@ resource "azurerm_application_gateway" "ag" {
 
   frontend_ip_configuration {
     name                 = "appGwPublicFrontendIp"
-    public_ip_address_id = azurerm_public_ip.app_gw.id
+    public_ip_address_id = azurerm_public_ip.app_gw[0].id
   }
 
   frontend_ip_configuration {
@@ -115,22 +115,26 @@ resource "azurerm_application_gateway" "ag" {
 }
 
 data "azurerm_monitor_diagnostic_categories" "diagnostic_categories" {
+  count = length(var.frontends) != 0 ? 1 : 0
+
   resource_id = azurerm_application_gateway.ag[0].id
 }
 
 data "azurerm_log_analytics_workspace" "log_analytics" {
+  count = length(var.frontends) != 0 ? 1 : 0
+
   name                = "hmcts-${var.env}-law"
   resource_group_name = "oms-automation-rg"
 }
 
 resource "azurerm_monitor_diagnostic_setting" "diagnostic_settings" {
   name                       = "AppGw"
-  count                      = 1
+  count = length(var.frontends) != 0 ? 1 : 0
   target_resource_id         = azurerm_application_gateway.ag[count.index].id
-  log_analytics_workspace_id = data.azurerm_log_analytics_workspace.log_analytics.id
+  log_analytics_workspace_id = data.azurerm_log_analytics_workspace.log_analytics[0].id
 
   dynamic "log" {
-    for_each = [for category in data.azurerm_monitor_diagnostic_categories.diagnostic_categories.logs : {
+    for_each = [for category in data.azurerm_monitor_diagnostic_categories.diagnostic_categories[0].logs : {
       category = category
     }]
 
@@ -144,7 +148,7 @@ resource "azurerm_monitor_diagnostic_setting" "diagnostic_settings" {
   }
 
   dynamic "metric" {
-    for_each = [for category in data.azurerm_monitor_diagnostic_categories.diagnostic_categories.metrics : {
+    for_each = [for category in data.azurerm_monitor_diagnostic_categories.diagnostic_categories[0].metrics : {
       category = category
     }]
 

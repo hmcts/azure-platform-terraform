@@ -8,6 +8,9 @@ enable_ssl                 = true
 sslMode                    = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-ithc"
 
+cft_apps_ag_ip_address = "10.10.7.124"
+cft_apps_cluster_ips   = ["10.10.33.250", "10.10.35.250"]
+
 frontends = [
   {
     name             = "decree-nisi-aks"

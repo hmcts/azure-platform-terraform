@@ -1,7 +1,6 @@
 variable env {}
 variable "subscription" {}
 variable project {}
-variable component {}
 variable location {}
 variable "waf_mode" {}
 variable "frontends" {}

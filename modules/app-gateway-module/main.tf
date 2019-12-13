@@ -129,7 +129,7 @@ data "azurerm_log_analytics_workspace" "log_analytics" {
 
 resource "azurerm_monitor_diagnostic_setting" "diagnostic_settings" {
   name                       = "AppGw"
-  count = length(var.frontends) != 0 ? 1 : 0
+  count                      = length(var.frontends) != 0 ? 1 : 0
   target_resource_id         = azurerm_application_gateway.ag[count.index].id
   log_analytics_workspace_id = data.azurerm_log_analytics_workspace.log_analytics[0].id
 

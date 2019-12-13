@@ -36,3 +36,5 @@ variable "frontends" {
     name = string, custom_domain = string
   }))
 }
+
+variable common_tags {}

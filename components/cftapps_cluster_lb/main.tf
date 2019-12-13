@@ -2,6 +2,7 @@ module "cftapps-frontend-cluster-lb" {
   source = "../../modules/app-gateway-module"
 
   destinations       = var.cft_apps_cluster_ips
+  common_tags        = local.common_tags
   env                = var.env
   frontends          = var.frontends
   location           = var.location

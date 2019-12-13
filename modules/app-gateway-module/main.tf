@@ -1,10 +1,8 @@
-
-
 resource "azurerm_application_gateway" "ag" {
   name                = "aks-fe-${format("%02d", count.index)}-${var.env}-agw"
   resource_group_name = local.vnet_rg
   location            = var.location
-  tags                = local.tags
+  tags                = var.common_tags
 
   count = length(var.frontends) != 0 ? 1 : 0
 

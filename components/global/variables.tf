@@ -1,9 +1,1 @@
-variable env {}
-variable "subscription" {}
-variable project {}
-variable location {}
-variable "waf_mode" {}
-variable "frontends" {}
-variable "enable_ssl" {}
-variable "sslMode" {}
-variable "certificate_key_vault_name" {}
+../../environments/variables.tf

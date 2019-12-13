@@ -5,7 +5,7 @@ env                        = "prod"
 subscription               = "prod"
 waf_mode                   = "Detection"
 enable_ssl                 = false
-sslMode                    = "AzureKeyVault"
+ssl_mode                    = "AzureKeyVault"
 certificate_key_vault_name = "cft-apps-prod"
 
 cft_apps_ag_ip_address = "10.13.32.122"

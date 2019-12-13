@@ -8,6 +8,6 @@ variable "waf_mode" {}
 variable "frontends" {}
 variable "subscription_id" {}
 variable "enable_ssl" {}
-variable "sslMode" {}
+variable "ssl_mode" {}
 variable "resource_group" {}
 variable "certificate_key_vault_name" {}

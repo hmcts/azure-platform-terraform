@@ -5,7 +5,7 @@ env                        = "perftest"
 subscription               = "test"
 waf_mode                   = "Detection"
 enable_ssl                 = false
-sslMode                    = "AzureKeyVault"
+ssl_mode                    = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-test"
 
 cft_apps_ag_ip_address = "10.10.46.123"

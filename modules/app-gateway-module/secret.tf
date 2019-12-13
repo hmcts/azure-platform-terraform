@@ -11,6 +11,4 @@ resource "azurerm_key_vault_secret" "internal-fe-lb-ip" {
   name         = "internal-fe-lb-ip"
   value        = var.private_ip_address
   key_vault_id = data.azurerm_key_vault.main[0].id
-
-  tags = local.tags
 }

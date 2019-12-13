@@ -44,6 +44,14 @@ stages:
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
           environment: 'sbox'
+          component: 'cftapps_cluster_lb'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
+          environment: 'sbox'
           component: 'shutter'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
@@ -59,8 +67,24 @@ stages:
 
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
+          environment: 'ithc'
+          component: 'cftapps_cluster_lb'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
           environment: 'test'
           component: 'global'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
+          environment: 'test'
+          component: 'cftapps_cluster_lb'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -75,11 +99,27 @@ stages:
 
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
+          environment: 'stg'
+          component: 'cftapps_cluster_lb'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
          environment: 'prod'
          component: 'global'
          build: $(Build.BuildNumber)
          agentPool: ${{ variables.agentPool }}
          terraformVersion: ${{ variables.terraformVersion }}
+
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
+          environment: 'prod'
+          component: 'cftapps_cluster_lb'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
       - job: Archive
         pool:
           vmImage: ${{ variables.agentPool }}
@@ -100,6 +140,19 @@ stages:
         parameters:
           environment: 'sbox'
           component: 'global'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+  - stage: ApplyCftAppsLBSandbox
+    displayName: "Apply CFT APPs LB - Sandbox"
+    dependsOn: GetArtifacts
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'sbox'
+          component: 'cftapps_cluster_lb'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -128,6 +181,19 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
+  - stage: ApplyCftAppsLBITHC
+    displayName: "Apply CFT APPs LB - ITHC"
+    dependsOn: ApplyCftAppsLBSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'ithc'
+          component: 'cftapps_cluster_lb'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
   - stage: ApplyGlobalPerfTest
     dependsOn: ApplyGlobalSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
@@ -136,6 +202,19 @@ stages:
         parameters:
           environment: 'test'
           component: 'global'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+  - stage: ApplyCftAppsLBTest
+    displayName: "Apply CFT APPs LB - Test"
+    dependsOn: ApplyCftAppsLBSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'test'
+          component: 'cftapps_cluster_lb'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -152,6 +231,19 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
+  - stage: ApplyCftAppsLBStg
+    displayName: "Apply CFT APPs LB - Staging"
+    dependsOn: ApplyCftAppsLBSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'stg'
+          component: 'cftapps_cluster_lb'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
   - stage: ApplyGlobalProd
     dependsOn: ApplyGlobalAAT
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
@@ -163,3 +255,16 @@ stages:
          build: $(Build.BuildNumber)
          agentPool: ${{ variables.agentPool }}
          terraformVersion: ${{ variables.terraformVersion }}
+
+  - stage: ApplyCftAppsLBProd
+    displayName: "Apply CFT APPs LB - Prod"
+    dependsOn: ApplyCftAppsLBSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'prod'
+          component: 'cftapps_cluster_lb'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}

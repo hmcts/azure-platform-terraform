@@ -63,10 +63,10 @@ resource "azurerm_frontdoor" "main" {
       dynamic "custom_https_configuration" {
         for_each = local.isSSL
         content {
-          certificate_source                         = var.sslMode
-          azure_key_vault_certificate_vault_id       = var.sslMode == "AzureKeyVault" ? data.azurerm_key_vault.certificate_vault.id : null
-          azure_key_vault_certificate_secret_name    = var.sslMode == "AzureKeyVault" ? data.azurerm_key_vault_secret.certificate[host.key].name : null
-          azure_key_vault_certificate_secret_version = var.sslMode == "AzureKeyVault" ? data.azurerm_key_vault_secret.certificate[host.key].version : null
+          certificate_source                         = var.ssl_mode
+          azure_key_vault_certificate_vault_id       = var.ssl_mode == "AzureKeyVault" ? data.azurerm_key_vault.certificate_vault.id : null
+          azure_key_vault_certificate_secret_name    = var.ssl_mode == "AzureKeyVault" ? data.azurerm_key_vault_secret.certificate[host.key].name : null
+          azure_key_vault_certificate_secret_version = var.ssl_mode == "AzureKeyVault" ? data.azurerm_key_vault_secret.certificate[host.key].version : null
         }
       }
     }

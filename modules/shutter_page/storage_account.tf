@@ -1,5 +1,5 @@
 resource "azurerm_storage_account" "shutter_store" {
-  name                      = "st${var.shutter_storage}shutter${var.env}"
+  name                      = "hmcts${var.shutter_storage}shutter${var.env}"
   resource_group_name       = data.azurerm_resource_group.shutter.name
   location                  = data.azurerm_resource_group.shutter.location
   account_tier              = "Standard"

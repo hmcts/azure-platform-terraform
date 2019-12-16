@@ -1,4 +1,4 @@
-module "plum_shutter" {
+module "default_shutter" {
   source              = "../../modules/shutter_page"
   resource_group_name = var.resource_group_name
   env                 = var.env

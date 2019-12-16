@@ -1,3 +1,7 @@
+locals {
+  x_fwded_proto_ruleset = "x_fwded_proto"
+}
+
 resource "azurerm_application_gateway" "ag" {
   name                = "aks-fe-${format("%02d", count.index)}-${var.env}-agw"
   resource_group_name = local.vnet_rg
@@ -108,6 +112,21 @@ resource "azurerm_application_gateway" "ag" {
       http_listener_name         = request_routing_rule.value.name
       backend_address_pool_name  = request_routing_rule.value.name
       backend_http_settings_name = request_routing_rule.value.name
+      rewrite_rule_set_name      = local.x_fwded_proto_ruleset
+    }
+  }
+
+  rewrite_rule_set {
+    name = local.x_fwded_proto_ruleset
+
+    rewrite_rule {
+      name          = local.x_fwded_proto_ruleset
+      rule_sequence = 100
+
+      request_header_configuration {
+        header_name  = "X-Forwarded-Proto"
+        header_value = "https"
+      }
     }
   }
 }

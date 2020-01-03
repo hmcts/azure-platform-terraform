@@ -69,4 +69,12 @@ frontends = [
     disabled_rules = {
     }
   },
+  {
+    name             = "pet-app2"
+    custom_domain    = "aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-pet-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+    disabled_rules = {
+    }
+  },
 ]

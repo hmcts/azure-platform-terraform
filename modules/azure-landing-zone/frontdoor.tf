@@ -57,7 +57,7 @@ resource "azurerm_frontdoor" "main" {
     for_each = var.frontends
     content {
       name                                    = host.value["name"]
-      host_name                               = "${host.value["name"]}.${host.value["custom_domain"]}"
+      host_name                               = host.value["custom_domain"]
       custom_https_provisioning_enabled       = var.enable_ssl
       web_application_firewall_policy_link_id = "/subscriptions/${var.subscription_id}/resourcegroups/${var.resource_group}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/${replace(host.value["name"], "-", "")}${replace(var.env, "-", "")}"
       dynamic "custom_https_configuration" {
@@ -103,7 +103,7 @@ resource "azurerm_frontdoor" "main" {
         iterator = domain
         for_each = host.value["backend_domain"]
         content {
-          host_header = "${host.value["name"]}.${host.value["custom_domain"]}"
+          host_header = host.value["custom_domain"]
           address     = domain.value
           http_port   = 80
           https_port  = 443

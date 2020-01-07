@@ -25,8 +25,8 @@ cft_apps_cluster_ips   = ["10.13.15.250", "10.13.31.250"]
 
 frontends = [
   {
-    name             = "www"
-    custom_domain    = "decree-nisi.apply-divorce.service.gov.uk"
+    name             = "div-dn"
+    custom_domain    = "www.decree-nisi.apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "decree-nisi-apply-divorce-service-gov-uk"
     disabled_rules = {
@@ -35,8 +35,8 @@ frontends = [
     }
   },
   {
-    name             = "www"
-    custom_domain    = "decree-absolute.apply-divorce.service.gov.uk"
+    name             = "div-da"
+    custom_domain    = "www.decree-absolute.apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "decree-absolute-apply-divorce-service-gov-uk"
     disabled_rules = {
@@ -45,8 +45,8 @@ frontends = [
     }
   },
   {
-    name             = "www"
-    custom_domain    = "respond-divorce.service.gov.uk"
+    name             = "div-rfe"
+    custom_domain    = "www.respond-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "respond-divorce-service-gov-uk"
     disabled_rules = {
@@ -55,8 +55,8 @@ frontends = [
     }
   },
   {
-    name             = "www"
-    custom_domain    = "apply-divorce.service.gov.uk"
+    name             = "div-pfe"
+    custom_domain    = "www.apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-divorce-service-gov-uk"
     disabled_rules = {

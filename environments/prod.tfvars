@@ -23,4 +23,45 @@ shutter_apps = [
 cft_apps_ag_ip_address = "10.13.32.122"
 cft_apps_cluster_ips   = ["10.13.15.250", "10.13.31.250"]
 
-frontends = []
+frontends = [
+  {
+    name             = "div-dn"
+    custom_domain    = "www.decree-nisi.apply-divorce.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "decree-nisi-apply-divorce-service-gov-uk"
+    disabled_rules = {
+      RFI  = ["931130"],
+      SQLI = ["942440"]
+    }
+  },
+  {
+    name             = "div-da"
+    custom_domain    = "www.decree-absolute.apply-divorce.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "decree-absolute-apply-divorce-service-gov-uk"
+    disabled_rules = {
+      RFI  = ["931130"],
+      SQLI = ["942440"]
+    }
+  },
+  {
+    name             = "div-rfe"
+    custom_domain    = "www.respond-divorce.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "respond-divorce-service-gov-uk"
+    disabled_rules = {
+      RFI  = ["931130"],
+      SQLI = ["942440"]
+    }
+  },
+  {
+    name             = "div-pfe"
+    custom_domain    = "www.apply-divorce.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "apply-divorce-service-gov-uk"
+    disabled_rules = {
+      RFI  = ["931130"],
+      SQLI = ["942440"]
+    }
+  },
+]

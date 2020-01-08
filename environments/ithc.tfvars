@@ -22,8 +22,8 @@ cft_apps_cluster_ips   = ["10.10.33.250", "10.10.35.250"]
 
 frontends = [
   {
-    name             = "decree-nisi-aks"
-    custom_domain    = "ithc.platform.hmcts.net"
+    name             = "div-dn"
+    custom_domain    = "decree-nisi-aks.ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     disabled_rules = {
@@ -32,8 +32,8 @@ frontends = [
     }
   },
   {
-    name             = "decree-absolute-aks"
-    custom_domain    = "ithc.platform.hmcts.net"
+    name             = "div-da"
+    custom_domain    = "decree-absolute-aks.ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     disabled_rules = {
@@ -42,8 +42,8 @@ frontends = [
     }
   },
   {
-    name             = "respond-divorce-aks"
-    custom_domain    = "ithc.platform.hmcts.net"
+    name             = "div-rfe"
+    custom_domain    = "respond-divorce-aks.ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     disabled_rules = {
@@ -52,8 +52,8 @@ frontends = [
     }
   },
   {
-    name             = "petitioner-frontend-aks"
-    custom_domain    = "ithc.platform.hmcts.net"
+    name             = "div-pfe"
+    custom_domain    = "petitioner-frontend-aks.ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     disabled_rules = {

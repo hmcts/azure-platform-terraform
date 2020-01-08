@@ -22,8 +22,8 @@ cft_apps_cluster_ips   = ["10.10.19.250", "10.10.23.250"]
 
 frontends = [
   {
-    name             = "decree-nisi-aks"
-    custom_domain    = "aat.platform.hmcts.net"
+    name             = "div-dn"
+    custom_domain    = "decree-nisi-aks.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
@@ -32,8 +32,8 @@ frontends = [
     }
   },
   {
-    name             = "decree-absolute-aks"
-    custom_domain    = "aat.platform.hmcts.net"
+    name             = "div-da"
+    custom_domain    = "decree-absolute-aks.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
@@ -42,8 +42,8 @@ frontends = [
     }
   },
   {
-    name             = "respond-divorce-aks"
-    custom_domain    = "aat.platform.hmcts.net"
+    name             = "div-rfe"
+    custom_domain    = "respond-divorce-aks.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
@@ -52,8 +52,8 @@ frontends = [
     }
   },
   {
-    name             = "petitioner-frontend-aks"
-    custom_domain    = "aat.platform.hmcts.net"
+    name             = "div-pfe"
+    custom_domain    = "petitioner-frontend-aks.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
@@ -63,7 +63,7 @@ frontends = [
   },
   {
     name             = "pet-app1"
-    custom_domain    = "aat.platform.hmcts.net"
+    custom_domain    = "pet-app1.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-pet-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
@@ -71,7 +71,7 @@ frontends = [
   },
   {
     name             = "pet-app2"
-    custom_domain    = "aat.platform.hmcts.net"
+    custom_domain    = "pet-app2.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-pet-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {

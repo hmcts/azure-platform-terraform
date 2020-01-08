@@ -3,7 +3,7 @@ location                   = "uksouth"
 env                        = "prod"
 subscription               = "prod"
 waf_mode                   = "Prevention"
-enable_ssl                 = false
+enable_ssl                 = true
 ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cft-apps-prod"
 

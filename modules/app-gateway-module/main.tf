@@ -56,7 +56,7 @@ resource "azurerm_application_gateway" "ag" {
   dynamic "probe" {
     for_each = [for app in var.frontends : {
       name = app.name
-      host = "${app.name}.${app.custom_domain}"
+      host = app.custom_domain
       path = lookup(app, "health_path_override", "/health/liveness")
     }]
 
@@ -97,7 +97,7 @@ resource "azurerm_application_gateway" "ag" {
       frontend_ip_configuration_name = "appGwPrivateFrontendIp"
       frontend_port_name             = "http"
       protocol                       = "Http"
-      host_name                      = "${http_listener.value.name}.${http_listener.value.custom_domain}"
+      host_name                      = http_listener.value.custom_domain
     }
   }
 

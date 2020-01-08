@@ -75,7 +75,7 @@ stages:
 
   - stage: ApplyGlobalProd
     dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    condition: succeeded()
     jobs:
      - template: pipeline-templates/terraform-apply.yaml
        parameters:
@@ -88,7 +88,7 @@ stages:
   - stage: ApplyCftAppsLBProd
     displayName: "Apply CFT APPs LB - Prod"
     dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    condition: succeeded()
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
         parameters:
@@ -100,7 +100,7 @@ stages:
 
   - stage: ApplyShutterProd
     dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    condition: succeeded()
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
         parameters:

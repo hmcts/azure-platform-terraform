@@ -39,48 +39,6 @@ stages:
 
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
-          environment: 'sbox'
-          component: 'global'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-      - template: pipeline-templates/terraform-plan.yaml
-        parameters:
-          environment: 'sbox'
-          component: 'cftapps_cluster_lb'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-      - template: pipeline-templates/terraform-plan.yaml
-        parameters:
-          environment: 'sbox'
-          component: 'shutter'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-      - template: pipeline-templates/terraform-plan.yaml
-        parameters:
-          environment: 'ithc'
-          component: 'global'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-      - template: pipeline-templates/terraform-plan.yaml
-        parameters:
-          environment: 'ithc'
-          component: 'cftapps_cluster_lb'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-
-
-      - template: pipeline-templates/terraform-plan.yaml
-        parameters:
          environment: 'prod'
          component: 'global'
          build: $(Build.BuildNumber)

@@ -30,8 +30,16 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "decree-nisi-apply-divorce-service-gov-uk"
     disabled_rules = {
-      RFI  = ["931130"],
-      SQLI = ["942440"]
+      RFI = ["931130"],
+      LFI = ["930110"],
+      SQLI = [
+        "942440",
+        "942450",
+        "942200",
+        "942430",
+        "942110",
+        "942210"
+      ]
     }
   },
   {
@@ -40,8 +48,16 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "decree-absolute-apply-divorce-service-gov-uk"
     disabled_rules = {
-      RFI  = ["931130"],
-      SQLI = ["942440"]
+      RFI = ["931130"],
+      LFI = ["930110"],
+      SQLI = [
+        "942440",
+        "942450",
+        "942200",
+        "942430",
+        "942110",
+        "942210"
+      ]
     }
   },
   {
@@ -50,8 +66,16 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "respond-divorce-service-gov-uk"
     disabled_rules = {
-      RFI  = ["931130"],
-      SQLI = ["942440"]
+      RFI = ["931130"],
+      LFI = ["930110"],
+      SQLI = [
+        "942440",
+        "942450",
+        "942200",
+        "942430",
+        "942110",
+        "942210"
+      ]
     }
   },
   {
@@ -60,8 +84,16 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-divorce-service-gov-uk"
     disabled_rules = {
-      RFI  = ["931130"],
-      SQLI = ["942440"]
+      RFI = ["931130"],
+      LFI = ["930110"],
+      SQLI = [
+        "942440",
+        "942450",
+        "942200",
+        "942430",
+        "942110",
+        "942210"
+      ]
     }
   },
 ]

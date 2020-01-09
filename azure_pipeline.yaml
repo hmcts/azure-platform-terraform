@@ -6,7 +6,7 @@ trigger:
   branches:
     include:
     - master
-    
+
 variables:
   terraformVersion: 0.12.18
   agentPool: 'ubuntu-18.04'
@@ -77,37 +77,7 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-      - template: pipeline-templates/terraform-plan.yaml
-        parameters:
-          environment: 'test'
-          component: 'global'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
 
-      - template: pipeline-templates/terraform-plan.yaml
-        parameters:
-          environment: 'test'
-          component: 'cftapps_cluster_lb'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-      - template: pipeline-templates/terraform-plan.yaml
-        parameters:
-          environment: 'stg'
-          component: 'global'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-      - template: pipeline-templates/terraform-plan.yaml
-        parameters:
-          environment: 'stg'
-          component: 'cftapps_cluster_lb'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
 
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
@@ -116,22 +86,6 @@ stages:
          build: $(Build.BuildNumber)
          agentPool: ${{ variables.agentPool }}
          terraformVersion: ${{ variables.terraformVersion }}
-
-      - template: pipeline-templates/terraform-plan.yaml
-        parameters:
-          environment: 'prod'
-          component: 'cftapps_cluster_lb'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-      - template: pipeline-templates/terraform-plan.yaml
-        parameters:
-          environment: 'prod'
-          component: 'shutter'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
 
       - job: Archive
         pool:
@@ -145,121 +99,9 @@ stages:
           - task: PublishBuildArtifacts@1
             displayName: 'Publish Artifact: drop'
 
-  - stage: ApplyGlobalSandbox
-    dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'sbox'
-          component: 'global'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-  - stage: ApplyCftAppsLBSandbox
-    displayName: "Apply CFT APPs LB - Sandbox"
-    dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'sbox'
-          component: 'cftapps_cluster_lb'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-  - stage: ApplyShutterSandbox
-    dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'sbox'
-          component: 'shutter'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-  - stage: ApplyGlobalITHC
-    dependsOn: ApplyGlobalSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'ithc'
-          component: 'global'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-  - stage: ApplyCftAppsLBITHC
-    displayName: "Apply CFT APPs LB - ITHC"
-    dependsOn: ApplyCftAppsLBSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'ithc'
-          component: 'cftapps_cluster_lb'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-  - stage: ApplyGlobalPerfTest
-    dependsOn: ApplyGlobalSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'test'
-          component: 'global'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-  - stage: ApplyCftAppsLBTest
-    displayName: "Apply CFT APPs LB - Test"
-    dependsOn: ApplyCftAppsLBSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'test'
-          component: 'cftapps_cluster_lb'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-  - stage: ApplyGlobalAAT
-    dependsOn: ApplyGlobalSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'stg'
-          component: 'global'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-  - stage: ApplyCftAppsLBStg
-    displayName: "Apply CFT APPs LB - Staging"
-    dependsOn: ApplyCftAppsLBSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'stg'
-          component: 'cftapps_cluster_lb'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
   - stage: ApplyGlobalProd
-    dependsOn: ApplyGlobalAAT
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    dependsOn: GetArtifacts
+    condition: succeeded()
     jobs:
      - template: pipeline-templates/terraform-apply.yaml
        parameters:
@@ -268,28 +110,3 @@ stages:
          build: $(Build.BuildNumber)
          agentPool: ${{ variables.agentPool }}
          terraformVersion: ${{ variables.terraformVersion }}
-
-  - stage: ApplyCftAppsLBProd
-    displayName: "Apply CFT APPs LB - Prod"
-    dependsOn: ApplyCftAppsLBSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'prod'
-          component: 'cftapps_cluster_lb'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-  - stage: ApplyShutterProd
-    dependsOn: ApplyShutterSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'prod'
-          component: 'shutter'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}

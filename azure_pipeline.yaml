@@ -6,7 +6,7 @@ trigger:
   branches:
     include:
     - master
-    
+
 variables:
   terraformVersion: 0.12.19
   agentPool: 'ubuntu-18.04'
@@ -183,8 +183,8 @@ stages:
           terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: ApplyGlobalITHC
-    dependsOn: ApplyGlobalSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    dependsOn: GetArtifacts
+    condition: succeeded()
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
         parameters:

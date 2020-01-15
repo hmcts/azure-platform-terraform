@@ -83,18 +83,6 @@ frontends = [
     custom_domain    = "petitioner-frontend-aks.ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
-    disabled_rules = {
-      RFI = ["931130"],
-      LFI = ["930110"],
-      SQLI = [
-        "942440",
-        "942450",
-        "942200",
-        "942430",
-        "942110",
-        "942210",
-        "942310"
-      ]
-    }
+    disabled_rules = {}
   },
 ]

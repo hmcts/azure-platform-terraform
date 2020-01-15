@@ -27,12 +27,11 @@ resource "azurerm_frontdoor_firewall_policy" "custom" {
           }
         }
       }
-
     }
   }
 
   managed_rule {
-    type    = "BotProtection"
-    version = "preview-0.1"
+    type    = "Microsoft_BotManagerRuleSet"
+    version = "1.0"
   }
 }

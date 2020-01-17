@@ -26,76 +26,72 @@ frontends = [
     custom_domain    = "decree-nisi-aks.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
-    disabled_rules = {
-      RFI = ["931130"],
-      LFI = ["930110"],
-      SQLI = [
-        "942440",
-        "942450",
-        "942200",
-        "942430",
-        "942110",
-        "942210",
-        "942310"
-      ]
-    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator = "Equals"
+        selector = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator = "Equals"
+        selector = "__auth-token"
+      },
+    ]
   },
   {
     name             = "div-da"
     custom_domain    = "decree-absolute-aks.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
-    disabled_rules = {
-      RFI = ["931130"],
-      LFI = ["930110"],
-      SQLI = [
-        "942440",
-        "942450",
-        "942200",
-        "942430",
-        "942110",
-        "942210",
-        "942310"
-      ]
-    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator = "Equals"
+        selector = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator = "Equals"
+        selector = "__auth-token"
+      },
+    ]
   },
   {
     name             = "div-rfe"
     custom_domain    = "respond-divorce-aks.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
-    disabled_rules = {
-      RFI = ["931130"],
-      LFI = ["930110"],
-      SQLI = [
-        "942440",
-        "942450",
-        "942200",
-        "942430",
-        "942110",
-        "942210",
-        "942310"
-      ]
-    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator = "Equals"
+        selector = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator = "Equals"
+        selector = "__auth-token"
+      },
+    ]
   },
   {
     name             = "div-pfe"
     custom_domain    = "petitioner-frontend-aks.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
-    disabled_rules = {
-      RFI = ["931130"],
-      LFI = ["930110"],
-      SQLI = [
-        "942440",
-        "942450",
-        "942200",
-        "942430",
-        "942110",
-        "942210",
-        "942310"
-      ]
-    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator = "Equals"
+        selector = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator = "Equals"
+        selector = "__auth-token"
+      },
+    ]
   },
   {
     name             = "pet-app1"

@@ -34,6 +34,52 @@ jobs:
                 backendAzureRmContainerName: 'tfstate'
                 backendAzureRmKey: '${{ parameters.component }}.tfstate'
                 workingDirectory: '$(Pipeline.Workspace)/drop/components/${{ parameters.component }}'
+
+# Temporary section for using forked version of tf provider (exclusions support)
+            - task: Bash@3
+              inputs:
+                targetType: 'inline'
+                workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
+                script: |
+                  wget https://github.com/hmcts/terraform-provider-azurerm/releases/download/v1.41.0-hmcts/terraform-provider-azurerm-linux_amd64 -O terraform-provider-azurerm
+                  cp terraform-provider-azurerm .terraform/plugins/linux_amd64/terraform-provider-azurerm_v1.41.0_x4
+
+            - task: Bash@3
+              displayName: "Debug dir"
+              inputs:
+                targetType: 'inline'
+                workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
+                script: 'ls -lash'
+
+            - task: Bash@3
+              displayName: "Debug subdir"
+              inputs:
+                targetType: 'inline'
+                workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
+                script: 'ls -lash .terraform/plugins/linux_amd64'
+
+            - task: Bash@3
+              displayName: "Debug version"
+              inputs:
+                targetType: 'inline'
+                workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
+                script: 'terraform version'
+
+            - task: TerraformCLI@0
+              displayName: Init - ${{ parameters.environment }} - ${{ parameters.component }}
+              inputs:
+                command: 'init'
+                backendType: 'azurerm'
+                ensureBackend: true
+                backendServiceArm: 'dcd-cftapps-${{ parameters.environment }}'
+                backendAzureRmResourceGroupName: 'core-infra-${{ parameters.environment }}-rg'
+                backendAzureRmResourceGroupLocation: 'uksouth'
+                backendAzureRmStorageAccountName: 'cftapps${{ parameters.environment }}'
+                backendAzureRmContainerName: 'tfstate'
+                backendAzureRmKey: '${{ parameters.component }}.tfstate'
+                workingDirectory: '$(Pipeline.Workspace)/drop/components/${{ parameters.component }}'
+# End Temporary section for using forked version of tf provider (exclusions support)
+
             - task: TerraformCLI@0
               displayName: Apply - ${{ parameters.environment }} - ${{ parameters.component }}
               inputs:

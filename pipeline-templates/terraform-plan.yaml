@@ -36,6 +36,7 @@ jobs:
             wget https://github.com/hmcts/terraform-provider-azurerm/releases/download/v1.41.0-hmcts/terraform-provider-azurerm-linux_amd64 -O terraform-provider-azurerm
             mkdir -p .terraform/plugins/linux_amd64/
             cp terraform-provider-azurerm .terraform/plugins/linux_amd64/terraform-provider-azurerm_v1.41.0_x4
+            chmod +x .terraform/plugins/linux_amd64/terraform-provider-azurerm_v1.41.0_x4
 
       - task: Bash@3
         displayName: "Debug dir"

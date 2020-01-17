@@ -21,6 +21,14 @@ jobs:
 
 # Temporary section for using forked version of tf provider (exclusions support)
       - task: Bash@3
+        displayName: "Debug subdir"
+        inputs:
+          targetType: 'inline'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
+          script: 'ls -lash .terraform/plugins/linux_amd64'
+
+      - task: Bash@3
+        displayName: Download forked TF provider
         inputs:
           targetType: 'inline'
           workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'

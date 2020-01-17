@@ -15,8 +15,8 @@ resource "azurerm_frontdoor_firewall_policy" "custom" {
 
       content {
         match_variable = exclusion.value.match_variable
-        operator = exclusion.value.operator
-        selector = exclusion.value.selector
+        operator       = exclusion.value.operator
+        selector       = exclusion.value.selector
       }
     }
 

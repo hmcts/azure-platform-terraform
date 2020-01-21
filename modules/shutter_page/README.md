@@ -84,7 +84,6 @@ variable "<team>_shutter_apps" {}
 **Step 8** The shutter solution created above depends on the DNS swap that needs to be performed if an application needs to be shuttered. Below steps outline the process to perform the DNS swap to allow shuttering.
 
 
-
 ## Shutterring of an Application
 
 **Step 1** Clone the repository [Azure Public DNS](https://github.com/hmcts/azure-public-dns)

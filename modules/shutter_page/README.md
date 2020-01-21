@@ -112,4 +112,4 @@ variable "<team>_shutter_apps" {}
 
 **Step 6** Currently the TTL is set as 5 minutes for the CNAME records, it would take 5 minutes for the shuttering to take effect and shutter page to be visible to the user.
 
-**Step 7** In order to take off the shuterring, change `shutter: true` to `shutter: false` and your application will start functionaing normally. 
+**Step 7** In order to take off the shutterring, change `shutter: true` to `shutter: false` and your application will start functionaing normally. 

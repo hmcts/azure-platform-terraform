@@ -80,3 +80,34 @@ variable "<team>_shutter_apps" {}
 **Step 6** Create a PR with the above and mark it for review with Platform Engineering team.
 
 **Step 7** Once merged you should have your infrastructure created for your application's shutter page.
+
+**Step 8** The shutter solution created above depends on the DNS swap that needs to be performed if an application needs to be shuttered. Below steps outline the process to perform the DNS swap to allow shuttering.
+
+
+
+## Shutterring of an Application
+
+**Step 1** Clone the repository [Azure External DNS](https://github.com/hmcts/azure-public-dns)
+
+**Step 2** Under `environments` directory there are yaml files depicting environments that represents zones corresponding to each environment. There can be multiple zones in one environment.
+
+**Step 3** Every application should have a CNAME record created corresponding to the zone e.g. plum cname record as below which is an application deployed to Azure Kubernetes service and points to Azure frontdoor.
+
+```
+  - name: "plum"
+    ttl: 300
+    record: "hmcts-sbox.azurefd.net"
+```
+
+**Step 4** Now to shutter the above application we would be updtaing the above config as below
+
+```
+  - name: "plum"
+    ttl: 300
+    record: "hmcts-sbox.azurefd.net"
+    shutter: true
+```
+
+**Step 5** Once the above changes are merged to master, Shuttering will be performed automatically by the azure devops pipeline by swapping the DNS to Azure CDN endpoint for the respective application.
+
+**Step 6** In order to take off the shuterring, get rid of the `shutter: true` construct from the above cname record and your application will start functionaing normally.

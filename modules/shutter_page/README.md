@@ -99,7 +99,7 @@ variable "<team>_shutter_apps" {}
     record: "hmcts-sbox.azurefd.net"
 ```
 
-**Step 4** Now to shutter the above application we would be updtaing the above config as below
+**Step 4** Now to shutter the above application we would be updating the above config as below
 
 ```
   - name: "plum"

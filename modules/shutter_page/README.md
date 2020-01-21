@@ -110,6 +110,6 @@ variable "<team>_shutter_apps" {}
 
 **Step 5** Once the above changes are merged to master, Shuttering will be performed automatically by the Azure DevOps pipeline, swapping the DNS to the Azure CDN endpoint for the respective application.
 
-**Step 6** Currently the TTL is set as 5 minutes for the CNAME records, it would take 5 minutes for the shuttering to take effect and shutter page to be visible to the user.
+**Step 6** Depending on the TTL it will take time for the DNS to be updated, most are currently set to 5 minutes.
 
 **Step 7** In order to take off the shutterring, change `shutter: true` to `shutter: false` and your application will start functioning normally. 

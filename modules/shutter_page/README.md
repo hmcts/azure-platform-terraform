@@ -91,7 +91,7 @@ variable "<team>_shutter_apps" {}
 
 **Step 2** Under `environments` directory there are yaml files depicting environments that represents zones corresponding to each environment. There can be multiple zones in one environment.
 
-**Step 3** Every application should have a CNAME record created corresponding to the zone e.g. plum cname record as below which is an application deployed to Azure Kubernetes service and points to Azure frontdoor.
+**Step 3** Every application should have a CNAME record created corresponding to the zone e.g. `sandbox.yaml` files contains plum cname record as below which is an application deployed to Azure Kubernetes service and points to Azure frontdoor.
 
 ```
   - name: "plum"
@@ -110,4 +110,4 @@ variable "<team>_shutter_apps" {}
 
 **Step 5** Once the above changes are merged to master, Shuttering will be performed automatically by the azure devops pipeline by swapping the DNS to Azure CDN endpoint for the respective application.
 
-**Step 6** In order to take off the shuterring, get rid of the `shutter: true` construct from the above cname record and your application will start functionaing normally.
+**Step 6** In order to take off the shuterring, get rid of the `shutter: true` construct from the above cname record and your application will start functionaing normally. 

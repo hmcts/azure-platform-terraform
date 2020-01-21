@@ -108,6 +108,6 @@ variable "<team>_shutter_apps" {}
     shutter: true
 ```
 
-**Step 5** Once the above changes are merged to master, Shuttering will be performed automatically by the azure devops pipeline by swapping the DNS to Azure CDN endpoint for the respective application.
+**Step 5** Once the above changes are merged to master, Shuttering will be performed automatically by the Azure DevOps pipeline, swapping the DNS to the Azure CDN endpoint for the respective application.
 
 **Step 6** In order to take off the shuterring, get rid of the `shutter: true` construct from the above cname record and your application will start functionaing normally. 

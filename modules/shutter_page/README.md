@@ -87,7 +87,7 @@ variable "<team>_shutter_apps" {}
 
 ## Shutterring of an Application
 
-**Step 1** Clone the repository [Azure External DNS](https://github.com/hmcts/azure-public-dns)
+**Step 1** Clone the repository [Azure Public DNS](https://github.com/hmcts/azure-public-dns)
 
 **Step 2** Under `environments` directory there are yaml files depicting environments that represents zones corresponding to each environment. There can be multiple zones in one environment.
 

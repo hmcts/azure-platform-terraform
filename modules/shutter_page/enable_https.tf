@@ -9,6 +9,7 @@ resource "null_resource" "enable_custom_https_cmd" {
 json='
 ${templatefile("${path.module}/templates/customHttps.json", {
     secret_name : var.frontends[count.index].certificate_name,
+    secret_version : var.frontends[count.index].certificate_version,
     resource_group : data.azurerm_resource_group.shutter.name,
     subscription_id : data.azurerm_client_config.current.subscription_id,
     vault_name : var.certificate_key_vault_name

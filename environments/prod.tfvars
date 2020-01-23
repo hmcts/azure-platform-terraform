@@ -25,10 +25,10 @@ cft_apps_cluster_ips   = ["10.13.15.250", "10.13.31.250"]
 
 frontends = [
   {
-    name             = "div-dn"
-    custom_domain    = "www.decree-nisi.apply-divorce.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "decree-nisi-apply-divorce-service-gov-uk"
+    name                = "div-dn"
+    custom_domain       = "www.decree-nisi.apply-divorce.service.gov.uk"
+    backend_domain      = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name    = "decree-nisi-apply-divorce-service-gov-uk"
     certificate_version = "5adfdf947daa41afa43214d0e0cb64b7"
     disabled_rules = {
       RFI = ["931130"],
@@ -45,10 +45,10 @@ frontends = [
     }
   },
   {
-    name             = "div-da"
-    custom_domain    = "www.decree-absolute.apply-divorce.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "decree-absolute-apply-divorce-service-gov-uk"
+    name                = "div-da"
+    custom_domain       = "www.decree-absolute.apply-divorce.service.gov.uk"
+    backend_domain      = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name    = "decree-absolute-apply-divorce-service-gov-uk"
     certificate_version = "a1eee31dae8842f3b9bc445d263a7800"
     disabled_rules = {
       RFI = ["931130"],
@@ -65,10 +65,10 @@ frontends = [
     }
   },
   {
-    name             = "div-rfe"
-    custom_domain    = "www.respond-divorce.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "respond-divorce-service-gov-uk"
+    name                = "div-rfe"
+    custom_domain       = "www.respond-divorce.service.gov.uk"
+    backend_domain      = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name    = "respond-divorce-service-gov-uk"
     certificate_version = "2089ee30a7b24219ab9338af080bd1da"
     disabled_rules = {
       RFI = ["931130"],
@@ -85,10 +85,10 @@ frontends = [
     }
   },
   {
-    name             = "div-pfe"
-    custom_domain    = "www.apply-divorce.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "apply-divorce-service-gov-uk"
+    name                = "div-pfe"
+    custom_domain       = "www.apply-divorce.service.gov.uk"
+    backend_domain      = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name    = "apply-divorce-service-gov-uk"
     certificate_version = "2ba176fa3a5841b9add3b4c35cd1cb0b"
     disabled_rules = {
       RFI = ["931130"],

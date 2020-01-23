@@ -3,6 +3,10 @@ data "azurerm_client_config" "current" {}
 resource "null_resource" "enable_custom_https_cmd" {
   count = length(var.frontends)
 
+  triggers = {
+    timestamp = timestamp()
+  }
+
   provisioner "local-exec" {
     command = <<EOF
 

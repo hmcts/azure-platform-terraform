@@ -4,7 +4,7 @@ variable "common_tags" {}
 variable "shutter_storage" {}
 variable "frontends" {
   type = list(object({
-    name = string, custom_domain = string, certificate_name = string
+    name = string, custom_domain = string, certificate_name = string, certificate_version = string
   }))
 }
 variable "cdn_sku" {}

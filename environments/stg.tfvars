@@ -137,7 +137,7 @@ frontends = [
     name          = "sscs-cor"
     custom_domain = "sscs-cor.aat.platform.hmcts.net"
     backend_domain = [
-      "firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    "firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
       RFI = ["931130"],
@@ -157,7 +157,7 @@ frontends = [
     name          = "sscs-tya"
     custom_domain = "track-appeal.aat.platform.hmcts.net"
     backend_domain = [
-      "firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    "firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     disabled_rules = {
       RFI = ["931130"],

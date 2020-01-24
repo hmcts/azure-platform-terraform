@@ -7,4 +7,5 @@ module "default_shutter" {
   cdn_sku                    = var.cdn_sku
   common_tags                = local.common_tags
   certificate_key_vault_name = var.certificate_key_vault_name
+  subscription               = var.subscription
 }

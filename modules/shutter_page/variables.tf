@@ -9,3 +9,5 @@ variable "frontends" {
 }
 variable "cdn_sku" {}
 variable "certificate_key_vault_name" {}
+
+variable "subscription" {}

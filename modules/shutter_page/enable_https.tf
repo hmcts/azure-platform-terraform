@@ -1,5 +1,11 @@
 data "azurerm_client_config" "current" {}
 
+data "azurerm_key_vault_secret" "certificate" {
+  count        = length(var.frontends)
+  name         = lookup(var.frontends[count.index], "certificate_name")
+  key_vault_id = data.azurerm_key_vault.certificate_vault.id
+}
+
 resource "null_resource" "enable_custom_https_cmd" {
   count = length(var.frontends)
 
@@ -8,8 +14,8 @@ resource "null_resource" "enable_custom_https_cmd" {
 
 json='
 ${templatefile("${path.module}/templates/customHttps.json", {
-    secret_name : var.frontends[count.index].certificate_name,
-    secret_version : var.frontends[count.index].certificate_version,
+    secret_name : data.azurerm_key_vault_secret.certificate[count.index].name,
+    secret_version : data.azurerm_key_vault_secret.certificate[count.index].version,
     resource_group : data.azurerm_resource_group.shutter.name,
     subscription_id : data.azurerm_client_config.current.subscription_id,
     vault_name : var.certificate_key_vault_name

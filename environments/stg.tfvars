@@ -109,4 +109,67 @@ frontends = [
     disabled_rules = {
     }
   },
+  {
+    name          = "sscs-tribunals"
+    custom_domain = "benefit-appeal.aat.platform.hmcts.net"
+    backend_domain = [
+    "firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+    disabled_rules = {
+      RFI = ["931130"],
+      LFI = ["930110"],
+      SQLI = [
+        "942110",
+        "942200",
+        "942210",
+        "942310",
+        "942360",
+        "942430",
+        "942440",
+        "942450",
+      ]
+    }
+  },
+  {
+    name          = "sscs-cor"
+    custom_domain = "sscs-cor.aat.platform.hmcts.net"
+    backend_domain = [
+    "firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+    disabled_rules = {
+      RFI = ["931130"],
+      LFI = ["930110"],
+      SQLI = [
+        "942110",
+        "942200",
+        "942210",
+        "942310",
+        "942360",
+        "942430",
+        "942440",
+        "942450",
+      ]
+    }
+  },
+  {
+    name          = "sscs-tya"
+    custom_domain = "track-appeal.aat.platform.hmcts.net"
+    backend_domain = [
+    "firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+    disabled_rules = {
+      RFI = ["931130"],
+      LFI = ["930110"],
+      SQLI = [
+        "942110",
+        "942200",
+        "942210",
+        "942310",
+        "942360",
+        "942430",
+        "942440",
+        "942450",
+      ]
+    }
+  },
 ]

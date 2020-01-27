@@ -99,4 +99,44 @@ frontends = [
       ]
     }
   },
+  {
+    name             = "sscs-tribunals"
+    custom_domain    = "www.appeal-benefit-decision.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "www-appeal-benefit-decision-service-gov-uk"
+    disabled_rules = {
+      RFI = ["931130"],
+      LFI = ["930110"],
+      SQLI = [
+        "942110",
+        "942200",
+        "942210",
+        "942310",
+        "942360",
+        "942430",
+        "942440",
+        "942450",
+      ]
+    }
+  },
+  {
+    name             = "sscs-tya"
+    custom_domain    = "www.track-benefit-appeal.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "www-track-benefit-appeal-service-gov-uk"
+    disabled_rules = {
+      RFI = ["931130"],
+      LFI = ["930110"],
+      SQLI = [
+        "942110",
+        "942200",
+        "942210",
+        "942310",
+        "942360",
+        "942430",
+        "942440",
+        "942450",
+      ]
+    }
+  },
 ]

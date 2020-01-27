@@ -98,58 +98,50 @@ frontends = [
     custom_domain    = "pet-app1.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-pet-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
-    disabled_rules = {
-    }
   },
   {
     name             = "pet-app2"
     custom_domain    = "pet-app2.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-pet-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
-    disabled_rules = {
-    }
   },
   {
     name          = "sscs-tribunals"
     custom_domain = "benefit-appeal.aat.platform.hmcts.net"
     backend_domain = [
     "firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
-    disabled_rules = {
-      RFI = ["931130"],
-      LFI = ["930110"],
-      SQLI = [
-        "942110",
-        "942200",
-        "942210",
-        "942310",
-        "942360",
-        "942430",
-        "942440",
-        "942450",
-      ]
-    }
+    certificate_name = "wildcard-aat-platform-hmcts-net",
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__state"
+      },
+    ]
   },
   {
     name          = "sscs-cor"
     custom_domain = "sscs-cor.aat.platform.hmcts.net"
     backend_domain = [
     "firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
-    disabled_rules = {
-      RFI = ["931130"],
-      LFI = ["930110"],
-      SQLI = [
-        "942110",
-        "942200",
-        "942210",
-        "942310",
-        "942360",
-        "942430",
-        "942440",
-        "942450",
-      ]
-    }
+    certificate_name = "wildcard-aat-platform-hmcts-net",
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+    ]
   },
   {
     name          = "sscs-tya"
@@ -157,19 +149,5 @@ frontends = [
     backend_domain = [
     "firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
-    disabled_rules = {
-      RFI = ["931130"],
-      LFI = ["930110"],
-      SQLI = [
-        "942110",
-        "942200",
-        "942210",
-        "942310",
-        "942360",
-        "942430",
-        "942440",
-        "942450",
-      ]
-    }
   },
 ]

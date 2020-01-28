@@ -130,7 +130,7 @@ frontends = [
     custom_domain = "benefit-appeal.aat.platform.hmcts.net"
     backend_domain = [
     "firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net",
+    certificate_name = "wildcard-aat-platform-hmcts-net"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

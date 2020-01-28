@@ -104,39 +104,51 @@ frontends = [
     custom_domain    = "www.appeal-benefit-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "www-appeal-benefit-decision-service-gov-uk"
-    disabled_rules = {
-      RFI = ["931130"],
-      LFI = ["930110"],
-      SQLI = [
-        "942110",
-        "942200",
-        "942210",
-        "942310",
-        "942360",
-        "942430",
-        "942440",
-        "942450",
-      ]
-    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
+  },
+  {
+    name             = "sscs-cor"
+    custom_domain    = "www.manage.appeal-benefit-decision.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "manage-appeal-benefit-decision-service-gov-uk"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "sscs-tya"
     custom_domain    = "www.track-benefit-appeal.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "www-track-benefit-appeal-service-gov-uk"
-    disabled_rules = {
-      RFI = ["931130"],
-      LFI = ["930110"],
-      SQLI = [
-        "942110",
-        "942200",
-        "942210",
-        "942310",
-        "942360",
-        "942430",
-        "942440",
-        "942450",
-      ]
-    }
   },
 ]

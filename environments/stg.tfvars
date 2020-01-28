@@ -37,6 +37,11 @@ frontends = [
         operator       = "Equals"
         selector       = "__auth-token"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
     ]
   },
   {
@@ -54,6 +59,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "__auth-token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
       },
     ]
   },
@@ -73,6 +83,11 @@ frontends = [
         operator       = "Equals"
         selector       = "__auth-token"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
     ]
   },
   {
@@ -90,6 +105,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "__auth-token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
       },
     ]
   },
@@ -127,6 +147,11 @@ frontends = [
         operator       = "Equals"
         selector       = "__state"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
     ]
   },
   {
@@ -140,6 +165,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "connect.sid"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
       },
     ]
   },

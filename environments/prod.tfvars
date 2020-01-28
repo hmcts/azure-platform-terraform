@@ -2,7 +2,6 @@ project                    = "hmcts"
 location                   = "uksouth"
 env                        = "prod"
 subscription               = "prod"
-waf_mode                   = "Prevention"
 enable_ssl                 = true
 ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cft-apps-prod"
@@ -119,24 +118,6 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "__state"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "iss"
-      },
-    ]
-  },
-  {
-    name             = "sscs-cor"
-    custom_domain    = "www.manage.appeal-benefit-decision.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "manage-appeal-benefit-decision-service-gov-uk"
-    global_exclusions = [
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "connect.sid"
       },
       {
         match_variable = "QueryStringArgNames"

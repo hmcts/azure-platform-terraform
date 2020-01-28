@@ -2,7 +2,6 @@ project                    = "hmcts"
 location                   = "uksouth"
 env                        = "perftest"
 subscription               = "test"
-waf_mode                   = "Detection"
 enable_ssl                 = false
 ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-test"

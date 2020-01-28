@@ -5,7 +5,6 @@ module "landing_zone" {
   subscription               = var.subscription
   project                    = var.project
   location                   = var.location
-  waf_mode                   = var.waf_mode
   frontends                  = var.frontends
   enable_ssl                 = var.enable_ssl
   ssl_mode                   = var.ssl_mode

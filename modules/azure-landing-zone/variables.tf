@@ -3,7 +3,6 @@ variable "subscription" {}
 variable project {}
 variable location {}
 variable "common_tags" {}
-variable "waf_mode" {}
 variable "frontends" {}
 variable "subscription_id" {}
 variable "enable_ssl" {}

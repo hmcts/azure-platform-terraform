@@ -3,7 +3,7 @@ resource "azurerm_frontdoor_firewall_policy" "custom" {
   name                = "${replace(lookup(var.frontends[count.index], "name"), "-", "")}${replace(var.env, "-", "")}"
   resource_group_name = var.resource_group
   enabled             = true
-  mode                = var.waf_mode
+  mode                = lookup(var.frontends[count.index], "mode", "Prevention")
 
   managed_rule {
     type    = "DefaultRuleSet"

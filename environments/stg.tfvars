@@ -2,7 +2,6 @@ project                    = "hmcts"
 location                   = "uksouth"
 env                        = "aat"
 subscription               = "stg"
-waf_mode                   = "Prevention"
 enable_ssl                 = true
 ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-stg"

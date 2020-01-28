@@ -15,7 +15,6 @@ variable shutter_storage {}
 variable shutter_apps {}
 variable cdn_sku {}
 
-variable waf_mode {}
 variable enable_ssl {}
 variable ssl_mode {}
 variable certificate_key_vault_name {}

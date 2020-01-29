@@ -4,8 +4,8 @@ module "default_shutter" {
   env                        = var.env
   shutter_storage            = var.shutter_storage
   frontends                  = var.frontends
-  cdn_sku                    = var.cdn_sku
   common_tags                = local.common_tags
   certificate_key_vault_name = var.certificate_key_vault_name
   subscription               = var.subscription
+  cdn_profile                = azurerm_cdn_profile.main.name
 }

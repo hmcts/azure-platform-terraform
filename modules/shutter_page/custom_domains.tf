@@ -10,7 +10,7 @@ resource "azurerm_template_deployment" "custom_domain" {
   deployment_mode     = "Incremental"
 
   parameters = {
-    name     = "${azurerm_cdn_profile.main.name}/${azurerm_cdn_endpoint.shutter_endpoint[count.index].name}/${replace(var.frontends[count.index].custom_domain, ".", "-")}"
+    name     = "${var.cdn_profile}/${azurerm_cdn_endpoint.shutter_endpoint[count.index].name}/${replace(var.frontends[count.index].custom_domain, ".", "-")}"
     hostName = var.frontends[count.index].custom_domain
   }
 

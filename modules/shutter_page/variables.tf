@@ -7,7 +7,6 @@ variable "frontends" {
     name = string, custom_domain = string, certificate_name = string
   }))
 }
-variable "cdn_sku" {}
 variable "certificate_key_vault_name" {}
-
+variable "cdn_profile" {}
 variable "subscription" {}

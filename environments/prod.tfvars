@@ -28,18 +28,19 @@ frontends = [
     custom_domain    = "www.decree-nisi.apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "decree-nisi-apply-divorce-service-gov-uk"
-    global_exclusions = [
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "connect.sid"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "__auth-token"
-      },
-    ]
+    disabled_rules = {
+      RFI = ["931130"],
+      LFI = ["930110"],
+      SQLI = [
+        "942440",
+        "942450",
+        "942200",
+        "942430",
+        "942110",
+        "942210",
+        "942310"
+      ]
+    }
   },
   {
     name             = "div-da"

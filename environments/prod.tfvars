@@ -101,6 +101,7 @@ frontends = [
   },
   {
     name             = "sscs-tribunals"
+    mode             = "Detection"
     custom_domain    = "www.appeal-benefit-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "www-appeal-benefit-decision-service-gov-uk"
@@ -129,12 +130,14 @@ frontends = [
   },
   {
     name             = "sscs-tya"
+    mode             = "Detection"
     custom_domain    = "www.track-benefit-appeal.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "www-track-benefit-appeal-service-gov-uk"
   },
   {
     name             = "sscs-cor"
+    mode             = "Detection"
     custom_domain    = "www.manage.appeal-benefit-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "manage-appeal-benefit-decision-service-gov-uk"

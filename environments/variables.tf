@@ -5,14 +5,16 @@
 variable subscription {}
 variable env {}
 variable project {}
-variable resource_group_name {}
+variable shutter_rg {}
 
 variable location {}
 
 variable frontends {}
 
 variable shutter_storage {}
-variable shutter_apps {}
+variable default_shutter {
+  default = []
+}
 variable cdn_sku {}
 
 variable enable_ssl {}
@@ -21,3 +23,12 @@ variable certificate_key_vault_name {}
 
 variable cft_apps_cluster_ips {}
 variable cft_apps_ag_ip_address {}
+variable sscssya_shutter {
+  default = []
+}
+variable sscstya_shutter {
+  default = []
+}
+variable sscscor_shutter {
+  default = []
+}

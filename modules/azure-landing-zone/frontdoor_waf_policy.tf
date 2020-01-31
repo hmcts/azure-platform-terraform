@@ -40,9 +40,4 @@ resource "azurerm_frontdoor_firewall_policy" "custom" {
       }
     }
   }
-
-  managed_rule {
-    type    = "Microsoft_BotManagerRuleSet"
-    version = "1.0"
-  }
 }

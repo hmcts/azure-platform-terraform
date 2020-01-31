@@ -8,7 +8,7 @@ certificate_key_vault_name = "cft-apps-prod"
 
 shutter_storage     = "default"
 cdn_sku             = "Standard_Verizon"
-resource_group_name = "shutter-app-prod-rg"
+shutter_rg          = "shutter-app-prod-rg"
 
 # Applications associated with default storage account shutter static website.
 # Teams that need a default shutter page should add their app frontend names to the list below.

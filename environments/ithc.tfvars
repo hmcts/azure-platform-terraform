@@ -8,7 +8,7 @@ certificate_key_vault_name = "cftapps-ithc"
 
 shutter_storage     = "TODO"
 cdn_sku             = "TODO"
-resource_group_name = "TODO"
+shutter_rg          = "TODO"
 
 # Applications associated with default storage account shutter static website.
 # Teams that need a default shutter page should add their app frontend names to the list below.

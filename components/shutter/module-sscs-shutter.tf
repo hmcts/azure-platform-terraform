@@ -1,6 +1,6 @@
 module "sscstribunals" {
   source                     = "../../modules/shutter_page"
-  resource_group_name        = var.resource_group_name
+  resource_group_name        = var.shutter_resource_group_name
   env                        = var.env
   shutter_storage            = "sscssya"
   shutter_apps               = var.sscssya_shutter
@@ -12,7 +12,7 @@ module "sscstribunals" {
 
 module "sscstya" {
   source                     = "../../modules/shutter_page"
-  resource_group_name        = var.resource_group_name
+  resource_group_name        = var.shutter_resource_group_name
   env                        = var.env
   shutter_storage            = "sscstya"
   shutter_apps               = var.sscstya_shutter
@@ -24,7 +24,7 @@ module "sscstya" {
 
 module "sscscor" {
   source                     = "../../modules/shutter_page"
-  resource_group_name        = var.resource_group_name
+  resource_group_name        = var.shutter_resource_group_name
   env                        = var.env
   shutter_storage            = "sscscor"
   shutter_apps               = var.sscscor_shutter

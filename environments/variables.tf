@@ -5,7 +5,7 @@
 variable subscription {}
 variable env {}
 variable project {}
-variable resource_group_name {}
+variable shutter_resource_group_name {}
 
 variable location {}
 

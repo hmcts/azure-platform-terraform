@@ -1,6 +1,6 @@
 module "default_shutter" {
   source                     = "../../modules/shutter_page"
-  resource_group_name        = var.shutter_resource_group_name
+  resource_group_name        = var.shutter_rg
   env                        = var.env
   shutter_storage            = var.shutter_storage
   shutter_apps               = var.default_shutter

@@ -14,20 +14,20 @@ resource_group_name = "shutter-app-prod-rg"
 # Teams that need a default shutter page should add their app frontend names to the list below.
 default_shutter = [
   {
-    custom_domain    = "www.apply-divorce.service.gov.uk"
-    certificate_name = "apply-divorce-service-gov-uk"
-  },
-  {
-    custom_domain    = "www.respond-divorce.service.gov.uk"
-    certificate_name = "respond-divorce-service-gov-uk"
+    custom_domain    = "www.decree-nisi.apply-divorce.service.gov.uk"
+    certificate_name = "decree-nisi-apply-divorce-service-gov-uk"
   },
   {
     custom_domain    = "www.decree-absolute.apply-divorce.service.gov.uk"
     certificate_name = "decree-absolute-apply-divorce-service-gov-uk"
   },
   {
-    custom_domain    = "www.decree-nisi.apply-divorce.service.gov.uk"
-    certificate_name = "decree-nisi-apply-divorce-service-gov-uk"
+    custom_domain    = "www.respond-divorce.service.gov.uk"
+    certificate_name = "respond-divorce-service-gov-uk"
+  },
+  {
+    custom_domain    = "www.apply-divorce.service.gov.uk"
+    certificate_name = "apply-divorce-service-gov-uk"
   }
 ]
 

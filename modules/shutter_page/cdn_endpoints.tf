@@ -1,6 +1,6 @@
 resource "azurerm_cdn_endpoint" "shutter_endpoint" {
-  count                  = length(var.frontends)
-  name                   = "hmcts-${split(".", replace(var.frontends[count.index].custom_domain, "www.", ""))[0]}-shutter-${var.env}"
+  count                  = length(var.shutter_apps)
+  name                   = "hmcts-${split(".", replace(var.shutter_apps[count.index].custom_domain, "www.", ""))[0]}-shutter-${var.env}"
   profile_name           = var.cdn_profile
   location               = "West US"
   resource_group_name    = data.azurerm_resource_group.shutter.name

@@ -1,13 +1,13 @@
 data "azurerm_client_config" "current" {}
 
 data "azurerm_key_vault_secret" "certificate" {
-  count        = length(var.frontends)
-  name         = lookup(var.frontends[count.index], "certificate_name")
+  count        = length(var.shutter_apps)
+  name         = lookup(var.shutter_apps[count.index], "certificate_name")
   key_vault_id = data.azurerm_key_vault.certificate_vault.id
 }
 
 resource "null_resource" "enable_custom_https_cmd" {
-  count = length(var.frontends)
+  count = length(var.shutter_apps)
 
   provisioner "local-exec" {
     command = <<EOF
@@ -23,7 +23,7 @@ ${templatefile("${path.module}/templates/customHttps.json", {
 
 
 az rest --method POST \
- --uri "https://management.azure.com/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/${data.azurerm_resource_group.shutter.name}/providers/Microsoft.Cdn/profiles/${var.cdn_profile}/endpoints/${azurerm_cdn_endpoint.shutter_endpoint[count.index].name}/customDomains/${replace(var.frontends[count.index].custom_domain, ".", "-")}/enableCustomHttps?api-version=2019-04-15" \
+ --uri "https://management.azure.com/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/${data.azurerm_resource_group.shutter.name}/providers/Microsoft.Cdn/profiles/${var.cdn_profile}/endpoints/${azurerm_cdn_endpoint.shutter_endpoint[count.index].name}/customDomains/${replace(var.shutter_apps[count.index].custom_domain, ".", "-")}/enableCustomHttps?api-version=2019-04-15" \
  --body "$json" || true # this can only be run if it's not been run before or its in the completed state.
 EOF
 }

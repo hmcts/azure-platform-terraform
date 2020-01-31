@@ -12,12 +12,44 @@ resource_group_name = "shutter-app-prod-rg"
 
 # Applications associated with default storage account shutter static website.
 # Teams that need a default shutter page should add their app frontend names to the list below.
-shutter_apps = [
-  "www.apply-divorce.service.gov.uk",
-  "www.respond-divorce.service.gov.uk",
-  "www.decree-absolute.apply-divorce.service.gov.uk",
-  "www.decree-nisi.apply-divorce.service.gov.uk",
+default_shutter = [
+  {
+    custom_domain    = "www.apply-divorce.service.gov.uk"
+    certificate_name = "apply-divorce-service-gov-uk"
+  },
+  {
+    custom_domain    = "www.respond-divorce.service.gov.uk"
+    certificate_name = "respond-divorce-service-gov-uk"
+  },
+  {
+    custom_domain    = "www.decree-absolute.apply-divorce.service.gov.uk"
+    certificate_name = "decree-absolute-apply-divorce-service-gov-uk"
+  },
+  {
+    custom_domain    = "www.decree-nisi.apply-divorce.service.gov.uk"
+    certificate_name = "decree-nisi-apply-divorce-service-gov-uk"
+  }
 ]
+
+sscssya_shutter = [ 
+  {
+    custom_domain    = "www.appeal-benefit-decision.service.gov.uk"
+    certificate_name = "www-appeal-benefit-decision-service-gov-uk"
+  }
+]
+sscscor_shutter = [
+  {
+    custom_domain    = "www.manage.appeal-benefit-decision.service.gov.uk"
+    certificate_name = "manage-appeal-benefit-decision-service-gov-uk"
+  }
+]
+sscstya_shutter = [
+  {
+    custom_domain    = "www.track-benefit-appeal.service.gov.uk"
+    certificate_name = "www-track-benefit-appeal-service-gov-uk"
+  }
+]
+
 
 cft_apps_ag_ip_address = "10.13.32.122"
 cft_apps_cluster_ips   = ["10.13.15.250", "10.13.31.250"]

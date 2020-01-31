@@ -31,7 +31,7 @@ default_shutter = [
   }
 ]
 
-sscssya_shutter = [ 
+sscssya_shutter = [
   {
     custom_domain    = "www.appeal-benefit-decision.service.gov.uk"
     certificate_name = "www-appeal-benefit-decision-service-gov-uk"

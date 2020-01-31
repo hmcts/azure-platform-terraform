@@ -13,7 +13,7 @@ variable frontends {}
 
 variable shutter_storage {}
 variable default_shutter {
-    default = []
+  default = []
 }
 variable cdn_sku {}
 
@@ -24,11 +24,11 @@ variable certificate_key_vault_name {}
 variable cft_apps_cluster_ips {}
 variable cft_apps_ag_ip_address {}
 variable sscssya_shutter {
-    default = []
+  default = []
 }
 variable sscstya_shutter {
-    default = []
+  default = []
 }
 variable sscscor_shutter {
-    default = []
+  default = []
 }

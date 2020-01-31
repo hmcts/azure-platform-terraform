@@ -28,7 +28,7 @@ frontends = [
 # Teams that need a default shutter page should add their app frontend names to the list below.
 default_shutter = [
   {
-    custom_domain    = "wplum.sandbox.platform.hmcts.net"
+    custom_domain    = "plum.sandbox.platform.hmcts.net"
     certificate_name = "STAR-sandbox-platform-hmcts-net"
   }
 ]

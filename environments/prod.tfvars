@@ -28,7 +28,19 @@ default_shutter = [
   {
     custom_domain    = "www.apply-divorce.service.gov.uk"
     certificate_name = "apply-divorce-service-gov-uk"
-  }
+  },
+  {
+    custom_domain    = "manage-case.platform.hmcts.net"
+    certificate_name = "manage-case-platform-hmcts-net"
+  },
+  {
+    custom_domain    = "manage-org.platform.hmcts.net"
+    certificate_name = "manage-org-platform-hmcts-net"
+  },
+  {
+    custom_domain    = "administer-orgs.platform.hmcts.net"
+    certificate_name = "administer-orgs-platform-hmcts-net"
+  },
 ]
 
 sscssya_shutter = [
@@ -185,5 +197,26 @@ frontends = [
         selector       = "iss"
       },
     ]
+  },
+  {
+    name             = "xui-webapp"
+    mode             = "Detection"
+    custom_domain    = "manage-case.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "manage-case-platform-hmcts-net"
+  },
+  {
+    name             = "xui-manage-org"
+    mode             = "Detection"
+    custom_domain    = "manage-org.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "manage-org-platform-hmcts-net"
+  },
+  {
+    name             = "xui-approve-org"
+    mode             = "Detection"
+    custom_domain    = "administer-orgs.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "administer-orgs-platform-hmcts-net"
   },
 ]

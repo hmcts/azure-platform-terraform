@@ -28,7 +28,7 @@ default_shutter = [
   {
     custom_domain    = "www.apply-divorce.service.gov.uk"
     certificate_name = "apply-divorce-service-gov-uk"
-  },
+  }
 ]
 
 sscssya_shutter = [

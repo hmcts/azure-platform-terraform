@@ -15,79 +15,109 @@ cft_apps_cluster_ips   = ["10.13.15.250", "10.13.31.250"]
 frontends = [
   {
     name             = "div-dn"
+    mode             = "Detection"
     custom_domain    = "www.decree-nisi.apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "decree-nisi-apply-divorce-service-gov-uk"
-    disabled_rules = {
-      RFI = ["931130"],
-      LFI = ["930110"],
-      SQLI = [
-        "942440",
-        "942450",
-        "942200",
-        "942430",
-        "942110",
-        "942210",
-        "942310"
-      ]
-    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "div-da"
+    mode             = "Detection"
     custom_domain    = "www.decree-absolute.apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "decree-absolute-apply-divorce-service-gov-uk"
-    disabled_rules = {
-      RFI = ["931130"],
-      LFI = ["930110"],
-      SQLI = [
-        "942440",
-        "942450",
-        "942200",
-        "942430",
-        "942110",
-        "942210",
-        "942310"
-      ]
-    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "div-rfe"
+    mode             = "Detection"
     custom_domain    = "www.respond-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "respond-divorce-service-gov-uk"
-    disabled_rules = {
-      RFI = ["931130"],
-      LFI = ["930110"],
-      SQLI = [
-        "942440",
-        "942450",
-        "942200",
-        "942430",
-        "942110",
-        "942210",
-        "942310"
-      ]
-    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "div-pfe"
+    mode             = "Detection"
     custom_domain    = "www.apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-divorce-service-gov-uk"
-    disabled_rules = {
-      RFI = ["931130"],
-      LFI = ["930110"],
-      SQLI = [
-        "942440",
-        "942450",
-        "942200",
-        "942430",
-        "942110",
-        "942210",
-        "942310"
-      ]
-    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+    ]
   },
   {
     name             = "sscs-tribunals"

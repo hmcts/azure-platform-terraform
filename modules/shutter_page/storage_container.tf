@@ -6,7 +6,7 @@ resource "azurerm_storage_container" "containers" {
 }
 
 resource "null_resource" "static_website_cmd" {
-  count     = length(var.shutter_apps)
+  count = length(var.shutter_apps)
   provisioner "local-exec" {
     command = <<EOF
 az storage blob service-properties update \

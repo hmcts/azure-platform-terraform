@@ -28,22 +28,22 @@ frontends = [
     disabled_rules   = {}
     global_exclusions = [
       {
-        match_variable = "RequestArgNames",
+        match_variable = "QueryStringArgNames",
         operator       = "StartsWith",
         selector       = "password"
       },
       {
-        match_variable = "RequestArgNames",
+        match_variable = "QueryStringArgNames",
         operator       = "Equals",
         selector       = "label"
       },
       {
-        match_variable = "RequestArgNames",
+        match_variable = "QueryStringArgNames",
         operator       = "Equals",
         selector       = "oauth2ClientSecret"
       },
       {
-        match_variable = "RequestArgNames",
+        match_variable = "QueryStringArgNames",
         operator       = "Equals",
         selector       = "description"
       },

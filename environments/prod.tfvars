@@ -174,4 +174,32 @@ frontends = [
       },
     ]
   },
+  {
+    name             = "xui-webapp"
+    mode             = "Detection"
+    custom_domain    = "manage-case.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "manage-case-platform-hmcts-net"
+  },
+  {
+    name             = "xui-manage-org"
+    mode             = "Detection"
+    custom_domain    = "manage-org.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "manage-org-platform-hmcts-net"
+  },
+  {
+    name             = "xui-approve-org"
+    mode             = "Detection"
+    custom_domain    = "administer-orgs.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "administer-orgs-platform-hmcts-net"
+  },
+  {
+    name             = "xui-register-org"
+    mode             = "Detection"
+    custom_domain    = "register-org.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "register-org-platform-hmcts-net"
+  },
 ]

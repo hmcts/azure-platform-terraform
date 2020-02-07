@@ -195,4 +195,11 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "administer-orgs-platform-hmcts-net"
   },
+  {
+    name             = "xui-register-org"
+    mode             = "Detection"
+    custom_domain    = "register-org.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "register-org-platform-hmcts-net"
+  },
 ]

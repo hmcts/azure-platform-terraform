@@ -25,17 +25,6 @@ frontends = [
     custom_domain    = "idam-web-public-aks.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "STAR-sandbox-platform-hmcts-net"
-    disabled_rules = {
-      RFI = ["931130"],
-      SQLI = [
-        "942420",
-        "942421",
-        "942430",
-        "942431",
-        "942432",
-        "942440",
-        "942450"
-      ]
-    }
+    disabled_rules = {}
   },
 ]

@@ -22,13 +22,3 @@ frontends = [
     disabled_rules   = {}
   },
 ]
-
-
-# Applications associated with default storage account shutter static website.
-# Teams that need a default shutter page should add their app frontend names to the list below.
-default_shutter = [
-  {
-    custom_domain    = "plum.sandbox.platform.hmcts.net"
-    certificate_name = "STAR-sandbox-platform-hmcts-net"
-  }
-]

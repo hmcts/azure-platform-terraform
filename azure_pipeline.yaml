@@ -124,7 +124,7 @@ stages:
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
-
+      
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
           environment: 'prod'

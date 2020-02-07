@@ -8,11 +8,11 @@ resource "azurerm_cdn_endpoint" "shutter_endpoint" {
   is_compression_enabled = "false"
 
   origin {
-    name      = replace(azurerm_storage_account.shutter_store.primary_web_host, ".", "-")
-    host_name = azurerm_storage_account.shutter_store.primary_web_host
+    name      = replace(azurerm_storage_account.shutter_store[count.index].primary_web_host, ".", "-")
+    host_name = azurerm_storage_account.shutter_store[count.index].primary_web_host
   }
 
-  origin_host_header = azurerm_storage_account.shutter_store.primary_web_host
+  origin_host_header = azurerm_storage_account.shutter_store[count.index].primary_web_host
 
   tags = var.common_tags
 }

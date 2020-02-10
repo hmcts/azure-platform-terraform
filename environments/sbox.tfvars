@@ -28,22 +28,22 @@ frontends = [
     disabled_rules   = {}
     global_exclusions = [
       {
-        match_variable = "PostArgs",
+        match_variable = "RequestBodyPostArgNames",
         operator       = "StartsWith",
         selector       = "password"
       },
       {
-        match_variable = "PostArgs",
+        match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
         selector       = "label"
       },
       {
-        match_variable = "PostArgs",
+        match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
         selector       = "oauth2ClientSecret"
       },
       {
-        match_variable = "PostArgs",
+        match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
         selector       = "description"
       },
@@ -51,6 +51,21 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "redirect_uri"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "jwt"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "token"
       },
     ]
   },

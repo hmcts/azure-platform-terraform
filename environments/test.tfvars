@@ -67,5 +67,5 @@ frontends = [
         selector       = "iss"
       },
     ]
-  }
-  ]
+  },
+]

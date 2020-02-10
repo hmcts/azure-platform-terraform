@@ -24,7 +24,7 @@ frontends = [
     name             = "sscs-tribunals"
     custom_domain    = "benefit-appeal.perftest.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     global_exclusions = [
       {
@@ -53,7 +53,7 @@ frontends = [
     name             = "sscs-cor"
     mode             = "Detection"
     custom_domain    = "sscs-cor.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net",
     global_exclusions = [
       {

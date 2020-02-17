@@ -26,10 +26,8 @@ jobs:
               inputs:
                 command: 'init'
                 backendType: 'azurerm'
-                ensureBackend: true
                 backendServiceArm: 'dcd-cftapps-${{ parameters.environment }}'
                 backendAzureRmResourceGroupName: 'core-infra-${{ parameters.environment }}-rg'
-                backendAzureRmResourceGroupLocation: 'uksouth'
                 backendAzureRmStorageAccountName: 'cftapps${{ parameters.environment }}'
                 backendAzureRmContainerName: 'tfstate'
                 backendAzureRmKey: '${{ parameters.component }}.tfstate'

@@ -97,6 +97,7 @@ frontends = [
   {
     name             = "div-pfe"
     custom_domain    = "petitioner-frontend-aks.aat.platform.hmcts.net"
+    mode             = "Detection"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     global_exclusions = [

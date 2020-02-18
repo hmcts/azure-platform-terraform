@@ -122,7 +122,7 @@ resource "azurerm_application_gateway" "ag" {
 
     rewrite_rule {
       name          = local.x_fwded_proto_ruleset
-      rule_sequence = 100
+      rule_sequence = 90
 
       request_header_configuration {
         header_name  = "X-Forwarded-Proto"
@@ -132,7 +132,7 @@ resource "azurerm_application_gateway" "ag" {
 
     rewrite_rule {
       name          = local.x_fwded_for_ruleset
-      rule_sequence = 90
+      rule_sequence = 100
 
       request_header_configuration {
         header_name  = "X-Forwarded-For"

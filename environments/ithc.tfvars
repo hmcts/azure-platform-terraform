@@ -121,6 +121,11 @@ frontends = [
     global_exclusions = [
       {
         match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
         operator       = "StartsWith",
         selector       = "password"
       },

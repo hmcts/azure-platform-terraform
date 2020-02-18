@@ -202,4 +202,11 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "register-org-platform-hmcts-net"
   },
+  {
+    name             = "ccd-api-gw"
+    mode             = "Detection"
+    custom_domain    = "gateway.ccd.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "ccd-platform-hmcts-net-shutter"
+  },
 ]

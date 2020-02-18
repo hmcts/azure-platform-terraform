@@ -1,6 +1,5 @@
 locals {
   x_fwded_proto_ruleset = "x_fwded_proto"
-  x_fwded_for_ruleset   = "x_fwded_for"
 }
 
 resource "azurerm_application_gateway" "ag" {
@@ -122,27 +121,17 @@ resource "azurerm_application_gateway" "ag" {
 
     rewrite_rule {
       name          = local.x_fwded_proto_ruleset
-      rule_sequence = 90
+      rule_sequence = 100
 
       request_header_configuration {
         header_name  = "X-Forwarded-Proto"
         header_value = "https"
       }
-    }
-
-    rewrite_rule {
-      name          = local.x_fwded_port_ruleset
-      rule_sequence = 95
 
       request_header_configuration {
         header_name  = "X-Forwarded-Port"
         header_value = "443"
       }
-    }
-
-    rewrite_rule {
-      name          = local.x_fwded_for_ruleset
-      rule_sequence = 100
 
       request_header_configuration {
         header_name  = "X-Forwarded-For"

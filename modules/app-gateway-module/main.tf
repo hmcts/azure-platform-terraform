@@ -120,15 +120,15 @@ resource "azurerm_application_gateway" "ag" {
   rewrite_rule_set {
     name = local.x_fwded_proto_ruleset
 
-    # rewrite_rule {
-    #   name          = local.x_fwded_proto_ruleset
-    #   rule_sequence = 90
+    rewrite_rule {
+      name          = local.x_fwded_proto_ruleset
+      rule_sequence = 90
 
-    #   request_header_configuration {
-    #     header_name  = "X-Forwarded-Proto"
-    #     header_value = "https"
-    #   }
-    # }
+      request_header_configuration {
+        header_name  = "X-Forwarded-Proto"
+        header_value = "https"
+      }
+    }
 
     rewrite_rule {
       name          = local.x_fwded_for_ruleset

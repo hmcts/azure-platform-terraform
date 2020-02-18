@@ -1,5 +1,6 @@
 locals {
   x_fwded_proto_ruleset = "x_fwded_proto"
+  x_fwded_for_ruleset   = "x_fwded_for"
 }
 
 resource "azurerm_application_gateway" "ag" {
@@ -103,7 +104,8 @@ resource "azurerm_application_gateway" "ag" {
 
   dynamic "request_routing_rule" {
     for_each = [for app in var.frontends : {
-      name = app.name
+      name                  = app.name
+      rewrite_rule_set_name = app.name == "idam-web-public" ? local.x_fwded_for_ruleset : local.x_fwded_proto_ruleset
     }]
 
     content {
@@ -112,7 +114,7 @@ resource "azurerm_application_gateway" "ag" {
       http_listener_name         = request_routing_rule.value.name
       backend_address_pool_name  = request_routing_rule.value.name
       backend_http_settings_name = request_routing_rule.value.name
-      rewrite_rule_set_name      = local.x_fwded_proto_ruleset
+      rewrite_rule_set_name      = request_routing_rule.value.rewrite_rule_set_name
     }
   }
 
@@ -126,6 +128,30 @@ resource "azurerm_application_gateway" "ag" {
       request_header_configuration {
         header_name  = "X-Forwarded-Proto"
         header_value = "https"
+      }
+    }
+  }
+
+  rewrite_rule_set {
+    name = local.x_fwded_for_ruleset
+
+    rewrite_rule {
+      name          = local.x_fwded_proto_ruleset
+      rule_sequence = 100
+
+      request_header_configuration {
+        header_name  = "X-Forwarded-Proto"
+        header_value = "https"
+      }
+    }
+
+    rewrite_rule {
+      name          = local.x_fwded_for_ruleset
+      rule_sequence = 90
+
+      request_header_configuration {
+        header_name  = "X-Forwarded-For"
+        header_value = "(var_add_x_forwarded_for_proxy server)"
       }
     }
   }

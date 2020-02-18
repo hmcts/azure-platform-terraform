@@ -127,6 +127,16 @@ resource "azurerm_application_gateway" "ag" {
         header_name  = "X-Forwarded-Proto"
         header_value = "https"
       }
+
+      request_header_configuration {
+        header_name  = "X-Forwarded-Port"
+        header_value = "443"
+      }
+
+      request_header_configuration {
+        header_name  = "X-Forwarded-For"
+        header_value = "(var_add_x_forwarded_for_proxy server)"
+      }
     }
   }
 }

@@ -125,6 +125,11 @@ frontends = [
         selector       = "redirectUri"
       },
       {
+        match_variable = "QueryStringArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
         match_variable = "RequestBodyPostArgNames",
         operator       = "StartsWith",
         selector       = "password"

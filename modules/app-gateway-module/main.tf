@@ -131,16 +131,6 @@ resource "azurerm_application_gateway" "ag" {
     }
 
     rewrite_rule {
-      name          = local.x_fwded_port_ruleset
-      rule_sequence = 95
-
-      request_header_configuration {
-        header_name  = "X-Forwarded-Port"
-        header_value = "443"
-      }
-    }
-
-    rewrite_rule {
       name          = local.x_fwded_for_ruleset
       rule_sequence = 100
 

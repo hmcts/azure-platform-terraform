@@ -69,14 +69,14 @@ frontends = [
     ]
   },
   {
-    name             = "moneyclaims"
+    name             = "cmc"
     mode             = "Detection"
     custom_domain    = "moneyclaims.perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
-    name             = "moneyclaims-legal"
+    name             = "cmc-legal"
     mode             = "Detection"
     custom_domain    = "moneyclaims-legal.perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]

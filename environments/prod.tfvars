@@ -203,14 +203,14 @@ frontends = [
     certificate_name = "register-org-platform-hmcts-net"
   },
   {
-    name             = "moneyclaims"
+    name             = "cmc"
     mode             = "Detection"
     custom_domain    = "www.moneyclaims.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "moneyclaims-service-gov-uk"
   },
   {
-    name             = "moneyclaims-legal"
+    name             = "cmc-legal"
     mode             = "Detection"
     custom_domain    = "www.moneyclaim-legal.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]

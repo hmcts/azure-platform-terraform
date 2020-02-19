@@ -219,14 +219,14 @@ frontends = [
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },
   {
-    name             = "moneyclaims"
+    name             = "cmc"
     mode             = "Detection"
     custom_domain    = "moneyclaims.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },
   {
-    name             = "moneyclaims-legal"
+    name             = "cmc-legal"
     mode             = "Detection"
     custom_domain    = "moneyclaims-legal.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]

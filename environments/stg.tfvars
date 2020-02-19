@@ -218,4 +218,39 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },
+  {
+    name             = "moneyclaims"
+    mode             = "Detection"
+    custom_domain    = "moneyclaims.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
+    name             = "moneyclaims-legal"
+    mode             = "Detection"
+    custom_domain    = "moneyclaims-legal.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
+    name             = "www-ccd"
+    mode             = "Detection"
+    custom_domain    = "www-ccd.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
+    name             = "gateway-ccd"
+    mode             = "Detection"
+    custom_domain    = "gateway-ccd.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
+    name             = "return-case-doc-ccd"
+    mode             = "Detection"
+    custom_domain    = "return-case-doc-ccd.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
 ]

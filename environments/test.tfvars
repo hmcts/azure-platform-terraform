@@ -68,4 +68,39 @@ frontends = [
       },
     ]
   },
+  {
+    name             = "moneyclaims"
+    mode             = "Detection"
+    custom_domain    = "moneyclaims.perftest.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
+  },
+  {
+    name             = "moneyclaims-legal"
+    mode             = "Detection"
+    custom_domain    = "moneyclaims-legal.perftest.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
+  },
+  {
+    name             = "www-ccd"
+    mode             = "Detection"
+    custom_domain    = "www-ccd.perftest.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
+  },
+  {
+    name             = "gateway-ccd"
+    mode             = "Detection"
+    custom_domain    = "gateway-ccd.perftest.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
+  },
+  {
+    name             = "return-case-doc-ccd"
+    mode             = "Detection"
+    custom_domain    = "return-case-doc-ccd.perftest.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
+  },
 ]

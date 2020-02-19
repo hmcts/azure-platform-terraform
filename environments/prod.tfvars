@@ -202,4 +202,39 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "register-org-platform-hmcts-net"
   },
+  {
+    name             = "moneyclaims"
+    mode             = "Detection"
+    custom_domain    = "www.moneyclaims.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "moneyclaims-service-gov-uk"
+  },
+  {
+    name             = "moneyclaims-legal"
+    mode             = "Detection"
+    custom_domain    = "www.moneyclaim-legal.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "www-moneyclaim-legal-platform-hmcts-net"
+  },
+  {
+    name             = "www-ccd"
+    mode             = "Detection"
+    custom_domain    = "www.ccd.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "ccd-platform-hmcts-net"
+  },
+  {
+    name             = "gateway-ccd"
+    mode             = "Detection"
+    custom_domain    = "gateway.ccd.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "ccd-platform-hmcts-net"
+  },
+  {
+    name             = "return-case-doc-ccd"
+    mode             = "Detection"
+    custom_domain    = "return-case-doc.ccd.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "ccd-platform-hmcts-net"
+  },
 ]

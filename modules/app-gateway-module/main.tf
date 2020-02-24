@@ -11,8 +11,14 @@ resource "azurerm_application_gateway" "ag" {
   count = length(var.frontends) != 0 ? 1 : 0
 
   sku {
-    name = "Standard_v2"
-    tier = "Standard_v2"
+    name = "WAF_v2"
+    tier = "WAF_v2"
+  }
+
+  waf_configuration {
+    enabled          = true
+    firewall_mode    = "Detection"
+    rule_set_version = "3.1"
   }
 
   autoscale_configuration {

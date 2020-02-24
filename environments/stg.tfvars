@@ -233,6 +233,13 @@ frontends = [
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },
   {
+    name             = "ia-aip"
+    mode             = "Detection"
+    custom_domain    = "immigration-appeal.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
     name             = "www-ccd"
     mode             = "Detection"
     custom_domain    = "www-ccd.aat.platform.hmcts.net"

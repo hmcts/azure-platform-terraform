@@ -19,7 +19,7 @@ resource "azurerm_monitor_action_group" "main" {
 */
 
 resource "azurerm_monitor_metric_alert" "main" { ##
-  name                = "example-metricalert"
+  name                = "hmcts-${var.env}_${var.frontends.name}-backend-unhealthy"
   resource_group_name = azurerm_resource_group.main.name
   scopes              = [azurerm_storage_account.to_monitor.id]
   description         = "Action will be triggered when Backend Health Percentage is Less than 95%"

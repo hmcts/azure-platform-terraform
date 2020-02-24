@@ -1,8 +1,11 @@
+/*
 resource "azurerm_resource_group" "main" {####
   name     = "example-resources"
   location = var.location####uksouth / UK South
 }
+*/
 
+/*
 resource "azurerm_monitor_action_group" "main" {
   name                = "aks_${var.env}_action_group"
   resource_group_name = "core-infra-${var.env}-rg"
@@ -13,6 +16,7 @@ resource "azurerm_monitor_action_group" "main" {
     service_uri = "http://example.com/alert"
   }####
 }
+*/
 
 resource "azurerm_monitor_metric_alert" "main" { ##
   name                = "example-metricalert"
@@ -30,7 +34,7 @@ resource "azurerm_monitor_metric_alert" "main" { ##
     dimension {
       name     = "BackendPool"
       operator = "Equals"
-      values   = "${var.frontends.name}"####
+      values   = "hmcts-${var.env}_${var.frontends.name}"####
     }
   }
 
@@ -40,16 +44,16 @@ resource "azurerm_monitor_metric_alert" "main" { ##
 }
 
 /*
-  dynamic "probe" {
-    for_each = [for app in var.frontends : {
-      name = app.name
-      host = app.custom_domain
+  dynamic "alert" {
+    for_each = [for backend in var.frontends : {
+      name = hmcts-${var.env}_backend.name
+      backend_pool = backend_pool.name
       path = lookup(app, "health_path_override", "/health/liveness")
     }]
 
     content {
       interval            = 10
-      name                = probe.value.name
+      name                = probe.value.name // each.value.name
       host                = probe.value.host
       path                = probe.value.path
       protocol            = "Http"
@@ -57,4 +61,24 @@ resource "azurerm_monitor_metric_alert" "main" { ##
       unhealthy_threshold = 3
     }
   }
-*\
+*/
+
+/*
+ dynamic "backend_pool" {
+    iterator = host
+    for_each = var.frontends
+    content {
+      name = host.value["name"]
+      dynamic "backend" {
+        iterator = domain
+        for_each = host.value["backend_domain"]
+        content {
+          host_header = host.value["custom_domain"]
+          address     = domain.value
+          http_port   = 80
+          https_port  = 443
+          priority    = 1
+          weight      = 50
+        }
+      }
+*/

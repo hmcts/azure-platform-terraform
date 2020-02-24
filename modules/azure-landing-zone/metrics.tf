@@ -19,13 +19,14 @@ resource "azurerm_monitor_action_group" "main" {
 */
 
 resource "azurerm_monitor_metric_alert" "main" { ##
-  name                = "hmcts-${var.env}_${var.frontends.name}-backend-unhealthy"
-  resource_group_name = azurerm_resource_group.main.name
-  scopes              = [azurerm_storage_account.to_monitor.id]
+  foreach             = var.frontends
+  name                = "${each.value.name}-backend-pool-alert" //"${var.project}-${var.env}_${var.frontends[].name}-backend-pool-alert"
+  resource_group_name = var.resource_group
+  scopes              = [azurerm_frontdoor.main.id]
   description         = "Action will be triggered when Backend Health Percentage is Less than 95%"
 
   criteria {
-    metric_namespace = "Microsoft.Network/frontDoors"####
+    metric_namespace = "Microsoft.Network/frontDoors" ####
     metric_name      = "BackendHealthPercentage"
     aggregation      = "Avg"
     operator         = "LessThan"
@@ -34,12 +35,12 @@ resource "azurerm_monitor_metric_alert" "main" { ##
     dimension {
       name     = "BackendPool"
       operator = "Equals"
-      values   = "hmcts-${var.env}_${var.frontends.name}"####
+      values   = "${var.project}-${var.env}_${each.value.name}" ####
     }
   }
 
   action {
-    action_group_id = azurerm_monitor_action_group.main.id
+    action_group_id = "aks_${var.env}_action_group" //azurerm_monitor_action_group.main.id
   }
 }
 

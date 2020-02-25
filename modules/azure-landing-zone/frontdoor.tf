@@ -88,7 +88,7 @@ resource "azurerm_frontdoor" "main" {
     for_each = var.frontends
     content {
       name                = "healthProbeSettings-${host.value["name"]}"
-      interval_in_seconds = 30
+      interval_in_seconds = 120
       path                = "/health/liveness"
       protocol            = "Http"
     }

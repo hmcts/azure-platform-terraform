@@ -96,4 +96,63 @@ frontends = [
     backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
+  {
+    name             = "idam-web-public"
+    custom_domain    = "idam-web-public.perftest.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
+    disabled_rules   = {}
+    global_exclusions = [
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "QueryStringArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "StartsWith",
+        selector       = "password"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "label"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "oauth2ClientSecret"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "description"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "redirect_uri"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "jwt"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "token"
+      },
+    ]
+  }
 ]

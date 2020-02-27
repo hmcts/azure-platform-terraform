@@ -230,11 +230,4 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "ccd-platform-hmcts-net"
   },
-  {
-    name             = "return-case-doc-ccd"
-    mode             = "Detection"
-    custom_domain    = "return-case-doc.ccd.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "ccd-platform-hmcts-net"
-  },
 ]

@@ -241,8 +241,7 @@ stages:
   - stage: ApplyActiveGatePTL
     displayName: "Apply ActiveGate - PTL"
     dependsOn: GetArtifacts
-    condition: succeeded()
-#    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
         parameters:

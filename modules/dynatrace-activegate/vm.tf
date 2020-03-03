@@ -20,7 +20,7 @@ data "azurerm_key_vault_secret" "dynatrace_api_key" {
 }
 
 data "azurerm_key_vault_secret" "ssh_public_key" {
-  name = "aks-ssh-pub-key"
+  name         = "aks-ssh-pub-key"
   key_vault_id = data.azurerm_key_vault.subscription_vault.id
 }
 

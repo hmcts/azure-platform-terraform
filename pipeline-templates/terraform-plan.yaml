@@ -1,14 +1,3 @@
-parameters:
-  - name: service_connection
-    type: string
-    default: 'dcd-cftapps-${{ parameters.environment }}'
-  - name: storage_account_rg
-    type: string
-    default: 'core-infra-${{ parameters.environment }}-rg'
-  - name: storage_account_name
-    type: string
-    default: 'cftapps${{ parameters.environment }}'
-
 jobs:
   - job: Plan_${{ parameters.environment }}_${{ parameters.component }}
     pool:

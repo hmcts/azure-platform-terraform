@@ -41,6 +41,9 @@ stages:
         parameters:
           environment: 'sbox'
           component: 'global'
+          service_connection: 'dcd-cftapps-sbox'
+          storage_account_rg: 'core-infra-sbox-rg'
+          storage_account_name: 'cftappssbox'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -49,6 +52,9 @@ stages:
         parameters:
           environment: 'sbox'
           component: 'cftapps_cluster_lb'
+          service_connection: 'dcd-cftapps-sbox'
+          storage_account_rg: 'core-infra-sbox-rg'
+          storage_account_name: 'cftappssbox'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -57,6 +63,9 @@ stages:
         parameters:
           environment: 'sbox'
           component: 'shutter'
+          service_connection: 'dcd-cftapps-sbox'
+          storage_account_rg: 'core-infra-sbox-rg'
+          storage_account_name: 'cftappssbox'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -76,6 +85,9 @@ stages:
         parameters:
           environment: 'ithc'
           component: 'global'
+          service_connection: 'dcd-cftapps-ithc'
+          storage_account_rg: 'core-infra-ithc-rg'
+          storage_account_name: 'cftappsithc'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -84,6 +96,9 @@ stages:
         parameters:
           environment: 'ithc'
           component: 'cftapps_cluster_lb'
+          service_connection: 'dcd-cftapps-ithc'
+          storage_account_rg: 'core-infra-ithc-rg'
+          storage_account_name: 'cftappsithc'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -92,6 +107,9 @@ stages:
         parameters:
           environment: 'test'
           component: 'global'
+          service_connection: 'dcd-cftapps-test'
+          storage_account_rg: 'core-infra-test-rg'
+          storage_account_name: 'cftappstest'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -100,6 +118,9 @@ stages:
         parameters:
           environment: 'test'
           component: 'cftapps_cluster_lb'
+          service_connection: 'dcd-cftapps-test'
+          storage_account_rg: 'core-infra-test-rg'
+          storage_account_name: 'cftappstest'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -108,6 +129,9 @@ stages:
         parameters:
           environment: 'stg'
           component: 'global'
+          service_connection: 'dcd-cftapps-stg'
+          storage_account_rg: 'core-infra-stg-rg'
+          storage_account_name: 'cftappsstg'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -116,6 +140,9 @@ stages:
         parameters:
           environment: 'stg'
           component: 'cftapps_cluster_lb'
+          service_connection: 'dcd-cftapps-stg'
+          storage_account_rg: 'core-infra-stg-rg'
+          storage_account_name: 'cftappsstg'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -124,6 +151,9 @@ stages:
         parameters:
          environment: 'prod'
          component: 'global'
+         service_connection: 'dcd-cftapps-prod'
+         storage_account_rg: 'core-infra-prod-rg'
+         storage_account_name: 'cftappsprod'
          build: $(Build.BuildNumber)
          agentPool: ${{ variables.agentPool }}
          terraformVersion: ${{ variables.terraformVersion }}
@@ -132,6 +162,9 @@ stages:
         parameters:
           environment: 'prod'
           component: 'cftapps_cluster_lb'
+          service_connection: 'dcd-cftapps-prod'
+          storage_account_rg: 'core-infra-prod-rg'
+          storage_account_name: 'cftappsprod'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -140,6 +173,9 @@ stages:
         parameters:
           environment: 'prod'
           component: 'shutter'
+          service_connection: 'dcd-cftapps-prod'
+          storage_account_rg: 'core-infra-prod-rg'
+          storage_account_name: 'cftappsprod'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -164,6 +200,9 @@ stages:
         parameters:
           environment: 'sbox'
           component: 'global'
+          service_connection: 'dcd-cftapps-sbox'
+          storage_account_rg: 'core-infra-sbox-rg'
+          storage_account_name: 'cftappssbox'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -177,6 +216,9 @@ stages:
         parameters:
           environment: 'sbox'
           component: 'cftapps_cluster_lb'
+          service_connection: 'dcd-cftapps-sbox'
+          storage_account_rg: 'core-infra-sbox-rg'
+          storage_account_name: 'cftappssbox'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -189,6 +231,9 @@ stages:
         parameters:
           environment: 'sbox'
           component: 'shutter'
+          service_connection: 'dcd-cftapps-sbox'
+          storage_account_rg: 'core-infra-sbox-rg'
+          storage_account_name: 'cftappssbox'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -202,10 +247,10 @@ stages:
       - template: pipeline-templates/terraform-apply.yaml
         parameters:
           environment: 'ptl'
+          component: 'dynatrace_activegate'
           service_connection: 'DTS-CFTPTL-INTSVC'
           storage_account_rg: 'core-infra-intsvc-rg'
           storage_account_name: 'cftptlintsvc'
-          component: 'dynatrace_activegate'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -218,6 +263,9 @@ stages:
         parameters:
           environment: 'ithc'
           component: 'global'
+          service_connection: 'dcd-cftapps-ithc'
+          storage_account_rg: 'core-infra-ithc-rg'
+          storage_account_name: 'cftappsithc'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -231,6 +279,9 @@ stages:
         parameters:
           environment: 'ithc'
           component: 'cftapps_cluster_lb'
+          service_connection: 'dcd-cftapps-ithc'
+          storage_account_rg: 'core-infra-ithc-rg'
+          storage_account_name: 'cftappsithc'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -243,6 +294,9 @@ stages:
         parameters:
           environment: 'test'
           component: 'global'
+          service_connection: 'dcd-cftapps-test'
+          storage_account_rg: 'core-infra-test-rg'
+          storage_account_name: 'cftappstest'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -256,6 +310,9 @@ stages:
         parameters:
           environment: 'test'
           component: 'cftapps_cluster_lb'
+          service_connection: 'dcd-cftapps-test'
+          storage_account_rg: 'core-infra-test-rg'
+          storage_account_name: 'cftappstest'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -268,6 +325,9 @@ stages:
         parameters:
           environment: 'stg'
           component: 'global'
+          service_connection: 'dcd-cftapps-stg'
+          storage_account_rg: 'core-infra-stg-rg'
+          storage_account_name: 'cftappsstg'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -281,6 +341,9 @@ stages:
         parameters:
           environment: 'stg'
           component: 'cftapps_cluster_lb'
+          service_connection: 'dcd-cftapps-stg'
+          storage_account_rg: 'core-infra-stg-rg'
+          storage_account_name: 'cftappsstg'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -293,6 +356,9 @@ stages:
        parameters:
          environment: 'prod'
          component: 'global'
+         service_connection: 'dcd-cftapps-prod'
+         storage_account_rg: 'core-infra-prod-rg'
+         storage_account_name: 'cftappsprod'
          build: $(Build.BuildNumber)
          agentPool: ${{ variables.agentPool }}
          terraformVersion: ${{ variables.terraformVersion }}
@@ -306,6 +372,9 @@ stages:
         parameters:
           environment: 'prod'
           component: 'cftapps_cluster_lb'
+          service_connection: 'dcd-cftapps-prod'
+          storage_account_rg: 'core-infra-prod-rg'
+          storage_account_name: 'cftappsprod'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
@@ -318,6 +387,9 @@ stages:
         parameters:
           environment: 'prod'
           component: 'shutter'
+          service_connection: 'dcd-cftapps-prod'
+          storage_account_rg: 'core-infra-prod-rg'
+          storage_account_name: 'cftappsprod'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}

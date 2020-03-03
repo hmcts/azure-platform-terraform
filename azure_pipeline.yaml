@@ -59,16 +59,16 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-      - template: pipeline-templates/terraform-plan.yaml
-        parameters:
-          environment: 'sbox'
-          component: 'shutter'
-          service_connection: 'dcd-cftapps-sbox'
-          storage_account_rg: 'core-infra-sbox-rg'
-          storage_account_name: 'cftappssbox'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+      #- template: pipeline-templates/terraform-plan.yaml
+      #  parameters:
+      #    environment: 'sbox'
+      #    component: 'shutter'
+      #    service_connection: 'dcd-cftapps-sbox'
+      #    storage_account_rg: 'core-infra-sbox-rg'
+      #    storage_account_name: 'cftappssbox'
+      #    build: $(Build.BuildNumber)
+      #    agentPool: ${{ variables.agentPool }}
+      #    terraformVersion: ${{ variables.terraformVersion }}
 
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
@@ -169,16 +169,16 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
       
-      - template: pipeline-templates/terraform-plan.yaml
-        parameters:
-          environment: 'prod'
-          component: 'shutter'
-          service_connection: 'dcd-cftapps-prod'
-          storage_account_rg: 'core-infra-prod-rg'
-          storage_account_name: 'cftappsprod'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+      #- template: pipeline-templates/terraform-plan.yaml
+      #  parameters:
+      #    environment: 'prod'
+      #    component: 'shutter'
+      #    service_connection: 'dcd-cftapps-prod'
+      #    storage_account_rg: 'core-infra-prod-rg'
+      #    storage_account_name: 'cftappsprod'
+      #    build: $(Build.BuildNumber)
+      #    agentPool: ${{ variables.agentPool }}
+      #    terraformVersion: ${{ variables.terraformVersion }}
 
       - job: Archive
         pool:
@@ -223,20 +223,20 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyShutterSandbox
-    dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'sbox'
-          component: 'shutter'
-          service_connection: 'dcd-cftapps-sbox'
-          storage_account_rg: 'core-infra-sbox-rg'
-          storage_account_name: 'cftappssbox'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  #- stage: ApplyShutterSandbox
+  #  dependsOn: GetArtifacts
+  #  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #  jobs:
+  #    - template: pipeline-templates/terraform-apply.yaml
+  #      parameters:
+  #        environment: 'sbox'
+  #        component: 'shutter'
+  #        service_connection: 'dcd-cftapps-sbox'
+  #        storage_account_rg: 'core-infra-sbox-rg'
+  #        storage_account_name: 'cftappssbox'
+  #        build: $(Build.BuildNumber)
+  #        agentPool: ${{ variables.agentPool }}
+  #        terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: ApplyActiveGatePTL
     displayName: "Apply ActiveGate - PTL"
@@ -378,17 +378,17 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyShutterProd
-    dependsOn: ApplyShutterSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'prod'
-          component: 'shutter'
-          service_connection: 'dcd-cftapps-prod'
-          storage_account_rg: 'core-infra-prod-rg'
-          storage_account_name: 'cftappsprod'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  #- stage: ApplyShutterProd
+  #  dependsOn: ApplyShutterSandbox
+  #  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #  jobs:
+  #    - template: pipeline-templates/terraform-apply.yaml
+  #      parameters:
+  #        environment: 'prod'
+  #        component: 'shutter'
+  #        service_connection: 'dcd-cftapps-prod'
+  #        storage_account_rg: 'core-infra-prod-rg'
+  #        storage_account_name: 'cftappsprod'
+  #        build: $(Build.BuildNumber)
+  #        agentPool: ${{ variables.agentPool }}
+  #        terraformVersion: ${{ variables.terraformVersion }}

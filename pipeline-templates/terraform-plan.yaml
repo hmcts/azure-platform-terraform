@@ -1,3 +1,17 @@
+variables:
+  ${{ if eq(parameters['service_connection'], Null) }}:
+    service_connection: 'dcd-cftapps-${{ parameters.environment }}'
+  ${{ if ne(parameters['service_connection'], Null) }}:
+    service_connection: '${{ parameters.service_connection }}'
+  ${{ if eq(parameters['storage_account_rg'], Null) }}:
+    storage_account_rg: 'core-infra-${{ parameters.environment }}-rg'
+  ${{ if ne(parameters['storage_account_rg'], Null) }}:
+    storage_account_rg: '${{ parameters.storage_account_rg }}'
+  ${{ if eq(parameters['storage_account_name'], Null) }}:
+    storage_account_name: 'cftapps${{ parameters.environment }}'
+  ${{ if ne(parameters['storage_account_name'], Null) }}:
+    storage_account_name: '${{ parameters.storage_account_name }}'
+
 jobs:
   - job: Plan_${{ parameters.environment }}_${{ parameters.component }}
     pool:
@@ -12,9 +26,9 @@ jobs:
           command: 'init'
           commandOptions: '-lock=false' # don't lock on PRs / validate phase
           backendType: 'azurerm'
-          backendServiceArm: 'dcd-cftapps-${{ parameters.environment }}'
-          backendAzureRmResourceGroupName: 'core-infra-${{ parameters.environment }}-rg'
-          backendAzureRmStorageAccountName: 'cftapps${{ parameters.environment }}'
+          backendServiceArm: '${{ variables.service_connection }}'
+          backendAzureRmResourceGroupName: '${{ variables.storage_account_rg }}'
+          backendAzureRmStorageAccountName: '${{ variables.storage_account_name }}'
           backendAzureRmContainerName: 'tfstate'
           backendAzureRmKey: '${{ parameters.component }}.tfstate'
           workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
@@ -24,7 +38,7 @@ jobs:
           command: 'plan'
           commandOptions: '-out=${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan -var-file=$(System.DefaultWorkingDirectory)/environments/${{ parameters.environment }}.tfvars'
           workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
-          environmentServiceName: 'dcd-cftapps-${{ parameters.environment }}'
+          environmentServiceName: '${{ variables.service_connection }}'
       - task: Bash@3
         displayName: "Remove local tfstate"
         inputs:

@@ -1,3 +1,17 @@
+variables:
+  ${{ if eq(parameters['service_connection'], Null) }}:
+    service_connection: 'dcd-cftapps-${{ parameters.environment }}'
+  ${{ if ne(parameters['service_connection'], Null) }}:
+    service_connection: '${{ parameters.service_connection }}'
+  ${{ if eq(parameters['storage_account_rg'], Null) }}:
+    storage_account_rg: 'core-infra-${{ parameters.environment }}-rg'
+  ${{ if ne(parameters['storage_account_rg'], Null) }}:
+    storage_account_rg: '${{ parameters.storage_account_rg }}'
+  ${{ if eq(parameters['storage_account_name'], Null) }}:
+    storage_account_name: 'cftapps${{ parameters.environment }}'
+  ${{ if ne(parameters['storage_account_name'], Null) }}:
+    storage_account_name: '${{ parameters.storage_account_name }}'
+
 jobs:
   - deployment: Deploy
     pool:
@@ -27,9 +41,9 @@ jobs:
                 command: 'init'
                 backendType: 'azurerm'
                 ensureBackend: true
-                backendServiceArm: 'dcd-cftapps-${{ parameters.environment }}'
-                backendAzureRmResourceGroupName: 'core-infra-${{ parameters.environment }}-rg'
-                backendAzureRmStorageAccountName: 'cftapps${{ parameters.environment }}'
+                backendServiceArm: '${{ variables.service_connection }}'
+                backendAzureRmResourceGroupName: '${{ variables.storage_account_rg }}'
+                backendAzureRmStorageAccountName: '${{ variables.storage_account_name }}'
                 backendAzureRmResourceGroupLocation: 'uksouth'
                 backendAzureRmContainerName: 'tfstate'
                 backendAzureRmKey: '${{ parameters.component }}.tfstate'
@@ -40,5 +54,5 @@ jobs:
               inputs:
                 command: 'apply'
                 commandOptions: '${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan'
-                environmentServiceName: 'dcd-cftapps-${{ parameters.environment }}'
+                environmentServiceName: '${{ variables.service_connection }}'
                 workingDirectory: '$(Pipeline.Workspace)/drop/components/${{ parameters.component }}'

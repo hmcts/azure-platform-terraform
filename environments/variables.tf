@@ -4,25 +4,45 @@
 
 variable subscription {}
 variable env {}
-variable project {}
-variable shutter_rg {}
+variable project {
+  default = "hmcts"
+}
+variable shutter_rg {
+  default = "TODO"
+}
 
-variable location {}
+variable location {
+  default = "UK South"
+}
 
-variable frontends {}
+variable frontends {
+  default = []
+}
 
-variable shutter_storage {}
+variable shutter_storage {
+  default = "TODO" // Is this even used?
+}
 variable default_shutter {
   default = []
 }
-variable cdn_sku {}
+variable cdn_sku {
+  default = "Standard_Verizon"
+}
 
-variable enable_ssl {}
-variable ssl_mode {}
+variable enable_ssl {
+  default = true
+}
+variable ssl_mode {
+  default = "AzureKeyVault"
+}
 variable certificate_key_vault_name {}
 
-variable cft_apps_cluster_ips {}
-variable cft_apps_ag_ip_address {}
+variable cft_apps_cluster_ips {
+  default = []
+}
+variable cft_apps_ag_ip_address {
+  default = []
+}
 variable sscssya_shutter {
   default = []
 }

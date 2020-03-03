@@ -12,9 +12,9 @@ jobs:
           command: 'init'
           commandOptions: '-lock=false' # don't lock on PRs / validate phase
           backendType: 'azurerm'
-          backendServiceArm: 'dcd-cftapps-${{ parameters.environment }}'
-          backendAzureRmResourceGroupName: 'core-infra-${{ parameters.environment }}-rg'
-          backendAzureRmStorageAccountName: 'cftapps${{ parameters.environment }}'
+          backendServiceArm: '${{ parameters.service_connection }}'
+          backendAzureRmResourceGroupName: '${{ parameters.storage_account_rg }}'
+          backendAzureRmStorageAccountName: '${{ parameters.storage_account_name }}'
           backendAzureRmContainerName: 'tfstate'
           backendAzureRmKey: '${{ parameters.component }}.tfstate'
           workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
@@ -24,7 +24,7 @@ jobs:
           command: 'plan'
           commandOptions: '-out=${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan -var-file=$(System.DefaultWorkingDirectory)/environments/${{ parameters.environment }}.tfvars'
           workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
-          environmentServiceName: 'dcd-cftapps-${{ parameters.environment }}'
+          environmentServiceName: '${{ parameters.service_connection }}'
       - task: Bash@3
         displayName: "Remove local tfstate"
         inputs:

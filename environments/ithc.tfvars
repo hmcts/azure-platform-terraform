@@ -199,4 +199,11 @@ frontends = [
     backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
+  {
+    name             = "xui-ao"
+    mode             = "Detection"
+    custom_domain    = "administer-orgs.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+  },
 ]

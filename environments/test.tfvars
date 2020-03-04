@@ -153,6 +153,11 @@ frontends = [
         operator       = "Equals"
         selector       = "token"
       },
+      {
+        match_variable = "RequestHeaderName"
+        operator       = "Equals"
+        selector       = "cookie"
+      },
     ]
   }
 ]

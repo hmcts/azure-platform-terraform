@@ -158,6 +158,11 @@ frontends = [
         operator       = "Equals"
         selector       = "Idam.Session"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.AuthId"
+      },
     ]
   }
 ]

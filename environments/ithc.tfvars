@@ -200,6 +200,13 @@ frontends = [
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
+    name             = "return-case-doc-ccd"
+    mode             = "Detection"
+    custom_domain    = "return-case-doc-ccd.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+  },
+  {
     name             = "xui-approve-org"
     mode             = "Detection"
     custom_domain    = "administer-orgs.ithc.platform.hmcts.net"

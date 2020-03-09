@@ -97,6 +97,13 @@ frontends = [
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
+    name             = "return-case-doc-ccd"
+    mode             = "Detection"
+    custom_domain    = "return-case-doc-ccd.perftest.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
+  },
+  {
     name             = "idam-web-public"
     custom_domain    = "idam-web-public.perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]

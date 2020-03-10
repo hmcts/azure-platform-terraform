@@ -52,3 +52,5 @@ variable sscstya_shutter {
 variable sscscor_shutter {
   default = []
 }
+variable "app_gw_private_ip_address" {}
+variable "vault_name" {}

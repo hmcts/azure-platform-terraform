@@ -1,0 +1,49 @@
+---
+
+gateways:
+  - gateway_configuration:
+      backend_pool_addresses:
+        - 10.11.15.220
+      host_name_suffix: service.core-compute-demo.internal
+    app_configuration:
+    # RPE
+      - product: draft-store
+        component: service
+        
+    # Divorce
+      - product: div
+        component: emca
+      - product: div
+        component: fps
+      - product: div
+        component: dgs
+      - product: div
+        component: cms
+      - product: div
+        component: cos
+      - product: div
+        component: hm
+      - product: div
+        component: cfs
+        
+     # IA
+      - product: ia
+        component: case-api
+      - product: ia
+        component: case-documents-api
+      - product: ia
+        component: case-notifications-api
+        
+    # SSCS
+      - product: sscs
+        component: tribunals-api
+      - product: sscs
+        component: evidence-share
+      - product: sscs
+        component: bulk-scan
+      - product: sscs
+        component: ccd-callback-orchestrator
+      - product: sscs
+        component: tya-notif
+      - product: sscs
+        component: cor-backend

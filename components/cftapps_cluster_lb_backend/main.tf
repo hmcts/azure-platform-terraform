@@ -1,5 +1,5 @@
 module "app-gw" {
-  source = "../../modules/app-gateway-module-backend"
+  source    = "../../modules/app-gateway-module-backend"
   yaml_path = "${path.cwd}/../environments/${var.env}/all.yaml"
   env       = var.env
 

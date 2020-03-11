@@ -59,6 +59,17 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
+          environment: 'sbox'
+          component: 'cftapps_cluster_lb_backend'
+          service_connection: 'dcd-cftapps-sbox'
+          storage_account_rg: 'core-infra-sbox-rg'
+          storage_account_name: 'cftappssbox'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
       #- template: pipeline-templates/terraform-plan.yaml
       #  parameters:
       #    environment: 'sbox'

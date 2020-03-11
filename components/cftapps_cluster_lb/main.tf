@@ -1,5 +1,5 @@
 module "cftapps-frontend-cluster-lb" {
-  source = "../../modules/app-gateway-module-frontend"
+  source = "../../modules/app-gateway-module"
 
   destinations       = var.cft_apps_cluster_ips
   common_tags        = local.common_tags

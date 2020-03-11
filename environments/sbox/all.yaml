@@ -1,0 +1,64 @@
+---
+
+gateways:
+  - gateway_configuration:
+      backend_pool_addresses:
+        - 10.10.1.250
+        - 10.10.3.250
+      host_name_suffix: service.core-compute-sandbox.internal
+    app_configuration:
+    # RPE
+      - product: draft-store
+        component: service
+    # Probate
+      - product: probate
+        component: business-service
+      - product: probate
+        component: orchestrator-service
+      - product: probate
+        component: submit-service
+    # I&A
+      - product: ia
+        component: case-api
+      - product: ia
+        component: case-notifications-api
+      - product: ia
+        component: case-documents-api
+
+    # Reference DATA
+      - product: rd
+        component: professional-api
+      - product: rd
+        component: user-profile-api
+      - product: rd
+        component: profile-sync
+
+    # Divorce
+      - product: div
+        component: emca
+
+    # SSCS
+      - product: sscs
+        component: tribunals-api
+      - product: sscs
+        component: evidence-share
+
+    # FPLA
+      - product: fpl
+        component: case-service
+
+    # Fees and Pay
+      - product: payment
+        component: api
+
+    # Plum Frontend
+      - product: plum
+        component: frontend
+
+    # SIDAM 
+      - product: idam
+        component: api
+        cookie_based_affinity: Enabled
+      - product: idam
+        component: web-admin
+        cookie_based_affinity: Enabled

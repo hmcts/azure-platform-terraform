@@ -1,0 +1,143 @@
+---
+
+gateways:
+  - gateway_configuration:
+      backend_pool_addresses:
+        - 10.13.15.250
+        - 10.13.31.250
+      host_name_suffix: service.core-compute-prod.internal
+    app_configuration:
+    # RPE
+      - product: draft-store
+        component: service
+      - product: cmc
+        component: pdf-service
+      - product: rpe
+        component: service-auth-provider
+    # Probate
+      - product: probate
+        component: business-service
+      - product: probate
+        component: orchestrator-service
+      - product: probate
+        component: submit-service
+    # I&A
+      - product: ia
+        component: case-api
+      - product: ia
+        component: case-notifications-api
+      - product: ia
+        component: case-documents-api
+
+    # Divorce
+      - product: div
+        component: emca
+      - product: div
+        component: fps
+      - product: div
+        component: dgs
+      - product: div
+        component: cms
+      - product: div
+        component: cos
+      - product: div
+        component: hm
+      - product: div
+        component: cfs
+        
+    # Financial Remedy
+      - product: finrem
+        component: ns
+        
+    # Evidence Management
+      - product: em
+        component: anno
+      - product: em
+        component: npa
+      - product: em
+        component: stitching
+      - product: em
+        component: ccd-orchestrator
+      - product: dg
+        component: docassembly
+      - product: dm
+        component: store 
+ 
+    # SSCS
+      - product: sscs
+        component: tribunals-api
+      - product: sscs
+        component: evidence-share
+      - product: sscs
+        component: bulk-scan
+      - product: sscs
+        component: ccd-callback-orchestrator
+      - product: sscs
+        component: tya-notif
+      - product: sscs
+        component: cor-backend
+
+    # FPLA
+      - product: fpl
+        component: case-service
+
+    # Fees and Pay
+      - product: payment
+        component: api
+
+    # Ethos
+      - product: ethos
+        component: repl-docmosis-backend
+
+    # CCD
+      - product: ccd
+        component: data-store-api
+      - product: ccd
+        component: definition-store-api
+      - product: ccd
+        component: user-profile-api 
+      - product: ccd
+        component: case-print-service
+      - product: ccd
+        component: case-activity-api
+
+    # BAR
+      - product: bar
+        component: api
+
+    # Professional Reference data
+      - product: rd
+        component: professional-api
+      - product: rd
+        component: user-profile-api
+      - product: rd
+        component: profile-sync
+      - product: rd
+        component: judicial-api
+
+    # Bulk scan and print
+      - product: bulk-scan
+        component: processor
+      - product: bulk-scan
+        component: orchestrator
+      - product: bulk-scan
+        component: payment-processor
+      - product: reform-scan
+        component: blob-router
+        
+      # Send-letter
+      - product: rpe
+        component: send-letter-service 
+        
+    # ccpay
+      - product: ccpay
+        component: bulkscanning-api     
+
+    # xui
+      - product: xui
+        component: terms-and-conditions
+
+    # CMC
+      - product: cmc
+        component: claim-store
+

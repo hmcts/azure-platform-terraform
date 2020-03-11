@@ -6,6 +6,8 @@ enable_ssl                 = true
 ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-sbox"
 
+app_gw_private_ip_address = "10.10.7.122"
+
 cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-sbox-rg"
 

@@ -1,0 +1,170 @@
+---
+
+gateways:
+  - gateway_configuration:
+      backend_pool_addresses:
+        - 10.10.19.250
+        - 10.10.23.250
+      host_name_suffix: service.core-compute-aat.internal
+    app_configuration:
+    # RPE
+      - product: draft-store
+        component: service
+      - product: cmc
+        component: pdf-service
+      - product: rpe
+        component: service-auth-provider
+    # Probate
+      - product: probate
+        component: business-service
+      - product: probate
+        component: orchestrator-service
+      - product: probate
+        component: submit-service
+    # I&A
+      - product: ia
+        component: case-api
+      - product: ia
+        component: case-notifications-api
+      - product: ia
+        component: case-documents-api
+      - product: ia
+        component: aip-frontend
+
+    # Divorce
+      - product: div
+        component: emca
+      - product: div
+        component: fps
+      - product: div
+        component: dgs
+      - product: div
+        component: cms
+      - product: div
+        component: cos
+      - product: div
+        component: hm
+      - product: div
+        component: cfs
+
+    # Financial Remedy
+      - product: finrem
+        component: ns
+
+    # SSCS
+      - product: sscs
+        component: tribunals-api
+      - product: sscs
+        component: evidence-share
+      - product: sscs
+        component: bulk-scan
+      - product: sscs
+        component: cor-backend
+      - product: sscs
+        component: tya-notif
+      - product: sscs
+        component: ccd-callback-orchestrator
+
+    # FPLA
+      - product: fpl
+        component: case-service
+
+    # Adoption
+      - product: adoption
+        component: backend
+
+    # Ethos
+      - product: ethos
+        component: repl-docmosis-backend
+
+    # Access Management
+      - product: am
+        component: accessmgmt-api
+
+    # Evidence Management
+      - product: em
+        component: anno
+      - product: em
+        component: npa
+      - product: em
+        component: stitching
+      - product: em
+        component: ccd-orchestrator
+      - product: em
+        component: showcase
+      - product: dg
+        component: docassembly
+      - product: dm
+        component: store
+
+    # Bulk scan and print
+      - product: bulk-scan
+        component: payment-processor
+      - product: bulk-scan
+        component: processor
+      - product: bulk-scan
+        component: sample-app
+      - product: bulk-scan
+        component: orchestrator
+      - product: reform-scan
+        component: blob-router
+
+    # CCD
+      - product: ccd
+        component: data-store-api
+      - product: ccd
+        component: definition-store-api
+      - product: ccd
+        component: user-profile-api
+      - product: ccd
+        component: test-stubs-service
+      - product: ccd
+        component: case-print-service
+      - product: ccd
+        component: case-activity-api
+
+    # CTSC
+      - product: ctsc
+        component: work-allocation
+
+    # xui
+      - product: xui
+        component: terms-and-conditions
+
+    # BAR
+      - product: bar
+        component: api
+
+      # Professional Reference data
+      - product: rd
+        component: professional-api
+      - product: rd
+        component: user-profile-api
+      - product: rd
+        component: profile-sync
+      - product: rd
+        component: judicial-api
+
+      # Send-letter
+      - product: rpe
+        component: send-letter-service
+
+      # ccpay
+      - product: ccpay
+        component: bulkscanning-api
+      - product: payment
+        component: api
+      - product: fees-register
+        component: api
+
+    # CMC
+      - product: cmc
+        component: claim-store
+
+ # IDAM 
+      - product: idam
+        component: api
+        cookie_based_affinity: Enabled
+      - product: idam
+        component: web-admin
+        cookie_based_affinity: Enabled

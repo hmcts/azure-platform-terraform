@@ -2,8 +2,12 @@
 // we link this file into each component
 // from the component dir: `ln -s ../../environments/variables.tf variables.tf`
 
-variable subscription {}
-variable env {}
+variable subscription {
+  default = []
+}
+variable env {
+  default = []
+}
 variable project {
   default = "hmcts"
 }
@@ -35,7 +39,9 @@ variable enable_ssl {
 variable ssl_mode {
   default = "AzureKeyVault"
 }
-variable certificate_key_vault_name {}
+variable certificate_key_vault_name {
+  default = []
+}
 
 variable cft_apps_cluster_ips {
   default = []
@@ -50,5 +56,8 @@ variable sscstya_shutter {
   default = []
 }
 variable sscscor_shutter {
+  default = []
+}
+variable "app_gw_private_ip_address" {
   default = []
 }

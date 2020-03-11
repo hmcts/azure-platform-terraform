@@ -6,6 +6,8 @@ enable_ssl                 = true
 ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-test"
 
+app_gw_private_ip_address = "10.10.46.121"
+
 shutter_storage = "TODO"
 cdn_sku         = "TODO"
 shutter_rg      = "TODO"

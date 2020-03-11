@@ -44,11 +44,11 @@ gateways:
         component: hm
       - product: div
         component: cfs
-        
+
     # Financial Remedy
       - product: finrem
         component: ns
-        
+
     # Evidence Management
       - product: em
         component: anno
@@ -61,8 +61,8 @@ gateways:
       - product: dg
         component: docassembly
       - product: dm
-        component: store 
- 
+        component: store
+
     # SSCS
       - product: sscs
         component: tribunals-api
@@ -95,7 +95,7 @@ gateways:
       - product: ccd
         component: definition-store-api
       - product: ccd
-        component: user-profile-api 
+        component: user-profile-api
       - product: ccd
         component: case-print-service
       - product: ccd
@@ -114,6 +114,8 @@ gateways:
         component: profile-sync
       - product: rd
         component: judicial-api
+      - product: rd
+        component: judicial-data-load
 
     # Bulk scan and print
       - product: bulk-scan
@@ -124,14 +126,14 @@ gateways:
         component: payment-processor
       - product: reform-scan
         component: blob-router
-        
+
       # Send-letter
       - product: rpe
-        component: send-letter-service 
-        
+        component: send-letter-service
+
     # ccpay
       - product: ccpay
-        component: bulkscanning-api     
+        component: bulkscanning-api
 
     # xui
       - product: xui
@@ -140,4 +142,3 @@ gateways:
     # CMC
       - product: cmc
         component: claim-store
-

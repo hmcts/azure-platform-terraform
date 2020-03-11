@@ -51,6 +51,9 @@ gateways:
         component: profile-sync
       - product: rd
         component: judicial-api
+      - product: rd
+        component: judicial-data-load
+        
     # Divorce
       - product: div
         component: emca
@@ -111,7 +114,7 @@ gateways:
       - product: cmc
         component: claim-store
 
-    # SIDAM 
+    # SIDAM
       - product: idam
         component: api
         cookie_based_affinity: Enabled

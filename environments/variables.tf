@@ -61,6 +61,3 @@ variable sscscor_shutter {
 variable "app_gw_private_ip_address" {
   default = []
 }
-variable "vault_name" {
-  default = []
-}

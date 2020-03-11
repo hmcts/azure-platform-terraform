@@ -7,7 +7,6 @@ ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cft-apps-prod"
 
 app_gw_private_ip_address = "10.13.32.120"
-vault_name                = "cft-apps-prod"
 
 cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-prod-rg"

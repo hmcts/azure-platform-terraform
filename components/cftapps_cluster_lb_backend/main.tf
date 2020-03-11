@@ -6,5 +6,5 @@ module "app-gw" {
   location           = var.location
   private_ip_address = var.app_gw_private_ip_address
   subscription       = var.subscription
-  vault_name         = var.vault_name
+  vault_name         = var.certificate_key_vault_name
 }

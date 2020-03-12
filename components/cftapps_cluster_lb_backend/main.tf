@@ -1,3 +1,7 @@
+locals {
+  envs = "${(var.env == "aat")? "stg" : "${(var.env == "perftest")? "test" : "${var.env}"}" }"
+}
+
 module "app-gw" {
   source    = "../../modules/app-gateway-module-backend"
   yaml_path = "${path.cwd}/../../environments/${var.env}/all.yaml"

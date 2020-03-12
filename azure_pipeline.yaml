@@ -436,7 +436,7 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyCftAppsLBStg
+  - stage: ApplyCftAppsLBBackendStg
     displayName: "Apply CFT APPs LB Backend- Staging"
     dependsOn: ApplyCftAppsLBSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
@@ -483,7 +483,7 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyCftAppsLBProd
+  - stage: ApplyCftAppsLBBackendProd
     displayName: "Apply CFT APPs LB Backend - Prod"
     dependsOn: ApplyCftAppsLBSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))

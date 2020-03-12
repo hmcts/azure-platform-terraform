@@ -173,5 +173,11 @@ frontends = [
         selector       = "Idam.AuthId"
       },
     ]
+  },
+  {
+    name             = "probate"
+    custom_domain    = "probate.perftest.platform.hmcts.net"
+    backend_domain   = ["firewall-perftest-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
   }
 ]

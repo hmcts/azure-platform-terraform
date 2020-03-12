@@ -243,4 +243,10 @@ frontends = [
     backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
+  {
+    name             = "probate"
+    custom_domain    = "probate.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+  }
 ]

@@ -342,11 +342,5 @@ frontends = [
     custom_domain    = "probate.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
-  },
-  {
-    name             = "probate-caveats"
-    custom_domain    = "probate-caveats.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
-  },
+  }
 ]

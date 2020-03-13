@@ -177,6 +177,13 @@ frontends = [
     ]
   },
   {
+    name             = "sscs-cor-apex"
+    mode             = "Detection"
+    custom_domain    = "manage.appeal-benefit-decision.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "manage-appeal-benefit-decision-service-gov-uk"
+  },
+  {
     name             = "xui-webapp"
     mode             = "Detection"
     custom_domain    = "manage-case.platform.hmcts.net"

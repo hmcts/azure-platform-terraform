@@ -37,6 +37,9 @@ gateways:
         component: profile-sync
       - product: rd
         component: judicial-api
+      - product: rd
+        component: judicial-data-load
+
     # Divorce
       - product: div
         component: emca
@@ -72,7 +75,7 @@ gateways:
     # Fees and Pay
       - product: payment
         component: api
-    
+
     # Evidence Management
       - product: em
         component: anno
@@ -86,7 +89,7 @@ gateways:
         component: docassembly
       - product: dm
         component: store
-    
+
     # CCD
       - product: ccd
         component: data-store-api
@@ -101,7 +104,7 @@ gateways:
       - product: xui
         component: terms-and-conditions
 
-    # SIDAM 
+    # SIDAM
       - product: idam
         component: api
         cookie_based_affinity: Enabled

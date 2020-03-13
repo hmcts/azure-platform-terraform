@@ -47,3 +47,7 @@ gateways:
         component: tya-notif
       - product: sscs
         component: cor-backend
+
+    # Ethos
+      - product: ethos
+        component: repl-docmosis-backend

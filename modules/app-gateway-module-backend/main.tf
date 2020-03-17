@@ -103,7 +103,7 @@ resource "azurerm_application_gateway" "ag" {
   }
 
   ssl_certificate {
-    name     = "${app.product}-${app.component}-${local.gateways[count.index].gateway_configuration.certificate_name}"
+    name     = "${local.gateways[count.index].gateway_configuration.certificate_name}"
     data     = data.azurerm_key_vault_secret.certificate[count.index].value
     password = ""
   }
@@ -112,7 +112,7 @@ resource "azurerm_application_gateway" "ag" {
     for_each = [for app in local.gateways[count.index].app_configuration : {
       name                 = "${app.product}-${app.component}"
       ssl_enabled          = contains(keys(app), "ssl_enabled") ? app.ssl_enabled : false
-      ssl_certificate_name = "${app.product}-${app.component}-${local.gateways[count.index].gateway_configuration.certificate_name}"
+      ssl_certificate_name = "${local.gateways[count.index].gateway_configuration.certificate_name}"
     }]
 
     content {

@@ -16,6 +16,70 @@ cft_apps_cluster_ips   = ["10.13.15.250", "10.13.31.250"]
 
 frontends = [
   {
+    name             = "idam-web-public"
+    custom_domain    = "idam-web-public.prod.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-prod-platform-hmcts-net"
+    disabled_rules   = {}
+    global_exclusions = [
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "QueryStringArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "StartsWith",
+        selector       = "password"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "label"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "oauth2ClientSecret"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "description"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "redirect_uri"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "jwt"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.AuthId"
+      },
+    ]
+  },
+  {
     name             = "div-dn"
     mode             = "Detection"
     custom_domain    = "www.decree-nisi.apply-divorce.service.gov.uk"

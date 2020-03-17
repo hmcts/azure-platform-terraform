@@ -132,7 +132,12 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "StartsWith"
-        selector       = "reasonForDivorceBehaviourDetails"
+        selector       = "reasonForDivorceBehaviourDetails" // free text field that gets pinged a lot for sql like characters
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "file" // prevent WebKitFormBoundary path traversal FPs
       },
     ]
   },

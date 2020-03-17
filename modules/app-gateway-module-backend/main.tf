@@ -102,23 +102,17 @@ resource "azurerm_application_gateway" "ag" {
     }
   }
 
-  dynamic "ssl_certificate" {
-    for_each = [for app in local.gateways[count.index].app_configuration : {
-      name = "${app.product}-${app.component}-${local.gateways[count.index].gateway_configuration.certificate_name}"
-    } if contains(keys(app), "ssl_enabled")]
-
-    content {
-      name     = app.value.name
-      data     = data.azurerm_key_vault_secret.certificate.value
-      password = ""
-    }
+  ssl_certificate {
+    name     = "${app.product}-${app.component}-${local.gateways[count.index].gateway_configuration.certificate_name}"
+    data     = data.azurerm_key_vault_secret.certificate[count.index].value
+    password = ""
   }
 
   dynamic "http_listener" {
     for_each = [for app in local.gateways[count.index].app_configuration : {
       name                 = "${app.product}-${app.component}"
-      protocol             = contains(keys(app), "certificate_name") ? "Https" : "Http"
-      ssl_certificate_name = contains(keys(app), "certificate_name") ? app.certificate_name : ""
+      ssl_enabled          = contains(keys(app), "ssl_enabled") ? app.ssl_enabled : false
+      ssl_certificate_name = "${app.product}-${app.component}-${local.gateways[count.index].gateway_configuration.certificate_name}"
     }]
 
     content {

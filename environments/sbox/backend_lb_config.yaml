@@ -6,7 +6,7 @@ gateways:
         - 10.10.1.250
         - 10.10.3.250
       host_name_suffix: service.core-compute-sandbox.internal
-      ssl_host_name_suffix: perftest.platform.hmcts.net
+      ssl_host_name_suffix: sandbox.platform.hmcts.net
       certificate_name: STAR-sandbox-platform-hmcts-net
     app_configuration:
     # RPE

@@ -5,6 +5,7 @@ gateways:
       backend_pool_addresses:
         - 10.11.15.220
       host_name_suffix: service.core-compute-demo.internal
+      ssl_host_name_suffix: demo.platform.hmcts.net
       certificate_name: STAR-demo-platform-hmcts-net
     app_configuration:
     # RPE

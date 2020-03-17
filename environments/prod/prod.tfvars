@@ -139,6 +139,11 @@ frontends = [
         operator       = "Equals"
         selector       = "file" // prevent WebKitFormBoundary path traversal FPs
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "fileUrl" // this is used as a HAL ID for the document, it's a URI and a URL
+      },
     ]
   },
   {

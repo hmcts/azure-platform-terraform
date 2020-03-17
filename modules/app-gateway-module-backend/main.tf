@@ -112,7 +112,6 @@ resource "azurerm_application_gateway" "ag" {
     for_each = [for app in local.gateways[count.index].app_configuration : {
       name                 = "${app.product}-${app.component}"
       ssl_enabled          = contains(keys(app), "ssl_enabled") ? app.ssl_enabled : false
-      protocol             = app.ssl_enabled ? "Https" : "Http"
       ssl_certificate_name = "${local.gateways[count.index].gateway_configuration.certificate_name}"
     }]
 

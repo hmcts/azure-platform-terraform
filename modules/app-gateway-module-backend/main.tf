@@ -6,6 +6,17 @@ data "local_file" "configuration" {
   filename = var.yaml_path
 }
 
+data "azurerm_key_vault" "certificate_vault" {
+  name                = var.vault_name
+  resource_group_name = var.env == "perftest" || var.env == "aat" ? "core-infra-${var.subscription}-rg" : "core-infra-${var.env}-rg"
+}
+
+data "azurerm_key_vault_secret" "certificate" {
+  count        = length(local.gateways)
+  name         = local.gateways[count.index].gateway_configuration.certificate_name
+  key_vault_id = data.azurerm_key_vault.certificate_vault.id
+}
+
 resource "azurerm_application_gateway" "ag" {
   name                = "aks${format("%02d", count.index)}-${var.env}-agw"
   resource_group_name = local.vnet_rg
@@ -91,17 +102,32 @@ resource "azurerm_application_gateway" "ag" {
     }
   }
 
+  dynamic "ssl_certificate" {
+    for_each = [for app in local.gateways[count.index].app_configuration : {
+      name = "${app.product}-${app.component}-${local.gateways[count.index].gateway_configuration.certificate_name}"
+    } if contains(keys(app), "ssl_enabled")]
+
+    content {
+      name     = app.value.name
+      data     = data.azurerm_key_vault_secret.certificate.value
+      password = ""
+    }
+  }
+
   dynamic "http_listener" {
     for_each = [for app in local.gateways[count.index].app_configuration : {
-      name = "${app.product}-${app.component}"
+      name                 = "${app.product}-${app.component}"
+      protocol             = contains(keys(app), "certificate_name") ? "Https" : "Http"
+      ssl_certificate_name = contains(keys(app), "certificate_name") ? app.certificate_name : ""
     }]
 
     content {
       name                           = http_listener.value.name
       frontend_ip_configuration_name = "appGwPrivateFrontendIp"
-      frontend_port_name             = "http"
-      protocol                       = "Http"
+      frontend_port_name             = lower(http_listener.value.protocol)
+      protocol                       = http_listener.value.protocol
       host_name                      = "${http_listener.value.name}-${var.env}.${local.gateways[count.index].gateway_configuration.host_name_suffix}"
+      ssl_certificate_name           = http_listener.value.ssl_certificate_name
     }
   }
 

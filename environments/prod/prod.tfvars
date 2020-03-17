@@ -197,6 +197,11 @@ frontends = [
     custom_domain    = "www.appeal-benefit-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "www-appeal-benefit-decision-service-gov-uk"
+    disabled_rules = {
+      SQLI = [
+        "942360", # triggers on the create-account url for some reason
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -217,6 +222,21 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Contains"
+        selector       = "whatYouDisagreeWith"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Contains"
+        selector       = "reasonForAppealing"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "otherReasonForAppealing"
       },
     ]
   },
@@ -280,6 +300,12 @@ frontends = [
     custom_domain    = "www.moneyclaims.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "moneyclaims-service-gov-uk"
+    disabled_rules = {
+      SQLI = [
+        "942430", # this rule is far too sensitive, gets triggered all the time on free text fields
+        "942210", # this rule is far too sensitive, gets triggered all the time on free text fields
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -305,6 +331,21 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "signerRole"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reason"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "rows"
       },
     ]
 

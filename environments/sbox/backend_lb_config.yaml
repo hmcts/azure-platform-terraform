@@ -62,3 +62,9 @@ gateways:
       - product: idam
         component: web-admin
         cookie_based_affinity: Enabled
+      - product: idam-sprod
+        component: api
+        cookie_based_affinity: Enabled
+      - product: idam-sprod
+        component: web-admin
+        cookie_based_affinity: Enabled

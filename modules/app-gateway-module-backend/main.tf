@@ -111,6 +111,8 @@ resource "azurerm_application_gateway" "ag" {
   dynamic "http_listener" {
     for_each = [for app in local.gateways[count.index].app_configuration : {
       name                 = "${app.product}-${app.component}"
+      host_name            = "${app.product}-${app.component}-${var.env}.${local.gateways[count.index].gateway_configuration.host_name_suffix}"
+      ssl_host_name        = "${app.product}-${app.component}-${var.env}.${local.gateways[count.index].gateway_configuration.ssl_host_name_suffix}"
       ssl_enabled          = contains(keys(app), "ssl_enabled") ? app.ssl_enabled : false
       ssl_certificate_name = "${local.gateways[count.index].gateway_configuration.certificate_name}"
     }]
@@ -120,7 +122,7 @@ resource "azurerm_application_gateway" "ag" {
       frontend_ip_configuration_name = "appGwPrivateFrontendIp"
       frontend_port_name             = http_listener.value.ssl_enabled ? "https" : "http"
       protocol                       = http_listener.value.ssl_enabled ? "Https" : "Http"
-      host_name                      = "${http_listener.value.name}-${var.env}.${local.gateways[count.index].gateway_configuration.host_name_suffix}"
+      host_name                      = http_listener.value.ssl_enabled ? http_listener.value.ssl_host_name : http_listener.value.host_name
       ssl_certificate_name           = http_listener.value.ssl_enabled ? http_listener.value.ssl_certificate_name : ""
     }
   }

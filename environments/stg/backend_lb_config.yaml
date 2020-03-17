@@ -6,6 +6,7 @@ gateways:
         - 10.10.19.250
         - 10.10.23.250
       host_name_suffix: service.core-compute-aat.internal
+      certificate_name: STAR-aat-platform-hmcts-net
     app_configuration:
     # RPE
       - product: draft-store

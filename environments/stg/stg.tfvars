@@ -294,6 +294,7 @@ frontends = [
     custom_domain    = "idam-web-public-aat2.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
+    disabled_rules   = {}
     global_exclusions = [
       {
         match_variable = "RequestBodyPostArgNames",

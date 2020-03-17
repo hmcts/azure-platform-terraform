@@ -7,7 +7,7 @@ gateways:
         - 10.13.31.250
       host_name_suffix: service.core-compute-prod.internal
       ssl_host_name_suffix: platform.hmcts.net
-      certificate_name: STAR-platform-hmcts-net
+      certificate_name: wildcard-platform-hmcts-net
     app_configuration:
     # RPE
       - product: draft-store

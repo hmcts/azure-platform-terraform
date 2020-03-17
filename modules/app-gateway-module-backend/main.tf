@@ -119,8 +119,8 @@ resource "azurerm_application_gateway" "ag" {
     content {
       name                           = http_listener.value.name
       frontend_ip_configuration_name = "appGwPrivateFrontendIp"
-      frontend_port_name             = lower(http_listener.value.protocol)
-      protocol                       = http_listener.value.protocol
+      frontend_port_name             = http_listener.value.ssl_enabled ? "https" : "http"
+      protocol                       = http_listener.value.ssl_enabled ? "Https" : "Http"
       host_name                      = "${http_listener.value.name}-${var.env}.${local.gateways[count.index].gateway_configuration.host_name_suffix}"
       ssl_certificate_name           = http_listener.value.ssl_certificate_name
     }

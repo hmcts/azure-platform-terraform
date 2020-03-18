@@ -61,3 +61,11 @@ gateways:
         component: user-profile-api
       - product: ccd
         component: case-activity-api
+
+    # Probate
+      - product: probate
+        component: business-service
+      - product: probate
+        component: orchestrator-service
+      - product: probate
+        component: submit-service

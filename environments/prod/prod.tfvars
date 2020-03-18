@@ -416,7 +416,7 @@ frontends = [
     name             = "idam-web-public"
     custom_domain    = "hmcts-access.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-prod-platform-hmcts-net"
+    certificate_name = "hmcts-access-service-gov-uk",
     disabled_rules   = {}
     global_exclusions = [
       {

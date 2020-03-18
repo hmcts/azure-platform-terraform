@@ -72,7 +72,7 @@ frontends = [
     ]
   },
   {
-    name             = "idam-web-public"
+    name             = "idam-web-public-sprod"
     custom_domain    = "idam-web-public-sprod-aks.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "STAR-sandbox-platform-hmcts-net"

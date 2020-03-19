@@ -6,6 +6,8 @@ gateways:
         - 10.10.41.250
         - 10.10.45.250
       host_name_suffix: service.core-compute-perftest.internal
+      ssl_host_name_suffix: perftest.platform.hmcts.net
+      certificate_name: wildcard-perftest-platform-hmcts-net
     app_configuration:
     # RPE
       - product: draft-store

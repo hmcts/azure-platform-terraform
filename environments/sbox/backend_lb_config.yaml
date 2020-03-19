@@ -6,6 +6,8 @@ gateways:
         - 10.10.1.250
         - 10.10.3.250
       host_name_suffix: service.core-compute-sandbox.internal
+      ssl_host_name_suffix: sandbox.platform.hmcts.net
+      certificate_name: STAR-sandbox-platform-hmcts-net
     app_configuration:
     # RPE
       - product: draft-store
@@ -59,13 +61,15 @@ gateways:
       - product: idam
         component: api
         cookie_based_affinity: Enabled
+        ssl_enabled: true
       - product: idam
         component: web-admin
         cookie_based_affinity: Enabled
+        ssl_enabled: true
+
       - product: idam
         component: api-sprod
         cookie_based_affinity: Enabled
       - product: idam
         component: web-admin-sprod
         cookie_based_affinity: Enabled
-

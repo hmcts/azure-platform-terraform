@@ -6,6 +6,17 @@ data "local_file" "configuration" {
   filename = var.yaml_path
 }
 
+data "azurerm_key_vault" "certificate_vault" {
+  name                = var.vault_name
+  resource_group_name = var.env == "perftest" || var.env == "aat" ? "core-infra-${var.subscription}-rg" : "core-infra-${var.env}-rg"
+}
+
+data "azurerm_key_vault_secret" "certificate" {
+  count        = length(local.gateways)
+  name         = local.gateways[count.index].gateway_configuration.certificate_name
+  key_vault_id = data.azurerm_key_vault.certificate_vault.id
+}
+
 resource "azurerm_application_gateway" "ag" {
   name                = "aks${format("%02d", count.index)}-${var.env}-agw"
   resource_group_name = local.vnet_rg
@@ -91,17 +102,28 @@ resource "azurerm_application_gateway" "ag" {
     }
   }
 
+  ssl_certificate {
+    name     = "${local.gateways[count.index].gateway_configuration.certificate_name}"
+    data     = data.azurerm_key_vault_secret.certificate[count.index].value
+    password = ""
+  }
+
   dynamic "http_listener" {
     for_each = [for app in local.gateways[count.index].app_configuration : {
-      name = "${app.product}-${app.component}"
+      name                 = "${app.product}-${app.component}"
+      host_name            = "${app.product}-${app.component}-${var.env}.${local.gateways[count.index].gateway_configuration.host_name_suffix}"
+      ssl_host_name        = "${app.product}-${app.component}.${local.gateways[count.index].gateway_configuration.ssl_host_name_suffix}"
+      ssl_enabled          = contains(keys(app), "ssl_enabled") ? app.ssl_enabled : false
+      ssl_certificate_name = "${local.gateways[count.index].gateway_configuration.certificate_name}"
     }]
 
     content {
       name                           = http_listener.value.name
       frontend_ip_configuration_name = "appGwPrivateFrontendIp"
-      frontend_port_name             = "http"
-      protocol                       = "Http"
-      host_name                      = "${http_listener.value.name}-${var.env}.${local.gateways[count.index].gateway_configuration.host_name_suffix}"
+      frontend_port_name             = http_listener.value.ssl_enabled ? "https" : "http"
+      protocol                       = http_listener.value.ssl_enabled ? "Https" : "Http"
+      host_name                      = http_listener.value.ssl_enabled ? http_listener.value.ssl_host_name : http_listener.value.host_name
+      ssl_certificate_name           = http_listener.value.ssl_enabled ? http_listener.value.ssl_certificate_name : ""
     }
   }
 

@@ -21,6 +21,67 @@ frontends = [
     custom_domain    = "www.decree-nisi.apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "decree-nisi-apply-divorce-service-gov-uk"
+    disabled_rules = {
+      SQLI = [
+        "942200",
+        "942400",
+      ]
+    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+    ]
+  },
+  {
+    name             = "div-da"
+    mode             = "Detection"
+    custom_domain    = "www.decree-absolute.apply-divorce.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "decree-absolute-apply-divorce-service-gov-uk"
+    disabled_rules = {
+      SQLI = [
+        "942200",
+        "942400",
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -60,50 +121,17 @@ frontends = [
     ]
   },
   {
-    name             = "div-da"
-    mode             = "Detection"
-    custom_domain    = "www.decree-absolute.apply-divorce.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "decree-absolute-apply-divorce-service-gov-uk"
-    global_exclusions = [
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "connect.sid"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "__auth-token"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "__auth-token"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "iss"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "_csrf"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "_csrf"
-      },
-    ]
-  },
-  {
     name             = "div-rfe"
     mode             = "Detection"
     custom_domain    = "www.respond-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "respond-divorce-service-gov-uk"
+    disabled_rules = {
+      SQLI = [
+        "942200",
+        "942400",
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -119,6 +147,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "session"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -143,6 +176,17 @@ frontends = [
     custom_domain    = "www.apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-divorce-service-gov-uk"
+    disabled_rules = {
+      SQLI = [
+        "942200",
+      ]
+      LFI = [
+        "930110" // false positive on multi-part uploads
+      ]
+      RCE = [
+        "932100"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -188,6 +232,16 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "fileUrl" // this is used as a HAL ID for the document, it's a URI and a URL
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "legalProceedingsDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "petitionerNameChangedHowOtherDetails"
       },
     ]
   },

@@ -53,3 +53,21 @@ gateways:
     # Ethos
       - product: ethos
         component: repl-docmosis-backend
+
+    # CCD
+      - product: ccd
+        component: data-store-api
+      - product: ccd
+        component: definition-store-api
+      - product: ccd
+        component: user-profile-api
+      - product: ccd
+        component: case-activity-api
+
+    # Probate
+      - product: probate
+        component: business-service
+      - product: probate
+        component: orchestrator-service
+      - product: probate
+        component: submit-service

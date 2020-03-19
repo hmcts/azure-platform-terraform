@@ -67,9 +67,9 @@ gateways:
         cookie_based_affinity: Enabled
         ssl_enabled: true
 
-      - product: idam-sprod
-        component: api
+      - product: idam
+        component: api-sprod
         cookie_based_affinity: Enabled
-      - product: idam-sprod
-        component: web-admin
+      - product: idam
+        component: web-admin-sprod
         cookie_based_affinity: Enabled

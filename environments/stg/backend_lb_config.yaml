@@ -169,10 +169,10 @@ gateways:
 
  # IDAM
       - product: idam
-        component: api
+        component: api-aat2
         cookie_based_affinity: Enabled
         ssl_enabled: true
       - product: idam
-        component: web-admin
+        component: web-admin-aat2
         cookie_based_affinity: Enabled
         ssl_enabled: true

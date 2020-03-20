@@ -116,7 +116,7 @@ frontends = [
   },
   {
     name             = "idam-web-public"
-    custom_domain    = "idam-web-public-aks.ithc.platform.hmcts.net"
+    custom_domain    = "idam-web-public.ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     disabled_rules   = {}

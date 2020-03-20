@@ -179,6 +179,7 @@ frontends = [
     disabled_rules = {
       SQLI = [
         "942200",
+        "942400",
       ]
       LFI = [
         "930110" // false positive on multi-part uploads
@@ -253,7 +254,11 @@ frontends = [
     certificate_name = "www-appeal-benefit-decision-service-gov-uk"
     disabled_rules = {
       SQLI = [
+        "942310", # overly sensitive
         "942360", # triggers on the create-account url for some reason
+      ]
+      LFI = [
+        "930110" // false positive on multi-part uploads
       ]
     }
     global_exclusions = [
@@ -300,6 +305,33 @@ frontends = [
     custom_domain    = "www.track-benefit-appeal.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "www-track-benefit-appeal-service-gov-uk"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "tya-surname-appeal-validated"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "sscs-cor"
@@ -355,9 +387,12 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "moneyclaims-service-gov-uk"
     disabled_rules = {
+      # these sql rules are far too sensitive, they gets triggered all the time on free text fields
       SQLI = [
-        "942430", # this rule is far too sensitive, gets triggered all the time on free text fields
-        "942210", # this rule is far too sensitive, gets triggered all the time on free text fields
+        "942430", 
+        "942200",
+        "942210",
+        "942400",
       ]
     }
     global_exclusions = [
@@ -435,6 +470,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "text"
       },
     ]
 

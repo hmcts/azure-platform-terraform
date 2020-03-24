@@ -102,6 +102,9 @@ gateways:
         component: case-print-service
       - product: ccd
         component: case-activity-api
+      - product: ccd
+        component: admin-web
+        ssl_enabled: true     
 
     # BAR
       - product: bar

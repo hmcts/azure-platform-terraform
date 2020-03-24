@@ -92,6 +92,9 @@ gateways:
         component: user-profile-api
       - product: ccd
         component: case-activity-api
+      - product: ccd
+        component: admin-web
+        ssl_enabled: true
     # CTSC
       - product: ctsc
         component: work-allocation

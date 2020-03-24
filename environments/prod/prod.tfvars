@@ -23,8 +23,17 @@ frontends = [
     certificate_name = "decree-nisi-apply-divorce-service-gov-uk"
     disabled_rules = {
       SQLI = [
+        "942100",
+        "942150",
         "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
         "942400",
+      ]
+      LFI = [
+        "930110" // false positive on multi-part uploads
       ]
     }
     global_exclusions = [
@@ -78,7 +87,13 @@ frontends = [
     certificate_name = "decree-absolute-apply-divorce-service-gov-uk"
     disabled_rules = {
       SQLI = [
+        "942100",
+        "942150",
         "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
         "942400",
       ]
     }
@@ -128,7 +143,13 @@ frontends = [
     certificate_name = "respond-divorce-service-gov-uk"
     disabled_rules = {
       SQLI = [
+        "942100",
+        "942150",
         "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
         "942400",
       ]
     }
@@ -178,7 +199,13 @@ frontends = [
     certificate_name = "apply-divorce-service-gov-uk"
     disabled_rules = {
       SQLI = [
+        "942100",
+        "942150",
         "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
         "942400",
       ]
       LFI = [
@@ -244,6 +271,11 @@ frontends = [
         operator       = "Equals"
         selector       = "petitionerNameChangedHowOtherDetails"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "address"
+      },
     ]
   },
   {
@@ -254,8 +286,16 @@ frontends = [
     certificate_name = "www-appeal-benefit-decision-service-gov-uk"
     disabled_rules = {
       SQLI = [
-        "942310", # overly sensitive
-        "942360", # triggers on the create-account url for some reason
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942310",
+        "942360",
+        "942361",
+        "942380",
+        "942400",
       ]
       LFI = [
         "930110" // false positive on multi-part uploads
@@ -305,6 +345,18 @@ frontends = [
     custom_domain    = "www.track-benefit-appeal.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "www-track-benefit-appeal-service-gov-uk"
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -339,6 +391,18 @@ frontends = [
     custom_domain    = "www.manage.appeal-benefit-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "manage-appeal-benefit-decision-service-gov-uk"
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -358,6 +422,18 @@ frontends = [
     custom_domain    = "manage-case.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "manage-case-platform-hmcts-net"
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+      ]
+    }
   },
   {
     name             = "xui-manage-org"
@@ -365,6 +441,18 @@ frontends = [
     custom_domain    = "manage-org.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "manage-org-platform-hmcts-net"
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+      ]
+    }
   },
   {
     name             = "xui-approve-org"
@@ -372,6 +460,18 @@ frontends = [
     custom_domain    = "administer-orgs.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "administer-orgs-platform-hmcts-net"
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+      ]
+    }
   },
   {
     name             = "xui-register-org"
@@ -379,6 +479,18 @@ frontends = [
     custom_domain    = "register-org.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "register-org-platform-hmcts-net"
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+      ]
+    }
   },
   {
     name             = "cmc"
@@ -387,13 +499,17 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "moneyclaims-service-gov-uk"
     disabled_rules = {
-      # these sql rules are far too sensitive, they gets triggered all the time on free text fields
       SQLI = [
-        "942430", 
+        "942100",
+        "942150",
         "942200",
         "942210",
+        "942230",
         "942260",
+        "942361",
+        "942380",
         "942400",
+        "942430",
       ]
     }
     global_exclusions = [
@@ -446,6 +562,20 @@ frontends = [
     custom_domain    = "www.moneyclaim-legal.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "www-moneyclaim-legal-platform-hmcts-net"
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942260",
+        "942361",
+        "942380",
+        "942400",
+        "942430",
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -486,6 +616,13 @@ frontends = [
     custom_domain    = "www.ccd.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "ccd-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "gateway-ccd"
@@ -493,6 +630,18 @@ frontends = [
     custom_domain    = "gateway.ccd.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "ccd-platform-hmcts-net"
+    disabled_rules = {
+      LFI = [
+        "930110" // false positive on multi-part uploads
+      ]
+    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "accessToken"
+      },
+    ]
   },
   {
     name             = "return-case-doc-ccd"

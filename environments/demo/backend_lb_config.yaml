@@ -27,7 +27,9 @@ gateways:
         component: hm
       - product: div
         component: cfs
-        
+    # FPLA
+      - product: fpl
+        component: case-service
      # IA
       - product: ia
         component: case-api

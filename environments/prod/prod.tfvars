@@ -506,6 +506,7 @@ frontends = [
         "942210",
         "942230",
         "942260",
+        "942340",
         "942361",
         "942380",
         "942400",
@@ -631,6 +632,9 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "ccd-platform-hmcts-net"
     disabled_rules = {
+      SQLI = [
+        "942100",
+      ]
       LFI = [
         "930110" // false positive on multi-part uploads
       ]

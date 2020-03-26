@@ -23,6 +23,8 @@ gateways:
         component: orchestrator-service
       - product: probate
         component: submit-service
+      - product: probate
+        component: back-office
     # I&A
       - product: ia
         component: case-api

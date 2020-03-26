@@ -506,10 +506,16 @@ frontends = [
         "942210",
         "942230",
         "942260",
+        "942330",
+        "942310",
+        "942340",
         "942361",
         "942380",
         "942400",
         "942430",
+      ]
+      RCE = [
+        "932150"
       ]
     }
     global_exclusions = [
@@ -631,6 +637,16 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "ccd-platform-hmcts-net"
     disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+      ]
       LFI = [
         "930110" // false positive on multi-part uploads
       ]

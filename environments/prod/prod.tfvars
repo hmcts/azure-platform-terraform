@@ -207,6 +207,7 @@ frontends = [
         "942361",
         "942380",
         "942400",
+        "942430",
       ]
       LFI = [
         "930110" // false positive on multi-part uploads
@@ -296,6 +297,7 @@ frontends = [
         "942361",
         "942380",
         "942400",
+        "942430"
       ]
       LFI = [
         "930110" // false positive on multi-part uploads
@@ -355,6 +357,7 @@ frontends = [
         "942361",
         "942380",
         "942400",
+        "942440",
       ]
     }
     global_exclusions = [
@@ -510,12 +513,15 @@ frontends = [
         "942310",
         "942340",
         "942361",
+        "942370",
         "942380",
         "942400",
         "942430",
+        "942450",
       ]
       RCE = [
-        "932150"
+        "932105",
+        "932150",
       ]
     }
     global_exclusions = [
@@ -639,6 +645,7 @@ frontends = [
     disabled_rules = {
       SQLI = [
         "942100",
+        "942110",
         "942150",
         "942200",
         "942210",
@@ -648,7 +655,12 @@ frontends = [
         "942400",
       ]
       LFI = [
-        "930110" // false positive on multi-part uploads
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+      RCE = [
+        "932105",
+        "932150",
       ]
     }
     global_exclusions = [

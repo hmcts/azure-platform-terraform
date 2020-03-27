@@ -11,5 +11,5 @@ probate_shutter_storage = "probate"
 # comma separated FQDN that needs to have the shutter page from the above storage account.
 
 probate_shutter_apps = [
-    "apply-for-probate.service.gov.uk"  
+  "apply-for-probate.service.gov.uk"
 ]

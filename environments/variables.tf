@@ -61,3 +61,11 @@ variable sscscor_shutter {
 variable "app_gw_private_ip_address" {
   default = []
 }
+
+variable probate_shutter_storage {
+  default = []
+}
+
+variable probate_shutter_apps {
+  default = []
+}

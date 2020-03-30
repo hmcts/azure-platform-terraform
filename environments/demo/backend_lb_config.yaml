@@ -75,3 +75,7 @@ gateways:
         component: submit-service
       - product: probate
         component: back-office
+
+    # CMC
+      - product: cmc
+        component: claim-store

@@ -302,5 +302,12 @@ frontends = [
     mode             = "Detection"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
+    name             = "idam-web-public-aat2"
+    custom_domain    = "idam-web-public-aat2.aat.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
   }
 ]

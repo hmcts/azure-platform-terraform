@@ -680,6 +680,7 @@ frontends = [
   },
   {
     name             = "probate"
+    mode             = "Detection"
     custom_domain    = "www.apply-for-probate.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-for-probate-service-gov-uk"

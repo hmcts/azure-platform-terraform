@@ -28,12 +28,14 @@ frontends = [
         "942200",
         "942210",
         "942230",
+        "942310",
         "942361",
         "942380",
         "942400",
       ]
       LFI = [
-        "930110" // false positive on multi-part uploads
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
       ]
     }
     global_exclusions = [
@@ -210,7 +212,8 @@ frontends = [
         "942430",
       ]
       LFI = [
-        "930110" // false positive on multi-part uploads
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
       ]
       RCE = [
         "932100"
@@ -293,6 +296,7 @@ frontends = [
         "942210",
         "942230",
         "942310",
+        "942340",
         "942360",
         "942361",
         "942380",
@@ -300,7 +304,8 @@ frontends = [
         "942430"
       ]
       LFI = [
-        "930110" // false positive on multi-part uploads
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
       ]
     }
     global_exclusions = [
@@ -504,24 +509,31 @@ frontends = [
     disabled_rules = {
       SQLI = [
         "942100",
+        "942110",
         "942150",
         "942200",
         "942210",
         "942230",
         "942260",
-        "942330",
+        "942300",
         "942310",
+        "942330",
         "942340",
         "942361",
         "942370",
         "942380",
+        "942390",
         "942400",
         "942430",
         "942450",
       ]
       RCE = [
         "932105",
+        "932115",
         "932150",
+      ]
+      PROTOCOL-ATTACK = [
+        "921110"
       ]
     }
     global_exclusions = [
@@ -684,5 +696,22 @@ frontends = [
     custom_domain    = "www.apply-for-probate.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-for-probate-service-gov-uk"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   }
 ]

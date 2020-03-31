@@ -307,6 +307,9 @@ frontends = [
         "930100", // false positive on multi-part uploads
         "930110", // false positive on multi-part uploads
       ]
+      RCE = [
+        "932100"
+      ]
     }
     global_exclusions = [
       {
@@ -409,6 +412,10 @@ frontends = [
         "942361",
         "942380",
         "942400",
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
       ]
     }
     global_exclusions = [
@@ -524,6 +531,7 @@ frontends = [
         "942380",
         "942390",
         "942400",
+        "942410",
         "942430",
         "942450",
       ]

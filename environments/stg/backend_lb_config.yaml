@@ -35,6 +35,10 @@ gateways:
       - product: ia
         component: aip-frontend
 
+    # Protected Characteristics Questions
+      - product: pcq
+        component: backend    
+
     # Divorce
       - product: div
         component: emca

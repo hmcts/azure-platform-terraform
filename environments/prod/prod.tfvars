@@ -17,7 +17,7 @@ cft_apps_cluster_ips   = ["10.13.15.250", "10.13.31.250"]
 frontends = [
   {
     name             = "div-dn"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.decree-nisi.apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "decree-nisi-apply-divorce-service-gov-uk"
@@ -83,7 +83,7 @@ frontends = [
   },
   {
     name             = "div-da"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.decree-absolute.apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "decree-absolute-apply-divorce-service-gov-uk"
@@ -139,7 +139,7 @@ frontends = [
   },
   {
     name             = "div-rfe"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.respond-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "respond-divorce-service-gov-uk"
@@ -195,7 +195,7 @@ frontends = [
   },
   {
     name             = "div-pfe"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-divorce-service-gov-uk"
@@ -284,7 +284,7 @@ frontends = [
   },
   {
     name             = "sscs-tribunals"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.appeal-benefit-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "www-appeal-benefit-decision-service-gov-uk"
@@ -351,7 +351,7 @@ frontends = [
   },
   {
     name             = "sscs-tya"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.track-benefit-appeal.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "www-track-benefit-appeal-service-gov-uk"
@@ -398,7 +398,7 @@ frontends = [
   },
   {
     name             = "sscs-cor"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.manage.appeal-benefit-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "manage-appeal-benefit-decision-service-gov-uk"
@@ -509,7 +509,7 @@ frontends = [
   },
   {
     name             = "cmc"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.moneyclaims.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "moneyclaims-service-gov-uk"
@@ -590,7 +590,7 @@ frontends = [
   },
   {
     name             = "cmc-legal"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.moneyclaim-legal.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "www-moneyclaim-legal-platform-hmcts-net"
@@ -644,7 +644,7 @@ frontends = [
   },
   {
     name             = "www-ccd"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.ccd.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "ccd-platform-hmcts-net"
@@ -658,7 +658,7 @@ frontends = [
   },
   {
     name             = "gateway-ccd"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "gateway.ccd.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "ccd-platform-hmcts-net"
@@ -700,7 +700,7 @@ frontends = [
   },
   {
     name             = "probate"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.apply-for-probate.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-for-probate-service-gov-uk"

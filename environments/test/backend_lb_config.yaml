@@ -78,6 +78,10 @@ gateways:
       - product: sscs
         component: cor-backend
 
+    # Ethos
+      - product: ethos
+        component: repl-docmosis-backend
+
     # FPLA
       - product: fpl
         component: case-service

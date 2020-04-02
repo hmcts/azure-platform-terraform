@@ -286,75 +286,27 @@ frontends = [
   {
     name             = "adoption"
     custom_domain    = "adoption.aat.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
+    name             = "probate"
+    custom_domain    = "probate.aat.platform.hmcts.net"
+    mode             = "Detection"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },
   {
     name             = "idam-web-public"
-    custom_domain    = "idam-web-public-aat2.aat.platform.hmcts.net"
+    custom_domain    = "idam-web-public.aat.platform.hmcts.net"
+    mode             = "Detection"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
-    global_exclusions = [
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "redirectUri"
-      },
-      {
-        match_variable = "QueryStringArgNames",
-        operator       = "Equals",
-        selector       = "redirectUri"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "StartsWith",
-        selector       = "password"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "label"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "oauth2ClientSecret"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "description"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "iss"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "redirect_uri"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "jwt"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "token"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "Idam.AuthId"
-      },
-    ]
   },
   {
-    name             = "probate"
-    custom_domain    = "probate.aat.platform.hmcts.net"
+    name             = "idam-web-public-aat2"
+    custom_domain    = "idam-web-public-aat2.aat.platform.hmcts.net"
     mode             = "Detection"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"

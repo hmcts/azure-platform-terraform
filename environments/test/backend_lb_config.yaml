@@ -36,6 +36,8 @@ gateways:
         component: orchestrator-service
       - product: probate
         component: submit-service
+      - product: probate
+        component: back-office
     # I&A
       - product: ia
         component: case-api
@@ -76,6 +78,10 @@ gateways:
       - product: sscs
         component: cor-backend
 
+    # Ethos
+      - product: ethos
+        component: repl-docmosis-backend
+
     # FPLA
       - product: fpl
         component: case-service
@@ -92,6 +98,9 @@ gateways:
         component: user-profile-api
       - product: ccd
         component: case-activity-api
+      - product: ccd
+        component: admin-web
+        ssl_enabled: true
     # CTSC
       - product: ctsc
         component: work-allocation

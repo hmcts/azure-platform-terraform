@@ -310,5 +310,26 @@ frontends = [
     mode             = "Detection"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
+    name             = "paybubble"
+    custom_domain    = "paybubble.aat.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
+    name             = "bar"
+    custom_domain    = "bar.aat.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
+    name             = "fees-register"
+    custom_domain    = "fees-register.aat.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
   }
 ]

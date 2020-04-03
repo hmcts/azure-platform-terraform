@@ -723,6 +723,13 @@ frontends = [
     ]
   },
   {
+    name             = "ia-aip"
+    mode             = "Detection"
+    custom_domain    = "immigration-appeal.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "immigration-appeal-platform-hmcts-net"
+  },
+  {
     name             = "fees-register"
     mode             = "Detection"
     custom_domain    = "fees-register.platform.hmcts.net"

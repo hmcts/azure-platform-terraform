@@ -16,12 +16,12 @@ cft_apps_cluster_ips   = ["10.10.1.250", "10.10.3.250"]
 
 frontends = [
   {
-    name                  = "plum"
-    custom_domain         = "plum.sandbox.platform.hmcts.net"
-    backend_domain        = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name      = "STAR-sandbox-platform-hmcts-net"
-    disabled_rules        = {}
-    www_redirect = true
+    name             = "plum"
+    custom_domain    = "plum.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "STAR-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+    www_redirect     = true
   },
   {
     name             = "idam-web-public"

@@ -742,7 +742,7 @@ frontends = [
   {
     name             = "fees-register"
     mode             = "Detection"
-    custom_domain    = "www.fees-register.platform.hmcts.net"
+    custom_domain    = "fees-register.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "fees-register-platform-hmcts-net"
     www_redirect     = true

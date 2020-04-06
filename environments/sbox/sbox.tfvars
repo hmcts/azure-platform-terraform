@@ -21,7 +21,6 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "STAR-sandbox-platform-hmcts-net"
     disabled_rules   = {}
-    www_redirect     = true
   },
   {
     name             = "idam-web-public"

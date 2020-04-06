@@ -72,6 +72,28 @@ resource "azurerm_frontdoor" "main" {
     }
   }
 
+  ######## Additional www frontend ########
+  dynamic "frontend_endpoint" {
+    iterator = host
+    for_each = var.frontends
+    content {
+      count                                   = "${host.value["additionalwwwredirect"]} ? 1 : 0"
+      name                                    = "www${host.value["name"]}"
+      host_name                               = "www.${host.value["custom_domain"]}"
+      custom_https_provisioning_enabled       = var.enable_ssl
+      web_application_firewall_policy_link_id = "/subscriptions/${var.subscription_id}/resourcegroups/${var.resource_group}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/${replace(host.value["name"], "-", "")}${replace(var.env, "-", "")}"
+      dynamic "custom_https_configuration" {
+        for_each = local.isSSL
+        content {
+          certificate_source                         = var.ssl_mode
+          azure_key_vault_certificate_vault_id       = var.ssl_mode == "AzureKeyVault" ? data.azurerm_key_vault.certificate_vault.id : null
+          azure_key_vault_certificate_secret_name    = var.ssl_mode == "AzureKeyVault" ? data.azurerm_key_vault_secret.certificate[host.key].name : null
+          azure_key_vault_certificate_secret_version = var.ssl_mode == "AzureKeyVault" ? data.azurerm_key_vault_secret.certificate[host.key].version : null
+        }
+      }
+    }
+  }
+
   dynamic "backend_pool_load_balancing" {
     iterator = host
     for_each = var.frontends
@@ -148,6 +170,24 @@ resource "azurerm_frontdoor" "main" {
       redirect_configuration {
         redirect_protocol = "HttpsOnly"
         redirect_type     = "Moved"
+      }
+    }
+  }
+
+  dynamic "routing_rule" {
+    iterator = host
+    for_each = var.frontends
+    content {
+      count              = "${host.value["additionalwwwredirect"]} ? 1 : 0"
+      name               = "${host.value["name"]}wwwRedirect"
+      accepted_protocols = ["Http", "Https"]
+      patterns_to_match  = ["/*"]
+      frontend_endpoints = ["www${host.value["name"]}"]
+
+      redirect_configuration {
+        redirect_protocol = "HttpsOnly"
+        redirect_type     = "Moved"
+        custom_host       = host.value["custom_domain"]
       }
     }
   }

@@ -76,7 +76,7 @@ resource "azurerm_frontdoor" "main" {
   dynamic "frontend_endpoint" {
     iterator = host
     for_each = [
-      for frontend in var.frontends: frontend if frontend.additionalwwwredirect
+      for frontend in var.frontends: frontend if lookup(frontend, "additionalwwwredirect", false)
     ]
     content {
       name                                    = "www${host.value["name"]}"
@@ -177,7 +177,7 @@ resource "azurerm_frontdoor" "main" {
   dynamic "routing_rule" {
     iterator = host
     for_each = [
-    for frontend in var.frontends: frontend if frontend.additionalwwwredirect
+    for frontend in var.frontends: frontend if lookup(frontend, "additionalwwwredirect", false)
     ]
     content {
       name               = "${host.value["name"]}wwwRedirect"

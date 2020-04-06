@@ -712,7 +712,7 @@ frontends = [
       },
       {
         match_variable = "RequestCookieNames"
-        operator       = "Equals"
+        operator       = "StartsWith"
         selector       = "__auth-token"
       },
       {
@@ -724,11 +724,6 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "__redirect"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "access_token"
       },
       {
         match_variable = "RequestCookieNames"

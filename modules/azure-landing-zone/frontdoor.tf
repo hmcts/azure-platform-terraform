@@ -76,12 +76,12 @@ resource "azurerm_frontdoor" "main" {
   dynamic "frontend_endpoint" {
     iterator = host
     for_each = [
-      for frontend in var.frontends: frontend if lookup(frontend, "additionalwwwredirect", false)
+      for frontend in var.frontends : frontend if lookup(frontend, "additionalwwwredirect", false)
     ]
     content {
-      name                                    = "www${host.value["name"]}"
-      host_name                               = "www.${host.value["custom_domain"]}"
-      custom_https_provisioning_enabled       = var.enable_ssl
+      name                              = "www${host.value["name"]}"
+      host_name                         = "www.${host.value["custom_domain"]}"
+      custom_https_provisioning_enabled = var.enable_ssl
       dynamic "custom_https_configuration" {
         for_each = local.isSSL
         content {
@@ -177,7 +177,7 @@ resource "azurerm_frontdoor" "main" {
   dynamic "routing_rule" {
     iterator = host
     for_each = [
-    for frontend in var.frontends: frontend if lookup(frontend, "additionalwwwredirect", false)
+      for frontend in var.frontends : frontend if lookup(frontend, "additionalwwwredirect", false)
     ]
     content {
       name               = "${host.value["name"]}wwwRedirect"

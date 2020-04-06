@@ -75,15 +75,17 @@ resource "azurerm_application_gateway" "ag" {
 
   dynamic "probe" {
     for_each = [for app in local.gateways[count.index].app_configuration : {
-      name = "${app.product}-${app.component}"
-      host = "${app.product}-${app.component}-${var.env}.${local.gateways[count.index].gateway_configuration.host_name_suffix}"
-      path = lookup(app, "health_path_override", "/health/liveness")
+      name          = "${app.product}-${app.component}"
+      path          = lookup(app, "health_path_override", "/health/liveness")
+      host_name     = "${app.product}-${app.component}-${var.env}.${local.gateways[count.index].gateway_configuration.host_name_suffix}"
+      ssl_host_name = "${app.product}-${app.component}.${local.gateways[count.index].gateway_configuration.ssl_host_name_suffix}"
+      ssl_enabled   = contains(keys(app), "ssl_enabled") ? app.ssl_enabled : false
     }]
 
     content {
       interval            = 10
       name                = probe.value.name
-      host                = probe.value.host
+      host                = probe.value.ssl_enabled ? probe.value.ssl_host_name : probe.value.host_name
       path                = probe.value.path
       protocol            = "Http"
       timeout             = 15

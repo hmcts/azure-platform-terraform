@@ -27,7 +27,9 @@ gateways:
         component: hm
       - product: div
         component: cfs
-        
+    # FPLA
+      - product: fpl
+        component: case-service
      # IA
       - product: ia
         component: case-api
@@ -71,3 +73,9 @@ gateways:
         component: orchestrator-service
       - product: probate
         component: submit-service
+      - product: probate
+        component: back-office
+
+    # CMC
+      - product: cmc
+        component: claim-store

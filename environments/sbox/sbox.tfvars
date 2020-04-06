@@ -24,7 +24,7 @@ frontends = [
   },
   {
     name             = "idam-web-public"
-    custom_domain    = "idam-web-public-aks.sandbox.platform.hmcts.net"
+    custom_domain    = "idam-web-public.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "STAR-sandbox-platform-hmcts-net"
     disabled_rules   = {}
@@ -83,7 +83,7 @@ frontends = [
   },
   {
     name             = "idam-sprod-web-public"
-    custom_domain    = "idam-web-public-sprod-aks.sandbox.platform.hmcts.net"
+    custom_domain    = "idam-web-public-sprod.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "STAR-sandbox-platform-hmcts-net"
     disabled_rules   = {}

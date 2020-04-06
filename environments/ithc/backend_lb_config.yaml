@@ -23,6 +23,8 @@ gateways:
         component: orchestrator-service
       - product: probate
         component: submit-service
+      - product: probate
+        component: back-office
     # I&A
       - product: ia
         component: case-api
@@ -86,7 +88,7 @@ gateways:
       - product: em
         component: stitching
       - product: em
-        component: ccd-orchestrator
+        component: ccdorc
       - product: dg
         component: docassembly
       - product: dm
@@ -101,6 +103,9 @@ gateways:
         component: user-profile-api
       - product: ccd
         component: case-activity-api
+      - product: ccd
+        component: admin-web
+        ssl_enabled: true
 
     # xui
       - product: xui
@@ -110,9 +115,11 @@ gateways:
       - product: idam
         component: api
         cookie_based_affinity: Enabled
+        ssl_enabled: true
       - product: idam
         component: web-admin
         cookie_based_affinity: Enabled
+        ssl_enabled: true
 
     # CMC
       - product: cmc

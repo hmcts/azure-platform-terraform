@@ -723,17 +723,17 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "nextStepUrl"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "continue_url"
+        selector       = "__redirect"
       },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "continue_url"
+        selector       = "access_token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__eligibility"
       },
     ]
   },

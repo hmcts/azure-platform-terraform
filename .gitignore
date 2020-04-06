@@ -5,3 +5,6 @@
 **/.terraform/*
 **/.DS_Store
 tfplan
+
+.idea/
+*.iml

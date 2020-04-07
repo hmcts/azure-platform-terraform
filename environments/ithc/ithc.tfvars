@@ -116,7 +116,7 @@ frontends = [
   },
   {
     name             = "idam-web-public"
-    custom_domain    = "idam-web-public-aks.ithc.platform.hmcts.net"
+    custom_domain    = "idam-web-public.ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     disabled_rules   = {}
@@ -170,6 +170,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.AuthId"
       },
     ]
   },
@@ -246,6 +251,27 @@ frontends = [
   {
     name             = "probate"
     custom_domain    = "probate.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+  },
+  {
+    name             = "paybubble"
+    custom_domain    = "paybubble.ithc.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+  },
+  {
+    name             = "bar"
+    custom_domain    = "bar.ithc.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+  },
+  {
+    name             = "fees-register"
+    custom_domain    = "fees-register.ithc.platform.hmcts.net"
+    mode             = "Detection"
     backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   }

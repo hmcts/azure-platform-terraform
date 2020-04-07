@@ -2,6 +2,10 @@ variable "yaml_path" {
   description = "path to yaml config file"
 }
 
+variable "backend_pool_ip_addresses" {
+  description = "list of ip addresses to add to the backend pool"
+}
+
 variable "env" {
   description = "environment, will be used in resource names and for looking up the vnet details"
 }

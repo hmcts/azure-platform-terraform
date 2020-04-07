@@ -24,11 +24,21 @@ frontends = [
   },
   {
     name             = "idam-web-public"
-    custom_domain    = "idam-web-public-aks.sandbox.platform.hmcts.net"
+    custom_domain    = "idam-web-public.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "STAR-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     global_exclusions = [
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "QueryStringArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
       {
         match_variable = "RequestBodyPostArgNames",
         operator       = "StartsWith",
@@ -72,8 +82,8 @@ frontends = [
     ]
   },
   {
-    name             = "idam-web-public-sprod"
-    custom_domain    = "idam-web-public-sprod-aks.sandbox.platform.hmcts.net"
+    name             = "idam-sprod-web-public"
+    custom_domain    = "idam-web-public-sprod.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "STAR-sandbox-platform-hmcts-net"
     disabled_rules   = {}
@@ -117,6 +127,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.AuthId"
       },
     ]
   },

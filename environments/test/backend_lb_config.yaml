@@ -2,10 +2,9 @@
 
 gateways:
   - gateway_configuration:
-      backend_pool_addresses:
-        - 10.10.41.250
-        - 10.10.45.250
       host_name_suffix: service.core-compute-perftest.internal
+      ssl_host_name_suffix: perftest.platform.hmcts.net
+      certificate_name: wildcard-perftest-platform-hmcts-net
     app_configuration:
     # RPE
       - product: draft-store
@@ -34,6 +33,8 @@ gateways:
         component: orchestrator-service
       - product: probate
         component: submit-service
+      - product: probate
+        component: back-office
     # I&A
       - product: ia
         component: case-api
@@ -74,6 +75,10 @@ gateways:
       - product: sscs
         component: cor-backend
 
+    # Ethos
+      - product: ethos
+        component: repl-docmosis-backend
+
     # FPLA
       - product: fpl
         component: case-service
@@ -90,6 +95,9 @@ gateways:
         component: user-profile-api
       - product: ccd
         component: case-activity-api
+      - product: ccd
+        component: admin-web
+        ssl_enabled: true
     # CTSC
       - product: ctsc
         component: work-allocation
@@ -118,6 +126,8 @@ gateways:
       - product: idam
         component: api
         cookie_based_affinity: Enabled
+        ssl_enabled: true
       - product: idam
         component: web-admin
         cookie_based_affinity: Enabled
+        ssl_enabled: true

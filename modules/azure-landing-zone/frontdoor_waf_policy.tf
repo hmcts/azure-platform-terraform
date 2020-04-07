@@ -1,6 +1,6 @@
 resource "azurerm_frontdoor_firewall_policy" "custom" {
   for_each = { for frontend in var.frontends :
-  frontend.name => frontend
+    frontend.name => frontend
   }
   name                = "${replace(lookup(each.value, "name"), "-", "")}${replace(var.env, "-", "")}"
   resource_group_name = var.resource_group

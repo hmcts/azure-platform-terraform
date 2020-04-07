@@ -69,7 +69,7 @@ resource "azurerm_application_gateway" "ag" {
 
     content {
       name         = backend_address_pool.value.name
-      ip_addresses = local.gateways[count.index].gateway_configuration.backend_pool_addresses
+      ip_addresses = var.backend_pool_ip_addresses
     }
   }
 

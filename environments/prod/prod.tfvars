@@ -746,5 +746,21 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "fees-register-platform-hmcts-net"
     www_redirect     = true
+  },
+  {
+    name             = "paybubble"
+    mode             = "Detection"
+    custom_domain    = "paybubble.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "paybubble-platform-hmcts-net"
+    www_redirect     = true
+  },
+  {
+    name             = "manage-payments"
+    mode             = "Detection"
+    custom_domain    = "manage-payments.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "manage-payments-platform-hmcts-net"
+    www_redirect     = true
   }
 ]

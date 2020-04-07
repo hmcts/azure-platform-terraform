@@ -2,10 +2,9 @@
 
 gateways:
   - gateway_configuration:
-      backend_pool_addresses:
-        - 10.10.33.250
-        - 10.10.35.250
       host_name_suffix: service.core-compute-ithc.internal
+      ssl_host_name_suffix: ithc.platform.hmcts.net
+      certificate_name: wildcard-ithc-platform-hmcts-net
     app_configuration:
     # RPE
       - product: draft-store
@@ -21,6 +20,8 @@ gateways:
         component: orchestrator-service
       - product: probate
         component: submit-service
+      - product: probate
+        component: back-office
     # I&A
       - product: ia
         component: case-api
@@ -84,7 +85,7 @@ gateways:
       - product: em
         component: stitching
       - product: em
-        component: ccd-orchestrator
+        component: ccdorc
       - product: dg
         component: docassembly
       - product: dm
@@ -99,6 +100,9 @@ gateways:
         component: user-profile-api
       - product: ccd
         component: case-activity-api
+      - product: ccd
+        component: admin-web
+        ssl_enabled: true
 
     # xui
       - product: xui
@@ -108,9 +112,11 @@ gateways:
       - product: idam
         component: api
         cookie_based_affinity: Enabled
+        ssl_enabled: true
       - product: idam
         component: web-admin
         cookie_based_affinity: Enabled
+        ssl_enabled: true
 
     # CMC
       - product: cmc

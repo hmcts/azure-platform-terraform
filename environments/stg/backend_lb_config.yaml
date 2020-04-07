@@ -2,10 +2,9 @@
 
 gateways:
   - gateway_configuration:
-      backend_pool_addresses:
-        - 10.10.19.250
-        - 10.10.23.250
       host_name_suffix: service.core-compute-aat.internal
+      ssl_host_name_suffix: aat.platform.hmcts.net
+      certificate_name: wildcard-aat-platform-hmcts-net
     app_configuration:
     # RPE
       - product: draft-store
@@ -21,6 +20,8 @@ gateways:
         component: orchestrator-service
       - product: probate
         component: submit-service
+      - product: probate
+        component: back-office
     # I&A
       - product: ia
         component: case-api
@@ -30,6 +31,10 @@ gateways:
         component: case-documents-api
       - product: ia
         component: aip-frontend
+
+    # Protected Characteristics Questions
+      - product: pcq
+        component: backend    
 
     # Divorce
       - product: div
@@ -124,6 +129,9 @@ gateways:
         component: case-print-service
       - product: ccd
         component: case-activity-api
+      - product: ccd
+        component: admin-web
+        ssl_enabled: true
 
     # CTSC
       - product: ctsc
@@ -165,10 +173,22 @@ gateways:
       - product: cmc
         component: claim-store
 
- # IDAM
+# IDAM AAT
       - product: idam
         component: api
         cookie_based_affinity: Enabled
+        ssl_enabled: true
       - product: idam
         component: web-admin
         cookie_based_affinity: Enabled
+        ssl_enabled: true
+
+# IDAM AAT2
+      - product: idam
+        component: api-aat2
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+      - product: idam
+        component: web-admin-aat2
+        cookie_based_affinity: Enabled
+        ssl_enabled: true

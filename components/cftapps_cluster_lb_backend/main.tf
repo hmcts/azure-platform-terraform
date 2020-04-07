@@ -7,8 +7,9 @@ module "app-gw" {
   yaml_path = "${path.cwd}/../../environments/${local.env}/backend_lb_config.yaml"
   env       = var.env
 
-  location           = var.location
-  private_ip_address = var.app_gw_private_ip_address
-  subscription       = var.subscription
-  vault_name         = var.certificate_key_vault_name
+  location                  = var.location
+  private_ip_address        = var.app_gw_private_ip_address
+  backend_pool_ip_addresses = var.cft_apps_cluster_ips
+  subscription              = var.subscription
+  vault_name                = var.certificate_key_vault_name
 }

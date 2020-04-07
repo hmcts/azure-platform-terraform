@@ -730,6 +730,11 @@ frontends = [
         operator       = "Equals"
         selector       = "__eligibility"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
     ]
   },
   {

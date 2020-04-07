@@ -2,9 +2,6 @@
 
 gateways:
   - gateway_configuration:
-      backend_pool_addresses:
-        - 10.10.19.250
-        - 10.10.23.250
       host_name_suffix: service.core-compute-aat.internal
       ssl_host_name_suffix: aat.platform.hmcts.net
       certificate_name: wildcard-aat-platform-hmcts-net

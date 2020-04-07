@@ -735,6 +735,16 @@ frontends = [
         operator       = "Equals"
         selector       = "_csrf"
       },
+      {
+        match_variable = "RequestHeaderNames"
+        operator       = "Equals"
+        selector       = "x-csrf-token"
+      },      
+      {
+        match_variable = "RequestHeaderNames"
+        operator       = "Equals"
+        selector       = "content-type"
+      },      
     ]
   },
   {

@@ -1,9 +1,11 @@
 resource "azurerm_frontdoor_firewall_policy" "custom" {
-  count               = length(var.frontends)
-  name                = "${replace(lookup(var.frontends[count.index], "name"), "-", "")}${replace(var.env, "-", "")}"
+  for_each = { for frontend in var.frontends :
+    frontend.name => frontend
+  }
+  name                = "${replace(lookup(each.value, "name"), "-", "")}${replace(var.env, "-", "")}"
   resource_group_name = var.resource_group
   enabled             = true
-  mode                = lookup(var.frontends[count.index], "mode", "Prevention")
+  mode                = lookup(each.value, "mode", "Prevention")
 
   managed_rule {
     type    = "DefaultRuleSet"
@@ -11,7 +13,7 @@ resource "azurerm_frontdoor_firewall_policy" "custom" {
 
     dynamic "exclusion" {
       iterator = exclusion
-      for_each = lookup(var.frontends[count.index], "global_exclusions", [])
+      for_each = lookup(each.value, "global_exclusions", [])
 
       content {
         match_variable = exclusion.value.match_variable
@@ -22,7 +24,7 @@ resource "azurerm_frontdoor_firewall_policy" "custom" {
 
     dynamic "override" {
       iterator = rulesets
-      for_each = lookup(var.frontends[count.index], "disabled_rules", {})
+      for_each = lookup(each.value, "disabled_rules", {})
 
       content {
         rule_group_name = rulesets.key

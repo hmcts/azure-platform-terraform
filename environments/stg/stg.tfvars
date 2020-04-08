@@ -314,16 +314,6 @@ frontends = [
         selector       = "redirectUri"
       },
       {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "redirect_uri"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "redirect_uri"
-      },
-      {
         match_variable = "RequestBodyPostArgNames",
         operator       = "StartsWith",
         selector       = "password"
@@ -332,11 +322,6 @@ frontends = [
         match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
         selector       = "label"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "client_secret"
       },
       {
         match_variable = "RequestBodyPostArgNames",
@@ -356,7 +341,22 @@ frontends = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
+        selector       = "redirect_uri"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
         selector       = "jwt"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "token"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -367,11 +367,6 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "Idam.AuthId"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "referrer"
       },
     ]
   },

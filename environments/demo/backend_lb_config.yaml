@@ -74,6 +74,10 @@ gateways:
       - product: probate
         component: back-office
 
+    # Protected Characteristics Questions
+      - product: pcq
+        component: backend 
+        
     # CMC
       - product: cmc
         component: claim-store

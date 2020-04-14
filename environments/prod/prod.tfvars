@@ -745,6 +745,11 @@ frontends = [
         operator       = "Equals"
         selector       = "content-type"
       },      
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "isUploadingDocument"
+      },      
     ]
   },
   {

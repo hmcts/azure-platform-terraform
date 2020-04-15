@@ -700,7 +700,7 @@ frontends = [
   },
   {
     name             = "probate"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.apply-for-probate.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-for-probate-service-gov-uk"
@@ -730,6 +730,26 @@ frontends = [
         operator       = "Equals"
         selector       = "__eligibility"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestHeaderNames"
+        operator       = "Equals"
+        selector       = "x-csrf-token"
+      },      
+      {
+        match_variable = "RequestHeaderNames"
+        operator       = "Equals"
+        selector       = "content-type"
+      },      
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "isUploadingDocument"
+      },      
     ]
   },
   {

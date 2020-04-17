@@ -85,6 +85,8 @@ gateways:
     # Fees and Pay
       - product: payment
         component: api
+      - product: fees-register
+        component: api
 
     # Ethos
       - product: ethos

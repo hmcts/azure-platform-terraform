@@ -91,6 +91,12 @@ gateways:
     # Fees and Pay
       - product: payment
         component: api
+      - product: fees-register
+        component: api
+
+    # BAR
+      - product: bar
+        component: api
     # CCD
       - product: ccd
         component: data-store-api

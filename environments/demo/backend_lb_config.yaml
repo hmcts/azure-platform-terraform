@@ -28,6 +28,17 @@ gateways:
     # FPLA
       - product: fpl
         component: case-service
+
+    # Fees and Pay
+      - product: payment
+        component: api
+      - product: fees-register
+        component: api
+
+    # BAR
+      - product: bar
+        component: api
+
      # IA
       - product: ia
         component: case-api

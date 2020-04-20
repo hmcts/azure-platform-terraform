@@ -182,6 +182,13 @@ frontends = [
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
+    name             = "pcq"
+    custom_domain    = "pcq.perftest.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
+  },
+  {
     name             = "paybubble"
     custom_domain    = "paybubble.perftest.platform.hmcts.net"
     mode             = "Detection"

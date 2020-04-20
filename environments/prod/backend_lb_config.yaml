@@ -158,3 +158,13 @@ gateways:
         component: web-admin
         cookie_based_affinity: Enabled
         ssl_enabled: true
+
+    # IDAM prod2
+      - product: idam
+        component: api-prod2
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+      - product: idam
+        component: web-admin-prod2
+        cookie_based_affinity: Enabled
+        ssl_enabled: true

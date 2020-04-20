@@ -303,6 +303,13 @@ frontends = [
     ]
   },
   {
+    name             = "pcq"
+    custom_domain    = "pcq.ithc.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+  },
+  {
     name             = "paybubble"
     custom_domain    = "paybubble.ithc.platform.hmcts.net"
     mode             = "Detection"

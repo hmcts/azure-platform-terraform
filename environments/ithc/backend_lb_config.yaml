@@ -132,3 +132,9 @@ gateways:
     # CMC
       - product: cmc
         component: claim-store
+        
+    # Send-letter
+      - product: rpe
+        component: send-letter-service
+
+

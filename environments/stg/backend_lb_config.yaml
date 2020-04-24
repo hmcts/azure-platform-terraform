@@ -31,6 +31,8 @@ gateways:
         component: case-documents-api
       - product: ia
         component: aip-frontend
+      - product: ia
+        component: home-office-integration-api
 
     # Protected Characteristics Questions
       - product: pcq

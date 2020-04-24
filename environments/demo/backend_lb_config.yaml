@@ -108,3 +108,7 @@ gateways:
         component: blob-router
       - product: reform-scan
         component: notification-service
+        
+      # IDAM Demo
+      - product: idam-api
+        component: idam-api

@@ -300,6 +300,7 @@ frontends = [
   {
     name             = "idam-web-public"
     custom_domain    = "idam-web-public.aat.platform.hmcts.net"
+    mode             = "Detection"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     global_exclusions = [
@@ -387,6 +388,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "referer"
       },
       {
         match_variable = "RequestCookieNames"

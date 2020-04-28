@@ -108,3 +108,19 @@ gateways:
         component: blob-router
       - product: reform-scan
         component: notification-service
+
+    # Evidence Management
+      - product: em
+        component: anno
+      - product: em
+        component: npa
+      - product: em
+        component: stitching
+      - product: em
+        component: ccd-orchestrator
+      - product: em
+        component: showcase
+      - product: dg
+        component: docassembly
+      - product: dm
+        component: store

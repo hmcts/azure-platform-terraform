@@ -305,19 +305,44 @@ frontends = [
     certificate_name = "wildcard-aat-platform-hmcts-net"
     global_exclusions = [
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "redirectUri"
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
       },
       {
-        match_variable = "QueryStringArgNames",
-        operator       = "Equals",
-        selector       = "redirectUri"
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code"
       },
       {
         match_variable = "RequestBodyPostArgNames",
-        operator       = "StartsWith",
-        selector       = "password"
+        operator       = "Equals",
+        selector       = "description"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.AuthId"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.Session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "jwt"
       },
       {
         match_variable = "RequestBodyPostArgNames",
@@ -331,13 +356,8 @@ frontends = [
       },
       {
         match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "description"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "iss"
+        operator       = "StartsWith",
+        selector       = "password"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -345,39 +365,39 @@ frontends = [
         selector       = "redirect_uri"
       },
       {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "redirect_uri"
+      },
+      {
+        match_variable = "QueryStringArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
-        selector       = "jwt"
+        selector       = "referer"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "refresh_token"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "code"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "token"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "token"
+        selector       = "refresh_token"
       },
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "response_type"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "client_id"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "redirect_uri"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -390,24 +410,14 @@ frontends = [
         selector       = "state"
       },
       {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "token"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
-        selector       = "referer"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "Idam.AuthId"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "Idam.Session"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "dtSa"
+        selector       = "token"
       },
     ]
   },

@@ -27,7 +27,7 @@ variable "vault_rg" {
 }
 
 variable "dynatrace_instance_name" {
-  default = "jqr44001"
+  default = "ebe20728"
 }
 
 variable "instance_count" {

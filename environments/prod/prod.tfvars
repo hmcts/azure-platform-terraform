@@ -648,6 +648,11 @@ frontends = [
     custom_domain    = "www.ccd.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "ccd-platform-hmcts-net"
+    disabled_rules = {
+      SQLI = [
+        "942440",
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -673,6 +678,7 @@ frontends = [
         "942361",
         "942380",
         "942400",
+        "942440",
       ]
       LFI = [
         "930100", // false positive on multi-part uploads

@@ -650,15 +650,6 @@ frontends = [
     certificate_name = "ccd-platform-hmcts-net"
     disabled_rules = {
       SQLI = [
-        "942100",
-        "942110",
-        "942150",
-        "942200",
-        "942210",
-        "942230",
-        "942361",
-        "942380",
-        "942400",
         "942440",
       ]
     }

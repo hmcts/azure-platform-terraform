@@ -9,6 +9,10 @@ gateways:
     # RPE
       - product: draft-store
         component: service
+      - product: cmc
+        component: pdf-service
+      - product: rpe
+        component: service-auth-provider
         
     # Divorce
       - product: div

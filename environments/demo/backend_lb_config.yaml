@@ -38,6 +38,10 @@ gateways:
         component: api
       - product: fees-register
         component: api
+    
+    # ccpay
+      - product: ccpay
+        component: bulkscanning-api
 
     # BAR
       - product: bar

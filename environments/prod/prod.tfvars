@@ -596,6 +596,7 @@ frontends = [
     certificate_name = "www-moneyclaim-legal-platform-hmcts-net"
     disabled_rules = {
       SQLI = [
+        "932100",
         "942100",
         "942150",
         "942200",
@@ -606,7 +607,6 @@ frontends = [
         "942380",
         "942400",
         "942430",
-        "932100",
       ]
     }
     global_exclusions = [

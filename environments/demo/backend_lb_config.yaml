@@ -106,7 +106,10 @@ gateways:
         component: sample-app
       - product: bulk-scan
         component: payment-processor
-
+    # Bulk Print
+      - product: rpe
+        component: send-letter-service
+        
      # ReformScan (like BulkScan but separate namespace for non-CFT members)
       - product: reform-scan
         component: blob-router

@@ -109,7 +109,12 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
-    # CTSC
+   
+    # AAC (CDM)
+      - product: aac
+        component: manage-case-assignment
+        
+   # CTSC
       - product: ctsc
         component: work-allocation
 

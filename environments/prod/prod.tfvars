@@ -792,7 +792,6 @@ frontends = [
   },
   {
     name             = "idam-web-public"
-    mode             = "Detection"
     custom_domain    = "hmcts-access.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "hmcts-access-service-gov-uk"

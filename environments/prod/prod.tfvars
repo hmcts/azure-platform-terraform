@@ -667,6 +667,7 @@ frontends = [
     custom_domain    = "gateway.ccd.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "ccd-platform-hmcts-net"
+    cache_enabled    = false
     disabled_rules = {
       SQLI = [
         "942100",

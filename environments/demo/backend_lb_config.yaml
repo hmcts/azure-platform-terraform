@@ -29,6 +29,19 @@ gateways:
         component: hm
       - product: div
         component: cfs
+
+    # Financial Remedy
+      - product: finrem
+        component: ns
+      - product: finrem
+        component: ps
+      - product: finrem
+        component: emca
+      - product: finrem
+        component: dgcs
+      - product: finrem
+        component: cos
+
     # FPLA
       - product: fpl
         component: case-service

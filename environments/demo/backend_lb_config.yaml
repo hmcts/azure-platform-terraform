@@ -95,7 +95,11 @@ gateways:
         component: user-profile-api
       - product: ccd
         component: case-activity-api
-
+    
+    # AAC (CDM)
+      - product: aac
+        component: manage-case-assignment
+        
     # Probate
       - product: probate
         component: business-service

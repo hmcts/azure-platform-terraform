@@ -148,3 +148,7 @@ gateways:
         component: docassembly
       - product: dm
         component: store
+
+    # xui
+      - product: xui
+        component: terms-and-conditions

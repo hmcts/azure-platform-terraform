@@ -97,7 +97,6 @@ frontends = [
     custom_domain    = "gateway-ccd.perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
-    cache_enabled    = false
   },
   {
     name             = "return-case-doc-ccd"

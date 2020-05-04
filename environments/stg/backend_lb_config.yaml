@@ -95,6 +95,8 @@ gateways:
     # Ethos
       - product: ethos
         component: repl-docmosis-backend
+      - product: ethos
+        component: ecm-consumer
 
     # Access Management
       - product: am

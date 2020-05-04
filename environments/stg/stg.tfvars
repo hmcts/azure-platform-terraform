@@ -269,7 +269,6 @@ frontends = [
     custom_domain    = "gateway-ccd.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
-    cache_enabled    = true
   },
   {
     name             = "return-case-doc-ccd"

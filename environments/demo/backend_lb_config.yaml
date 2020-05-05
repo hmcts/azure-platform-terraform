@@ -158,3 +158,11 @@ gateways:
     # xui
       - product: xui
         component: terms-and-conditions
+    
+    # Reference DATA
+      - product: rd
+        component: professional-api
+      - product: rd
+        component: user-profile-api
+      - product: rd
+        component: profile-sync

@@ -710,6 +710,11 @@ frontends = [
     custom_domain    = "www.apply-for-probate.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-for-probate-service-gov-uk"
+    disabled_rules = {
+      RCE = [
+        "932115"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

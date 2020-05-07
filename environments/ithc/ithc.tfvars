@@ -248,35 +248,35 @@ frontends = [
     name             = "cmc-legal"
     mode             = "Detection"
     custom_domain    = "moneyclaims-legal.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "www-ccd"
     mode             = "Detection"
     custom_domain    = "www-ccd.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "gateway-ccd"
     mode             = "Detection"
     custom_domain    = "gateway-ccd.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "return-case-doc-ccd"
     mode             = "Detection"
     custom_domain    = "return-case-doc-ccd.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "xui-approve-org"
     mode             = "Detection"
     custom_domain    = "administer-orgs.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
@@ -290,28 +290,28 @@ frontends = [
     name             = "xui-register-org"
     mode             = "Detection"
     custom_domain    = "register-org.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "xui-webapp"
     mode             = "Detection"
     custom_domain    = "manage-case.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "ia-aip"
     mode             = "Detection"
     custom_domain    = "immigration-appeal.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "probate"
     mode             = "Prevention"
     custom_domain    = "probate.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {

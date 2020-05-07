@@ -61,7 +61,7 @@ gateways:
         component: judicial-api
       - product: rd
         component: judicial-data-load
-        
+
     # Divorce
       - product: div
         component: emca
@@ -79,6 +79,12 @@ gateways:
         component: tribunals-api
       - product: sscs
         component: evidence-share
+      - product: sscs
+        component: bulk-scan
+      - product: sscs
+        component: ccd-callback-orchestrator
+      - product: sscs
+        component: tya-notif
       - product: sscs
         component: cor-backend
 
@@ -118,11 +124,11 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
-   
+
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
-        
+
    # CTSC
       - product: ctsc
         component: work-allocation

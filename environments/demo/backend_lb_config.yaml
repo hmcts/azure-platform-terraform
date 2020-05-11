@@ -166,3 +166,7 @@ gateways:
         component: user-profile-api
       - product: rd
         component: profile-sync
+        
+     # rse
+       - product: rse
+       - component: check

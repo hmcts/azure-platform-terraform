@@ -169,4 +169,4 @@ gateways:
         
      # rse
        - product: rse
-       - component: check
+         component: check

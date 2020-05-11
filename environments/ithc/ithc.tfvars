@@ -25,7 +25,7 @@ frontends = [
   {
     name             = "div-dn"
     custom_domain    = "decree-nisi-aks.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
@@ -48,7 +48,7 @@ frontends = [
   {
     name             = "div-da"
     custom_domain    = "decree-absolute-aks.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
@@ -71,7 +71,7 @@ frontends = [
   {
     name             = "div-rfe"
     custom_domain    = "respond-divorce-aks.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
@@ -94,7 +94,7 @@ frontends = [
   {
     name             = "div-pfe"
     custom_domain    = "petitioner-frontend-aks.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
@@ -117,7 +117,7 @@ frontends = [
   {
     name             = "idam-web-public"
     custom_domain    = "idam-web-public.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
@@ -241,7 +241,7 @@ frontends = [
     name             = "cmc"
     mode             = "Detection"
     custom_domain    = "moneyclaims.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
@@ -365,28 +365,28 @@ frontends = [
     name             = "pcq"
     custom_domain    = "pcq.ithc.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "paybubble"
     custom_domain    = "paybubble.ithc.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "bar"
     custom_domain    = "bar.ithc.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "fees-register"
     custom_domain    = "fees-register.ithc.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   }
 ]

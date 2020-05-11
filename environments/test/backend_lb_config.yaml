@@ -110,7 +110,9 @@ gateways:
         
     # ccpay
       - product: ccpay
-        component: bulkscanning-api    
+        component: bulkscanning-api
+      - product: fees-register
+        component: api  
         
     # CCD
       - product: ccd

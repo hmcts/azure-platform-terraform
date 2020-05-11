@@ -168,5 +168,5 @@ gateways:
         component: profile-sync
         
      # rse
-       - product: rse
-         component: check
+      - product: rse
+        component: check

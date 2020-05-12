@@ -782,7 +782,7 @@ frontends = [
     name             = "paybubble"
     mode             = "Detection"
     custom_domain    = "paybubble.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "paybubble-platform-hmcts-net"
     www_redirect     = true
   },

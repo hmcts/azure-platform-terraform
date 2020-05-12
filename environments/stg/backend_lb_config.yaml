@@ -212,3 +212,7 @@ gateways:
         component: web-admin-aat2
         cookie_based_affinity: Enabled
         ssl_enabled: true
+
+# rse
+      - product: rse
+        component: check

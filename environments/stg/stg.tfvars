@@ -547,7 +547,7 @@ frontends = [
     name             = "paybubble"
     custom_domain    = "paybubble.aat.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-aat.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },
   {

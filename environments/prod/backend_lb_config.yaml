@@ -142,6 +142,8 @@ gateways:
         component: payment-processor
       - product: reform-scan
         component: blob-router
+      - product: reform-scan
+        component: notification-service
 
       # Send-letter
       - product: rpe

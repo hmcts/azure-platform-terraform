@@ -171,6 +171,39 @@ stages:
 
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
+          environment: 'dev'
+          component: 'global'
+          service_connection: 'dcd-cftapps-dev'
+          storage_account_rg: 'core-infra-dev-rg'
+          storage_account_name: 'cftappsdev'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+  
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
+          environment: 'dev'
+          component: 'cftapps_cluster_lb'
+          service_connection: 'dcd-cftapps-dev'
+          storage_account_rg: 'core-infra-dev-rg'
+          storage_account_name: 'cftappsdev'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+  
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
+          environment: 'dev'
+          component: 'cftapps_cluster_lb_backend'
+          service_connection: 'dcd-cftapps-dev'
+          storage_account_rg: 'core-infra-dev-rg'
+          storage_account_name: 'cftappsdev'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
           environment: 'stg'
           component: 'global'
           service_connection: 'dcd-cftapps-stg'
@@ -444,6 +477,53 @@ stages:
           service_connection: 'dcd-cftapps-test'
           storage_account_rg: 'core-infra-test-rg'
           storage_account_name: 'cftappstest'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+  - stage: ApplyGlobalDEV
+    dependsOn: ApplyGlobalSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'dev'
+          component: 'global'
+          service_connection: 'dcd-cftapps-dev'
+          storage_account_rg: 'core-infra-dev-rg'
+          storage_account_name: 'cftappsdev'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+  - stage: ApplyCftAppsLBDev
+    displayName: "Apply CFT APPs LB - Dev"
+    dependsOn: ApplyCftAppsLBSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'dev'
+          component: 'cftapps_cluster_lb'
+          service_connection: 'dcd-cftapps-dev'
+          storage_account_rg: 'core-infra-dev-rg'
+          storage_account_name: 'cftappsdev'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+      
+  - stage: ApplyCftAppsLBBackendDev
+    displayName: "Apply CFT APPs LB Backend - Dev"
+    dependsOn: ApplyCftAppsLBSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'dev'
+          component: 'cftapps_cluster_lb_backend'
+          service_connection: 'dcd-cftapps-dev'
+          storage_account_rg: 'core-infra-dev-rg'
+          storage_account_name: 'cftappsdev'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}

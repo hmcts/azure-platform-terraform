@@ -1,0 +1,11 @@
+---
+
+gateways:
+    - gateway_configuration:
+        host_name_suffix: service.core-compute-dev.internal
+        ssl_host_name_suffix: dev.platform.hmcts.net
+        certificate_name: wildcard-dev-platform-hmcts-net
+    app_configuration:
+    # RPE
+        - product: draft-store
+          component: service

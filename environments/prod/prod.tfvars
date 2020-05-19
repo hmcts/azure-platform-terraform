@@ -916,5 +916,13 @@ frontends = [
         selector       = "token"
       },
     ]
-  }
+  },
+  {
+    name             = "pcq"
+    mode             = "Detection"
+    custom_domain    = "equality-and-diversity.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "equality-and-diversity-platform-hmcts-net"
+    www_redirect     = true
+   }
 ]

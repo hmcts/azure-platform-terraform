@@ -47,7 +47,7 @@ frontends = [
   },
   {
     name             = "em-showcase"
-    custom_domain    = "em-showcase-ithc.service.core-compute-ithc.internal"
+    custom_domain    = "em-showcase.ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
 	mode              = "Detection"

@@ -98,6 +98,8 @@ gateways:
       - product: em
         component: stitching
       - product: em
+        component: showcase
+      - product: em
         component: ccdorc
       - product: dg
         component: docassembly

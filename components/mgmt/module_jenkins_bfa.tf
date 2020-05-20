@@ -1,6 +1,6 @@
 data "azurerm_key_vault" "intsvc" {
   name                = var.certificate_key_vault_name
-  resource_group_name = var.kv_rg_name 
+  resource_group_name = var.kv_rg_name
 }
 
 data "azurerm_virtual_network" "intsvc" {

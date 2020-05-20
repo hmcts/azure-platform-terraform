@@ -1,3 +1,5 @@
+project                    = "hmcts"
+location                   = "uksouth"
 env                        = "dev"
 subscription               = "dev"
 certificate_key_vault_name = "cftapps-dev"

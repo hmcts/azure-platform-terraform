@@ -173,7 +173,7 @@ stages:
         parameters:
           environment: 'dev'
           component: 'global'
-          service_connection: 'dcd-cftapps-dev'
+          service_connection: 'DCD-CFTAPPS-DEV'
           storage_account_rg: 'core-infra-dev-rg'
           storage_account_name: 'cftappsdev'
           build: $(Build.BuildNumber)
@@ -184,7 +184,7 @@ stages:
         parameters:
           environment: 'dev'
           component: 'cftapps_cluster_lb'
-          service_connection: 'dcd-cftapps-dev'
+          service_connection: 'DCD-CFTAPPS-DEV'
           storage_account_rg: 'core-infra-dev-rg'
           storage_account_name: 'cftappsdev'
           build: $(Build.BuildNumber)
@@ -195,7 +195,7 @@ stages:
         parameters:
           environment: 'dev'
           component: 'cftapps_cluster_lb_backend'
-          service_connection: 'dcd-cftapps-dev'
+          service_connection: 'DCD-CFTAPPS-DEV'
           storage_account_rg: 'core-infra-dev-rg'
           storage_account_name: 'cftappsdev'
           build: $(Build.BuildNumber)

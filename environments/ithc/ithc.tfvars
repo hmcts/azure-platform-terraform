@@ -46,6 +46,29 @@ frontends = [
     ]
   },
   {
+    name             = "em-showcase"
+    custom_domain    = "em-showcase-ithc.service.core-compute-ithc.internal"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
+  },
+  {
     name             = "div-da"
     custom_domain    = "decree-absolute-aks.ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]

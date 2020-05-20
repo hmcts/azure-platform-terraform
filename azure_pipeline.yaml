@@ -94,6 +94,17 @@ stages:
 
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
+          environment: 'ptl'
+          component: 'mgmt'
+          service_connection: 'DTS-CFTPTL-INTSVC'
+          storage_account_rg: 'core-infra-intsvc-rg'
+          storage_account_name: 'cftptlintsvc'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
           environment: 'ithc'
           component: 'global'
           service_connection: 'dcd-cftapps-ithc'
@@ -331,6 +342,22 @@ stages:
         parameters:
           environment: 'ptl'
           component: 'dynatrace_activegate'
+          service_connection: 'DTS-CFTPTL-INTSVC'
+          storage_account_rg: 'core-infra-intsvc-rg'
+          storage_account_name: 'cftptlintsvc'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+  - stage: ApplyBFAPTL
+    displayName: "Apply BFA Cosmos - PTL"
+    dependsOn: GetArtifacts
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'ptl'
+          component: 'mgmt'
           service_connection: 'DTS-CFTPTL-INTSVC'
           storage_account_rg: 'core-infra-intsvc-rg'
           storage_account_name: 'cftptlintsvc'

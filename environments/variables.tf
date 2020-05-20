@@ -61,3 +61,13 @@ variable sscscor_shutter {
 variable "app_gw_private_ip_address" {
   default = []
 }
+
+variable mgmt_vnet_name {
+  default = "TODO"
+}
+variable mgmt_rg_name {
+  default = "TODO"
+}
+variable kv_rg_name {
+  default = "TODO"
+}

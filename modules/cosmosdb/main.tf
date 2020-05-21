@@ -28,11 +28,6 @@ resource "azurerm_cosmosdb_account" "main" {
     failover_priority = 0
   }
 
-  geo_location {
-    location          = var.failover_policy_location
-    failover_priority = 1
-  }
-
   dynamic "virtual_network_rule" {
     iterator = vnetrule
     for_each = var.subnet_ids

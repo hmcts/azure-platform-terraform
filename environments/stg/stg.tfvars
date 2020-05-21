@@ -296,6 +296,11 @@ frontends = [
     mode             = "Detection"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
+    disabled_rules = {
+      RCE = [
+        "932115"
+      ]
+    }
   },
   {
     name             = "idam-web-public"

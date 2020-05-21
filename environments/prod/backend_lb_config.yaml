@@ -22,6 +22,11 @@ gateways:
         component: submit-service
       - product: probate
         component: back-office
+
+    # Protected Characteristics Questions
+      - product: pcq
+        component: backend
+
     # I&A
       - product: ia
         component: case-api

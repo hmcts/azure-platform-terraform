@@ -34,6 +34,8 @@ gateways:
         component: case-notifications-api
       - product: ia
         component: case-documents-api
+      - product: ia
+        component: timed-event-service
 
     # Divorce
       - product: div

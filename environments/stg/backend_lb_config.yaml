@@ -148,6 +148,8 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
+      - product: ccd
+        component: ccd-case-document-am-api
     
     # AAC (CDM)
       - product: aac

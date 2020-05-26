@@ -100,7 +100,7 @@ gateways:
 
     # Access Management
       - product: am
-        component: accessmgmt-api-temp
+        component: accessmgmt-api
       - product: am
         component: role-assignment-service
 

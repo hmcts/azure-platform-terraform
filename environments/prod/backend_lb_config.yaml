@@ -72,6 +72,8 @@ gateways:
         component: stitching
       - product: em
         component: ccd-orchestrator
+      - product: em
+        component: icp
       - product: dg
         component: docassembly
       - product: dm

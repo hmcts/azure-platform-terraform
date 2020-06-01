@@ -101,6 +101,8 @@ gateways:
         component: showcase
       - product: em
         component: ccdorc
+      - product: em
+        component: icp
       - product: dg
         component: docassembly
       - product: dm

@@ -116,7 +116,7 @@ gateways:
       - product: em
         component: showcase
       - product: em
-        component: icp-api  
+        component: icp
       - product: dg
         component: docassembly
       - product: dm

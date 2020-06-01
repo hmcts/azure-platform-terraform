@@ -115,7 +115,7 @@ gateways:
         component: ccd-orchestrator
       - product: em
         component: showcase
-        - product: em
+      - product: em
         component: icp
       - product: dg
         component: docassembly

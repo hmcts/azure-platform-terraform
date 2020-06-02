@@ -149,6 +149,10 @@ gateways:
       - product: reform-scan
         component: blob-router
 
+    # Bulk Print
+      - product: rpe
+        component: send-letter-service
+        
     # CMC
       - product: cmc
         component: claim-store

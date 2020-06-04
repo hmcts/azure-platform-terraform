@@ -8,7 +8,7 @@ trigger:
     - master
     
 variables:
-  terraformVersion: 0.12.23
+  terraformVersion: 0.12.26
   agentPool: 'ubuntu-18.04'
   action:
 
@@ -74,6 +74,17 @@ stages:
         parameters:
           environment: 'sbox'
           component: 'shutter'
+          service_connection: 'dcd-cftapps-sbox'
+          storage_account_rg: 'core-infra-sbox-rg'
+          storage_account_name: 'cftappssbox'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
+          environment: 'sbox'
+          component: 'compliance'
           service_connection: 'dcd-cftapps-sbox'
           storage_account_rg: 'core-infra-sbox-rg'
           storage_account_name: 'cftappssbox'

@@ -135,7 +135,7 @@ resource "azurerm_application_gateway" "ag" {
 
       request_header_configuration {
         header_name  = "X-Forwarded-For"
-        header_value = "(var_add_x_forwarded_for_proxy server)"
+        header_value = "{var_add_x_forwarded_for_proxy}"
       }
     }
   }

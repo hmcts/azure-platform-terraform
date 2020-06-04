@@ -7,5 +7,5 @@ resource "azurerm_policy_definition" "tag" {
   policy_type  = "Custom"
   mode         = "All"
   display_name = "Mandatory 'managedBy' tag missing. E.g. 'managedBy' = '<Team or Individual Name>'"
-  policy_rule = data.template_file.tag_governance.rendered
+  policy_rule  = data.template_file.tag_governance.rendered
 }

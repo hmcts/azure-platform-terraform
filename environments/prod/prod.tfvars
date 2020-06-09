@@ -436,7 +436,7 @@ frontends = [
     mode             = "Detection"
     custom_domain    = "manage-case.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "manage-case-platform-hmcts-net"
+    certificate_name = "manage-case"
     disabled_rules = {
       SQLI = [
         "942100",
@@ -923,5 +923,24 @@ frontends = [
     custom_domain    = "equality-and-diversity.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "equality-and-diversity-platform-hmcts-net"
-   }
+   },
+  {
+    name             = "jui-redirect"
+    mode             = "Detection"
+    custom_domain    = "jcm.judiciary.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "manage-case"
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+      ]
+    }
+  }
 ]

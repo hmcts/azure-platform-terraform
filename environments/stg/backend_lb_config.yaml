@@ -107,6 +107,8 @@ gateways:
         component: accessmgmt-api
       - product: am
         component: role-assignment-service
+      - product: am
+        component: judicial-booking-service
 
     # Evidence Management
       - product: em

@@ -12,6 +12,8 @@ gateways:
       - product: cmc
         component: pdf-service
       - product: rpe
+        component: pdf-service
+      - product: rpe
         component: service-auth-provider
     # Probate
       - product: probate
@@ -105,6 +107,8 @@ gateways:
         component: accessmgmt-api
       - product: am
         component: role-assignment-service
+      - product: am
+        component: judicial-booking-service
 
     # Evidence Management
       - product: em

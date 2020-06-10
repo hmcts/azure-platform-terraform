@@ -256,19 +256,19 @@ frontends = [
         selector       = "referer"
       },
       {
-      match_variable = "QueryStringArgNames"
-      operator       = "Equals"
-      selector       = "iss"
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
       },
       {
-      match_variable = "RequestCookieNames"
-      operator       = "Equals"
-      selector       = "__auth-token"
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
       },
       {
-      match_variable = "RequestCookieNames"
-      operator       = "Equals"
-      selector       = "__user-info"
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__user-info"
       },
     ]
   },

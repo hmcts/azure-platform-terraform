@@ -1,0 +1,13 @@
+{
+    "if": {
+        "allOf": [
+            {
+                "field": "tags['managedBy']",
+                "exists": "false"
+            }
+        ]
+    },
+    "then": {
+        "effect": "deny"
+    }
+}

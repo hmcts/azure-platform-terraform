@@ -246,7 +246,7 @@ frontends = [
   {
     name             = "paybubble"
     custom_domain    = "paybubble.perftest.platform.hmcts.net"
-    mode             = "Detection"
+    mode             = "Prevention"
     backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     global_exclusions = [

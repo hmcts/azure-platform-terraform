@@ -270,6 +270,11 @@ frontends = [
       operator       = "Equals"
       selector       = "__user-info"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__redirect"
+      },
     ]
   },
   {

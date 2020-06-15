@@ -228,3 +228,7 @@ gateways:
 # rse
       - product: rse
         component: check
+
+     # UCMC
+      - product: ucmc
+        component: service

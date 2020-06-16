@@ -208,6 +208,13 @@ frontends = [
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },
   {
+    name             = "sscs-tya-redirect"
+    mode             = "Detection"
+    custom_domain    = "sscs-cor.aat.platform.hmcts.net/validate-surname/:tya/trackyourappeal"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
     name             = "xui-webapp"
     mode             = "Detection"
     custom_domain    = "manage-case.aat.platform.hmcts.net"

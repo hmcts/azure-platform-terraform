@@ -83,6 +83,10 @@ gateways:
         component: tya-notif
       - product: sscs
         component: cor-backend
+      - product: sscs
+        component: cor-frontend
+      - product: sscs
+        component: tya-frontend
 
     # Ethos
       - product: ethos

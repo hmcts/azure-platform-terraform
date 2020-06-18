@@ -456,7 +456,7 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-    - stage: ApplyGlobalLDATA
+  - stage: ApplyGlobalLDATA
     dependsOn: ApplyGlobalSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:

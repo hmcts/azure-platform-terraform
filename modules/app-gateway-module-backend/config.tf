@@ -7,7 +7,7 @@ locals {
     aat      = "High"
     prod     = "High"
     ithc     = "Medium"
-    ldata     = "Medium"
+    ldata    = "Medium"
     perftest = "Medium"
     demo     = "Medium"
   }
@@ -17,7 +17,7 @@ locals {
     aat      = "Staging"
     prod     = "Production"
     ithc     = "ITHC"
-    ldata     = "LDATA"
+    ldata    = "LDATA"
     perftest = "Test"
     demo     = "Demo"
   }

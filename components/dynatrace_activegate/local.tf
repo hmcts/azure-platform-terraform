@@ -5,7 +5,7 @@ locals {
     prod     = "High"
     ptl      = "High"
     ithc     = "Medium"
-    ldata     = "Medium"
+    ldata    = "Medium"
     perftest = "Medium"
   }
 
@@ -15,7 +15,7 @@ locals {
     prod     = "Production"
     ptl      = "Path to live"
     ithc     = "ITHC"
-    ldata     = "LDATA"
+    ldata    = "LDATA"
     perftest = "Test"
   }
 

@@ -4,7 +4,7 @@ env                        = "ldata"
 subscription               = "ldata"
 enable_ssl                 = true
 ssl_mode                   = "AzureKeyVault"
-certificate_key_vault_name = "cft-apps-prod"
+certificate_key_vault_name = "ethos-ldata"
 
 app_gw_private_ip_address = "10.14.132.121"
 

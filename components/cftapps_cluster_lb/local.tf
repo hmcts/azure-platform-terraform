@@ -5,6 +5,8 @@ locals {
     prod     = "High"
     ithc     = "Medium"
     perftest = "Medium"
+    ldata    = "Medium"
+
   }
 
   env_display_names = {
@@ -13,6 +15,7 @@ locals {
     prod     = "Production"
     ithc     = "ITHC"
     perftest = "Test"
+    ldata    = "LDATA"
   }
 
   common_tags = {

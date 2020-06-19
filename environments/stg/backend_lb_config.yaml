@@ -44,7 +44,7 @@ gateways:
 
     # Protected Characteristics Questions
       - product: pcq
-        component: backend    
+        component: backend
 
     # Divorce
       - product: div
@@ -81,8 +81,6 @@ gateways:
         component: evidence-share
       - product: sscs
         component: bulk-scan
-      - product: sscs
-        component: cor-backend
       - product: sscs
         component: tya-notif
       - product: sscs
@@ -160,11 +158,11 @@ gateways:
         ssl_enabled: true
       - product: ccd
         component: case-document-am-api
-    
+
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
-      
+
     # CTSC
       - product: ctsc
         component: work-allocation

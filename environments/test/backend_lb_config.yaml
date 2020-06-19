@@ -87,8 +87,6 @@ gateways:
         component: ccd-callback-orchestrator
       - product: sscs
         component: tya-notif
-      - product: sscs
-        component: cor-backend
 
     # Ethos
       - product: ethos
@@ -109,11 +107,11 @@ gateways:
     # BAR
       - product: bar
         component: api
-        
+
     # ccpay
       - product: ccpay
-        component: bulkscanning-api  
-        
+        component: bulkscanning-api
+
     # CCD
       - product: ccd
         component: data-store-api
@@ -154,7 +152,7 @@ gateways:
     # Bulk Print
       - product: rpe
         component: send-letter-service
-        
+
     # CMC
       - product: cmc
         component: claim-store

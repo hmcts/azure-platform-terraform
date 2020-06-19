@@ -15,7 +15,7 @@ gateways:
         component: pdf-service
       - product: rpe
         component: service-auth-provider
-        
+
     # Divorce
       - product: div
         component: emca
@@ -53,7 +53,7 @@ gateways:
         component: api
       - product: fees-register
         component: api
-    
+
     # ccpay
       - product: ccpay
         component: bulkscanning-api
@@ -69,7 +69,7 @@ gateways:
         component: case-documents-api
       - product: ia
         component: case-notifications-api
-        
+
     # SSCS
       - product: sscs
         component: tribunals-api
@@ -81,8 +81,6 @@ gateways:
         component: ccd-callback-orchestrator
       - product: sscs
         component: tya-notif
-      - product: sscs
-        component: cor-backend
 
     # Ethos
       - product: ethos
@@ -99,11 +97,11 @@ gateways:
         component: user-profile-api
       - product: ccd
         component: case-activity-api
-    
+
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
-        
+
     # Probate
       - product: probate
         component: business-service
@@ -116,8 +114,8 @@ gateways:
 
     # Protected Characteristics Questions
       - product: pcq
-        component: backend 
-        
+        component: backend
+
     # CMC
       - product: cmc
         component: claim-store
@@ -134,7 +132,7 @@ gateways:
     # Bulk Print
       - product: rpe
         component: send-letter-service
-        
+
      # ReformScan (like BulkScan but separate namespace for non-CFT members)
       - product: reform-scan
         component: blob-router
@@ -162,7 +160,7 @@ gateways:
     # xui
       - product: xui
         component: terms-and-conditions
-    
+
     # Reference DATA
       - product: rd
         component: professional-api
@@ -170,7 +168,7 @@ gateways:
         component: user-profile-api
       - product: rd
         component: profile-sync
-        
+
      # rse
       - product: rse
         component: check

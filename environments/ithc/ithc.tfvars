@@ -1,5 +1,5 @@
 project                    = "hmcts"
-location                   = "ukwest"
+location                   = "uksouth"
 env                        = "ithc"
 subscription               = "ithc"
 enable_ssl                 = true

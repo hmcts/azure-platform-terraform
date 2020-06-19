@@ -1,0 +1,35 @@
+---
+
+gateways:
+  - gateway_configuration:
+      host_name_suffix: service.core-compute-ethosldata.internal
+      ssl_host_name_suffix: platform.hmcts.net
+      certificate_name: wildcard-platform-hmcts-net
+    app_configuration:
+    # RPE
+      - product: rpe
+        component: service-auth-provider
+
+    # CCD
+      - product: ccd
+        component: data-store-api
+      - product: ccd
+        component: definition-store-api
+      - product: ccd
+        component: user-profile-api
+      - product: ccd
+        component: case-activity-api
+      - product: ccd
+        component: admin-web
+        ssl_enabled: true
+
+    # SIDAM
+      - product: idam
+        component: api
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+      - product: idam
+        component: web-admin
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+

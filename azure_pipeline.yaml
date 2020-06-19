@@ -149,6 +149,39 @@ stages:
 
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
+          environment: 'ldata'
+          component: 'global'
+          service_connection: 'azurerm-ethosldata'
+          storage_account_rg: 'core-infra-ldata-rg'
+          storage_account_name: 'ethosldata'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
+          environment: 'ldata'
+          component: 'cftapps_cluster_lb'
+          service_connection: 'azurerm-ethosldata'
+          storage_account_rg: 'core-infra-ldata-rg'
+          storage_account_name: 'ethosldata'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
+          environment: 'ldata'
+          component: 'cftapps_cluster_lb_backend'
+          service_connection: 'azurerm-ethosldata'
+          storage_account_rg: 'core-infra-ldata-rg'
+          storage_account_name: 'ethosldata'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
           environment: 'demo'
           component: 'cftapps_cluster_lb_backend'
           service_connection: 'dcd-cftapps-demo'
@@ -419,6 +452,53 @@ stages:
           service_connection: 'dcd-cftapps-ithc'
           storage_account_rg: 'core-infra-ithc-rg'
           storage_account_name: 'cftappsithc'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+  - stage: ApplyGlobalLDATA
+    dependsOn: ApplyGlobalSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'ldata'
+          component: 'global'
+          service_connection: 'azurerm-ethosldata'
+          storage_account_rg: 'core-infra-ldata-rg'
+          storage_account_name: 'ethosldata'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+  - stage: ApplyCftAppsLBLDATA
+    displayName: "Apply CFT APPs LB - LDATA"
+    dependsOn: ApplyCftAppsLBSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'ldata'
+          component: 'cftapps_cluster_lb'
+          service_connection: 'azurerm-ethosldata'
+          storage_account_rg: 'core-infra-ldata-rg'
+          storage_account_name: 'ethosldata'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+  - stage: ApplyCftAppsLBBackendLDATA
+    displayName: "Apply CFT APPs LB Backend - LDATA"
+    dependsOn: ApplyCftAppsLBSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'ldata'
+          component: 'cftapps_cluster_lb_backend'
+          service_connection: 'azurerm-ethosldata'
+          storage_account_rg: 'core-infra-ldata-rg'
+          storage_account_name: 'ethosldata'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}

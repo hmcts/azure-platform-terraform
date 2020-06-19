@@ -1,5 +1,5 @@
 project                    = "hmcts"
-location                   = "ukwest"
+location                   = "uksouth"
 env                        = "perftest"
 subscription               = "test"
 enable_ssl                 = true

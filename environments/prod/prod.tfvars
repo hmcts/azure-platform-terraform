@@ -448,10 +448,14 @@ frontends = [
         "942380",
         "942400",
       ]
-      RFI = [
-        "931130"
-      ]
     }
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "xui-manage-org"

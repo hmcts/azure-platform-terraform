@@ -474,10 +474,14 @@ frontends = [
         "942380",
         "942400",
       ]
-      RFI = [
-        "931130"
-      ]
     }
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "xui-approve-org"
@@ -496,10 +500,14 @@ frontends = [
         "942380",
         "942400",
       ]
-      RFI = [
-        "931130"
-      ]
     }
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "xui-register-org"
@@ -518,10 +526,14 @@ frontends = [
         "942380",
         "942400",
       ]
-      RFI = [
-        "931130"
-      ]
     }
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "cmc"

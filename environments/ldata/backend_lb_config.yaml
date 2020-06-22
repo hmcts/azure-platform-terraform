@@ -20,16 +20,16 @@ gateways:
       - product: ccd
         component: case-activity-api
       - product: ccd
-        component: admin-web
+        component: admin-web-ethosldata
         ssl_enabled: true
 
     # SIDAM
       - product: idam
-        component: api
+        component: api-ethosldata
         cookie_based_affinity: Enabled
         ssl_enabled: true
       - product: idam
-        component: web-admin
+        component: web-admin-ethosldata
         cookie_based_affinity: Enabled
         ssl_enabled: true
 

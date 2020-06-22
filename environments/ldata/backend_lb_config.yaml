@@ -8,28 +8,28 @@ gateways:
     app_configuration:
     # RPE
       - product: rpe
-        component: service-auth-provider
+        component: service-auth-provider-ethosldata
 
     # CCD
       - product: ccd
-        component: data-store-api
+        component: data-store-api-ethosldata
       - product: ccd
-        component: definition-store-api
+        component: definition-store-api-ethosldata
       - product: ccd
-        component: user-profile-api
+        component: user-profile-api-ethosldata
       - product: ccd
-        component: case-activity-api
+        component: case-activity-api-ethosldata
       - product: ccd
-        component: admin-web
+        component: admin-web-ethosldata
         ssl_enabled: true
 
     # SIDAM
       - product: idam
-        component: api
+        component: api-ethosldata
         cookie_based_affinity: Enabled
         ssl_enabled: true
       - product: idam
-        component: web-admin
+        component: web-admin-ethosldata
         cookie_based_affinity: Enabled
         ssl_enabled: true
 

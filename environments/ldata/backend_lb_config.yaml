@@ -8,17 +8,17 @@ gateways:
     app_configuration:
     # RPE
       - product: rpe
-        component: service-auth-provider-ethosldata
+        component: service-auth-provider
 
     # CCD
       - product: ccd
-        component: data-store-api-ethosldata
+        component: data-store-api
       - product: ccd
-        component: definition-store-api-ethosldata
+        component: definition-store-api
       - product: ccd
-        component: user-profile-api-ethosldata
+        component: user-profile-api
       - product: ccd
-        component: case-activity-api-ethosldata
+        component: case-activity-api
       - product: ccd
         component: admin-web-ethosldata
         ssl_enabled: true

@@ -1,6 +1,6 @@
 project                    = "hmcts"
 location                   = "uksouth"
-env                        = "ldata"
+env                        = "ethosldata"
 subscription               = "ldata"
 enable_ssl                 = true
 ssl_mode                   = "AzureKeyVault"

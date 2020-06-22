@@ -1,5 +1,5 @@
 locals {
-  prefix    = "activegate-${var.nonprod}"
+  prefix    = "activegate-nonprod"
   adminuser = "azureuser"
 }
 
@@ -14,8 +14,8 @@ data "azurerm_key_vault" "subscription_vault" {
   resource_group_name = var.vault_rg
 }
 
-data "azurerm_key_vault_secret" "dynatrace_api_key" {
-  name         = "dynatrace-api-key"
+data "azurerm_key_vault_secret" "dynatrace_nonprod_api_key" {
+  name         = "dynatrace-nonprod-api-key"
   key_vault_id = data.azurerm_key_vault.subscription_vault.id
 }
 
@@ -28,8 +28,8 @@ data "template_file" "cloudconfig" {
   template = file("${path.module}/cloudconfig.tpl")
 
   vars = {
-    api_key                 = data.azurerm_key_vault_secret.dynatrace_api_key.value
-    dynatrace_instance_name = var.dynatrace_instance_name
+    api_key                 = data.azurerm_key_vault_secret.dynatrace_nonprod_api_key.value
+    dynatrace_instance_name = var.dynatrace_nonprod_instance_name
   }
 }
 
@@ -48,7 +48,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
   resource_group_name = data.azurerm_subnet.iaas.resource_group_name
   location            = var.location
   sku                 = var.sku
-  instances           = var.instance_count
+  instances           = var.instance_count_nonprod
 
   admin_username = local.adminuser
   admin_ssh_key {

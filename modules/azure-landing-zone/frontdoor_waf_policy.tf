@@ -43,18 +43,25 @@ resource "azurerm_frontdoor_firewall_policy" "custom" {
     }
   }
 
-  custom_rule {
-    name     = "IPMatchWhitelist"
-    enabled  = contains(keys(each.value), "ip_whitelist") ? true : false
-    priority = 1
-    type     = "MatchRule"
-    action   = "Block"
+  dynamic "custom_rules" {
+    iterator = custom_rules
+    for_each = lookup(each.value, "custom_rules", [])
 
-    match_condition {
-      match_variable     = "RemoteAddr"
-      operator           = "IPMatch"
-      negation_condition = false
-      match_values       = contains(keys(each.value), "ip_whitelist") ? lookup(each.value, "ip_whitelist") : []
+    content {
+      custom_rule {
+        name     = custom_rules.value.name
+        enabled  = true
+        priority = custom_rules.value.priority
+        type     = custom_rules.value.type
+        action   = custom_rules.value.action
+
+        match_condition {
+          match_variable     = custom_rules.value.match_variable
+          operator           = custom_rules.value.operator
+          negation_condition = false
+          match_values       = custom_rules.value.match_values
+        }
+      }
     }
   }
 }

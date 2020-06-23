@@ -27,7 +27,17 @@ frontends = [
     custom_domain    = "idam-web-public.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "STAR-sandbox-platform-hmcts-net"
-    ip_whitelist     = ["85.92.217.166"]
+    custom_rules = [
+      {
+        name           = "IPMatchWhitelist"
+        priority       = 1
+        type           = "MatchRule"
+        action         = "Block"
+        match_variable = "RemoteAddr"
+        operator       = "IPMatch"
+        match_values   = ["85.92.217.166"]
+      },
+    ],
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"

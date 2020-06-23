@@ -94,8 +94,6 @@ gateways:
         component: ccd-callback-orchestrator
       - product: sscs
         component: tya-notif
-      - product: sscs
-        component: cor-backend
 
     # FPLA
       - product: fpl
@@ -126,7 +124,7 @@ gateways:
         component: case-activity-api
       - product: ccd
         component: admin-web
-        ssl_enabled: true     
+        ssl_enabled: true
 
     # BAR
       - product: bar

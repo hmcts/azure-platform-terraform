@@ -42,4 +42,19 @@ resource "azurerm_frontdoor_firewall_policy" "custom" {
       }
     }
   }
+
+  custom_rule {
+    name     = "IPMatchWhitelist"
+    enabled  = contains(keys(each.value), "ip_whitelist") ? true : false
+    priority = 1
+    type     = "MatchRule"
+    action   = "Block"
+
+    match_condition {
+      match_variable     = "RemoteAddr"
+      operator           = "IPMatch"
+      negation_condition = false
+      match_values       = contains(keys(each.value), "ip_whitelist") ? lookup(each.value, "ip_whitelist") : []
+    }
+  }
 }

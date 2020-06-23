@@ -919,10 +919,22 @@ frontends = [
   },
   {
     name             = "pcq"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "equality-and-diversity.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "equality-and-diversity-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+    ]
   },
   {
     name             = "jui-redirect"

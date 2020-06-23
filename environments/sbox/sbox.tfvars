@@ -29,13 +29,14 @@ frontends = [
     certificate_name = "STAR-sandbox-platform-hmcts-net"
     custom_rules = [
       {
-        name           = "IPMatchWhitelist"
-        priority       = 1
-        type           = "MatchRule"
-        action         = "Block"
-        match_variable = "RemoteAddr"
-        operator       = "IPMatch"
-        match_values   = ["85.92.217.166"]
+        name               = "IPMatchWhitelist"
+        priority           = 1
+        type               = "MatchRule"
+        action             = "Block"
+        match_variable     = "RemoteAddr"
+        operator           = "IPMatch"
+        negation_condition = true
+        match_values       = ["85.92.217.166"]
       },
     ],
     global_exclusions = [

@@ -58,7 +58,7 @@ resource "azurerm_frontdoor_firewall_policy" "custom" {
         match_condition {
           match_variable     = custom_rules.value.match_variable
           operator           = custom_rules.value.operator
-          negation_condition = false
+          negation_condition = custom_rules.value.negation_condition
           match_values       = custom_rules.value.match_values
         }
       }

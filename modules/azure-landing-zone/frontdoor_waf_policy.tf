@@ -42,4 +42,24 @@ resource "azurerm_frontdoor_firewall_policy" "custom" {
       }
     }
   }
+
+  dynamic "custom_rule" {
+    iterator = custom_rule
+    for_each = lookup(each.value, "custom_rules", [])
+
+    content {
+      name     = custom_rule.value.name
+      enabled  = true
+      priority = custom_rule.value.priority
+      type     = custom_rule.value.type
+      action   = custom_rule.value.action
+
+      match_condition {
+        match_variable     = custom_rule.value.match_variable
+        operator           = custom_rule.value.operator
+        negation_condition = custom_rule.value.negation_condition
+        match_values       = custom_rule.value.match_values
+      }
+    }
+  }
 }

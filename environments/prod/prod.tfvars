@@ -449,6 +449,13 @@ frontends = [
         "942400",
       ]
     }
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "xui-manage-org"
@@ -468,6 +475,13 @@ frontends = [
         "942400",
       ]
     }
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "xui-approve-org"
@@ -487,6 +501,13 @@ frontends = [
         "942400",
       ]
     }
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "xui-register-org"
@@ -506,6 +527,13 @@ frontends = [
         "942400",
       ]
     }
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "cmc"

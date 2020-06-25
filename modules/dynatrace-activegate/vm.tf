@@ -1,5 +1,5 @@
 locals {
-  prefix    = "activegate-${var.nonprod}"
+  prefix    = "activegate"
   adminuser = "azureuser"
 }
 

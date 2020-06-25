@@ -1,5 +1,5 @@
 locals {
-  prefix    = "activegate"
+  prefix    = "activegate-${var.env}"
   adminuser = "azureuser"
 }
 

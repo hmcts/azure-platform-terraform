@@ -25,7 +25,7 @@ data "azurerm_key_vault_secret" "ssh_public_key" {
 }
 
 data "template_file" "nonprodcloudconfig" {
-  template = file("${path.module}/nonprodcloudconfig.tpl")
+  template = file("${path.module}/nonprod-cloudconfig.tpl")
 
   vars = {
     api_key                 = data.azurerm_key_vault_secret.dynatrace_nonprod_api_key.value

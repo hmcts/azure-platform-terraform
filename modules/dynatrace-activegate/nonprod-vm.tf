@@ -30,6 +30,7 @@ data "template_file" "cloudconfig" {
   vars = {
     api_key                 = data.azurerm_key_vault_secret.dynatrace_nonprod_api_key.value
     dynatrace_instance_name = var.dynatrace_nonprod_instance_name
+    network_zone            = azure_cft
   }
 }
 
@@ -48,7 +49,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
   resource_group_name = data.azurerm_subnet.iaas.resource_group_name
   location            = var.location
   sku                 = var.sku
-  instances           = var.instance_count_nonprod
+  instances           = var.instance_count
 
   admin_username = local.adminuser
   admin_ssh_key {

@@ -1,15 +1,15 @@
 locals {
-  prefix    = "activegate-nonprod"
-  adminuser = "azureuser"
+  nonprod_prefix    = "activegate-nonprod"
+  nonprod_adminuser = "azureuser"
 }
 
-data "azurerm_subnet" "iaas" {
+data "azurerm_subnet" "subnet_iaas" {
   name                 = "iaas"
   resource_group_name  = var.resource_group_name
   virtual_network_name = var.vnet_name
 }
 
-data "azurerm_key_vault" "subscription_vault" {
+data "azurerm_key_vault" "sub_vault" {
   name                = var.vault_name
   resource_group_name = var.vault_rg
 }
@@ -19,7 +19,7 @@ data "azurerm_key_vault_secret" "dynatrace_nonprod_api_key" {
   key_vault_id = data.azurerm_key_vault.subscription_vault.id
 }
 
-data "azurerm_key_vault_secret" "ssh_public_key" {
+data "azurerm_key_vault_secret" "nonprod_ssh_public_key" {
   name         = "aks-ssh-pub-key"
   key_vault_id = data.azurerm_key_vault.subscription_vault.id
 }
@@ -34,7 +34,7 @@ data "template_file" "nonprod_cloudconfig" {
   }
 }
 
-data "template_cloudinit_config" "config" {
+data "template_cloudinit_config" "nonprod_config" {
   gzip          = true
   base64_encode = true
 
@@ -44,7 +44,7 @@ data "template_cloudinit_config" "config" {
   }
 }
 
-resource "azurerm_linux_virtual_machine_scale_set" "main" {
+resource "azurerm_linux_virtual_machine_scale_set" "nonprod_main" {
   name                = "${local.prefix}-vmss"
   resource_group_name = data.azurerm_subnet.iaas.resource_group_name
   location            = var.location

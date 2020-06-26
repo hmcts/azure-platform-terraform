@@ -30,10 +30,6 @@ variable "dynatrace_instance_name" {
   default = "ebe20728"
 }
 
-variable "dynatrace_nonprod_instance_name" {
-  default = "yrk32651"
-}
-
 variable "instance_count" {
   default = 1
 }

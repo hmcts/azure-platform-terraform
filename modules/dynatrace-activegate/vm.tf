@@ -15,7 +15,7 @@ data "azurerm_key_vault" "subscription_vault" {
 }
 
 data "azurerm_key_vault_secret" "dynatrace_api_key" {
-  name         = "dynatrace-api-key"
+  name         = "dynatrace-${var.env}-api-key"
   key_vault_id = data.azurerm_key_vault.subscription_vault.id
 }
 
@@ -30,6 +30,7 @@ data "template_file" "cloudconfig" {
   vars = {
     api_key                 = data.azurerm_key_vault_secret.dynatrace_api_key.value
     dynatrace_instance_name = var.dynatrace_instance_name
+    network_zone            = var.env.network_zone
   }
 }
 

@@ -30,7 +30,7 @@ data "template_file" "cloudconfig" {
   vars = {
     api_key                 = data.azurerm_key_vault_secret.dynatrace_nonprod_api_key.value
     dynatrace_instance_name = var.dynatrace_nonprod_instance_name
-    network_zone            = azure_cft
+    network_zone            = "azure_cft"
   }
 }
 

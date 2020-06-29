@@ -30,6 +30,10 @@ variable "dynatrace_instance_name" {
   default = "ebe20728"
 }
 
+variable "network_zone" {
+  default = ""
+}
+
 variable "instance_count" {
   default = 1
 }

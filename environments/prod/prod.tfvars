@@ -449,6 +449,13 @@ frontends = [
         "942400",
       ]
     }
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "xui-manage-org"
@@ -468,6 +475,13 @@ frontends = [
         "942400",
       ]
     }
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "xui-approve-org"
@@ -487,6 +501,13 @@ frontends = [
         "942400",
       ]
     }
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "xui-register-org"
@@ -506,6 +527,13 @@ frontends = [
         "942400",
       ]
     }
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name             = "cmc"
@@ -919,10 +947,22 @@ frontends = [
   },
   {
     name             = "pcq"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "equality-and-diversity.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "equality-and-diversity-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+    ]
   },
   {
     name             = "jui-redirect"

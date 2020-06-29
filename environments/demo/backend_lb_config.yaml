@@ -69,7 +69,9 @@ gateways:
         component: case-documents-api
       - product: ia
         component: case-notifications-api
-
+      - product: ia
+        component: case-payments-api
+        
     # SSCS
       - product: sscs
         component: tribunals-api

@@ -33,3 +33,12 @@ gateways:
         cookie_based_affinity: Enabled
         ssl_enabled: true
 
+    # Ethos
+      - product: ethos
+        component: repl-docmosis-backend
+      - product: ethos
+        component: ecm-consumer
+
+    # Evidence Management
+      - product: dm
+        component: store

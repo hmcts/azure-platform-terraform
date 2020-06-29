@@ -25,7 +25,7 @@ frontends = [
   {
     name             = "div-dn"
     custom_domain    = "decree-nisi-aks.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
@@ -48,7 +48,7 @@ frontends = [
   {
     name             = "div-da"
     custom_domain    = "decree-absolute-aks.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
@@ -71,7 +71,7 @@ frontends = [
   {
     name             = "div-rfe"
     custom_domain    = "respond-divorce-aks.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
@@ -94,7 +94,7 @@ frontends = [
   {
     name             = "div-pfe"
     custom_domain    = "petitioner-frontend-aks.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
@@ -117,7 +117,7 @@ frontends = [
   {
     name             = "idam-web-public"
     custom_domain    = "idam-web-public.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
@@ -241,77 +241,77 @@ frontends = [
     name             = "cmc"
     mode             = "Detection"
     custom_domain    = "moneyclaims.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "cmc-legal"
     mode             = "Detection"
     custom_domain    = "moneyclaims-legal.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "www-ccd"
     mode             = "Detection"
     custom_domain    = "www-ccd.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "gateway-ccd"
     mode             = "Detection"
     custom_domain    = "gateway-ccd.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "return-case-doc-ccd"
     mode             = "Detection"
     custom_domain    = "return-case-doc-ccd.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "xui-approve-org"
     mode             = "Detection"
     custom_domain    = "administer-orgs.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "xui-manage-org"
     mode             = "Detection"
     custom_domain    = "manage-org.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "xui-register-org"
     mode             = "Detection"
     custom_domain    = "register-org.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "xui-webapp"
     mode             = "Detection"
     custom_domain    = "manage-case.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "ia-aip"
     mode             = "Detection"
     custom_domain    = "immigration-appeal.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "probate"
     mode             = "Prevention"
     custom_domain    = "probate.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
@@ -365,28 +365,121 @@ frontends = [
     name             = "pcq"
     custom_domain    = "pcq.ithc.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "paybubble"
     custom_domain    = "paybubble.ithc.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "bar"
     custom_domain    = "bar.ithc.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
     name             = "fees-register"
     custom_domain    = "fees-register.ithc.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
-  }
+  },
+  {
+    name             = "idam-web-admin"
+    custom_domain    = "idam-web-admin.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    custom_rules = [
+      {
+        name               = "IPMatchWhitelist"
+        priority           = 1
+        type               = "MatchRule"
+        action             = "Block"
+        match_variable     = "RemoteAddr"
+        operator           = "IPMatch"
+        negation_condition = true
+        match_values = [
+          "81.134.202.29/32",
+          "51.145.6.230/32",
+          "194.33.192.0/25",
+          "194.33.196.0/25",
+          "52.210.206.51/32",
+          "62.25.109.201/32",
+          "62.25.109.203/32"
+        ]
+      },
+    ],
+    global_exclusions = [
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "description"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.AuthId"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.Session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "jwt"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "label"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "oauth2ClientSecret"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "StartsWith",
+        selector       = "password"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "refresh_token"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "refresh_token"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "token"
+      },
+    ]
+  },
 ]

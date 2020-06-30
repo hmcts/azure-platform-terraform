@@ -20,6 +20,8 @@ gateways:
       - product: ccd
         component: case-activity-api
       - product: ccd
+        component: case-print-service
+      - product: ccd
         component: admin-web-ethosldata
         ssl_enabled: true
 

@@ -20,6 +20,8 @@ gateways:
       - product: ccd
         component: case-activity-api
       - product: ccd
+        component: case-print-service
+      - product: ccd
         component: admin-web-ethosldata
         ssl_enabled: true
 
@@ -33,3 +35,12 @@ gateways:
         cookie_based_affinity: Enabled
         ssl_enabled: true
 
+    # Ethos
+      - product: ethos
+        component: repl-docmosis-backend
+      - product: ethos
+        component: ecm-consumer
+
+    # Evidence Management
+      - product: dm
+        component: store

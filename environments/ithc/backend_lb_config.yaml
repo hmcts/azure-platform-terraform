@@ -133,6 +133,7 @@ gateways:
         ssl_enabled: true
       - product: idam
         component: web-admin
+        cookie_based_affinity: Enabled
         ssl_enabled: true
 
     # CMC

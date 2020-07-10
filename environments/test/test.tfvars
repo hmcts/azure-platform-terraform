@@ -28,7 +28,7 @@ frontends = [
     name             = "sscs-tribunals"
     custom_domain    = "benefit-appeal.perftest.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     global_exclusions = [
       {
@@ -57,7 +57,7 @@ frontends = [
     name             = "sscs-cor"
     mode             = "Detection"
     custom_domain    = "sscs-cor.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net",
     global_exclusions = [
       {
@@ -76,42 +76,42 @@ frontends = [
     name             = "cmc"
     mode             = "Detection"
     custom_domain    = "moneyclaims.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
     name             = "cmc-legal"
     mode             = "Detection"
     custom_domain    = "moneyclaims-legal.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
     name             = "www-ccd"
     mode             = "Detection"
     custom_domain    = "www-ccd.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
     name             = "gateway-ccd"
     mode             = "Detection"
     custom_domain    = "gateway-ccd.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
     name             = "return-case-doc-ccd"
     mode             = "Detection"
     custom_domain    = "return-case-doc-ccd.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
     name             = "idam-web-public"
     mode             = "Detection"
     custom_domain    = "idam-web-public.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     disabled_rules   = {}
     global_exclusions = [
@@ -235,21 +235,21 @@ frontends = [
   {
     name             = "probate"
     custom_domain    = "probate.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
     name             = "pcq"
     custom_domain    = "pcq.perftest.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
     name             = "paybubble"
     custom_domain    = "paybubble.perftest.platform.hmcts.net"
     mode             = "Prevention"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     global_exclusions = [
       {
@@ -283,42 +283,42 @@ frontends = [
     name             = "bar"
     custom_domain    = "bar.perftest.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
     name             = "fees-register"
     custom_domain    = "fees-register.perftest.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
     name             = "xui-approve-org"
     mode             = "Detection"
     custom_domain    = "administer-orgs.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
     name             = "xui-manage-org"
     mode             = "Detection"
     custom_domain    = "manage-org.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
     name             = "xui-register-org"
     mode             = "Detection"
     custom_domain    = "register-org.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
     name             = "xui-webapp"
     mode             = "Detection"
     custom_domain    = "manage-case.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {

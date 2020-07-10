@@ -27,7 +27,7 @@ frontends = [
   {
     name             = "idam-web-public"
     custom_domain    = "idam-web-public-ethosldata.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ldata.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ldata.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
     global_exclusions = [
       {
@@ -151,21 +151,21 @@ frontends = [
     name             = "www-ccd"
     mode             = "Detection"
     custom_domain    = "www-ccd-ethosldata.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ldata.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ldata.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
   },
   {
     name             = "gateway-ccd"
     mode             = "Detection"
     custom_domain    = "gateway-ccd-ethosldata.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ldata.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ldata.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
   },
   {
     name             = "return-case-doc-ccd"
     mode             = "Detection"
     custom_domain    = "return-case-doc-ccd-ethosldata.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ldata.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-ldata.ukwest.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
   }
 ]

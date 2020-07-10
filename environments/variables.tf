@@ -71,3 +71,6 @@ variable mgmt_rg_name {
 variable kv_rg_name {
   default = "TODO"
 }
+
+variable "data_subscription" {}
+variable "oms_env" {}

@@ -148,10 +148,11 @@ data "azurerm_monitor_diagnostic_categories" "diagnostic_categories" {
 }
 
 data "azurerm_log_analytics_workspace" "log_analytics" {
-  count = length(var.frontends) != 0 ? 1 : 0
+  provider = "azurerm.data"
+  count    = length(var.frontends) != 0 ? 1 : 0
 
-  name                = "hmcts-${var.env}-law"
-  resource_group_name = "oms-automation-rg"
+  name                = "hmcts-${var.oms_env}"
+  resource_group_name = "oms-automation"
 }
 
 resource "azurerm_monitor_diagnostic_setting" "diagnostic_settings" {

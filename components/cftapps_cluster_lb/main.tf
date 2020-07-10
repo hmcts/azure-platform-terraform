@@ -1,6 +1,11 @@
 module "cftapps-frontend-cluster-lb" {
   source = "../../modules/app-gateway-module"
 
+  providers = {
+    azurerm = "azurerm"
+    azurerm.data = "azurerm.data"
+  }
+
   destinations       = var.cft_apps_cluster_ips
   common_tags        = local.common_tags
   env                = var.env
@@ -9,4 +14,5 @@ module "cftapps-frontend-cluster-lb" {
   private_ip_address = var.cft_apps_ag_ip_address
   subscription       = var.subscription
   vault_name         = var.certificate_key_vault_name
+  oms_env            = var.oms_env
 }

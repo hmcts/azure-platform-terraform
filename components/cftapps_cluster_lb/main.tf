@@ -2,7 +2,7 @@ module "cftapps-frontend-cluster-lb" {
   source = "../../modules/app-gateway-module"
 
   providers = {
-    azurerm = "azurerm"
+    azurerm      = "azurerm"
     azurerm.data = "azurerm.data"
   }
 

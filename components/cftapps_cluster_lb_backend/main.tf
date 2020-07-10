@@ -3,13 +3,13 @@ locals {
 }
 
 module "app-gw" {
-  source    = "../../modules/app-gateway-module-backend"
+  source = "../../modules/app-gateway-module-backend"
 
   providers = {
-    azurerm = "azurerm"
+    azurerm      = "azurerm"
     azurerm.data = "azurerm.data"
   }
-  
+
   yaml_path = "${path.cwd}/../../environments/${local.env}/backend_lb_config.yaml"
   env       = var.env
 

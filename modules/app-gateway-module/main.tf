@@ -73,13 +73,14 @@ resource "azurerm_application_gateway" "ag" {
 
   dynamic "backend_http_settings" {
     for_each = [for app in var.frontends : {
-      name = app.name
+      name                  = app.name
+      cookie_based_affinity = contains(keys(app), "appgw_cookie_based_affinity") ? app.appgw_cookie_based_affinity : "Disabled"
     }]
 
     content {
       name                  = backend_http_settings.value.name
       probe_name            = backend_http_settings.value.name
-      cookie_based_affinity = "Disabled"
+      cookie_based_affinity = backend_http_settings.value.cookie_based_affinity
       port                  = 80
       protocol              = "Http"
       request_timeout       = 30

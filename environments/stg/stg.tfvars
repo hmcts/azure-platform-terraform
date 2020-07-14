@@ -554,7 +554,7 @@ frontends = [
   {
     name             = "paybubble"
     custom_domain    = "paybubble.aat.platform.hmcts.net"
-    mode             = "prevention"
+    mode             = "Prevention"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     global_exclusions = [

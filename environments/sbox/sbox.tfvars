@@ -271,10 +271,11 @@ frontends = [
     ]
   },
   {
-    name             = "idam-web-admin"
-    custom_domain    = "idam-web-admin.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "STAR-sandbox-platform-hmcts-net"
+    name                        = "idam-web-admin"
+    custom_domain               = "idam-web-admin.sandbox.platform.hmcts.net"
+    backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name            = "STAR-sandbox-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
     custom_rules = [
       {
         name               = "IPMatchWhitelist"

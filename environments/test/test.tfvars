@@ -277,6 +277,11 @@ frontends = [
         operator       = "Equals"
         selector       = "__redirect"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
     ]
   },
   {

@@ -282,6 +282,11 @@ frontends = [
         operator       = "Equals"
         selector       = "dtSa"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
     ]
   },
   {

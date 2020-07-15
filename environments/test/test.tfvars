@@ -322,10 +322,11 @@ frontends = [
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
-    name             = "idam-web-admin"
-    custom_domain    = "idam-web-admin.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
-    certificate_name = "wildcard-perftest-platform-hmcts-net"
+    name                        = "idam-web-admin"
+    custom_domain               = "idam-web-admin.perftest.platform.hmcts.net"
+    backend_domain              = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    certificate_name            = "wildcard-perftest-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
     custom_rules = [
       {
         name               = "IPMatchWhitelist"

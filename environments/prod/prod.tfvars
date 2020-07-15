@@ -1006,10 +1006,11 @@ frontends = [
     }
   },
   {
-    name             = "idam-web-admin"
-    custom_domain    = "idam-web-admin.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "idam-web-admin-platform-hmcts-net"
+    name                        = "idam-web-admin"
+    custom_domain               = "idam-web-admin.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name            = "idam-web-admin-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
     custom_rules = [
       {
         name               = "IPMatchWhitelist"

@@ -392,10 +392,11 @@ frontends = [
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
-    name             = "idam-web-admin"
-    custom_domain    = "idam-web-admin.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    name                        = "idam-web-admin"
+    custom_domain               = "idam-web-admin.ithc.platform.hmcts.net"
+    backend_domain              = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name            = "wildcard-ithc-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
     custom_rules = [
       {
         name               = "IPMatchWhitelist"

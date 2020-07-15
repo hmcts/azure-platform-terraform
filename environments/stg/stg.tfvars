@@ -573,10 +573,11 @@ frontends = [
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },
   {
-    name             = "idam-web-admin"
-    custom_domain    = "idam-web-admin.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name                        = "idam-web-admin"
+    custom_domain               = "idam-web-admin.aat.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name            = "wildcard-aat-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
     custom_rules = [
       {
         name               = "IPMatchWhitelist"

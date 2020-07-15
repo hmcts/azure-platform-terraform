@@ -31,11 +31,7 @@ variable "destinations" {
   description = "List of IP addresses to direct traffic to"
 }
 
-variable "frontends" {
-  type = list(object({
-    name = string, custom_domain = string
-  }))
-}
+variable "frontends" {}
 
 variable common_tags {}
 variable "oms_env" {}

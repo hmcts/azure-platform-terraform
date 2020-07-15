@@ -74,7 +74,7 @@ resource "azurerm_application_gateway" "ag" {
   dynamic "backend_http_settings" {
     for_each = [for app in var.frontends : {
       name                  = app.name
-      cookie_based_affinity = lookup(app, "appgw_cookie_based_affinity", "Disabled")
+      cookie_based_affinity = try(title(app.appgw_cookie_based_affinity), "Disabled")
     }]
 
     content {

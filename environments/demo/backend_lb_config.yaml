@@ -71,7 +71,7 @@ gateways:
         component: case-notifications-api
       - product: ia
         component: case-payments-api
-        
+
     # SSCS
       - product: sscs
         component: tribunals-api
@@ -175,6 +175,10 @@ gateways:
       - product: rse
         component: check
 
-     # UCMC
+     # UCMC - to be removed once transition to Unspec is finished
       - product: ucmc
+        component: service
+
+     # Unspec
+      - product: unspec
         component: service

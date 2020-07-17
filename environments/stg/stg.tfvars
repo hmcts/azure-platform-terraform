@@ -258,7 +258,7 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },
-   {
+  {
     name             = "ia-wa-proto-frontend"
     mode             = "Detection"
     custom_domain    = "ia-wa-proto-frontend.aat.platform.hmcts.net"

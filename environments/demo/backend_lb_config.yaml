@@ -175,10 +175,6 @@ gateways:
       - product: rse
         component: check
 
-     # UCMC - to be removed once transition to Unspec is finished
-      - product: ucmc
-        component: service
-
      # Unspec
       - product: unspec
         component: service

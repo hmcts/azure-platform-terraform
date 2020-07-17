@@ -34,8 +34,6 @@ gateways:
       - product: ia
         component: aip-frontend
       - product: ia
-        component: wa-proto-frontend
-      - product: ia
         component: home-office-integration-api
       - product: ia
         component: home-office-mock-api

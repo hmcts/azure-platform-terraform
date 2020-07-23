@@ -349,6 +349,16 @@ frontends = [
     ],
     global_exclusions = [
       {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "activationRedirectUrl"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "activationRedirectUrl"
+      },
+      {
         match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
         selector       = "description"
@@ -382,6 +392,16 @@ frontends = [
         match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
         selector       = "oauth2ClientSecret"
+      },
+      {
+        match_variable = "QueryStringArgNames",
+        operator       = "Equals",
+        selector       = "oauth2RedirectUris"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "oauth2RedirectUris"
       },
       {
         match_variable = "RequestBodyPostArgNames",

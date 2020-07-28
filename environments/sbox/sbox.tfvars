@@ -282,17 +282,21 @@ frontends = [
         priority           = 1
         type               = "MatchRule"
         action             = "Block"
-        match_variable     = "RemoteAddr"
-        operator           = "IPMatch"
-        negation_condition = true
-        match_values = [
-          "81.134.202.29/32",
-          "51.145.6.230/32",
-          "194.33.192.0/25",
-          "194.33.196.0/25",
-          "52.210.206.51/32",
-          "62.25.109.201/32",
-          "62.25.109.203/32"
+        match_conditions   = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "81.134.202.29/32",
+              "51.145.6.230/32",
+              "194.33.192.0/25",
+              "194.33.196.0/25",
+              "52.210.206.51/32",
+              "62.25.109.201/32",
+              "62.25.109.203/32"
+            ]
+          }
         ]
       },
     ],

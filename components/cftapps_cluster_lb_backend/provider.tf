@@ -5,7 +5,7 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  alias           = "data"
+  alias = "data"
   features {}
   subscription_id = var.data_subscription
 }

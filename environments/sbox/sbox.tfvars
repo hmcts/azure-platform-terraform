@@ -7,6 +7,8 @@ ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-sbox"
 
 app_gw_private_ip_address = "10.10.7.122"
+data_subscription         = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
+oms_env                   = "sandbox"
 
 cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-sbox-rg"
@@ -269,10 +271,11 @@ frontends = [
     ]
   },
   {
-    name             = "idam-web-admin"
-    custom_domain    = "idam-web-admin.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "STAR-sandbox-platform-hmcts-net"
+    name                        = "idam-web-admin"
+    custom_domain               = "idam-web-admin.sandbox.platform.hmcts.net"
+    backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name            = "STAR-sandbox-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
     custom_rules = [
       {
         name               = "IPMatchWhitelist"
@@ -298,6 +301,16 @@ frontends = [
       },
     ],
     global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "activationRedirectUrl"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "activationRedirectUrl"
+      },
       {
         match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
@@ -332,6 +345,16 @@ frontends = [
         match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
         selector       = "oauth2ClientSecret"
+      },
+      {
+        match_variable = "QueryStringArgNames",
+        operator       = "Equals",
+        selector       = "oauth2RedirectUris"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "oauth2RedirectUris"
       },
       {
         match_variable = "RequestBodyPostArgNames",

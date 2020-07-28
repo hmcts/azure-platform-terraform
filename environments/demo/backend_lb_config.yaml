@@ -71,7 +71,7 @@ gateways:
         component: case-notifications-api
       - product: ia
         component: case-payments-api
-        
+
     # SSCS
       - product: sscs
         component: tribunals-api
@@ -175,6 +175,6 @@ gateways:
       - product: rse
         component: check
 
-     # UCMC
-      - product: ucmc
+     # Unspec
+      - product: unspec
         component: service

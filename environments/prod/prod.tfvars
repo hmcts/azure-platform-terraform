@@ -7,6 +7,8 @@ ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cft-apps-prod"
 
 app_gw_private_ip_address = "10.13.32.120"
+data_subscription         = "8999dec3-0104-4a27-94ee-6588559729d1"
+oms_env                   = "prod"
 
 cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-prod-rg"
@@ -455,6 +457,11 @@ frontends = [
         operator       = "Equals"
         selector       = "iss"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth__"
+      },
     ]
   },
   {
@@ -480,6 +487,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth__"
       },
     ]
   },
@@ -507,6 +519,11 @@ frontends = [
         operator       = "Equals"
         selector       = "iss"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth__"
+      },
     ]
   },
   {
@@ -532,6 +549,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth__"
       },
     ]
   },
@@ -984,10 +1006,11 @@ frontends = [
     }
   },
   {
-    name             = "idam-web-admin"
-    custom_domain    = "idam-web-admin.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "idam-web-admin-platform-hmcts-net"
+    name                        = "idam-web-admin"
+    custom_domain               = "idam-web-admin.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name            = "idam-web-admin-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
     custom_rules = [
       {
         name     = "IPMatchWhitelist"
@@ -1013,6 +1036,16 @@ frontends = [
       },
     ],
     global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "activationRedirectUrl"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "activationRedirectUrl"
+      },
       {
         match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
@@ -1047,6 +1080,16 @@ frontends = [
         match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
         selector       = "oauth2ClientSecret"
+      },
+      {
+        match_variable = "QueryStringArgNames",
+        operator       = "Equals",
+        selector       = "oauth2RedirectUris"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "oauth2RedirectUris"
       },
       {
         match_variable = "RequestBodyPostArgNames",

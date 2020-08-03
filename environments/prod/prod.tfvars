@@ -44,6 +44,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "connect.sid"
       },
       {
@@ -105,6 +110,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "connect.sid"
       },
       {
@@ -158,6 +168,11 @@ frontends = [
       ]
     }
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -222,6 +237,11 @@ frontends = [
       ]
     }
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -317,6 +337,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "session"
       },
       {
@@ -374,6 +399,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "session"
       },
       {
@@ -424,6 +454,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "connect.sid"
       },
       {
@@ -452,6 +487,11 @@ frontends = [
       ]
     }
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
@@ -484,6 +524,11 @@ frontends = [
     }
     global_exclusions = [
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
@@ -515,6 +560,11 @@ frontends = [
     }
     global_exclusions = [
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
@@ -545,6 +595,11 @@ frontends = [
       ]
     }
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
@@ -595,6 +650,11 @@ frontends = [
       ]
     }
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -710,6 +770,11 @@ frontends = [
     }
     global_exclusions = [
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
@@ -748,6 +813,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "accessToken"
       },
     ]
@@ -771,6 +841,11 @@ frontends = [
       ]
     }
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"

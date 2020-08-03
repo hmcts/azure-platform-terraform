@@ -662,6 +662,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "T2_SESSION_ID"
       },
       {

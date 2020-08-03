@@ -598,11 +598,6 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "dtSa"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
         selector       = "SESSION_ID"
       },
       {
@@ -664,6 +659,11 @@ frontends = [
       ]
     }
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"

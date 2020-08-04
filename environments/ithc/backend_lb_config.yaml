@@ -88,12 +88,6 @@ gateways:
       - product: ccpay
         component: bulkscanning-api
 
-    # Access Management
-      - product: am
-        component: role-assignment-service
-      - product: am
-        component: judicial-booking-service
-
     # BAR
       - product: bar
         component: api

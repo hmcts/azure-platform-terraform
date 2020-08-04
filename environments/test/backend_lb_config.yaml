@@ -157,6 +157,12 @@ gateways:
       - product: cmc
         component: claim-store
 
+    # Access Management
+      - product: am
+        component: role-assignment-service
+      - product: am
+        component: judicial-booking-service
+
     # SIDAM
       - product: idam
         component: api

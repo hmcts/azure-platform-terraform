@@ -100,7 +100,7 @@ gateways:
       - product: ethos
         component: ecm-consumer
 
-    # Access-Management
+    # Access Management
       - product: am
         component: accessmgmt-api
       - product: am

@@ -184,4 +184,3 @@ gateways:
      # Unspec
       - product: unspec
         component: service
-

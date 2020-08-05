@@ -188,6 +188,8 @@ gateways:
         component: judicial-api
       - product: rd
         component: judicial-data-load
+      - product: rd
+        component: caseworker-ref-api
 
       # Send-letter
       - product: rpe

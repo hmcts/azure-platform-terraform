@@ -176,6 +176,8 @@ gateways:
         component: user-profile-api
       - product: rd
         component: profile-sync
+      - product: rd
+        component: caseworker-ref-api
 
      # rse
       - product: rse

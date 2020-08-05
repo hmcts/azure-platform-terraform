@@ -36,6 +36,7 @@ gateways:
         component: case-notifications-api
       - product: ia
         component: case-documents-api
+    
     # Reference DATA
       - product: rd
         component: professional-api
@@ -47,6 +48,8 @@ gateways:
         component: judicial-api
       - product: rd
         component: judicial-data-load
+      - product: rd
+        component: caseworker-ref-api
 
     # Divorce
       - product: div

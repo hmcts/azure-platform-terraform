@@ -114,7 +114,6 @@ frontends = [
     backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     disabled_rules   = {}
-    cache_enabled    = "false"
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -328,7 +327,6 @@ frontends = [
     backend_domain              = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
     certificate_name            = "wildcard-perftest-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
-    cache_enabled               = "false"
     custom_rules = [
       {
         name     = "IPMatchWhitelist"

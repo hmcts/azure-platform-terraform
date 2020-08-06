@@ -317,7 +317,129 @@ frontends = [
     custom_domain    = "idam-web-public.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
-    cache_enabled    = "false"
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "description"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.AuthId"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.Session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "jwt"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "label"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "oauth2ClientSecret"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "StartsWith",
+        selector       = "password"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "redirect_uri"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "redirect_uri"
+      },
+      {
+        match_variable = "QueryStringArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "referer"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "refresh_token"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "refresh_token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "response_type"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "scope"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "state"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "token"
+      },
+    ]
+  },
+  {
+    name             = "idam-web-public-aat2"
+    custom_domain    = "idam-web-public-aat2.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -463,7 +585,6 @@ frontends = [
     backend_domain              = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-aat-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
-    cache_enabled               = "false"
     custom_rules = [
       {
         name     = "IPMatchWhitelist"

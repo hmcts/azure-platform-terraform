@@ -233,3 +233,7 @@ gateways:
      # Unspec
       - product: unspec
         component: service
+
+      # Work Allocation
+      - product: wa
+        component: workflow-api

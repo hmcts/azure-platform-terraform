@@ -502,6 +502,16 @@ frontends = [
         operator       = "Equals"
         selector       = "__auth__"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "xui-webapp"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
     ]
   },
   {
@@ -538,6 +548,11 @@ frontends = [
         operator       = "Equals"
         selector       = "__auth__"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "xui-manage-org"
+      },
     ]
   },
   {
@@ -573,6 +588,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "__auth__"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "xui-approve-org"
       },
     ]
   },

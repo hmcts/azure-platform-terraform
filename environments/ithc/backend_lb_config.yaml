@@ -15,7 +15,15 @@ gateways:
         component: pdf-service
       - product: rpe
         component: service-auth-provider
-    # Probate
+      # Camunda
+      - product: camunda
+        component: bpm
+        ssl_enabled: true
+        cookie_based_affinity: Enabled
+      - product: camunda
+        component: api
+
+      # Probate
       - product: probate
         component: business-service
       - product: probate
@@ -147,5 +155,3 @@ gateways:
     # Send-letter
       - product: rpe
         component: send-letter-service
-
-

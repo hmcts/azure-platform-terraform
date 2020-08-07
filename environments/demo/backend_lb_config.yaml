@@ -15,7 +15,9 @@ gateways:
         component: pdf-service
       - product: rpe
         component: service-auth-provider
-
+      # Camunda
+      - product: camunda
+        component: api
     # Divorce
       - product: div
         component: emca

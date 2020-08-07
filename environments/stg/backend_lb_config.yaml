@@ -19,6 +19,7 @@ gateways:
       - product: camunda
         component: bpm
         ssl_enabled: true
+        cookie_based_affinity: Enabled
       - product: camunda
         component: api
     # Probate

@@ -15,7 +15,13 @@ gateways:
         component: pdf-service
       - product: rpe
         component: service-auth-provider
-    # Evidence Management
+      # Camunda
+      - product: camunda
+        component: bpm
+        ssl_enabled: true
+      - product: camunda
+        component: api
+      # Evidence Management
       - product: em
         component: anno
       - product: em

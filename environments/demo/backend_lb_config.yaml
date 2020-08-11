@@ -180,6 +180,10 @@ gateways:
         component: profile-sync
       - product: rd
         component: caseworker-ref-api
+      - product: rd
+        component: judicial-api
+      - product: rd
+        component: judicial-data-load
 
      # rse
       - product: rse

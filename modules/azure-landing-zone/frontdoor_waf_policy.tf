@@ -54,11 +54,15 @@ resource "azurerm_frontdoor_firewall_policy" "custom" {
       type     = custom_rule.value.type
       action   = custom_rule.value.action
 
-      match_condition {
-        match_variable     = custom_rule.value.match_variable
-        operator           = custom_rule.value.operator
-        negation_condition = custom_rule.value.negation_condition
-        match_values       = custom_rule.value.match_values
+      dynamic "match_condition" {
+        iterator = match_condition
+        for_each = lookup(custom_rule.value, "match_conditions", [])
+        content {
+          match_variable     = match_condition.value.match_variable
+          operator           = match_condition.value.operator
+          negation_condition = match_condition.value.negation_condition
+          match_values       = match_condition.value.match_values
+        }
       }
     }
   }

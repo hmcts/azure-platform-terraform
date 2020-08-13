@@ -7,6 +7,8 @@ ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-test"
 
 app_gw_private_ip_address = "10.10.46.121"
+data_subscription         = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
+oms_env                   = "nonprod"
 
 shutter_storage = "TODO"
 cdn_sku         = "TODO"
@@ -320,31 +322,47 @@ frontends = [
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
-    name             = "idam-web-admin"
-    custom_domain    = "idam-web-admin.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
-    certificate_name = "wildcard-perftest-platform-hmcts-net"
+    name                        = "idam-web-admin"
+    custom_domain               = "idam-web-admin.perftest.platform.hmcts.net"
+    backend_domain              = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    certificate_name            = "wildcard-perftest-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
     custom_rules = [
       {
-        name               = "IPMatchWhitelist"
-        priority           = 1
-        type               = "MatchRule"
-        action             = "Block"
-        match_variable     = "RemoteAddr"
-        operator           = "IPMatch"
-        negation_condition = true
-        match_values = [
-          "81.134.202.29/32",
-          "51.145.6.230/32",
-          "194.33.192.0/25",
-          "194.33.196.0/25",
-          "52.210.206.51/32",
-          "62.25.109.201/32",
-          "62.25.109.203/32"
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "81.134.202.29/32",
+              "51.145.6.230/32",
+              "194.33.192.0/25",
+              "194.33.196.0/25",
+              "52.210.206.51/32",
+              "62.25.109.201/32",
+              "62.25.109.203/32",
+              "51.143.139.240/32"
+            ]
+          }
         ]
       },
     ],
     global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "activationRedirectUrl"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "activationRedirectUrl"
+      },
       {
         match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
@@ -379,6 +397,16 @@ frontends = [
         match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
         selector       = "oauth2ClientSecret"
+      },
+      {
+        match_variable = "QueryStringArgNames",
+        operator       = "Equals",
+        selector       = "oauth2RedirectUris"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "oauth2RedirectUris"
       },
       {
         match_variable = "RequestBodyPostArgNames",

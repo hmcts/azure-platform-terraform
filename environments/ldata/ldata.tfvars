@@ -7,6 +7,8 @@ ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "ethos-ldata"
 
 app_gw_private_ip_address = "10.14.132.121"
+data_subscription         = "8999dec3-0104-4a27-94ee-6588559729d1"
+oms_env                   = "prod"
 
 shutter_storage = "TODO"
 cdn_sku         = "TODO"

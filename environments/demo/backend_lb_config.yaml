@@ -15,7 +15,9 @@ gateways:
         component: pdf-service
       - product: rpe
         component: service-auth-provider
-
+      # Camunda
+      - product: camunda
+        component: api
     # Divorce
       - product: div
         component: emca
@@ -71,7 +73,7 @@ gateways:
         component: case-notifications-api
       - product: ia
         component: case-payments-api
-        
+
     # SSCS
       - product: sscs
         component: tribunals-api
@@ -163,6 +165,12 @@ gateways:
       - product: xui
         component: terms-and-conditions
 
+    # Access Management
+      - product: am
+        component: role-assignment-service
+      - product: am
+        component: judicial-booking-service
+
     # Reference DATA
       - product: rd
         component: professional-api
@@ -170,11 +178,17 @@ gateways:
         component: user-profile-api
       - product: rd
         component: profile-sync
+      - product: rd
+        component: caseworker-ref-api
+      - product: rd
+        component: judicial-api
+      - product: rd
+        component: judicial-data-load
 
      # rse
       - product: rse
         component: check
 
-     # UCMC
-      - product: ucmc
+     # Unspec
+      - product: unspec
         component: service

@@ -1112,6 +1112,7 @@ frontends = [
     backend_domain              = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name            = "idam-web-admin-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
+    cache_enabled               = "false"
     custom_rules = [
       {
         name     = "IPMatchWhitelist"

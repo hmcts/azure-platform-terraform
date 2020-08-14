@@ -223,16 +223,6 @@ gateways:
         cookie_based_affinity: Enabled
         ssl_enabled: true
 
-# IDAM AAT2
-      - product: idam
-        component: api-aat2
-        cookie_based_affinity: Enabled
-        ssl_enabled: true
-      - product: idam
-        component: web-admin-aat2
-        cookie_based_affinity: Enabled
-        ssl_enabled: true
-
 # rse
       - product: rse
         component: check

@@ -247,6 +247,11 @@ frontends = [
         operator       = "Equals"
         selector       = "session_state"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
     ]
   },
   {

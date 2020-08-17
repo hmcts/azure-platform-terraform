@@ -233,6 +233,11 @@ frontends = [
         selector       = "state"
       },
       {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "session_state"
+      },
+      {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "token"

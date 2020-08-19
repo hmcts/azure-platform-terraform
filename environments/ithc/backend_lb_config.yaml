@@ -15,7 +15,15 @@ gateways:
         component: pdf-service
       - product: rpe
         component: service-auth-provider
-    # Probate
+      # Camunda
+      - product: camunda
+        component: bpm
+        ssl_enabled: true
+        cookie_based_affinity: Enabled
+      - product: camunda
+        component: api
+
+      # Probate
       - product: probate
         component: business-service
       - product: probate
@@ -36,6 +44,7 @@ gateways:
         component: case-notifications-api
       - product: ia
         component: case-documents-api
+    
     # Reference DATA
       - product: rd
         component: professional-api
@@ -47,6 +56,8 @@ gateways:
         component: judicial-api
       - product: rd
         component: judicial-data-load
+      - product: rd
+        component: caseworker-ref-api
 
     # Divorce
       - product: div
@@ -130,7 +141,6 @@ gateways:
     # SIDAM
       - product: idam
         component: api
-        cookie_based_affinity: Enabled
         ssl_enabled: true
       - product: idam
         component: web-admin
@@ -144,5 +154,3 @@ gateways:
     # Send-letter
       - product: rpe
         component: send-letter-service
-
-

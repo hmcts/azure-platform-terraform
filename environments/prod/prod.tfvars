@@ -1224,4 +1224,16 @@ frontends = [
       },
     ]
   },
+  {
+    name             = "reform-scan"
+    mode             = "Prevention"
+    custom_domain    = "https://reformscan.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-platform-hmcts-net"
+    disabled_rules = {
+      PROTOCOL-ENFORCEMENT = [
+        "920420"
+      ]
+    }
+  }
 ]

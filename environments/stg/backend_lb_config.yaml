@@ -197,6 +197,8 @@ gateways:
         component: judicial-data-load
       - product: rd
         component: caseworker-ref-api
+      - product: rd
+        component: location-ref-api
 
       # Send-letter
       - product: rpe

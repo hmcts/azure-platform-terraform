@@ -433,6 +433,21 @@ frontends = [
         operator       = "Equals"
         selector       = "token"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.SSOSession"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "session_state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
     ]
   },
   {
@@ -526,6 +541,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
         selector       = "label"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "oauth2ClientId"
       },
       {
         match_variable = "RequestBodyPostArgNames",

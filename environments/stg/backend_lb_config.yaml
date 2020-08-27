@@ -15,6 +15,13 @@ gateways:
         component: pdf-service
       - product: rpe
         component: service-auth-provider
+      # Camunda
+      - product: camunda
+        component: bpm
+        ssl_enabled: true
+        cookie_based_affinity: Enabled
+      - product: camunda
+        component: api
     # Probate
       - product: probate
         component: business-service
@@ -107,6 +114,8 @@ gateways:
         component: role-assignment-service
       - product: am
         component: judicial-booking-service
+      - product: am
+        component: org-role-mapping-service
 
     # Evidence Management
       - product: em
@@ -186,6 +195,10 @@ gateways:
         component: judicial-api
       - product: rd
         component: judicial-data-load
+      - product: rd
+        component: caseworker-ref-api
+      - product: rd
+        component: location-ref-api
 
       # Send-letter
       - product: rpe
@@ -206,20 +219,9 @@ gateways:
 # IDAM AAT
       - product: idam
         component: api
-        cookie_based_affinity: Enabled
         ssl_enabled: true
       - product: idam
         component: web-admin
-        cookie_based_affinity: Enabled
-        ssl_enabled: true
-
-# IDAM AAT2
-      - product: idam
-        component: api-aat2
-        cookie_based_affinity: Enabled
-        ssl_enabled: true
-      - product: idam
-        component: web-admin-aat2
         cookie_based_affinity: Enabled
         ssl_enabled: true
 
@@ -227,6 +229,10 @@ gateways:
       - product: rse
         component: check
 
-     # UCMC
-      - product: ucmc
+     # Unspec
+      - product: unspec
         component: service
+
+      # Work Allocation
+      - product: wa
+        component: workflow-api

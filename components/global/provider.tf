@@ -1,9 +1,12 @@
 provider "azurerm" {
-  version = "1.43.0"
+  version = "2.15.0"
+  features {}
+  skip_provider_registration = true
 }
 
 provider "azurerm" {
-  alias           = "data"
+  alias = "data"
+  features {}
   subscription_id = var.data_subscription
 }
 

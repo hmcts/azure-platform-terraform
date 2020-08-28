@@ -236,3 +236,6 @@ gateways:
       # Work Allocation
       - product: wa
         component: workflow-api
+      - product: wa
+        component: task-management-api
+

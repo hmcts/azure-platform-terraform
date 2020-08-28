@@ -192,3 +192,9 @@ gateways:
      # Unspec
       - product: unspec
         component: service
+        
+     # WA
+      - product: wa
+        component: workflow-api
+      - product: wa
+        component: task-management-api

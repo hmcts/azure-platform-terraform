@@ -391,7 +391,7 @@ frontends = [
   {
     name                        = "hmi-poc-apim"
     custom_domain               = "hmi-poc-apim.sandbox.platform.hmcts.net"
-    backend_domain              = ["firewall-sbox-int-palo-hmipoc.uksouth.cloudapp.azure.com"]
+    backend_domain              = ["hmi-poc-apim.azure-api.net"]
     certificate_name            = "STAR-sandbox-platform-hmcts-net"
     global_exclusions = [
       {

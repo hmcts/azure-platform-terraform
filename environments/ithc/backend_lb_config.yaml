@@ -35,7 +35,7 @@ gateways:
 
     # Protected Characteristics Questions
       - product: pcq
-        component: backend         
+        component: backend
 
     # I&A
       - product: ia
@@ -44,7 +44,7 @@ gateways:
         component: case-notifications-api
       - product: ia
         component: case-documents-api
-    
+
     # Reference DATA
       - product: rd
         component: professional-api
@@ -70,6 +70,8 @@ gateways:
         component: cms
       - product: div
         component: cos
+      - product: div
+        component: cfs
       - product: div
         component: hm
       - product: div
@@ -150,7 +152,7 @@ gateways:
     # CMC
       - product: cmc
         component: claim-store
-        
+
     # Send-letter
       - product: rpe
         component: send-letter-service

@@ -1,4 +1,4 @@
-module "nonprod_dynatrace_activegate" {
+module "nonprod_ukwest_dynatrace_activegate" {
   source                  = "../../modules/dynatrace-activegate"
   instance_count          = 1
   dynatrace_instance_name = "yrk32651"

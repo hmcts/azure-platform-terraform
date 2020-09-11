@@ -353,6 +353,7 @@ frontends = [
   {
     name             = "fees-register-dom1"
     custom_domain    = "fees-register-dom1.perftest.platform.hmcts.net"
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
     custom_rules = [
       {
         name               = "IPMatchWhitelist"

@@ -1,5 +1,5 @@
 locals {
-  prefix    = "activegate-${var.env}"
+  prefix    = var.location == "UK West" ? "activegate-ukwest-${var.env}" : "activegate-${var.env}"
   adminuser = "azureuser"
 }
 

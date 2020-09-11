@@ -353,6 +353,8 @@ frontends = [
   {
     name             = "fees-register-dom1"
     custom_domain    = "fees-register-dom1.perftest.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     custom_rules = [
       {

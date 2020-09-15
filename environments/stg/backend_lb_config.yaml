@@ -216,6 +216,10 @@ gateways:
       - product: cmc
         component: claim-store
 
+    # FACT
+      - product: fact
+        component: api
+
 # IDAM AAT
       - product: idam
         component: api

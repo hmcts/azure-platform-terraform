@@ -47,6 +47,10 @@ variable "dynatrace_plugins" {
   default = ["custom.remote.python.snmp_palo_alto.zip"]
 }
 
+variable "storage_account_rg" {
+  default = "core-infra-intsvc-rg"
+}
+
 variable "storage_account" {
   default = "cftptlintsvc"
 }

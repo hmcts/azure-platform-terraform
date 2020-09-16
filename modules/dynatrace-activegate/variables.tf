@@ -41,3 +41,20 @@ variable "instance_count" {
 variable "sku" {
   default = "Standard_D2s_v3"
 }
+
+variable "dynatrace_plugins" {
+  type    = list(string)
+  default = ["custom.remote.python.snmp_palo_alto.zip"]
+}
+
+variable "storage_account_rg" {
+  default = "core-infra-intsvc-rg"
+}
+
+variable "storage_account" {
+  default = "cftptlintsvc"
+}
+
+variable "storage_container" {
+  default = "plugin"
+}

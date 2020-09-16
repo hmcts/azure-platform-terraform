@@ -39,6 +39,7 @@ data "template_file" "cloudconfig" {
     plugin_storage_account   = var.storage_account
     plugin_storage_container = var.storage_container
     plugin_storage_key       = data.azurerm_key_vault_secret.dynatrace_plugin_storage_key.value
+    dynatrace_plugins        = join(" ", var.dynatrace_plugins)
   }
 }
 

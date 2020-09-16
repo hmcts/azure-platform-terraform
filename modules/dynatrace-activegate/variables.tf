@@ -43,7 +43,7 @@ variable "sku" {
 }
 
 variable "dynatrace_plugins" {
-  type = list(string)
+  type    = list(string)
   default = ["custom.remote.python.snmp_palo_alto.zip"]
 }
 

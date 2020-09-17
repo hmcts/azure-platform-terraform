@@ -139,7 +139,11 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
-
+    
+    # AAC (CDM)
+      - product: aac
+        component: manage-case-assignment
+        
     # xui
       - product: xui
         component: terms-and-conditions

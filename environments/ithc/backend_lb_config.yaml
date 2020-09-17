@@ -44,6 +44,10 @@ gateways:
         component: case-notifications-api
       - product: ia
         component: case-documents-api
+      - product: ia
+        component: home-office-integration-api
+      - product: ia
+        component: home-office-mock-api
 
     # Reference DATA
       - product: rd

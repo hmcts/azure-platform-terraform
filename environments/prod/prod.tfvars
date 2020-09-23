@@ -44,6 +44,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "connect.sid"
       },
       {
@@ -105,6 +110,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "connect.sid"
       },
       {
@@ -158,6 +168,11 @@ frontends = [
       ]
     }
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -222,6 +237,11 @@ frontends = [
       ]
     }
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -317,6 +337,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "session"
       },
       {
@@ -374,6 +399,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "session"
       },
       {
@@ -424,6 +454,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "connect.sid"
       },
       {
@@ -453,6 +488,11 @@ frontends = [
     }
     global_exclusions = [
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
@@ -461,6 +501,16 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "__auth__"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "xui-webapp"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
       },
     ]
   },
@@ -484,6 +534,11 @@ frontends = [
     }
     global_exclusions = [
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
@@ -492,6 +547,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "__auth__"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "xui-manage-org"
       },
     ]
   },
@@ -515,6 +575,11 @@ frontends = [
     }
     global_exclusions = [
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
@@ -523,6 +588,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "__auth__"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "xui-approve-org"
       },
     ]
   },
@@ -545,6 +615,11 @@ frontends = [
       ]
     }
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
@@ -595,6 +670,11 @@ frontends = [
       ]
     }
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -662,6 +742,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "T2_SESSION_ID"
       },
       {
@@ -705,6 +790,11 @@ frontends = [
     }
     global_exclusions = [
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
@@ -743,6 +833,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "accessToken"
       },
     ]
@@ -766,6 +861,11 @@ frontends = [
       ]
     }
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -849,6 +949,7 @@ frontends = [
     custom_domain    = "hmcts-access.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "hmcts-access-service-gov-uk"
+    cache_enabled    = "false"
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -1006,31 +1107,47 @@ frontends = [
     }
   },
   {
-    name             = "idam-web-admin"
-    custom_domain    = "idam-web-admin.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "idam-web-admin-platform-hmcts-net"
+    name                        = "idam-web-admin"
+    custom_domain               = "idam-web-admin.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name            = "idam-web-admin-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
+    cache_enabled               = "false"
     custom_rules = [
       {
-        name               = "IPMatchWhitelist"
-        priority           = 1
-        type               = "MatchRule"
-        action             = "Block"
-        match_variable     = "RemoteAddr"
-        operator           = "IPMatch"
-        negation_condition = true
-        match_values = [
-          "81.134.202.29/32",
-          "51.145.6.230/32",
-          "194.33.192.0/25",
-          "194.33.196.0/25",
-          "52.210.206.51/32",
-          "62.25.109.201/32",
-          "62.25.109.203/32"
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "81.134.202.29/32",
+              "51.145.6.230/32",
+              "194.33.192.0/25",
+              "194.33.196.0/25",
+              "52.210.206.51/32",
+              "62.25.109.201/32",
+              "62.25.109.203/32"
+            ]
+          }
         ]
       },
     ],
     global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "activationRedirectUrl"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "activationRedirectUrl"
+      },
       {
         match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
@@ -1065,6 +1182,16 @@ frontends = [
         match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
         selector       = "oauth2ClientSecret"
+      },
+      {
+        match_variable = "QueryStringArgNames",
+        operator       = "Equals",
+        selector       = "oauth2RedirectUris"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "oauth2RedirectUris"
       },
       {
         match_variable = "RequestBodyPostArgNames",

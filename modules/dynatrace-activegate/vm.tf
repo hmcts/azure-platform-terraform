@@ -24,13 +24,22 @@ data "azurerm_key_vault_secret" "ssh_public_key" {
   key_vault_id = data.azurerm_key_vault.subscription_vault.id
 }
 
+data "azurerm_storage_account" "dynatrace_plugin_storage" {
+  name                = var.storage_account
+  resource_group_name = var.storage_account_rg
+}
+
 data "template_file" "cloudconfig" {
   template = file("${path.module}/cloudconfig.tpl")
 
   vars = {
-    paas_token              = data.azurerm_key_vault_secret.dynatrace_paas_token.value
-    dynatrace_instance_name = var.dynatrace_instance_name
-    network_zone            = var.network_zone
+    paas_token               = data.azurerm_key_vault_secret.dynatrace_paas_token.value
+    dynatrace_instance_name  = var.dynatrace_instance_name
+    network_zone             = var.network_zone
+    plugin_storage_account   = data.azurerm_storage_account.dynatrace_plugin_storage.name
+    plugin_storage_container = var.storage_container
+    plugin_storage_key       = data.azurerm_storage_account.dynatrace_plugin_storage.primary_access_key
+    dynatrace_plugins        = join(" ", var.dynatrace_plugins)
   }
 }
 

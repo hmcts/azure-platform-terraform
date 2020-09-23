@@ -15,7 +15,15 @@ gateways:
         component: pdf-service
       - product: rpe
         component: service-auth-provider
-    # Probate
+      # Camunda
+      - product: camunda
+        component: bpm
+        ssl_enabled: true
+        cookie_based_affinity: Enabled
+      - product: camunda
+        component: api
+
+      # Probate
       - product: probate
         component: business-service
       - product: probate
@@ -27,7 +35,7 @@ gateways:
 
     # Protected Characteristics Questions
       - product: pcq
-        component: backend         
+        component: backend
 
     # I&A
       - product: ia
@@ -36,6 +44,11 @@ gateways:
         component: case-notifications-api
       - product: ia
         component: case-documents-api
+      - product: ia
+        component: home-office-integration-api
+      - product: ia
+        component: home-office-mock-api
+
     # Reference DATA
       - product: rd
         component: professional-api
@@ -47,6 +60,8 @@ gateways:
         component: judicial-api
       - product: rd
         component: judicial-data-load
+      - product: rd
+        component: caseworker-ref-api
 
     # Divorce
       - product: div
@@ -59,6 +74,8 @@ gateways:
         component: cms
       - product: div
         component: cos
+      - product: div
+        component: cfs
       - product: div
         component: hm
       - product: div
@@ -122,7 +139,11 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
-
+    
+    # AAC (CDM)
+      - product: aac
+        component: manage-case-assignment
+        
     # xui
       - product: xui
         component: terms-and-conditions
@@ -130,7 +151,6 @@ gateways:
     # SIDAM
       - product: idam
         component: api
-        cookie_based_affinity: Enabled
         ssl_enabled: true
       - product: idam
         component: web-admin
@@ -140,9 +160,7 @@ gateways:
     # CMC
       - product: cmc
         component: claim-store
-        
+
     # Send-letter
       - product: rpe
         component: send-letter-service
-
-

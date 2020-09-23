@@ -1,5 +1,11 @@
 module "landing_zone" {
-  source                     = "../../modules/azure-landing-zone/"
+  source = "../../modules/azure-landing-zone/"
+
+  providers = {
+    azurerm      = "azurerm"
+    azurerm.data = "azurerm.data"
+  }
+
   common_tags                = local.common_tags
   env                        = var.env
   subscription               = var.subscription
@@ -11,4 +17,5 @@ module "landing_zone" {
   resource_group             = data.azurerm_resource_group.main.name
   subscription_id            = data.azurerm_subscription.current.subscription_id
   certificate_key_vault_name = var.certificate_key_vault_name
+  oms_env                    = var.oms_env
 }

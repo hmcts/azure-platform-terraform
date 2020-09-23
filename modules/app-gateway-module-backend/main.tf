@@ -154,8 +154,10 @@ data "azurerm_monitor_diagnostic_categories" "diagnostic_categories" {
 }
 
 data "azurerm_log_analytics_workspace" "log_analytics" {
-  name                = "hmcts-${var.env}-law"
-  resource_group_name = "oms-automation-rg"
+  provider = "azurerm.data"
+
+  name                = "hmcts-${var.oms_env}"
+  resource_group_name = "oms-automation"
 }
 
 resource "azurerm_monitor_diagnostic_setting" "diagnostic_settings" {

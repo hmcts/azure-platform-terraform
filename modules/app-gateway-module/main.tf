@@ -73,13 +73,14 @@ resource "azurerm_application_gateway" "ag" {
 
   dynamic "backend_http_settings" {
     for_each = [for app in var.frontends : {
-      name = app.name
+      name                  = app.name
+      cookie_based_affinity = try(title(app.appgw_cookie_based_affinity), "Disabled")
     }]
 
     content {
       name                  = backend_http_settings.value.name
       probe_name            = backend_http_settings.value.name
-      cookie_based_affinity = "Disabled"
+      cookie_based_affinity = backend_http_settings.value.cookie_based_affinity
       port                  = 80
       protocol              = "Http"
       request_timeout       = 30
@@ -148,10 +149,11 @@ data "azurerm_monitor_diagnostic_categories" "diagnostic_categories" {
 }
 
 data "azurerm_log_analytics_workspace" "log_analytics" {
-  count = length(var.frontends) != 0 ? 1 : 0
+  provider = "azurerm.data"
+  count    = length(var.frontends) != 0 ? 1 : 0
 
-  name                = "hmcts-${var.env}-law"
-  resource_group_name = "oms-automation-rg"
+  name                = "hmcts-${var.oms_env}"
+  resource_group_name = "oms-automation"
 }
 
 resource "azurerm_monitor_diagnostic_setting" "diagnostic_settings" {

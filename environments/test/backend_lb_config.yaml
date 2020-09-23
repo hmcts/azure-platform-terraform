@@ -15,7 +15,14 @@ gateways:
         component: pdf-service
       - product: rpe
         component: service-auth-provider
-    # Evidence Management
+      # Camunda
+      - product: camunda
+        component: bpm
+        ssl_enabled: true
+        cookie_based_affinity: Enabled
+      - product: camunda
+        component: api
+      # Evidence Management
       - product: em
         component: anno
       - product: em
@@ -63,6 +70,10 @@ gateways:
         component: judicial-api
       - product: rd
         component: judicial-data-load
+      - product: rd
+        component: caseworker-ref-api
+      - product: rd
+        component: location-ref-api
 
     # Divorce
       - product: div
@@ -75,6 +86,8 @@ gateways:
         component: cms
       - product: div
         component: cos
+      - product: div
+        component: cfs
 
     # SSCS
       - product: sscs
@@ -157,10 +170,15 @@ gateways:
       - product: cmc
         component: claim-store
 
+    # Access Management
+      - product: am
+        component: role-assignment-service
+      - product: am
+        component: judicial-booking-service
+
     # SIDAM
       - product: idam
         component: api
-        cookie_based_affinity: Enabled
         ssl_enabled: true
       - product: idam
         component: web-admin

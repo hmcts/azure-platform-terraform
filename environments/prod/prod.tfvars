@@ -1222,7 +1222,7 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "token"
-      },
+      }
     ]
   },
   {
@@ -1240,5 +1240,5 @@ frontends = [
     certificate_name            = "wildcard-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
     cache_enabled               = "false"
-  },
+  }
 ]

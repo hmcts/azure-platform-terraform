@@ -44,7 +44,7 @@ variable "sku" {
 
 variable "dynatrace_plugins" {
   type    = list(string)
-  default = ["custom.remote.python.snmp_palo_alto.zip"]
+  default = ["custom.remote.python.snmp_palo_alto.zip", "custom.remote.python.sslCheckV2.zip"]
 }
 
 variable "storage_account_rg" {

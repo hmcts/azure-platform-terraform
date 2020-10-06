@@ -6,6 +6,7 @@ locals {
     ithc     = "Medium"
     ldata    = "Medium"
     perftest = "Medium"
+    dev      = "Medium"
   }
 
   env_display_names = {
@@ -15,6 +16,7 @@ locals {
     ithc     = "ITHC"
     ldata    = "LDATA"
     perftest = "Test"
+    dev      = "Dev"
   }
 
   common_tags = {

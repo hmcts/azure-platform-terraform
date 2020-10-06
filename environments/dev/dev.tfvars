@@ -1,6 +1,6 @@
 project                    = "hmcts"
 location                   = "uksouth"
-env                        = "dev"
+env                        = "preview"
 subscription               = "dev"
 enable_ssl                 = true
 ssl_mode                   = "AzureKeyVault"

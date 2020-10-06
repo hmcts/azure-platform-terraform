@@ -29,6 +29,33 @@ frontends = [
     custom_domain    = "idam-web-public-ethosldata.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-ldata.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "213.121.161.124/32", #petty-france
+              "51.140.84.51/32", #ccd-appvm 
+              "51.145.6.230/32", #proxyout
+              "81.134.202.29/32", #mojd-vpn
+              "194.33.192.0/24", #dom1
+              "194.33.196.0/24", #dom1
+              "194.33.193.0/24", #dom1
+              "194.33.197.0/24", #dom1
+              "81.145.185.153/32", #leeds ET office 1
+              "194.72.132.100/32"  #leeds ET office 2
+            ]
+          }
+        ]
+      },
+    ]
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -153,6 +180,33 @@ frontends = [
     custom_domain    = "www-ccd-ethosldata.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-ldata.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "213.121.161.124/32", #petty-france
+              "51.140.84.51/32", #ccd-appvm 
+              "51.145.6.230/32", #proxyout
+              "81.134.202.29/32", #mojd-vpn
+              "194.33.192.0/24", #dom1
+              "194.33.196.0/24", #dom1
+              "194.33.193.0/24", #dom1
+              "194.33.197.0/24", #dom1
+              "81.145.185.153/32", #leeds ET office 1
+              "194.72.132.100/32"  #leeds ET office 2
+            ]
+          }
+        ]
+      },
+    ]
   },
   {
     name             = "gateway-ccd"
@@ -160,6 +214,33 @@ frontends = [
     custom_domain    = "gateway-ccd-ethosldata.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-ldata.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "213.121.161.124/32", #petty-france
+              "51.140.84.51/32", #ccd-appvm 
+              "51.145.6.230/32", #proxyout
+              "81.134.202.29/32", #mojd-vpn
+              "194.33.192.0/24", #dom1
+              "194.33.196.0/24", #dom1
+              "194.33.193.0/24", #dom1
+              "194.33.197.0/24", #dom1
+              "81.145.185.153/32", #leeds ET office 1
+              "194.72.132.100/32"  #leeds ET office 2
+            ]
+          }
+        ]
+      },
+    ]
   },
   {
     name             = "return-case-doc-ccd"
@@ -167,5 +248,32 @@ frontends = [
     custom_domain    = "return-case-doc-ccd-ethosldata.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-ldata.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "213.121.161.124/32", #petty-france
+              "51.140.84.51/32", #ccd-appvm 
+              "51.145.6.230/32", #proxyout
+              "81.134.202.29/32", #mojd-vpn
+              "194.33.192.0/24", #dom1
+              "194.33.196.0/24", #dom1
+              "194.33.193.0/24", #dom1
+              "194.33.197.0/24", #dom1
+              "81.145.185.153/32", #leeds ET office 1
+              "194.72.132.100/32"  #leeds ET office 2
+            ]
+          }
+        ]
+      },
+    ]
   }
 ]

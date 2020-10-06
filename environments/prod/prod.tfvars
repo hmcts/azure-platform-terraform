@@ -1279,7 +1279,23 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "token"
-      },
+      }
     ]
   },
+  {
+    name                        = "bulkscan"
+    custom_domain               = "bulkscan.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-bulkscan.uksouth.cloudapp.azure.com"]
+    certificate_name            = "wildcard-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
+    cache_enabled               = "false"
+  },
+  {
+    name                        = "reformscan"
+    custom_domain               = "reformscan.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-reformscan.uksouth.cloudapp.azure.com"]
+    certificate_name            = "wildcard-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
+    cache_enabled               = "false"
+  }
 ]

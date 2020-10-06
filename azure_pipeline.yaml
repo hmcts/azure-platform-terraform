@@ -339,6 +339,21 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
+  - stage: ApplyGlobalDev
+    dependsOn: GetArtifacts
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'dev'
+          component: 'global'
+          service_connection: 'dcd-cftapps-dev'
+          storage_account_rg: 'core-infra-dev-rg'
+          storage_account_name: 'cftappsdev'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
   - stage: ApplyCftAppsLBSandbox
     displayName: "Apply CFT APPs LB - Sandbox"
     dependsOn: GetArtifacts

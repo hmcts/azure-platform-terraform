@@ -94,6 +94,17 @@ stages:
 
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
+          environment: 'dev'
+          component: 'global'
+          service_connection: 'dcd-cftapps-dev'
+          storage_account_rg: 'core-infra-dev-rg'
+          storage_account_name: 'cftappsdev'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
+
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
           environment: 'ptl'
           component: 'dynatrace_activegate'
           service_connection: 'DTS-CFTPTL-INTSVC'
@@ -290,8 +301,6 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-      
-      
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
           environment: 'prod'

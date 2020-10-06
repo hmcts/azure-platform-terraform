@@ -54,7 +54,7 @@ frontends = [
             ]
           }
         ]
-      },
+      }
     ]
     global_exclusions = [
       {
@@ -171,7 +171,7 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "token"
-      },
+      }
     ]
   },
   {
@@ -205,7 +205,7 @@ frontends = [
             ]
           }
         ]
-      },
+      }
     ]
   },
   {
@@ -239,7 +239,7 @@ frontends = [
             ]
           }
         ]
-      },
+      }
     ]
   },
   {
@@ -273,7 +273,7 @@ frontends = [
             ]
           }
         ]
-      },
+      }
     ]
   }
 ]

@@ -1,5 +1,5 @@
 provider "azurerm" {
-  version = "2.29.0"
+  version = "2.23.0"
   features {}
   skip_provider_registration = true
 }

@@ -41,8 +41,8 @@ frontends = [
         selector       = "code"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "description"
       },
       {
@@ -71,18 +71,18 @@ frontends = [
         selector       = "jwt"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "label"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "oauth2ClientSecret"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "StartsWith",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
         selector       = "password"
       },
       {
@@ -96,13 +96,13 @@ frontends = [
         selector       = "redirect_uri"
       },
       {
-        match_variable = "QueryStringArgNames",
-        operator       = "Equals",
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
         selector       = "redirectUri"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "redirectUri"
       },
       {
@@ -179,8 +179,8 @@ frontends = [
         selector       = "code"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "description"
       },
       {
@@ -209,18 +209,18 @@ frontends = [
         selector       = "jwt"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "label"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "oauth2ClientSecret"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "StartsWith",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
         selector       = "password"
       },
       {
@@ -234,13 +234,13 @@ frontends = [
         selector       = "redirect_uri"
       },
       {
-        match_variable = "QueryStringArgNames",
-        operator       = "Equals",
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
         selector       = "redirectUri"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "redirectUri"
       },
       {
@@ -337,13 +337,13 @@ frontends = [
         selector       = "activationRedirectUrl"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "activationRedirectUrl"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "description"
       },
       {
@@ -367,33 +367,33 @@ frontends = [
         selector       = "jwt"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "label"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "oauth2ClientSecret"
       },
       {
-        match_variable = "QueryStringArgNames",
-        operator       = "Equals",
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
         selector       = "oauth2RedirectUris"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "oauth2RedirectUris"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "StartsWith",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
         selector       = "password"
       },
       {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "redirectUri"
       },
       {

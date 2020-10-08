@@ -329,7 +329,7 @@ frontends = [
           }
         ]
       },
-    ],
+    ]
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"

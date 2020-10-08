@@ -230,6 +230,21 @@ frontends = [
         operator       = "Equals"
         selector       = "token"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.SSOSession"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "session_state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
     ]
   },
   {
@@ -372,11 +387,11 @@ frontends = [
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     custom_rules = [
       {
-        name               = "IPMatchWhitelist"
-        priority           = 1
-        type               = "MatchRule"
-        action             = "Block"
-        match_conditions   = [
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
           {
             match_variable     = "RemoteAddr"
             operator           = "IPMatch"
@@ -576,7 +591,7 @@ frontends = [
     certificate_name            = "wildcard-perftest-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
     cache_enabled               = "false"
-  },  
+  },
   {
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.perftest.platform.hmcts.net"

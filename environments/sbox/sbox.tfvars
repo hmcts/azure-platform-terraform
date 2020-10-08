@@ -145,6 +145,21 @@ frontends = [
         operator       = "Equals"
         selector       = "token"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.SSOSession"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "session_state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
     ]
   },
   {
@@ -268,6 +283,21 @@ frontends = [
         operator       = "Equals"
         selector       = "token"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.SSOSession"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "session_state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
     ]
   },
   {
@@ -278,11 +308,11 @@ frontends = [
     appgw_cookie_based_affinity = "Enabled"
     custom_rules = [
       {
-        name               = "IPMatchWhitelist"
-        priority           = 1
-        type               = "MatchRule"
-        action             = "Block"
-        match_conditions   = [
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
           {
             match_variable     = "RemoteAddr"
             operator           = "IPMatch"
@@ -389,9 +419,9 @@ frontends = [
     ]
   },
   {
-    name                        = "hmi-apim"
-    custom_domain               = "hmi-apim.sandbox.platform.hmcts.net"
-    backend_domain              = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
-    certificate_name            = "STAR-sandbox-platform-hmcts-net"
+    name             = "hmi-apim"
+    custom_domain    = "hmi-apim.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "STAR-sandbox-platform-hmcts-net"
   }
 ]

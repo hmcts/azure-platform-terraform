@@ -20,6 +20,7 @@ variable location {
 }
 
 variable frontends {
+  type    = list
   default = []
 }
 

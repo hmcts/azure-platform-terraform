@@ -5,5 +5,6 @@ variable "certificate_key_vault_name" {}
 variable "cdn_profile" {}
 variable "subscription" {}
 variable "shutter_apps" {
+  type    = list
   default = []
 }

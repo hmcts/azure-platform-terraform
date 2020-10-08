@@ -417,5 +417,11 @@ frontends = [
         selector       = "token"
       },
     ]
+  },
+  {
+    name             = "hmi-apim"
+    custom_domain    = "hmi-apim.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "STAR-sandbox-platform-hmcts-net"
   }
 ]

@@ -502,8 +502,7 @@ stages:
 
   - stage: ApplyGlobalPerfTest
     dependsOn: GetArtifacts
-    #condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    condition: and(eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
         parameters:

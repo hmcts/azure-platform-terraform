@@ -10,7 +10,7 @@ resource "azurerm_frontdoor" "main" {
   friendly_name                                = "${var.project}-${var.env}"
 
   timeouts {
-    read = "30m"
+    read   = "30m"
     update = "30m"
   }
 

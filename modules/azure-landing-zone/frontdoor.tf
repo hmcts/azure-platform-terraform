@@ -11,6 +11,7 @@ resource "azurerm_frontdoor" "main" {
 
   timeouts {
     read = "30m"
+    update = "30m"
   }
 
   ######## Defaults ########

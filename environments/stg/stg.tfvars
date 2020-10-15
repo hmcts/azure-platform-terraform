@@ -604,7 +604,7 @@ frontends = [
   {
     name                        = "bulkscan"
     custom_domain               = "bulkscan.aat.platform.hmcts.net"
-    backend_domain              = ["firewall-prod-int-palo-reformscan.uksouth.cloudapp.azure.com"]
+    backend_domain              = ["firewall-prod-int-palo-bulkscanaat.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-aat-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
     cache_enabled               = "false"
@@ -612,7 +612,7 @@ frontends = [
   {
     name                        = "reformscan"
     custom_domain               = "reformscan.aat.platform.hmcts.net"
-    backend_domain              = ["firewall-prod-int-palo-reformscan.uksouth.cloudapp.azure.com"]
+    backend_domain              = ["firewall-prod-int-palo-reformscanaat.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-aat-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
     cache_enabled               = "false"

@@ -146,7 +146,7 @@ data "azurerm_monitor_diagnostic_categories" "diagnostic_categories" {
   count = length(var.frontends) != 0 ? 1 : 0
 
   resource_id = azurerm_application_gateway.ag[count.index].id
-  depends_on = [azurerm_application_gateway.ag[count.index]]
+  depends_on = [azurerm_application_gateway.ag]
 }
 
 data "azurerm_log_analytics_workspace" "log_analytics" {

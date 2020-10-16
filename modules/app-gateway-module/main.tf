@@ -146,7 +146,7 @@ data "azurerm_monitor_diagnostic_categories" "diagnostic_categories" {
   count = length(var.frontends) != 0 ? 1 : 0
 
   resource_id = azurerm_application_gateway.ag[0].id
-  depends_on = [azurerm_application_gateway.ag[0]]
+  depends_on  = [azurerm_application_gateway.ag[0]]
 }
 
 data "azurerm_log_analytics_workspace" "log_analytics" {
@@ -155,7 +155,7 @@ data "azurerm_log_analytics_workspace" "log_analytics" {
 
   name                = "hmcts-${var.oms_env}"
   resource_group_name = "oms-automation"
-  depends_on = [azurerm_application_gateway.ag[0]]
+  depends_on          = [azurerm_application_gateway.ag[0]]
 }
 
 resource "azurerm_monitor_diagnostic_setting" "diagnostic_settings" {

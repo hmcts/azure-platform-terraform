@@ -6,7 +6,7 @@ enable_ssl                 = true
 ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-test"
 
-app_gw_private_ip_address = "10.10.46.121"
+app_gw_private_ip_address = "10.61.32.121"
 data_subscription         = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 oms_env                   = "nonprod"
 
@@ -20,8 +20,8 @@ shutter_apps = [
   "TODO"
 ]
 
-cft_apps_ag_ip_address = "10.10.46.123"
-cft_apps_cluster_ips   = ["10.10.41.250", "10.10.45.250"]
+cft_apps_ag_ip_address = "10.61.32.123"
+cft_apps_cluster_ips   = ["10.61.15.250", "10.61.31.250"]
 
 frontends = [
   {

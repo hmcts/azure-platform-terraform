@@ -421,38 +421,6 @@ frontends = [
     ]
   },
   {
-    name                        = "bulkscan"
-    custom_domain               = "bulkscan.perftest.platform.hmcts.net"
-    backend_domain              = ["firewall-nonprodi-palo-bulkscanperftest.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-perftest-platform-hmcts-net"
-    appgw_cookie_based_affinity = "Enabled"
-    cache_enabled               = "false"
-  },
-  {
-    name                        = "reformscan"
-    custom_domain               = "reformscan.perftest.platform.hmcts.net"
-    backend_domain              = ["firewall-nonprodi-palo-reformscanperftest.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-perftest-platform-hmcts-net"
-    appgw_cookie_based_affinity = "Enabled"
-    cache_enabled               = "false"
-  },
-  {
-    name                        = "bulkscandemo"
-    custom_domain               = "bulkscan.demo.platform.hmcts.net"
-    backend_domain              = ["firewall-nonprodi-palo-bulkscandemo.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-demo-platform-hmcts-net"
-    appgw_cookie_based_affinity = "Enabled"
-    cache_enabled               = "false"
-  },
-  {
-    name                        = "reformscandemo"
-    custom_domain               = "reformscan.demo.platform.hmcts.net"
-    backend_domain              = ["firewall-nonprodi-palo-reformscandemo.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-demo-platform-hmcts-net"
-    appgw_cookie_based_affinity = "Enabled"
-    cache_enabled               = "false"
-  },
-  {
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-hmiapimtest.uksouth.cloudapp.azure.com"]

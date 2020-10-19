@@ -73,6 +73,8 @@ gateways:
         component: case-notifications-api
       - product: ia
         component: case-payments-api
+      - product: ia
+        component: timed-event-service
 
     # SSCS
       - product: sscs

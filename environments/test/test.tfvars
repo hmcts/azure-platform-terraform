@@ -457,5 +457,6 @@ frontends = [
     custom_domain    = "hmi-apim.perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-hmiapimtest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
+    cache_enabled    = "false"
   }
 ]

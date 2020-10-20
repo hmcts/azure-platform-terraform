@@ -408,6 +408,14 @@ frontends = [
               "62.25.109.203/32",
               "51.143.139.240/32"
             ]
+          },
+          {
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = true
+            match_values = [
+              "/fees"
+            ]
           }
         ]
       },

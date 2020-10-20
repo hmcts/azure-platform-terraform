@@ -412,7 +412,7 @@ frontends = [
           {
             match_variable     = "RequestUri"
             operator           = "Contains"
-            negation_condition = true
+            negation_condition = false
             match_values = [
               "/fees"
             ]

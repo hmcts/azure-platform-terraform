@@ -408,7 +408,7 @@ frontends = [
             operator           = "Contains"
             negation_condition = false
             match_values = [
-              "/fees"
+              "fees-register.perftest.platform.hmcts.net/fees"
             ]
           }
         ]

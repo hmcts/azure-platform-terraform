@@ -384,12 +384,12 @@ frontends = [
         name     = "IPMatchWhitelist"
         priority = 1
         type     = "MatchRule"
-        action   = "Block"
+        action   = "Allow"
         match_conditions = [
           {
             match_variable     = "RemoteAddr"
             operator           = "IPMatch"
-            negation_condition = true
+            negation_condition = false
             match_values = [
               "81.134.202.29/32",
               "51.145.6.230/32",
@@ -408,7 +408,7 @@ frontends = [
             operator           = "Contains"
             negation_condition = false
             match_values = [
-              "fees-register.perftest.platform.hmcts.net/fees"
+              "/fees"
             ]
           }
         ]

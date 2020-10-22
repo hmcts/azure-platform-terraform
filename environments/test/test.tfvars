@@ -620,7 +620,7 @@ frontends = [
   },
   {
     name                        = "reformscan"
-    custom_domain               = "reformscan.demo.platform.hmcts.net"
+    custom_domain               = "reformscan.perftest.platform.hmcts.net"
     backend_domain              = ["firewall-prod-int-palo-reformscanperftest.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-perftest-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"

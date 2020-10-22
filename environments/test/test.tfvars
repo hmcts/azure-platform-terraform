@@ -609,5 +609,21 @@ frontends = [
     backend_domain   = ["firewall-nonprodi-palo-hmiapimtest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     cache_enabled    = "false"
+  },
+  {
+    name                        = "bulkscan"
+    custom_domain               = "bulkscan.perftest.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-bulkscanperftest.uksouth.cloudapp.azure.com"]
+    certificate_name            = "wildcard-perftest-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
+    cache_enabled               = "false"
+  },
+  {
+    name                        = "reformscan"
+    custom_domain               = "reformscan.demo.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-reformscanperftest.uksouth.cloudapp.azure.com"]
+    certificate_name            = "wildcard-perftest-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
+    cache_enabled               = "false"
   }
 ]

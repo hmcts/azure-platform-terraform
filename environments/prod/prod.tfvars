@@ -429,17 +429,18 @@ frontends = [
     ]
   },
   {
-    name             = "sscs-cor"
+    name             = "sscs-cor-redirect"
     mode             = "Prevention"
-    custom_domain    = "www.manage.appeal-benefit-decision.service.gov.uk"
+    custom_domain    = "manage.appeal-benefit-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "manage-appeal-benefit-decision-service-gov-uk"
     }
   {
     name             = "sscs-cor"
     mode             = "Prevention"
-    custom_domain    = "manage.appeal-benefit-decision.service.gov.uk"
+    custom_domain    = "www.manage.appeal-benefit-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "manage-appeal-benefit-decision-service-gov-uk"
     disabled_rules = {
       SQLI = [
         "942100",

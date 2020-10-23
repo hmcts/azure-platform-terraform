@@ -16,5 +16,21 @@ frontends = [
     backend_domain   = ["firewall-nonprodi-palo-hmiapimdev.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-preview-platform-hmcts-net"
     cache_enabled    = "false"
+  },
+  {
+    name                        = "bulkscan"
+    custom_domain               = "bulkscan.preview.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-bulkscanpreview.uksouth.cloudapp.azure.com"]
+    certificate_name            = "wildcard-preview-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
+    cache_enabled               = "false"
+  },
+  {
+    name                        = "reformscan"
+    custom_domain               = "reformscan.preview.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-reformscanpreview.uksouth.cloudapp.azure.com"]
+    certificate_name            = "wildcard-preview-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
+    cache_enabled               = "false"
   }
 ]

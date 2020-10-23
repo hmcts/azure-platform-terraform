@@ -424,5 +424,21 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
     certificate_name = "STAR-sandbox-platform-hmcts-net"
     cache_enabled    = "false"
+  },
+  {
+    name                        = "bulkscan"
+    custom_domain               = "bulkscan.sandbox.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-bulkscansbox.uksouth.cloudapp.azure.com"]
+    certificate_name            = "STAR-sandbox-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
+    cache_enabled               = "false"
+  },
+  {
+    name                        = "reformscan"
+    custom_domain               = "reformscan.sandbox.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-reformscansbox.uksouth.cloudapp.azure.com"]
+    certificate_name            = "STAR-sandbox-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
+    cache_enabled               = "false"
   }
 ]

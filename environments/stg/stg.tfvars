@@ -624,6 +624,23 @@ frontends = [
     appgw_cookie_based_affinity = "Enabled"
     cache_enabled               = "false"
   },
+
+  {
+    name                        = "bulkscanstg"
+    custom_domain               = "bulkscanstg.aat.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-bulkscanaat.uksouth.cloudapp.azure.com"]
+    certificate_name            = "wildcard-aat-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
+    cache_enabled               = "false"
+  },
+  {
+    name                        = "reformscanstg"
+    custom_domain               = "reformscanstg.aat.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-reformscanaat.uksouth.cloudapp.azure.com"]
+    certificate_name            = "wildcard-aat-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
+    cache_enabled               = "false"
+  },
   {
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.aat.platform.hmcts.net"

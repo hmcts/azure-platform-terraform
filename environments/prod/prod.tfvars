@@ -449,7 +449,7 @@ frontends = [
         "930100", // false positive on multi-part uploads
         "930110", // false positive on multi-part uploads
       ]
-      }
+      },
   {
     name             = "sscs-cor"
     mode             = "Prevention"
@@ -471,7 +471,7 @@ frontends = [
         "930100", // false positive on multi-part uploads
         "930110", // false positive on multi-part uploads
       ]
-    }
+    },
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

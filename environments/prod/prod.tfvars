@@ -429,6 +429,28 @@ frontends = [
     ]
   },
   {
+    name             = "sscs-cor-redirect"
+    mode             = "Prevention"
+    custom_domain    = "manage.appeal-benefit-decision.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "manage-appeal-benefit-decision-service-gov-uk"
+        disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+      },
+  {
     name             = "sscs-cor"
     mode             = "Prevention"
     custom_domain    = "www.manage.appeal-benefit-decision.service.gov.uk"
@@ -449,7 +471,7 @@ frontends = [
         "930100", // false positive on multi-part uploads
         "930110", // false positive on multi-part uploads
       ]
-    }
+    },
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

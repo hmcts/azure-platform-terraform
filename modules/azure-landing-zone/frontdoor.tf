@@ -130,7 +130,7 @@ resource "azurerm_frontdoor" "main" {
         iterator = domain
         for_each = host.value["backend_domain"]
         content {
-          host_header = host.value["host_header"] ==  null  ?  host.value["custom_domain"] : host.value["host_header"]
+          host_header = lookup(host.value, "host_header", host.value["custom_domain"])
           address     = domain.value
           http_port   = 80
           https_port  = 443

@@ -646,6 +646,7 @@ frontends = [
     certificate_name            = "wildcard-perftest-platform-hmcts-net"
     forwarding_protocol         = "MatchRequest"
     health_path                 = "/"
+    health_protocol             = "https"
     cache_enabled               = "false"
   },
   {
@@ -656,6 +657,7 @@ frontends = [
     certificate_name            = "wildcard-perftest-platform-hmcts-net"
     forwarding_protocol         = "MatchRequest"
     health_path                 = "/"
+    health_protocol             = "https"
     cache_enabled               = "false"
   }
 ]

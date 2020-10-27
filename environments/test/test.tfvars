@@ -644,7 +644,7 @@ frontends = [
     host_header                 = "bulkscanperftest.blob.core.windows.net"
     backend_domain              = ["firewall-nonprodi-palo-bulkscanperftest.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-perftest-platform-hmcts-net"
-    appgw_cookie_based_affinity = "Enabled"
+    forwarding_protocol         = "MatchRequest"
     cache_enabled               = "false"
   },
   {
@@ -653,7 +653,7 @@ frontends = [
     host_header                 = "reformscanperftest.blob.core.windows.net"
     backend_domain              = ["firewall-nonprodi-palo-reformscanperftest.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-perftest-platform-hmcts-net"
-    appgw_cookie_based_affinity = "Enabled"
+    forwarding_protocol         = "MatchRequest"
     cache_enabled               = "false"
   }
 ]

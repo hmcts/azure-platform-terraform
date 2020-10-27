@@ -116,7 +116,7 @@ resource "azurerm_frontdoor" "main" {
     content {
       name                = "healthProbeSettings-${host.value["name"]}"
       interval_in_seconds = 120
-      path                = "/health/liveness"
+      path                = lookup(host.value, "health_path", "/health/liveness")
       protocol            = "Http"
     }
   }

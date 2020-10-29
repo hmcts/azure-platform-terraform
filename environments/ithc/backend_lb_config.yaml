@@ -48,6 +48,8 @@ gateways:
         component: home-office-integration-api
       - product: ia
         component: home-office-mock-api
+      - product: ia
+        component: timed-event-service
 
     # Reference DATA
       - product: rd

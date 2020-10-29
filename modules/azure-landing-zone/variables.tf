@@ -10,3 +10,4 @@ variable "ssl_mode" {}
 variable "resource_group" {}
 variable "certificate_key_vault_name" {}
 variable "oms_env" {}
+variable "certificate_name_check" {}

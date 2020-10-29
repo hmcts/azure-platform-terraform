@@ -74,3 +74,7 @@ variable kv_rg_name {
 
 variable "data_subscription" {}
 variable "oms_env" {}
+
+variable "certificate_name_check" {
+  default = true
+}

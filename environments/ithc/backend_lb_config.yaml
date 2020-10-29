@@ -156,7 +156,7 @@ gateways:
       - product: aac
         component: manage-case-assignment
      
-    # FACT Fact
+    # FACT
       - product: fact
         component: api
      

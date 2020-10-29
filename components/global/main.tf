@@ -18,4 +18,5 @@ module "landing_zone" {
   subscription_id            = data.azurerm_subscription.current.subscription_id
   certificate_key_vault_name = var.certificate_key_vault_name
   oms_env                    = var.oms_env
+  certificate_name_check                    = var.certificate_name_check
 }

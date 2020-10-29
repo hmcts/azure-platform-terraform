@@ -268,6 +268,20 @@ frontends = [
     backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
+    {
+    name             = "fact"
+    mode             = "Detection"
+    custom_domain    = "fact.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+  },
+  {
+    name             = "fact-admin"
+    mode             = "Detection"
+    custom_domain    = "fact-admin.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+  },
   {
     name             = "www-ccd"
     mode             = "Detection"

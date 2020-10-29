@@ -155,7 +155,11 @@ gateways:
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
-        
+     
+    # FACT
+      - product: fact
+        component: api
+     
     # xui
       - product: xui
         component: terms-and-conditions

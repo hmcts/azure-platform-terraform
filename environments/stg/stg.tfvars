@@ -630,8 +630,7 @@ frontends = [
     health_path                 = "/"
     health_protocol             = "Https"
     cache_enabled               = "false"
-  }
-
+  },
   {
     name                        = "bulkscanstg"
     custom_domain               = "bulkscanstg.aat.platform.hmcts.net"

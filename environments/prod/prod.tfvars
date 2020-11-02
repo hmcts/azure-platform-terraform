@@ -1286,7 +1286,7 @@ frontends = [
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.prod.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-hmiapimprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-prod-platform-hmcts-net"
+    certificate_name = "wildcard-platform-hmcts-net"
     cache_enabled    = "false"
   }
 ]

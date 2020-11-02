@@ -122,6 +122,8 @@ resource "azurerm_frontdoor" "main" {
     for_each = var.frontends
     content {
       name = host.value["name"]
+      health_probe_name   = "healthProbeSettings-${host.value["name"]}"
+      load_balancing_name = "loadBalancingSettings-${host.value["name"]}"
       dynamic "backend" {
         iterator = domain
         for_each = host.value["backend_domain"]

@@ -63,7 +63,7 @@ resource "azurerm_frontdoor" "main" {
     content {
       name                                    = host.value["name"]
       host_name                               = host.value["custom_domain"]
-      custom_https_provisioning_enabled       = var.enable_ssl
+      custom_https_provisioning_enabled       = lookup(host.value, "enable_ssl", "true")
       web_application_firewall_policy_link_id = "/subscriptions/${var.subscription_id}/resourcegroups/${var.resource_group}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/${replace(host.value["name"], "-", "")}${replace(var.env, "-", "")}"
       dynamic "custom_https_configuration" {
         for_each = local.isSSL

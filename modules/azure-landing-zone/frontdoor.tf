@@ -1,7 +1,3 @@
-locals {
-  isSSL = lookup(host.value, "enable_ssl", true) ? [1] : []
-}
-
 resource "azurerm_frontdoor" "main" {
   name                                         = "${var.project}-${var.env}"
   location                                     = "global"
@@ -66,7 +62,7 @@ resource "azurerm_frontdoor" "main" {
       custom_https_provisioning_enabled       = lookup(host.value, "enable_ssl", true)
       web_application_firewall_policy_link_id = "/subscriptions/${var.subscription_id}/resourcegroups/${var.resource_group}/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/${replace(host.value["name"], "-", "")}${replace(var.env, "-", "")}"
       dynamic "custom_https_configuration" {
-        for_each = local.isSSL
+        for_each = lookup(host.value, "enable_ssl", true) ? [1] : []
         content {
           certificate_source                         = var.ssl_mode
           azure_key_vault_certificate_vault_id       = var.ssl_mode == "AzureKeyVault" ? data.azurerm_key_vault.certificate_vault.id : null
@@ -86,9 +82,9 @@ resource "azurerm_frontdoor" "main" {
     content {
       name                              = "www${host.value["name"]}"
       host_name                         = "www.${host.value["custom_domain"]}"
-      custom_https_provisioning_enabled = var.enable_ssl
+      custom_https_provisioning_enabled = lookup(host.value, "enable_ssl", true)
       dynamic "custom_https_configuration" {
-        for_each = local.isSSL
+        for_each = lookup(host.value, "enable_ssl", true) ? [1] : []
         content {
           certificate_source                         = var.ssl_mode
           azure_key_vault_certificate_vault_id       = var.ssl_mode == "AzureKeyVault" ? data.azurerm_key_vault.certificate_vault.id : null

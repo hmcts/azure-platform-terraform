@@ -1,4 +1,14 @@
 resource "azurerm_frontdoor" "main" {
+  lifecycle {
+    ignore_changes = [
+      frontend_endpoint,
+      routing_rule,
+      backend_pool,
+      backend_pool_health_probe,
+      backend_pool_load_balancing
+    ]
+  }
+
   name                                         = "${var.project}-${var.env}"
   location                                     = "global"
   resource_group_name                          = var.resource_group
@@ -145,7 +155,7 @@ resource "azurerm_frontdoor" "main" {
     for_each = var.frontends
     content {
       name               = host.value["name"]
-      accepted_protocols = lookup(host.value, "enable_ssl", true) ? ["Https"] : ["Http"]
+      accepted_protocols = ["Https"]
       patterns_to_match  = lookup(host.value, "url_patterns", ["/*"])
       frontend_endpoints = [host.value["name"]]
 
@@ -162,9 +172,7 @@ resource "azurerm_frontdoor" "main" {
 
   dynamic "routing_rule" {
     iterator = host
-    for_each = [
-      for frontend in var.frontends : frontend if lookup(frontend, "enable_ssl", true)
-    ]
+    for_each = var.frontends
     content {
       name               = "${host.value["name"]}HttpsRedirect"
       accepted_protocols = ["Http"]

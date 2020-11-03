@@ -162,7 +162,7 @@ resource "azurerm_frontdoor" "main" {
 
   dynamic "routing_rule" {
     iterator = host
-    for_each = [ 
+    for_each = [
       for frontend in var.frontends : frontend if lookup(frontend, "enable_ssl", true)
     ]
     content {

@@ -1,5 +1,5 @@
 resource "azurerm_cdn_endpoint" "shutter_endpoint" {
-  count                  = length(var.shutter_apps)
+  count                  = lookup(var.shutter_apps, "enable_shutter", true) ? length(var.shutter_apps) : 0
   name                   = "hmcts-${split(".", replace(var.shutter_apps[count.index].custom_domain, "www.", ""))[0]}-shutter-${var.env}"
   profile_name           = var.cdn_profile
   location               = "West US"

@@ -1288,6 +1288,7 @@ frontends = [
     custom_domain    = "hmi-apim.prod.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-hmiapimprod.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
+    enable_shutter   = false
     cache_enabled    = "false"
   }
 ]

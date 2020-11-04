@@ -1,13 +1,13 @@
 data "azurerm_client_config" "current" {}
 
 data "azurerm_key_vault_secret" "certificate" {
-  count        = length(var.shutter_apps)
+  count        = lookup(var.shutter_apps, "enable_shutter", true) ? length(var.shutter_apps) : 0
   name         = lookup(var.shutter_apps[count.index], "certificate_name")
   key_vault_id = data.azurerm_key_vault.certificate_vault.id
 }
 
 resource "null_resource" "enable_custom_https_cmd" {
-  count = length(var.shutter_apps)
+  count = lookup(var.shutter_apps, "enable_shutter", true) ? length(var.shutter_apps) : 0
 
   provisioner "local-exec" {
     command = <<EOF

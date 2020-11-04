@@ -3,7 +3,7 @@ data "template_file" "customdomain" {
 }
 
 resource "azurerm_template_deployment" "custom_domain" {
-  count               = length(var.shutter_apps)
+  count               = lookup(var.shutter_apps, "enable_shutter", true) ? length(var.shutter_apps) : 0
   template_body       = data.template_file.customdomain.rendered
   name                = split(".", replace(var.shutter_apps[count.index].custom_domain, "www.", ""))[0]
   resource_group_name = data.azurerm_resource_group.shutter.name

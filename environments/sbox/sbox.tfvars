@@ -18,15 +18,8 @@ cft_apps_cluster_ips   = ["10.10.1.250", "10.10.3.250"]
 
 frontends = [
   {
-    name             = "plum"
-    custom_domain    = "plum.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "STAR-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
-  {
-    name             = "idam-web-public"
-    custom_domain    = "idam-web-public.sandbox.platform.hmcts.net"
+    name             = "idam-sprod-web-public"
+    custom_domain    = "idam-web-public-sprod.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "STAR-sandbox-platform-hmcts-net"
     global_exclusions = [
@@ -163,8 +156,8 @@ frontends = [
     ]
   },
   {
-    name             = "idam-sprod-web-public"
-    custom_domain    = "idam-web-public-sprod.sandbox.platform.hmcts.net"
+    name             = "idam-web-public"
+    custom_domain    = "idam-web-public.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "STAR-sandbox-platform-hmcts-net"
     global_exclusions = [
@@ -417,6 +410,13 @@ frontends = [
         selector       = "token"
       },
     ]
+  },
+  {
+    name             = "plum"
+    custom_domain    = "plum.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "STAR-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
   },
   {
     name             = "hmi-apim"

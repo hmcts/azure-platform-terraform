@@ -1,5 +1,5 @@
 module "landing_zone" {
-  source = "../../modules/azure-landing-zone/"
+  source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=master"
 
   providers = {
     azurerm      = "azurerm"

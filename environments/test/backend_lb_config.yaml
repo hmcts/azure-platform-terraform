@@ -192,6 +192,8 @@ gateways:
       - product: am
         component: role-assignment-service
       - product: am
+        component: org-role-mapping-service
+      - product: am
         component: judicial-booking-service
 
     # SIDAM

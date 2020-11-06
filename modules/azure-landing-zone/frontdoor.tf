@@ -1,13 +1,13 @@
 resource "azurerm_frontdoor" "main" {
-  lifecycle {
-    ignore_changes = [
-      frontend_endpoint,
-      routing_rule,
-      backend_pool,
-      backend_pool_health_probe,
-      backend_pool_load_balancing
-    ]
-  }
+  // lifecycle {
+  //   ignore_changes = [
+  //     frontend_endpoint,
+  //     routing_rule,
+  //     backend_pool,
+  //     backend_pool_health_probe,
+  //     backend_pool_load_balancing
+  //   ]
+  // }
 
   name                                         = "${var.project}-${var.env}"
   location                                     = "global"

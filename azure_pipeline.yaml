@@ -235,16 +235,16 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-      # - template: pipeline-templates/terraform-plan.yaml
-      #   parameters:
-      #     environment: 'stg'
-      #     component: 'global'
-      #     service_connection: 'dcd-cftapps-stg'
-      #     storage_account_rg: 'core-infra-stg-rg'
-      #     storage_account_name: 'cftappsstg'
-      #     build: $(Build.BuildNumber)
-      #     agentPool: ${{ variables.agentPool }}
-      #     terraformVersion: ${{ variables.terraformVersion }}
+      - template: pipeline-templates/terraform-plan.yaml
+        parameters:
+          environment: 'stg'
+          component: 'global'
+          service_connection: 'dcd-cftapps-stg'
+          storage_account_rg: 'core-infra-stg-rg'
+          storage_account_name: 'cftappsstg'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
 
       - template: pipeline-templates/terraform-plan.yaml
         parameters:
@@ -589,20 +589,20 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-  # - stage: ApplyGlobalAAT
-  #   dependsOn: ApplyGlobalSandbox
-  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-  #   jobs:
-  #     - template: pipeline-templates/terraform-apply.yaml
-  #       parameters:
-  #         environment: 'stg'
-  #         component: 'global'
-  #         service_connection: 'dcd-cftapps-stg'
-  #         storage_account_rg: 'core-infra-stg-rg'
-  #         storage_account_name: 'cftappsstg'
-  #         build: $(Build.BuildNumber)
-  #         agentPool: ${{ variables.agentPool }}
-  #         terraformVersion: ${{ variables.terraformVersion }}
+  - stage: ApplyGlobalAAT
+    dependsOn: ApplyGlobalSandbox
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+      - template: pipeline-templates/terraform-apply.yaml
+        parameters:
+          environment: 'stg'
+          component: 'global'
+          service_connection: 'dcd-cftapps-stg'
+          storage_account_rg: 'core-infra-stg-rg'
+          storage_account_name: 'cftappsstg'
+          build: $(Build.BuildNumber)
+          agentPool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: ApplyCftAppsLBStg
     displayName: "Apply CFT APPs LB - Staging"
@@ -651,21 +651,21 @@ stages:
          agentPool: ${{ variables.agentPool }}
          terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyCftAppsLBProd
-    displayName: "Apply CFT APPs LB - Prod"
-    dependsOn: ApplyCftAppsLBSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'prod'
-          component: 'cftapps_cluster_lb'
-          service_connection: 'dcd-cftapps-prod'
-          storage_account_rg: 'core-infra-prod-rg'
-          storage_account_name: 'cftappsprod'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyCftAppsLBProd
+  #   displayName: "Apply CFT APPs LB - Prod"
+  #   dependsOn: ApplyCftAppsLBSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'prod'
+  #         component: 'cftapps_cluster_lb'
+  #         service_connection: 'dcd-cftapps-prod'
+  #         storage_account_rg: 'core-infra-prod-rg'
+  #         storage_account_name: 'cftappsprod'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: ApplyCftAppsLBBackendProd
     displayName: "Apply CFT APPs LB Backend - Prod"

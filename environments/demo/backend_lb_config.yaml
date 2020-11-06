@@ -172,6 +172,8 @@ gateways:
         component: role-assignment-service
       - product: am
         component: judicial-booking-service
+      - product: am
+        component: org-role-mapping-service
 
     # Reference DATA
       - product: rd

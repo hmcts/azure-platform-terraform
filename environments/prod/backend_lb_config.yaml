@@ -47,6 +47,8 @@ gateways:
         component: timed-event-service
       - product: ia
         component: home-office-integration-api
+      - product: ia
+        component: case-payments-api
 
     # Divorce
       - product: div

@@ -657,7 +657,7 @@ frontends = [
   {
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-hmiapimaat.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-hmiapimaat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     cache_enabled    = "false"
   }

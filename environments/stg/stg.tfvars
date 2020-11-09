@@ -611,33 +611,11 @@ frontends = [
     ]
   },
   {
-    name                        = "bulkscan"
-    custom_domain               = "bulkscan.aat.platform.hmcts.net"
-    host_header                 = "bulkscanaat.blob.core.windows.net"
-    backend_domain              = ["firewall-prod-int-palo-bulkscanaat.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-aat-platform-hmcts-net"
-    forwarding_protocol         = "MatchRequest"
-    health_path                 = "/"
-    health_protocol             = "Https"
-    cache_enabled               = "false"
-  },
-  {
     name                        = "reformscan"
     custom_domain               = "reformscan.aat.platform.hmcts.net"
     host_header                 = "reformscanaat.blob.core.windows.net"
     backend_domain              = ["firewall-prod-int-palo-reformscanaat.uksouth.cloudapp.azure.com"]
     certificate_name            =  "wildcard-aat-platform-hmcts-net"
-    forwarding_protocol         = "MatchRequest"
-    health_path                 = "/"
-    health_protocol             = "Https"
-    cache_enabled               = "false"
-  },
-  {
-    name                        = "bulkscanstg"
-    custom_domain               = "bulkscanstg.aat.platform.hmcts.net"
-    host_header                 = "bulkscanaatstaging.blob.core.windows.net"
-    backend_domain              = ["firewall-prod-int-palo-bulkscanaat.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-aat-platform-hmcts-net"
     forwarding_protocol         = "MatchRequest"
     health_path                 = "/"
     health_protocol             = "Https"

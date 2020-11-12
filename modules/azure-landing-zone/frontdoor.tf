@@ -197,6 +197,7 @@ resource "azurerm_frontdoor_custom_https_configuration" "https" {
     for frontend in var.frontends : frontend if lookup(frontend, "enable_ssl", true)
   ]
 
+  resource_group_name               = azurerm_frontdoor.main.resource_group_name
   frontend_endpoint_id              = azurerm_frontdoor.main.frontend_endpoint[each.value["name"]].id
   custom_https_provisioning_enabled = true
 
@@ -213,6 +214,7 @@ resource "azurerm_frontdoor_custom_https_configuration" "https_www_redirect" {
     for frontend in var.frontends : frontend if lookup(frontend, "www_redirect", false)
   ]
 
+  resource_group_name               = azurerm_frontdoor.main.resource_group_name
   frontend_endpoint_id              = azurerm_frontdoor.main.frontend_endpoint[each.value["name"]].id
   custom_https_provisioning_enabled = true
 

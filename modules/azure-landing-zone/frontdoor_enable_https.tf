@@ -1,5 +1,5 @@
 resource "azurerm_frontdoor_custom_https_configuration" "enable-https" {
-  for_each = { 
+  for_each = {
     for frontend in var.frontends : frontend.name => frontend
   }
   frontend_endpoint_id              = "/subscriptions/${var.subscription_id}/resourcegroups/${azurerm_frontdoor.main.resource_group_name}/providers/Microsoft.Network/frontdoors/${azurerm_frontdoor.main.name}/frontendendpoints/${each.value["name"]}"

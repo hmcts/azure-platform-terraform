@@ -80,8 +80,8 @@ resource "azurerm_frontdoor" "main" {
       for frontend in var.frontends : frontend if lookup(frontend, "www_redirect", false)
     ]
     content {
-      name                              = "www${host.value["name"]}"
-      host_name                         = "www.${host.value["custom_domain"]}"
+      name      = "www${host.value["name"]}"
+      host_name = "www.${host.value["custom_domain"]}"
     }
   }
 

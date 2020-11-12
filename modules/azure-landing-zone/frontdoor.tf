@@ -193,7 +193,7 @@ resource "azurerm_frontdoor" "main" {
 }
 
 resource "azurerm_frontdoor_custom_https_configuration" "https" {
-  for_each = { for frontend in var.frontends  :
+  for_each = { for frontend in var.frontends :
     frontend.name => frontend
     if lookup(frontend, "enable_ssl", true)
   }

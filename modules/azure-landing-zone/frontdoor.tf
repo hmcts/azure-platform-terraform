@@ -193,12 +193,13 @@ resource "azurerm_frontdoor" "main" {
 }
 
 resource "azurerm_frontdoor_custom_https_configuration" "https" {
-  for_each = [
-    for frontend in var.frontends : frontend if lookup(frontend, "enable_ssl", true)
-  ]
+  for_each = { for frontend in var.frontends  :
+    frontend.name => frontend
+    if lookup(frontend, "enable_ssl", true)
+  }
 
   resource_group_name               = azurerm_frontdoor.main.resource_group_name
-  frontend_endpoint_id              = azurerm_frontdoor.main.frontend_endpoint[each.value["name"]].id
+  frontend_endpoint_id              = "/subscriptions/${var.subscription_id}/resourcegroups/${azurerm_frontdoor.main.resource_group_name}/providers/Microsoft.Network/frontdoors/${azurerm_frontdoor.main.name}/frontendendpoints/${each.value["name"]}"
   custom_https_provisioning_enabled = true
 
   custom_https_configuration {
@@ -210,12 +211,13 @@ resource "azurerm_frontdoor_custom_https_configuration" "https" {
 }
 
 resource "azurerm_frontdoor_custom_https_configuration" "https_www_redirect" {
-  for_each = [
-    for frontend in var.frontends : frontend if lookup(frontend, "www_redirect", false)
-  ]
+  for_each = { for frontend in var.frontends :
+    frontend.name => frontend
+    if lookup(frontend, "www_redirect", false)
+  }
 
   resource_group_name               = azurerm_frontdoor.main.resource_group_name
-  frontend_endpoint_id              = azurerm_frontdoor.main.frontend_endpoint[each.value["name"]].id
+  frontend_endpoint_id              = "/subscriptions/${var.subscription_id}/resourcegroups/${azurerm_frontdoor.main.resource_group_name}/providers/Microsoft.Network/frontdoors/${azurerm_frontdoor.main.name}/frontendendpoints/${each.value["name"]}"
   custom_https_provisioning_enabled = true
 
   custom_https_configuration {

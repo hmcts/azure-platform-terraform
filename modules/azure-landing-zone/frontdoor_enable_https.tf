@@ -5,7 +5,7 @@ resource "azurerm_frontdoor_custom_https_configuration" "enable-https" {
   frontend_endpoint_id              = "/subscriptions/${var.subscription_id}/resourcegroups/${azurerm_frontdoor.main.resource_group_name}/providers/Microsoft.Network/frontdoors/${azurerm_frontdoor.main.name}/frontendendpoints/${each.value["name"]}"
   resource_group_name               = azurerm_frontdoor.main.resource_group_name
   custom_https_provisioning_enabled = lookup(each.value, "enable_ssl", true)
-  dynamic "custom_https_configuration" { 
+  dynamic "custom_https_configuration" {
     for_each = lookup(each.value, "enable_ssl", true) ? [1] : []
     content {
       certificate_source                         = var.ssl_mode

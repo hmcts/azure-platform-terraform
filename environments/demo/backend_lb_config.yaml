@@ -166,6 +166,8 @@ gateways:
     # xui
       - product: xui
         component: terms-and-conditions
+      - product: xui
+        component: terms-and-conditions-int
 
     # Access Management
       - product: am

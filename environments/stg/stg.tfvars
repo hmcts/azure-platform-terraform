@@ -22,7 +22,7 @@ shutter_apps = [
 ]
 
 cft_apps_ag_ip_address = "10.10.24.123"
-cft_apps_cluster_ips   = ["10.10.19.250"]
+cft_apps_cluster_ips   = ["10.10.19.250","10.10.23.250"]
 
 frontends = [
   {
@@ -625,7 +625,7 @@ frontends = [
     name                        = "reformscanstg"
     custom_domain               = "reformscanstg.aat.platform.hmcts.net"
     host_header                 = "reformscanaatstaging.blob.core.windows.net"
-    backend_domain              = ["firewall-prod-int-palo-reformscanaat.uksouth.cloudapp.azure.com"]
+    backend_domain              = ["firewall-prod-int-palo-reformscanaatstg.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-aat-platform-hmcts-net"
     forwarding_protocol         = "MatchRequest"
     health_path                 = "/"

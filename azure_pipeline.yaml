@@ -433,7 +433,7 @@ stages:
           terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: ApplyGlobalITHC
-    dependsOn: ApplyGlobalSandbox
+    # dependsOn: ApplyGlobalSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -480,7 +480,7 @@ stages:
           terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: ApplyGlobalLDATA
-    dependsOn: ApplyGlobalSandbox
+    # dependsOn: ApplyGlobalSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml
@@ -590,7 +590,7 @@ stages:
           terraformVersion: ${{ variables.terraformVersion }}
 
   - stage: ApplyGlobalAAT
-    dependsOn: ApplyGlobalSandbox
+    # dependsOn: ApplyGlobalSandbox
     condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
     jobs:
       - template: pipeline-templates/terraform-apply.yaml

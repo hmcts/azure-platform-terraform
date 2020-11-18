@@ -64,6 +64,10 @@ gateways:
         component: judicial-data-load
       - product: rd
         component: caseworker-ref-api
+      - product: rd
+        component: location-ref-api
+      - product: rd
+        component: location-ref-data-load
 
     # Divorce
       - product: div

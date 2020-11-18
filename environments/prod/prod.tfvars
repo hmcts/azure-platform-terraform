@@ -1147,6 +1147,20 @@ frontends = [
     ]
   },
   {
+    name             = "fact"
+    mode             = "Prevention"
+    custom_domain    = "find-court-tribunal.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "fact-.cert-goes-here-platform-hmcts-net"
+  },
+  {
+    name             = "fact-admin"
+    mode             = "Prevention"
+    custom_domain    = "admin.find-court-tribunal.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "fact-admin.cert-goes-here"
+  },
+  {
     name             = "jui-redirect"
     mode             = "Detection"
     custom_domain    = "jcm.judiciary.uk"

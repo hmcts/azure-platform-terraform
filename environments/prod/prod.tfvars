@@ -15,7 +15,7 @@ cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-prod-rg"
 
 cft_apps_ag_ip_address = "10.13.32.122"
-cft_apps_cluster_ips   = ["10.13.15.250","10.13.31.250"]
+cft_apps_cluster_ips   = ["10.13.15.250", "10.13.31.250"]
 
 frontends = [
   {
@@ -1241,6 +1241,11 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
+        selector       = "oauth2ClientId"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
         selector       = "oauth2ClientSecret"
       },
       {
@@ -1282,7 +1287,7 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "token"
-      }
+      },
     ]
   },
   {
@@ -1293,15 +1298,15 @@ frontends = [
     cache_enabled    = "false"
   },
   {
-    name                        = "reformscan"
-    custom_domain               = "reformscan.platform.hmcts.net"
-    host_header                 = "reformscanprod.blob.core.windows.net"
-    mode                        = "Detection"
-    backend_domain              = ["firewall-prod-int-palo-reformscanprod.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-platform-hmcts-net"
-    forwarding_protocol         = "MatchRequest"
-    health_path                 = "/"
-    health_protocol             = "Https"
-    cache_enabled               = "false"
+    name                = "reformscan"
+    custom_domain       = "reformscan.platform.hmcts.net"
+    host_header         = "reformscanprod.blob.core.windows.net"
+    mode                = "Detection"
+    backend_domain      = ["firewall-prod-int-palo-reformscanprod.uksouth.cloudapp.azure.com"]
+    certificate_name    = "wildcard-platform-hmcts-net"
+    forwarding_protocol = "MatchRequest"
+    health_path         = "/"
+    health_protocol     = "Https"
+    cache_enabled       = "false"
   }
 ]

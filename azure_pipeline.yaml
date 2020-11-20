@@ -333,7 +333,7 @@ stages:
           environment: 'sbox'
           component: 'global'
           service_connection: 'dcd-cftapps-sbox'
-          subscription: 'DCD-CFTAPPS-SBOX'
+          # subscription: 'DCD-CFTAPPS-SBOX'
           storage_account_rg: 'core-infra-sbox-rg'
           storage_account_name: 'cftappssbox'
           build: $(Build.BuildNumber)
@@ -349,7 +349,7 @@ stages:
           environment: 'demo'
           component: 'global'
           service_connection: 'dcd-cftapps-demo'
-          subscription: 'DCD-CFTAPPS-DEMO'
+          # subscription: 'DCD-CFTAPPS-DEMO'
           storage_account_rg: 'core-infra-demo-rg'
           storage_account_name: 'cftappsdemo'
           build: $(Build.BuildNumber)
@@ -365,7 +365,7 @@ stages:
           environment: 'dev'
           component: 'global'
           service_connection: 'dcd-cftapps-dev'
-          subscription: 'DCD-CFTAPPS-DEV'
+          # subscription: 'DCD-CFTAPPS-DEV'
           storage_account_rg: 'core-infra-dev-rg'
           storage_account_name: 'cftappsdev'
           build: $(Build.BuildNumber)
@@ -444,7 +444,7 @@ stages:
           environment: 'ithc'
           component: 'global'
           service_connection: 'dcd-cftapps-ithc'
-          subscription: 'DCD-CFTAPPS-ITHC'
+          # subscription: 'DCD-CFTAPPS-ITHC'
           storage_account_rg: 'core-infra-ithc-rg'
           storage_account_name: 'cftappsithc'
           build: $(Build.BuildNumber)
@@ -493,7 +493,7 @@ stages:
           component: 'global'
           service_connection: 'azurerm-ethosldata'
           storage_account_rg: 'core-infra-ldata-rg'
-          subscription: 'DCD-ETHOS-MIGRATION-LDATA'
+          # subscription: 'DCD-ETHOS-MIGRATION-LDATA'
           storage_account_name: 'ethosldata'
           build: $(Build.BuildNumber)
           agentPool: ${{ variables.agentPool }}
@@ -540,7 +540,7 @@ stages:
           environment: 'test'
           component: 'global'
           service_connection: 'dcd-cftapps-test'
-          subscription: 'DCD-CFTAPPS-TEST'
+          # subscription: 'DCD-CFTAPPS-TEST'
           storage_account_rg: 'core-infra-test-rg'
           storage_account_name: 'cftappstest'
           build: $(Build.BuildNumber)
@@ -604,7 +604,7 @@ stages:
           environment: 'stg'
           component: 'global'
           service_connection: 'dcd-cftapps-stg'
-          subscription: 'DCD-CFTAPPS-STG'
+          # subscription: 'DCD-CFTAPPS-STG'
           storage_account_rg: 'core-infra-stg-rg'
           storage_account_name: 'cftappsstg'
           build: $(Build.BuildNumber)
@@ -652,7 +652,7 @@ stages:
          environment: 'prod'
          component: 'global'
          service_connection: 'dcd-cftapps-prod'
-         subscription: 'DCD-CFTAPPS-PROD'
+        #  subscription: 'DCD-CFTAPPS-PROD'
          storage_account_rg: 'core-infra-prod-rg'
          storage_account_name: 'cftappsprod'
          build: $(Build.BuildNumber)

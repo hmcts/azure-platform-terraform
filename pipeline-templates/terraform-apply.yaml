@@ -43,18 +43,18 @@ jobs:
                 commandOptions: '${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan'
                 environmentServiceName: '${{ parameters.service_connection }}'
                 workingDirectory: '$(Pipeline.Workspace)/drop/components/${{ parameters.component }}'
-            - task: AzureCLI@2
-              displayName: UnlockTFstateIfLocked
-              condition: failed()
-              inputs:
-                azureSubscription: '${{ parameters.subscription }}'
-                scriptType: bash
-                scriptLocation: inlineScript
-                inlineScript: |
-                  leaseExist=`az storage blob show --container-name tfstate --name ${{ parameters.component }}.tfstate --account-name ${{ parameters.storage_account_name }}' | jq -r '.properties.lease.state'`
+            # - task: AzureCLI@2
+            #   displayName: UnlockTFstateIfLocked
+            #   condition: failed()
+            #   inputs:
+            #     azureSubscription: '${{ parameters.subscription }}'
+            #     scriptType: bash
+            #     scriptLocation: inlineScript
+            #     inlineScript: |
+            #       leaseExist=`az storage blob show --container-name tfstate --name ${{ parameters.component }}.tfstate --account-name ${{ parameters.storage_account_name }}' | jq -r '.properties.lease.state'`
                   
-                  if [ ${leaseExist} = "leased" ]; then
-                    az storage blob lease break --blob-name ${{ parameters.component }}.tfstate --container-name tfstate --account-name ${{ parameters.storage_account_name }}
-                  else
-                    exit 0
-                  fi
+            #       if [ ${leaseExist} = "leased" ]; then
+            #         az storage blob lease break --blob-name ${{ parameters.component }}.tfstate --container-name tfstate --account-name ${{ parameters.storage_account_name }}
+            #       else
+            #         exit 0
+            #       fi

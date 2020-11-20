@@ -339,361 +339,361 @@ stages:
           agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyGlobalDemo
-    dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'demo'
-          component: 'global'
-          service_connection: 'dcd-cftapps-demo'
-          storage_account_rg: 'core-infra-demo-rg'
-          storage_account_name: 'cftappsdemo'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyGlobalDemo
+  #   dependsOn: GetArtifacts
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'demo'
+  #         component: 'global'
+  #         service_connection: 'dcd-cftapps-demo'
+  #         storage_account_rg: 'core-infra-demo-rg'
+  #         storage_account_name: 'cftappsdemo'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyGlobalDev
-    dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'dev'
-          component: 'global'
-          service_connection: 'dcd-cftapps-dev'
-          storage_account_rg: 'core-infra-dev-rg'
-          storage_account_name: 'cftappsdev'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyGlobalDev
+  #   dependsOn: GetArtifacts
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'dev'
+  #         component: 'global'
+  #         service_connection: 'dcd-cftapps-dev'
+  #         storage_account_rg: 'core-infra-dev-rg'
+  #         storage_account_name: 'cftappsdev'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyCftAppsLBSandbox
-    displayName: "Apply CFT APPs LB - Sandbox"
-    dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'sbox'
-          component: 'cftapps_cluster_lb'
-          service_connection: 'dcd-cftapps-sbox'
-          storage_account_rg: 'core-infra-sbox-rg'
-          storage_account_name: 'cftappssbox'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyCftAppsLBSandbox
+  #   displayName: "Apply CFT APPs LB - Sandbox"
+  #   dependsOn: GetArtifacts
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'sbox'
+  #         component: 'cftapps_cluster_lb'
+  #         service_connection: 'dcd-cftapps-sbox'
+  #         storage_account_rg: 'core-infra-sbox-rg'
+  #         storage_account_name: 'cftappssbox'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyCftAppsLBBackendSandbox
-    displayName: "Apply CFT APPs LB Backend - Sandbox"
-    dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'sbox'
-          component: 'cftapps_cluster_lb_backend'
-          service_connection: 'dcd-cftapps-sbox'
-          storage_account_rg: 'core-infra-sbox-rg'
-          storage_account_name: 'cftappssbox'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyCftAppsLBBackendSandbox
+  #   displayName: "Apply CFT APPs LB Backend - Sandbox"
+  #   dependsOn: GetArtifacts
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'sbox'
+  #         component: 'cftapps_cluster_lb_backend'
+  #         service_connection: 'dcd-cftapps-sbox'
+  #         storage_account_rg: 'core-infra-sbox-rg'
+  #         storage_account_name: 'cftappssbox'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyShutterSandbox
-    dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'sbox'
-          component: 'shutter'
-          service_connection: 'dcd-cftapps-sbox'
-          storage_account_rg: 'core-infra-sbox-rg'
-          storage_account_name: 'cftappssbox'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyShutterSandbox
+  #   dependsOn: GetArtifacts
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'sbox'
+  #         component: 'shutter'
+  #         service_connection: 'dcd-cftapps-sbox'
+  #         storage_account_rg: 'core-infra-sbox-rg'
+  #         storage_account_name: 'cftappssbox'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyActiveGatePTL
-    displayName: "Apply ActiveGate - PTL"
-    dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'ptl'
-          component: 'dynatrace_activegate'
-          service_connection: 'DTS-CFTPTL-INTSVC'
-          storage_account_rg: 'core-infra-intsvc-rg'
-          storage_account_name: 'cftptlintsvc'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyActiveGatePTL
+  #   displayName: "Apply ActiveGate - PTL"
+  #   dependsOn: GetArtifacts
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'ptl'
+  #         component: 'dynatrace_activegate'
+  #         service_connection: 'DTS-CFTPTL-INTSVC'
+  #         storage_account_rg: 'core-infra-intsvc-rg'
+  #         storage_account_name: 'cftptlintsvc'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyGlobalITHC
-    dependsOn: ApplyGlobalSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'ithc'
-          component: 'global'
-          service_connection: 'dcd-cftapps-ithc'
-          storage_account_rg: 'core-infra-ithc-rg'
-          storage_account_name: 'cftappsithc'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyGlobalITHC
+  #   dependsOn: ApplyGlobalSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'ithc'
+  #         component: 'global'
+  #         service_connection: 'dcd-cftapps-ithc'
+  #         storage_account_rg: 'core-infra-ithc-rg'
+  #         storage_account_name: 'cftappsithc'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyCftAppsLBITHC
-    displayName: "Apply CFT APPs LB - ITHC"
-    dependsOn: ApplyCftAppsLBSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'ithc'
-          component: 'cftapps_cluster_lb'
-          service_connection: 'dcd-cftapps-ithc'
-          storage_account_rg: 'core-infra-ithc-rg'
-          storage_account_name: 'cftappsithc'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyCftAppsLBITHC
+  #   displayName: "Apply CFT APPs LB - ITHC"
+  #   dependsOn: ApplyCftAppsLBSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'ithc'
+  #         component: 'cftapps_cluster_lb'
+  #         service_connection: 'dcd-cftapps-ithc'
+  #         storage_account_rg: 'core-infra-ithc-rg'
+  #         storage_account_name: 'cftappsithc'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyCftAppsLBBackendITHC
-    displayName: "Apply CFT APPs LB Backend - ITHC"
-    dependsOn: ApplyCftAppsLBSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'ithc'
-          component: 'cftapps_cluster_lb_backend'
-          service_connection: 'dcd-cftapps-ithc'
-          storage_account_rg: 'core-infra-ithc-rg'
-          storage_account_name: 'cftappsithc'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyCftAppsLBBackendITHC
+  #   displayName: "Apply CFT APPs LB Backend - ITHC"
+  #   dependsOn: ApplyCftAppsLBSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'ithc'
+  #         component: 'cftapps_cluster_lb_backend'
+  #         service_connection: 'dcd-cftapps-ithc'
+  #         storage_account_rg: 'core-infra-ithc-rg'
+  #         storage_account_name: 'cftappsithc'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyGlobalLDATA
-    dependsOn: ApplyGlobalSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'ldata'
-          component: 'global'
-          service_connection: 'azurerm-ethosldata'
-          storage_account_rg: 'core-infra-ldata-rg'
-          storage_account_name: 'ethosldata'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyGlobalLDATA
+  #   dependsOn: ApplyGlobalSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'ldata'
+  #         component: 'global'
+  #         service_connection: 'azurerm-ethosldata'
+  #         storage_account_rg: 'core-infra-ldata-rg'
+  #         storage_account_name: 'ethosldata'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyCftAppsLBLDATA
-    displayName: "Apply CFT APPs LB - LDATA"
-    dependsOn: ApplyCftAppsLBSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'ldata'
-          component: 'cftapps_cluster_lb'
-          service_connection: 'azurerm-ethosldata'
-          storage_account_rg: 'core-infra-ldata-rg'
-          storage_account_name: 'ethosldata'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyCftAppsLBLDATA
+  #   displayName: "Apply CFT APPs LB - LDATA"
+  #   dependsOn: ApplyCftAppsLBSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'ldata'
+  #         component: 'cftapps_cluster_lb'
+  #         service_connection: 'azurerm-ethosldata'
+  #         storage_account_rg: 'core-infra-ldata-rg'
+  #         storage_account_name: 'ethosldata'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyCftAppsLBBackendLDATA
-    displayName: "Apply CFT APPs LB Backend - LDATA"
-    dependsOn: ApplyCftAppsLBSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'ldata'
-          component: 'cftapps_cluster_lb_backend'
-          service_connection: 'azurerm-ethosldata'
-          storage_account_rg: 'core-infra-ldata-rg'
-          storage_account_name: 'ethosldata'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyCftAppsLBBackendLDATA
+  #   displayName: "Apply CFT APPs LB Backend - LDATA"
+  #   dependsOn: ApplyCftAppsLBSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'ldata'
+  #         component: 'cftapps_cluster_lb_backend'
+  #         service_connection: 'azurerm-ethosldata'
+  #         storage_account_rg: 'core-infra-ldata-rg'
+  #         storage_account_name: 'ethosldata'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyGlobalPerfTest
-    dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'test'
-          component: 'global'
-          service_connection: 'dcd-cftapps-test'
-          storage_account_rg: 'core-infra-test-rg'
-          storage_account_name: 'cftappstest'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyGlobalPerfTest
+  #   dependsOn: GetArtifacts
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'test'
+  #         component: 'global'
+  #         service_connection: 'dcd-cftapps-test'
+  #         storage_account_rg: 'core-infra-test-rg'
+  #         storage_account_name: 'cftappstest'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyCftAppsLBBackendDemo
-    displayName: "Apply CFT APPs LB Backend - Demo"
-    dependsOn: ApplyCftAppsLBSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: demo
-          component: 'cftapps_cluster_lb_backend'
-          service_connection: 'dcd-cftapps-demo'
-          storage_account_rg: 'core-infra-demo-rg'
-          storage_account_name: 'cftappsdemo'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyCftAppsLBBackendDemo
+  #   displayName: "Apply CFT APPs LB Backend - Demo"
+  #   dependsOn: ApplyCftAppsLBSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: demo
+  #         component: 'cftapps_cluster_lb_backend'
+  #         service_connection: 'dcd-cftapps-demo'
+  #         storage_account_rg: 'core-infra-demo-rg'
+  #         storage_account_name: 'cftappsdemo'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyCftAppsLBTest
-    displayName: "Apply CFT APPs LB - Test"
-    dependsOn: ApplyCftAppsLBSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'test'
-          component: 'cftapps_cluster_lb'
-          service_connection: 'dcd-cftapps-test'
-          storage_account_rg: 'core-infra-test-rg'
-          storage_account_name: 'cftappstest'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyCftAppsLBTest
+  #   displayName: "Apply CFT APPs LB - Test"
+  #   dependsOn: ApplyCftAppsLBSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'test'
+  #         component: 'cftapps_cluster_lb'
+  #         service_connection: 'dcd-cftapps-test'
+  #         storage_account_rg: 'core-infra-test-rg'
+  #         storage_account_name: 'cftappstest'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyCftAppsLBBackendTest
-    displayName: "Apply CFT APPs LB Backend - Test"
-    dependsOn: ApplyCftAppsLBSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'test'
-          component: 'cftapps_cluster_lb_backend'
-          service_connection: 'dcd-cftapps-test'
-          storage_account_rg: 'core-infra-test-rg'
-          storage_account_name: 'cftappstest'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyCftAppsLBBackendTest
+  #   displayName: "Apply CFT APPs LB Backend - Test"
+  #   dependsOn: ApplyCftAppsLBSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'test'
+  #         component: 'cftapps_cluster_lb_backend'
+  #         service_connection: 'dcd-cftapps-test'
+  #         storage_account_rg: 'core-infra-test-rg'
+  #         storage_account_name: 'cftappstest'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyGlobalAAT
-    dependsOn: ApplyGlobalSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'stg'
-          component: 'global'
-          service_connection: 'dcd-cftapps-stg'
-          storage_account_rg: 'core-infra-stg-rg'
-          storage_account_name: 'cftappsstg'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyGlobalAAT
+  #   dependsOn: ApplyGlobalSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'stg'
+  #         component: 'global'
+  #         service_connection: 'dcd-cftapps-stg'
+  #         storage_account_rg: 'core-infra-stg-rg'
+  #         storage_account_name: 'cftappsstg'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyCftAppsLBStg
-    displayName: "Apply CFT APPs LB - Staging"
-    dependsOn: ApplyCftAppsLBSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'stg'
-          component: 'cftapps_cluster_lb'
-          service_connection: 'dcd-cftapps-stg'
-          storage_account_rg: 'core-infra-stg-rg'
-          storage_account_name: 'cftappsstg'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyCftAppsLBStg
+  #   displayName: "Apply CFT APPs LB - Staging"
+  #   dependsOn: ApplyCftAppsLBSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'stg'
+  #         component: 'cftapps_cluster_lb'
+  #         service_connection: 'dcd-cftapps-stg'
+  #         storage_account_rg: 'core-infra-stg-rg'
+  #         storage_account_name: 'cftappsstg'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyCftAppsLBBackendStg
-    displayName: "Apply CFT APPs LB Backend - Staging"
-    dependsOn: ApplyCftAppsLBSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'stg'
-          component: 'cftapps_cluster_lb_backend'
-          service_connection: 'dcd-cftapps-stg'
-          storage_account_rg: 'core-infra-stg-rg'
-          storage_account_name: 'cftappsstg'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyCftAppsLBBackendStg
+  #   displayName: "Apply CFT APPs LB Backend - Staging"
+  #   dependsOn: ApplyCftAppsLBSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'stg'
+  #         component: 'cftapps_cluster_lb_backend'
+  #         service_connection: 'dcd-cftapps-stg'
+  #         storage_account_rg: 'core-infra-stg-rg'
+  #         storage_account_name: 'cftappsstg'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyGlobalProd
-    #dependsOn: ApplyGlobalSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-     - template: pipeline-templates/terraform-apply.yaml
-       parameters:
-         environment: 'prod'
-         component: 'global'
-         service_connection: 'dcd-cftapps-prod'
-         storage_account_rg: 'core-infra-prod-rg'
-         storage_account_name: 'cftappsprod'
-         build: $(Build.BuildNumber)
-         agentPool: ${{ variables.agentPool }}
-         terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyGlobalProd
+  #   #dependsOn: ApplyGlobalSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #    - template: pipeline-templates/terraform-apply.yaml
+  #      parameters:
+  #        environment: 'prod'
+  #        component: 'global'
+  #        service_connection: 'dcd-cftapps-prod'
+  #        storage_account_rg: 'core-infra-prod-rg'
+  #        storage_account_name: 'cftappsprod'
+  #        build: $(Build.BuildNumber)
+  #        agentPool: ${{ variables.agentPool }}
+  #        terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyCftAppsLBProd
-    displayName: "Apply CFT APPs LB - Prod"
-    dependsOn: ApplyCftAppsLBSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'prod'
-          component: 'cftapps_cluster_lb'
-          service_connection: 'dcd-cftapps-prod'
-          storage_account_rg: 'core-infra-prod-rg'
-          storage_account_name: 'cftappsprod'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyCftAppsLBProd
+  #   displayName: "Apply CFT APPs LB - Prod"
+  #   dependsOn: ApplyCftAppsLBSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'prod'
+  #         component: 'cftapps_cluster_lb'
+  #         service_connection: 'dcd-cftapps-prod'
+  #         storage_account_rg: 'core-infra-prod-rg'
+  #         storage_account_name: 'cftappsprod'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyCftAppsLBBackendProd
-    displayName: "Apply CFT APPs LB Backend - Prod"
-    dependsOn: ApplyCftAppsLBSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'prod'
-          component: 'cftapps_cluster_lb_backend'
-          service_connection: 'dcd-cftapps-prod'
-          storage_account_rg: 'core-infra-prod-rg'
-          storage_account_name: 'cftappsprod'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyCftAppsLBBackendProd
+  #   displayName: "Apply CFT APPs LB Backend - Prod"
+  #   dependsOn: ApplyCftAppsLBSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'prod'
+  #         component: 'cftapps_cluster_lb_backend'
+  #         service_connection: 'dcd-cftapps-prod'
+  #         storage_account_rg: 'core-infra-prod-rg'
+  #         storage_account_name: 'cftappsprod'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}
 
-  - stage: ApplyShutterProd
-    #dependsOn: ApplyShutterSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply.yaml
-        parameters:
-          environment: 'prod'
-          component: 'shutter'
-          service_connection: 'dcd-cftapps-prod'
-          storage_account_rg: 'core-infra-prod-rg'
-          storage_account_name: 'cftappsprod'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+  # - stage: ApplyShutterProd
+  #   #dependsOn: ApplyShutterSandbox
+  #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  #   jobs:
+  #     - template: pipeline-templates/terraform-apply.yaml
+  #       parameters:
+  #         environment: 'prod'
+  #         component: 'shutter'
+  #         service_connection: 'dcd-cftapps-prod'
+  #         storage_account_rg: 'core-infra-prod-rg'
+  #         storage_account_name: 'cftappsprod'
+  #         build: $(Build.BuildNumber)
+  #         agentPool: ${{ variables.agentPool }}
+  #         terraformVersion: ${{ variables.terraformVersion }}

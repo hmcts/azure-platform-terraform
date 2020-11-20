@@ -37,9 +37,25 @@ jobs:
               continueOnError: true
             - task: TerraformCLI@0
               displayName: Apply - ${{ parameters.environment }} - ${{ parameters.component }}
-              timeoutInMinutes: 360
+              name: tfapply${{ parameters.environment }}${{ parameters.component }}
               inputs:
                 command: 'apply'
                 commandOptions: '${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan'
                 environmentServiceName: '${{ parameters.service_connection }}'
                 workingDirectory: '$(Pipeline.Workspace)/drop/components/${{ parameters.component }}'
+            - task: AzureCLI@2
+              displayName: UnlockTFstateIfLocked
+              dependsOn: tfapply${{ parameters.environment }}${{ parameters.component }}
+              condition: failed()
+              inputs:
+                azureSubscription: '${{ parameters.service_connection }}'
+                scriptType: bash
+                scriptLocation: inlineScript
+                inlineScript: |
+                  leaseExist=`az storage blob show --container-name tfstate --name ${{ parameters.component }}.tfstate --account-name ${{ parameters.storage_account_name }}' | jq '.properties.lease.state'`
+                  
+                  if [ "${leaseExist}" = "leased" ]; then
+                  'az storage blob lease break --blob-name ${{ parameters.component }}.tfstate --container-name tfstate --account-name ${{ parameters.storage_account_name }}'
+                  else
+                    exit 0
+                  fi

@@ -136,6 +136,10 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
+        
+    # AAC (CDM)
+      - product: aac
+        component: manage-case-assignment    
 
     # BAR
       - product: bar

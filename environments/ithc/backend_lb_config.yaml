@@ -64,6 +64,10 @@ gateways:
         component: judicial-data-load
       - product: rd
         component: caseworker-ref-api
+      - product: rd
+        component: location-ref-api
+      - product: rd
+        component: location-ref-data-load
 
     # Divorce
       - product: div
@@ -182,8 +186,3 @@ gateways:
     # Send-letter
       - product: rpe
         component: send-letter-service
-        
-    # debugging
-      - product: kremena
-        component: is-testing
-        ssl_enabled: true

@@ -655,5 +655,5 @@ frontends = [
     health_path         = "/"
     health_protocol     = "Https"
     cache_enabled       = "false"
-  }
+  },
 ]

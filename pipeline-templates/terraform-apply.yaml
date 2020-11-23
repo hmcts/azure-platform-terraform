@@ -45,7 +45,7 @@ jobs:
                 workingDirectory: '$(Pipeline.Workspace)/drop/components/${{ parameters.component }}'
             - task: AzureCLI@2
               displayName: UnlockTFstateIfLocked
-              condition: failed()
+              condition: always()
               inputs:
                 azureSubscription: '${{ parameters.service_connection }}'
                 scriptType: bash

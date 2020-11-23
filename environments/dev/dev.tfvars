@@ -12,9 +12,9 @@ oms_env           = "nonprod"
 frontends = [
   {
     name             = "hmi-apim"
-    custom_domain    = "hmi-apim.preview.platform.hmcts.net"
+    custom_domain    = "hmi-apim.dev.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-hmiapimdev.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-preview-platform-hmcts-net"
+    certificate_name = "wildcard-dev-platform-hmcts-net"
     cache_enabled    = "false"
   },
   {

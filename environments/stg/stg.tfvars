@@ -638,5 +638,21 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-hmiapimaat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-staging-platform-hmcts-net"
     cache_enabled    = "false"
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values       = ["82.69.36.1/32"]
+          }
+        ]
+      }
+    ]
   }
 ]

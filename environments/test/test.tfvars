@@ -639,9 +639,9 @@ frontends = [
   },
   {
     name             = "hmi-apim"
-    custom_domain    = "hmi-apim.perftest.platform.hmcts.net"
+    custom_domain    = "hmi-apim.test.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-hmiapimtest.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-perftest-platform-hmcts-net"
+    certificate_name = "wildcard-test-platform-hmcts-net"
     cache_enabled    = "false"
   },
   {

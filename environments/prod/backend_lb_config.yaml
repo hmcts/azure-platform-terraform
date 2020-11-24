@@ -193,3 +193,7 @@ gateways:
         component: web-admin
         cookie_based_affinity: Enabled
         ssl_enabled: true
+ 
+ # FACT
+      - product: fact
+        component: api

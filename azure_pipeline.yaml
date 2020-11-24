@@ -9,7 +9,8 @@ trigger:
     
 variables:
   terraformVersion: 0.12.26
-  agentPool: 'ubuntu-18.04'
+  # agentPool: 'ubuntu-18.04'
+  agentPool: 'hmcts-agent-pool'
   action:
 
 stages:

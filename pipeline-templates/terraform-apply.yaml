@@ -37,6 +37,7 @@ jobs:
               continueOnError: true
             - task: TerraformCLI@0
               displayName: Apply - ${{ parameters.environment }} - ${{ parameters.component }}
+              timeoutInMinutes: 360
               name: tfapply${{ parameters.environment }}${{ parameters.component }}
               inputs:
                 command: 'apply'

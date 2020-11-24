@@ -60,7 +60,7 @@ stages:
           - task: PublishBuildArtifacts@1
             displayName: 'Publish Artifact: drop'
 
-  # - stage: ApplyGlobalSandbox
+  ## - stage: ApplyGlobalSandbox
   #   dependsOn: GetArtifacts
   #   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   #   jobs:

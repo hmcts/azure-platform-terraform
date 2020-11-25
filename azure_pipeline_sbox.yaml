@@ -50,7 +50,7 @@ stages:
               textcheck=$(sed -e 's/^"//' -e 's/"$//' <<<"$text")
 
               if [[ "$textcheck" == "inProgress" ]];  then
-
+              sleep 15
               buildrunning=$number 
 
               echo "build $number is inProgress"
@@ -129,28 +129,28 @@ stages:
             failTaskOnFailedTests: true
           condition: always()
 
-      - template: pipeline-templates/terraform-plan.yaml
-        parameters:
-          environment: 'sbox'
-          component: 'global'
-          service_connection: 'dcd-cftapps-sbox'
-          storage_account_rg: 'core-infra-sbox-rg'
-          storage_account_name: 'cftappssbox'
-          build: $(Build.BuildNumber)
-          agentPool: $(agentPool)
-          terraformVersion: $(terraformVersion)
+      # - template: pipeline-templates/terraform-plan.yaml
+      #   parameters:
+      #     environment: 'sbox'
+      #     component: 'global'
+      #     service_connection: 'dcd-cftapps-sbox'
+      #     storage_account_rg: 'core-infra-sbox-rg'
+      #     storage_account_name: 'cftappssbox'
+      #     build: $(Build.BuildNumber)
+      #     agentPool: $(agentPool)
+      #     terraformVersion: $(terraformVersion)
 
-      - job: Archive
-        pool:
-          vmImage: $(agentPool)
-        steps:
-          - task: CopyFiles@2
-            displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-            inputs:
-              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      # - job: Archive
+      #   pool:
+      #     vmImage: $(agentPool)
+      #   steps:
+      #     - task: CopyFiles@2
+      #       displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+      #       inputs:
+      #         TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-          - task: PublishBuildArtifacts@1
-            displayName: 'Publish Artifact: drop'
+      #     - task: PublishBuildArtifacts@1
+      #       displayName: 'Publish Artifact: drop'
 
   ## - stage: ApplyGlobalSandbox
   #   dependsOn: GetArtifacts

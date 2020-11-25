@@ -15,7 +15,7 @@ variables:
   
 
 stages:
-  - stage: GetArtifacts
+  - stage: Precheck
     jobs:
       - job: Validate
         pool:
@@ -27,7 +27,7 @@ stages:
             PAT: $(thomas_pat)
           inputs:
             targetType: 'inline'
-            script: |            
+            script: | 
               #!/bin/bash
               set -e
 
@@ -61,6 +61,54 @@ stages:
               done
 
               echo "starting this build $thisbuild"
+
+  - stage: GetArtifacts
+    dependsOn: Precheck
+    jobs:
+      - job: Validate
+        pool:
+          vmImage: $(agentPool)
+        steps:
+        # - task: Bash@3
+        #   env:
+        #     thisbuild: $(Build.BuildId)
+        #     PAT: $(thomas_pat)
+        #   inputs:
+        #     targetType: 'inline'
+        #     script: |            
+        #       #!/bin/bash
+        #       set -e
+
+        #       presenter="thomas.thornton@HMCTS.NET"
+        #       organization="hmcts"
+        #       project="CNP"
+
+
+        #       echo "This build number is: $thisbuild"
+
+        #       while [[ $thisbuild -ne $buildrunning ]]
+        #       do
+        #       JSON_DATA=$(curl -u $presenter:$PAT --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=417" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u)
+
+        #       for value in ${JSON_DATA[@]}; 
+        #       do 
+
+        #       number=(${value//[!0-9]/})
+        #       text=(${value//[0-9]/})
+        #       textcheck=$(sed -e 's/^"//' -e 's/"$//' <<<"$text")
+
+        #       if [[ "$textcheck" == "inProgress" ]];  then
+        #       sleep 15
+        #       buildrunning=$number 
+
+        #       echo "build $number is inProgress"
+
+        #       fi
+
+        #       done
+        #       done
+
+        #       echo "starting this build $thisbuild"
 
         # - task: PowerShell@2
         #   inputs:

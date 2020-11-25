@@ -8,9 +8,11 @@ trigger:
     - Frontdoor-pipeline-segregation
     
 variables:
+- group: SBOX-AKS-Tags
   terraformVersion: 0.12.26
   agentPool: 'ubuntu-18.04'
   action:
+  
 
 stages:
   - stage: GetArtifacts
@@ -22,6 +24,7 @@ stages:
         - task: Bash@3
           env:
             thisbuild: $(Build.BuildId)
+            PAT: $(thomas_pat)
           inputs:
             targetType: 'inline'
             script: |            
@@ -31,8 +34,7 @@ stages:
               PRESENTER="thomast@kainos.com"
               ORGANIZATION="hmcts"
               PROJECT="TamOpsTerraform"
-              PAT="PAT HERE"
-              
+
 
               echo "This build number is: $thisbuild"
 
@@ -60,54 +62,54 @@ stages:
 
               echo "starting this build $thisbuild"
 
-        - task: PowerShell@2
-          inputs:
-            targetType: 'inline'
-            script: |
-              #If this starts failing randomly, It maybe because the token has expired, I have set it to 11/18/2020 at the moment.
-              $token = "<INSERT PAT TOKEN HERE>"
-              $organization = "hmcts"
-              $project = "CNP"
+        # - task: PowerShell@2
+        #   inputs:
+        #     targetType: 'inline'
+        #     script: |
+        #       #If this starts failing randomly, It maybe because the token has expired, I have set it to 11/18/2020 at the moment.
+        #       $token = "<INSERT PAT TOKEN HERE>"
+        #       $organization = "hmcts"
+        #       $project = "CNP"
 
-              $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $user,$token)))
+        #       $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $user,$token)))
 
-              $ThisBuildDefinitionID = $(System.DefinitionId)
-              [int]$ThisBuildID = $(Build.BuildId)
+        #       $ThisBuildDefinitionID = $(System.DefinitionId)
+        #       [int]$ThisBuildID = $(Build.BuildId)
 
-              $GET_BUILDS_BY_DEFINITION_URL = "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$ThisBuildDefinitionID"
+        #       $GET_BUILDS_BY_DEFINITION_URL = "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$ThisBuildDefinitionID"
 
-              do
-              {
-                  $GET_BUILDS_BY_DEFINITION_RESPONSE = ""
-                  try
-                  {
-                    $GET_BUILDS_BY_DEFINITION_RESPONSE = Invoke-RestMethod -Uri $GET_BUILDS_BY_DEFINITION_URL `
-                                                -Method GET `
-                                                -ContentType "application/json" `
-                                                -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)}
-                  }
-                  catch
-                  {
-                    continue
-                  }
+        #       do
+        #       {
+        #           $GET_BUILDS_BY_DEFINITION_RESPONSE = ""
+        #           try
+        #           {
+        #             $GET_BUILDS_BY_DEFINITION_RESPONSE = Invoke-RestMethod -Uri $GET_BUILDS_BY_DEFINITION_URL `
+        #                                         -Method GET `
+        #                                         -ContentType "application/json" `
+        #                                         -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)}
+        #           }
+        #           catch
+        #           {
+        #             continue
+        #           }
 
-                  [array]$runningBuilds = $GET_BUILDS_BY_DEFINITION_RESPONSE.value | Where-Object -Property "status" -Value "inProgress" -EQ
-
-
-                  [int]$currentRunningBuild = ($runningBuilds | Sort-Object -Property "Id")[0].Id
+        #           [array]$runningBuilds = $GET_BUILDS_BY_DEFINITION_RESPONSE.value | Where-Object -Property "status" -Value "inProgress" -EQ
 
 
-                  Write-Host "This Build ID: " $ThisBuildID
-                  Write-Host "Currently Running Build ID: " $currentRunningBuild
-                  Write-Host "Waiting..." 
-                  Write-Output ""
-                  Start-Sleep -Seconds 5
-              }
-              while($ThisBuildID -ne $currentRunningBuild)
+        #           [int]$currentRunningBuild = ($runningBuilds | Sort-Object -Property "Id")[0].Id
+
+
+        #           Write-Host "This Build ID: " $ThisBuildID
+        #           Write-Host "Currently Running Build ID: " $currentRunningBuild
+        #           Write-Host "Waiting..." 
+        #           Write-Output ""
+        #           Start-Sleep -Seconds 5
+        #       }
+        #       while($ThisBuildID -ne $currentRunningBuild)
               
-              Write-Host "Waiting Complete."
-              Write-Host "Starting Build: " $ThisBuildID
-              Start-Sleep -Seconds 5          
+        #       Write-Host "Waiting Complete."
+        #       Write-Host "Starting Build: " $ThisBuildID
+        #       Start-Sleep -Seconds 5          
 
         - task: TerraformInstaller@0
           inputs:

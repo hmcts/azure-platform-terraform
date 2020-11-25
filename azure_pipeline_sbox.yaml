@@ -8,10 +8,10 @@ trigger:
     - Frontdoor-pipeline-segregation
     
 variables:
-- group: SBOX-AKS-Tags
-  terraformVersion: 0.12.26
-  agentPool: 'ubuntu-18.04'
-  action:
+- group: thomas_vg
+  # terraformVersion: 0.12.26
+  # agentPool: 'ubuntu-18.04'
+  # action:
   
 
 stages:

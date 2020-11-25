@@ -19,6 +19,47 @@ stages:
         pool:
           vmImage: ${{ variables.agentPool }}
         steps:
+        - task: Bash@3
+          env:
+            thisbuild: $(Build.BuildId)
+          inputs:
+            targetType: 'inline'
+            script: |            
+              #!/bin/bash
+              set -e
+
+              PRESENTER="thomast@kainos.com"
+              ORGANIZATION="hmcts"
+              PROJECT="TamOpsTerraform"
+              PAT="PAT HERE"
+              
+
+              echo "This build number is: $thisbuild"
+
+              while [[ $thisbuild -ne $buildrunning ]]
+              do
+              JSON_DATA=$(curl -u $presenter:$PAT --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=44" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u) )
+
+              for value in ${JSON_DATA[@]}; 
+              do 
+
+              number=(${value//[!0-9]/})
+              text=(${value//[0-9]/})
+              textcheck=$(sed -e 's/^"//' -e 's/"$//' <<<"$text")
+
+              if [[ "$textcheck" == "inProgress" ]];  then
+
+              buildrunning=$number 
+
+              echo "build $number is inProgress"
+
+              fi
+
+              done
+              done
+
+              echo "starting this build $thisbuild"
+
         - task: PowerShell@2
           inputs:
             targetType: 'inline'

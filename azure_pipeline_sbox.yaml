@@ -19,7 +19,7 @@ stages:
     jobs:
       - job: Validate
         pool:
-          vmImage: ${{ variables.agentPool }}
+          vmImage: $(agentPool)
         steps:
         - task: Bash@3
           env:
@@ -113,7 +113,7 @@ stages:
 
         - task: TerraformInstaller@0
           inputs:
-            terraformVersion: ${{ variables.terraformVersion }}
+            terraformVersion: $(terraformVersion)
         - task: PowerShell@2
           displayName: Run tests
           inputs:
@@ -137,12 +137,12 @@ stages:
           storage_account_rg: 'core-infra-sbox-rg'
           storage_account_name: 'cftappssbox'
           build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
+          agentPool: $(agentPool)
+          terraformVersion: $(terraformVersion)
 
       - job: Archive
         pool:
-          vmImage: ${{ variables.agentPool }}
+          vmImage: $(agentPool)
         steps:
           - task: CopyFiles@2
             displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
@@ -165,5 +165,5 @@ stages:
   #         storage_account_rg: 'core-infra-sbox-rg'
   #         storage_account_name: 'cftappssbox'
   #         build: $(Build.BuildNumber)
-  #         agentPool: ${{ variables.agentPool }}
-  #         terraformVersion: ${{ variables.terraformVersion }}
+  #         agentPool: $(agentPool)
+  #         terraformVersion: $(terraformVersion)

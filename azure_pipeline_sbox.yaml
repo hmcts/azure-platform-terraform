@@ -33,7 +33,7 @@ stages:
 
               PRESENTER="thomast@kainos.com"
               ORGANIZATION="hmcts"
-              PROJECT="TamOpsTerraform"
+              PROJECT="CNP"
 
 
               echo "This build number is: $thisbuild"

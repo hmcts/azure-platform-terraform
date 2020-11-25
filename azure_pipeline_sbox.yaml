@@ -31,7 +31,7 @@ stages:
               #!/bin/bash
               set -e
 
-              PRESENTER="thomast@kainos.com"
+              PRESENTER="thomas.thornton@HMCTS.NET"
               ORGANIZATION="hmcts"
               PROJECT="CNP"
 

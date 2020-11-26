@@ -23,9 +23,9 @@ stages:
         steps:
         - task: AzureKeyVault@1
           inputs:
-            ConnectedServiceName: DCD-CFTAPPS-PROD
-            keyVaultName: rpe-prod
-            secretsFilter: 'rpe-azure-devops-email,rpe-azure-devops-password'
+            ConnectedServiceName: dcd_sp_ado_stg_operations_v2
+            keyVaultName: infra-vault-nonprod
+            secretsFilter: 'azure-devops-token'
             runAsPreJob: false # Azure DevOps Services only
         - task: Bash@3
           env:

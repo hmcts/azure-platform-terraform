@@ -37,35 +37,34 @@ stages:
               organization="hmcts"
               project="CNP"
 
-              # echo "This is build $thisbuild"
-              # JSON_DATA=$(curl -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$pipelinedefinition" -H "Content-Type: application/json" | jq  '.value[0] | .status + (.id|tostring)' | sort -u | grep inProgress)
-              # buildnumber=(${JSON_DATA//[!0-9]/})
-              curl -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$pipelinedefinition" -H "Content-Type: application/json" | jq  '.value[0] | .status + (.id|tostring)' | sort -u | grep inProgress
-              # echo $buildnumber
+              JSON_DATA=$(curl -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$pipelinedefinition" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u | grep inProgress)
+              buildnumber=(${JSON_DATA//[!0-9]/})
 
-              # if [ $thisbuild -eq $buildnumber ] 
-              # then
 
-              # echo "starting this build"
 
-              # else
+              if [ $thisbuild -eq $buildnumber ] 
+              then
 
-              # while [[ $thisbuild -ne $buildnumber_inprogress ]]
-              # do 
+              echo "starting this build"
 
-              # JSON_CHECK=$(curl -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$pipelinedefinition" -H "Content-Type: application/json" | jq  '.value[0] | .status + (.id|tostring)' | sort -u | grep inProgress)
-              # buildnumberrunning=(${JSON_CHECK//[!0-9]/})
-              # echo "Build number: $buildnumberrunning is in progress"
+              else
 
-              # buildnumber_inprogress=$buildnumberrunning
-              # sleep 10
+              while [[ $thisbuild -ne $buildnumber_inprogress ]]
+              do 
 
-              # done
+              JSON_CHECK=$(curl -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$pipelinedefinition" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u | grep inProgress)
+              buildnumberrunning=(${JSON_CHECK//[!0-9]/})
+              echo "Build number: $buildnumberrunning is in progress"
 
-              # fi
+              buildnumber_inprogress=$buildnumberrunning
+              sleep 30
 
-              # echo "Build number $buildnumber_inprogress has finished"
-              # echo "Starting $thisbuild now"
+              done
+
+              fi
+
+              echo "Build number $buildnumber_inprogress has finished"
+              echo "Starting $thisbuild now"
 
   - stage: GetArtifacts
     dependsOn: Precheck

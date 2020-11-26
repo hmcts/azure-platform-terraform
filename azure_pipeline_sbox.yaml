@@ -21,6 +21,12 @@ stages:
         pool:
           vmImage: $(agentPool)
         steps:
+        - task: AzureKeyVault@1
+          inputs:
+            azureSubscription: 8999dec3-0104-4a27-94ee-6588559729d1
+            keyVaultName: rpe-prod
+            secretsFilter: 'rpe-azure-devops-email,rpe-azure-devops-password'
+            runAsPreJob: false # Azure DevOps Services only
         - task: Bash@3
           env:
             thisbuild: $(Build.BuildId)
@@ -40,7 +46,7 @@ stages:
 
               while [[ $thisbuild -ne $buildrunning ]]
               do
-              JSON_DATA=$(curl -u $presenter:$PAT --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=417" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u)
+              JSON_DATA=$(curl -u $(rpe-azure-devops-email):$(rpe-azure-devops-password) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=417" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u)
 
               for value in ${JSON_DATA[@]}; 
               do 

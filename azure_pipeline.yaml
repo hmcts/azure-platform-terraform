@@ -13,7 +13,58 @@ variables:
   action:
 
 stages:
+  - stage: Precheck
+    jobs:
+      - job: Validate
+        pool:
+          vmImage: $(agentPool)
+        steps:
+        - task: AzureKeyVault@1
+          inputs:
+            ConnectedServiceName: azurerm-sandbox
+            keyVaultName: infra-vault-nonprod
+            secretsFilter: 'azure-devops-token'
+            runAsPreJob: false
+        - task: Bash@3
+          env:
+            thisbuild: $(Build.BuildId)
+          inputs:
+            targetType: 'inline'
+            script: | 
+              #!/bin/bash
+              set -e
+
+              organization="hmcts"
+              project="CNP"
+
+              echo "This build number is: $thisbuild"
+
+              while [[ $thisbuild -ne $buildrunning ]]
+              do
+              JSON_DATA=$(curl -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=417" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u)
+
+              for value in ${JSON_DATA[@]}; 
+              do 
+
+              number=(${value//[!0-9]/})
+              text=(${value//[0-9]/})
+              textcheck=$(sed -e 's/^"//' -e 's/"$//' <<<"$text")
+
+              if [[ "$textcheck" == "inProgress" ]];  then
+              sleep 15
+              buildrunning=$number 
+
+              echo "Build $number is inProgress"
+
+              fi
+
+              done
+              done
+
+              echo "Starting this build $thisbuild"
+
   - stage: GetArtifacts
+    dependsOn: Precheck
     jobs:
       - job: Validate
         pool:

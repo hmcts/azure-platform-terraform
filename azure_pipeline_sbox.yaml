@@ -101,28 +101,6 @@ stages:
           agentPool: $(agentPool)
           terraformVersion: $(terraformVersion)
 
-      - template: pipeline-templates/terraform-plan.yaml
-        parameters:
-          environment: 'sbox'
-          component: 'global'
-          service_connection: 'dcd-cftapps-sbox'
-          storage_account_rg: 'core-infra-sbox-rg'
-          storage_account_name: 'cftappssbox'
-          build: $(Build.BuildNumber)
-          agentPool: $(agentPool)
-          terraformVersion: $(terraformVersion)
-
-      - template: pipeline-templates/terraform-plan.yaml
-        parameters:
-          environment: 'sbox'
-          component: 'global'
-          service_connection: 'dcd-cftapps-sbox'
-          storage_account_rg: 'core-infra-sbox-rg'
-          storage_account_name: 'cftappssbox'
-          build: $(Build.BuildNumber)
-          agentPool: $(agentPool)
-          terraformVersion: $(terraformVersion)
-
       - job: Archive
         pool:
           vmImage: $(agentPool)

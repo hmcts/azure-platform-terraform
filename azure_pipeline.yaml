@@ -52,7 +52,7 @@ stages:
               textcheck=$(sed -e 's/^"//' -e 's/"$//' <<<"$text")
 
               if [[ "$textcheck" == "inProgress" ]];  then
-              sleep 2m
+              sleep 30
               buildrunning=$number 
 
               echo "Build $number is inProgress"

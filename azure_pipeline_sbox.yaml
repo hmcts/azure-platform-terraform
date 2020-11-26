@@ -32,35 +32,38 @@ stages:
             script: | 
               #!/bin/bash
               set -e
-
               organization="hmcts"
               project="CNP"
 
-              echo "This build number is: $thisbuild"
+              JSON_DATA=$(curl -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$pipelinedefinition" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u | grep inProgress)
+              buildnumber=(${JSON_DATA//[!0-9]/})
 
-              while [[ $thisbuild -ne $buildrunning ]]
-              do
-              JSON_DATA=$(curl -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$pipelinedefinition" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u)
+              echo $buildnumber
+              echo $thisbuild
 
-              for value in ${JSON_DATA[@]}; 
+              if [ $thisbuild -eq $buildnumber ] 
+              then
+
+              echo "starting this build"
+
+              else
+
+              while [[ $thisbuild -ne $buildnumber_inprogress ]]
               do 
 
-              number=(${value//[!0-9]/})
-              text=(${value//[0-9]/})
-              textcheck=$(sed -e 's/^"//' -e 's/"$//' <<<"$text")
+              JSON_DATA=$(curl -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$pipelinedefinition" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u | grep inProgress)
+              buildnumberrunning=(${JSON_DATA//[!0-9]/})
+              echo "Build number: $buildnumberrunning is in progress"
 
-              if [[ "$textcheck" == "inProgress" ]];  then
-              # sleep 15
-              buildrunning=$number 
+              buildnumber_inprogress=$buildnumberrunning
+              sleep 30
 
-              echo "build $number is inProgress"
+              done
 
               fi
 
-              done
-              done
-
-              echo "starting this build $thisbuild"
+              echo "Build number $buildnumber_inprogress has finished"
+              echo "Starting $thisbuild now"
 
   - stage: GetArtifacts
     dependsOn: Precheck

@@ -37,10 +37,8 @@ stages:
               #!/bin/bash
               set -e
 
-              presenter="thomas.thornton@HMCTS.NET"
               organization="hmcts"
               project="CNP"
-
 
               echo "This build number is: $thisbuild"
 

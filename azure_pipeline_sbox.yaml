@@ -9,10 +9,6 @@ trigger:
     
 variables:
 - group: thomas_vg
-  # terraformVersion: 0.12.26
-  # agentPool: 'ubuntu-18.04'
-  # action:
-  
 
 stages:
   - stage: Precheck
@@ -30,7 +26,6 @@ stages:
         - task: Bash@3
           env:
             thisbuild: $(Build.BuildId)
-            PAT: $(thomas_pat)
           inputs:
             targetType: 'inline'
             script: | 

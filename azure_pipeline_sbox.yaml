@@ -23,7 +23,7 @@ stages:
         steps:
         - task: AzureKeyVault@1
           inputs:
-            ConnectedServiceName: dcd_sp_ado_stg_operations_v2
+            ConnectedServiceName: azurerm-sandbox
             keyVaultName: infra-vault-nonprod
             secretsFilter: 'azure-devops-token'
             runAsPreJob: false # Azure DevOps Services only
@@ -46,7 +46,7 @@ stages:
 
               while [[ $thisbuild -ne $buildrunning ]]
               do
-              JSON_DATA=$(curl -u $(rpe-azure-devops-email):$(rpe-azure-devops-password) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=417" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u)
+              JSON_DATA=$(curl -u $(rpe-azure-devops-email):$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=417" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u)
 
               for value in ${JSON_DATA[@]}; 
               do 

@@ -26,6 +26,7 @@ stages:
         - task: Bash@3
           env:
             thisbuild: $(Build.BuildId)
+            pipelinedefinition: $(System.DefinitionId)
           inputs:
             targetType: 'inline'
             script: | 
@@ -39,7 +40,7 @@ stages:
 
               while [[ $thisbuild -ne $buildrunning ]]
               do
-              JSON_DATA=$(curl -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=417" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u)
+              JSON_DATA=$(curl -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$pipelinedefinition" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u)
 
               for value in ${JSON_DATA[@]}; 
               do 
@@ -49,7 +50,7 @@ stages:
               textcheck=$(sed -e 's/^"//' -e 's/"$//' <<<"$text")
 
               if [[ "$textcheck" == "inProgress" ]];  then
-              sleep 2m
+              # sleep 15
               buildrunning=$number 
 
               echo "build $number is inProgress"

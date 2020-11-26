@@ -23,7 +23,7 @@ stages:
         steps:
         - task: AzureKeyVault@1
           inputs:
-            azureSubscription: 8999dec3-0104-4a27-94ee-6588559729d1
+            ConnectedServiceName: DCD-CFTAPPS-PROD
             keyVaultName: rpe-prod
             secretsFilter: 'rpe-azure-devops-email,rpe-azure-devops-password'
             runAsPreJob: false # Azure DevOps Services only

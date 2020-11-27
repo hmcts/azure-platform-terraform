@@ -13,7 +13,62 @@ variables:
   action:
 
 stages:
+  - stage: Precheck
+    jobs:
+      - job: Validate
+        pool:
+          vmImage: $(agentPool)
+        steps:
+        - task: AzureKeyVault@1
+          inputs:
+            ConnectedServiceName: azurerm-sandbox
+            keyVaultName: infra-vault-nonprod
+            secretsFilter: 'azure-devops-token'
+            runAsPreJob: false # Azure DevOps Services only
+        - task: Bash@3
+          env:
+            thisbuild: $(Build.BuildId)
+            pipelinedefinition: $(System.DefinitionId)
+          inputs:
+            targetType: 'inline'
+            script: | 
+              #!/bin/bash
+              set -e
+              organization="hmcts"
+              project="CNP"
+
+              echo "This is build $thisbuild"
+              IFS=$'\n'
+              JSON_DATA=($(curl -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$pipelinedefinition" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u | grep inProgress))
+              buildnumber=(${JSON_DATA//[!0-9]/})
+
+
+              if [ $thisbuild -eq $buildnumber ] 
+              then
+
+              echo "No other builds are in Progress"
+
+              else
+
+              while [[ $thisbuild -ne $buildnumber_inprogress ]]
+              do 
+
+              IFS=$'\n'
+              JSON_CHECK=($(curl -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$pipelinedefinition" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u | grep inProgress))
+              buildnumberrunning=(${JSON_CHECK//[!0-9]/})
+              echo "Build number: $buildnumberrunning is in progress"
+
+              buildnumber_inprogress=$buildnumberrunning
+              sleep 10
+
+              done
+
+              fi
+              
+              echo "Starting $thisbuild"
+
   - stage: GetArtifacts
+    dependsOn: Precheck
     jobs:
       - job: Validate
         pool:

@@ -20,12 +20,14 @@ stages:
           vmImage: $(agentPool)
         steps:
         - task: AzureKeyVault@1
+          displayName: 'Retrieve KeyVault Secret for ADO Token'
           inputs:
             ConnectedServiceName: azurerm-sandbox
             keyVaultName: infra-vault-nonprod
             secretsFilter: 'azure-devops-token'
             runAsPreJob: false # Azure DevOps Services only
         - task: Bash@3
+          displayName: 'Check if other builds are inProgress'
           env:
             thisbuild: $(Build.BuildId)
             pipelinedefinition: $(System.DefinitionId)

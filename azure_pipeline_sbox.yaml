@@ -63,7 +63,7 @@ stages:
 
               fi
 
-              echo "Starting $thisbuild now"
+              echo "Starting $thisbuild"
 
   - stage: GetArtifacts
     dependsOn: Precheck

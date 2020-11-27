@@ -63,7 +63,7 @@ stages:
 
               fi
               
-              if [ -n $buildnumber_inprogress];
+              if [ -n "${buildnumber_inprogress}" ];  then
                 
                 echo "Starting this build $thisbuild"
 

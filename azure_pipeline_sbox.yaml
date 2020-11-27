@@ -40,7 +40,6 @@ stages:
               JSON_DATA=($(curl -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$pipelinedefinition" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u | grep inProgress))
               buildnumber=(${JSON_DATA//[!0-9]/})
 
-              echo $buildnumber
 
               if [ $thisbuild -eq $buildnumber ] 
               then
@@ -51,6 +50,7 @@ stages:
 
               while [[ $thisbuild -ne $buildnumber_inprogress ]]
               do 
+
               IFS=$'\n'
               JSON_CHECK=($(curl -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$pipelinedefinition" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u | grep inProgress))
               buildnumberrunning=(${JSON_CHECK//[!0-9]/})

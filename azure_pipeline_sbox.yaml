@@ -44,7 +44,7 @@ stages:
               if [ $thisbuild -eq $buildnumber ] 
               then
 
-              echo "Starting this build $thisbuild"
+              echo "No other builds are in Progress"
 
               else
 
@@ -63,11 +63,7 @@ stages:
 
               fi
               
-              if [ -n "${buildnumber_inprogress}" ];  then
-                
-                echo "Starting this build $thisbuild"
-
-              fi
+              echo "Starting $thisbuild"
 
   - stage: GetArtifacts
     dependsOn: Precheck

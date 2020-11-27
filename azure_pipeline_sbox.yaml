@@ -63,7 +63,6 @@ stages:
 
               fi
 
-              echo "Build number $buildnumber_inprogress has finished"
               echo "Starting $thisbuild now"
 
   - stage: GetArtifacts

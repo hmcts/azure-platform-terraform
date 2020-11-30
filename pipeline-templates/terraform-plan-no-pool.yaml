@@ -1,0 +1,36 @@
+jobs:
+  - job: Plan_${{ parameters.environment }}_${{ parameters.component }}
+    pool:
+      vmImage: ${{ parameters.agentPool }}
+    steps:
+      - task: TerraformInstaller@0
+        inputs:
+          terraformVersion: ${{ parameters.terraformVersion }}
+      - task: TerraformCLI@0
+        displayName: Init - ${{ parameters.environment }} - ${{ parameters.component }}
+        inputs:
+          command: 'init'
+          commandOptions: '-lock=false' # don't lock on PRs / validate phase
+          backendType: 'azurerm'
+          backendServiceArm: '${{ parameters.service_connection }}'
+          backendAzureRmResourceGroupName: '${{ parameters.storage_account_rg }}'
+          backendAzureRmStorageAccountName: '${{ parameters.storage_account_name }}'
+          backendAzureRmContainerName: 'tfstate'
+          backendAzureRmKey: '${{ parameters.component }}.tfstate'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
+      - task: TerraformCLI@0
+        displayName: Plan - ${{ parameters.environment }} - ${{ parameters.component }}
+        inputs:
+          command: 'plan'
+          commandOptions: '-out=${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan -var-file=$(System.DefaultWorkingDirectory)/environments/${{ parameters.environment }}/${{ parameters.environment }}.tfvars'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
+          environmentServiceName: '${{ parameters.service_connection }}'
+      - task: Bash@3
+        displayName: "Remove local tfstate"
+        inputs:
+          targetType: 'inline'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
+          script: |
+            rm -f terraform.tfstate* && rm -rf .terraform/
+      - publish: $(System.DefaultWorkingDirectory)/components/${{ parameters.component }}/${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan
+        artifact: ${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan

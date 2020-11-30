@@ -1,7 +1,6 @@
 jobs:
   - job: Plan_${{ parameters.environment }}_${{ parameters.component }}
-    pool:
-      vmImage: ${{ parameters.agentPool }}
+    pool: hmcts-agent-pool
     steps:
       - task: TerraformInstaller@0
         inputs:

@@ -93,7 +93,7 @@ stages:
             failTaskOnFailedTests: true
           condition: always()
 
-      - template: pipeline-templates/terraform-plan.yaml
+      - template: pipeline-templates/terraform-plan-no-pool.yaml
         parameters:
           environment: 'sbox'
           component: 'global'
@@ -101,7 +101,7 @@ stages:
           storage_account_rg: 'core-infra-sbox-rg'
           storage_account_name: 'cftappssbox'
           build: $(Build.BuildNumber)
-          agentPool: $(agentPool)
+          # agentPool: $(agentPool)
           terraformVersion: $(terraformVersion)
 
       - job: Archive

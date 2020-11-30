@@ -208,4 +208,4 @@ gateways:
         ssl_enabled: true
       - product: idam
         component: keycloak
-        ssl_enabled: true
+        cookie_based_affinity: Enabled

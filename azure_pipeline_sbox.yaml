@@ -15,8 +15,8 @@ stages:
   - stage: Precheck
     jobs:
       - job: Validate
-        pool:
-          vmImage: $(agentPool)
+        # pool:
+        #   vmImage: $(agentPool)
         steps:
         - task: AzureKeyVault@1
           displayName: 'Retrieve KeyVault Secret for ADO Token'
@@ -72,8 +72,8 @@ stages:
     dependsOn: Precheck
     jobs:
       - job: Validate
-        pool:
-          vmImage: $(agentPool)
+        # pool:
+        #   vmImage: $(agentPool)
         steps:
         - task: TerraformInstaller@0
           inputs:
@@ -101,12 +101,12 @@ stages:
           storage_account_rg: 'core-infra-sbox-rg'
           storage_account_name: 'cftappssbox'
           build: $(Build.BuildNumber)
-          agentPool: $(agentPool)
+          # agentPool: $(agentPool)
           terraformVersion: $(terraformVersion)
 
       - job: Archive
-        pool:
-          vmImage: $(agentPool)
+        # pool:
+        #   vmImage: $(agentPool)
         steps:
           - task: CopyFiles@2
             displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'

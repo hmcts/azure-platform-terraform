@@ -2,6 +2,7 @@ jobs:
   - deployment: Deploy
     pool: ${{ parameters.pool }}
     environment: ${{ parameters.environment }}
+    timeoutInMinutes: 300
     strategy:
       # default deployment strategy
       runOnce:

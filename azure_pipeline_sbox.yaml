@@ -1,7 +1,5 @@
 # Docs:
 # https://aka.ms/yaml
-pool: hmcts-agent-pool
-
 trigger:
   batch: true
   branches:

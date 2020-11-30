@@ -9,14 +9,14 @@ trigger:
     - Frontdoor-pipeline-segregation
     
 variables:
-- group: thomas_vg
+  terraformVersion: 0.12.26
+  agentPool: 'hmcts-agent-pool'
 
 stages:
   - stage: Precheck
     jobs:
       - job: Validate
-        # pool:
-        #   vmImage: $(agentPool)
+        pool: ${{ variables.agentPool }}
         steps:
         - task: AzureKeyVault@1
           displayName: 'Retrieve KeyVault Secret for ADO Token'
@@ -72,12 +72,11 @@ stages:
     dependsOn: Precheck
     jobs:
       - job: Validate
-        # pool:
-        #   vmImage: $(agentPool)
+        pool: ${{ variables.agentPool }}
         steps:
         - task: TerraformInstaller@0
           inputs:
-            terraformVersion: $(terraformVersion)
+            terraformVersion: ${{ variables.terraformVersion }}
         - task: PowerShell@2
           displayName: Run tests
           inputs:
@@ -101,12 +100,11 @@ stages:
           storage_account_rg: 'core-infra-sbox-rg'
           storage_account_name: 'cftappssbox'
           build: $(Build.BuildNumber)
-          # agentPool: $(agentPool)
-          terraformVersion: $(terraformVersion)
+          pool: ${{ variables.agentPool }}
+          terraformVersion: ${{ variables.terraformVersion }}
 
       - job: Archive
-        # pool:
-        #   vmImage: $(agentPool)
+        pool: ${{ variables.agentPool }}
         steps:
           - task: CopyFiles@2
             displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
@@ -130,4 +128,4 @@ stages:
   #         storage_account_name: 'cftappssbox'
   #         build: $(Build.BuildNumber)
   #         agentPool: $(agentPool)
-  #         terraformVersion: $(terraformVersion)
+  #         terraformVersion: ${{ variables.terraformVersion }}

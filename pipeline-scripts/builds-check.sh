@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
-organization="TerraformTraining"
-project="TamOpsTerraform"
+organization="hmcts"
+project="CNP"
 
 echo "This is build $thisbuild"
 echo "PW: $azuredevopstoken"

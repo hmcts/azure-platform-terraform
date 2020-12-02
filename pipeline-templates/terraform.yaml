@@ -69,5 +69,5 @@
           scriptType: bash
           scriptLocation: scriptPath
           azureSubscription: ${{ parameters.service_connection }}
-          scriptPath: $(System.DefaultWorkingDirectory)/pipeline-scripts/UnlockTFstateIfLocked.sh
+          scriptPath: $(System.DefaultWorkingDirectory)/pipeline-scripts/unlock-tf-state.sh
           arguments: ${{ parameters.component }} ${{ parameters.storage_account_name }}

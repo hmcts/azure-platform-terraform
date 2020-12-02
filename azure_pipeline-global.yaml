@@ -23,7 +23,76 @@ trigger:
 variables:
   terraformVersion: 0.12.26
   agentPool: 'hmcts-agent-pool'
+  build: $(Build.BuildNumber)
+  isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
   action:
+
+parameters:
+  - name: environments
+    type: object
+    default:
+    - deployment: 'sbox_global'
+      environment: 'sbox'
+      component: 'global'
+      service_connection: 'dcd-cftapps-sbox'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+
+    - deployment: 'demo_global'
+      environment: 'demo'
+      component: 'global'
+      service_connection: 'dcd-cftapps-demo'
+      storage_account_rg: 'core-infra-demo-rg'
+      storage_account_name: 'cftappsdemo'
+      dependsOn: 'Precheck'
+
+    - deployment: 'dev_global'      
+      environment: 'dev'
+      component: 'global'
+      service_connection: 'dcd-cftapps-dev'
+      storage_account_rg: 'core-infra-dev-rg'
+      storage_account_name: 'cftappsdev'
+      dependsOn: 'Precheck'
+
+    - deployment: 'ithc_global'
+      environment: 'ithc'
+      component: 'global'
+      service_connection: 'dcd-cftapps-ithc'
+      storage_account_rg: 'core-infra-ithc-rg'
+      storage_account_name: 'cftappsithc'
+      dependsOn: 'Precheck'
+
+    - deployment: 'ldata_global'
+      environment: 'ldata'
+      component: 'global'
+      service_connection: 'azurerm-ethosldata'
+      storage_account_rg: 'core-infra-ldata-rg'
+      storage_account_name: 'ethosldata'
+      dependsOn: 'Precheck'
+
+    - deployment: 'perftest_global'
+      environment: 'test'
+      component: 'global'
+      service_connection: 'dcd-cftapps-test'
+      storage_account_rg: 'core-infra-test-rg'
+      storage_account_name: 'cftappstest'
+
+    - deployment: 'aat_global'
+      environment: 'stg'
+      component: 'global'
+      service_connection: 'dcd-cftapps-stg'
+      storage_account_rg: 'core-infra-stg-rg'
+      storage_account_name: 'cftappsstg'
+      dependsOn: 'sbox_global'
+
+    - deployment: 'prod_global'
+      environment: 'prod'
+      component: 'global'
+      service_connection: 'tamopstf'
+      storage_account_rg: 'thomasaks'
+      storage_account_name: 'thomastfstatesaprod'
+      dependsOn: 'sbox_global'
 
 stages:
   - stage: Precheck
@@ -43,293 +112,22 @@ stages:
           env:
             thisbuild: $(Build.BuildId)
             pipelinedefinition: $(System.DefinitionId)
+            azuredevopstoken: $(azure-devops-token)
           inputs:
-            targetType: 'inline'
-            script: | 
-              #!/bin/bash
-              set -e
-              organization="hmcts"
-              project="CNP"
+            filePath: pipeline-scripts/builds-check.sh
 
-              echo "This is build $thisbuild"
-              IFS=$'\n'
-              JSON_DATA=($(curl -s -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$pipelinedefinition" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u | grep inProgress))
-              buildnumber=(${JSON_DATA//[!0-9]/})
-
-
-              if [ $thisbuild -eq $buildnumber ] 
-              then
-
-              echo "No other builds are in Progress"
-
-              else
-
-              while [[ $thisbuild -ne $buildnumber_inprogress ]]
-              do 
-
-              IFS=$'\n'
-              JSON_CHECK=($(curl -s -u :$(azure-devops-token) --request GET "https://dev.azure.com/$organization/$project/_apis/build/builds?api-version=5.1&definitions=$pipelinedefinition" -H "Content-Type: application/json" | jq  '.value[] | .status + (.id|tostring)' | sort -u | grep inProgress))
-              buildnumberrunning=(${JSON_CHECK//[!0-9]/})
-              echo "Build number: $buildnumberrunning is in progress"
-
-              buildnumber_inprogress=$buildnumberrunning
-              sleep 30
-
-              done
-
-              fi
-              
-              echo "Starting $thisbuild"
-
-  - stage: GetArtifacts
-    dependsOn: Precheck
-    jobs:
-      - job: Validate
-        pool: ${{ variables.agentPool }}
-        steps:
-          - task: TerraformInstaller@0
-            inputs:
-              terraformVersion: ${{ variables.terraformVersion }}
-          - task: PowerShell@2
-            displayName: Run tests
-            inputs:
-              targetType: 'inline'
-              script: |
-                Install-Module -Name Pester -MaximumVersion 4.99.99 -Force -Verbose -Scope CurrentUser
-                Invoke-Pester ./ci -OutputFormat NUnitXml -OutputFile ./TEST-CI.xml -EnableExit
-              pwsh: true
-          - task: PublishTestResults@2
-            displayName: 'Publish Test Results **/TEST-*.xml'
-            inputs:
-              testResultsFormat: NUnit
-              failTaskOnFailedTests: true
-            condition: always()
-
-      - template: pipeline-templates/terraform-plan-global.yaml
-        parameters:
-          environment: 'sbox'
-          component: 'global'
-          service_connection: 'dcd-cftapps-sbox'
-          storage_account_rg: 'core-infra-sbox-rg'
-          storage_account_name: 'cftappssbox'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-      - template: pipeline-templates/terraform-plan-global.yaml
-        parameters:
-          environment: 'dev'
-          component: 'global'
-          service_connection: 'dcd-cftapps-dev'
-          storage_account_rg: 'core-infra-dev-rg'
-          storage_account_name: 'cftappsdev'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-      - template: pipeline-templates/terraform-plan-global.yaml
-        parameters:
-          environment: 'ithc'
-          component: 'global'
-          service_connection: 'dcd-cftapps-ithc'
-          storage_account_rg: 'core-infra-ithc-rg'
-          storage_account_name: 'cftappsithc'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}          
-
-
-      - template: pipeline-templates/terraform-plan-global.yaml
-        parameters:
-          environment: 'ldata'
-          component: 'global'
-          service_connection: 'azurerm-ethosldata'
-          storage_account_rg: 'core-infra-ldata-rg'
-          storage_account_name: 'ethosldata'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-      - template: pipeline-templates/terraform-plan-global.yaml
-        parameters:
-          environment: 'demo'
-          component: 'global'
-          service_connection: 'dcd-cftapps-demo'
-          storage_account_rg: 'core-infra-demo-rg'
-          storage_account_name: 'cftappsdemo'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-      - template: pipeline-templates/terraform-plan-global.yaml
-        parameters:
-          environment: 'test'
-          component: 'global'
-          service_connection: 'dcd-cftapps-test'
-          storage_account_rg: 'core-infra-test-rg'
-          storage_account_name: 'cftappstest'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-      - template: pipeline-templates/terraform-plan-global.yaml
-        parameters:
-          environment: 'stg'
-          component: 'global'
-          service_connection: 'dcd-cftapps-stg'
-          storage_account_rg: 'core-infra-stg-rg'
-          storage_account_name: 'cftappsstg'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-      - template: pipeline-templates/terraform-plan-global.yaml
-        parameters:
-         environment: 'prod'
-         component: 'global'
-         service_connection: 'dcd-cftapps-prod'
-         storage_account_rg: 'core-infra-prod-rg'
-         storage_account_name: 'cftappsprod'
-         build: $(Build.BuildNumber)
-         agentPool: ${{ variables.agentPool }}
-         terraformVersion: ${{ variables.terraformVersion }}
-
-      - job: Archive
-        pool:
-          vmImage: ${{ variables.agentPool }}
-        steps:
-          - task: CopyFiles@2
-            displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-            inputs:
-              TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-          - task: PublishBuildArtifacts@1
-            displayName: 'Publish Artifact: drop'
-
-  - stage: ApplyGlobalSandbox
-    dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply-global.yaml
-        parameters:
-          environment: 'sbox'
-          component: 'global'
-          service_connection: 'dcd-cftapps-sbox'
-          # subscription: 'DCD-CFTAPPS-SBOX'
-          storage_account_rg: 'core-infra-sbox-rg'
-          storage_account_name: 'cftappssbox'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-  - stage: ApplyGlobalDemo
-    dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply-global.yaml
-        parameters:
-          environment: 'demo'
-          component: 'global'
-          service_connection: 'dcd-cftapps-demo'
-          # subscription: 'DCD-CFTAPPS-DEMO'
-          storage_account_rg: 'core-infra-demo-rg'
-          storage_account_name: 'cftappsdemo'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-  - stage: ApplyGlobalDev
-    dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply-global.yaml
-        parameters:
-          environment: 'dev'
-          component: 'global'
-          service_connection: 'dcd-cftapps-dev'
-          # subscription: 'DCD-CFTAPPS-DEV'
-          storage_account_rg: 'core-infra-dev-rg'
-          storage_account_name: 'cftappsdev'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-  - stage: ApplyGlobalITHC
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply-global.yaml
-        parameters:
-          environment: 'ithc'
-          component: 'global'
-          service_connection: 'dcd-cftapps-ithc'
-          # subscription: 'DCD-CFTAPPS-ITHC'
-          storage_account_rg: 'core-infra-ithc-rg'
-          storage_account_name: 'cftappsithc'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-  - stage: ApplyGlobalLDATA
-    dependsOn: ApplyGlobalSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply-global.yaml
-        parameters:
-          environment: 'ldata'
-          component: 'global'
-          service_connection: 'azurerm-ethosldata'
-          storage_account_rg: 'core-infra-ldata-rg'
-          # subscription: 'DCD-ETHOS-MIGRATION-LDATA'
-          storage_account_name: 'ethosldata'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-  - stage: ApplyGlobalPerfTest
-    dependsOn: GetArtifacts
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply-global.yaml
-        parameters:
-          environment: 'test'
-          component: 'global'
-          service_connection: 'dcd-cftapps-test'
-          # subscription: 'DCD-CFTAPPS-TEST'
-          storage_account_rg: 'core-infra-test-rg'
-          storage_account_name: 'cftappstest'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-  - stage: ApplyGlobalAAT
-    dependsOn: ApplyGlobalSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply-global.yaml
-        parameters:
-          environment: 'stg'
-          component: 'global'
-          service_connection: 'dcd-cftapps-stg'
-          # subscription: 'DCD-CFTAPPS-STG'
-          storage_account_rg: 'core-infra-stg-rg'
-          storage_account_name: 'cftappsstg'
-          build: $(Build.BuildNumber)
-          agentPool: ${{ variables.agentPool }}
-          terraformVersion: ${{ variables.terraformVersion }}
-
-
-  - stage: ApplyGlobalProd
-    dependsOn: ApplyGlobalSandbox
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-     - template: pipeline-templates/terraform-apply-global.yaml
-       parameters:
-         environment: 'prod'
-         component: 'global'
-         service_connection: 'dcd-cftapps-prod'
-        #  subscription: 'DCD-CFTAPPS-PROD'
-         storage_account_rg: 'core-infra-prod-rg'
-         storage_account_name: 'cftappsprod'
-         build: $(Build.BuildNumber)
-         agentPool: ${{ variables.agentPool }}
-         terraformVersion: ${{ variables.terraformVersion }}
+  - ${{ each deployment in parameters.environments }}:
+    - stage: ${{ deployment.deployment }}
+      dependsOn: ${{ deployment.dependsOn }}
+      jobs:
+        - template: pipeline-templates/terraform.yaml
+          parameters:       
+            environment: ${{ deployment.environment }}
+            component: ${{ deployment.component }}
+            service_connection: ${{ deployment.service_connection }}
+            storage_account_rg: ${{ deployment.storage_account_rg }}
+            storage_account_name: ${{ deployment.storage_account_name }}
+            build: ${{ variables.build }}
+            terraformVersion: ${{ variables.terraformVersion }}
+            timeoutInMinutes: 300
+            agentPool: ${{ variables.agentPool }}

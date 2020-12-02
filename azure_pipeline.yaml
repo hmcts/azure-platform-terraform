@@ -162,7 +162,7 @@ stages:
     jobs:
       - job: Validate
         pool:   
-          vmImage: ${{ parameters.pool }}
+          vmImage: ${{ variables.agentPool }}
         steps:
         - task: AzureKeyVault@1
           displayName: Retrieve keyvault secret for ADO token

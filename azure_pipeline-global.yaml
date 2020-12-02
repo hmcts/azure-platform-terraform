@@ -89,9 +89,9 @@ parameters:
     - deployment: 'prod_global'
       environment: 'prod'
       component: 'global'
-      service_connection: 'tamopstf'
-      storage_account_rg: 'thomasaks'
-      storage_account_name: 'thomastfstatesaprod'
+      service_connection: 'dcd-cftapps-prod'
+      storage_account_rg: 'core-infra-prod-rg'
+      storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_global'
 
 stages:
@@ -115,6 +115,7 @@ stages:
             azuredevopstoken: $(azure-devops-token)
           inputs:
             filePath: pipeline-scripts/builds-check.sh
+
 
   - ${{ each deployment in parameters.environments }}:
     - stage: ${{ deployment.deployment }}

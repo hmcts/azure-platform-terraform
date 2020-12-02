@@ -52,6 +52,7 @@ parameters:
       service_connection: 'dcd-cftapps-sbox'
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
     
     # - deployment: 'ptl_dynatrace_activegate'
     #   environment: 'ptl'

@@ -6,7 +6,7 @@
       - task: TerraformInstaller@0
         displayName: Terraform install
         inputs:
-          terraformVersion: ${{ variables.terraformVersion }}
+          terraformVersion: ${{ parameters.terraformVersion }}
 
       - task: PowerShell@2
         displayName: Run tests

@@ -10,7 +10,6 @@ trigger:
     exclude:
     - /modules/azure-landing-zone/*
     - /components/global/*
-    
 
 variables:
   terraformVersion: 0.12.26
@@ -18,7 +17,6 @@ variables:
   build: $(Build.BuildNumber)
   isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
   action:
-
 
 parameters:
   - name: environments
@@ -180,7 +178,6 @@ stages:
             azuredevopstoken: $(azure-devops-token)
           inputs:
             filePath: pipeline-scripts/builds-check.sh
-
 
   - ${{ each deployment in parameters.environments }}:
     - stage: ${{ deployment.deployment }}

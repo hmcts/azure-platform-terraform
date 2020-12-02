@@ -116,7 +116,6 @@ stages:
           inputs:
             filePath: pipeline-scripts/builds-check.sh
 
-
   - ${{ each deployment in parameters.environments }}:
     - stage: ${{ deployment.deployment }}
       dependsOn: ${{ deployment.dependsOn }}

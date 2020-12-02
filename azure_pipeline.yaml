@@ -161,7 +161,8 @@ stages:
   - stage: Precheck
     jobs:
       - job: Validate
-        pool: ${{ variables.agentPool }}
+        pool:   
+          vmImage: ${{ parameters.pool }}
         steps:
         - task: AzureKeyVault@1
           displayName: Retrieve keyvault secret for ADO token

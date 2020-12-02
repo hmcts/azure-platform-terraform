@@ -1,6 +1,6 @@
   jobs:
     - job: TerraformPlanAndApply
-      pool: ${{ variables.agentPool }}
+      pool: ${{ parameters.pool }}
       timeoutInMinutes: ${{ parameters.timeoutInMinutes }}
       steps:     
       - task: TerraformInstaller@0

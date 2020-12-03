@@ -112,18 +112,18 @@ stages:
           - task: PublishBuildArtifacts@1
             displayName: 'Publish Artifact: drop'
 
-  - stage: ApplyGlobalSandbox
-    dependsOn: GetArtifacts
-    # condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    jobs:
-      - template: pipeline-templates/terraform-apply-no-pool.yaml
-        parameters:
-          environment: 'sbox'
-          component: 'global'
-          service_connection: 'dcd-cftapps-sbox'
-          # subscription: 'DCD-CFTAPPS-SBOX'
-          storage_account_rg: 'core-infra-sbox-rg'
-          storage_account_name: 'cftappssbox'
-          build: $(Build.BuildNumber)
-          pool: $(agentPool)
-          terraformVersion: ${{ variables.terraformVersion }}
+#  - stage: ApplyGlobalSandbox
+#    dependsOn: GetArtifacts
+#    # condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+#    jobs:
+#      - template: pipeline-templates/terraform-apply-no-pool.yaml
+#        parameters:
+#          environment: 'sbox'
+#          component: 'global'
+#          service_connection: 'dcd-cftapps-sbox'
+#          # subscription: 'DCD-CFTAPPS-SBOX'
+#          storage_account_rg: 'core-infra-sbox-rg'
+#          storage_account_name: 'cftappssbox'
+#          build: $(Build.BuildNumber)
+#          pool: $(agentPool)
+#          terraformVersion: ${{ variables.terraformVersion }}

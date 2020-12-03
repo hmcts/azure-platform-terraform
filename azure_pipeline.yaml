@@ -184,7 +184,7 @@ stages:
           displayName: Run tests
           inputs:
             targetType: 'filePath'
-            scriptPath: $(System.DefaultWorkingDirectory)/pipeline-scripts/pester-tests.ps1
+            filePath: $(System.DefaultWorkingDirectory)/pipeline-scripts/pester-tests.ps1
             pwsh: true
         - task: PublishTestResults@2
           displayName: 'Publish Test Results **/TEST-*.xml'

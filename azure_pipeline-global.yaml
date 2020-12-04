@@ -28,7 +28,7 @@ variables:
   action:
 
 parameters:
-  - name: environments
+  - name: environment_components
     type: object
     default:
     - deployment: 'sbox_global'
@@ -133,7 +133,7 @@ stages:
             failTaskOnFailedTests: true
           condition: always()
 
-  - ${{ each deployment in parameters.environments }}:
+  - ${{ each deployment in parameters.environment_components }}:
     - stage: ${{ deployment.deployment }}
       dependsOn: ${{ deployment.dependsOn }}
       jobs:

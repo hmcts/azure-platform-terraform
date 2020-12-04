@@ -119,7 +119,7 @@ stages:
         - task: TerraformInstaller@0
           displayName: Terraform install
           inputs:
-          terraformVersion: ${{ variables.terraformVersion }}
+            terraformVersion: ${{ variables.terraformVersion }}
         - task: PowerShell@2
           displayName: Run tests
           inputs:

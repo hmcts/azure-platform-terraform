@@ -22,7 +22,7 @@ trigger:
     
 variables:
   terraformVersion: 0.12.26
-  agentPool: 'hmcts-agent-pool'
+  agentPool: 'hmcts-cftptl-agent-pool'
   build: $(Build.BuildNumber)
   isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
   action:
@@ -78,7 +78,7 @@ parameters:
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       dependsOn: 'Precheck'
-      
+
     # - deployment: 'aat_global'
     #   environment: 'stg'
     #   component: 'global'

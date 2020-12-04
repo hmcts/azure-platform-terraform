@@ -77,7 +77,8 @@ parameters:
       service_connection: 'dcd-cftapps-test'
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
-
+      dependsOn: 'Precheck'
+      
     # - deployment: 'aat_global'
     #   environment: 'stg'
     #   component: 'global'

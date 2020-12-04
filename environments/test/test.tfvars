@@ -452,11 +452,6 @@ frontends = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
-        selector       = "referer"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
         selector       = "iss"
       },
       {
@@ -467,17 +462,7 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "__user-info"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
         selector       = "__redirect"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "dtSa"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -490,9 +475,64 @@ frontends = [
         selector       = "DecodedUrl"
       },
       {
-        match_variable = "RequestCookieNames"
+        match_variable = "QueryStringArgNames"
         operator       = "Equals"
-        selector       = "__pcipal-info"
+        selector       = "QueryParamName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "DecodedPath"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "PostParamName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "expression"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "GroupName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "NFuse_Application"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "banner_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "callback"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reply_message_template"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "name"
+      },
+      {
+        match_variable = "RequestHeaderNames"
+        operator       = "Equals"
+        selector       = "User-Agent"
+      },
+     {
+        match_variable = "RequestHeaderNames"
+        operator       = "Equals"
+        selector       = "content-type"
       },
     ]
   },
@@ -540,11 +580,6 @@ frontends = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
-        selector       = "referer"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
         selector       = "iss"
       },
       {
@@ -555,17 +590,7 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "__user-info"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
         selector       = "__redirect"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "dtSa"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -578,9 +603,64 @@ frontends = [
         selector       = "DecodedUrl"
       },
       {
-        match_variable = "RequestCookieNames"
+        match_variable = "QueryStringArgNames"
         operator       = "Equals"
-        selector       = "__pcipal-info"
+        selector       = "QueryParamName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "DecodedPath"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "PostParamName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "expression"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "GroupName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "NFuse_Application"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "banner_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "callback"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reply_message_template"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "name"
+      },
+      {
+        match_variable = "RequestHeaderNames"
+        operator       = "Equals"
+        selector       = "User-Agent"
+      },
+     {
+        match_variable = "RequestHeaderNames"
+        operator       = "Equals"
+        selector       = "content-type"
       },
     ]
   },

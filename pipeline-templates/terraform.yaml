@@ -47,7 +47,7 @@
             rm -f terraform.tfstate* && rm -rf .terraform/
 
       - task: AzureCLI@2
-        displayName: 'Check if TF state locked'
+        displayName: 'Unlock TF state if required'
         condition: always()
         inputs:
           scriptType: bash

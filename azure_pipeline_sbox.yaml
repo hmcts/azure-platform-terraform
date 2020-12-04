@@ -103,7 +103,8 @@ stages:
           storage_account_rg: 'core-infra-sbox-rg'
           storage_account_name: 'cftappssbox'
           build: $(Build.BuildNumber)
-          pool: ${{ variables.agentPool }}
+          # pool: ${{ variables.agentPool }}
+          agentPool: ${{ variables.agentPool }}
           terraformVersion: ${{ variables.terraformVersion }}
 
       - job: Archive

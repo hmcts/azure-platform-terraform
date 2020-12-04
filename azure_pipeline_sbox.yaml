@@ -91,7 +91,7 @@ stages:
             failTaskOnFailedTests: true
           condition: always()
 
-      - template: pipeline-templates/terraform-plan-no-pool.yaml
+      - template: pipeline-templates/terraform-plan.yaml
         parameters:
           environment: 'sbox'
           component: 'global'

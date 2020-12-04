@@ -165,8 +165,14 @@ gateways:
     # FACT
       - product: fact
         component: api
-     
-    # xui
+
+    # NFDIV
+      - product: nfdiv
+        component: nfdiv-orchestration-service
+      - product: nfdiv
+        component: nfdiv-orchestration-service
+
+      # xui
       - product: xui
         component: terms-and-conditions
 

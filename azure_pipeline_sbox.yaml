@@ -17,7 +17,7 @@ stages:
       - job: Validate
           # pool: ${{ variables.agentPool }}
         pool:
-          vmimage: ${{ variables.agentPool }}
+          vmImage: $(agentPool)
         steps:
         - task: AzureKeyVault@1
           displayName: 'Retrieve KeyVault Secret for ADO Token'
@@ -73,7 +73,9 @@ stages:
     dependsOn: Precheck
     jobs:
       - job: Validate
-        pool: ${{ variables.agentPool }}
+        # pool: ${{ variables.agentPool }}
+        pool:
+          vmImage: $(agentPool)
         steps:
         - task: TerraformInstaller@0
           inputs:

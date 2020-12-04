@@ -214,13 +214,19 @@ gateways:
       - product: fees-register
         component: api
 
-    # CMC
+      # CMC
       - product: cmc
         component: claim-store
 
-    # FACT
+      # FACT
       - product: fact
         component: api
+
+      # NFDIV
+      - product: nfdiv
+        component: nfdiv-orchestration-service
+      - product: nfdiv
+        component: nfdiv-orchestration-service
 
 # IDAM AAT
       - product: idam

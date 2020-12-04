@@ -190,6 +190,12 @@ gateways:
       - product: fact
         component: api
 
+    # NFDIV
+      - product: nfdiv
+        component: nfdiv-orchestration-service
+      - product: nfdiv
+        component: nfdiv-orchestration-service
+
     # Access Management
       - product: am
         component: role-assignment-service

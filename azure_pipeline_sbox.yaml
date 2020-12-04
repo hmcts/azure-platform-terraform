@@ -8,7 +8,8 @@ trigger:
     
 variables:
   terraformVersion: 0.12.26
-  agentPool: 'hmcts-cftptl-agent-pool'
+  # agentPool: 'hmcts-cftptl-agent-pool'
+  agentPool: 'ubuntu-18.04'
 
 stages:
   - stage: Precheck

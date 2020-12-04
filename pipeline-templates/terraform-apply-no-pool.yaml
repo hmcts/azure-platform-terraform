@@ -1,6 +1,8 @@
 jobs:
   - deployment: Deploy
-    pool: ${{ parameters.pool }}
+    # pool: ${{ parameters.pool }}
+    pool:
+      vmImage: ${{ parameters.agentPool }}
     environment: ${{ parameters.environment }}
     timeoutInMinutes: 300
     strategy:

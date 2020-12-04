@@ -15,7 +15,9 @@ stages:
   - stage: Precheck
     jobs:
       - job: Validate
-        pool: ${{ variables.agentPool }}
+          # pool: ${{ variables.agentPool }}
+        pool:
+          vmimage: ${{ variables.agentPool }}
         steps:
         - task: AzureKeyVault@1
           displayName: 'Retrieve KeyVault Secret for ADO Token'
@@ -91,7 +93,7 @@ stages:
             failTaskOnFailedTests: true
           condition: always()
 
-      - template: pipeline-templates/terraform-plan.yaml
+      - template: pipeline-templates/terraform-plan-no-pool.yaml
         parameters:
           environment: 'sbox'
           component: 'global'
@@ -103,7 +105,9 @@ stages:
           terraformVersion: ${{ variables.terraformVersion }}
 
       - job: Archive
-        pool: ${{ variables.agentPool }}
+        # pool: ${{ variables.agentPool }}
+        pool:
+          vmimage: ${{ variables.agentPool }}
         steps:
           - task: CopyFiles@2
             displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'

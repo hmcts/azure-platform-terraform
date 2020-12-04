@@ -380,10 +380,9 @@ frontends = [
   {
     name             = "sscs-tya"
     mode             = "Prevention"
-    custom_domain    = "www.track-benefit-appeal.service.gov.uk"
+    custom_domain    = "www.manage.appeal-benefit-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    enable_ssl       = false
-    certificate_name = "www-track-benefit-appeal-service-gov-uk"
+    certificate_name = "manage-appeal-benefit-decision-service-gov-uk"
     disabled_rules = {
       SQLI = [
         "942100",

@@ -197,9 +197,9 @@ gateways:
 
       # NFDIV
       - product: nfdiv
-        component: nfdiv-orchestration-service
+        component: cos
       - product: nfdiv
-        component: nfdiv-orchestration-service
+        component: cms
 
      # rse
       - product: rse

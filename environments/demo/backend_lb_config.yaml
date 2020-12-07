@@ -191,6 +191,16 @@ gateways:
       - product: rd
         component: judicial-data-load
 
+      # FACT
+      - product: fact
+        component: api
+
+      # NFDIV
+      - product: nfdiv
+        component: cos
+      - product: nfdiv
+        component: cms
+
      # rse
       - product: rse
         component: check

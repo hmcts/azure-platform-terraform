@@ -284,6 +284,13 @@ frontends = [
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
+    name             = "nfdiv"
+    mode             = "Detection"
+    custom_domain    = "nfdiv.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+  },
+  {
     name             = "www-ccd"
     mode             = "Detection"
     custom_domain    = "www-ccd.ithc.platform.hmcts.net"

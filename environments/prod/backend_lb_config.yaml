@@ -155,7 +155,7 @@ gateways:
       - product: rd
         component: judicial-api
       - product: rd
-        component: judicial-data-load
+        component: location-ref-api
 
     # Bulk scan and print
       - product: bulk-scan

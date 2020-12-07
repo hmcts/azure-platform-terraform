@@ -15,7 +15,7 @@ cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-prod-rg"
 
 cft_apps_ag_ip_address = "10.13.32.122"
-cft_apps_cluster_ips   = ["10.13.15.250", "10.13.31.250"]
+cft_apps_cluster_ips   = ["10.13.15.250","10.13.31.250"]
 
 frontends = [
   {
@@ -382,8 +382,7 @@ frontends = [
     mode             = "Prevention"
     custom_domain    = "www.track-benefit-appeal.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    enable_ssl       = false
-    certificate_name = "www-track-benefit-appeal-service-gov-uk"
+    certificate_name = "manage-appeal-benefit-decision-service-gov-uk"
     disabled_rules = {
       SQLI = [
         "942100",

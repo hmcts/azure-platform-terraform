@@ -24,6 +24,7 @@ variables:
   terraformVersion: 0.12.26
   agentPool: 'hmcts-cftptl-agent-pool'
   build: $(Build.BuildNumber)
+  timeoutInMinutes: 300
   isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
   action:
 
@@ -97,8 +98,10 @@ parameters:
 
 stages:
   - stage: Precheck
+    
     jobs:
       - job: Validate
+        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
         pool: ${{ variables.agentPool }}
         steps:
         - task: AzureKeyVault@1
@@ -146,5 +149,5 @@ stages:
             storage_account_name: ${{ deployment.storage_account_name }}
             build: ${{ variables.build }}
             terraformVersion: ${{ variables.terraformVersion }}
-            timeoutInMinutes: 300
+            timeoutInMinutes: ${{ variables.timeoutInMinutes }}
             pool: ${{ variables.agentPool }}

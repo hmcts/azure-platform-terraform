@@ -245,5 +245,5 @@ stages:
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
             pool:   
               vmImage: ${{ variables.agentPool }}
-            FILES_LIST: ${{ environment.files_list }}
-            override: ${{ environment.override }}
+            FILES_LIST: ${{ deployment.files_list }}
+            override: ${{ deployment.override }}

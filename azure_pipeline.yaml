@@ -192,7 +192,7 @@ parameters:
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/shutter modules/shutter_page environments/prod/prod.tfvars environments/variables.tf'
       override: false
-      
+
 stages:
   - stage: Precheck
     jobs:
@@ -245,3 +245,5 @@ stages:
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
             pool:   
               vmImage: ${{ variables.agentPool }}
+            FILES_LIST: ${{ environment.FILES_LIST }}
+            override: ${{ environment.override }}

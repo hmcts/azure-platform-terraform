@@ -13,6 +13,7 @@ trigger:
 
 variables:
   terraformVersion: 0.12.26
+  timeoutInMinutes: 60
   agentPool: 'ubuntu-18.04'
   build: $(Build.BuildNumber)
   isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
@@ -162,6 +163,7 @@ stages:
   - stage: Precheck
     jobs:
       - job: Validate
+        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
         pool:   
           vmImage: ${{ variables.agentPool }}
         steps:
@@ -206,6 +208,6 @@ stages:
             storage_account_name: ${{ deployment.storage_account_name }}
             build: ${{ variables.build }}
             terraformVersion: ${{ variables.terraformVersion }}
-            timeoutInMinutes: 60
+            timeoutInMinutes: ${{ variables.timeoutInMinutes }}
             pool:   
               vmImage: ${{ variables.agentPool }}

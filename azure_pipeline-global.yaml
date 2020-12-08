@@ -39,6 +39,8 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
+      files_list: 'components/global modules/azure-landing-zone environments/sbox/sbox.tfvars environments/variables.tf'
+      override: false
 
     - deployment: 'demo_global'
       environment: 'demo'
@@ -47,6 +49,8 @@ parameters:
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
       dependsOn: 'Precheck'
+      files_list: 'components/global modules/azure-landing-zone environments/demo/demo.tfvars environments/variables.tf'
+      override: false
 
     - deployment: 'dev_global'      
       environment: 'dev'
@@ -55,6 +59,8 @@ parameters:
       storage_account_rg: 'core-infra-dev-rg'
       storage_account_name: 'cftappsdev'
       dependsOn: 'Precheck'
+      files_list: 'components/global modules/azure-landing-zone environments/dev/dev.tfvars environments/variables.tf'
+      override: false
 
     - deployment: 'ithc_global'
       environment: 'ithc'
@@ -63,6 +69,8 @@ parameters:
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
       dependsOn: 'Precheck'
+      files_list: 'components/global modules/azure-landing-zone environments/ithc/ithc.tfvars environments/variables.tf'
+      override: false
 
     - deployment: 'ldata_global'
       environment: 'ldata'
@@ -71,6 +79,8 @@ parameters:
       storage_account_rg: 'core-infra-ldata-rg'
       storage_account_name: 'ethosldata'
       dependsOn: 'Precheck'
+      files_list: 'components/global modules/azure-landing-zone environments/ldata/ldata.tfvars environments/variables.tf'
+      override: false
 
     - deployment: 'perftest_global'
       environment: 'test'
@@ -79,6 +89,8 @@ parameters:
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       dependsOn: 'Precheck'
+      files_list: 'components/global modules/azure-landing-zone environments/test/test.tfvars environments/variables.tf'
+      override: false
 
     - deployment: 'aat_global'
       environment: 'stg'
@@ -87,6 +99,8 @@ parameters:
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_global'
+      files_list: 'components/global modules/azure-landing-zone environments/stg/stg.tfvars environments/variables.tf'
+      override: false
 
     - deployment: 'prod_global'
       environment: 'prod'
@@ -95,7 +109,9 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_global'
-
+      files_list: 'components/global modules/azure-landing-zone environments/prod/prod.tfvars environments/variables.tf'
+      override: false
+      
 stages:
   - stage: Precheck
     

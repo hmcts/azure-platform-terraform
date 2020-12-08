@@ -111,7 +111,7 @@ parameters:
       dependsOn: 'sbox_global'
       files_list: 'components/global modules/azure-landing-zone environments/prod/prod.tfvars environments/variables.tf'
       override: false
-      
+
 stages:
   - stage: Precheck
     
@@ -167,3 +167,5 @@ stages:
             terraformVersion: ${{ variables.terraformVersion }}
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
             pool: ${{ variables.agentPool }}
+            FILES_LIST: ${{ environment.files_list }}
+            override: ${{ environment.override }}

@@ -419,13 +419,6 @@ frontends = [
     disabled_rules   = {}
   },
   {
-    name             = "hmi-apim"
-    custom_domain    = "hmi-apim.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "STAR-sandbox-platform-hmcts-net"
-    cache_enabled    = "false"
-  },
-  {
     name                        = "reformscan"
     custom_domain               = "reformscan.sandbox.platform.hmcts.net"
     backend_domain              = ["firewall-prod-int-palo-reformscansbox.uksouth.cloudapp.azure.com"]

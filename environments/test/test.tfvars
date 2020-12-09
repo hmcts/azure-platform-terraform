@@ -22,7 +22,7 @@ shutter_apps = [
 ]
 
 cft_apps_ag_ip_address = "10.61.32.123"
-cft_apps_cluster_ips   = ["10.61.15.250", "10.61.31.250"]
+cft_apps_cluster_ips   = ["10.61.31.250"]
 
 frontends = [
   {

@@ -40,7 +40,7 @@
 
       - task: TerraformCLI@0
         displayName: Apply - ${{ parameters.environment }} - ${{ parameters.component }}
-        condition: and(succeeded(), or(eq(variables['CheckFileChanges.SOURCE_CODE_CHANGED'], 'true'),eq(${{ parameters.override }}, 'true')))
+        condition: and(succeeded(), or(eq(variables['CheckFileChanges.SOURCE_CODE_CHANGED'], 'true'),eq(${{ parameters.alwaysApply }}, 'true')))
         inputs:
           command: apply
           workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'

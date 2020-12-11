@@ -31,7 +31,7 @@ parameters:
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
       files_list: 'components/cftapps_cluster_lb modules/app-gateway-module environments/sbox/sbox.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
 
     - deployment: 'sbox_cftapps_cluster_lb_backend'
       environment: 'sbox'
@@ -41,7 +41,7 @@ parameters:
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
       files_list: 'components/cftapps_cluster_lb_backend modules/app-gateway-module-backend environments/sbox/backend_lb_config.yaml environments/sbox/sbox.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
 
     - deployment: 'sbox_shutter'
       environment: 'sbox'
@@ -51,7 +51,7 @@ parameters:
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
       files_list: 'components/shutter modules/shutter_page environments/sbox/sbox.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
       
     - deployment: 'sbox_compliance'
       environment: 'sbox'
@@ -61,7 +61,7 @@ parameters:
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
       files_list: 'components/compliance modules/standards environments/sbox/sbox.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
 
     - deployment: 'ptl_dynatrace_activegate'
       environment: 'ptl'
@@ -71,7 +71,7 @@ parameters:
       storage_account_name: 'cftptlintsvc'
       dependsOn: 'Precheck'
       files_list: 'components/dynatrace_activegate modules/dynatrace-activegate environments/sbox/sbox.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
 
     - deployment: 'ithc_cftapps_cluster_lb'
       environment: 'ithc'
@@ -81,7 +81,7 @@ parameters:
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_cluster_lb modules/app-gateway-module environments/ithc/ithc.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
 
     - deployment: 'ithc_cftapps_cluster_lb_backend'
       environment: 'ithc'
@@ -91,7 +91,7 @@ parameters:
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_cluster_lb_backend modules/app-gateway-module-backend environments/ithc/backend_lb_config.yaml environments/ithc/ithc.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
 
     - deployment: 'ldata_cftapps_cluster_lb'
       environment: 'ldata'
@@ -101,7 +101,7 @@ parameters:
       storage_account_name: 'ethosldata'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_cluster_lb modules/app-gateway-module environments/ldata/ldata.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
 
     - deployment: 'ldata_cftapps_cluster_lb_backend'
       environment: 'ldata'
@@ -111,7 +111,7 @@ parameters:
       storage_account_name: 'ethosldata'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_cluster_lb_backend modules/app-gateway-module-backend environments/ldata/backend_lb_config.yaml environments/ldata/ldata.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
 
     - deployment: 'demo_cftapps_cluster_lb_backend'
       environment: 'demo'
@@ -121,7 +121,7 @@ parameters:
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_cluster_lb_backend modules/app-gateway-module-backend environments/demo/backend_lb_config.yaml environments/demo/demo.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
 
     - deployment: 'test_cftapps_cluster_lb'
       environment: 'test'
@@ -131,7 +131,7 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_cluster_lb modules/app-gateway-module environments/test/test.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
 
     - deployment: 'test_cftapps_cluster_lb_backend'
       environment: 'test'
@@ -141,7 +141,7 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_cluster_lb_backend modules/app-gateway-module-backend environments/test/backend_lb_config.yaml environments/test/test.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
 
     - deployment: 'stg_cftapps_cluster_lb'
       environment: 'stg'
@@ -151,7 +151,7 @@ parameters:
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_cluster_lb modules/app-gateway-module environments/stg/stg.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
 
     - deployment: 'stg_cftapps_cluster_lb_backend'
       environment: 'stg'
@@ -161,7 +161,7 @@ parameters:
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_cluster_lb_backend modules/app-gateway-module-backend environments/stg/backend_lb_config.yaml environments/stg/stg.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
 
     - deployment: 'prod_cftapps_cluster_lb'
       environment: 'prod'
@@ -171,7 +171,7 @@ parameters:
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_cluster_lb modules/app-gateway-module environments/prod/prod.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
 
     - deployment: 'prod_cftapps_cluster_lb_backend'
       environment: 'prod'
@@ -181,7 +181,7 @@ parameters:
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_cluster_lb_backend modules/app-gateway-module-backend environments/prod/backend_lb_config.yaml environments/prod/prod.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
 
     - deployment: 'prod_shutter' 
       environment: 'prod'
@@ -191,7 +191,7 @@ parameters:
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/shutter modules/shutter_page environments/prod/prod.tfvars environments/variables.tf'
-      override: false
+      alwaysApply: false
 
 stages:
   - stage: Precheck
@@ -246,4 +246,4 @@ stages:
             pool:   
               vmImage: ${{ variables.agentPool }}
             files_list: ${{ deployment.files_list }}
-            override: ${{ deployment.override }}
+            alwaysApply: ${{ deployment.alwaysApply }}

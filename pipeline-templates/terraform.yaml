@@ -30,7 +30,7 @@
           environmentServiceName: '${{ parameters.service_connection }}'
 
       - task: Bash@3
-        condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+        condition: and(succeeded(), eq(variables.isMaster, true))
         name: "CheckFileChanges"
         displayName: "CheckFileChanges"
         env:

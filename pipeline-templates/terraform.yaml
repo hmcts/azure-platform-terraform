@@ -29,9 +29,18 @@
           workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
           environmentServiceName: '${{ parameters.service_connection }}'
 
+      - task: Bash@3
+        condition: and(succeeded(), eq(variables.isMaster, true))
+        name: "CheckFileChanges"
+        displayName: "CheckFileChanges"
+        env:
+          files_list: '${{ parameters.files_list }}'
+        inputs:
+          filePath: pipeline-scripts/check-changes.sh
+
       - task: TerraformCLI@0
         displayName: Apply - ${{ parameters.environment }} - ${{ parameters.component }}
-        condition: and(succeeded(), eq(variables.isMaster, true))
+        condition: and(succeeded(), eq(variables.isMaster, true), or(eq(variables['CheckFileChanges.SOURCE_CODE_CHANGED'], 'true'),eq(${{ parameters.alwaysApply }}, 'true')))
         inputs:
           command: apply
           workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'

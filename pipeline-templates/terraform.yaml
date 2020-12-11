@@ -36,7 +36,7 @@
         env:
           files_list: '${{ parameters.files_list }}'
         inputs:
-          filePath: pipeline-scripts/check-changes.sh
+          filePath: pipeline-scripts/file-check-changes.sh
 
       - task: TerraformCLI@0
         displayName: Apply - ${{ parameters.environment }} - ${{ parameters.component }}

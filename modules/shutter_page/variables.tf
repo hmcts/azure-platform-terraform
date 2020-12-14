@@ -7,3 +7,5 @@ variable "subscription" {}
 variable "shutter_apps" {
   default = []
 }
+variable "shutter_rg" {}
+variable "cdn_sku" {}

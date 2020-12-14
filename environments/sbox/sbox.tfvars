@@ -18,6 +18,7 @@ cft_apps_cluster_ips   = ["10.10.1.250", "10.10.3.250"]
 
 frontends = [
   {
+    team             = "idam"
     name             = "idam-sprod-web-public"
     custom_domain    = "idam-web-public-sprod.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
@@ -156,6 +157,7 @@ frontends = [
     ]
   },
   {
+    team             = "idam"
     name             = "idam-web-public"
     custom_domain    = "idam-web-public.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
@@ -294,6 +296,7 @@ frontends = [
     ]
   },
   {
+    team                        = "idam"
     name                        = "idam-web-admin"
     custom_domain               = "idam-web-admin.sandbox.platform.hmcts.net"
     backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
@@ -412,6 +415,7 @@ frontends = [
     ]
   },
   {
+    team             = "plum"
     name             = "plum"
     custom_domain    = "plum.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
@@ -419,6 +423,7 @@ frontends = [
     disabled_rules   = {}
   },
   {
+    team             = "hmi"
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
@@ -426,6 +431,7 @@ frontends = [
     cache_enabled    = "false"
   },
   {
+    team                        = "reform"
     name                        = "reformscan"
     custom_domain               = "reformscan.sandbox.platform.hmcts.net"
     backend_domain              = ["firewall-prod-int-palo-reformscansbox.uksouth.cloudapp.azure.com"]

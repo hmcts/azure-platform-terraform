@@ -12,7 +12,7 @@ resource "azurerm_template_deployment" "custom_domain" {
   deployment_mode     = "Incremental"
 
   parameters = {
-    name     = "${azurerm_cdn_profile.main["${each.value.team}"].name}/${azurerm_cdn_endpoint.shutter_endpoint["${each.value.name}"].name}/${replace("${each.value.custom_domain}", ".", "-")}"
+    name     = "${azurerm_cdn_profile.main["${each.value.product}"].name}/${azurerm_cdn_endpoint.shutter_endpoint["${each.value.name}"].name}/${replace("${each.value.custom_domain}", ".", "-")}"
     hostName = "${each.value.custom_domain}"
   }
 

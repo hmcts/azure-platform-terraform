@@ -26,8 +26,8 @@ ${templatefile("${path.module}/templates/customHttps.json", {
 
 
 az rest --method POST \
- --uri "https://management.azure.com/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/${data.azurerm_resource_group.shutter.name}/providers/Microsoft.Cdn/profiles/${azurerm_cdn_profile.main["${each.value.product}"].name}/endpoints/${azurerm_cdn_endpoint.shutter_endpoint["${each.value.name}"].name}/customDomains/${replace("${each.value.custom_domain}", ".", "-")}/enableCustomHttps?api-version=2019-04-15" \
- --body "$json" || true # this can only be run if it's not been run before or its in the completed state.
+ --uri "https://management.azure.com/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/${data.azurerm_resource_group.shutter.name}/providers/Microsoft.Cdn/profiles/${azurerm_cdn_profile.main["${each.value.product}"].name}/endpoints/${azurerm_cdn_endpoint.shutter_endpoint["${each.value.name}"].name}/customDomains/${replace("${each.value.custom_domain}", ".", "-")}/enableCustomHttps?api-version=2020-04-15" \
+ --body "$json" 
 EOF
 }
 

@@ -137,20 +137,6 @@ frontends = [
     ]
   },
   {
-    name             = "nfdiv"
-    custom_domain    = "nfdiv.perftest.platform.hmcts.net"
-    mode             = "Detection"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-perftest-platform-hmcts-net"
-    global_exclusions = [
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "connect.sid"
-      }
-    ]
-  },
-  {
     name             = "idam-web-public"
     mode             = "Detection"
     custom_domain    = "idam-web-public.perftest.platform.hmcts.net"

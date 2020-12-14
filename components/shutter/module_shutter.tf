@@ -6,7 +6,6 @@ module "shutter" {
   common_tags                = local.common_tags
   certificate_key_vault_name = var.certificate_key_vault_name
   subscription               = var.subscription
-  cdn_profile                = azurerm_cdn_profile.main.name
   shutter_rg                 = var.shutter_rg
   cdn_sku                    = var.cdn_sku
 }

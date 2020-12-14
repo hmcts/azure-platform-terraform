@@ -1,5 +1,5 @@
 resource "azurerm_storage_account" "shutter_store" {
-    for_each = { for frontend in var.shutter_apps : frontend.name => frontend
+  for_each = { for frontend in var.shutter_apps : frontend.name => frontend
   }
 
   name                      = "hmcts${substr(replace(("${each.value.name}"), "-", ""), 0, 8)}shutter${var.env}"

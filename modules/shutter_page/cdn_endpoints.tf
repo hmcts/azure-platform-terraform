@@ -1,5 +1,5 @@
 resource "azurerm_cdn_endpoint" "shutter_endpoint" {
-    for_each = { for frontend in var.shutter_apps : frontend.name => frontend
+  for_each = { for frontend in var.shutter_apps : frontend.name => frontend
   }
   name                   = "hmcts-${split(".", replace("${each.value.custom_domain}", "www.", ""))[0]}-shutter-${var.env}"
   profile_name           = azurerm_cdn_profile.main["${each.value.team}"].name

@@ -933,7 +933,7 @@ frontends = [
     ]
   },
   {
-    product          = "aip"       
+    product          = "ia"       
     name             = "ia-aip"
     mode             = "Detection"
     custom_domain    = "immigration-appeal.platform.hmcts.net"

@@ -941,7 +941,7 @@ frontends = [
     certificate_name = "immigration-appeal-platform-hmcts-net"
   },
   {
-    product          = "feespay"       
+    product          = "fees"       
     name             = "fees-register"
     mode             = "Detection"
     custom_domain    = "fees-register.platform.hmcts.net"
@@ -950,7 +950,7 @@ frontends = [
     www_redirect     = true
   },
   {
-    product          = "feespay"       
+    product          = "fees"       
     name             = "paybubble"
     mode             = "Prevention"
     custom_domain    = "paybubble.platform.hmcts.net"
@@ -1001,7 +1001,7 @@ frontends = [
     ]
   },
   {
-    product          = "feespay"       
+    product          = "fees"       
     name             = "manage-payments"
     mode             = "Detection"
     custom_domain    = "manage-payments.platform.hmcts.net"

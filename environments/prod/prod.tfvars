@@ -1339,7 +1339,7 @@ frontends = [
     cache_enabled    = "false"
   },
   {
-    product             = "reform"       
+    product             = "reform-scan"       
     name                = "reformscan"
     custom_domain       = "reformscan.platform.hmcts.net"
     host_header         = "reformscanprod.blob.core.windows.net"

@@ -19,6 +19,7 @@ cft_apps_cluster_ips   = ["10.13.15.250","10.13.31.250"]
 
 frontends = [
   {
+    product          = "div"
     name             = "div-dn"
     mode             = "Prevention"
     custom_domain    = "www.decree-nisi.apply-divorce.service.gov.uk"
@@ -90,6 +91,7 @@ frontends = [
     ]
   },
   {
+    product          = "div"
     name             = "div-da"
     mode             = "Prevention"
     custom_domain    = "www.decree-absolute.apply-divorce.service.gov.uk"
@@ -151,6 +153,7 @@ frontends = [
     ]
   },
   {
+    product          = "div"    
     name             = "div-rfe"
     mode             = "Prevention"
     custom_domain    = "www.respond-divorce.service.gov.uk"
@@ -212,6 +215,7 @@ frontends = [
     ]
   },
   {
+    product          = "div"    
     name             = "div-pfe"
     mode             = "Prevention"
     custom_domain    = "www.apply-divorce.service.gov.uk"
@@ -306,6 +310,7 @@ frontends = [
     ]
   },
   {
+    product          = "sscs"    
     name             = "sscs-tribunals"
     mode             = "Prevention"
     custom_domain    = "www.appeal-benefit-decision.service.gov.uk"
@@ -378,6 +383,7 @@ frontends = [
     ]
   },
   {
+    product          = "sscs"        
     name             = "sscs-tya"
     mode             = "Prevention"
     custom_domain    = "www.track-benefit-appeal.service.gov.uk"
@@ -430,6 +436,7 @@ frontends = [
     ]
   },
   {
+    product          = "sscs"        
     name             = "sscs-cor"
     mode             = "Prevention"
     custom_domain    = "www.manage.appeal-benefit-decision.service.gov.uk"
@@ -470,6 +477,7 @@ frontends = [
     ]
   },
   {
+    product          = "xui"        
     name             = "xui-webapp"
     mode             = "Detection"
     custom_domain    = "manage-case.platform.hmcts.net"
@@ -516,6 +524,7 @@ frontends = [
     ]
   },
   {
+    product          = "xui"        
     name             = "xui-manage-org"
     mode             = "Detection"
     custom_domain    = "manage-org.platform.hmcts.net"
@@ -557,6 +566,7 @@ frontends = [
     ]
   },
   {
+    product          = "xui"        
     name             = "xui-approve-org"
     mode             = "Detection"
     custom_domain    = "administer-orgs.platform.hmcts.net"
@@ -598,6 +608,7 @@ frontends = [
     ]
   },
   {
+    product          = "xui"        
     name             = "xui-register-org"
     mode             = "Detection"
     custom_domain    = "register-org.platform.hmcts.net"
@@ -634,6 +645,7 @@ frontends = [
     ]
   },
   {
+    product          = "cmc"        
     name             = "cmc"
     mode             = "Prevention"
     custom_domain    = "www.moneyclaims.service.gov.uk"
@@ -720,6 +732,7 @@ frontends = [
 
   },
   {
+    product          = "cmc"        
     name             = "cmc-legal"
     mode             = "Prevention"
     custom_domain    = "www.moneyclaim-legal.platform.hmcts.net"
@@ -779,6 +792,7 @@ frontends = [
 
   },
   {
+    product          = "ccd"       
     name             = "www-ccd"
     mode             = "Prevention"
     custom_domain    = "www.ccd.platform.hmcts.net"
@@ -803,6 +817,7 @@ frontends = [
     ]
   },
   {
+    product          = "ccd"       
     name             = "gateway-ccd"
     mode             = "Prevention"
     custom_domain    = "gateway.ccd.platform.hmcts.net"
@@ -845,6 +860,7 @@ frontends = [
     ]
   },
   {
+    product          = "ccd"       
     name             = "return-case-doc-ccd"
     mode             = "Detection"
     custom_domain    = "return-case-doc.ccd.platform.hmcts.net"
@@ -852,6 +868,7 @@ frontends = [
     certificate_name = "ccd-platform-hmcts-net"
   },
   {
+    product          = "probate"   
     name             = "probate"
     mode             = "Prevention"
     custom_domain    = "www.apply-for-probate.service.gov.uk"
@@ -916,6 +933,7 @@ frontends = [
     ]
   },
   {
+    product          = "ia"       
     name             = "ia-aip"
     mode             = "Detection"
     custom_domain    = "immigration-appeal.platform.hmcts.net"
@@ -923,6 +941,7 @@ frontends = [
     certificate_name = "immigration-appeal-platform-hmcts-net"
   },
   {
+    product          = "fees"       
     name             = "fees-register"
     mode             = "Detection"
     custom_domain    = "fees-register.platform.hmcts.net"
@@ -931,6 +950,7 @@ frontends = [
     www_redirect     = true
   },
   {
+    product          = "fees"       
     name             = "paybubble"
     mode             = "Prevention"
     custom_domain    = "paybubble.platform.hmcts.net"
@@ -981,6 +1001,7 @@ frontends = [
     ]
   },
   {
+    product          = "fees"       
     name             = "manage-payments"
     mode             = "Detection"
     custom_domain    = "manage-payments.platform.hmcts.net"
@@ -989,6 +1010,7 @@ frontends = [
     www_redirect     = true
   },
   {
+    product          = "idam"           
     name             = "idam-web-public"
     custom_domain    = "hmcts-access.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
@@ -1128,6 +1150,7 @@ frontends = [
     ]
   },
   {
+    product          = "pcq"           
     name             = "pcq"
     mode             = "Prevention"
     custom_domain    = "equality-and-diversity.platform.hmcts.net"
@@ -1147,6 +1170,7 @@ frontends = [
     ]
   },
   {
+    product          = "fact"           
     name             = "fact"
     mode             = "Prevention"
     custom_domain    = "www.find-court-tribunal.service.gov.uk"
@@ -1154,6 +1178,7 @@ frontends = [
     certificate_name = "find-court-tribunal-service-gov-uk"
   },
   {
+    product          = "fact"       
     name             = "fact-admin"
     mode             = "Detection"
     custom_domain    = "admin.find-court-tribunal.service.gov.uk"
@@ -1161,6 +1186,7 @@ frontends = [
     certificate_name = "find-court-tribunal-service-gov-uk"
   },
   {
+    product          = "jui"       
     name             = "jui-redirect"
     mode             = "Detection"
     custom_domain    = "jcm.judiciary.uk"
@@ -1180,6 +1206,7 @@ frontends = [
     }
   },
   {
+    product                     = "idam"       
     name                        = "idam-web-admin"
     custom_domain               = "idam-web-admin.platform.hmcts.net"
     backend_domain              = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
@@ -1304,6 +1331,7 @@ frontends = [
     ]
   },
   {
+    product          = "hmi"       
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-hmiapimprod.uksouth.cloudapp.azure.com"]
@@ -1311,6 +1339,7 @@ frontends = [
     cache_enabled    = "false"
   },
   {
+    product             = "reform-scan"       
     name                = "reformscan"
     custom_domain       = "reformscan.platform.hmcts.net"
     host_header         = "reformscanprod.blob.core.windows.net"

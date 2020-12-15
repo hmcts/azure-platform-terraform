@@ -167,6 +167,8 @@ gateways:
         ssl_enabled: true
       - product: ccd
         component: case-document-am-api
+      - product: ccd
+        component: message-publisher
 
     # AAC (CDM)
       - product: aac

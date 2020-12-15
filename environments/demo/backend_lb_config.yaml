@@ -103,6 +103,8 @@ gateways:
         component: user-profile-api
       - product: ccd
         component: case-activity-api
+      - product: ccd
+        component: message-publisher
 
     # AAC (CDM)
       - product: aac

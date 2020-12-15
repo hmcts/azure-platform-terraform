@@ -1,7 +1,7 @@
 data "azurerm_client_config" "current" {}
 
 data "azurerm_key_vault_secret" "certificate" {
-  for_each = { for frontend in var.shutter_apps : frontend.name => frontend
+  for_each = { for frontend in var.shutter_apps : frontend.name => frontend if frontend.name != "jui-redirect"
   }
 
   name         = "${each.value.certificate_name}"
@@ -9,7 +9,7 @@ data "azurerm_key_vault_secret" "certificate" {
 }
 
 resource "null_resource" "enable_custom_https_cmd" {
-  for_each = { for frontend in var.shutter_apps : frontend.name => frontend
+  for_each = { for frontend in var.shutter_apps : frontend.name => frontend if frontend.name != "jui-redirect"
   }
 
   provisioner "local-exec" {

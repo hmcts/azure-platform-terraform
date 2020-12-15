@@ -950,7 +950,7 @@ frontends = [
     www_redirect     = true
   },
   {
-    product          = "paybubble"       
+    product          = "feespay"       
     name             = "paybubble"
     mode             = "Prevention"
     custom_domain    = "paybubble.platform.hmcts.net"

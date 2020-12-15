@@ -136,6 +136,8 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
+      - product: ccd
+        component: message-publisher
         
     # AAC (CDM)
       - product: aac

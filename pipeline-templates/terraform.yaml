@@ -8,6 +8,20 @@
         inputs:
           terraformVersion: ${{ parameters.terraformVersion }}
 
+      - task: AzureCLI@2
+        displayName: AzureServicePrincipalAuth
+        inputs:
+          azureSubscription: '${{ parameters.service_connection }}'
+          scriptType: bash
+          scriptLocation: inlineScript
+          addSpnToEnvironment: true
+          inlineScript: |
+            #!/bin/bash
+            set -e 
+            echo "##vso[task.setvariable variable=ServicePrincipalId;]$servicePrincipalId"
+            echo "##vso[task.setvariable variable=ServicePrincipalKey;]$servicePrincipalKey"
+            echo "##vso[task.setvariable variable=TenantId;]$tenantId"
+
       - task: TerraformCLI@0
         displayName: Init - ${{ parameters.environment }} - ${{ parameters.component }}
         inputs:
@@ -28,6 +42,10 @@
           commandOptions: '-out=${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan -var-file=$(System.DefaultWorkingDirectory)/environments/${{ parameters.environment }}/${{ parameters.environment }}.tfvars'
           workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
           environmentServiceName: '${{ parameters.service_connection }}'
+        env:
+          tenantId : $(TenantId)
+          clientId : $(ServicePrincipalId)
+          secret : $(ServicePrincipalKey)
 
       - task: Bash@3
         condition: and(succeeded(), eq(variables.isMaster, true))
@@ -46,6 +64,10 @@
           workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
           environmentServiceName: '${{ parameters.service_connection }}'
           commandOptions: '${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan'        
+        env:
+          tenantId : $(TenantId)
+          clientId : $(ServicePrincipalId)
+          secret : $(ServicePrincipalKey)
 
       - task: Bash@3
         displayName: "Remove local tfstate"

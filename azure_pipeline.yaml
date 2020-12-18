@@ -200,7 +200,11 @@ stages:
         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
         pool:   
           vmImage: ${{ variables.agentPool }}
-        steps:
+        steps: 
+        - task: TerraformInstaller@0
+          displayName: Terraform install
+          inputs: 
+            terraformVersion: ${{ parameters.terraformVersion }}
         - task: AzureKeyVault@1
           displayName: Retrieve keyvault secret for ADO token
           inputs:

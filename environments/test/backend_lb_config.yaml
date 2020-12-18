@@ -217,4 +217,3 @@ gateways:
       - product: idam
         component: keycloak
         health_path_override: /auth/realms/master
-        

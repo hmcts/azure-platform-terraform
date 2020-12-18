@@ -31,6 +31,7 @@ else
       Context "Are correctly formatted" {
         It "All files in <Instance> are correctly formatted" -TestCases $TfFolderTestCases {
           Param($Instance)
+          Invoke-Expression "terraform version"
           Invoke-Expression "terraform fmt -check=true $Instance"  | should BeNullOrEmpty            
       }
     }

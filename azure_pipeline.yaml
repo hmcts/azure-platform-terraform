@@ -204,7 +204,7 @@ stages:
         - task: TerraformInstaller@0
           displayName: Terraform install
           inputs: 
-            terraformVersion: ${{ parameters.terraformVersion }}
+            terraformVersion: ${{ variables.terraformVersion }}
         - task: AzureKeyVault@1
           displayName: Retrieve keyvault secret for ADO token
           inputs:

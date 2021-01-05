@@ -72,6 +72,11 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
+        selector       = "oauth2ClientId"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
         selector       = "oauth2ClientSecret"
       },
       {

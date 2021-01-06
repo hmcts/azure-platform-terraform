@@ -218,3 +218,8 @@ gateways:
         component: task-management-api
       - product: wa
         component: task-configuration-api
+    
+    # SIDAM
+      - product: idam
+        component: api
+        ssl_enabled: true

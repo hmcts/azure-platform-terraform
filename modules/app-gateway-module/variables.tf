@@ -33,5 +33,5 @@ variable "destinations" {
 
 variable "frontends" {}
 
-variable common_tags {}
+variable "common_tags" {}
 variable "oms_env" {}

@@ -1,5 +1,5 @@
 data "template_file" "tag_governance" {
-  template = "${file("${path.module}/templates/resource_tag_policyRule.json.tmpl")}"
+  template = file("${path.module}/templates/resource_tag_policyRule.json.tmpl")
 }
 
 resource "azurerm_policy_definition" "tag" {

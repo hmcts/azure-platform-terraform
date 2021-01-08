@@ -4,7 +4,7 @@ data "azurerm_key_vault_secret" "certificate" {
   for_each = { for frontend in var.shutter_apps : frontend.name => frontend if frontend.name != "jui-redirect"
   }
 
-  name         = "${each.value.certificate_name}"
+  name         = each.value.certificate_name
   key_vault_id = data.azurerm_key_vault.certificate_vault.id
 }
 

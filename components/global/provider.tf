@@ -4,8 +4,7 @@ terraform {
   backend "azurerm" {}
   required_providers {
     azurerm = {
-      source = "hashicorp/azurerm"
-      # https://github.com/terraform-providers/terraform-provider-azurerm/issues/8208
+      source  = "hashicorp/azurerm"
       version = "2.41.0"
     }
   }
@@ -22,8 +21,9 @@ provider "azurerm" {
   subscription_id = var.data_subscription
 }
 
-provider "azurerm" {
-  features {}
-  alias           = "loganalytics"
-  subscription_id = local.log_analytics_workspace[[for x in keys(local.log_analytics_env_mapping) : x if contains(local.log_analytics_env_mapping[x], var.env)][0]].subscription_id
-}
+# provider "azurerm" {
+#   features {}
+#   alias           = "loganalytics"
+#   subscription_id = module.log_analytics_workspace.subscription_id
+#   # subscription_id = local.log_analytics_workspace[[for x in keys(local.log_analytics_env_mapping) : x if contains(local.log_analytics_env_mapping[x], var.env)][0]].subscription_id
+# }

@@ -21,7 +21,7 @@ trigger:
     - /environments/test/test.tfvars
     
 variables:
-  terraformVersion: 0.14.3
+  terraformVersion: 0.14.4
   agentPool: 'hmcts-cftptl-agent-pool'
   build: $(Build.BuildNumber)
   timeoutInMinutes: 300

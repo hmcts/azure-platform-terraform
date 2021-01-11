@@ -32,15 +32,15 @@ parameters:
   - name: environment_components
     type: object
     default:
-    # - deployment: 'sbox_global'
-    #   environment: 'sbox'
-    #   component: 'global'
-    #   service_connection: 'dcd-cftapps-sbox'
-    #   storage_account_rg: 'core-infra-sbox-rg'
-    #   storage_account_name: 'cftappssbox'
-    #   dependsOn: 'Precheck'
-    #   files_list: 'components/global modules/azure-landing-zone environments/sbox/sbox.tfvars environments/variables.tf'
-    #   alwaysApply: false
+    - deployment: 'sbox_global'
+      environment: 'sbox'
+      component: 'global'
+      service_connection: 'dcd-cftapps-sbox'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+      files_list: 'components/global modules/azure-landing-zone environments/sbox/sbox.tfvars environments/variables.tf'
+      alwaysApply: false
 
     - deployment: 'demo_global'
       environment: 'demo'
@@ -98,7 +98,7 @@ parameters:
       service_connection: 'dcd-cftapps-stg'
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
-      dependsOn: 'Precheck'
+      dependsOn: 'sbox_global'
       files_list: 'components/global modules/azure-landing-zone environments/stg/stg.tfvars environments/variables.tf'
       alwaysApply: false
 
@@ -108,7 +108,7 @@ parameters:
       service_connection: 'dcd-cftapps-prod'
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
-      dependsOn: 'Precheck'
+      dependsOn: 'sbox_global'
       files_list: 'components/global modules/azure-landing-zone environments/prod/prod.tfvars environments/variables.tf'
       alwaysApply: false
 

@@ -110,7 +110,7 @@ resource "azurerm_application_gateway" "ag" {
   }
 
   ssl_certificate {
-    name     = "${local.gateways[count.index].gateway_configuration.certificate_name}"
+    name     = local.gateways[count.index].gateway_configuration.certificate_name
     data     = data.azurerm_key_vault_secret.certificate[count.index].value
     password = ""
   }

@@ -2,73 +2,73 @@
 // we link this file into each component
 // from the component dir: `ln -s ../../environments/variables.tf variables.tf`
 
-variable subscription {
+variable "subscription" {
   default = []
 }
-variable env {
+variable "env" {
   default = []
 }
-variable project {
+variable "project" {
   default = "hmcts"
 }
-variable shutter_rg {
+variable "shutter_rg" {
   default = "TODO"
 }
 
-variable location {
+variable "location" {
   default = "UK South"
 }
 
-variable frontends {
+variable "frontends" {
   default = []
 }
 
-variable shutter_storage {
+variable "shutter_storage" {
   default = "TODO" // Is this even used?
 }
-variable default_shutter {
+variable "default_shutter" {
   default = []
 }
-variable cdn_sku {
+variable "cdn_sku" {
   default = "Standard_Verizon"
 }
 
-variable enable_ssl {
+variable "enable_ssl" {
   default = true
 }
-variable ssl_mode {
+variable "ssl_mode" {
   default = "AzureKeyVault"
 }
-variable certificate_key_vault_name {
+variable "certificate_key_vault_name" {
   default = []
 }
 
-variable cft_apps_cluster_ips {
+variable "cft_apps_cluster_ips" {
   default = []
 }
-variable cft_apps_ag_ip_address {
+variable "cft_apps_ag_ip_address" {
   default = []
 }
-variable sscssya_shutter {
+variable "sscssya_shutter" {
   default = []
 }
-variable sscstya_shutter {
+variable "sscstya_shutter" {
   default = []
 }
-variable sscscor_shutter {
+variable "sscscor_shutter" {
   default = []
 }
 variable "app_gw_private_ip_address" {
   default = []
 }
 
-variable mgmt_vnet_name {
+variable "mgmt_vnet_name" {
   default = "TODO"
 }
-variable mgmt_rg_name {
+variable "mgmt_rg_name" {
   default = "TODO"
 }
-variable kv_rg_name {
+variable "kv_rg_name" {
   default = "TODO"
 }
 

@@ -1,9 +1,9 @@
 module "landing_zone" {
-  source = "../../modules/azure-landing-zone/"
+  source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=DTSPO-429-remove-provider"
 
   providers = {
-    azurerm      = "azurerm"
-    azurerm.data = "azurerm.data"
+    azurerm      = azurerm
+    azurerm.data = azurerm.data
   }
 
   common_tags                = local.common_tags
@@ -19,4 +19,6 @@ module "landing_zone" {
   certificate_key_vault_name = var.certificate_key_vault_name
   oms_env                    = var.oms_env
   certificate_name_check     = var.certificate_name_check
+  key_vault_resource_group   = data.azurerm_resource_group.key_vault.name
+  log_analytics_workspace_id = module.log_analytics_workspace.workspace_id
 }

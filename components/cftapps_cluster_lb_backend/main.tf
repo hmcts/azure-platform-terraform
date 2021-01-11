@@ -1,5 +1,5 @@
 locals {
-  env = "${(var.env == "aat") ? "stg" : "${(var.env == "perftest") ? "test" : "${var.env}"}"}"
+  env = (var.env == "aat") ? "stg" : "${(var.env == "perftest") ? "test" : "${var.env}"}"
 }
 
 module "app-gw" {

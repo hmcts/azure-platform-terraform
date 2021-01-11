@@ -1,5 +1,5 @@
 data "azurerm_log_analytics_workspace" "main" {
-  provider = "azurerm.data"
+  provider = azurerm.data
 
   name                = "hmcts-${var.oms_env}"
   resource_group_name = "oms-automation"
@@ -12,7 +12,7 @@ data "azurerm_monitor_diagnostic_categories" "diagnostic_categories" {
 resource "azurerm_monitor_diagnostic_setting" "frontdoor_diagnostics" {
   name                       = "fd-log-analytics"
   target_resource_id         = azurerm_frontdoor.main.id
-  log_analytics_workspace_id = data.azurerm_log_analytics_workspace.main.id
+  log_analytics_workspace_id = var.log_analytics_workspace_id
 
   dynamic "log" {
     iterator = log

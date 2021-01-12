@@ -263,7 +263,6 @@ frontends = [
     name             = "fact-admin"
     mode             = "Detection"
     custom_domain    = "fact-admin.aat.platform.hmcts.net"
-    enable_ssl       = false
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },

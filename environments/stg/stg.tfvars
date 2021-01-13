@@ -269,7 +269,7 @@ frontends = [
   {
     name             = "nfdiv"
     mode             = "Detection"
-    custom_domain    = "nfdiv.aat.platform.hmcts.net"
+    custom_domain    = ["nfdiv.aat.platform.hmcts.net","nfdiv-apply-for-divorce.aat.platform.hmcts.net","nfdiv-end-civil-partnership.aat.platform.hmcts.net"]
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },

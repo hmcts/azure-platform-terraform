@@ -1,5 +1,17 @@
+terraform {
+  required_version = ">= 0.13"
+
+  backend "azurerm" {}
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "2.41.0"
+    }
+  }
+}
+
+
 provider "azurerm" {
-  version                    = "~> 2.17"
   skip_provider_registration = true
   features {}
 }
@@ -8,8 +20,4 @@ provider "azurerm" {
   alias           = "data"
   subscription_id = var.data_subscription
   features {}
-}
-
-terraform {
-  backend "azurerm" {}
 }

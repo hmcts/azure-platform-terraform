@@ -21,17 +21,6 @@ provider "azurerm" {
   subscription_id = var.data_subscription
 }
 
-provider "azurerm" {
-  features {}
-  skip_provider_registration = true
-}
-
-provider "azurerm" {
-  alias = "data"
-  features {}
-  subscription_id = var.data_subscription
-}
-
 provider "local" {
   version = "=1.3.0"
 }

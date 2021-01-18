@@ -28,4 +28,8 @@ locals {
     "environment"        = local.env_display_names[var.env]
     "criticality"        = local.criticality[var.env]
   }
+
+  vnet_rg   = "aks-infra-${var.env}-rg"
+  vnet_name = "core-${var.env}-vnet"
+
 }

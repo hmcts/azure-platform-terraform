@@ -5,7 +5,7 @@ module "logworkspace" {
 }
 
 module "cftapps-frontend-cluster-lb" {
-  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=DTSPO-242-remove-type"
+  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
 
   env                        = var.env
   subscription               = var.subscription

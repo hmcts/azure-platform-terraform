@@ -12,7 +12,7 @@ trigger:
     - /components/global/*
 
 variables:
-  terraformVersion: 0.13.5
+  terraformVersion: 0.14.4
   timeoutInMinutes: 60
   agentPool: 'ubuntu-18.04'
   build: $(Build.BuildNumber)

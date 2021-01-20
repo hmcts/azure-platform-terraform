@@ -432,12 +432,12 @@ frontends = [
         name     = "IPMatchWhitelist"
         priority = 1
         type     = "MatchRule"
-        action   = "Allow"
+        action   = "Block"
         match_conditions = [
           {
             match_variable     = "RequestUri"
             operator           = "Contains"
-            negation_condition = false
+            negation_condition = true
             match_values = [
               "/fees"
             ]
@@ -445,7 +445,7 @@ frontends = [
           {
             match_variable     = "RemoteAddr"
             operator           = "IPMatch"
-            negation_condition = false
+            negation_condition = true
             match_values = [
               "81.134.202.29/32",
               "51.145.6.230/32",

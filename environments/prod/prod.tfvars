@@ -862,6 +862,11 @@ frontends = [
         operator       = "Equals"
         selector       = "__auth__"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "XSRF-TOKEN"
+      },
     ]
   },
   {

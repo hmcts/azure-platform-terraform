@@ -814,6 +814,16 @@ frontends = [
         operator       = "Equals"
         selector       = "iss"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "$a"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "$ni"
+      },
     ]
   },
   {

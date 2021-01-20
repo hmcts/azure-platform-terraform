@@ -857,6 +857,11 @@ frontends = [
         operator       = "Equals"
         selector       = "accessToken"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth__"
+      },
     ]
   },
   {

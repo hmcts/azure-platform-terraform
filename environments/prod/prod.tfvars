@@ -972,6 +972,11 @@ frontends = [
         operator       = "Equals"
         selector       = "postcode"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
     ]
   },
   {

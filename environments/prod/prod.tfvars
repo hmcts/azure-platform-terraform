@@ -817,28 +817,33 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "$a"
+        selector       = "a"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "$ni"
+        selector       = "ni"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "$tvn"
+        selector       = "tvn"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "$3p"
+        selector       = "3p"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "$fIDl"
-      }
+        selector       = "fIDl"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
     ]
   },
   {

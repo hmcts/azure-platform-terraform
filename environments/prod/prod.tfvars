@@ -814,6 +814,31 @@ frontends = [
         operator       = "Equals"
         selector       = "iss"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "$a"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "$ni"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "$tvn"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "$3p"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "$fIDl"
+      }
     ]
   },
   {
@@ -866,6 +891,86 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "XSRF-TOKEN"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "ai_user"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "roles"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_sm_au"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "ssm_au"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "ssm_au_c"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "xui-webapp"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.appealReferenceNumber"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.caseReference"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.D8caseReference"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.deceasedSurname"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.familyManCaseNumber"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.previousServiceCaseReference"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "postcode"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
       },
     ]
   },

@@ -822,7 +822,7 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "$ni"
+        selector       = "ni"
       },
       {
         match_variable = "RequestBodyPostArgNames"

@@ -910,6 +910,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "BNES_dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "ai_user"
       },
       {
@@ -996,6 +1001,13 @@ frontends = [
     custom_domain    = "return-case-doc.ccd.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "ccd-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      }
+    ]
   },
   {
     product          = "probate"   

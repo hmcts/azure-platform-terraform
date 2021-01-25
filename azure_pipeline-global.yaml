@@ -92,6 +92,16 @@ parameters:
       files_list: 'components/global modules/azure-landing-zone environments/test/test.tfvars environments/variables.tf'
       alwaysApply: false
 
+    - deployment: 'aat_global'
+      environment: 'stg'
+      component: 'global'
+      service_connection: 'dcd-cftapps-stg'
+      storage_account_rg: 'core-infra-stg-rg'
+      storage_account_name: 'cftappsstg'
+      dependsOn: 'sbox_global'
+      files_list: 'components/global modules/azure-landing-zone environments/stg/stg.tfvars environments/variables.tf'
+      alwaysApply: false
+
     - deployment: 'prod_global'
       environment: 'prod'
       component: 'global'
@@ -117,6 +127,14 @@ stages:
             keyVaultName: infra-vault-nonprod
             secretsFilter: 'azure-devops-token'
             runAsPreJob: false
+        - task: Bash@3
+          displayName: Prevent parallel run
+          env:
+            thisbuild: $(Build.BuildId)
+            pipelinedefinition: $(System.DefinitionId)
+            azuredevopstoken: $(azure-devops-token)
+          inputs:
+            filePath: pipeline-scripts/builds-check.sh
         - task: TerraformInstaller@0
           displayName: Terraform install
           inputs:

@@ -854,6 +854,11 @@ frontends = [
         operator       = "Equals"
         selector       = "rf"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "sn"
+      },
     ]
   },
   {
@@ -890,27 +895,17 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "dtSa"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "accessToken"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
         selector       = "__auth__"
       },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "XSRF-TOKEN"
+        selector       = "_sm_au"
       },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "BNES_dtCookie"
+        selector       = "ai_session"
       },
       {
         match_variable = "RequestCookieNames"
@@ -920,12 +915,27 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "roles"
+        selector       = "accessToken"
       },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "_sm_au"
+        selector       = "BNES_dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "XSRF-TOKEN"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "roles"
       },
       {
         match_variable = "RequestCookieNames"
@@ -941,6 +951,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "xui-webapp"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.appeal.appellant.identity.nino"
       },
       {
         match_variable = "QueryStringArgNames"

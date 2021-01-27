@@ -436,7 +436,7 @@ frontends = [
         match_conditions = [
           {
             match_variable     = "RequestUri"
-            operator           = "Contains"
+            operator           = "EndsWith"
             negation_condition = false
             match_values = [
               "/fees"
@@ -543,10 +543,15 @@ frontends = [
         operator       = "Equals"
         selector       = "User-Agent"
       },
-     {
+      {
         match_variable = "RequestHeaderNames"
         operator       = "Equals"
         selector       = "content-type"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "csvFees"
       },
     ]
   },

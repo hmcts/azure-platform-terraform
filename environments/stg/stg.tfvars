@@ -22,7 +22,7 @@ shutter_apps = [
 ]
 
 cft_apps_ag_ip_address = "10.10.24.123"
-cft_apps_cluster_ips   = ["10.10.23.250"]
+cft_apps_cluster_ips   = ["10.10.19.250"]
 
 frontends = [
   {
@@ -270,6 +270,20 @@ frontends = [
     name             = "nfdiv"
     mode             = "Detection"
     custom_domain    = "nfdiv.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
+    name             = "nfdiv-apply"
+    mode             = "Detection"
+    custom_domain    = "nfdiv-apply-for-divorce.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
+    name             = "nfdiv-civil"
+    mode             = "Detection"
+    custom_domain    = "nfdiv-end-civil-partnership.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },

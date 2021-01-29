@@ -1324,7 +1324,7 @@ frontends = [
   {
     product          = "fact"           
     name             = "fact"
-    mode             = "Prevention"
+    mode             = "Detection"
     custom_domain    = "www.find-court-tribunal.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "find-court-tribunal-service-gov-uk"

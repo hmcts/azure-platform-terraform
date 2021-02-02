@@ -45,3 +45,7 @@ gateways:
     # Evidence Management
       - product: dm
         component: store
+
+    # XUI
+      - product: xui
+        component: terms-and-conditions

@@ -182,5 +182,26 @@ frontends = [
     custom_domain    = "return-case-doc-ccd-ethosldata.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-ldata.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
+  },
+  {
+    name             = "xui-approve-org"
+    mode             = "Detection"
+    custom_domain    = "administer-orgs-ethosldata.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ldata.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-platform-hmcts-net"
+  },
+  {
+    name             = "xui-manage-org"
+    mode             = "Detection"
+    custom_domain    = "manage-org-ethosldata.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ldata.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-platform-hmcts-net"
+  },
+  {
+    name             = "xui-webapp"
+    mode             = "Detection"
+    custom_domain    = "manage-case-ethosldata.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ldata.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-platform-hmcts-net"
   }
 ]

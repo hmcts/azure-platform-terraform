@@ -20,5 +20,26 @@ frontends = [
     health_path         = "/"
     health_protocol     = "Https"
     cache_enabled       = "false"
-  }
+  },
+  {
+    name             = "nfdiv"
+    mode             = "Detection"
+    custom_domain    = "nfdiv.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-demo.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+  },
+  {
+    name             = "nfdiv-apply"
+    mode             = "Detection"
+    custom_domain    = "nfdiv-apply-for-divorce.demo.platform.hmcts.net"
+    backend          = "nfdiv"
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+  },
+  {
+    name             = "nfdiv-civil"
+    mode             = "Detection"
+    custom_domain    = "nfdiv-end-civil-partnership.demo.platform.hmcts.net"
+    backend          = "nfdiv"
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+  },
 ]

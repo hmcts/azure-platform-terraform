@@ -41,5 +41,5 @@ frontends = [
     custom_domain    = "nfdiv-end-civil-partnership.demo.platform.hmcts.net"
     backend          = "nfdiv"
     certificate_name = "wildcard-demo-platform-hmcts-net"
-  },
+  }
 ]

@@ -291,6 +291,20 @@ frontends = [
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
+    name             = "nfdiv-apply"
+    mode             = "Detection"
+    custom_domain    = "nfdiv-apply-for-divorce.ithc.platform.hmcts.net"
+    backend          = "nfdiv"
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+  },
+  {
+    name             = "nfdiv-civil"
+    mode             = "Detection"
+    custom_domain    = "nfdiv-end-civil-partnership.ithc.platform.hmcts.net"
+    backend          = "nfdiv"
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+  },
+  {
     name             = "www-ccd"
     mode             = "Detection"
     custom_domain    = "www-ccd.ithc.platform.hmcts.net"

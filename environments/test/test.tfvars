@@ -151,6 +151,34 @@ frontends = [
     ]
   },
   {
+    name             = "nfdiv-apply"
+    custom_domain    = "nfdiv-apply-for-divorce.perftest.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      }
+    ]
+  },
+  {
+    name             = "nfdiv-civil"
+    custom_domain    = "nfdiv-end-civil-partnership.perftest.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      }
+    ]
+  },
+  {
     name             = "idam-web-public"
     mode             = "Detection"
     custom_domain    = "idam-web-public.perftest.platform.hmcts.net"

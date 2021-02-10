@@ -192,6 +192,10 @@ gateways:
         component: judicial-api
       - product: rd
         component: judicial-data-load
+      - product: rd
+        component: location-ref-api
+      - product: rd
+        component: location-ref-data-load
 
       # FACT
       - product: fact

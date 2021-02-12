@@ -77,8 +77,8 @@ resource "azurerm_application_gateway" "ag" {
     for_each = [for app in local.gateways[count.index].app_configuration : {
       name          = lookup(app, "full_name", "${app.product}-${app.component}")
       path          = lookup(app, "health_path_override", "/health/liveness")
-      host_name     = concat(lookup(app, "full_name", "${app.product}-${app.component}"),"-${var.env}.${local.gateways[count.index].gateway_configuration.host_name_suffix}")
-      ssl_host_name = concat(lookup(app, "full_name", "${app.product}-${app.component}"),".${local.gateways[count.index].gateway_configuration.ssl_host_name_suffix}")
+      host_name     = concat(lookup(app, "full_name", "${app.product}-${app.component}"), "-${var.env}.${local.gateways[count.index].gateway_configuration.host_name_suffix}")
+      ssl_host_name = concat(lookup(app, "full_name", "${app.product}-${app.component}"), ".${local.gateways[count.index].gateway_configuration.ssl_host_name_suffix}")
       ssl_enabled   = contains(keys(app), "ssl_enabled") ? app.ssl_enabled : false
     }]
 
@@ -118,8 +118,8 @@ resource "azurerm_application_gateway" "ag" {
   dynamic "http_listener" {
     for_each = [for app in local.gateways[count.index].app_configuration : {
       name                 = lookup(app, "full_name", "${app.product}-${app.component}")
-      host_name            = concat(lookup(app, "full_name", "${app.product}-${app.component}"),"-${var.env}.${local.gateways[count.index].gateway_configuration.host_name_suffix}")
-      ssl_host_name        = concat(lookup(app, "full_name", "${app.product}-${app.component}"),".${local.gateways[count.index].gateway_configuration.ssl_host_name_suffix}")
+      host_name            = concat(lookup(app, "full_name", "${app.product}-${app.component}"), "-${var.env}.${local.gateways[count.index].gateway_configuration.host_name_suffix}")
+      ssl_host_name        = concat(lookup(app, "full_name", "${app.product}-${app.component}"), ".${local.gateways[count.index].gateway_configuration.ssl_host_name_suffix}")
       ssl_enabled          = contains(keys(app), "ssl_enabled") ? app.ssl_enabled : false
       ssl_certificate_name = "${local.gateways[count.index].gateway_configuration.certificate_name}"
     }]

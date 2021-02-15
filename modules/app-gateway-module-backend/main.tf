@@ -11,7 +11,7 @@ data "azurerm_key_vault" "certificate_vault" {
   resource_group_name = var.env == "perftest" || var.env == "aat" ? "core-infra-${var.subscription}-rg" : "core-infra-${var.env}-rg"
 }
 
-data "azurerm_key_vault_secret" "certificate" {
+data "azurerm_key_vault_certificate" "certificate" {
   count        = length(local.gateways)
   name         = local.gateways[count.index].gateway_configuration.certificate_name
   key_vault_id = data.azurerm_key_vault.certificate_vault.id
@@ -111,7 +111,7 @@ resource "azurerm_application_gateway" "ag" {
 
   ssl_certificate {
     name     = local.gateways[count.index].gateway_configuration.certificate_name
-    data     = data.azurerm_key_vault_secret.certificate[count.index].value
+    data     = data.azurerm_key_vault_certificate.certificate[count.index].value
     password = ""
   }
 

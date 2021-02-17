@@ -246,6 +246,12 @@ gateways:
      # Unspec
       - product: unspec
         component: service
+      - product: civil-damages
+        component: service
+      - product: civil-damages
+        component: ccd
+      - product: civil-damages
+        component: camunda
 
       # Work Allocation
       - product: wa

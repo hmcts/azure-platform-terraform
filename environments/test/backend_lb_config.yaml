@@ -217,3 +217,10 @@ gateways:
       - product: idam
         component: keycloak
         health_path_override: /auth/realms/master
+
+    # Docmosis
+      - product: dg
+        component: docmosis
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+        host_name_prefix: docmosis

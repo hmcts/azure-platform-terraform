@@ -252,39 +252,27 @@ gateways:
       - product: civil-damages
         component: service-camunda-staging
       - product: civil-damages
-        component: service-gateway-staging
-      - product: civil-damages
         component: service-data-store-staging
       - product: civil-damages
         component: service-definition-store-staging
-      - product: civil-damages
-        component: service-user-profile-staging
 
       - product: civil-damages
         component: ccd-xui-staging
       - product: civil-damages
         component: ccd-camunda-staging
       - product: civil-damages
-        component: ccd-gateway-staging
-      - product: civil-damages
         component: ccd-data-store-staging
       - product: civil-damages
         component: ccd-definition-store-staging
-      - product: civil-damages
-        component: ccd-user-profile-staging
 
       - product: civil-damages
         component: camunda-xui-staging
       - product: civil-damages
         component: camunda-camunda-staging
       - product: civil-damages
-        component: camunda-gateway-staging
-      - product: civil-damages
         component: camunda-data-store-staging
       - product: civil-damages
         component: camunda-definition-store-staging
-      - product: civil-damages
-        component: camunda-user-profile-staging
 
       # Work Allocation
       - product: wa

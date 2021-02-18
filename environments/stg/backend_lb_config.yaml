@@ -246,18 +246,33 @@ gateways:
      # Unspec
       - product: unspec
         component: service
+
       - product: civil-damages
         component: service-xui-staging
       - product: civil-damages
         component: service-camunda-staging
       - product: civil-damages
+        component: service-data-store-staging
+      - product: civil-damages
+        component: service-definition-store-staging
+
+      - product: civil-damages
         component: ccd-xui-staging
       - product: civil-damages
         component: ccd-camunda-staging
       - product: civil-damages
+        component: ccd-data-store-staging
+      - product: civil-damages
+        component: ccd-definition-store-staging
+
+      - product: civil-damages
         component: camunda-xui-staging
       - product: civil-damages
         component: camunda-camunda-staging
+      - product: civil-damages
+        component: camunda-data-store-staging
+      - product: civil-damages
+        component: camunda-definition-store-staging
 
       # Work Allocation
       - product: wa

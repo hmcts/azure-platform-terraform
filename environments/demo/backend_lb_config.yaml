@@ -225,3 +225,10 @@ gateways:
       - product: idam
         component: api
         ssl_enabled: true
+
+    # Docmosis
+      - product: dg
+        component: docmosis
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+        host_name_prefix: docmosis

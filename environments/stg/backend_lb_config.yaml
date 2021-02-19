@@ -196,13 +196,9 @@ gateways:
       - product: rd
         component: judicial-api
       - product: rd
-        component: judicial-data-load
-      - product: rd
         component: caseworker-ref-api
       - product: rd
         component: location-ref-api
-      - product: rd
-        component: location-ref-data-load
 
       # Send-letter
       - product: rpe
@@ -267,3 +263,9 @@ gateways:
       - product: wa
         component: task-configuration-api
 
+    # Docmosis
+      - product: dg
+        component: docmosis
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+        host_name_prefix: docmosis

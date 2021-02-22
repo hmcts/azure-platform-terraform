@@ -199,3 +199,10 @@ gateways:
  # FACT
       - product: fact
         component: api
+
+      # Docmosis
+      - product: dg
+        component: docmosis
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+        host_name_prefix: docmosis

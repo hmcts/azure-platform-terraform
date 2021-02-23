@@ -173,6 +173,8 @@ gateways:
         component: cos
       - product: nfdiv
         component: cms
+      - product: nfdiv
+        component: case-api
 
       # xui
       - product: xui

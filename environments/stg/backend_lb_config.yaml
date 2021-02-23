@@ -225,6 +225,8 @@ gateways:
         component: cos
       - product: nfdiv
         component: cms
+      - product: nfdiv
+        component: case-api
 
 # IDAM AAT
       - product: idam

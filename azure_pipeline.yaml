@@ -73,25 +73,25 @@ parameters:
       files_list: 'components/dynatrace_activegate modules/dynatrace-activegate environments/sbox/sbox.tfvars environments/variables.tf'
       alwaysApply: false
 
-    - deployment: 'ithc_cftapps_cluster_lb'
-      environment: 'ithc'
-      component: 'cftapps_cluster_lb'
-      service_connection: 'dcd-cftapps-ithc'
-      storage_account_rg: 'core-infra-ithc-rg'
-      storage_account_name: 'cftappsithc'
-      dependsOn: 'sbox_cftapps_cluster_lb'
-      files_list: 'components/cftapps_cluster_lb modules/app-gateway-module environments/ithc/ithc.tfvars environments/variables.tf'
-      alwaysApply: false
+    # - deployment: 'ithc_cftapps_cluster_lb'
+    #   environment: 'ithc'
+    #   component: 'cftapps_cluster_lb'
+    #   service_connection: 'dcd-cftapps-ithc'
+    #   storage_account_rg: 'core-infra-ithc-rg'
+    #   storage_account_name: 'cftappsithc'
+    #   dependsOn: 'sbox_cftapps_cluster_lb'
+    #   files_list: 'components/cftapps_cluster_lb modules/app-gateway-module environments/ithc/ithc.tfvars environments/variables.tf'
+    #   alwaysApply: false
 
-    - deployment: 'ithc_cftapps_cluster_lb_backend'
-      environment: 'ithc'
-      component: 'cftapps_cluster_lb_backend'
-      service_connection: 'dcd-cftapps-ithc'
-      storage_account_rg: 'core-infra-ithc-rg'
-      storage_account_name: 'cftappsithc'
-      dependsOn: 'sbox_cftapps_cluster_lb'
-      files_list: 'components/cftapps_cluster_lb_backend modules/app-gateway-module-backend environments/ithc/backend_lb_config.yaml environments/ithc/ithc.tfvars environments/variables.tf'
-      alwaysApply: false
+    # - deployment: 'ithc_cftapps_cluster_lb_backend'
+    #   environment: 'ithc'
+    #   component: 'cftapps_cluster_lb_backend'
+    #   service_connection: 'dcd-cftapps-ithc'
+    #   storage_account_rg: 'core-infra-ithc-rg'
+    #   storage_account_name: 'cftappsithc'
+    #   dependsOn: 'sbox_cftapps_cluster_lb'
+    #   files_list: 'components/cftapps_cluster_lb_backend modules/app-gateway-module-backend environments/ithc/backend_lb_config.yaml environments/ithc/ithc.tfvars environments/variables.tf'
+    #   alwaysApply: false
 
     - deployment: 'ldata_cftapps_cluster_lb'
       environment: 'ldata'

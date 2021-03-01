@@ -41,7 +41,8 @@ data "azurerm_subnet" "app_gw" {
 }
 
 resource "azurerm_public_ip" "app_gw" {
-  name                = "aks-appgw-${var.env}-pip"
+  count               = length(var.private_ip_address)
+  name                = element(var.private_ip_address, count.index) == var.private_ip_address[0]  ? "aks-appgw-${var.env}-pip" : "aks-appgw-${var.env}-pip-${count.index}"
   location            = var.location
   resource_group_name = local.vnet_rg
   sku                 = "Standard"

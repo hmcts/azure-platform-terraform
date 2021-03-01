@@ -65,6 +65,36 @@ gateways:
         ssl_enabled: true
         host_name_prefix: docmosis
 
+    # RPE
+      - product: draft-store
+        component: service
+    # Probate
+      - product: probate
+        component: business-service
+      - product: probate
+        component: orchestrator-service
+      - product: probate
+        component: submit-service
+    # I&A
+      - product: ia
+        component: case-api
+      - product: ia
+        component: case-notifications-api
+      - product: ia
+        component: case-documents-api
+
+    # Reference DATA
+      - product: rd
+        component: professional-api
+      - product: rd
+        component: user-profile-api
+      - product: rd
+        component: profile-sync
+
+    # Divorce
+      - product: div
+        component: emca
+
   - gateway_configuration:
       host_name_suffix: service.core-compute-sandbox.internal
       ssl_host_name_suffix: sandbox.platform.hmcts.net

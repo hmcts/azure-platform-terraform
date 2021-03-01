@@ -6,7 +6,7 @@ enable_ssl                 = true
 ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-ithc"
 
-app_gw_private_ip_address = "10.10.40.121"
+app_gw_private_ip_address = ["10.10.40.121"]
 data_subscription         = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 oms_env                   = "nonprod"
 

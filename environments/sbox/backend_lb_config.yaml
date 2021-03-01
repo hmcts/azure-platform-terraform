@@ -66,9 +66,9 @@ gateways:
         host_name_prefix: docmosis
 
   - gateway_configuration:
-      host_name_suffix: service01.core-compute-sandbox.internal
-      ssl_host_name_suffix: sandbox01.platform.hmcts.net
-      certificate_name: STAR-sandbox01-platform-hmcts-net
+      host_name_suffix: service.core-compute-sandbox.internal
+      ssl_host_name_suffix: sandbox.platform.hmcts.net
+      certificate_name: STAR-sandbox-platform-hmcts-net
     app_configuration:
     # RPE
       - product: draft-store

@@ -58,7 +58,6 @@ resource "azurerm_application_gateway" "ag" {
   frontend_ip_configuration {
     name                          = "appGwPrivateFrontendIp"
     subnet_id                     = data.azurerm_subnet.app_gw.id
-    private_ip_address            = azurerm_private_ip.app_gw.id
     private_ip_address_allocation = "Dynamic"
   }
 

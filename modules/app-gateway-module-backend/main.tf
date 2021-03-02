@@ -134,6 +134,24 @@ resource "azurerm_application_gateway" "ag" {
     }
   }
 
+  dynamic "http_listener" {
+    for_each = [for app in local.gateways[count.index].app_configuration : {  
+      name                 = "${app.product}-${app.component}-redirect"
+      host_name            = join(".", [lookup(app, "host_name_prefix", "${app.product}-${app.component}-${var.env}"), "${local.gateways[count.index].gateway_configuration.host_name_suffix}"])
+      }
+      if app.http_to_https_redirect == true
+    ]
+
+    content {
+      name                           = http_listener.value.name
+      frontend_ip_configuration_name = "appGwPrivateFrontendIp"
+      frontend_port_name             = "http"
+      protocol                       = "Http"
+      host_name                      = http_listener.value.host_name
+      ssl_certificate_name           = ""
+    }
+  }
+
   dynamic "request_routing_rule" {
     for_each = [for app in local.gateways[count.index].app_configuration : {
       name = "${app.product}-${app.component}"
@@ -146,6 +164,24 @@ resource "azurerm_application_gateway" "ag" {
       backend_address_pool_name  = request_routing_rule.value.name
       backend_http_settings_name = request_routing_rule.value.name
     }
+  }
+
+  dynamic "request_routing_rule" {
+    for_each = [for app in local.gateways[count.index].app_configuration : {
+      name = "${app.product}-${app.component}-redirect"
+      backend_name = "${app.product}-${app.component}"
+      }
+      if app.http_to_https_redirect == true
+    ]
+
+    content {
+      name                       = request_routing_rule.value.name
+      rule_type                  = "Basic"
+      http_listener_name         = request_routing_rule.value.name
+      backend_address_pool_name  = request_routing_rule.value.backend_name
+      backend_http_settings_name = request_routing_rule.value.backend_name
+    }
+
   }
 }
 

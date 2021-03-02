@@ -148,7 +148,23 @@ resource "azurerm_application_gateway" "ag" {
       frontend_port_name             = "http"
       protocol                       = "Http"
       host_name                      = http_listener.value.host_name
-      ssl_certificate_name           = ""
+    }
+  }
+
+  dynamic  "redirect_configuration" {
+    for_each = [for app in local.gateways[count.index].app_configuration : {
+      name = "${app.product}-${app.component}-redirect"
+      target_name = "${app.product}-${app.component}"
+      }
+      if app.http_to_https_redirect == true
+    ]
+
+    content {
+      name                 = redirect_configuration.value.name
+      redirect_type        = "Permanent"
+      include_path         = true
+      include_query_string = true
+      target_listener_name = redirect_configuration.value.target_name
     }
   }
 
@@ -169,17 +185,15 @@ resource "azurerm_application_gateway" "ag" {
   dynamic "request_routing_rule" {
     for_each = [for app in local.gateways[count.index].app_configuration : {
       name = "${app.product}-${app.component}-redirect"
-      backend_name = "${app.product}-${app.component}"
       }
       if app.http_to_https_redirect == true
     ]
 
     content {
-      name                       = request_routing_rule.value.name
-      rule_type                  = "Basic"
-      http_listener_name         = request_routing_rule.value.name
-      backend_address_pool_name  = request_routing_rule.value.backend_name
-      backend_http_settings_name = request_routing_rule.value.backend_name
+      name                        = request_routing_rule.value.name
+      rule_type                   = "Basic"
+      http_listener_name          = request_routing_rule.value.name
+      redirect_configuration_name = request_routing_rule.value.name
     }
 
   }

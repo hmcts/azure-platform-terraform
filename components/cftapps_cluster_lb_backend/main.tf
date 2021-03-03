@@ -9,7 +9,6 @@ locals {
     perftest = "Medium"
     ldata    = "Medium"
     data     = "Medium"
-
   }
 
   env_display_names = {

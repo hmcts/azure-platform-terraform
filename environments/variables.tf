@@ -79,4 +79,6 @@ variable "certificate_name_check" {
   default = true
 }
 
-variable "common_tags" {}
+variable "common_tags" {
+  default = []
+}

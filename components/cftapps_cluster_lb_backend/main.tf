@@ -24,5 +24,6 @@ module "app-gw" {
   vnet_name                  = local.vnet_name
   common_tags                = local.common_tags
   log_analytics_workspace_id = module.logworkspace.workspace_id
+  key_vault_resource_group   = local.key_vault_resource_group
 
 }

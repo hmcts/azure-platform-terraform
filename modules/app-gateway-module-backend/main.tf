@@ -139,7 +139,7 @@ resource "azurerm_application_gateway" "ag" {
       name      = "${app.product}-${app.component}-redirect"
       host_name = join(".", [lookup(app, "host_name_prefix", "${app.product}-${app.component}-${var.env}"), "${local.gateways[count.index].gateway_configuration.host_name_suffix}"])
       }
-      if app.http_to_https_redirect == true
+      if "${app.http_to_https_redirect}" == true
     ]
 
     content {
@@ -156,7 +156,7 @@ resource "azurerm_application_gateway" "ag" {
       name        = "${app.product}-${app.component}-redirect"
       target_name = "${app.product}-${app.component}"
       }
-      if app.http_to_https_redirect == true
+      if "${app.http_to_https_redirect}" == true
     ]
 
     content {
@@ -186,7 +186,7 @@ resource "azurerm_application_gateway" "ag" {
     for_each = [for app in local.gateways[count.index].app_configuration : {
       name = "${app.product}-${app.component}-redirect"
       }
-      if app.http_to_https_redirect == true
+      if "${app.http_to_https_redirect}" == true
     ]
 
     content {

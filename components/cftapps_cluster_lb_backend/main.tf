@@ -1,5 +1,6 @@
 locals {
-  env = (var.env == "aat") ? "stg" : "${(var.env == "perftest") ? "test" : "${var.env}"}"
+  env                      = (var.env == "aat") ? "stg" : "${(var.env == "perftest") ? "test" : "${var.env}"}"
+  key_vault_resource_group = var.env == "perftest" || var.env == "aat" ? "core-infra-${var.subscription}-rg" : "core-infra-${var.env}-rg"
 }
 
 module "app-gw" {

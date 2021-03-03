@@ -3,7 +3,7 @@ locals {
 }
 
 module "app-gw" {
-  source = "../../modules/app-gateway-module-backend"
+  source = "git::https://github.com/hmcts/terraform-module-applicationgateway?ref=DTSPO-1355"
 
   providers = {
     azurerm      = "azurerm"

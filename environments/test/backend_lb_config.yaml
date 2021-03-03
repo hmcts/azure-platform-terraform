@@ -226,3 +226,7 @@ gateways:
         cookie_based_affinity: Enabled
         ssl_enabled: true
         host_name_prefix: docmosis
+
+    # Unspec
+      - product: unspec
+        component: service

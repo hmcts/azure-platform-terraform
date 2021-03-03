@@ -237,3 +237,6 @@ gateways:
       - product: wa
         component: case-event-handler
 
+    # Unspec
+      - product: unspec
+        component: service

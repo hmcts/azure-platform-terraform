@@ -159,11 +159,11 @@ gateways:
         ssl_enabled: true
       - product: ccd
         component: message-publisher
-    
+
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
-     
+
     # FACT
       - product: fact
         component: api
@@ -203,3 +203,7 @@ gateways:
         cookie_based_affinity: Enabled
         ssl_enabled: true
         host_name_prefix: docmosis
+
+    # Unspec
+      - product: unspec
+        component: service

@@ -19,4 +19,7 @@ module "app-gw" {
   subscription              = var.subscription
   vault_name                = var.certificate_key_vault_name
   oms_env                   = var.oms_env
+  vnet_rg                   = local.vnet_rg
+  vnet_name                 = local.vnet_name
+  common_tags               = local.common_tags
 }

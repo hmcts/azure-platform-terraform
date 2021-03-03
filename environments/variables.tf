@@ -78,9 +78,3 @@ variable "oms_env" {}
 variable "certificate_name_check" {
   default = true
 }
-
-variable "vnet_rg" {}
-
-variable "vnet_name" {}
-
-variable "common_tags" {}

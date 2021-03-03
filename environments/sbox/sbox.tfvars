@@ -16,6 +16,10 @@ shutter_rg = "shutter-app-sbox-rg"
 cft_apps_ag_ip_address = "10.10.7.124"
 cft_apps_cluster_ips   = ["10.10.1.250", "10.10.3.250"]
 
+vnet_rg     = local.vnet_rg
+vnet_name   = local.vnet_name
+common_tags = local.common_tags
+
 frontends = [
   {
     product          = "idam"

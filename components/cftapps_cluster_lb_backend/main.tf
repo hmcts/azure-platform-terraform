@@ -8,6 +8,7 @@ locals {
     ithc     = "Medium"
     perftest = "Medium"
     ldata    = "Medium"
+    data     = "Medium"
 
   }
 
@@ -18,6 +19,7 @@ locals {
     ithc     = "ITHC"
     perftest = "Test"
     ldata    = "LDATA"
+    demo     = "Demo"
   }
 
   common_tags = {

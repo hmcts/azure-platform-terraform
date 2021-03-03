@@ -12,8 +12,8 @@ data "azurerm_key_vault" "certificate_vault" {
 }
 
 data "azurerm_key_vault_secret" "certificate" {
-  for_each     = toset(var.private_ip_address)
-  name         = (each.value).gateway_configuration.certificate_name
+  count        = length(local.gateways)
+  name         = local.gateways[count.index].gateway_configuration.certificate_name
   key_vault_id = data.azurerm_key_vault.certificate_vault.id
 }
 

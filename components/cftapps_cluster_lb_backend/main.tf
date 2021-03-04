@@ -8,7 +8,7 @@ locals {
     ithc     = "Medium"
     perftest = "Medium"
     ldata    = "Medium"
-    data     = "Medium"
+    demo     = "Medium"
   }
 
   env_display_names = {

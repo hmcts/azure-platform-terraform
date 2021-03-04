@@ -22,7 +22,7 @@ locals {
   }
 
   common_tags = {
-    "managedBy"          = "Platform Operations"
+    "managedBy"          = "Platform Engineering"
     "solutionOwner"      = "CFT"
     "activityName"       = "AKS"
     "dataClassification" = "Internal"

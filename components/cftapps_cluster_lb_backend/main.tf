@@ -6,7 +6,7 @@ data "azurerm_log_analytics_workspace" "log_analytics" {
 }
 
 module "app-gw" {
-  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=master"
+  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=DTSPO-1355-sbox-update"
 
   providers = {
     azurerm      = "azurerm"

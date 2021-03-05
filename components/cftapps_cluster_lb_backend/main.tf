@@ -13,9 +13,8 @@ module "app-gw" {
     azurerm.data = "azurerm.data"
   }
 
-  yaml_path = "${path.cwd}/../../environments/${local.env}/backend_lb_config.yaml"
-  env       = var.env
-
+  yaml_path                  = "${path.cwd}/../../environments/${local.env}/backend_lb_config.yaml"
+  env                        = var.env
   location                   = var.location
   private_ip_address         = var.app_gw_private_ip_address
   backend_pool_ip_addresses  = var.cft_apps_cluster_ips

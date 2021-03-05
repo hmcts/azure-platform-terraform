@@ -6,7 +6,7 @@ data "azurerm_log_analytics_workspace" "log_analytics" {
 }
 
 module "app-gw" {
-  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=master"
+  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=remove-unused-variables"
 
   providers = {
     azurerm      = "azurerm"
@@ -20,8 +20,6 @@ module "app-gw" {
   private_ip_address         = var.app_gw_private_ip_address
   backend_pool_ip_addresses  = var.cft_apps_cluster_ips
   subscription               = var.subscription
-  vault_name                 = var.certificate_key_vault_name
-  oms_env                    = var.oms_env
   vnet_rg                    = local.vnet_rg
   vnet_name                  = local.vnet_name
   common_tags                = local.common_tags

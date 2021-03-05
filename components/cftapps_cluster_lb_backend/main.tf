@@ -19,7 +19,6 @@ module "app-gw" {
   location                   = var.location
   private_ip_address         = var.app_gw_private_ip_address
   backend_pool_ip_addresses  = var.cft_apps_cluster_ips
-  subscription               = var.subscription
   vault_name                 = var.certificate_key_vault_name
   vnet_rg                    = local.vnet_rg
   vnet_name                  = local.vnet_name

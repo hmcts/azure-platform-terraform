@@ -52,13 +52,13 @@ resource "azurerm_application_gateway" "ag" {
 
   frontend_ip_configuration {
     name                 = "appGwPublicFrontendIp"
-    public_ip_address_id = element(azurerm_public_ip.app_gw.*.id, count.index)
+    public_ip_address_id = azurerm_public_ip.app_gw.id
   }
 
   frontend_ip_configuration {
     name                          = "appGwPrivateFrontendIp"
     subnet_id                     = data.azurerm_subnet.app_gw.id
-    private_ip_address            = element(var.private_ip_address, count.index)
+    private_ip_address            = var.private_ip_address
     private_ip_address_allocation = "Static"
   }
 

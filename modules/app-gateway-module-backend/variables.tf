@@ -33,5 +33,3 @@ variable "max_capacity" {
 variable "private_ip_address" {
   description = "IP address to allocate staticly to app gateway, must be in the subnet for the env"
 }
-
-variable "oms_env" {}

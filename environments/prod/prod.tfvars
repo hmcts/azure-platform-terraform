@@ -842,17 +842,7 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "_sm_au"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
         selector       = "ssm_au"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "ssm_au_c"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -911,11 +901,6 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "__auth__"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "_csrf"
       },
       {
         match_variable = "RequestCookieNames"
@@ -996,21 +981,6 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "case.deceasedSurname"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "case.divorceCaseNumber"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "case.deceasedForenames"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "case.D8PetitionerEmail"
       },
       {
         match_variable = "QueryStringArgNames"

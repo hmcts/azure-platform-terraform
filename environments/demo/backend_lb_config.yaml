@@ -105,6 +105,8 @@ gateways:
         component: case-activity-api
       - product: ccd
         component: message-publisher
+      - product: ccd
+        component: case-document-am-api
 
     # AAC (CDM)
       - product: aac

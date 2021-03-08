@@ -1,8 +1,7 @@
-data "azurerm_log_analytics_workspace" "log_analytics" {
-  provider = "azurerm.data"
+module "logworkspace" {
+  source      = "git::https://github.com/hmcts/terraform-module-log-analytics-workspace-id.git?ref=master"
+  environment = var.env
 
-  name                = "hmcts-${var.oms_env}"
-  resource_group_name = "oms-automation"
 }
 
 module "app-gw" {
@@ -22,7 +21,7 @@ module "app-gw" {
   vnet_rg                    = local.vnet_rg
   vnet_name                  = local.vnet_name
   common_tags                = local.common_tags
-  log_analytics_workspace_id = data.azurerm_log_analytics_workspace.log_analytics.id
+  log_analytics_workspace_id = module.logworkspace.workspace_id
   key_vault_resource_group   = local.key_vault_resource_group
 
 }

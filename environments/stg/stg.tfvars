@@ -7,7 +7,7 @@ ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-stg"
 certificate_name_check     = false
 
-app_gw_private_ip_address = "10.10.24.121"
+app_gw_private_ip_address = ["10.10.24.121"]
 data_subscription         = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 oms_env                   = "nonprod"
 
@@ -22,7 +22,7 @@ shutter_apps = [
 ]
 
 cft_apps_ag_ip_address = "10.10.24.123"
-cft_apps_cluster_ips   = ["10.10.19.250","10.10.23.250"]
+cft_apps_cluster_ips   = ["10.10.19.250", "10.10.23.250"]
 
 frontends = [
   {
@@ -183,10 +183,10 @@ frontends = [
         selector       = "iss"
       },
       {
-          match_variable = "QueryStringArgNames"
-          operator       = "Equals"
-          selector       = "code"
-       },
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
@@ -790,26 +790,26 @@ frontends = [
     ]
   },
   {
-    name                        = "reformscan"
-    custom_domain               = "reformscan.aat.platform.hmcts.net"
-    host_header                 = "reformscanaat.blob.core.windows.net"
-    backend_domain              = ["firewall-prod-int-palo-reformscanaat.uksouth.cloudapp.azure.com"]
-    certificate_name            =  "wildcard-aat-platform-hmcts-net"
-    forwarding_protocol         = "MatchRequest"
-    health_path                 = "/"
-    health_protocol             = "Https"
-    cache_enabled               = "false"
+    name                = "reformscan"
+    custom_domain       = "reformscan.aat.platform.hmcts.net"
+    host_header         = "reformscanaat.blob.core.windows.net"
+    backend_domain      = ["firewall-prod-int-palo-reformscanaat.uksouth.cloudapp.azure.com"]
+    certificate_name    = "wildcard-aat-platform-hmcts-net"
+    forwarding_protocol = "MatchRequest"
+    health_path         = "/"
+    health_protocol     = "Https"
+    cache_enabled       = "false"
   },
   {
-    name                        = "reformscanstg"
-    custom_domain               = "reformscanstg.aat.platform.hmcts.net"
-    host_header                 = "reformscanaatstaging.blob.core.windows.net"
-    backend_domain              = ["firewall-prod-int-palo-reformscanaatstg.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-aat-platform-hmcts-net"
-    forwarding_protocol         = "MatchRequest"
-    health_path                 = "/"
-    health_protocol             = "Https"
-    cache_enabled               = "false"
+    name                = "reformscanstg"
+    custom_domain       = "reformscanstg.aat.platform.hmcts.net"
+    host_header         = "reformscanaatstaging.blob.core.windows.net"
+    backend_domain      = ["firewall-prod-int-palo-reformscanaatstg.uksouth.cloudapp.azure.com"]
+    certificate_name    = "wildcard-aat-platform-hmcts-net"
+    forwarding_protocol = "MatchRequest"
+    health_path         = "/"
+    health_protocol     = "Https"
+    cache_enabled       = "false"
   },
   {
     name             = "hmi-apim"

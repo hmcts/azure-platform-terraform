@@ -78,3 +78,7 @@ variable "oms_env" {}
 variable "certificate_name_check" {
   default = true
 }
+
+variable "common_tags" {
+  default = []
+}

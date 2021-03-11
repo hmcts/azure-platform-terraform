@@ -5,7 +5,7 @@ module "logworkspace" {
 }
 
 module "app-gw" {
-  source = "../../modules/app-gateway-module-backend"
+  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=master"
 
   providers = {
     azurerm      = "azurerm"

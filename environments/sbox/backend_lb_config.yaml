@@ -94,3 +94,7 @@ gateways:
         cookie_based_affinity: Enabled
         ssl_enabled: true
         host_name_prefix: docmosis
+
+      # DTSPO-1703 Testing
+      - product: db
+        component : db-test

@@ -138,7 +138,6 @@ resource "azurerm_application_gateway" "ag" {
     for_each = [for app in local.gateways[count.index].app_configuration : {
       name             = "${app.product}-${app.component}-redirect"
       host_name        = join(".", [lookup(app, "host_name_prefix", "${app.product}-${app.component}-${var.env}"), "${local.gateways[count.index].gateway_configuration.host_name_suffix}"])
-      redirect_enabled = contains(keys(app), "http_to_https_redirect") ? app.http_to_https_redirect : false
       }
       if lookup(app, "http_to_https_redirect", false) == true
     ]
@@ -156,7 +155,6 @@ resource "azurerm_application_gateway" "ag" {
     for_each = [for app in local.gateways[count.index].app_configuration : {
       name             = "${app.product}-${app.component}-redirect"
       target_name      = "${app.product}-${app.component}"
-      redirect_enabled = contains(keys(app), "http_to_https_redirect") ? app.http_to_https_redirect : false
       }
       if lookup(app, "http_to_https_redirect", false) == true
     ]
@@ -187,7 +185,6 @@ resource "azurerm_application_gateway" "ag" {
   dynamic "request_routing_rule" {
     for_each = [for app in local.gateways[count.index].app_configuration : {
       name             = "${app.product}-${app.component}-redirect"
-      redirect_enabled = contains(keys(app), "http_to_https_redirect") ? app.http_to_https_redirect : false
       }
       if lookup(app, "http_to_https_redirect", false) == true
     ]

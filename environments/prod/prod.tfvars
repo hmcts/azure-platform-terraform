@@ -524,7 +524,6 @@ frontends = [
         operator       = "Equals"
         selector       = "_csrf"
       },
-
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"

@@ -51,6 +51,12 @@ gateways:
       - product: ia
         component: timed-event-service
 
+    # Access Management
+      - product: am
+        component: role-assignment-service
+      - product: am
+        component: org-role-mapping-service
+
     # Reference DATA
       - product: rd
         component: professional-api

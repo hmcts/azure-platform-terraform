@@ -5,7 +5,7 @@ module "logworkspace" {
 }
 
 module "app-gw" {
-  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=docmosis-redirect-test"
+  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=master"
 
   providers = {
     azurerm      = "azurerm"

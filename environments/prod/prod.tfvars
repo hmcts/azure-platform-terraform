@@ -1514,14 +1514,6 @@ frontends = [
     ]
   },
   {
-    product          = "ctf"
-    name             = "ctf-redirect"
-    mode             = "Detection"
-    custom_domain    = "www.courttribunalfinder.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "courttribunalfinder-service-gov-uk"
-  },
-  {
     product          = "fact"
     name             = "fact"
     mode             = "Detection"

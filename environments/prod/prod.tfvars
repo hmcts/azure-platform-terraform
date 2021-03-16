@@ -1517,7 +1517,7 @@ frontends = [
     product          = "ctf"
     name             = "ctf-redirect"
     mode             = "Detection"
-    custom_domain    = "courttribunalfinder.service.gov.uk"
+    custom_domain    = "www.courttribunalfinder.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "courttribunalfinder-service-gov-uk"
   },

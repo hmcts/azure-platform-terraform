@@ -194,10 +194,6 @@ gateways:
 
     # NFDIV
       - product: nfdiv
-        component: cos
-      - product: nfdiv
-        component: cms
-      - product: nfdiv
         component: case-api
 
     # Access Management

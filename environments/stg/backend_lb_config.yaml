@@ -173,6 +173,10 @@ gateways:
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
+        
+    # CPO (CDM)
+      - product: cpo
+        component: case-payment-orders-api    
 
     # CTSC
       - product: ctsc

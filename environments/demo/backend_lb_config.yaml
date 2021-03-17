@@ -236,3 +236,4 @@ gateways:
         cookie_based_affinity: Enabled
         ssl_enabled: true
         host_name_prefix: docmosis
+        http_to_https_redirect: true

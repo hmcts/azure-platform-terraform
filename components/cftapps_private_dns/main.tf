@@ -29,4 +29,3 @@ module "privatedns" {
   zone_name           = "service.core-compute-${local.dns_zone}.internal"
 }
 
-#

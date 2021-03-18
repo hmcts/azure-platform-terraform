@@ -28,3 +28,4 @@ module "privatedns" {
   resource_group_name = "core-infra-intsvc-rg"
   zone_name           = "service.core-compute-${local.dns_zone}.internal"
 }
+#

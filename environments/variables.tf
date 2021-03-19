@@ -75,7 +75,7 @@ variable "kv_rg_name" {
 variable "data_subscription" {}
 
 variable "privatedns_subscription" {
-  default = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
+  default = "TODO"
 }
 variable "oms_env" {}
 

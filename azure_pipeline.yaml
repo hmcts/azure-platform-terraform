@@ -63,6 +63,16 @@ parameters:
       files_list: 'components/compliance modules/standards environments/sbox/sbox.tfvars environments/variables.tf'
       alwaysApply: false
 
+    - deployment: 'sbox_private_dns'
+      environment: 'sbox'
+      component: 'cftapps_private_dns'
+      service_connection: 'dcd-cftapps-sbox'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+      files_list: 'components/cftapps_private_dns environments/sbox/sbox.tfvars environments/variables.tf'
+      alwaysApply: false
+
     - deployment: 'ptl_dynatrace_activegate'
       environment: 'ptl'
       component: 'dynatrace_activegate'

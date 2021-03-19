@@ -73,6 +73,10 @@ variable "kv_rg_name" {
 }
 
 variable "data_subscription" {}
+
+variable "privatedns_subscription" {
+  default = "TODO"
+}
 variable "oms_env" {}
 
 variable "certificate_name_check" {

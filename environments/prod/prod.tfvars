@@ -1045,6 +1045,11 @@ frontends = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
+        selector       = "case.ethosCaseReference"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
         selector       = "case.familyManCaseNumber"
       },
       {

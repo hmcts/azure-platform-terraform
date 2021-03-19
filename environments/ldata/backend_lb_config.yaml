@@ -4,7 +4,7 @@ gateways:
   - gateway_configuration:
       host_name_suffix: service.core-compute-ethosldata.internal
       ssl_host_name_suffix: platform.hmcts.net
-      certificate_name: wildcard-platform-hmcts-net
+      certificate_name: wildcard-platform-hmcts-net-new
     app_configuration:
     # RPE
       - product: rpe

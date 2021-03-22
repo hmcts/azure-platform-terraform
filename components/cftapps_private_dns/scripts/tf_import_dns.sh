@@ -22,7 +22,7 @@ for i in "${!PRODUCTS[@]}"; do
 PRODUCT_COMPONENT=("${PRODUCTS[i]}"-"${COMPONENTS[i]}"-"$ENV")
 RESOURCE=()
 
-RESOURCE=($(az network private-dns record-set a list -g core-infra-intsvc-rg -z service.core-compute-ithc.internal --query "[?id=='/subscriptions/$SUBSCRIPTION_ID/RESOURCEGroups/$RESOURCE_GROUP/providers/Microsoft.Network/privateDnsZones/$PRIVATE_DNS_ZONE/A/$PRODUCT_COMPONENT']" -o tsv))
+RESOURCE=($(az network private-dns record-set a list -g $RESOURCE_GROUP -z $PRIVATE_DNS_ZONE --query "[?id=='/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.Network/privateDnsZones/$PRIVATE_DNS_ZONE/A/$PRODUCT_COMPONENT']" -o tsv))
 
 if [ -n "$RESOURCE" ]
 then

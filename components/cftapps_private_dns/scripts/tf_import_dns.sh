@@ -26,7 +26,7 @@ RESOURCE=($(az network private-dns record-set a list -g core-infra-intsvc-rg -z 
 
 if [ -n "$RESOURCE" ]
 then
-    terraform import module.privatedns.azurerm_private_dns_a_record.this[\"$PRODUCT_COMPONENT\"]  /subscriptions/$SUBSCRIPTION_ID/RESOURCEGroups/$RESOURCE_GROUP/providers/Microsoft.Network/privateDnsZones/$PRIVATE_DNS_ZONE/A/$PRODUCT_COMPONENT
+    terraform import module.privatedns.azurerm_private_dns_a_record.this[\"$PRODUCT_COMPONENT\"]  /subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.Network/privateDnsZones/$PRIVATE_DNS_ZONE/A/$PRODUCT_COMPONENT
 else
     echo $PRODUCT_COMPONENT has no record in $PRIVATE_DNS_ZONE to import
 fi

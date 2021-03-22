@@ -109,7 +109,7 @@ parameters:
       service_connection: 'dcd-cftapps-ithc'
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
-      dependsOn: 'Precheck'
+      dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_private_dns environments/ithc/ithc.tfvars environments/variables.tf'
       alwaysApply: false
 

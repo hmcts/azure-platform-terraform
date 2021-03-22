@@ -5,6 +5,7 @@ FILES=($files_list)
 CHANGED_FILES=$(git diff HEAD HEAD~ --name-only)
 MATCH_COUNT=0
 
+echo $CHANGED_FILES
 for PATH_FILTER in ${FILES[@]}
 do
 

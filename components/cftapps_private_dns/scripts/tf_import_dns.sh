@@ -14,8 +14,8 @@ PRIVATE_DNS_ZONE=""
 
 PRODUCTS=()
 COMPONENTS=()
-PRODUCTS+=($(yq e '.gateways[].app_configuration[].product' "../../environments/ithc/backend_lb_config.yaml"))
-COMPONENTS+=($(yq e '.gateways[].app_configuration[].component' "../../environments/ithc/backend_lb_config.yaml"))
+PRODUCTS+=($(yq e '.gateways[].app_configuration[].product' "../../environments/$ENV/backend_lb_config.yaml"))
+COMPONENTS+=($(yq e '.gateways[].app_configuration[].component' "../../environments/$ENV/backend_lb_config.yaml"))
 
 for i in "${!PRODUCTS[@]}"; do
 

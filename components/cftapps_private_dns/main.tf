@@ -8,7 +8,7 @@ locals {
   a_records = flatten([
     for gateways, gateway in local.gateways : [
       for app in gateway.app_configuration : {
-        name   = "${app.product}-${app.component}-${local.env}",
+        name   = "${app.product}-${app.component}-${var.env}",
         ttl    = 300,
         record = ["${gateway.gateway_configuration.private_ip_address}"]
       }

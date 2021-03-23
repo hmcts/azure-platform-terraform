@@ -8,7 +8,7 @@ locals {
   a_records = flatten([
     for gateways, gateway in local.gateways : [
       for app in gateway.app_configuration : {
-        name   = "${app.product}-${app.component}-${local.env}",
+        name   = "${app.product}-${app.component}-${var.env}",
         ttl    = 300,
         record = ["${gateway.gateway_configuration.private_ip_address}"]
       }
@@ -24,7 +24,7 @@ data "local_file" "configuration" {
 module "privatedns" {
   source              = "git::https://github.com/hmcts/azure-private-dns.git//modules/azure-private-dns?ref=master"
   a_recordsets        = local.a_records
-  env                 = local.env
+  env                 = var.env
   resource_group_name = "core-infra-intsvc-rg"
   zone_name           = "service.core-compute-${local.dns_zone}.internal"
 

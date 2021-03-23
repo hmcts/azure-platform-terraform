@@ -70,7 +70,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
-      files_list: 'components/cftapps_private_dns environments/sbox/sbox.tfvars environments/variables.tf'
+      files_list: 'components/cftapps_private_dns environments/sbox/backend_lb_config.yaml environments/sbox/sbox.tfvars environments/variables.tf'
       alwaysApply: false
 
     - deployment: 'ptl_dynatrace_activegate'
@@ -110,7 +110,7 @@ parameters:
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_cftapps_cluster_lb'
-      files_list: 'components/cftapps_private_dns environments/ithc/ithc.tfvars environments/variables.tf'
+      files_list: 'components/cftapps_private_dns environments/ithc/backend_lb_config.yaml environments/ithc/ithc.tfvars environments/variables.tf'
       alwaysApply: false
 
     - deployment: 'ldata_cftapps_cluster_lb'
@@ -161,6 +161,16 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_cluster_lb_backend modules/app-gateway-module-backend environments/test/backend_lb_config.yaml environments/test/test.tfvars environments/variables.tf'
+      alwaysApply: false
+
+    - deployment: 'test_cftapps_private_dns'
+      environment: 'test'
+      component: 'cftapps_private_dns'
+      service_connection: 'dcd-cftapps-test'
+      storage_account_rg: 'core-infra-test-rg'
+      storage_account_name: 'cftappstest'
+      dependsOn: 'sbox_cftapps_cluster_lb'
+      files_list: 'components/cftapps_private_dns environments/test/backend_lb_config.yaml environments/test/test.tfvars environments/variables.tf'
       alwaysApply: false
 
     - deployment: 'stg_cftapps_cluster_lb'

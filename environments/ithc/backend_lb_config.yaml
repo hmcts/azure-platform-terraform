@@ -212,6 +212,16 @@ gateways:
         host_name_prefix: docmosis
         http_to_https_redirect: true
 
+    # WA - Work Allocation
+      - product: wa
+        component: workflow-api
+      - product: wa
+        component: task-management-api
+      - product: wa
+        component: task-configuration-api
+      - product: wa
+        component: case-event-handler
+
     # Unspec
       - product: unspec
         component: service

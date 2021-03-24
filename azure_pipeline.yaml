@@ -111,7 +111,7 @@ parameters:
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_private_dns environments/ithc/backend_lb_config.yaml environments/ithc/ithc.tfvars environments/variables.tf'
-      alwaysApply: true
+      alwaysApply: false
 
     - deployment: 'ldata_cftapps_cluster_lb'
       environment: 'ldata'

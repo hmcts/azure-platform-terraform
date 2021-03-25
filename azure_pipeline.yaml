@@ -143,6 +143,16 @@ parameters:
       files_list: 'components/cftapps_cluster_lb_backend modules/app-gateway-module-backend environments/demo/backend_lb_config.yaml environments/demo/demo.tfvars environments/variables.tf'
       alwaysApply: false
 
+    - deployment: 'demo_private_dns'
+      environment: 'demo'
+      component: 'cftapps_private_dns'
+      service_connection: 'dcd-cftapps-demo'
+      storage_account_rg: 'core-infra-demo-rg'
+      storage_account_name: 'cftappsdemo'
+      dependsOn: 'sbox_cftapps_cluster_lb'
+      files_list: 'components/cftapps_private_dns environments/demo/backend_lb_config.yaml environments/demo/demo.tfvars environments/variables.tf'
+      alwaysApply: false
+
     - deployment: 'test_cftapps_cluster_lb'
       environment: 'test'
       component: 'cftapps_cluster_lb'

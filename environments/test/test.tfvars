@@ -155,7 +155,7 @@ frontends = [
     name             = "nfdiv-apply"
     custom_domain    = "nfdiv-apply-for-divorce.perftest.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend          = "nfdiv"
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     global_exclusions = [
       {
@@ -169,7 +169,7 @@ frontends = [
     name             = "nfdiv-civil"
     custom_domain    = "nfdiv-end-civil-partnership.perftest.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend          = "nfdiv"
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     global_exclusions = [
       {

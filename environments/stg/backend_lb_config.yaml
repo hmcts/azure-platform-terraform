@@ -284,12 +284,6 @@ gateways:
     app_configuration:
     # WA - Work Allocation
       - product: wa
-        component: workflow-api
-      - product: wa
-        component: task-management-api
-      - product: wa
-        component: task-configuration-api
-      - product: wa
         component: case-event-handler
 
     # CPO (CDM)

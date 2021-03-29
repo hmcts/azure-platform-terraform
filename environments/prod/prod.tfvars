@@ -1342,6 +1342,11 @@ frontends = [
         operator       = "Equals"
         selector       = "DecodedUrl"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__pcipal-info"
+      },
     ]
   },
   {

@@ -181,7 +181,7 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_private_dns environments/test/backend_lb_config.yaml environments/test/test.tfvars environments/variables.tf'
-      alwaysApply: true
+      alwaysApply: false
 
     - deployment: 'stg_cftapps_cluster_lb'
       environment: 'stg'
@@ -211,7 +211,7 @@ parameters:
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_private_dns environments/stg/backend_lb_config.yaml environments/stg/stg.tfvars environments/variables.tf'
-      alwaysApply: false
+      alwaysApply: true
 
     - deployment: 'prod_cftapps_cluster_lb'
       environment: 'prod'

@@ -174,7 +174,7 @@ gateways:
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
-        
+
     # CTSC
       - product: ctsc
         component: work-allocation
@@ -288,18 +288,32 @@ gateways:
 
     # CPO (CDM)
       - product: cpo
-        component: case-payment-orders-api    
+        component: case-payment-orders-api
 
-    # civil-damages   
+    # civil-damages
       - product: civil-damages
         component: service-data-store-staging
       - product: civil-damages
         component: service-definition-store-staging
       - product: civil-damages
+        component: service-gateway-staging
+      - product: civil-damages
+        component: service-user-profile-staging
+
+      - product: civil-damages
         component: ccd-data-store-staging
       - product: civil-damages
         component: ccd-definition-store-staging
       - product: civil-damages
+        component: ccd-gateway-staging
+      - product: civil-damages
+        component: ccd-user-profile-staging
+
+      - product: civil-damages
         component: camunda-data-store-staging
       - product: civil-damages
         component: camunda-definition-store-staging
+      - product: civil-damages
+        component: camunda-gateway-staging
+      - product: civil-damages
+        component: camunda-user-profile-staging

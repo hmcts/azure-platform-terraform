@@ -5,6 +5,7 @@ gateways:
       host_name_suffix: service.core-compute-aat.internal
       ssl_host_name_suffix: aat.platform.hmcts.net
       certificate_name: wildcard-aat-platform-hmcts-net
+      private_ip_address: 10.10.24.121
     app_configuration:
     # RPE
       - product: draft-store
@@ -274,3 +275,31 @@ gateways:
         ssl_enabled: true
         host_name_prefix: docmosis
         http_to_https_redirect: true
+
+  - gateway_configuration:
+      host_name_suffix: service.core-compute-aat.internal
+      ssl_host_name_suffix: aat.platform.hmcts.net
+      certificate_name: wildcard-aat-platform-hmcts-net
+      private_ip_address: 10.10.24.131
+    app_configuration:
+    # WA - Work Allocation
+      - product: wa
+        component: case-event-handler
+
+    # CPO (CDM)
+      - product: cpo
+        component: case-payment-orders-api    
+
+    # civil-damages   
+      - product: civil-damages
+        component: service-data-store-staging
+      - product: civil-damages
+        component: service-definition-store-staging
+      - product: civil-damages
+        component: ccd-data-store-staging
+      - product: civil-damages
+        component: ccd-definition-store-staging
+      - product: civil-damages
+        component: camunda-data-store-staging
+      - product: civil-damages
+        component: camunda-definition-store-staging

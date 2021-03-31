@@ -1545,6 +1545,14 @@ frontends = [
     certificate_name = "find-court-tribunal-service-gov-uk"
   },
   {
+    product          = "fact-redirect"
+    name             = "fact-redirect"
+    mode             = "Detection"
+    custom_domain    = "courttribunalfinder.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "find-court-tribunal-service-gov-uk"
+  },
+  {
     product          = "jui"
     name             = "jui-redirect"
     mode             = "Detection"

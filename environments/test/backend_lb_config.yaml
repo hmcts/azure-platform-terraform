@@ -34,6 +34,10 @@ gateways:
         component: showcase
       - product: em
         component: ccd-orchestrator
+      - product: em
+        component: hrs-api
+      - product: em
+        component: hrs-ingestor
       - product: dg
         component: docassembly
       - product: dm

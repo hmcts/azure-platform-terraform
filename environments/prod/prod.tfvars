@@ -955,6 +955,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "_sm_au_c"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "ai_session"
       },
       {
@@ -1041,6 +1046,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "case.D8PetitionerEmail"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.ethosCaseReference"
       },
       {
         match_variable = "QueryStringArgNames"

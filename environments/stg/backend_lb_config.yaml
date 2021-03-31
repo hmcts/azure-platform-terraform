@@ -247,16 +247,19 @@ gateways:
         component: service
       - product: civil-damages
         component: service-xui-staging
+        ssl_enabled: true
       - product: civil-damages
         component: service-camunda-staging
 
       - product: civil-damages
         component: ccd-xui-staging
+        ssl_enabled: true
       - product: civil-damages
         component: ccd-camunda-staging
 
       - product: civil-damages
         component: camunda-xui-staging
+        ssl_enabled: true
       - product: civil-damages
         component: camunda-camunda-staging
 

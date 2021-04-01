@@ -5,12 +5,15 @@
 variable "subscription" {
   default = []
 }
+
 variable "env" {
   default = []
 }
+
 variable "project" {
   default = "hmcts"
 }
+
 variable "shutter_rg" {
   default = "TODO"
 }
@@ -29,6 +32,7 @@ variable "shutter_storage" {
 variable "default_shutter" {
   default = []
 }
+
 variable "cdn_sku" {
   default = "Standard_Verizon"
 }
@@ -39,6 +43,7 @@ variable "enable_ssl" {
 variable "ssl_mode" {
   default = "AzureKeyVault"
 }
+
 variable "certificate_key_vault_name" {
   default = []
 }
@@ -58,6 +63,7 @@ variable "sscstya_shutter" {
 variable "sscscor_shutter" {
   default = []
 }
+
 variable "app_gw_private_ip_address" {
   default = []
 }
@@ -82,7 +88,6 @@ variable "oms_env" {}
 variable "certificate_name_check" {
   default = true
 }
-
 variable "common_tags" {
   default = []
 }

@@ -315,6 +315,7 @@ frontends = [
             operator           = "IPMatch"
             negation_condition = true
             match_values = [
+              "52.151.96.225/32",
               "81.134.202.29/32",
               "51.145.6.230/32",
               "51.145.4.100/32",

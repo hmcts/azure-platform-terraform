@@ -246,8 +246,6 @@ gateways:
       - product: unspec
         component: service
       - product: civil-damages
-        component: service
-      - product: civil-damages
         component: service-xui-staging
         ssl_enabled: true
       - product: civil-damages
@@ -296,6 +294,8 @@ gateways:
         component: case-payment-orders-api
 
     # civil-damages
+      - product: civil-damages
+        component: service
       - product: civil-damages
         component: service-data-store-staging
       - product: civil-damages

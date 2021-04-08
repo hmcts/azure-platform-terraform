@@ -225,3 +225,5 @@ gateways:
     # Unspec
       - product: unspec
         component: service
+      - product: civil-damages
+        component: service

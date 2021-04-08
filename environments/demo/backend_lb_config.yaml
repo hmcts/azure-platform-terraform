@@ -116,10 +116,10 @@ gateways:
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
-        
+
     # CPO (CDM)
       - product: cpo
-        component: case-payment-orders-api    
+        component: case-payment-orders-api
 
     # Probate
       - product: probate
@@ -225,6 +225,8 @@ gateways:
      # Unspec
       - product: unspec
         component: service
+      - product: civil-damages
+        component: service
 
      # WA
       - product: wa
@@ -233,7 +235,7 @@ gateways:
         component: task-management-api
       - product: wa
         component: task-configuration-api
-    
+
     # SIDAM
       - product: idam
         component: api

@@ -246,6 +246,8 @@ gateways:
       - product: unspec
         component: service
       - product: civil-damages
+        component: service
+      - product: civil-damages
         component: service-xui-staging
         ssl_enabled: true
       - product: civil-damages

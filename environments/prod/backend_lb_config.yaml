@@ -163,6 +163,12 @@ gateways:
       - product: rd
         component: location-ref-api
 
+    # Access Management
+      - product: am
+        component: role-assignment-service
+      - product: am
+        component: org-role-mapping-service
+
     # Bulk scan and print
       - product: bulk-scan
         component: processor

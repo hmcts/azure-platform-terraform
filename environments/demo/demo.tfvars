@@ -21,5 +21,13 @@ frontends = [
     health_path         = "/"
     health_protocol     = "Https"
     cache_enabled       = "false"
+  },
+  {
+    product          = "ia"
+    name             = "ia-aip"
+    mode             = "Detection"
+    custom_domain    = "immigration-appeal.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name    = "wildcard-demo-platform-hmcts-net"
   }
 ]

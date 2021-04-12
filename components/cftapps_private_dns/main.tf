@@ -9,7 +9,7 @@ locals {
     for gateways, gateway in local.gateways : [
       for app in gateway.app_configuration : {
         name   = "${app.product}-${app.component}-${var.env}",
-        ttl    = lookup(app, "ttl", 300)
+        ttl    = lookup(app, "ttl", 300),
         record = ["${gateway.gateway_configuration.private_ip_address}"]
       }
     ]

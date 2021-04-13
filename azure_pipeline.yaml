@@ -243,6 +243,17 @@ parameters:
       files_list: 'components/shutter modules/shutter_page environments/prod/prod.tfvars environments/variables.tf'
       alwaysApply: false
 
+    - deployment: 'prod_private_dns'
+      environment: 'prod'
+      component: 'cftapps_private_dns'
+      service_connection: 'dcd-cftapps-prod'
+      storage_account_rg: 'core-infra-prod-rg'
+      storage_account_name: 'cftappsprod'
+      dependsOn: 'sbox_cftapps_cluster_lb'
+      files_list: 'components/cftapps_private_dns environments/prod/backend_lb_config.yaml environments/prod/prod.tfvars environments/variables.tf'
+      alwaysApply: false
+
+
 stages:
   - stage: Precheck
     jobs:

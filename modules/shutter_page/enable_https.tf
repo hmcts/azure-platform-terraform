@@ -1,8 +1,8 @@
 data "azurerm_client_config" "current" {}
 
 data "azurerm_key_vault_secret" "certificate" {
-  for_each = { for frontend in var.shutter_apps : frontend.name => frontend if frontend.name != "jui-redirect" || "fact-redirect"
-  }
+  for_each = { for frontend in var.shutter_apps : frontend.name => frontend if true != contains(["jui-redirect", "fact-redirect"], frontend.name)
+}
 
   name         = each.value.certificate_name
   key_vault_id = data.azurerm_key_vault.certificate_vault.id

@@ -163,6 +163,8 @@ gateways:
         component: judicial-api
       - product: rd
         component: location-ref-api
+      - product: rd
+        component: caseworker-ref-api
 
     # Access Management
       - product: am

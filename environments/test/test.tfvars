@@ -2,7 +2,6 @@ project                    = "hmcts"
 location                   = "uksouth"
 env                        = "perftest"
 subscription               = "test"
-enable_ssl                 = true
 ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-test"
 certificate_name_check     = false
@@ -762,11 +761,11 @@ frontends = [
     cache_enabled       = "false"
   },
   {
-    name              = "div-dn"
-    mode              = "Detection"
-    custom_domain     = "decree-nisi-aks.perftest.platform.hmcts.net"
-    backend_domain    = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
-    certificate_name  = "wildcard-perftest-platform-hmcts-net"
+    name             = "div-dn"
+    mode             = "Detection"
+    custom_domain    = "decree-nisi-aks.perftest.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -786,11 +785,11 @@ frontends = [
     ]
   },
   {
-    name              = "div-da"
-    mode              = "Detection"
-    custom_domain     = "decree-absolute-aks.perftest.platform.hmcts.net"
-    backend_domain    = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
-    certificate_name  = "wildcard-perftest-platform-hmcts-net"
+    name             = "div-da"
+    mode             = "Detection"
+    custom_domain    = "decree-absolute-aks.perftest.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -810,11 +809,11 @@ frontends = [
     ]
   },
   {
-    name              = "div-rfe"
-    mode              = "Detection"
-    custom_domain     = "respond-divorce-aks.perftest.platform.hmcts.net"
-    backend_domain    = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
-    certificate_name  = "wildcard-perftest-platform-hmcts-net"
+    name             = "div-rfe"
+    mode             = "Detection"
+    custom_domain    = "respond-divorce-aks.perftest.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -834,11 +833,11 @@ frontends = [
     ]
   },
   {
-    name              = "div-pfe"
-    mode              = "Detection"
-    custom_domain     = "petitioner-frontend-aks.perftest.platform.hmcts.net"
-    backend_domain    = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
-    certificate_name  = "wildcard-perftest-platform-hmcts-net"
+    name             = "div-pfe"
+    mode             = "Detection"
+    custom_domain    = "petitioner-frontend-aks.perftest.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

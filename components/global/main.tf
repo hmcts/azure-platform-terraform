@@ -12,7 +12,6 @@ module "landing_zone" {
   project                    = var.project
   location                   = var.location
   frontends                  = var.frontends
-  enable_ssl                 = var.enable_ssl
   ssl_mode                   = var.ssl_mode
   resource_group             = data.azurerm_resource_group.main.name
   subscription_id            = data.azurerm_subscription.current.subscription_id

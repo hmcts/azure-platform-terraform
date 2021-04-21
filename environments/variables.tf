@@ -37,9 +37,6 @@ variable "cdn_sku" {
   default = "Standard_Verizon"
 }
 
-variable "enable_ssl" {
-  default = true
-}
 variable "ssl_mode" {
   default = "AzureKeyVault"
 }

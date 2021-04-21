@@ -19,9 +19,9 @@ trigger:
     - /environments/sbox/sbox.tfvars
     - /environments/stg/stg.tfvars
     - /environments/test/test.tfvars
-    
+
 variables:
-  terraformVersion: 0.14.4
+  terraformVersion: 0.15.0
   agentPool: 'hmcts-cftptl-agent-pool'
   build: $(Build.BuildNumber)
   timeoutInMinutes: 300
@@ -52,7 +52,7 @@ parameters:
       files_list: 'components/global modules/azure-landing-zone environments/demo/demo.tfvars environments/variables.tf'
       alwaysApply: false
 
-    - deployment: 'dev_global'      
+    - deployment: 'dev_global'
       environment: 'dev'
       component: 'global'
       service_connection: 'dcd-cftapps-dev'
@@ -114,7 +114,7 @@ parameters:
 
 stages:
   - stage: Precheck
-    
+
     jobs:
       - job: Validate
         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
@@ -157,7 +157,7 @@ stages:
       dependsOn: ${{ deployment.dependsOn }}
       jobs:
         - template: pipeline-templates/terraform.yaml
-          parameters:       
+          parameters:
             environment: ${{ deployment.environment }}
             component: ${{ deployment.component }}
             service_connection: ${{ deployment.service_connection }}

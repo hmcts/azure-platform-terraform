@@ -2,7 +2,7 @@
     - job: TerraformPlanAndApply
       pool: ${{ parameters.pool }}
       timeoutInMinutes: ${{ parameters.timeoutInMinutes }}
-      steps:     
+      steps:
       - task: TerraformInstaller@0
         displayName: Terraform install
         inputs:
@@ -17,7 +17,7 @@
           addSpnToEnvironment: true
           inlineScript: |
             #!/bin/bash
-            set -e 
+            set -e
             echo "##vso[task.setvariable variable=ServicePrincipalId;]$servicePrincipalId"
             echo "##vso[task.setvariable variable=ServicePrincipalKey;]$servicePrincipalKey"
             echo "##vso[task.setvariable variable=TenantId;]$tenantId"
@@ -26,7 +26,6 @@
         displayName: Init - ${{ parameters.environment }} - ${{ parameters.component }}
         inputs:
           command: 'init'
-          commandOptions: '-lock=false' # don't lock on PRs / validate phase
           backendType: 'azurerm'
           backendServiceArm: '${{ parameters.service_connection }}'
           backendAzureRmResourceGroupName: '${{ parameters.storage_account_rg }}'
@@ -63,7 +62,7 @@
           command: apply
           workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
           environmentServiceName: '${{ parameters.service_connection }}'
-          commandOptions: '${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan'        
+          commandOptions: '${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan'
         env:
           tenantId : $(TenantId)
           clientId : $(ServicePrincipalId)

@@ -6,7 +6,7 @@ module "landing_zone" {
     azurerm.data = azurerm.data
   }
 
-  common_tags                = local.common_tags
+  common_tags                = module.ctags.common_tags
   env                        = var.env
   subscription               = var.subscription
   project                    = var.project
@@ -20,4 +20,11 @@ module "landing_zone" {
   certificate_name_check     = var.certificate_name_check
   key_vault_resource_group   = data.azurerm_resource_group.key_vault.name
   log_analytics_workspace_id = module.log_analytics_workspace.workspace_id
+}
+
+module "ctags" {
+  source      = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=master"
+  environment = var.env
+  product     = var.product
+  builtFrom   = var.builtFrom
 }

@@ -2,7 +2,6 @@ project                    = "hmcts"
 location                   = "uksouth"
 env                        = "preview"
 subscription               = "dev"
-enable_ssl                 = true
 ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-dev"
 

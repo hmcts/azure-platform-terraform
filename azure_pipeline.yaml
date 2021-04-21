@@ -12,7 +12,7 @@ trigger:
     - /components/global/*
 
 variables:
-  terraformVersion: 0.14.4
+  terraformVersion: 0.15.0
   timeoutInMinutes: 60
   agentPool: 'ubuntu-18.04'
   build: $(Build.BuildNumber)
@@ -52,7 +52,7 @@ parameters:
       dependsOn: 'Precheck'
       files_list: 'components/shutter modules/shutter_page environments/sbox/sbox.tfvars environments/variables.tf'
       alwaysApply: false
-      
+
     - deployment: 'sbox_compliance'
       environment: 'sbox'
       component: 'compliance'
@@ -183,7 +183,7 @@ parameters:
       files_list: 'components/cftapps_cluster_lb_backend modules/app-gateway-module-backend environments/prod/backend_lb_config.yaml environments/prod/prod.tfvars environments/variables.tf'
       alwaysApply: false
 
-    - deployment: 'prod_shutter' 
+    - deployment: 'prod_shutter'
       environment: 'prod'
       component: 'shutter'
       service_connection: 'dcd-cftapps-prod'
@@ -198,12 +198,12 @@ stages:
     jobs:
       - job: Validate
         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-        pool:   
+        pool:
           vmImage: ${{ variables.agentPool }}
-        steps: 
+        steps:
         - task: TerraformInstaller@0
           displayName: Terraform install
-          inputs: 
+          inputs:
             terraformVersion: ${{ variables.terraformVersion }}
         - task: AzureKeyVault@1
           displayName: Retrieve keyvault secret for ADO token
@@ -238,7 +238,7 @@ stages:
       dependsOn: ${{ deployment.dependsOn }}
       jobs:
         - template: pipeline-templates/terraform.yaml
-          parameters:       
+          parameters:
             environment: ${{ deployment.environment }}
             component: ${{ deployment.component }}
             service_connection: ${{ deployment.service_connection }}
@@ -247,7 +247,7 @@ stages:
             build: ${{ variables.build }}
             terraformVersion: ${{ variables.terraformVersion }}
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-            pool:   
+            pool:
               vmImage: ${{ variables.agentPool }}
             files_list: ${{ deployment.files_list }}
             alwaysApply: ${{ deployment.alwaysApply }}

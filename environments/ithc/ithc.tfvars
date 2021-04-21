@@ -5,8 +5,9 @@ subscription               = "ithc"
 ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-ithc"
 
-app_gw_private_ip_address = "10.10.36.121"
+app_gw_private_ip_address = ["10.10.40.121"]
 data_subscription         = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
+privatedns_subscription   = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                   = "nonprod"
 
 shutter_storage = "TODO"
@@ -19,8 +20,8 @@ shutter_apps = [
   "TODO"
 ]
 
-cft_apps_ag_ip_address = "10.10.36.123"
-cft_apps_cluster_ips   = ["10.10.33.250", "10.10.35.250"]
+cft_apps_ag_ip_address = "10.10.40.123"
+cft_apps_cluster_ips   = ["10.10.35.250", "10.10.39.250"]
 
 
 frontends = [
@@ -268,7 +269,7 @@ frontends = [
     backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
-    {
+  {
     name             = "fact"
     mode             = "Detection"
     custom_domain    = "fact.ithc.platform.hmcts.net"
@@ -461,12 +462,18 @@ frontends = [
             match_values = [
               "81.134.202.29/32",
               "51.145.6.230/32",
+              "51.145.4.100/32",
               "194.33.192.0/25",
               "194.33.196.0/25",
               "52.210.206.51/32",
               "62.25.109.201/32",
               "62.25.109.203/32",
-              "51.140.8.67/32"
+              "51.140.8.67/32",
+              "20.50.109.148/32",
+              "20.50.108.242/32",
+              "51.11.124.205/32",
+              "51.11.124.216/32",
+              "51.145.4.100/32"
             ]
           }
         ]
@@ -563,6 +570,135 @@ frontends = [
         operator       = "Equals"
         selector       = "token"
       },
+    ]
+  },
+  {
+    name             = "sscs-tribunals"
+    custom_domain    = "benefit-appeal.ithc.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reasonForNoMRN"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reasonForBeingLate"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "nino"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "signer"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "selection.signLanguage.language"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "selection.anythingElse.language"
+      }
+    ]
+  },
+  {
+    name             = "sscs-cor"
+    mode             = "Prevention"
+    custom_domain    = "sscs-cor.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "question-field"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "describeTheEvidence"
+      }
     ]
   },
 ]

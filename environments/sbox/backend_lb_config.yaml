@@ -5,6 +5,7 @@ gateways:
       host_name_suffix: service.core-compute-sandbox.internal
       ssl_host_name_suffix: sandbox.platform.hmcts.net
       certificate_name: STAR-sandbox-platform-hmcts-net
+      private_ip_address: 10.10.7.122
     app_configuration:
     # RPE
       - product: draft-store
@@ -88,3 +89,10 @@ gateways:
         component: blob-router
       - product: reform-scan
         component: notification-service
+
+      - product: dg
+        component: docmosis
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+        host_name_prefix: docmosis
+        http_to_https_redirect: true

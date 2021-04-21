@@ -5,6 +5,7 @@ gateways:
       host_name_suffix: service.core-compute-aat.internal
       ssl_host_name_suffix: aat.platform.hmcts.net
       certificate_name: wildcard-aat-platform-hmcts-net
+      private_ip_address: 10.10.24.121
     app_configuration:
     # RPE
       - product: draft-store
@@ -130,6 +131,10 @@ gateways:
         component: showcase
       - product: em
         component: icp
+      - product: em
+        component: hrs-api
+      - product: em
+        component: hrs-ingestor
       - product: dg
         component: docassembly
       - product: dm
@@ -196,13 +201,9 @@ gateways:
       - product: rd
         component: judicial-api
       - product: rd
-        component: judicial-data-load
-      - product: rd
         component: caseworker-ref-api
       - product: rd
         component: location-ref-api
-      - product: rd
-        component: location-ref-data-load
 
       # Send-letter
       - product: rpe
@@ -226,9 +227,7 @@ gateways:
 
       # NFDIV
       - product: nfdiv
-        component: cos
-      - product: nfdiv
-        component: cms
+        component: case-api
 
 # IDAM AAT
       - product: idam
@@ -246,6 +245,23 @@ gateways:
      # Unspec
       - product: unspec
         component: service
+      - product: civil-damages
+        component: service-xui-staging
+        ssl_enabled: true
+      - product: civil-damages
+        component: service-camunda-staging
+
+      - product: civil-damages
+        component: ccd-xui-staging
+        ssl_enabled: true
+      - product: civil-damages
+        component: ccd-camunda-staging
+
+      - product: civil-damages
+        component: camunda-xui-staging
+        ssl_enabled: true
+      - product: civil-damages
+        component: camunda-camunda-staging
 
       # Work Allocation
       - product: wa
@@ -255,3 +271,54 @@ gateways:
       - product: wa
         component: task-configuration-api
 
+    # Docmosis
+      - product: dg
+        component: docmosis
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+        host_name_prefix: docmosis
+        http_to_https_redirect: true
+
+  - gateway_configuration:
+      host_name_suffix: service.core-compute-aat.internal
+      ssl_host_name_suffix: aat.platform.hmcts.net
+      certificate_name: wildcard-aat-platform-hmcts-net
+      private_ip_address: 10.10.24.125
+    app_configuration:
+    # WA - Work Allocation
+      - product: wa
+        component: case-event-handler
+
+    # CPO (CDM)
+      - product: cpo
+        component: case-payment-orders-api
+
+    # civil-damages
+      - product: civil-damages
+        component: service
+      - product: civil-damages
+        component: service-data-store-staging
+      - product: civil-damages
+        component: service-definition-store-staging
+      - product: civil-damages
+        component: service-gateway-staging
+      - product: civil-damages
+        component: service-user-profile-staging
+
+      - product: civil-damages
+        component: ccd-data-store-staging
+      - product: civil-damages
+        component: ccd-definition-store-staging
+      - product: civil-damages
+        component: ccd-gateway-staging
+      - product: civil-damages
+        component: ccd-user-profile-staging
+
+      - product: civil-damages
+        component: camunda-data-store-staging
+      - product: civil-damages
+        component: camunda-definition-store-staging
+      - product: civil-damages
+        component: camunda-gateway-staging
+      - product: civil-damages
+        component: camunda-user-profile-staging

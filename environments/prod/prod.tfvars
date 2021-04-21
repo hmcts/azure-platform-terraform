@@ -6,8 +6,9 @@ ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cft-apps-prod"
 certificate_name_check     = false
 
-app_gw_private_ip_address = "10.13.32.120"
+app_gw_private_ip_address = ["10.13.32.120"]
 data_subscription         = "8999dec3-0104-4a27-94ee-6588559729d1"
+privatedns_subscription   = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                   = "prod"
 
 cdn_sku    = "Standard_Verizon"
@@ -379,6 +380,41 @@ frontends = [
         operator       = "Equals"
         selector       = "otherReasonForAppealing"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reasonForNoMRN"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reasonForBeingLate"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "nino"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "signer"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "selection.signLanguage.language"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "selection.anythingElse.language"
+      }
     ]
   },
   {
@@ -473,6 +509,31 @@ frontends = [
         operator       = "Equals"
         selector       = "iss"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "question-field"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "describeTheEvidence"
+      }
     ]
   },
   {
@@ -811,7 +872,17 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "_sm_au"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "ssm_au"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "ssm_au_c"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -874,7 +945,17 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "_sm_au"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_sm_au_c"
       },
       {
         match_variable = "RequestCookieNames"
@@ -950,6 +1031,26 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "case.deceasedSurname"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.divorceCaseNumber"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.deceasedForenames"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.D8PetitionerEmail"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.ethosCaseReference"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -1069,11 +1170,139 @@ frontends = [
   {
     product          = "fees"
     name             = "fees-register"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "fees-register.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "fees-register-platform-hmcts-net"
     www_redirect     = true
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestUri"
+            operator           = "EndsWith"
+            negation_condition = false
+            match_values = [
+              "/fees"
+            ]
+          },
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "81.134.202.29/32",
+              "51.145.6.230/32",
+              "194.33.192.0/25",
+              "194.33.193.0/25",
+              "194.33.196.0/25",
+              "194.33.197.0/25",
+              "52.210.206.51/32",
+              "62.25.109.201/32",
+              "62.25.109.203/32",
+              "51.143.139.240/32",
+              "51.145.4.100/32"
+            ]
+          }
+        ]
+      },
+    ],
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__redirect"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "DecodedUrl"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "QueryParamName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "DecodedPath"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "PostParamName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "expression"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "GroupName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "NFuse_Application"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "banner_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "callback"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reply_message_template"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "name"
+      },
+      {
+        match_variable = "RequestHeaderNames"
+        operator       = "Equals"
+        selector       = "User-Agent"
+      },
+      {
+        match_variable = "RequestHeaderNames"
+        operator       = "Equals"
+        selector       = "content-type"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "csvFees"
+      },
+    ]
   },
   {
     product          = "fees"
@@ -1123,6 +1352,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "DecodedUrl"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__pcipal-info"
       },
     ]
   },
@@ -1312,6 +1546,14 @@ frontends = [
     certificate_name = "find-court-tribunal-service-gov-uk"
   },
   {
+    product          = "fact-redirect"
+    name             = "fact-redirect"
+    mode             = "Detection"
+    custom_domain    = "courttribunalfinder.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "find-court-tribunal-service-gov-uk"
+  },
+  {
     product          = "jui"
     name             = "jui-redirect"
     mode             = "Detection"
@@ -1351,6 +1593,7 @@ frontends = [
             operator           = "IPMatch"
             negation_condition = true
             match_values = [
+              "51.145.34.88/32",
               "81.134.202.29/32",
               "51.145.6.230/32",
               "51.145.4.100/32",

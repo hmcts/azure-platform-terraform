@@ -1,14 +1,13 @@
 locals {
-  vnet_rg   = "aks-infra-${var.env}-rg"
-  vnet_name = "core-${var.env}-vnet"
+  env = (var.env == "aat") ? "stg" : "${(var.env == "perftest") ? "test" : "${var.env}"}"
 
   criticality = {
     sbox     = "Low"
     aat      = "High"
     prod     = "High"
     ithc     = "Medium"
-    ldata    = "Medium"
     perftest = "Medium"
+    ldata    = "Medium"
     demo     = "Medium"
   }
 
@@ -17,12 +16,12 @@ locals {
     aat      = "Staging"
     prod     = "Production"
     ithc     = "ITHC"
-    ldata    = "LDATA"
     perftest = "Test"
+    ldata    = "LDATA"
     demo     = "Demo"
   }
 
-  tags = {
+  common_tags = {
     "managedBy"          = "Platform Engineering"
     "solutionOwner"      = "CFT"
     "activityName"       = "AKS"
@@ -32,18 +31,9 @@ locals {
     "environment"        = local.env_display_names[var.env]
     "criticality"        = local.criticality[var.env]
   }
-}
 
-data "azurerm_subnet" "app_gw" {
-  name                 = "aks-appgw"
-  resource_group_name  = local.vnet_rg
-  virtual_network_name = local.vnet_name
-}
+  vnet_rg   = "aks-infra-${var.env}-rg"
+  vnet_name = "core-${var.env}-vnet"
 
-resource "azurerm_public_ip" "app_gw" {
-  name                = "aks-appgw-${var.env}-pip"
-  location            = var.location
-  resource_group_name = local.vnet_rg
-  sku                 = "Standard"
-  allocation_method   = "Static"
+  key_vault_resource_group = var.env == "perftest" || var.env == "aat" ? "core-infra-${var.subscription}-rg" : "core-infra-${var.env}-rg"
 }

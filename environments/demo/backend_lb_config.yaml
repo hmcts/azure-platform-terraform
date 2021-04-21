@@ -5,6 +5,7 @@ gateways:
       host_name_suffix: service.core-compute-demo.internal
       ssl_host_name_suffix: demo.platform.hmcts.net
       certificate_name: wildcard-demo-platform-hmcts-net
+      private_ip_address: 10.51.32.121
     app_configuration:
     # RPE
       - product: draft-store
@@ -72,6 +73,10 @@ gateways:
       - product: ia
         component: case-notifications-api
       - product: ia
+        component: home-office-integration-api
+      - product: ia
+        component: home-office-mock-api
+      - product: ia
         component: case-payments-api
       - product: ia
         component: timed-event-service
@@ -105,10 +110,16 @@ gateways:
         component: case-activity-api
       - product: ccd
         component: message-publisher
+      - product: ccd
+        component: case-document-am-api
 
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
+
+    # CPO (CDM)
+      - product: cpo
+        component: case-payment-orders-api
 
     # Probate
       - product: probate
@@ -160,6 +171,10 @@ gateways:
         component: showcase
       - product: em
         component: icp
+      - product: em
+        component: hrs-api
+      - product: em
+        component: hrs-ingestor
       - product: dg
         component: docassembly
       - product: dm
@@ -201,9 +216,7 @@ gateways:
 
       # NFDIV
       - product: nfdiv
-        component: cos
-      - product: nfdiv
-        component: cms
+        component: case-api
 
      # rse
       - product: rse
@@ -211,6 +224,8 @@ gateways:
 
      # Unspec
       - product: unspec
+        component: service
+      - product: civil-damages
         component: service
 
      # WA
@@ -220,8 +235,16 @@ gateways:
         component: task-management-api
       - product: wa
         component: task-configuration-api
-    
+
     # SIDAM
       - product: idam
         component: api
         ssl_enabled: true
+
+    # Docmosis
+      - product: dg
+        component: docmosis
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+        host_name_prefix: docmosis
+        http_to_https_redirect: true

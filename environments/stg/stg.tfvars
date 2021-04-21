@@ -6,8 +6,9 @@ ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-stg"
 certificate_name_check     = false
 
-app_gw_private_ip_address = "10.10.24.121"
+app_gw_private_ip_address = ["10.10.24.121", "10.10.24.125"]
 data_subscription         = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
+privatedns_subscription   = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                   = "nonprod"
 
 shutter_storage = "TODO"
@@ -21,7 +22,7 @@ shutter_apps = [
 ]
 
 cft_apps_ag_ip_address = "10.10.24.123"
-cft_apps_cluster_ips   = ["10.10.19.250"]
+cft_apps_cluster_ips   = ["10.10.19.250", "10.10.23.250"]
 
 frontends = [
   {
@@ -181,6 +182,41 @@ frontends = [
         operator       = "Equals"
         selector       = "iss"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reasonForNoMRN"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reasonForBeingLate"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "nino"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "signer"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "selection.signLanguage.language"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "selection.anythingElse.language"
+      }
     ]
   },
   {
@@ -200,6 +236,31 @@ frontends = [
         operator       = "Equals"
         selector       = "iss"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "question-field"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "describeTheEvidence"
+      }
     ]
   },
   {
@@ -502,9 +563,137 @@ frontends = [
   {
     name             = "fees-register"
     custom_domain    = "fees-register.aat.platform.hmcts.net"
-    mode             = "Detection"
+    mode             = "Prevention"
     backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestUri"
+            operator           = "EndsWith"
+            negation_condition = false
+            match_values = [
+              "/fees"
+            ]
+          },
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "81.134.202.29/32",
+              "51.145.6.230/32",
+              "194.33.192.0/25",
+              "194.33.193.0/25",
+              "194.33.196.0/25",
+              "194.33.197.0/25",
+              "52.210.206.51/32",
+              "62.25.109.201/32",
+              "62.25.109.203/32",
+              "51.143.139.240/32",
+              "51.145.4.100/32"
+            ]
+          }
+        ]
+      },
+    ],
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__redirect"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "DecodedUrl"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "QueryParamName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "DecodedPath"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "PostParamName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "expression"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "GroupName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "NFuse_Application"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "banner_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "callback"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reply_message_template"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "name"
+      },
+      {
+        match_variable = "RequestHeaderNames"
+        operator       = "Equals"
+        selector       = "User-Agent"
+      },
+      {
+        match_variable = "RequestHeaderNames"
+        operator       = "Equals"
+        selector       = "content-type"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "csvFees"
+      },
+    ]
   },
   {
     name                        = "idam-web-admin"
@@ -524,7 +713,12 @@ frontends = [
             operator           = "IPMatch"
             negation_condition = true
             match_values = [
+              "20.50.109.148/32",
+              "20.50.108.242/32",
+              "51.11.124.216/32",
+              "51.11.124.205/32",
               "81.134.202.29/32",
+              "51.104.22.147/32",
               "51.145.6.230/32",
               "51.145.4.100/32",
               "194.33.192.0/25",
@@ -631,26 +825,26 @@ frontends = [
     ]
   },
   {
-    name                        = "reformscan"
-    custom_domain               = "reformscan.aat.platform.hmcts.net"
-    host_header                 = "reformscanaat.blob.core.windows.net"
-    backend_domain              = ["firewall-prod-int-palo-reformscanaat.uksouth.cloudapp.azure.com"]
-    certificate_name            =  "wildcard-aat-platform-hmcts-net"
-    forwarding_protocol         = "MatchRequest"
-    health_path                 = "/"
-    health_protocol             = "Https"
-    cache_enabled               = "false"
+    name                = "reformscan"
+    custom_domain       = "reformscan.aat.platform.hmcts.net"
+    host_header         = "reformscanaat.blob.core.windows.net"
+    backend_domain      = ["firewall-prod-int-palo-reformscanaat.uksouth.cloudapp.azure.com"]
+    certificate_name    = "wildcard-aat-platform-hmcts-net"
+    forwarding_protocol = "MatchRequest"
+    health_path         = "/"
+    health_protocol     = "Https"
+    cache_enabled       = "false"
   },
   {
-    name                        = "reformscanstg"
-    custom_domain               = "reformscanstg.aat.platform.hmcts.net"
-    host_header                 = "reformscanaatstaging.blob.core.windows.net"
-    backend_domain              = ["firewall-prod-int-palo-reformscanaatstg.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-aat-platform-hmcts-net"
-    forwarding_protocol         = "MatchRequest"
-    health_path                 = "/"
-    health_protocol             = "Https"
-    cache_enabled               = "false"
+    name                = "reformscanstg"
+    custom_domain       = "reformscanstg.aat.platform.hmcts.net"
+    host_header         = "reformscanaatstaging.blob.core.windows.net"
+    backend_domain      = ["firewall-prod-int-palo-reformscanaatstg.uksouth.cloudapp.azure.com"]
+    certificate_name    = "wildcard-aat-platform-hmcts-net"
+    forwarding_protocol = "MatchRequest"
+    health_path         = "/"
+    health_protocol     = "Https"
+    cache_enabled       = "false"
   },
   {
     name             = "hmi-apim"

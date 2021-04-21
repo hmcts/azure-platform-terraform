@@ -5,8 +5,9 @@ subscription               = "sbox"
 ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-sbox"
 
-app_gw_private_ip_address = "10.10.7.122"
+app_gw_private_ip_address = ["10.10.7.122", "10.10.7.132"]
 data_subscription         = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
+privatedns_subscription   = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
 oms_env                   = "sandbox"
 
 cdn_sku    = "Standard_Verizon"
@@ -17,11 +18,11 @@ cft_apps_cluster_ips   = ["10.10.1.250", "10.10.3.250"]
 
 frontends = [
   {
-    product                     = "idam"
-    name                        = "idam-sprod-web-public"
-    custom_domain               = "idam-web-public-sprod.sandbox.platform.hmcts.net"
-    backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name            = "STAR-sandbox-platform-hmcts-net"
+    product          = "idam"
+    name             = "idam-sprod-web-public"
+    custom_domain    = "idam-web-public-sprod.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "STAR-sandbox-platform-hmcts-net"
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -156,11 +157,11 @@ frontends = [
     ]
   },
   {
-    product                     = "idam"
-    name                        = "idam-web-public"
-    custom_domain               = "idam-web-public.sandbox.platform.hmcts.net"
-    backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name            = "STAR-sandbox-platform-hmcts-net"
+    product          = "idam"
+    name             = "idam-web-public"
+    custom_domain    = "idam-web-public.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "STAR-sandbox-platform-hmcts-net"
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -313,13 +314,19 @@ frontends = [
             operator           = "IPMatch"
             negation_condition = true
             match_values = [
+              "52.151.96.225/32",
               "81.134.202.29/32",
               "51.145.6.230/32",
+              "51.145.4.100/32",
               "194.33.192.0/25",
               "194.33.196.0/25",
               "52.210.206.51/32",
               "62.25.109.201/32",
-              "62.25.109.203/32"
+              "62.25.109.203/32",
+              "20.39.162.203/32",
+              "20.39.161.231/32",
+              "20.49.137.7/32",
+              "20.49.137.196/32"
             ]
           }
         ]
@@ -419,20 +426,20 @@ frontends = [
     ]
   },
   {
-    product                     = "plum"
-    name                        = "plum"
-    custom_domain               = "plum.sandbox.platform.hmcts.net"
-    backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name            = "STAR-sandbox-platform-hmcts-net"
-    disabled_rules              = {}
+    product          = "plum"
+    name             = "plum"
+    custom_domain    = "plum.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "STAR-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
   },
   {
-    product                     = "hmi"
-    name                        = "hmi-apim"
-    custom_domain               = "hmi-apim.sandbox.platform.hmcts.net"
-    backend_domain              = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
-    certificate_name            = "STAR-sandbox-platform-hmcts-net"
-    cache_enabled               = "false"
+    product          = "hmi"
+    name             = "hmi-apim"
+    custom_domain    = "hmi-apim.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "STAR-sandbox-platform-hmcts-net"
+    cache_enabled    = "false"
   },
   {
     product                     = "reform"

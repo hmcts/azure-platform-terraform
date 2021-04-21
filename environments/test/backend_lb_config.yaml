@@ -5,6 +5,7 @@ gateways:
       host_name_suffix: service.core-compute-perftest.internal
       ssl_host_name_suffix: perftest.platform.hmcts.net
       certificate_name: wildcard-perftest-platform-hmcts-net
+      private_ip_address: 10.61.32.121
     app_configuration:
     # RPE
       - product: draft-store
@@ -33,6 +34,10 @@ gateways:
         component: showcase
       - product: em
         component: ccd-orchestrator
+      - product: em
+        component: hrs-api
+      - product: em
+        component: hrs-ingestor
       - product: dg
         component: docassembly
       - product: dm
@@ -194,9 +199,7 @@ gateways:
 
     # NFDIV
       - product: nfdiv
-        component: cos
-      - product: nfdiv
-        component: cms
+        component: case-api
 
     # Access Management
       - product: am
@@ -217,3 +220,27 @@ gateways:
       - product: idam
         component: keycloak
         health_path_override: /auth/realms/master
+
+    # Docmosis
+      - product: dg
+        component: docmosis
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+        host_name_prefix: docmosis
+        http_to_https_redirect: true
+
+    # WA - Work Allocation
+      - product: wa
+        component: workflow-api
+      - product: wa
+        component: task-management-api
+      - product: wa
+        component: task-configuration-api
+      - product: wa
+        component: case-event-handler
+
+    # Unspec
+      - product: unspec
+        component: service
+      - product: civil-damages
+        component: service

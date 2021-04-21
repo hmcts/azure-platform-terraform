@@ -5,6 +5,7 @@ gateways:
       host_name_suffix: service.core-compute-prod.internal
       ssl_host_name_suffix: platform.hmcts.net
       certificate_name: wildcard-platform-hmcts-net
+      private_ip_address: 10.13.32.120
     app_configuration:
     # RPE
       - product: draft-store
@@ -89,6 +90,10 @@ gateways:
         component: ccd-orchestrator
       - product: em
         component: icp
+      - product: em
+        component: hrs-api
+      - product: em
+        component: hrs-ingestor
       - product: dg
         component: docassembly
       - product: dm
@@ -158,6 +163,14 @@ gateways:
         component: judicial-api
       - product: rd
         component: location-ref-api
+      - product: rd
+        component: caseworker-ref-api
+
+    # Access Management
+      - product: am
+        component: role-assignment-service
+      - product: am
+        component: org-role-mapping-service
 
     # Bulk scan and print
       - product: bulk-scan
@@ -199,3 +212,10 @@ gateways:
  # FACT
       - product: fact
         component: api
+
+      # Docmosis
+      - product: dg
+        component: docmosis
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+        host_name_prefix: docmosis

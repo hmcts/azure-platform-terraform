@@ -14,6 +14,12 @@ variable "project" {
   default = "hmcts"
 }
 
+variable "product" {
+}
+
+variable "builtFrom" {
+}
+
 variable "shutter_rg" {
   default = "TODO"
 }

@@ -18,6 +18,7 @@ variables:
   build: $(Build.BuildNumber)
   isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
   action:
+  product: 'cft-platform'
 
 parameters:
   - name: environment_components
@@ -312,3 +313,4 @@ stages:
               vmImage: ${{ variables.agentPool }}
             files_list: ${{ deployment.files_list }}
             alwaysApply: ${{ deployment.alwaysApply }}
+            product: $(product)

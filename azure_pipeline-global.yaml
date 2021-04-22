@@ -27,7 +27,8 @@ variables:
   timeoutInMinutes: 300
   isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
   action:
-
+  product: 'cft-platform'
+  
 parameters:
   - name: environment_components
     type: object
@@ -169,3 +170,4 @@ stages:
             pool: ${{ variables.agentPool }}
             files_list: ${{ deployment.files_list }}
             alwaysApply: ${{ deployment.alwaysApply }}
+            product: $(product)

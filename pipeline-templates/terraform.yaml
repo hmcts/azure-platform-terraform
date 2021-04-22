@@ -38,7 +38,7 @@
         displayName: Plan - ${{ parameters.environment }} - ${{ parameters.component }}
         inputs:
           command: 'plan'
-          commandOptions: '-out=${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan -var-file=$(System.DefaultWorkingDirectory)/environments/${{ parameters.environment }}/${{ parameters.environment }}.tfvars'
+          commandOptions: '-out=${{ parameters.environment }}${{ parameters.component }}${{ parameters.build }}plan -var builtFrom=$(Build.Repository.Name) -var product=${{ parameters.product }} -var-file=$(System.DefaultWorkingDirectory)/environments/${{ parameters.environment }}/${{ parameters.environment }}.tfvars'
           workingDirectory: '$(System.DefaultWorkingDirectory)/components/${{ parameters.component }}'
           environmentServiceName: '${{ parameters.service_connection }}'
         env:

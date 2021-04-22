@@ -15,7 +15,9 @@ variable "project" {
 }
 
 variable "product" {
-  default = "cft"
+}
+
+variable "builtFrom" {
 }
 
 variable "shutter_rg" {

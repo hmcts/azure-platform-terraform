@@ -54,16 +54,6 @@ parameters:
       files_list: 'components/shutter modules/shutter_page environments/sbox/sbox.tfvars environments/variables.tf'
       alwaysApply: false
 
-    - deployment: 'sbox_compliance'
-      environment: 'sbox'
-      component: 'compliance'
-      service_connection: 'dcd-cftapps-sbox'
-      storage_account_rg: 'core-infra-sbox-rg'
-      storage_account_name: 'cftappssbox'
-      dependsOn: 'Precheck'
-      files_list: 'components/compliance modules/standards environments/sbox/sbox.tfvars environments/variables.tf'
-      alwaysApply: false
-
     - deployment: 'sbox_private_dns'
       environment: 'sbox'
       component: 'cftapps_private_dns'

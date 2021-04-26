@@ -1551,7 +1551,7 @@ frontends = [
     mode             = "Detection"
     custom_domain    = "courttribunalfinder.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "find-court-tribunal-service-gov-uk"
+    certificate_name = "courttribunalfinder-service-gov-uk"
   },
   {
     product          = "jui"

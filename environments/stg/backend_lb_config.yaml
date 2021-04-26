@@ -49,6 +49,8 @@ gateways:
         component: timed-event-service
       - product: ia
         component: case-payments-api
+      - product: ia
+        component: case-access-api
 
     # Protected Characteristics Questions
       - product: pcq

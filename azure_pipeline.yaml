@@ -304,8 +304,12 @@ stages:
     - stage: ${{ deployment.deployment }}
       dependsOn: ${{ deployment.dependsOn }}
       jobs:
+        - job: Validate
+          timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+          pool:
+            vmImage: ${{ variables.agentPool }}      
         # - template: pipeline-templates/terraform.yaml
-        - template: steps/terraform.yaml@cnp-library       
+          template: steps/terraform.yaml@cnp-library       
           parameters:
             action: ${{ parameters.terraform_action }}
             environment: ${{ deployment.environment }}
@@ -316,8 +320,6 @@ stages:
             build: ${{ variables.build }}
             terraformVersion: ${{ variables.terraformVersion }}
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-            pool:
-              vmImage: ${{ variables.agentPool }}
             files_list: ${{ deployment.files_list }}
             alwaysApply: ${{ deployment.alwaysApply }}
             product: $(product)

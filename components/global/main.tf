@@ -1,11 +1,6 @@
 module "landing_zone" {
   source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=master"
 
-  providers = {
-    azurerm      = azurerm
-    azurerm.data = azurerm.data
-  }
-
   common_tags                = module.ctags.common_tags
   env                        = var.env
   subscription               = var.subscription

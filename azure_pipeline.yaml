@@ -11,6 +11,14 @@ trigger:
     - /modules/azure-landing-zone/*
     - /components/global/*
 
+resources:
+  repositories:
+  - repository: cnp-library
+    type: github
+    ref: refs/heads/DTSPO-1188/ado-templates
+    name: hmcts/cnp-azuredevops-libraries
+    endpoint: 'hmcts' 
+
 variables:
   terraformVersion: 0.15.0
   timeoutInMinutes: 60
@@ -21,6 +29,13 @@ variables:
   product: 'cft-platform'
 
 parameters:
+  - name: terraform_action
+    type: string
+    default: plan
+    values:
+    - plan
+    - apply
+
   - name: environment_components
     type: object
     default:
@@ -289,8 +304,10 @@ stages:
     - stage: ${{ deployment.deployment }}
       dependsOn: ${{ deployment.dependsOn }}
       jobs:
-        - template: pipeline-templates/terraform.yaml
+        # - template: pipeline-templates/terraform.yaml
+        - template: steps/tasks/terraform.yaml@cnp-library       
           parameters:
+            action: ${{ parameters.terraform_action }}
             environment: ${{ deployment.environment }}
             component: ${{ deployment.component }}
             service_connection: ${{ deployment.service_connection }}

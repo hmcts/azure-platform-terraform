@@ -307,19 +307,19 @@ stages:
         - job: TerraformPlanAndApply
           timeoutInMinutes: ${{ variables.timeoutInMinutes }}
           pool:
-            vmImage: ${{ variables.agentPool }}      
-        # - template: pipeline-templates/terraform.yaml
-          template: steps/terraform.yaml@cnp-library       
-          parameters:
-            action: ${{ parameters.terraform_action }}
-            environment: ${{ deployment.environment }}
-            component: ${{ deployment.component }}
-            service_connection: ${{ deployment.service_connection }}
-            storage_account_rg: ${{ deployment.storage_account_rg }}
-            storage_account_name: ${{ deployment.storage_account_name }}
-            build: ${{ variables.build }}
-            terraformVersion: ${{ variables.terraformVersion }}
-            timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-            files_list: ${{ deployment.files_list }}
-            alwaysApply: ${{ deployment.alwaysApply }}
-            product: $(product)
+            vmImage: ${{ variables.agentPool }}
+          steps:      
+            - template: steps/terraform.yaml@cnp-library       
+              parameters:
+                action: ${{ parameters.terraform_action }}
+                environment: ${{ deployment.environment }}
+                component: ${{ deployment.component }}
+                service_connection: ${{ deployment.service_connection }}
+                storage_account_rg: ${{ deployment.storage_account_rg }}
+                storage_account_name: ${{ deployment.storage_account_name }}
+                build: ${{ variables.build }}
+                terraformVersion: ${{ variables.terraformVersion }}
+                timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+                files_list: ${{ deployment.files_list }}
+                alwaysApply: ${{ deployment.alwaysApply }}
+                product: $(product)

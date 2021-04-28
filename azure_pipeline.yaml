@@ -304,7 +304,7 @@ stages:
     - stage: ${{ deployment.deployment }}
       dependsOn: ${{ deployment.dependsOn }}
       jobs:
-        - job: Validate
+        - job: TerraformPlanAndApply
           timeoutInMinutes: ${{ variables.timeoutInMinutes }}
           pool:
             vmImage: ${{ variables.agentPool }}      

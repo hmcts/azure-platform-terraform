@@ -24,7 +24,7 @@ variables:
   timeoutInMinutes: 60
   agentPool: 'ubuntu-18.04'
   build: $(Build.BuildNumber)
-  isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
+  #isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
   action:
   product: 'cft-platform'
 
@@ -257,7 +257,7 @@ parameters:
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_private_dns environments/prod/backend_lb_config.yaml environments/prod/prod.tfvars environments/variables.tf'
-      alwaysApply: false
+      alwaysApply: falseÍ
 
 
 stages:
@@ -311,9 +311,9 @@ stages:
           steps:      
             - template: steps/terraform.yaml@cnp-library       
               parameters:
-                action: ${{ parameters.terraform_action }}
+                overrideAction: ${{ parameters.terraform_action }}
                 environment: ${{ deployment.environment }}
-                component: ${{ deployment.component }}
+                stack: ${{ deployment.component }}
                 service_connection: ${{ deployment.service_connection }}
                 storage_account_rg: ${{ deployment.storage_account_rg }}
                 storage_account_name: ${{ deployment.storage_account_name }}

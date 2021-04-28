@@ -305,7 +305,7 @@ stages:
       dependsOn: ${{ deployment.dependsOn }}
       jobs:
         # - template: pipeline-templates/terraform.yaml
-        - template: steps/tasks/terraform.yaml@cnp-library       
+        - template: tasks/terraform.yaml@cnp-library       
           parameters:
             action: ${{ parameters.terraform_action }}
             environment: ${{ deployment.environment }}

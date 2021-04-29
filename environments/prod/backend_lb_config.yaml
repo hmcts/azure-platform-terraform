@@ -213,9 +213,19 @@ gateways:
       - product: fact
         component: api
 
-      # Docmosis
+ # Docmosis
       - product: dg
         component: docmosis
         cookie_based_affinity: Enabled
         ssl_enabled: true
         host_name_prefix: docmosis
+        
+ # WA - Work Allocation
+      - product: wa
+        component: workflow-api
+      - product: wa
+        component: task-management-api
+      - product: wa
+        component: task-configuration-api
+      - product: wa
+        component: case-event-handler

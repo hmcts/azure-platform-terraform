@@ -5,7 +5,7 @@ gateways:
       host_name_suffix: service.core-compute-aat.internal
       ssl_host_name_suffix: aat.platform.hmcts.net
       certificate_name: wildcard-aat-platform-hmcts-net
-      private_ip_address: 10.10.24.121
+      private_ip_address: 10.10.32.121
     app_configuration:
     # RPE
       - product: draft-store
@@ -283,7 +283,7 @@ gateways:
       host_name_suffix: service.core-compute-aat.internal
       ssl_host_name_suffix: aat.platform.hmcts.net
       certificate_name: wildcard-aat-platform-hmcts-net
-      private_ip_address: 10.10.24.125
+      private_ip_address: 10.10.32.125
     app_configuration:
     # WA - Work Allocation
       - product: wa

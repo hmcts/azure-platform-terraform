@@ -30,12 +30,13 @@ variables:
   product: 'cft-platform'
 
 parameters:
-  - name: terraform_action
+  - name: overrideAction
     type: string
     default: plan
     values:
     - plan
     - apply
+    - destroy
 
   - name: environment_components
     type: object
@@ -310,9 +311,9 @@ stages:
           pool:
             vmImage: ${{ variables.agentPool }}
           steps:      
-            - template: steps/terraform.yaml@cnp-library       
+            - template: steps/terraform.yaml@cnp-library
               parameters:
-                overrideAction: ${{ parameters.terraform_action }}
+                overrideAction: ${{ parameters.overrideAction }}
                 environment: ${{ deployment.environment }}
                 stack: ${{ deployment.component }}
                 service_connection: ${{ deployment.service_connection }}

@@ -24,6 +24,7 @@ variables:
   timeoutInMinutes: 60
   agentPool: 'ubuntu-18.04'
   build: $(Build.BuildNumber)
+  template: vars/input-variables.yaml@cnp-library
   #isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
   action:
   product: 'cft-platform'
@@ -320,6 +321,5 @@ stages:
                 build: ${{ variables.build }}
                 terraformVersion: ${{ variables.terraformVersion }}
                 timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-                files_list: ${{ deployment.files_list }}
                 alwaysApply: ${{ deployment.alwaysApply }}
                 product: $(product)

@@ -320,7 +320,7 @@ stages:
                 storage_account_rg: ${{ deployment.storage_account_rg }}
                 storage_account_name: ${{ deployment.storage_account_name }}
                 build: ${{ variables.build }}
-                terraformVersion: ${{ variables.terraformVersion }}
+                tfversion: ${{ variables.terraformVersion }}
                 timeoutInMinutes: ${{ variables.timeoutInMinutes }}
                 alwaysApply: ${{ deployment.alwaysApply }}
                 product: $(product)

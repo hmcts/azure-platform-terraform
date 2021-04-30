@@ -316,7 +316,7 @@ stages:
                 overrideAction: ${{ parameters.overrideAction }}
                 environment: ${{ deployment.environment }}
                 stack: ${{ deployment.component }}
-                service_connection: ${{ deployment.service_connection }}
+                serviceConnection: ${{ deployment.service_connection }}
                 storage_account_rg: ${{ deployment.storage_account_rg }}
                 storage_account_name: ${{ deployment.storage_account_name }}
                 build: ${{ variables.build }}
@@ -324,3 +324,4 @@ stages:
                 timeoutInMinutes: ${{ variables.timeoutInMinutes }}
                 alwaysApply: ${{ deployment.alwaysApply }}
                 product: $(product)
+                project: $(project)

@@ -27,7 +27,9 @@ variables:
   template: vars/input-variables.yaml@cnp-library
   #isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
   action:
+  precheckServiceConnection: 'azurerm-sandbox'
   product: 'cft-platform'
+  project: 'cft'
 
 parameters:
   - name: overrideAction
@@ -265,42 +267,12 @@ parameters:
 stages:
   - stage: Precheck
     jobs:
-      - job: Validate
-        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-        pool:
-          vmImage: ${{ variables.agentPool }}
-        steps:
-        - task: TerraformInstaller@0
-          displayName: Terraform install
-          inputs:
-            terraformVersion: ${{ variables.terraformVersion }}
-        - task: AzureKeyVault@1
-          displayName: Retrieve keyvault secret for ADO token
-          inputs:
-            ConnectedServiceName: azurerm-sandbox
-            keyVaultName: infra-vault-nonprod
-            secretsFilter: 'azure-devops-token'
-            runAsPreJob: false
-        - task: Bash@3
-          displayName: Prevent parallel run
-          env:
-            thisbuild: $(Build.BuildId)
-            pipelinedefinition: $(System.DefinitionId)
-            azuredevopstoken: $(azure-devops-token)
-          inputs:
-            filePath: pipeline-scripts/builds-check.sh
-        - task: PowerShell@2
-          displayName: Run tests
-          inputs:
-            targetType: 'filePath'
-            filePath: $(System.DefaultWorkingDirectory)/pipeline-scripts/pester-tests.ps1
-            pwsh: true
-        - task: PublishTestResults@2
-          displayName: 'Publish Test Results **/TEST-*.xml'
-          inputs:
-            testResultsFormat: NUnit
-            failTaskOnFailedTests: true
-          condition: always()
+      - template: steps/terraform-precheck.yaml@cnp-library
+        parameters:
+          location: ${{ parameters.location }}
+          serviceConnection: ${{ variables.precheckServiceConnection }}
+          tfVersion: ${{ variables.terraformVersion }}
+          timeoutInMinutes: ${{ variables.timeoutInMinutes }}
 
   - ${{ each deployment in parameters.environment_components }}:
     - stage: ${{ deployment.deployment }}
@@ -317,8 +289,8 @@ stages:
                 environment: ${{ deployment.environment }}
                 stack: ${{ deployment.component }}
                 serviceConnection: ${{ deployment.service_connection }}
-                storage_account_rg: ${{ deployment.storage_account_rg }}
-                storage_account_name: ${{ deployment.storage_account_name }}
+                # storage_account_rg: ${{ deployment.storage_account_rg }}
+                # storage_account_name: ${{ deployment.storage_account_name }}
                 build: ${{ variables.build }}
                 tfversion: ${{ variables.terraformVersion }}
                 timeoutInMinutes: ${{ variables.timeoutInMinutes }}

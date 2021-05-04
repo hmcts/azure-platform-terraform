@@ -28,7 +28,7 @@ variables:
   action:
   precheckServiceConnection: 'azurerm-sandbox'
   precheckKeyvaultName: 'infra-vault-nonprod'
-  prechecKeyvaultSecret: 'azure-devops-token'
+  precheckKeyvaultSecret: 'azure-devops-token'
   product: 'azure-platform'
   project: 'cft'
 

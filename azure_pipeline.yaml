@@ -277,22 +277,17 @@ stages:
     - stage: ${{ deployment.deployment }}
       dependsOn: ${{ deployment.dependsOn }}
       jobs:
-        - job: TerraformPlanAndApply
-          timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-          pool:
-            vmImage: ${{ variables.agentPool }}
-          steps:      
-            - template: steps/terraform.yaml@ado-library
-              parameters:
-                overrideAction: ${{ parameters.overrideAction }}
-                environment: ${{ deployment.environment }}
-                stack: ${{ deployment.component }}
-                serviceConnection: ${{ deployment.service_connection }}
-                # storage_account_rg: ${{ deployment.storage_account_rg }}
-                # storage_account_name: ${{ deployment.storage_account_name }}
-                build: ${{ variables.build }}
-                tfversion: ${{ variables.terraformVersion }}
-                timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-                alwaysApply: ${{ deployment.alwaysApply }}
-                product: $(product)
-                project: $(project)
+        - template: steps/terraform.yaml@ado-library
+          parameters:
+            overrideAction: ${{ parameters.overrideAction }}
+            environment: ${{ deployment.environment }}
+            stack: ${{ deployment.component }}
+            serviceConnection: ${{ deployment.service_connection }}
+            # storage_account_rg: ${{ deployment.storage_account_rg }}
+            # storage_account_name: ${{ deployment.storage_account_name }}
+            build: ${{ variables.build }}
+            tfversion: ${{ variables.terraformVersion }}
+            timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+            alwaysApply: ${{ deployment.alwaysApply }}
+            product: $(product)
+            project: $(project)

@@ -637,7 +637,7 @@ frontends = [
   },
   {
     name             = "sscs-cor"
-    mode             = "Prevention"
+    mode             = "Detection"
     custom_domain    = "sscs-cor.ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"

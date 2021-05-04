@@ -25,9 +25,10 @@ variables:
   agentPool: 'ubuntu-18.04'
   build: $(Build.BuildNumber)
   template: vars/input-variables.yaml@cnp-azuredevops-libraries
-  #isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
   action:
   precheckServiceConnection: 'azurerm-sandbox'
+  precheckKeyvaultName: 'infra-vault-nonprod'
+  prechecKeyvaultSecret: 'azure-devops-token'
   product: 'azure-platform'
   project: 'cft'
 
@@ -269,6 +270,8 @@ stages:
     jobs:
       - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
         parameters:
+          keyvaultName: ${{ variables.precheckKeyvaultName }}
+          keyvaultSecret: ${{ variables.precheckKeyvaultSecret }}
           serviceConnection: ${{ variables.precheckServiceConnection }}
           tfVersion: ${{ variables.terraformVersion }}
           timeoutInMinutes: ${{ variables.timeoutInMinutes }}

@@ -269,7 +269,6 @@ stages:
     jobs:
       - template: steps/terraform-precheck.yaml@ado-library
         parameters:
-          location: ${{ parameters.location }}
           serviceConnection: ${{ variables.precheckServiceConnection }}
           tfVersion: ${{ variables.terraformVersion }}
           timeoutInMinutes: ${{ variables.timeoutInMinutes }}

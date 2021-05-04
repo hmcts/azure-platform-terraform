@@ -289,5 +289,5 @@ stages:
             tfversion: ${{ variables.terraformVersion }}
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
             # alwaysApply: ${{ deployment.alwaysApply }}
-            product: $(product)
-            project: $(project)
+            product: ${{ variables.product }}
+            project: ${{ variables.project }}

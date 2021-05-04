@@ -13,7 +13,7 @@ trigger:
 
 resources:
   repositories:
-  - repository: ado-library
+  - repository: cnp-azuredevops-libraries
     type: github
     ref: refs/heads/DTSPO-1188/ado-templates
     name: hmcts/cnp-azuredevops-libraries
@@ -24,7 +24,7 @@ variables:
   timeoutInMinutes: 60
   agentPool: 'ubuntu-18.04'
   build: $(Build.BuildNumber)
-  template: vars/input-variables.yaml@ado-library
+  template: vars/input-variables.yaml@cnp-azuredevops-libraries
   #isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
   action:
   precheckServiceConnection: 'azurerm-sandbox'
@@ -267,7 +267,7 @@ parameters:
 stages:
   - stage: Precheck
     jobs:
-      - template: steps/terraform-precheck.yaml@ado-library
+      - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
         parameters:
           serviceConnection: ${{ variables.precheckServiceConnection }}
           tfVersion: ${{ variables.terraformVersion }}
@@ -277,7 +277,7 @@ stages:
     - stage: ${{ deployment.deployment }}
       dependsOn: ${{ deployment.dependsOn }}
       jobs:
-        - template: steps/terraform.yaml@ado-library
+        - template: steps/terraform.yaml@cnp-azuredevops-libraries
           parameters:
             overrideAction: ${{ parameters.overrideAction }}
             environment: ${{ deployment.environment }}

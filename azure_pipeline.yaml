@@ -28,7 +28,7 @@ variables:
   #isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
   action:
   precheckServiceConnection: 'azurerm-sandbox'
-  product: 'cft-platform'
+  product: 'azure-platform'
   project: 'cft'
 
 parameters:

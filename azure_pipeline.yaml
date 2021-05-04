@@ -31,6 +31,7 @@ variables:
   precheckKeyvaultSecret: 'azure-devops-token'
   product: 'azure-platform'
   project: 'cft'
+  tfInitSub: "04d27a32-7a07-48b3-95b8-3c8691e1a263"
 
 parameters:
   - name: overrideAction
@@ -291,6 +292,7 @@ stages:
             # build: ${{ variables.build }}
             tfversion: ${{ variables.terraformVersion }}
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+            tfInitSub: ${{ variables.tfInitSub }}
             # alwaysApply: ${{ deployment.alwaysApply }}
             product: ${{ variables.product }}
             project: ${{ variables.project }}

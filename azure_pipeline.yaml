@@ -285,9 +285,9 @@ stages:
             serviceConnection: ${{ deployment.service_connection }}
             # storage_account_rg: ${{ deployment.storage_account_rg }}
             # storage_account_name: ${{ deployment.storage_account_name }}
-            build: ${{ variables.build }}
+            # build: ${{ variables.build }}
             tfversion: ${{ variables.terraformVersion }}
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-            alwaysApply: ${{ deployment.alwaysApply }}
+            # alwaysApply: ${{ deployment.alwaysApply }}
             product: $(product)
             project: $(project)

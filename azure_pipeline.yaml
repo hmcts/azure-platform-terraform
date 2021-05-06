@@ -301,7 +301,6 @@ stages:
               # storage_account_name: ${{ deployment.storage_account_name }}
               # build: ${{ variables.build }}
               tfversion: ${{ variables.terraformVersion }}
-              timeoutInMinutes: ${{ variables.timeoutInMinutes }}
               tfInitSub: ${{ variables.tfInitSub }}
               # alwaysApply: ${{ deployment.alwaysApply }}
               product: ${{ variables.product }}

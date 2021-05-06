@@ -60,7 +60,9 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
   sku                 = var.sku
   instances           = var.instance_count
 
-  automatic_os_upgrade_policy = true
+  automatic_os_upgrade_policy {
+    enable_automatic_os_upgrade = true
+  }
 
   admin_username = local.adminuser
   admin_ssh_key {

@@ -269,30 +269,40 @@ parameters:
 stages:
   - stage: Precheck
     jobs:
-      - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
-        parameters:
-          keyvaultName: ${{ variables.precheckKeyvaultName }}
-          keyvaultSecret: ${{ variables.precheckKeyvaultSecret }}
-          serviceConnection: ${{ variables.precheckServiceConnection }}
-          tfVersion: ${{ variables.terraformVersion }}
-          timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+      - job:
+        pool:
+          vmImage: ${{ variables.agentPool }}
+        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+        steps:
+          - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
+            parameters:
+              keyvaultName: ${{ variables.precheckKeyvaultName }}
+              keyvaultSecret: ${{ variables.precheckKeyvaultSecret }}
+              serviceConnection: ${{ variables.precheckServiceConnection }}
+              tfVersion: ${{ variables.terraformVersion }}
+
 
   - ${{ each deployment in parameters.environment_components }}:
     - stage: ${{ deployment.deployment }}
       dependsOn: ${{ deployment.dependsOn }}
       jobs:
-        - template: steps/terraform.yaml@cnp-azuredevops-libraries
-          parameters:
-            overrideAction: ${{ parameters.overrideAction }}
-            environment: ${{ deployment.environment }}
-            stack: ${{ deployment.component }}
-            serviceConnection: ${{ deployment.service_connection }}
-            # storage_account_rg: ${{ deployment.storage_account_rg }}
-            # storage_account_name: ${{ deployment.storage_account_name }}
-            # build: ${{ variables.build }}
-            tfversion: ${{ variables.terraformVersion }}
-            timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-            tfInitSub: ${{ variables.tfInitSub }}
-            # alwaysApply: ${{ deployment.alwaysApply }}
-            product: ${{ variables.product }}
-            project: ${{ variables.project }}
+        - job: TerraformPlanApply
+          pool:
+            vmImage: ${{ variables.agentPool }}
+          timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+          steps:
+          - template: steps/terraform.yaml@cnp-azuredevops-libraries
+            parameters:
+              overrideAction: ${{ parameters.overrideAction }}
+              environment: ${{ deployment.environment }}
+              stack: ${{ deployment.component }}
+              serviceConnection: ${{ deployment.service_connection }}
+              # storage_account_rg: ${{ deployment.storage_account_rg }}
+              # storage_account_name: ${{ deployment.storage_account_name }}
+              # build: ${{ variables.build }}
+              tfversion: ${{ variables.terraformVersion }}
+              timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+              tfInitSub: ${{ variables.tfInitSub }}
+              # alwaysApply: ${{ deployment.alwaysApply }}
+              product: ${{ variables.product }}
+              project: ${{ variables.project }}

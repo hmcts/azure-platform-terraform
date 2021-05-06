@@ -209,6 +209,8 @@ gateways:
         component: judicial-data-load
       - product: rd
         component: location-ref-api
+      - product: rd
+        component: professional-api-int
 
       # FACT
       - product: fact

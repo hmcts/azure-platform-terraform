@@ -99,3 +99,15 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
 
   tags = var.common_tags
 }
+
+resource "azurerm_virtual_machine_scale_set_extension" "vmss_health" {
+  name                         = "ApplicationHealthLinux"
+  virtual_machine_scale_set_id = azurerm_linux_virtual_machine_scale_set.main.id
+  publisher                    = "Microsoft.ManagedServices"
+  type                         = "ApplicationHealthLinux"
+  type_handler_version         = "1.0"
+  settings = jsonencode({
+    "protocol" : "http",
+    "port" : 80,
+  "requestPath" : "/" })
+}

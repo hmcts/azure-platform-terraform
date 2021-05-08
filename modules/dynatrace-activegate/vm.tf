@@ -61,9 +61,23 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
   instances           = var.instance_count
   upgrade_mode        = "Rolling"
 
-  automatic_os_upgrade_policy {
-    enable_automatic_os_upgrade = true
-    disable_automatic_rollback  = false
+  rolling_upgrade_policy {
+    max_batch_instance_percent              = 20
+    max_unhealthy_instance_percent          = 20
+    max_unhealthy_upgraded_instance_percent = 5
+    pause_time_between_batches              = "PT0S"
+  }
+
+  extension {
+    name                 = "ApplicationHealthLinux"
+    publisher            = "Microsoft.ManagedServices"
+    type                 = "ApplicationHealthLinux"
+    type_handler_version = "1.0"
+    settings = jsonencode({
+      "protocol" : "http",
+      "port" : 80,
+      "requestPath" : "/"
+    })
   }
 
   admin_username = local.adminuser
@@ -98,16 +112,4 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
   }
 
   tags = var.common_tags
-}
-
-resource "azurerm_virtual_machine_scale_set_extension" "vmss_health" {
-  name                         = "ApplicationHealthLinux"
-  virtual_machine_scale_set_id = azurerm_linux_virtual_machine_scale_set.main.id
-  publisher                    = "Microsoft.ManagedServices"
-  type                         = "ApplicationHealthLinux"
-  type_handler_version         = "1.0"
-  settings = jsonencode({
-    "protocol" : "http",
-    "port" : 80,
-  "requestPath" : "/" })
 }

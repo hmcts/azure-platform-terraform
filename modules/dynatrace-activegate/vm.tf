@@ -59,7 +59,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
   location            = var.location
   sku                 = var.sku
   instances           = var.instance_count
-  upgrade_mode        = "Automatic"
+  upgrade_mode        = "Rolling"
 
   automatic_os_upgrade_policy {
     enable_automatic_os_upgrade = true

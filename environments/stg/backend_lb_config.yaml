@@ -242,8 +242,8 @@ gateways:
       - product: rse
         component: check
 
-     # Unspec
-      - product: unspec
+     # Civil
+      - product: civil
         component: service
       - product: civil-damages
         component: service-xui-staging
@@ -293,7 +293,7 @@ gateways:
       - product: cpo
         component: case-payment-orders-api
 
-    # civil-damages
+    # civil-damages (to be removed after transition to civil)
       - product: civil-damages
         component: service
       - product: civil-damages
@@ -326,3 +326,34 @@ gateways:
       # I&A
       - product: ia
         component: case-access-api
+
+      # Civil
+      - product: civil
+        component: service-xui-staging
+        ssl_enabled: true
+      - product: civil
+        component: service-camunda-staging
+      - product: civil
+       component: service-data-store-staging
+      - product: civil
+       component: service-definition-store-staging
+
+      - product: civil
+        component: ccd-xui-staging
+        ssl_enabled: true
+      - product: civil
+        component: ccd-camunda-staging
+      - product: civil
+        component: ccd-data-store-staging
+      - product: civil
+        component: ccd-definition-store-staging
+
+      - product: civil
+        component: camunda-xui-staging
+        ssl_enabled: true
+      - product: civil
+        component: camunda-camunda-staging
+      - product: civil
+        component: camunda-data-store-staging
+      - product: civil
+        component: camunda-definition-store-staging

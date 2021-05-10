@@ -30,7 +30,6 @@ variables:
   precheckKeyvaultName: 'infra-vault-nonprod'
   precheckKeyvaultSecret: 'azure-devops-token'
   product: 'cft-platform'
-  project: 'cft'
   tfInitSub: "04d27a32-7a07-48b3-95b8-3c8691e1a263"
 
 parameters:
@@ -304,4 +303,3 @@ stages:
               tfInitSub: ${{ variables.tfInitSub }}
               # alwaysApply: ${{ deployment.alwaysApply }}
               product: ${{ variables.product }}
-              project: ${{ variables.project }}

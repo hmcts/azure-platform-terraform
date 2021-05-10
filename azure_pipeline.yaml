@@ -30,7 +30,7 @@ variables:
   precheckKeyvaultName: 'infra-vault-nonprod'
   precheckKeyvaultSecret: 'azure-devops-token'
   product: 'cft-platform'
-  tfInitSub: "04d27a32-7a07-48b3-95b8-3c8691e1a263"
+  terraformInitSubscription: "04d27a32-7a07-48b3-95b8-3c8691e1a263"
 
 parameters:
   - name: overrideAction
@@ -300,6 +300,6 @@ stages:
               # storage_account_name: ${{ deployment.storage_account_name }}
               # build: ${{ variables.build }}
               terraformVersion: ${{ variables.terraformVersion }}
-              tfInitSub: ${{ variables.tfInitSub }}
+              terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               # alwaysApply: ${{ deployment.alwaysApply }}
               product: ${{ variables.product }}

@@ -278,7 +278,7 @@ stages:
               keyvaultName: ${{ variables.precheckKeyvaultName }}
               keyvaultSecret: ${{ variables.precheckKeyvaultSecret }}
               serviceConnection: ${{ variables.precheckServiceConnection }}
-              tfVersion: ${{ variables.terraformVersion }}
+              terraformVersion: ${{ variables.terraformVersion }}
 
 
   - ${{ each deployment in parameters.environment_components }}:
@@ -299,7 +299,7 @@ stages:
               # storage_account_rg: ${{ deployment.storage_account_rg }}
               # storage_account_name: ${{ deployment.storage_account_name }}
               # build: ${{ variables.build }}
-              tfversion: ${{ variables.terraformVersion }}
+              terraformVersion: ${{ variables.terraformVersion }}
               tfInitSub: ${{ variables.tfInitSub }}
               # alwaysApply: ${{ deployment.alwaysApply }}
               product: ${{ variables.product }}

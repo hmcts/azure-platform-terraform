@@ -222,8 +222,8 @@ gateways:
       - product: rse
         component: check
 
-     # Unspec
-      - product: unspec
+     # Civil
+      - product: civil
         component: service
       - product: civil-damages
         component: service

@@ -294,7 +294,7 @@ stages:
             parameters:
               overrideAction: ${{ parameters.overrideAction }}
               environment: ${{ deployment.environment }}
-              stack: ${{ deployment.component }}
+              component: ${{ deployment.component }}
               serviceConnection: ${{ deployment.service_connection }}
               # storage_account_rg: ${{ deployment.storage_account_rg }}
               # storage_account_name: ${{ deployment.storage_account_name }}

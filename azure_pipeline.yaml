@@ -20,7 +20,6 @@ resources:
     endpoint: 'hmcts' 
 
 variables:
-  terraformVersion: 0.15.0
   timeoutInMinutes: 60
   agentPool: 'ubuntu-18.04'
   build: $(Build.BuildNumber)
@@ -262,7 +261,7 @@ parameters:
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_cftapps_cluster_lb'
       files_list: 'components/cftapps_private_dns environments/prod/backend_lb_config.yaml environments/prod/prod.tfvars environments/variables.tf'
-      alwaysApply: falseÍ
+      alwaysApply: false
 
 
 stages:
@@ -278,7 +277,6 @@ stages:
               keyvaultName: ${{ variables.precheckKeyvaultName }}
               keyvaultSecret: ${{ variables.precheckKeyvaultSecret }}
               serviceConnection: ${{ variables.precheckServiceConnection }}
-              terraformVersion: ${{ variables.terraformVersion }}
 
 
   - ${{ each deployment in parameters.environment_components }}:
@@ -296,10 +294,5 @@ stages:
               environment: ${{ deployment.environment }}
               component: ${{ deployment.component }}
               serviceConnection: ${{ deployment.service_connection }}
-              # storage_account_rg: ${{ deployment.storage_account_rg }}
-              # storage_account_name: ${{ deployment.storage_account_name }}
-              # build: ${{ variables.build }}
-              terraformVersion: ${{ variables.terraformVersion }}
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
-              # alwaysApply: ${{ deployment.alwaysApply }}
               product: ${{ variables.product }}

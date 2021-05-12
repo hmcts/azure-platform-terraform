@@ -44,6 +44,28 @@ parameters:
       files_list: 'components/cftapps_cluster_lb_backend modules/app-gateway-module-backend environments/sbox/backend_lb_config.yaml environments/sbox/sbox.tfvars environments/variables.tf'
       alwaysApply: false
 
+      #CFT AKS Terraform
+
+    - deployment: 'sbox_cftapps_cluster_lb_cftakstf'
+      environment: 'sbox'
+      component: 'cftapps_cluster_lb_cftakstf'
+      service_connection: 'dcd-cftapps-sbox'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+      files_list: 'components/cftapps_cluster_lb_cftakstf modules/app-gateway-module environments/sbox/sbox.tfvars environments/variables.tf'
+      alwaysApply: false
+
+    - deployment: 'sbox_cftapps_cluster_lb_backend_cftakstf'
+      environment: 'sbox'
+      component: 'cftapps_cluster_lb_backend_cftakstf'
+      service_connection: 'dcd-cftapps-sbox'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+      files_list: 'components/cftapps_cluster_lb_backend_cftakstf modules/app-gateway-module-backend environments/sbox/backend_lb_config.yaml environments/sbox/sbox.tfvars environments/variables.tf'
+      alwaysApply: false
+
     - deployment: 'sbox_shutter'
       environment: 'sbox'
       component: 'shutter'

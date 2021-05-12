@@ -40,7 +40,7 @@ variable "default_shutter" {
 }
 
 variable "cdn_sku" {
-  default = "Standard_Verizon"
+  default = "Standard_Microsoft"
 }
 
 variable "ssl_mode" {

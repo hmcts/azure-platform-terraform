@@ -47,7 +47,7 @@ parameters:
       #CFT AKS Terraform
 
     - deployment: 'sbox_cftapps_cluster_lb_cftakstf'
-      environment: 'sbox'
+      environment: 'sbox_cft_akstf'
       component: 'cftapps_cluster_lb_cftakstf'
       service_connection: 'dcd-cftapps-sbox'
       storage_account_rg: 'core-infra-sbox-rg'
@@ -57,7 +57,7 @@ parameters:
       alwaysApply: false
 
     - deployment: 'sbox_cftapps_cluster_lb_backend_cftakstf'
-      environment: 'sbox'
+      environment: 'sbox_cft_akstf'
       component: 'cftapps_cluster_lb_backend_cftakstf'
       service_connection: 'dcd-cftapps-sbox'
       storage_account_rg: 'core-infra-sbox-rg'

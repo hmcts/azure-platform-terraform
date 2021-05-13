@@ -20,16 +20,36 @@ trigger:
     - /environments/stg/stg.tfvars
     - /environments/test/test.tfvars
 
+resources:
+  repositories:
+    - repository: cnp-azuredevops-libraries
+      type: github
+      ref: refs/heads/DTSPO-1188/ado-templates
+      name: hmcts/cnp-azuredevops-libraries
+      endpoint: 'hmcts'
+
 variables:
   terraformVersion: 0.15.0
   agentPool: 'hmcts-cftptl-agent-pool'
   build: $(Build.BuildNumber)
   timeoutInMinutes: 300
-  isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
   action:
   product: 'cft-platform'
+  template: vars/input-variables.yaml@cnp-azuredevops-libraries
+  precheckServiceConnection: 'azurerm-sandbox'
+  precheckKeyvaultName: 'infra-vault-nonprod'
+  precheckKeyvaultSecret: 'azure-devops-token'
+  terraformInitSubscription: "04d27a32-7a07-48b3-95b8-3c8691e1a263"
   
 parameters:
+  - name: overrideAction
+    type: string
+    default: plan
+    values:
+      - plan
+      - apply
+      - destroy
+
   - name: environment_components
     type: object
     default:
@@ -40,8 +60,6 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
-      files_list: 'components/global modules/azure-landing-zone environments/sbox/sbox.tfvars environments/variables.tf'
-      alwaysApply: false
 
     - deployment: 'demo_global'
       environment: 'demo'
@@ -50,8 +68,6 @@ parameters:
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
       dependsOn: 'Precheck'
-      files_list: 'components/global modules/azure-landing-zone environments/demo/demo.tfvars environments/variables.tf'
-      alwaysApply: false
 
     - deployment: 'dev_global'
       environment: 'dev'
@@ -60,8 +76,6 @@ parameters:
       storage_account_rg: 'core-infra-dev-rg'
       storage_account_name: 'cftappsdev'
       dependsOn: 'Precheck'
-      files_list: 'components/global modules/azure-landing-zone environments/dev/dev.tfvars environments/variables.tf'
-      alwaysApply: false
 
     - deployment: 'ithc_global'
       environment: 'ithc'
@@ -70,8 +84,6 @@ parameters:
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
       dependsOn: 'Precheck'
-      files_list: 'components/global modules/azure-landing-zone environments/ithc/ithc.tfvars environments/variables.tf'
-      alwaysApply: false
 
     - deployment: 'ldata_global'
       environment: 'ldata'
@@ -80,8 +92,6 @@ parameters:
       storage_account_rg: 'core-infra-ldata-rg'
       storage_account_name: 'ethosldata'
       dependsOn: 'Precheck'
-      files_list: 'components/global modules/azure-landing-zone environments/ldata/ldata.tfvars environments/variables.tf'
-      alwaysApply: false
 
     - deployment: 'perftest_global'
       environment: 'test'
@@ -90,8 +100,6 @@ parameters:
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       dependsOn: 'Precheck'
-      files_list: 'components/global modules/azure-landing-zone environments/test/test.tfvars environments/variables.tf'
-      alwaysApply: false
 
     - deployment: 'aat_global'
       environment: 'stg'
@@ -100,8 +108,6 @@ parameters:
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_global'
-      files_list: 'components/global modules/azure-landing-zone environments/stg/stg.tfvars environments/variables.tf'
-      alwaysApply: false
 
     - deployment: 'prod_global'
       environment: 'prod'
@@ -110,64 +116,37 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_global'
-      files_list: 'components/global modules/azure-landing-zone environments/prod/prod.tfvars environments/variables.tf'
-      alwaysApply: false
+
 
 stages:
   - stage: Precheck
-
     jobs:
-      - job: Validate
+      - job:
+        pool:
+          vmImage: ${{ variables.agentPool }}
         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-        pool: ${{ variables.agentPool }}
         steps:
-        - task: AzureKeyVault@1
-          displayName: Retrieve keyvault secret for ADO token
-          inputs:
-            ConnectedServiceName: azurerm-sandbox
-            keyVaultName: infra-vault-nonprod
-            secretsFilter: 'azure-devops-token'
-            runAsPreJob: false
-        - task: Bash@3
-          displayName: Prevent parallel run
-          env:
-            thisbuild: $(Build.BuildId)
-            pipelinedefinition: $(System.DefinitionId)
-            azuredevopstoken: $(azure-devops-token)
-          inputs:
-            filePath: pipeline-scripts/builds-check.sh
-        - task: TerraformInstaller@0
-          displayName: Terraform install
-          inputs:
-            terraformVersion: ${{ variables.terraformVersion }}
-        - task: PowerShell@2
-          displayName: Run tests
-          inputs:
-            targetType: 'filePath'
-            filePath: $(System.DefaultWorkingDirectory)/pipeline-scripts/pester-tests.ps1
-            pwsh: true
-        - task: PublishTestResults@2
-          displayName: 'Publish Test Results **/TEST-*.xml'
-          inputs:
-            testResultsFormat: NUnit
-            failTaskOnFailedTests: true
-          condition: always()
+          - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
+            parameters:
+              keyvaultName: ${{ variables.precheckKeyvaultName }}
+              keyvaultSecret: ${{ variables.precheckKeyvaultSecret }}
+              serviceConnection: ${{ variables.precheckServiceConnection }}
 
   - ${{ each deployment in parameters.environment_components }}:
-    - stage: ${{ deployment.deployment }}
-      dependsOn: ${{ deployment.dependsOn }}
-      jobs:
-        - template: pipeline-templates/terraform.yaml
-          parameters:
-            environment: ${{ deployment.environment }}
-            component: ${{ deployment.component }}
-            service_connection: ${{ deployment.service_connection }}
-            storage_account_rg: ${{ deployment.storage_account_rg }}
-            storage_account_name: ${{ deployment.storage_account_name }}
-            build: ${{ variables.build }}
-            terraformVersion: ${{ variables.terraformVersion }}
+      - stage: ${{ deployment.deployment }}
+        dependsOn: ${{ deployment.dependsOn }}
+        jobs:
+          - job: TerraformPlanApply
+            pool:
+              vmImage: ${{ variables.agentPool }}
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-            pool: ${{ variables.agentPool }}
-            files_list: ${{ deployment.files_list }}
-            alwaysApply: ${{ deployment.alwaysApply }}
-            product: $(product)
+            steps:
+              - template: steps/terraform.yaml@cnp-azuredevops-libraries
+                parameters:
+                  overrideAction: ${{ parameters.overrideAction }}
+                  environment: ${{ deployment.environment }}
+                  component: ${{ deployment.component }}
+                  serviceConnection: ${{ deployment.service_connection }}
+                  terraformInitSubscription: ${{ variables.terraformInitSubscription }}
+                  product: ${{ variables.product }}
+

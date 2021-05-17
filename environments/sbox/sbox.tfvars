@@ -10,7 +10,7 @@ data_subscription         = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
 privatedns_subscription   = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
 oms_env                   = "sandbox"
 
-cdn_sku    = "Standard_Microsoft"
+cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-sbox-rg"
 
 cft_apps_ag_ip_address = "10.10.7.124"

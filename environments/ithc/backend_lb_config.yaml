@@ -4,7 +4,7 @@ gateways:
   - gateway_configuration:
       host_name_suffix: service.core-compute-ithc.internal
       ssl_host_name_suffix: ithc.platform.hmcts.net
-      certificate_name: wildcard-ithc-platform-hmcts-net
+      certificate_name: wildcard-ithc-platform-hmcts-net-new
       private_ip_address: 10.10.40.121
     app_configuration:
     # RPE

@@ -362,3 +362,4 @@ gateways:
         component: optimize
         ssl_enabled: true
         cookie_based_affinity: Enabled
+        health_path_override: /api/readyz

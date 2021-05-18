@@ -25,9 +25,6 @@ variables:
   build: $(Build.BuildNumber)
   template: vars/input-variables.yaml@cnp-azuredevops-libraries
   action:
-  precheckServiceConnection: 'azurerm-sandbox'
-  precheckKeyvaultName: 'infra-vault-nonprod'
-  precheckKeyvaultSecret: 'azure-devops-token'
   product: 'cft-platform'
   terraformInitSubscription: "04d27a32-7a07-48b3-95b8-3c8691e1a263"
 

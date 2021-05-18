@@ -36,9 +36,6 @@ variables:
   action:
   product: 'cft-platform'
   template: vars/input-variables.yaml@cnp-azuredevops-libraries
-  precheckServiceConnection: 'azurerm-sandbox'
-  precheckKeyvaultName: 'infra-vault-nonprod'
-  precheckKeyvaultSecret: 'azure-devops-token'
   terraformInitSubscription: "04d27a32-7a07-48b3-95b8-3c8691e1a263"
   
 parameters:
@@ -147,4 +144,3 @@ stages:
                   serviceConnection: ${{ deployment.service_connection }}
                   terraformInitSubscription: ${{ variables.terraformInitSubscription }}
                   product: ${{ variables.product }}
-

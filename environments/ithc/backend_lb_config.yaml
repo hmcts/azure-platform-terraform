@@ -23,6 +23,10 @@ gateways:
         cookie_based_affinity: Enabled
       - product: camunda
         component: api
+      - product: camunda
+        component: optimize
+        ssl_enabled: true
+        cookie_based_affinity: Enabled
 
       # Probate
       - product: probate

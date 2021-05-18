@@ -143,10 +143,10 @@ gateways:
         ssl_enabled: true
       - product: ccd
         component: message-publisher
-        
+
     # AAC (CDM)
       - product: aac
-        component: manage-case-assignment    
+        component: manage-case-assignment
 
     # BAR
       - product: bar
@@ -208,7 +208,7 @@ gateways:
         component: web-admin
         cookie_based_affinity: Enabled
         ssl_enabled: true
- 
+
  # FACT
       - product: fact
         component: api
@@ -219,7 +219,7 @@ gateways:
         cookie_based_affinity: Enabled
         ssl_enabled: true
         host_name_prefix: docmosis
-        
+
  # WA - Work Allocation
       - product: wa
         component: workflow-api
@@ -229,3 +229,7 @@ gateways:
         component: task-configuration-api
       - product: wa
         component: case-event-handler
+
+ # CMC
+      - product: civil
+        component: civil-service

@@ -23,11 +23,10 @@ frontends = [
     cache_enabled       = "false"
   },
   {
-    product          = "ia"
     name             = "ia-aip"
     mode             = "Detection"
-    custom_domain    = "immigration-appeal.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name    = "wildcard-demo-platform-hmcts-net"
-  }
+    custom_domain    = "immigration-appeal.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-demo.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+  },
 ]

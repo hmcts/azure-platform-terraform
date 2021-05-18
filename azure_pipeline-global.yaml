@@ -24,7 +24,7 @@ resources:
   repositories:
     - repository: cnp-azuredevops-libraries
       type: github
-      ref: refs/heads/DTSPO-1188/ado-templates
+      ref: refs/heads/master
       name: hmcts/cnp-azuredevops-libraries
       endpoint: 'hmcts'
 
@@ -124,9 +124,9 @@ stages:
         steps:
           - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
             parameters:
-              keyvaultName: ${{ variables.precheckKeyvaultName }}
-              keyvaultSecret: ${{ variables.precheckKeyvaultSecret }}
-              serviceConnection: ${{ variables.precheckServiceConnection }}
+              keyvaultName: 'infra-vault-nonprod'
+              keyvaultSecret: 'azure-devops-token'
+              serviceConnection: 'azurerm-sandbox'
 
   - ${{ each deployment in parameters.environment_components }}:
       - stage: ${{ deployment.deployment }}

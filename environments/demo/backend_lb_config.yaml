@@ -222,19 +222,21 @@ gateways:
       - product: rse
         component: check
 
-     # Unspec
-      - product: unspec
+     # Civil
+      - product: civil
         component: service
       - product: civil-damages
         component: service
 
-     # WA
+      # WA - Work Allocation
       - product: wa
         component: workflow-api
       - product: wa
         component: task-management-api
       - product: wa
         component: task-configuration-api
+      - product: wa
+        component: case-event-handler
 
     # SIDAM
       - product: idam

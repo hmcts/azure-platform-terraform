@@ -1,0 +1,61 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "staticWebApp.name": {
+      "type": "string"
+    },
+    "staticWebApp.displayName": {
+      "type": "string"
+    },
+    "staticWebApp.sku": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "staticWebApp.name": ""
+  },
+  "resources": [
+    {
+      "apiVersion": "2020-12-01",
+      "name": "[variables('name')]",
+      "type": "Microsoft.Web/staticSites",
+      "location": "[parameters('location')]",
+      "tags": {},
+      "properties": {
+        "kind": "string",
+        "properties": {
+          "repositoryUrl": "[parameters('repositoryUrl')]",
+          "branch": "[parameters('branch')]",
+          "buildProperties": {
+            "appLocation": "[parameters('appLocation')]",
+            "outputLocation": "[parameters('outputLocation')]",
+            "skipGithubActionWorkflowGeneration": "true"
+          }
+        }
+      },
+      "sku": {
+        "tier": "[parameters('staticWebApp.skuTier')]",
+        "name": "[parameters('staticWebApp.skuName')]"
+      },
+      "resources":[
+        {
+          "name": "[parameters('customDomain')]",
+          "type": "Microsoft.Web/staticSites/customDomains",
+          "apiVersion": "2020-12-01",
+          "kind": "string",
+          "properties": {
+            "validationMethod": "string"
+          }
+        }
+      ]
+    }
+
+  ],
+  "outputs": {
+    "staticWebApp.name": {
+      "type": "string",
+      "value": "[variables('staticWebApp.name')]"
+    }
+  }
+}

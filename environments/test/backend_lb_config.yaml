@@ -23,6 +23,12 @@ gateways:
         cookie_based_affinity: Enabled
       - product: camunda
         component: api
+      - product: camunda
+        component: optimize
+        ssl_enabled: true
+        cookie_based_affinity: Enabled
+        health_path_override: /api/readyz
+      
       # Evidence Management
       - product: em
         component: anno

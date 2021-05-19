@@ -357,3 +357,9 @@ gateways:
         component: camunda-data-store-staging
       - product: civil
         component: camunda-definition-store-staging
+        
+      - product: camunda
+        component: optimize
+        ssl_enabled: true
+        cookie_based_affinity: Enabled
+        health_path_override: /api/readyz

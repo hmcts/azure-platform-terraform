@@ -19,6 +19,11 @@ gateways:
       # Camunda
       - product: camunda
         component: api
+      - product: camunda
+        component: optimize
+        ssl_enabled: true
+        cookie_based_affinity: Enabled
+        health_path_override: /api/readyz
     # Divorce
       - product: div
         component: emca
@@ -250,3 +255,4 @@ gateways:
         ssl_enabled: true
         host_name_prefix: docmosis
         http_to_https_redirect: true
+      

@@ -43,25 +43,13 @@
       "sku": {
         "tier": "[parameters('skuTier')]",
         "name": "[parameters('skuName')]"
-      },
-      "resources":[
-        {
-          "name": "[parameters('customDomain')]",
-          "type": "Microsoft.Web/staticSites/customDomains",
-          "apiVersion": "2020-12-01",
-          "kind": "string",
-          "properties": {
-            "validationMethod": "string"
-          }
-        }
-      ]
+      }
     }
-
   ],
   "outputs": {
-    "staticWebApp.name": {
+    "name": {
       "type": "string",
-      "value": "[variables('staticWebApp.name')]"
+      "value": "[parameters('name')]"
     }
   }
 }

@@ -20,7 +20,7 @@ resource "azurerm_template_deployment" "static_webapp" {
     appLocation = "/${each.value.name}"
     skuName = "free"
     skuTier = "free"
-    outputLocation = ""
+    outputLocation = "/${each.value.name}"
     customDomain = "${each.value.custom_domain}"
     skipGitHubactionWorkflowGeneration = true
   }

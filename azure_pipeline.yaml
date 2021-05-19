@@ -126,26 +126,6 @@ parameters:
       files_list: 'components/cftapps_private_dns environments/ithc/backend_lb_config.yaml environments/ithc/ithc.tfvars environments/variables.tf'
       alwaysApply: false
 
-    - deployment: 'ldata_cftapps_cluster_lb'
-      environment: 'ldata'
-      component: 'cftapps_cluster_lb'
-      service_connection: 'azurerm-ethosldata'
-      storage_account_rg: 'core-infra-ldata-rg'
-      storage_account_name: 'ethosldata'
-      dependsOn: 'sbox_cftapps_cluster_lb'
-      files_list: 'components/cftapps_cluster_lb modules/app-gateway-module environments/ldata/ldata.tfvars environments/variables.tf'
-      alwaysApply: false
-
-    - deployment: 'ldata_cftapps_cluster_lb_backend'
-      environment: 'ldata'
-      component: 'cftapps_cluster_lb_backend'
-      service_connection: 'azurerm-ethosldata'
-      storage_account_rg: 'core-infra-ldata-rg'
-      storage_account_name: 'ethosldata'
-      dependsOn: 'sbox_cftapps_cluster_lb'
-      files_list: 'components/cftapps_cluster_lb_backend modules/app-gateway-module-backend environments/ldata/backend_lb_config.yaml environments/ldata/ldata.tfvars environments/variables.tf'
-      alwaysApply: false
-
     - deployment: 'demo_cftapps_cluster_lb_backend'
       environment: 'demo'
       component: 'cftapps_cluster_lb_backend'

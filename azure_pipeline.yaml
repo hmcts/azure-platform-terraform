@@ -17,7 +17,7 @@ resources:
     type: github
     ref: refs/heads/master
     name: hmcts/cnp-azuredevops-libraries
-    endpoint: 'hmcts' 
+    endpoint: 'hmcts'
 
 variables:
   timeoutInMinutes: 60
@@ -102,22 +102,6 @@ parameters:
       service_connection: 'dcd-cftapps-ithc'
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
-      dependsOn: 'sbox_cftapps_cluster_lb'
-
-    - deployment: 'ldata_cftapps_cluster_lb'
-      environment: 'ldata'
-      component: 'cftapps_cluster_lb'
-      service_connection: 'azurerm-ethosldata'
-      storage_account_rg: 'core-infra-ldata-rg'
-      storage_account_name: 'ethosldata'
-      dependsOn: 'sbox_cftapps_cluster_lb'
-
-    - deployment: 'ldata_cftapps_cluster_lb_backend'
-      environment: 'ldata'
-      component: 'cftapps_cluster_lb_backend'
-      service_connection: 'azurerm-ethosldata'
-      storage_account_rg: 'core-infra-ldata-rg'
-      storage_account_name: 'ethosldata'
       dependsOn: 'sbox_cftapps_cluster_lb'
 
     - deployment: 'demo_cftapps_cluster_lb_backend'

@@ -6,3 +6,4 @@ variable "shutter_apps" {
   default = []
 }
 variable "shutter_rg" {}
+variable "repositoryUrl" {}

@@ -94,3 +94,7 @@ variable "certificate_name_check" {
 variable "common_tags" {
   default = []
 }
+
+variable "repository_url" {
+  default = "https://github.com/hmcts/azure-platform-terraform"
+}

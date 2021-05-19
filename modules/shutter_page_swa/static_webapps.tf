@@ -16,12 +16,12 @@ resource "azurerm_template_deployment" "static_webapp" {
   parameters = {
     name = "hmcts-shutter-${each.value.name}"
     location = "westeurope"
-    repositoryUrl = ""
-    appLocation = ""
-    skuName = ""
-    skuTier = ""
-    appLocation = ""
+    repositoryUrl = var.repositoryUrl
+    appLocation = "/${each.value.name}"
+    skuName = "free"
+    skuTier = "free"
     outputLocation = ""
-    customDomain = ""
+    customDomain = "${each.value.custom_domain}"
+    skipGitHubactionWorkflowGeneration = true
   }
 }

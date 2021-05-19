@@ -2,26 +2,32 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "staticWebApp.name": {
+    "name": {
       "type": "string"
     },
-    "staticWebApp.displayName": {
+    "displayName": {
       "type": "string"
     },
-    "staticWebApp.sku": {
+    "repositoryUrl": {
       "type": "string"
+    },
+    "skuTier": {
+      "type": "string"
+    },
+    "skuTier": {
+      "type": "string"
+    },
+    "skipGitHubactionWorkflowGeneration": {
+      "type": "bool"
     }
-  },
-  "variables": {
-    "staticWebApp.name": ""
   },
   "resources": [
     {
       "apiVersion": "2020-12-01",
-      "name": "[variables('name')]",
+      "name": "[parameters('name')]",
       "type": "Microsoft.Web/staticSites",
       "location": "[parameters('location')]",
-      "tags": {},
+      "tags": "[parameters('tags')]",
       "properties": {
         "kind": "string",
         "properties": {
@@ -30,13 +36,13 @@
           "buildProperties": {
             "appLocation": "[parameters('appLocation')]",
             "outputLocation": "[parameters('outputLocation')]",
-            "skipGithubActionWorkflowGeneration": "true"
+            "skipGithubActionWorkflowGeneration": "[parameters('skipGitHubactionWorkflowGeneration')]"
           }
         }
       },
       "sku": {
-        "tier": "[parameters('staticWebApp.skuTier')]",
-        "name": "[parameters('staticWebApp.skuName')]"
+        "tier": "[parameters('skuTier')]",
+        "name": "[parameters('skuName')]"
       },
       "resources":[
         {

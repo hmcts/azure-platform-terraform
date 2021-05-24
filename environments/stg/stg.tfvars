@@ -26,10 +26,10 @@ cft_apps_cluster_ips   = ["10.10.19.250", "10.10.23.250"]
 
 frontends = [
   {
-    name             = "div-dn"
-    custom_domain    = "decree-nisi-aks.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "div-dn"
+    custom_domain  = "decree-nisi-aks.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -54,10 +54,10 @@ frontends = [
     ]
   },
   {
-    name             = "div-da"
-    custom_domain    = "decree-absolute-aks.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "div-da"
+    custom_domain  = "decree-absolute-aks.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -77,10 +77,10 @@ frontends = [
     ]
   },
   {
-    name             = "div-rfe"
-    custom_domain    = "respond-divorce-aks.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "div-rfe"
+    custom_domain  = "respond-divorce-aks.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -100,11 +100,11 @@ frontends = [
     ]
   },
   {
-    name             = "div-pfe"
-    custom_domain    = "petitioner-frontend-aks.aat.platform.hmcts.net"
-    mode             = "Detection"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "div-pfe"
+    custom_domain  = "petitioner-frontend-aks.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -144,23 +144,23 @@ frontends = [
     ]
   },
   {
-    name             = "pet-app1"
-    custom_domain    = "pet-app1.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-pet-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "pet-app1"
+    custom_domain  = "pet-app1.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-pet-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "pet-app2"
-    custom_domain    = "pet-app2.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-pet-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "pet-app2"
+    custom_domain  = "pet-app2.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-pet-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "sscs-tribunals"
-    custom_domain    = "benefit-appeal.aat.platform.hmcts.net"
-    mode             = "Detection"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "sscs-tribunals"
+    custom_domain  = "benefit-appeal.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -220,11 +220,11 @@ frontends = [
     ]
   },
   {
-    name             = "sscs-cor"
-    mode             = "Detection"
-    custom_domain    = "sscs-cor.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net",
+    name           = "sscs-cor"
+    mode           = "Detection"
+    custom_domain  = "sscs-cor.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor",
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -264,144 +264,144 @@ frontends = [
     ]
   },
   {
-    name             = "sscs-tya"
-    mode             = "Detection"
-    custom_domain    = "track-appeal.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "sscs-tya"
+    mode           = "Detection"
+    custom_domain  = "track-appeal.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "xui-webapp"
-    mode             = "Detection"
-    custom_domain    = "manage-case.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "xui-webapp"
+    mode           = "Detection"
+    custom_domain  = "manage-case.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "xui-manage-org"
-    mode             = "Detection"
-    custom_domain    = "manage-org.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "xui-manage-org"
+    mode           = "Detection"
+    custom_domain  = "manage-org.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "xui-approve-org"
-    mode             = "Detection"
-    custom_domain    = "administer-orgs.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "xui-approve-org"
+    mode           = "Detection"
+    custom_domain  = "administer-orgs.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "xui-register-org"
-    mode             = "Detection"
-    custom_domain    = "register-org.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "xui-register-org"
+    mode           = "Detection"
+    custom_domain  = "register-org.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "cmc"
-    mode             = "Detection"
-    custom_domain    = "moneyclaims.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "cmc"
+    mode           = "Detection"
+    custom_domain  = "moneyclaims.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "cmc-legal"
-    mode             = "Detection"
-    custom_domain    = "moneyclaims-legal.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "cmc-legal"
+    mode           = "Detection"
+    custom_domain  = "moneyclaims-legal.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "fact"
-    mode             = "Detection"
-    custom_domain    = "fact.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "fact"
+    mode           = "Detection"
+    custom_domain  = "fact.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "fact-admin"
-    mode             = "Detection"
-    custom_domain    = "fact-admin.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "fact-admin"
+    mode           = "Detection"
+    custom_domain  = "fact-admin.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "nfdiv"
-    mode             = "Detection"
-    custom_domain    = "nfdiv.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "nfdiv"
+    mode           = "Detection"
+    custom_domain  = "nfdiv.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "nfdiv-apply"
-    mode             = "Detection"
-    custom_domain    = "nfdiv-apply-for-divorce.aat.platform.hmcts.net"
-    backend          = "nfdiv"
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name          = "nfdiv-apply"
+    mode          = "Detection"
+    custom_domain = "nfdiv-apply-for-divorce.aat.platform.hmcts.net"
+    backend       = "nfdiv"
+    ssl_mode      = "FrontDoor"
   },
   {
-    name             = "nfdiv-civil"
-    mode             = "Detection"
-    custom_domain    = "nfdiv-end-civil-partnership.aat.platform.hmcts.net"
-    backend          = "nfdiv"
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name          = "nfdiv-civil"
+    mode          = "Detection"
+    custom_domain = "nfdiv-end-civil-partnership.aat.platform.hmcts.net"
+    backend       = "nfdiv"
+    ssl_mode      = "FrontDoor"
   },
   {
-    name             = "ia-aip"
-    mode             = "Detection"
-    custom_domain    = "immigration-appeal.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "ia-aip"
+    mode           = "Detection"
+    custom_domain  = "immigration-appeal.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "wa-proto-frontend"
-    mode             = "Detection"
-    custom_domain    = "wa-proto-frontend.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "wa-proto-frontend"
+    mode           = "Detection"
+    custom_domain  = "wa-proto-frontend.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "www-ccd"
-    mode             = "Detection"
-    custom_domain    = "www-ccd.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "www-ccd"
+    mode           = "Detection"
+    custom_domain  = "www-ccd.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "gateway-ccd"
-    mode             = "Detection"
-    custom_domain    = "gateway-ccd.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "gateway-ccd"
+    mode           = "Detection"
+    custom_domain  = "gateway-ccd.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "return-case-doc-ccd"
-    mode             = "Detection"
-    custom_domain    = "return-case-doc-ccd.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "return-case-doc-ccd"
+    mode           = "Detection"
+    custom_domain  = "return-case-doc-ccd.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "pcq"
-    mode             = "Detection"
-    custom_domain    = "pcq.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "pcq"
+    mode           = "Detection"
+    custom_domain  = "pcq.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "adoption"
-    custom_domain    = "adoption.aat.platform.hmcts.net"
-    mode             = "Detection"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "adoption"
+    custom_domain  = "adoption.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "probate"
-    custom_domain    = "probate.aat.platform.hmcts.net"
-    mode             = "Detection"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "probate"
+    custom_domain  = "probate.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
     disabled_rules = {
       RCE = [
         "932115"
@@ -409,10 +409,10 @@ frontends = [
     }
   },
   {
-    name             = "idam-web-public"
-    custom_domain    = "idam-web-public.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "idam-web-public"
+    custom_domain  = "idam-web-public.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -547,25 +547,25 @@ frontends = [
     ]
   },
   {
-    name             = "paybubble"
-    custom_domain    = "paybubble.aat.platform.hmcts.net"
-    mode             = "Detection"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "paybubble"
+    custom_domain  = "paybubble.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "bar"
-    custom_domain    = "bar.aat.platform.hmcts.net"
-    mode             = "Detection"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "bar"
+    custom_domain  = "bar.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
   },
   {
-    name             = "fees-register"
-    custom_domain    = "fees-register.aat.platform.hmcts.net"
-    mode             = "Prevention"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    name           = "fees-register"
+    custom_domain  = "fees-register.aat.platform.hmcts.net"
+    mode           = "Prevention"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
     custom_rules = [
       {
         name     = "IPMatchWhitelist"

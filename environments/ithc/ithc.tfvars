@@ -2,7 +2,6 @@ project                    = "hmcts"
 location                   = "uksouth"
 env                        = "ithc"
 subscription               = "ithc"
-ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-ithc"
 
 app_gw_private_ip_address = ["10.10.40.121"]
@@ -29,7 +28,7 @@ frontends = [
     name           = "div-dn"
     custom_domain  = "decree-nisi-aks.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -52,7 +51,7 @@ frontends = [
     name           = "div-da"
     custom_domain  = "decree-absolute-aks.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -75,7 +74,7 @@ frontends = [
     name           = "div-rfe"
     custom_domain  = "respond-divorce-aks.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -98,7 +97,7 @@ frontends = [
     name           = "div-pfe"
     custom_domain  = "petitioner-frontend-aks.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -121,7 +120,7 @@ frontends = [
     name           = "idam-web-public"
     custom_domain  = "idam-web-public.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -260,112 +259,112 @@ frontends = [
     mode           = "Detection"
     custom_domain  = "moneyclaims.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name           = "cmc-legal"
     mode           = "Detection"
     custom_domain  = "moneyclaims-legal.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name           = "fact"
     mode           = "Detection"
     custom_domain  = "fact.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name           = "fact-admin"
     mode           = "Detection"
     custom_domain  = "fact-admin.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name           = "nfdiv"
     mode           = "Detection"
     custom_domain  = "nfdiv.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name          = "nfdiv-apply"
     mode          = "Detection"
     custom_domain = "nfdiv-apply-for-divorce.ithc.platform.hmcts.net"
     backend       = "nfdiv"
-    ssl_mode      = "FrontDoor"
+
   },
   {
     name          = "nfdiv-civil"
     mode          = "Detection"
     custom_domain = "nfdiv-end-civil-partnership.ithc.platform.hmcts.net"
     backend       = "nfdiv"
-    ssl_mode      = "FrontDoor"
+
   },
   {
     name           = "www-ccd"
     mode           = "Detection"
     custom_domain  = "www-ccd.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name           = "gateway-ccd"
     mode           = "Detection"
     custom_domain  = "gateway-ccd.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name           = "return-case-doc-ccd"
     mode           = "Detection"
     custom_domain  = "return-case-doc-ccd.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name           = "xui-approve-org"
     mode           = "Detection"
     custom_domain  = "administer-orgs.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name           = "xui-manage-org"
     mode           = "Detection"
     custom_domain  = "manage-org.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name           = "xui-register-org"
     mode           = "Detection"
     custom_domain  = "register-org.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name           = "xui-webapp"
     mode           = "Detection"
     custom_domain  = "manage-case.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name           = "ia-aip"
     mode           = "Detection"
     custom_domain  = "immigration-appeal.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name           = "probate"
     mode           = "Prevention"
     custom_domain  = "probate.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -419,28 +418,28 @@ frontends = [
     custom_domain  = "pcq.ithc.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name           = "paybubble"
     custom_domain  = "paybubble.ithc.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name           = "bar"
     custom_domain  = "bar.ithc.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name           = "fees-register"
     custom_domain  = "fees-register.ithc.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
   },
   {
     name                        = "idam-web-admin"
@@ -576,7 +575,7 @@ frontends = [
     custom_domain  = "benefit-appeal.ithc.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -640,7 +639,7 @@ frontends = [
     mode           = "Detection"
     custom_domain  = "sscs-cor.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
     disabled_rules = {
       SQLI = [
         "942100",

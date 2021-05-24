@@ -2,7 +2,6 @@ project                    = "hmcts"
 location                   = "uksouth"
 env                        = "sbox"
 subscription               = "sbox"
-ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "dcdcftappssboxkv"
 
 app_gw_private_ip_address = ["10.2.13.122", "10.2.13.132"]
@@ -22,7 +21,7 @@ frontends = [
     name           = "idam-sprod-web-public"
     custom_domain  = "idam-web-public-sprod.sandbox.platform.hmcts.net"
     backend_domain = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -161,7 +160,7 @@ frontends = [
     name           = "idam-web-public"
     custom_domain  = "idam-web-public.sandbox.platform.hmcts.net"
     backend_domain = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -430,7 +429,7 @@ frontends = [
     name           = "plum"
     custom_domain  = "plum.sandbox.platform.hmcts.net"
     backend_domain = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+
     disabled_rules = {}
   },
   {
@@ -438,8 +437,8 @@ frontends = [
     name           = "hmi-apim"
     custom_domain  = "hmi-apim.sandbox.platform.hmcts.net"
     backend_domain = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
-    cache_enabled  = "false"
+
+    cache_enabled = "false"
   },
   {
     product                     = "reform"

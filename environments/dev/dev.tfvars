@@ -10,17 +10,17 @@ oms_env           = "nonprod"
 
 frontends = [
   {
-    name             = "hmi-apim"
-    custom_domain    = "hmi-apim.dev.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-hmiapimdev.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-dev-platform-hmcts-net"
-    cache_enabled    = "false"
+    name           = "hmi-apim"
+    custom_domain  = "hmi-apim.dev.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-hmiapimdev.uksouth.cloudapp.azure.com"]
+    ssl_mode       = "FrontDoor"
+    cache_enabled  = "false"
   },
   {
     name                        = "reformscan"
     custom_domain               = "reformscan.preview.platform.hmcts.net"
     backend_domain              = ["firewall-prod-int-palo-reformscanpreview.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-preview-platform-hmcts-net"
+    ssl_mode                    = "FrontDoor"
     appgw_cookie_based_affinity = "Enabled"
     cache_enabled               = "false"
   }

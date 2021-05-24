@@ -59,7 +59,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
   location            = var.location
   sku                 = var.sku
   instances           = var.instance_count
-  upgrade_mode             = "Rolling"
+  upgrade_mode        = "Rolling"
 
   rolling_upgrade_policy {
     max_batch_instance_percent              = 20

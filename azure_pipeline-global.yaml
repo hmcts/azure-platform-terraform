@@ -13,7 +13,6 @@ trigger:
     - /environments/demo/demo.tfvars
     - /environments/dev/dev.tfvars
     - /environments/ithc/ithc.tfvars
-    - /environments/ldata/ldata.tfvars
     - /environments/prod/prod.tfvars
     - /environments/ptl/ptl.tfvars
     - /environments/sbox/sbox.tfvars

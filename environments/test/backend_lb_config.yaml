@@ -71,6 +71,8 @@ gateways:
         component: case-documents-api
       - product: ia
         component: timed-event-service
+      - product: ia
+        component: case-access-api
 
     # Reference DATA
       - product: rd

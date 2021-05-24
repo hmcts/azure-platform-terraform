@@ -7,3 +7,4 @@ variable "shutter_apps" {
 }
 variable "shutter_rg" {}
 variable "repositoryUrl" {}
+variable "location" {}

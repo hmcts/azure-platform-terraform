@@ -18,11 +18,12 @@ cft_apps_cluster_ips   = ["10.10.1.250", "10.10.3.250"]
 
 frontends = [
   {
-    product        = "idam"
-    name           = "idam-sprod-web-public"
-    custom_domain  = "idam-web-public-sprod.sandbox.platform.hmcts.net"
-    backend_domain = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+    product          = "idam"
+    name             = "idam-sprod-web-public"
+    custom_domain    = "idam-web-public-sprod.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    ssl_mode         = "FrontDoor"
+    certificate_name = "STAR-sandbox-platform-hmcts-net"
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -157,11 +158,12 @@ frontends = [
     ]
   },
   {
-    product        = "idam"
-    name           = "idam-web-public"
-    custom_domain  = "idam-web-public.sandbox.platform.hmcts.net"
-    backend_domain = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
+    product          = "idam"
+    name             = "idam-web-public"
+    custom_domain    = "idam-web-public.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    ssl_mode         = "FrontDoor"
+    certificate_name = "STAR-sandbox-platform-hmcts-net"
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -301,6 +303,7 @@ frontends = [
     custom_domain               = "idam-web-admin.sandbox.platform.hmcts.net"
     backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     ssl_mode                    = "FrontDoor"
+    certificate_name            = "STAR-sandbox-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
     custom_rules = [
       {
@@ -426,20 +429,22 @@ frontends = [
     ]
   },
   {
-    product        = "plum"
-    name           = "plum"
-    custom_domain  = "plum.sandbox.platform.hmcts.net"
-    backend_domain = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
-    disabled_rules = {}
+    product          = "plum"
+    name             = "plum"
+    custom_domain    = "plum.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    ssl_mode         = "FrontDoor"
+    certificate_name = "STAR-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
   },
   {
-    product        = "hmi"
-    name           = "hmi-apim"
-    custom_domain  = "hmi-apim.sandbox.platform.hmcts.net"
-    backend_domain = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
-    ssl_mode       = "FrontDoor"
-    cache_enabled  = "false"
+    product          = "hmi"
+    name             = "hmi-apim"
+    custom_domain    = "hmi-apim.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
+    ssl_mode         = "FrontDoor"
+    certificate_name = "STAR-sandbox-platform-hmcts-net"
+    cache_enabled    = "false"
   },
   {
     product                     = "reform"
@@ -447,6 +452,7 @@ frontends = [
     custom_domain               = "reformscan.sandbox.platform.hmcts.net"
     backend_domain              = ["firewall-prod-int-palo-reformscansbox.uksouth.cloudapp.azure.com"]
     ssl_mode                    = "FrontDoor"
+    certificate_name            = "STAR-sandbox-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
     cache_enabled               = "false"
   }

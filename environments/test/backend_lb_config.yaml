@@ -246,6 +246,8 @@ gateways:
         component: task-configuration-api
       - product: wa
         component: case-event-handler
+      - product: wa
+        component: task-monitor
 
     # Civil
       - product: civil

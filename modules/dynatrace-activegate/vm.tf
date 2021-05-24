@@ -59,6 +59,25 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
   location            = var.location
   sku                 = var.sku
   instances           = var.instance_count
+  upgrade_mode             = "Rolling"
+
+  rolling_upgrade_policy {
+    max_batch_instance_percent              = 20
+    max_unhealthy_instance_percent          = 20
+    max_unhealthy_upgraded_instance_percent = 20
+    pause_time_between_batches              = "PT10M"
+  }
+
+  extension {
+    name                 = "ApplicationHealthLinux"
+    publisher            = "Microsoft.ManagedServices"
+    type                 = "ApplicationHealthLinux"
+    type_handler_version = "1.0"
+    settings = jsonencode({
+      "protocol" : "tcp",
+      "port" : 22
+    })
+  }
 
   admin_username = local.adminuser
   admin_ssh_key {

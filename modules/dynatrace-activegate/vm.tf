@@ -75,7 +75,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
     type_handler_version = "1.0"
     settings = jsonencode({
       "protocol" : "tcp",
-      "port" : 22
+      "port" : 9999
     })
   }
 

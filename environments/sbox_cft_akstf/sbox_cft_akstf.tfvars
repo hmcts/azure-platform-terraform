@@ -2,7 +2,6 @@ project                    = "hmcts"
 location                   = "uksouth"
 env                        = "sbox"
 subscription               = "sbox"
-ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "dcdcftappssboxkv"
 
 app_gw_private_ip_address = ["10.2.13.122", "10.2.13.132"]
@@ -18,11 +17,11 @@ cft_apps_cluster_ips   = ["10.2.9.250", "10.2.11.250"]
 
 frontends = [
   {
-    product          = "idam"
-    name             = "idam-sprod-web-public"
-    custom_domain    = "idam-web-public-sprod.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "STAR-sandbox-platform-hmcts-net"
+    product        = "idam"
+    name           = "idam-sprod-web-public"
+    custom_domain  = "idam-web-public-sprod.sandbox.platform.hmcts.net"
+    backend_domain = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -157,11 +156,11 @@ frontends = [
     ]
   },
   {
-    product          = "idam"
-    name             = "idam-web-public"
-    custom_domain    = "idam-web-public.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "STAR-sandbox-platform-hmcts-net"
+    product        = "idam"
+    name           = "idam-web-public"
+    custom_domain  = "idam-web-public.sandbox.platform.hmcts.net"
+    backend_domain = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -426,20 +425,20 @@ frontends = [
     ]
   },
   {
-    product          = "plum"
-    name             = "plum"
-    custom_domain    = "plum.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "STAR-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
+    product        = "plum"
+    name           = "plum"
+    custom_domain  = "plum.sandbox.platform.hmcts.net"
+    backend_domain = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+
+    disabled_rules = {}
   },
   {
-    product          = "hmi"
-    name             = "hmi-apim"
-    custom_domain    = "hmi-apim.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "STAR-sandbox-platform-hmcts-net"
-    cache_enabled    = "false"
+    product        = "hmi"
+    name           = "hmi-apim"
+    custom_domain  = "hmi-apim.sandbox.platform.hmcts.net"
+    backend_domain = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
+
+    cache_enabled = "false"
   },
   {
     product                     = "reform"

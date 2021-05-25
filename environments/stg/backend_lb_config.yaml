@@ -253,8 +253,6 @@ gateways:
         component: task-management-api
       - product: wa
         component: task-configuration-api
-      - product: wa
-        component: task-monitor
 
     # Docmosis
       - product: dg
@@ -273,6 +271,8 @@ gateways:
     # WA - Work Allocation
       - product: wa
         component: case-event-handler
+      - product: wa
+        component: task-monitor
 
     # CPO (CDM)
       - product: cpo

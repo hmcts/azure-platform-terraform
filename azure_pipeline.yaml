@@ -65,6 +65,8 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
+      files_list: 'components/cftapps_cluster_lb_cftakstf modules/app-gateway-module environments/sbox/sbox.tfvars environments/variables.tf'
+      alwaysApply: true
 
     - deployment: 'sbox_cftapps_cluster_lb_backend_cftakstf'
       environment: 'sbox'

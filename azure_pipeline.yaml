@@ -62,8 +62,6 @@ parameters:
       environment: 'sbox_cft_akstf'
       component: 'cftapps_cluster_lb_cftakstf'
       service_connection: 'dcd-cftapps-sbox'
-      storage_account_rg: 'core-infra-sbox-rg'
-      storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
 
     - deployment: 'sbox_cftapps_cluster_lb_backend_cftakstf'

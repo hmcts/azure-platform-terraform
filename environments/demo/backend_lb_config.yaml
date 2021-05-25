@@ -232,8 +232,6 @@ gateways:
      # Civil
       - product: civil
         component: service
-      - product: civil-damages
-        component: service
 
       # WA - Work Allocation
       - product: wa

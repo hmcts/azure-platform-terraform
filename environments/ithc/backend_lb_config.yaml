@@ -235,5 +235,3 @@ gateways:
     # Civil
       - product: civil
         component: service
-      - product: civil-damages
-        component: service

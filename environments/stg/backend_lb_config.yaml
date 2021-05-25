@@ -245,23 +245,6 @@ gateways:
      # Civil
       - product: civil
         component: service
-      - product: civil-damages
-        component: service-xui-staging
-        ssl_enabled: true
-      - product: civil-damages
-        component: service-camunda-staging
-
-      - product: civil-damages
-        component: ccd-xui-staging
-        ssl_enabled: true
-      - product: civil-damages
-        component: ccd-camunda-staging
-
-      - product: civil-damages
-        component: camunda-xui-staging
-        ssl_enabled: true
-      - product: civil-damages
-        component: camunda-camunda-staging
 
       # Work Allocation
       - product: wa
@@ -294,36 +277,6 @@ gateways:
     # CPO (CDM)
       - product: cpo
         component: case-payment-orders-api
-
-    # civil-damages (to be removed after transition to civil)
-      - product: civil-damages
-        component: service
-      - product: civil-damages
-        component: service-data-store-staging
-      - product: civil-damages
-        component: service-definition-store-staging
-      - product: civil-damages
-        component: service-gateway-staging
-      - product: civil-damages
-        component: service-user-profile-staging
-
-      - product: civil-damages
-        component: ccd-data-store-staging
-      - product: civil-damages
-        component: ccd-definition-store-staging
-      - product: civil-damages
-        component: ccd-gateway-staging
-      - product: civil-damages
-        component: ccd-user-profile-staging
-
-      - product: civil-damages
-        component: camunda-data-store-staging
-      - product: civil-damages
-        component: camunda-definition-store-staging
-      - product: civil-damages
-        component: camunda-gateway-staging
-      - product: civil-damages
-        component: camunda-user-profile-staging
 
       # I&A
       - product: ia

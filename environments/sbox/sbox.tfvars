@@ -2,7 +2,7 @@ project                    = "hmcts"
 location                   = "uksouth"
 env                        = "sbox"
 subscription               = "sbox"
-certificate_key_vault_name = "cftapps-sbox"
+certificate_key_vault_name = "dcdcftappssboxkv"
 
 app_gw_private_ip_address = ["10.10.7.122", "10.10.7.132"]
 data_subscription         = "bf308a5c-0624-4334-8ff8-8dca9fd43783"

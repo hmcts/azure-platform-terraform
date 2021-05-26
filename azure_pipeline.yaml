@@ -20,13 +20,19 @@ resources:
     endpoint: 'hmcts'
 
 variables:
-  timeoutInMinutes: 60
-  agentPool: 'ubuntu-18.04'
-  build: $(Build.BuildNumber)
-  template: vars/input-variables.yaml@cnp-azuredevops-libraries
-  action:
-  product: 'cft-platform'
-  terraformInitSubscription: "04d27a32-7a07-48b3-95b8-3c8691e1a263"
+  - name: timeoutInMinutes
+    value: 60
+  - name: agentPool
+    value: ubuntu-18.04
+  - name: build
+    value: $(Build.BuildNumber)
+  - name: action
+    value:
+  - name: product
+    value: cft-platform
+  - name: terraformInitSubscription
+    value: 04d27a32-7a07-48b3-95b8-3c8691e1a263
+  - template: vars/input-variables.yaml@cnp-azuredevops-libraries
 
 parameters:
   - name: overrideAction

@@ -73,6 +73,8 @@ gateways:
         component: timed-event-service
       - product: ia
         component: case-access-api
+      - product: ia
+        component: case-payments-api
 
     # Reference DATA
       - product: rd
@@ -251,6 +253,4 @@ gateways:
 
     # Civil
       - product: civil
-        component: service
-      - product: civil-damages
         component: service

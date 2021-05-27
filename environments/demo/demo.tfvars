@@ -16,7 +16,6 @@ frontends = [
     host_header         = "reformscandemo.blob.core.windows.net"
     mode                = "Detection"
     backend_domain      = ["firewall-nonprodi-palo-reformscandemo.uksouth.cloudapp.azure.com"]
-    certificate_name    = "wildcard-demo-platform-hmcts-net"
     forwarding_protocol = "MatchRequest"
     health_path         = "/"
     health_protocol     = "Https"

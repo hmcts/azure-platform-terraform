@@ -44,7 +44,7 @@ variable "cdn_sku" {
 }
 
 variable "ssl_mode" {
-  default = "AzureKeyVault"
+  default = "FrontDoor"
 }
 
 variable "certificate_key_vault_name" {

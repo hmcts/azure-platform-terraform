@@ -2,7 +2,6 @@ project                    = "hmcts"
 location                   = "uksouth"
 env                        = "sbox"
 subscription               = "sbox"
-ssl_mode                   = "AzureKeyVault"
 certificate_key_vault_name = "cftapps-sbox"
 
 app_gw_private_ip_address = ["10.10.7.122", "10.10.7.132"]
@@ -18,10 +17,11 @@ cft_apps_cluster_ips   = ["10.10.1.250", "10.10.3.250"]
 
 frontends = [
   {
-    product          = "idam"
-    name             = "idam-sprod-web-public"
-    custom_domain    = "idam-web-public-sprod.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    product        = "idam"
+    name           = "idam-sprod-web-public"
+    custom_domain  = "idam-web-public-sprod.sandbox.platform.hmcts.net"
+    backend_domain = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+
     certificate_name = "STAR-sandbox-platform-hmcts-net"
     global_exclusions = [
       {

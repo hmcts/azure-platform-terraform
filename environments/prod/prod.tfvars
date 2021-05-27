@@ -2,7 +2,7 @@ project                    = "hmcts"
 location                   = "uksouth"
 env                        = "prod"
 subscription               = "prod"
-ssl_mode                   = "AzureKeyVault"
+ssl_mode                   = "FrontDoor"
 certificate_key_vault_name = "cft-apps-prod"
 certificate_name_check     = false
 
@@ -1373,6 +1373,7 @@ frontends = [
     product          = "idam"
     name             = "idam-web-public"
     custom_domain    = "hmcts-access.service.gov.uk"
+    ssl_mode         = "AzureKeyVault"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "hmcts-access-service-gov-uk"
     cache_enabled    = "false"
@@ -1551,6 +1552,7 @@ frontends = [
     mode             = "Detection"
     custom_domain    = "courttribunalfinder.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    ssl_mode         = "AzureKeyVault"
     certificate_name = "courttribunalfinder-service-gov-uk"
   },
   {

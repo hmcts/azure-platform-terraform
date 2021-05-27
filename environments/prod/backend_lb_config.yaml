@@ -237,6 +237,6 @@ gateways:
       - product: wa
         component: task-monitor
 
- # CMC
+ # CIVIL
       - product: civil
-        component: civil-service
+        component: service

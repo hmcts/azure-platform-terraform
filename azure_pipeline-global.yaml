@@ -26,7 +26,6 @@ resources:
       ref: refs/heads/master
       name: hmcts/cnp-azuredevops-libraries
       endpoint: 'hmcts'
-  
 variables:
   - name: timeoutInMinutes
     value: 300

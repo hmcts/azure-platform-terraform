@@ -1,5 +1,11 @@
 module "shutter_swa" {
   source              = "../../modules/shutter_page_swa"
+
+  providers = {
+    azurerm = azurerm
+    azurerm.dns = azurerm.dns
+  }
+
   resource_group_name = var.shutter_rg
   env                 = var.env
   shutter_apps        = var.frontends
@@ -8,6 +14,10 @@ module "shutter_swa" {
   shutter_rg          = var.shutter_rg
   repositoryUrl       = var.repository_url
   location            = var.location
+}
+
+output "validation_tokens" {
+  value = module.shutter_swa.validation_tokens
 }
 
 module "ctags" {

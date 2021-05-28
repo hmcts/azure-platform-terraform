@@ -8,6 +8,7 @@ trigger:
     - master
   paths:
     include:
+    - azure_pipeline-global.yaml
     - /modules/azure-landing-zone/*
     - /components/global/*
     - /environments/demo/demo.tfvars

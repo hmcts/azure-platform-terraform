@@ -2,18 +2,21 @@ project                    = "hmcts"
 location                   = "uksouth"
 env                        = "sbox"
 subscription               = "sbox"
-certificate_key_vault_name = "cftapps-sbox"
+certificate_key_vault_name = "acmedcdcftappssbox"
 
-app_gw_private_ip_address = ["10.10.7.122", "10.10.7.132"]
+app_gw_private_ip_address = ["10.2.13.122", "10.2.13.132"]
 data_subscription         = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
 privatedns_subscription   = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
 oms_env                   = "sandbox"
 
+#FrontDoor access policy
+add_access_policy         = false
+
 cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-sbox-rg"
 
-cft_apps_ag_ip_address = "10.10.7.124"
-cft_apps_cluster_ips   = ["10.10.1.250", "10.10.3.250"]
+cft_apps_ag_ip_address = "10.2.13.124"
+cft_apps_cluster_ips   = ["10.2.9.250", "10.2.11.250"]
 
 frontends = [
   {
@@ -22,7 +25,7 @@ frontends = [
     custom_domain  = "idam-web-public-sprod.sandbox.platform.hmcts.net"
     backend_domain = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
 
-    certificate_name = "STAR-sandbox-platform-hmcts-net"
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -161,7 +164,7 @@ frontends = [
     name             = "idam-web-public"
     custom_domain    = "idam-web-public.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "STAR-sandbox-platform-hmcts-net"
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -300,7 +303,7 @@ frontends = [
     name                        = "idam-web-admin"
     custom_domain               = "idam-web-admin.sandbox.platform.hmcts.net"
     backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name            = "STAR-sandbox-platform-hmcts-net"
+    certificate_name            = "wildcard-sandbox-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
     custom_rules = [
       {
@@ -430,7 +433,7 @@ frontends = [
     name             = "plum"
     custom_domain    = "plum.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "STAR-sandbox-platform-hmcts-net"
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   },
   {
@@ -438,7 +441,7 @@ frontends = [
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "STAR-sandbox-platform-hmcts-net"
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
     cache_enabled    = "false"
   },
   {
@@ -446,7 +449,7 @@ frontends = [
     name                        = "reformscan"
     custom_domain               = "reformscan.sandbox.platform.hmcts.net"
     backend_domain              = ["firewall-prod-int-palo-reformscansbox.uksouth.cloudapp.azure.com"]
-    certificate_name            = "STAR-sandbox-platform-hmcts-net"
+    certificate_name            = "wildcard-sandbox-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
     cache_enabled               = "false"
   }

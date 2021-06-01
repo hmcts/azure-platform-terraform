@@ -4,7 +4,7 @@ gateways:
   - gateway_configuration:
       host_name_suffix: service.core-compute-sandbox.internal
       ssl_host_name_suffix: sandbox.platform.hmcts.net
-      certificate_name: STAR-sandbox-platform-hmcts-net
+      certificate_name: wildcard-sandbox-platform-hmcts-net
       private_ip_address: 10.2.13.122
     app_configuration:
     # RPE

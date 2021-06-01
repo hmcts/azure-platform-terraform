@@ -94,3 +94,7 @@ variable "certificate_name_check" {
 variable "common_tags" {
   default = []
 }
+
+variable "add_access_policy" {
+  default = true
+}

@@ -12,7 +12,7 @@ module "ctags" {
 }
 
 module "cftapps-frontend-cluster-lb" {
-  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=cft-aks-terraform"
+  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
 
   env                        = var.env
   subscription               = var.subscription
@@ -27,6 +27,5 @@ module "cftapps-frontend-cluster-lb" {
   vnet_rg                    = local.vnet_rg
   vnet_name                  = local.vnet_name
   log_analytics_workspace_id = module.logworkspace.workspace_id
-  key_vault_resource_group   = local.key_vault_resource_group
 
 }

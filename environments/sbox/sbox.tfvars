@@ -2,9 +2,9 @@ project                    = "hmcts"
 location                   = "uksouth"
 env                        = "sbox"
 subscription               = "sbox"
-certificate_key_vault_name = "cftapps-sbox"
+certificate_key_vault_name = "dcdcftappssboxkv"
 
-app_gw_private_ip_address = ["10.10.7.122", "10.10.7.132"]
+app_gw_private_ip_address = ["10.2.13.122", "10.2.13.132"]
 data_subscription         = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
 privatedns_subscription   = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
 oms_env                   = "sandbox"
@@ -12,8 +12,8 @@ oms_env                   = "sandbox"
 cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-sbox-rg"
 
-cft_apps_ag_ip_address = "10.10.7.124"
-cft_apps_cluster_ips   = ["10.10.1.250", "10.10.3.250"]
+cft_apps_ag_ip_address = "10.2.13.124"
+cft_apps_cluster_ips   = ["10.2.9.250", "10.2.11.250"]
 
 frontends = [
   {

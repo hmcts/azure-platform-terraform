@@ -1,6 +1,6 @@
 data "azurerm_key_vault" "certificate_vault" {
   name                = var.certificate_key_vault_name
-  resource_group_name = var.env == "sbox" ? "genesis-rg" : var.env == "perftest" || var.env == "aat" ? "core-infra-${var.subscription}-rg" : "core-infra-${var.env}-rg"
+  resource_group_name = var.env == "sbox" ? "cft-platform-${var.env}-rg" : var.env == "perftest" || var.env == "aat" ? "core-infra-${var.subscription}-rg" : "core-infra-${var.env}-rg"
 }
 
 resource "azurerm_key_vault_access_policy" "cdn" {

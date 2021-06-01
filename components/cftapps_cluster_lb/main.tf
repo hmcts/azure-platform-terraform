@@ -27,7 +27,4 @@ module "cftapps-frontend-cluster-lb" {
   vnet_rg                    = local.vnet_rg
   vnet_name                  = local.vnet_name
   log_analytics_workspace_id = module.logworkspace.workspace_id
-  store_privateip            = true
-  key_vault_resource_group   = local.key_vault_resource_group
-
 }

@@ -31,5 +31,5 @@ az rest --method POST \
 EOF
 }
 
-depends_on = [azurerm_template_deployment.custom_domain, azurerm_key_vault_access_policy.cdn]
+depends_on = [azurerm_template_deployment.custom_domain]
 }

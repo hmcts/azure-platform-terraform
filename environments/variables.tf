@@ -47,10 +47,6 @@ variable "ssl_mode" {
   default = "FrontDoor"
 }
 
-variable "certificate_key_vault_name" {
-  default = []
-}
-
 variable "cft_apps_cluster_ips" {
   default = []
 }

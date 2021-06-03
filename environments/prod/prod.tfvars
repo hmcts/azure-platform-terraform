@@ -3,7 +3,6 @@ location                   = "uksouth"
 env                        = "prod"
 subscription               = "prod"
 ssl_mode                   = "FrontDoor"
-certificate_key_vault_name = "cft-apps-prod"
 certificate_name_check     = false
 
 app_gw_private_ip_address = ["10.13.32.120"]
@@ -423,7 +422,7 @@ frontends = [
     mode             = "Prevention"
     custom_domain    = "www.track-benefit-appeal.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "manage-appeal-benefit-decision-service-gov-uk"
+    certificate_name = "www-track-benefit-appeal-service-gov-uk"
     disabled_rules = {
       SQLI = [
         "942100",
@@ -476,7 +475,7 @@ frontends = [
     mode             = "Prevention"
     custom_domain    = "www.manage.appeal-benefit-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "manage-appeal-benefit-decision-service-gov-uk"
+    certificate_name = "www-manage-appeal-benefit-decision-service-gov-uk"
     disabled_rules = {
       SQLI = [
         "942100",
@@ -542,7 +541,7 @@ frontends = [
     mode             = "Detection"
     custom_domain    = "manage-case.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "manage-case"
+    certificate_name = "manage-case-platform-hmcts-net"
     disabled_rules = {
       SQLI = [
         "942100",
@@ -1561,7 +1560,8 @@ frontends = [
     mode             = "Detection"
     custom_domain    = "jcm.judiciary.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "manage-case"
+    certificate_name = "jcm-judiciary-uk"
+    ssl_mode         = "AzureKeyVault"
     disabled_rules = {
       SQLI = [
         "942100",

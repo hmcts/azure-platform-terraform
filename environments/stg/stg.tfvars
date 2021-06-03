@@ -2,7 +2,6 @@ project                    = "hmcts"
 location                   = "uksouth"
 env                        = "aat"
 subscription               = "stg"
-certificate_key_vault_name = "cftapps-stg"
 certificate_name_check     = false
 
 app_gw_private_ip_address = ["10.10.24.121", "10.10.24.125"]

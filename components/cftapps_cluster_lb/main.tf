@@ -11,12 +11,18 @@ module "ctags" {
   builtFrom   = var.builtFrom
 }
 
+data "azurerm_subscription" "current" {}
+
+locals {
+  key_vault_name = "acme${replace(lower(data.azurerm_subscription.current.display_name), "-", "")}"
+}
+
 module "cftapps-frontend-cluster-lb" {
   source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
 
   env                        = var.env
   subscription               = var.subscription
-  vault_name                 = var.certificate_key_vault_name
+  vault_name                 = local.key_vault_name
   location                   = var.location
   private_ip_address         = var.cft_apps_ag_ip_address
   destinations               = var.cft_apps_cluster_ips

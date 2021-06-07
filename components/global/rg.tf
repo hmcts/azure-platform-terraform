@@ -1,7 +1,11 @@
+locals {
+  key_vault_resource_group = "cft-platform-${var.subscription}-rg"
+}
+
 data "azurerm_resource_group" "main" {
   name = "lz-${var.env}-rg"
 }
 
 data "azurerm_resource_group" "key_vault" {
-  name = var.env == "perftest" || var.env == "aat" || var.env == "preview" ? "core-infra-${var.subscription}-rg" : "core-infra-${var.env}-rg"
+  name = local.key_vault_resource_group
 }

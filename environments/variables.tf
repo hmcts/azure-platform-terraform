@@ -47,10 +47,6 @@ variable "ssl_mode" {
   default = "FrontDoor"
 }
 
-variable "certificate_key_vault_name" {
-  default = []
-}
-
 variable "cft_apps_cluster_ips" {
   default = []
 }
@@ -95,6 +91,6 @@ variable "common_tags" {
   default = []
 }
 
-variable "repository_url" {
-  default = "https://github.com/hmcts/azure-platform-terraform"
+variable "add_access_policy" {
+  default = true
 }

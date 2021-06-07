@@ -2,7 +2,6 @@ project                    = "hmcts"
 location                   = "uksouth"
 env                        = "perftest"
 subscription               = "test"
-certificate_key_vault_name = "cftapps-test"
 certificate_name_check     = false
 
 app_gw_private_ip_address = ["10.61.32.121"]

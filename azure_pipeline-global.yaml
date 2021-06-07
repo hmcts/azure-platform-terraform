@@ -8,6 +8,7 @@ trigger:
     - master
   paths:
     include:
+    - azure_pipeline-global.yaml
     - /modules/azure-landing-zone/*
     - /components/global/*
     - /environments/demo/demo.tfvars
@@ -26,16 +27,18 @@ resources:
       ref: refs/heads/master
       name: hmcts/cnp-azuredevops-libraries
       endpoint: 'hmcts'
-
 variables:
-  terraformVersion: 0.15.0
-  agentPool: 'hmcts-cftptl-agent-pool'
-  build: $(Build.BuildNumber)
-  timeoutInMinutes: 300
-  action:
-  product: 'cft-platform'
-  template: vars/input-variables.yaml@cnp-azuredevops-libraries
-  terraformInitSubscription: "04d27a32-7a07-48b3-95b8-3c8691e1a263"
+  - name: timeoutInMinutes
+    value: 300
+  - name: agentPool
+    value: 'hmcts-cftptl-agent-pool'
+  - name: build
+    value: $(Build.BuildNumber)
+  - name: product
+    value: cft-platform
+  - name: terraformInitSubscription
+    value: 04d27a32-7a07-48b3-95b8-3c8691e1a263
+  - template: vars/input-variables.yaml@cnp-azuredevops-libraries
 
 parameters:
   - name: overrideAction

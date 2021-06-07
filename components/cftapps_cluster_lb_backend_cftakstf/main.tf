@@ -11,20 +11,21 @@ module "ctags" {
   builtFrom   = var.builtFrom
 }
 
+data "azurerm_subscription" "current" {}
+
+locals {
+  key_vault_name = "acme${replace(lower(data.azurerm_subscription.current.display_name), "-", "")}"
+}
+
 module "app-gw" {
   source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=master"
-
-  providers = {
-    azurerm      = "azurerm"
-    azurerm.data = "azurerm.data"
-  }
 
   yaml_path                  = "${path.cwd}/../../environments/${local.env}/backend_lb_config.yaml"
   env                        = var.env
   location                   = var.location
   private_ip_address         = var.app_gw_private_ip_address
   backend_pool_ip_addresses  = var.cft_apps_cluster_ips
-  vault_name                 = var.certificate_key_vault_name
+  vault_name                 = local.key_vault_name
   vnet_rg                    = local.vnet_rg
   vnet_name                  = local.vnet_name
   common_tags                = module.ctags.common_tags

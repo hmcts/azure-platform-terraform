@@ -1,6 +1,5 @@
 env                        = "demo"
 subscription               = "demo"
-certificate_key_vault_name = "cftapps-demo"
 app_gw_private_ip_address  = ["10.51.32.121"]
 cft_apps_cluster_ips       = ["10.51.31.250"]
 certificate_name_check     = false

@@ -12,7 +12,12 @@ resource "null_resource" "enable_custom_https_cmd" {
   for_each = { for frontend in var.shutter_apps : frontend.name => frontend if !contains(["jui-redirect", "fact-redirect"], frontend.name)
   }
 
+  triggers = {
+    certificate_latest_version = data.azurerm_key_vault_secret.certificate[each.value.name].version
+  }
+
   provisioner "local-exec" {
+
     command = <<EOF
 
 json='
@@ -31,5 +36,5 @@ az rest --method POST \
 EOF
 }
 
-depends_on = [azurerm_template_deployment.custom_domain, azurerm_key_vault_access_policy.cdn]
+depends_on = [azurerm_template_deployment.custom_domain]
 }

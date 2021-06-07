@@ -3,6 +3,4 @@ locals {
 
   vnet_rg   = "cft-${local.env}-network-rg"
   vnet_name = "cft-${local.env}-vnet"
-
-  key_vault_resource_group = "cft-platform-${var.subscription}-rg"
 }

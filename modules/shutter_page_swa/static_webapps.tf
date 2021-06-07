@@ -11,7 +11,7 @@ resource "azurerm_static_site" "static_webapp" {
   name                = each.value.name
   resource_group_name = data.azurerm_resource_group.shutter.name
   location            = "westeurope" // not supported in uksouth yet
-  //  tags                = var.common_tags // supported but doesn't work with update, re-create existing resources later
+  tags                = var.common_tags // supported but doesn't work with update, re-create existing resources later
 }
 
 resource "azurerm_static_site_custom_domain" "custom_domain" {

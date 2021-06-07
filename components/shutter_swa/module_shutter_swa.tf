@@ -12,7 +12,6 @@ module "shutter_swa" {
   common_tags         = module.ctags.common_tags
   subscription        = var.subscription
   shutter_rg          = var.shutter_rg
-  repositoryUrl       = var.repository_url
   location            = var.location
 }
 

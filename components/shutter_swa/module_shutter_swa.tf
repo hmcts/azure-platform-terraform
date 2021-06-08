@@ -1,8 +1,8 @@
 module "shutter_swa" {
-  source              = "../../modules/shutter_page_swa"
+  source = "../../modules/shutter_page_swa"
 
   providers = {
-    azurerm = azurerm
+    azurerm     = azurerm
     azurerm.dns = azurerm.dns
   }
 

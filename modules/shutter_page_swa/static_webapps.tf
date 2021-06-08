@@ -4,14 +4,14 @@ data "azurerm_resource_group" "shutter" {
 
 resource "azurerm_static_site" "static_webapp" {
   for_each = {
-  // TODO add jui and fact redirect in prod to ignore list, not done now to avoid conflicts
+    // TODO add jui and fact redirect in prod to ignore list, not done now to avoid conflicts
     for frontend in var.shutter_apps : frontend.name => frontend if !lookup(frontend, "disable_shutter", false)
   }
 
   name                = each.value.name
   resource_group_name = data.azurerm_resource_group.shutter.name
-  location            = "westeurope" // not supported in uksouth yet
-  tags                = var.common_tags // supported but doesn't work with update, re-create existing resources later
+  location            = "westeurope"    // not supported in uksouth yet
+  tags                = var.common_tags // be wary of changes to tags: https://github.com/terraform-providers/terraform-provider-azurerm/issues/11986
 }
 
 resource "azurerm_static_site_custom_domain" "custom_domain" {

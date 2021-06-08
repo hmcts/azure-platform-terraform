@@ -1,9 +1,9 @@
-project                    = "hmcts"
-location                   = "uksouth"
-env                        = "prod"
-subscription               = "prod"
-ssl_mode                   = "FrontDoor"
-certificate_name_check     = false
+project                = "hmcts"
+location               = "uksouth"
+env                    = "prod"
+subscription           = "prod"
+ssl_mode               = "FrontDoor"
+certificate_name_check = false
 
 app_gw_private_ip_address = ["10.13.32.120"]
 data_subscription         = "8999dec3-0104-4a27-94ee-6588559729d1"

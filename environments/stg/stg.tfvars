@@ -1,8 +1,8 @@
-project                    = "hmcts"
-location                   = "uksouth"
-env                        = "aat"
-subscription               = "stg"
-certificate_name_check     = false
+project                = "hmcts"
+location               = "uksouth"
+env                    = "aat"
+subscription           = "stg"
+certificate_name_check = false
 
 app_gw_private_ip_address = ["10.10.24.121", "10.10.24.125"]
 data_subscription         = "1c4f0704-a29e-403d-b719-b90c34ef14c9"

@@ -14,6 +14,7 @@ resource "null_resource" "enable_custom_https_cmd" {
 
   triggers = {
     certificate_latest_version = data.azurerm_key_vault_secret.certificate[each.value.name].version
+    run_again                  = "force-run"
   }
 
   provisioner "local-exec" {
@@ -36,5 +37,5 @@ az rest --method POST \
 EOF
 }
 
-depends_on = [azurerm_template_deployment.custom_domain]
+depends_on = [azurerm_template_deployment.custom_domain, azurerm_role_assignment.cdn]
 }

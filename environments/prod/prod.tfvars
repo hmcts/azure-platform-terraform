@@ -1357,6 +1357,11 @@ frontends = [
         operator       = "Equals"
         selector       = "__pcipal-info"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
     ]
   },
   {

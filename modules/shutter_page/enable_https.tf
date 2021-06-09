@@ -14,7 +14,7 @@ resource "null_resource" "enable_custom_https_cmd" {
 
   triggers = {
     certificate_latest_version = data.azurerm_key_vault_secret.certificate[each.value.name].version
-    run_again                  = "force-run"
+    run_again                  = "force-run-again"
   }
 
   provisioner "local-exec" {

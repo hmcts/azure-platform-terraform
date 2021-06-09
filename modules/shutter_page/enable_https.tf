@@ -29,7 +29,6 @@ ${templatefile("${path.module}/templates/customHttps.json", {
     subscription_id : data.azurerm_client_config.current.subscription_id,
     vault_name : var.certificate_key_vault_name
 })}'
-az login --service-principal --username $clientId --password $secret --tenant $tenantId
 
 az rest --method POST \
  --uri "https://management.azure.com/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/${data.azurerm_resource_group.shutter.name}/providers/Microsoft.Cdn/profiles/${azurerm_cdn_profile.main["${each.value.product}"].name}/endpoints/${azurerm_cdn_endpoint.shutter_endpoint["${each.value.name}"].name}/customDomains/${replace("${each.value.custom_domain}", ".", "-")}/enableCustomHttps?api-version=2019-04-15" \

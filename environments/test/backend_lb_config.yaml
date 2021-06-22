@@ -75,6 +75,10 @@ gateways:
         component: case-access-api
       - product: ia
         component: case-payments-api
+      - product: ia
+        component: home-office-integration-api
+      - product: ia
+        component: home-office-mock-api
 
     # Reference DATA
       - product: rd

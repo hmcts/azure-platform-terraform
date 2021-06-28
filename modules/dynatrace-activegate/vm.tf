@@ -1,5 +1,5 @@
 locals {
-  prefix    = "activegate-${var.env}"
+  prefix    = var.config_file_name == "cloudconfig-private" ? "activegate-private-${var.env}" : "activegate-${var.env}"
   adminuser = "azureuser"
 }
 
@@ -30,7 +30,7 @@ data "azurerm_storage_account" "dynatrace_plugin_storage" {
 }
 
 data "template_file" "cloudconfig" {
-  template = file("${path.module}/cloudconfig.tpl")
+  template = file("${path.module}/${var.config_file_name}.tpl")
 
   vars = {
     paas_token               = data.azurerm_key_vault_secret.dynatrace_paas_token.value

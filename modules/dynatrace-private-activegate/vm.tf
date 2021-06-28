@@ -19,6 +19,10 @@ data "azurerm_key_vault_secret" "ssh_public_key" {
   key_vault_id = data.azurerm_key_vault.subscription_vault.id
 }
 
+data "azurerm_key_vault_secret" "dynatrace_paas_token" {
+  name         = "dynatrace-${var.env}-paas-token"
+  key_vault_id = data.azurerm_key_vault.subscription_vault.id
+}
 
 data "template_file" "cloudconfig" {
   template = file("${path.module}/cloudconfig.tpl")

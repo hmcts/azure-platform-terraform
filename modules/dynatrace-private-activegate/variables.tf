@@ -30,10 +30,6 @@ variable "dynatrace_instance_name" {
   default = "ebe20728"
 }
 
-# variable "network_zone" {
-#   default = ""
-# }
-
 variable "instance_count" {
   default = 1
 }
@@ -41,8 +37,3 @@ variable "instance_count" {
 variable "sku" {
   default = "Standard_D2s_v3"
 }
-
-# variable "dynatrace_plugins" {
-#   type    = list(string)
-#   default = ["custom.remote.python.snmp_palo_alto.zip"]
-# }

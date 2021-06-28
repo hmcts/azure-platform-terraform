@@ -1,5 +1,5 @@
 locals {
-  prefix    = (var.config_file_name == "cloudconfig-private") ? "activegate-${var.env}-private" : "activegate-${var.env}"
+  prefix    = var.config_file_name == "cloudconfig-private" ? "activegate-private-${var.env}" : "activegate-${var.env}"
   adminuser = "azureuser"
 }
 

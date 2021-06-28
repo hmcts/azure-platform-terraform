@@ -3,7 +3,7 @@ module "nonprod_dynatrace_activegate_private" {
   instance_count          = 2
   dynatrace_instance_name = "yrk32651"
   env                     = "nonprod"
-  # network_zone            = "azure.cft"
+  network_zone            = "azure.cft"
 
   common_tags = module.ctags.common_tags
 }

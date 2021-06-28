@@ -58,3 +58,8 @@ variable "storage_account" {
 variable "storage_container" {
   default = "plugin"
 }
+
+variable "config_file_name" {
+  default = "cloudconfig"
+}
+

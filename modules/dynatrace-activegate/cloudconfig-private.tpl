@@ -1,4 +1,4 @@
-#cloud-config
+#cloud-config for private ActiveGate synthethic monitoring
 package_upgrade: true
 
 runcmd:

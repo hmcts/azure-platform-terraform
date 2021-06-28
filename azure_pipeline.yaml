@@ -84,6 +84,14 @@ parameters:
       storage_account_name: 'cftptlintsvc'
       dependsOn: 'Precheck'
 
+    - deployment: 'ptl_dynatrace_activegate_private'
+      environment: 'ptl'
+      component: 'dynatrace_activegate_private'
+      service_connection: 'DTS-CFTPTL-INTSVC'
+      storage_account_rg: 'core-infra-intsvc-rg'
+      storage_account_name: 'cftptlintsvc'
+      dependsOn: 'Precheck'
+
     - deployment: 'ithc_cftapps_cluster_lb'
       environment: 'ithc'
       component: 'cftapps_cluster_lb'

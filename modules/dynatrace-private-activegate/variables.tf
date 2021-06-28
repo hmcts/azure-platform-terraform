@@ -14,6 +14,10 @@ variable "env" {
   default = "ptl"
 }
 
+variable "network_zone" {
+  default = ""
+}
+
 variable "common_tags" {
   type = map(string)
 }

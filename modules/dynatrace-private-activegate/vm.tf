@@ -24,9 +24,9 @@ data "template_file" "cloudconfig" {
   template = file("${path.module}/cloudconfig.tpl")
 
   vars = {
-    paas_token               = data.azurerm_key_vault_secret.dynatrace_paas_token.value
-    dynatrace_instance_name  = var.dynatrace_instance_name
-    network_zone             = var.network_zone
+    paas_token              = data.azurerm_key_vault_secret.dynatrace_paas_token.value
+    dynatrace_instance_name = var.dynatrace_instance_name
+    network_zone            = var.network_zone
   }
 }
 

@@ -662,6 +662,12 @@ frontends = [
 
   },
   {
+    name           = "ia-aip"
+    mode           = "Detection"
+    custom_domain  = "immigration-appeal.perftest.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "xui-webapp"
     mode           = "Detection"
     custom_domain  = "manage-case.perftest.platform.hmcts.net"

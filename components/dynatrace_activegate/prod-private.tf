@@ -1,5 +1,5 @@
 # For private ActiveGate synthethic monitoring
-module "dynatrace_activegate" {
+module "prod_dynatrace_activegate_private" {
   source           = "../../modules/dynatrace-activegate"
   instance_count   = 2
   network_zone     = "azure.cft"

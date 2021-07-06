@@ -113,8 +113,8 @@ resource "azurerm_virtual_machine_scale_set_extension" "OmsAgentForLinux" {
 
   protected_settings = <<PROTECTED_SETTINGS
     {
-        "workspaceId": "${module.logworkspace.law.workspace_id}",
-        "workspaceKey": "${module.logworkspace.law.primary_shared_key}"
+        "workspaceId": "${module.logworkspace.workspace_id}",
+        "workspaceKey": "${module.logworkspace.primary_shared_key}"
     }
     PROTECTED_SETTINGS
 }

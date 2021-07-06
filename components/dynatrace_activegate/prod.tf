@@ -2,7 +2,7 @@ module "dynatrace_activegate" {
 
   providers = {
     azurerm               = azurerm
-    azurerm.log_analytics = azurerm.log_analytics_prod
+    azurerm.hmcts-control = azurerm.log_analytics_prod
   }
 
   source         = "../../modules/dynatrace-activegate"

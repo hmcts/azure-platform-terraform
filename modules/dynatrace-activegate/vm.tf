@@ -93,3 +93,28 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
 
   tags = var.common_tags
 }
+
+module "logworkspace" {
+  source      = "git::https://github.com/hmcts/terraform-module-log-analytics-workspace-id.git?ref=master"
+  environment = var.env
+
+}
+
+resource "azurerm_virtual_machine_scale_set_extension" "OmsAgentForLinux" {
+
+  count = var.enable_log_analytics ? 1 : 0
+
+  name                         = "OmsAgentForLinux"
+  virtual_machine_scale_set_id = azurerm_linux_virtual_machine_scale_set.main.id
+  publisher                    = "Microsoft.EnterpriseCloud.Monitoring"
+  type                         = "OmsAgentForLinux"
+  type_handler_version         = "1.13"
+  auto_upgrade_minor_version   = true
+
+  protected_settings = <<PROTECTED_SETTINGS
+    {
+        "workspaceId": "${module.logworkspace.law.workspace_id}",
+        "workspaceKey": "${module.logworkspace.law.primary_shared_key}"
+    }
+    PROTECTED_SETTINGS
+}

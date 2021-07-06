@@ -63,3 +63,6 @@ variable "config_file_name" {
   default = "cloudconfig"
 }
 
+variable "enable_log_analytics" {
+  default = false
+}

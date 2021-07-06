@@ -6,6 +6,7 @@ module "nonprod_dynatrace_activegate_private" {
   env                     = "nonprod"
   network_zone            = "azure.cft"
   config_file_name        = "cloudconfig-private"
+  enable_log_analytics    = true
 
   common_tags = module.ctags.common_tags
 }

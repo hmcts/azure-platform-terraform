@@ -94,16 +94,10 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
   tags = var.common_tags
 }
 
-module "log_analytics_workspace" {
-  source      = "git::https://github.com/hmcts/terraform-module-log-analytics-workspace-id.git?ref=master"
-  environment = var.env
-
-}
-
 data "azurerm_log_analytics_workspace" "law" {
   provider            = azurerm.law
-  name                = module.log_analytics_workspace.name
-  resource_group_name = module.log_analytics_workspace.resource_group_name
+  name                = "hmcts-${var.environment}"
+  resource_group_name = "oms-automation"
 }
 
 resource "azurerm_virtual_machine_scale_set_extension" "OmsAgentForLinux" {

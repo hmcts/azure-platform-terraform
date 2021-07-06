@@ -96,7 +96,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
 
 data "azurerm_log_analytics_workspace" "law" {
   provider            = azurerm.law
-  name                = "hmcts-${var.environment}"
+  name                = "hmcts-${var.env}"
   resource_group_name = "oms-automation"
 }
 

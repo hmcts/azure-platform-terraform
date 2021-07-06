@@ -100,6 +100,12 @@ module "logworkspace" {
 
 }
 
+data "azurerm_log_analytics_workspace" "law" {
+  provider            = azurerm.log_analytics
+  name                = module.log_analytics_workspace.name
+  resource_group_name = module.log_analytics_workspace.resource_group_name
+}
+
 resource "azurerm_virtual_machine_scale_set_extension" "OmsAgentForLinux" {
 
   count = var.enable_log_analytics ? 1 : 0
@@ -113,8 +119,8 @@ resource "azurerm_virtual_machine_scale_set_extension" "OmsAgentForLinux" {
 
   protected_settings = <<PROTECTED_SETTINGS
     {
-        "workspaceId": "${module.logworkspace.workspace_id}",
-        "workspaceKey": "${module.logworkspace.primary_shared_key}"
+        "workspaceId": "${data.azurerm_log_analytics_workspace.law.workspace_id}",
+        "workspaceKey": "${data.azurerm_log_analytics_workspace.law.primary_shared_key}"
     }
     PROTECTED_SETTINGS
 }

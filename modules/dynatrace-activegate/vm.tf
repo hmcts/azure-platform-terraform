@@ -101,7 +101,7 @@ module "log_analytics_workspace" {
 }
 
 data "azurerm_log_analytics_workspace" "law" {
-  provider            = azurerm.log_analytics
+  provider            = azurerm.law
   name                = module.log_analytics_workspace.name
   resource_group_name = module.log_analytics_workspace.resource_group_name
 }

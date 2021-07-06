@@ -2,8 +2,8 @@
 module "nonprod_dynatrace_activegate_private" {
 
   providers = {
-    azurerm               = azurerm
-    azurerm.hmcts-control = azurerm.log_analytics_nonprod
+    azurerm     = azurerm
+    azurerm.law = azurerm.law_nonprod
   }
 
   source                  = "../../modules/dynatrace-activegate"

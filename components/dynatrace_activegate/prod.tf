@@ -1,8 +1,8 @@
 module "dynatrace_activegate" {
 
   providers = {
-    azurerm               = azurerm
-    azurerm.log_analytics = azurerm.log_analytics_prod
+    azurerm     = azurerm
+    azurerm.law = azurerm.law_prod
   }
 
   source         = "../../modules/dynatrace-activegate"

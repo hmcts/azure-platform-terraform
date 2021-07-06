@@ -1,5 +1,10 @@
-provider "azurerm" {
-  alias = "log_analytics"
-  features {}
-  subscription_id = module.log_analytics_workspace.subscription_id
+terraform {
+  required_version = ">= 0.13.0"
+  required_providers {
+    azurerm = {
+      source                = "hashicorp/azurerm"
+      version               = "2.57.0"
+      configuration_aliases = [azurerm.hmcts-control, azurerm.log_analytics]
+    }
+  }
 }

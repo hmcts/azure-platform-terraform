@@ -13,3 +13,15 @@ provider "azurerm" {
   features {}
   skip_provider_registration = true
 }
+
+provider "azurerm" {
+  alias = "log_analytics_nonprod"
+  features {}
+  subscription_id = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
+}
+
+provider "azurerm" {
+  alias = "log_analytics_prod"
+  features {}
+  subscription_id = "8999dec3-0104-4a27-94ee-6588559729d1"
+}

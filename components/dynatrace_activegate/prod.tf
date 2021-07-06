@@ -1,4 +1,10 @@
 module "dynatrace_activegate" {
+
+  providers = {
+    azurerm               = azurerm
+    azurerm.hmcts-control = azurerm.log_analytics_prod
+  }
+
   source         = "../../modules/dynatrace-activegate"
   instance_count = 3
   network_zone   = "azure.cft"

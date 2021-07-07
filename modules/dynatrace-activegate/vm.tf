@@ -1,7 +1,7 @@
 locals {
-  prefix    = var.config_file_name == "cloudconfig-private" ? "activegate-private-${var.env}" : "activegate-${var.env}"
+  prefix      = var.config_file_name == "cloudconfig-private" ? "activegate-private-${var.env}" : "activegate-${var.env}"
   environment = var.env == "ptl" ? "prod" : "${var.env}"
-  adminuser = "azureuser"
+  adminuser   = "azureuser"
 }
 
 data "azurerm_subnet" "iaas" {

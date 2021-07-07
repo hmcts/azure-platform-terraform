@@ -1,5 +1,6 @@
 locals {
   prefix    = var.config_file_name == "cloudconfig-private" ? "activegate-private-${var.env}" : "activegate-${var.env}"
+  environment = var.env == "ptl" ? "prod" : "${var.env}"
   adminuser = "azureuser"
 }
 
@@ -96,7 +97,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
 
 data "azurerm_log_analytics_workspace" "law" {
   provider            = azurerm.law
-  name                = "hmcts-${var.env}"
+  name                = "hmcts-${local.environment}"
   resource_group_name = "oms-automation"
 }
 

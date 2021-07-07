@@ -1,6 +1,7 @@
 locals {
-  prefix    = var.config_file_name == "cloudconfig-private" ? "activegate-private-${var.env}" : "activegate-${var.env}"
-  adminuser = "azureuser"
+  prefix      = var.config_file_name == "cloudconfig-private" ? "activegate-private-${var.env}" : "activegate-${var.env}"
+  environment = var.env == "ptl" ? "prod" : "${var.env}"
+  adminuser   = "azureuser"
 }
 
 data "azurerm_subnet" "iaas" {
@@ -92,4 +93,29 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
   }
 
   tags = var.common_tags
+}
+
+data "azurerm_log_analytics_workspace" "law" {
+  provider            = azurerm.law
+  name                = "hmcts-${local.environment}"
+  resource_group_name = "oms-automation"
+}
+
+resource "azurerm_virtual_machine_scale_set_extension" "OmsAgentForLinux" {
+
+  count = var.enable_log_analytics ? 1 : 0
+
+  name                         = "OmsAgentForLinux"
+  virtual_machine_scale_set_id = azurerm_linux_virtual_machine_scale_set.main.id
+  publisher                    = "Microsoft.EnterpriseCloud.Monitoring"
+  type                         = "OmsAgentForLinux"
+  type_handler_version         = "1.13"
+  auto_upgrade_minor_version   = true
+
+  protected_settings = <<PROTECTED_SETTINGS
+    {
+        "workspaceId": "${data.azurerm_log_analytics_workspace.law.workspace_id}",
+        "workspaceKey": "${data.azurerm_log_analytics_workspace.law.primary_shared_key}"
+    }
+    PROTECTED_SETTINGS
 }

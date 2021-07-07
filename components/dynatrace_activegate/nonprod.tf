@@ -1,4 +1,10 @@
 module "nonprod_dynatrace_activegate" {
+
+  providers = {
+    azurerm     = azurerm
+    azurerm.law = azurerm.law_nonprod
+  }
+
   source                  = "../../modules/dynatrace-activegate"
   instance_count          = 2
   dynatrace_instance_name = "yrk32651"

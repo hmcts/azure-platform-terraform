@@ -112,9 +112,14 @@ resource "azurerm_virtual_machine_scale_set_extension" "OmsAgentForLinux" {
   type_handler_version         = "1.13"
   auto_upgrade_minor_version   = true
 
+  settings = <<SETTINGS
+    {
+        "workspaceId": "${data.azurerm_log_analytics_workspace.law.workspace_id}"
+    }
+    SETTINGS
+
   protected_settings = <<PROTECTED_SETTINGS
     {
-        "workspaceId": "${data.azurerm_log_analytics_workspace.law.workspace_id}",
         "workspaceKey": "${data.azurerm_log_analytics_workspace.law.primary_shared_key}"
     }
     PROTECTED_SETTINGS

@@ -55,6 +55,8 @@ gateways:
         component: home-office-integration-api
       - product: ia
         component: case-payments-api
+      - product: ia
+        component: case-access-api
 
     # Divorce
       - product: div

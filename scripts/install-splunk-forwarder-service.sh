@@ -21,7 +21,6 @@ UF_PASSWORD_REQUEST="$(curl -s "https://$keyvault.vault.azure.net/secrets/$UF_PA
 UF_PASSWORD="$(echo $UF_UF_PASSWORD_REQUEST | cut -d \" -f 4)"
 
 
-
 # Install Splunk Forwarder
 curl --retry 3 -# -L -o $INSTALL_FILE $DOWNLOAD_URL
 tar xvzf $INSTALL_FILE -C $INSTALL_LOCATION

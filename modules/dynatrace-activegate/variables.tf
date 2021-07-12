@@ -26,6 +26,22 @@ variable "vault_rg" {
   default = "core-infra-intsvc-rg"
 }
 
+variable "managed_identity" {
+  default = "activegate-cftptl-intsvc-mi"
+}
+
+variable "managed_identity_rg" {
+  default = "managed-identities-cftptl-intsvc-rg"
+}
+
+variable "soc_vault_name" {
+  default = "soc-prod"
+}
+
+variable "soc_vault_rg" {
+  default = "soc-core-infra-prod-rg"
+}
+
 variable "dynatrace_instance_name" {
   default = "ebe20728"
 }
@@ -64,5 +80,9 @@ variable "config_file_name" {
 }
 
 variable "enable_log_analytics" {
+  default = false
+}
+
+variable "install_splunk_uf" {
   default = false
 }

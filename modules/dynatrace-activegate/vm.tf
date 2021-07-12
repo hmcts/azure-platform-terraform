@@ -2,7 +2,10 @@ locals {
   prefix      = var.config_file_name == "cloudconfig-private" ? "activegate-private-${var.env}" : "activegate-${var.env}"
   environment = var.env == "ptl" ? "prod" : "${var.env}"
   adminuser   = "azureuser"
+  cse_script  = filebase64("${path.module}/../../cripts/install-splunk-forwarder-service.sh")
 }
+
+data "azurerm_client_config" "current" {}
 
 data "azurerm_subnet" "iaas" {
   name                 = "iaas"
@@ -13,6 +16,11 @@ data "azurerm_subnet" "iaas" {
 data "azurerm_key_vault" "subscription_vault" {
   name                = var.vault_name
   resource_group_name = var.vault_rg
+}
+
+data "azurerm_key_vault" "soc_vault" {
+  name                = var.soc_vault_name
+  resource_group_name = var.soc_vault_rg
 }
 
 data "azurerm_key_vault_secret" "dynatrace_paas_token" {
@@ -52,6 +60,22 @@ data "template_cloudinit_config" "config" {
     content_type = "text/cloud-config"
     content      = data.template_file.cloudconfig.rendered
   }
+}
+
+data "azurerm_resource_group" "mi" {
+  name = var.managed_identity_rg
+}
+
+resource "azurerm_user_assigned_identity" "mi" {
+  name                = var.managed_identity
+  location            = data.azurerm_resource_group.mi.location
+  resource_group_name = data.azurerm_resource_group.mi.name
+}
+
+resource "azurerm_key_vault_access_policy" "soc_vault" {
+  key_vault_id = data.azurerm_key_vault.soc_vault.id
+  object_id    = ""
+  tenant_id    = data.azurerm_client_config.current.tenant_id
 }
 
 resource "azurerm_linux_virtual_machine_scale_set" "main" {
@@ -123,4 +147,22 @@ resource "azurerm_virtual_machine_scale_set_extension" "OmsAgentForLinux" {
         "workspaceKey": "${data.azurerm_log_analytics_workspace.law.primary_shared_key}"
     }
     PROTECTED_SETTINGS
+}
+
+resource "azurerm_virtual_machine_scale_set_extension" "splunk-uf" {
+
+  count = var.install_splunk_uf ? 1 : 0
+
+  name                         = "splunk-uf"
+  virtual_machine_scale_set_id = azurerm_linux_virtual_machine_scale_set.main.id
+  publisher                    = "Microsoft.Azure.Extensions"
+  type                         = "CustomScript"
+  type_handler_version         = "2.1"
+  auto_upgrade_minor_version   = true
+
+  settings = <<SETTINGS
+    {
+      "script" = "${local.cse_script}"
+    }
+    SETTINGS
 }

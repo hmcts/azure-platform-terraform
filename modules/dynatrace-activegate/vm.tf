@@ -19,6 +19,7 @@ data "azurerm_key_vault" "subscription_vault" {
 }
 
 data "azurerm_key_vault" "soc_vault" {
+  provider            = azurerm.soc
   name                = var.soc_vault_name
   resource_group_name = var.soc_vault_rg
 }
@@ -73,6 +74,7 @@ resource "azurerm_user_assigned_identity" "mi" {
 }
 
 resource "azurerm_key_vault_access_policy" "soc_vault" {
+  provider     = azurerm.soc
   key_vault_id = data.azurerm_key_vault.soc_vault.id
   object_id    = azurerm_user_assigned_identity.mi.principal_id
   tenant_id    = data.azurerm_client_config.current.tenant_id

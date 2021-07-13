@@ -9,7 +9,6 @@ UF_USERNAME_KV_SECRET="splunk-gui-admin-username"
 UF_PASSWORD_KV_SECRET="splunk-gui-admin-password"
 
 export SPLUNK_HOME="$INSTALL_LOCATION/splunkforwarder"
-export DEBIAN_FRONTEND=noninteractive
 
 # Retrieve secrets
 TOKEN_REQUEST="$(curl -s 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true)"

@@ -3,6 +3,7 @@ module "nonprod_dynatrace_activegate" {
   providers = {
     azurerm     = azurerm
     azurerm.law = azurerm.law_nonprod
+    azurerm.soc = azurerm.soc
   }
 
   source                  = "../../modules/dynatrace-activegate"

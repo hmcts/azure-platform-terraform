@@ -167,7 +167,7 @@ resource "azurerm_virtual_machine_scale_set_extension" "splunk-uf" {
 
   settings = <<SETTINGS
     {
-      "script" = "${local.cse_script}"
+      "script": "${local.cse_script}"
     }
     SETTINGS
 }

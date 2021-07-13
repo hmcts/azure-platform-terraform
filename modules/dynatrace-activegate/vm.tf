@@ -2,7 +2,7 @@ locals {
   prefix      = var.config_file_name == "cloudconfig-private" ? "activegate-private-${var.env}" : "activegate-${var.env}"
   environment = var.env == "ptl" ? "prod" : "${var.env}"
   adminuser   = "azureuser"
-  cse_script  = filebase64("${path.module}/../../cripts/install-splunk-forwarder-service.sh")
+  cse_script  = filebase64("${path.module}/../../scripts/install-splunk-forwarder-service.sh")
 }
 
 data "azurerm_client_config" "current" {}
@@ -74,8 +74,13 @@ resource "azurerm_user_assigned_identity" "mi" {
 
 resource "azurerm_key_vault_access_policy" "soc_vault" {
   key_vault_id = data.azurerm_key_vault.soc_vault.id
-  object_id    = ""
+  object_id    = azurerm_user_assigned_identity.mi.principal_id
   tenant_id    = data.azurerm_client_config.current.tenant_id
+
+  secret_permissions = [
+    "list",
+    "get"
+  ]
 }
 
 resource "azurerm_linux_virtual_machine_scale_set" "main" {

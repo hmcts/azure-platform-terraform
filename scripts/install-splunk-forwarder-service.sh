@@ -21,15 +21,24 @@ UF_PASSWORD_REQUEST="$(curl -s "https://$keyvault.vault.azure.net/secrets/$UF_PA
 UF_PASSWORD="$(echo $UF_UF_PASSWORD_REQUEST | cut -d \" -f 4)"
 
 
-# Install Splunk Forwarder
+# Install splunk forwarder
 curl --retry 3 -# -L -o $INSTALL_FILE $DOWNLOAD_URL
 tar xvzf $INSTALL_FILE -C $INSTALL_LOCATION
 rm -rf $INSTALL_FILE
 
-# Start Splunk Forwarder
+# Start splunk forwarder
 $SPLUNK_HOME/bin/splunk start --accept-license --no-prompt
 
-# Create Splunk admin user
+# Set server name
+$SPLUNK_HOME/bin/splunk set servername $hostname
+
+# Set deployment server
+$SPLUNK_HOME/bin/splunk set deploy-poll splunk-cm-prod-vm00.platform.hmcts.net:9997
+
+# Set forward-server
+$SPLUNK_HOME/bin/splunk add forward-server splunk-lm-prod-vm00.platform.hmcts.net:9997
+
+# Create splunk admin user
 {
 cat <<EOF
 [user-info]
@@ -38,9 +47,7 @@ HASHED_PASSWORD = $($SPLUNK_HOME/bin/splunk hash-passwd $UF_PASSWORD)
 EOF
 } > $SPLUNK_HOME/etc/system/local/user-seed.conf
 
-$SPLUNK_HOME/bin/splunk stop
-sleep 10
-$SPLUNK_HOME/bin/splunk start
+$SPLUNK_HOME/bin/splunk restart
 
 # Create boot-start systemd user
 adduser --system --group splunk

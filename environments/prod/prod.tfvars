@@ -1567,6 +1567,11 @@ frontends = [
         operator       = "Equals"
         selector       = "code"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "nonce"
+      },
     ]
   },
   {

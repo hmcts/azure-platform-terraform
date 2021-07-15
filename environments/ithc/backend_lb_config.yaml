@@ -138,6 +138,8 @@ gateways:
         component: api
       - product: ccpay
         component: bulkscanning-api
+      - product: ccpay
+        component: refunds-api
 
     # BAR
       - product: bar

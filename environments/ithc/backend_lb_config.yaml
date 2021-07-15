@@ -138,6 +138,8 @@ gateways:
         component: api
       - product: ccpay
         component: bulkscanning-api
+      - product: ccpay
+        component: refunds-api
 
     # BAR
       - product: bar
@@ -179,6 +181,8 @@ gateways:
         ssl_enabled: true
       - product: ccd
         component: message-publisher
+      - product: ccd
+        component: case-document-am-api  
 
     # AAC (CDM)
       - product: aac

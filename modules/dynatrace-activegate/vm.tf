@@ -156,20 +156,21 @@ resource "azurerm_virtual_machine_scale_set_extension" "OmsAgentForLinux" {
     PROTECTED_SETTINGS
 }
 
-resource "azurerm_virtual_machine_scale_set_extension" "splunk-uf" {
 
+module "splunk-uf" {
   count = var.install_splunk_uf ? 1 : 0
 
-  name                         = "splunk-uf"
+  source = "git::https://github.com/hmcts/terraform-module-splunk-universal-forwarder.git?ref=dtspo-3774/dynatrace-private-synthetic"
+  providers = {
+    azurerm.splunk = azurerm.soc
+  }
+  auto_upgrade_minor_version = true
+  create_managed_identity    = true
+  is_resource_vmss           = true
+  managed_identity_name      = var.managed_identity
+  managed_identity_location  = var.location
+  managed_identity_rg        = var.managed_identity_rg
+  splunk_key_vault_id        = data.azurerm_key_vault.soc_vault.id
   virtual_machine_scale_set_id = azurerm_linux_virtual_machine_scale_set.main.id
-  publisher                    = "Microsoft.Azure.Extensions"
-  type                         = "CustomScript"
-  type_handler_version         = "2.1"
-  auto_upgrade_minor_version   = true
 
-  settings = <<SETTINGS
-    {
-      "script": "${local.cse_script}"
-    }
-    SETTINGS
 }

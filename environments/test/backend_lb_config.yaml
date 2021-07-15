@@ -159,6 +159,10 @@ gateways:
     # ccpay
       - product: ccpay
         component: bulkscanning-api
+      - product: ccpay
+        component: refunds-api
+        
+        
 
     # CCD
       - product: ccd

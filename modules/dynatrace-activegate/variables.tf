@@ -78,3 +78,11 @@ variable "soc_vault_name" {
 variable "soc_vault_rg" {
   default = "soc-core-infra-prod-rg"
 }
+
+variable "splunk_username_secret" {
+  default = "splunk-gui-admin-username"
+}
+
+variable "splunk_password_secret" {
+  default = "splunk-gui-admin-password"
+}

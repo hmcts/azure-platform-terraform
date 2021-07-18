@@ -61,6 +61,20 @@ data "azurerm_key_vault" "soc_vault" {
   resource_group_name = var.soc_vault_rg
 }
 
+data "azurerm_key_vault_secret" "splunk_username" {
+  provider     = azurerm.soc
+  name         = var.splunk_username_secret
+  key_vault_id = data.azurerm_key_vault.soc_vault.id
+}
+
+data "azurerm_key_vault_secret" "splunk_password" {
+  provider     = azurerm.soc
+  name         = var.splunk_password_secret
+  key_vault_id = data.azurerm_key_vault.soc_vault.id
+}
+
+
+
 resource "azurerm_linux_virtual_machine_scale_set" "main" {
   name                = "${local.prefix}-vmss"
   resource_group_name = data.azurerm_subnet.iaas.resource_group_name
@@ -136,10 +150,12 @@ resource "azurerm_virtual_machine_scale_set_extension" "OmsAgentForLinux" {
 module "splunk-uf" {
   count = var.install_splunk_uf ? 1 : 0
 
-  source = "git::https://github.com/hmcts/terraform-module-splunk-universal-forwarder.git?ref=dtspo-3774/dynatrace-private-synthetic"
+  source = "git::https://github.com/hmcts/terraform-module-splunk-universal-forwarder.git?ref=master"
 
   auto_upgrade_minor_version   = true
   is_resource_vmss             = true
   virtual_machine_scale_set_id = azurerm_linux_virtual_machine_scale_set.main.id
+  splunk_username              = data.azurerm_key_vault_secret.splunk_username
+  splunk_password              = data.azurerm_key_vault_secret.splunk_password
 
 }

@@ -155,7 +155,7 @@ module "splunk-uf" {
   auto_upgrade_minor_version   = true
   is_resource_vmss             = true
   virtual_machine_scale_set_id = azurerm_linux_virtual_machine_scale_set.main.id
-  splunk_username              = data.azurerm_key_vault_secret.splunk_username
-  splunk_password              = data.azurerm_key_vault_secret.splunk_password
+  splunk_username              = data.azurerm_key_vault_secret.splunk_username.value
+  splunk_password              = data.azurerm_key_vault_secret.splunk_password.value
 
 }

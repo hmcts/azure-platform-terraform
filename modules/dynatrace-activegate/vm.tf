@@ -2,10 +2,7 @@ locals {
   prefix      = var.config_file_name == "cloudconfig-private" ? "activegate-private-${var.env}" : "activegate-${var.env}"
   environment = var.env == "ptl" ? "prod" : "${var.env}"
   adminuser   = "azureuser"
-  cse_script  = filebase64("${path.module}/../../scripts/install-splunk-forwarder-service.sh")
 }
-
-data "azurerm_client_config" "current" {}
 
 data "azurerm_subnet" "iaas" {
   name                 = "iaas"
@@ -16,12 +13,6 @@ data "azurerm_subnet" "iaas" {
 data "azurerm_key_vault" "subscription_vault" {
   name                = var.vault_name
   resource_group_name = var.vault_rg
-}
-
-data "azurerm_key_vault" "soc_vault" {
-  provider            = azurerm.soc
-  name                = var.soc_vault_name
-  resource_group_name = var.soc_vault_rg
 }
 
 data "azurerm_key_vault_secret" "dynatrace_paas_token" {
@@ -38,6 +29,7 @@ data "azurerm_storage_account" "dynatrace_plugin_storage" {
   name                = var.storage_account
   resource_group_name = var.storage_account_rg
 }
+
 
 data "template_file" "cloudconfig" {
   template = file("${path.module}/${var.config_file_name}.tpl")
@@ -63,26 +55,10 @@ data "template_cloudinit_config" "config" {
   }
 }
 
-data "azurerm_resource_group" "mi" {
-  name = var.managed_identity_rg
-}
-
-resource "azurerm_user_assigned_identity" "mi" {
-  name                = var.managed_identity
-  location            = data.azurerm_resource_group.mi.location
-  resource_group_name = data.azurerm_resource_group.mi.name
-}
-
-resource "azurerm_key_vault_access_policy" "soc_vault" {
-  provider     = azurerm.soc
-  key_vault_id = data.azurerm_key_vault.soc_vault.id
-  object_id    = azurerm_user_assigned_identity.mi.principal_id
-  tenant_id    = data.azurerm_client_config.current.tenant_id
-
-  secret_permissions = [
-    "list",
-    "get"
-  ]
+data "azurerm_key_vault" "soc_vault" {
+  provider            = azurerm.soc
+  name                = var.soc_vault_name
+  resource_group_name = var.soc_vault_rg
 }
 
 resource "azurerm_linux_virtual_machine_scale_set" "main" {
@@ -161,16 +137,9 @@ module "splunk-uf" {
   count = var.install_splunk_uf ? 1 : 0
 
   source = "git::https://github.com/hmcts/terraform-module-splunk-universal-forwarder.git?ref=dtspo-3774/dynatrace-private-synthetic"
-  providers = {
-    azurerm.splunk = azurerm.soc
-  }
-  auto_upgrade_minor_version = true
-  create_managed_identity    = true
-  is_resource_vmss           = true
-  managed_identity_name      = var.managed_identity
-  managed_identity_location  = var.location
-  managed_identity_rg        = var.managed_identity_rg
-  splunk_key_vault_id        = data.azurerm_key_vault.soc_vault.id
+
+  auto_upgrade_minor_version   = true
+  is_resource_vmss             = true
   virtual_machine_scale_set_id = azurerm_linux_virtual_machine_scale_set.main.id
 
 }

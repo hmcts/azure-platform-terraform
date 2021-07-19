@@ -1156,6 +1156,11 @@ frontends = [
         operator       = "Equals"
         selector       = "isUploadingDocument"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cm-user-preferences"
+      },
     ]
   },
   {

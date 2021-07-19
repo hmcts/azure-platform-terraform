@@ -30,6 +30,7 @@ data "azurerm_storage_account" "dynatrace_plugin_storage" {
   resource_group_name = var.storage_account_rg
 }
 
+
 data "template_file" "cloudconfig" {
   template = file("${path.module}/${var.config_file_name}.tpl")
 
@@ -53,6 +54,26 @@ data "template_cloudinit_config" "config" {
     content      = data.template_file.cloudconfig.rendered
   }
 }
+
+data "azurerm_key_vault" "soc_vault" {
+  provider            = azurerm.soc
+  name                = var.soc_vault_name
+  resource_group_name = var.soc_vault_rg
+}
+
+data "azurerm_key_vault_secret" "splunk_username" {
+  provider     = azurerm.soc
+  name         = var.splunk_username_secret
+  key_vault_id = data.azurerm_key_vault.soc_vault.id
+}
+
+data "azurerm_key_vault_secret" "splunk_password" {
+  provider     = azurerm.soc
+  name         = var.splunk_password_secret
+  key_vault_id = data.azurerm_key_vault.soc_vault.id
+}
+
+
 
 resource "azurerm_linux_virtual_machine_scale_set" "main" {
   name                = "${local.prefix}-vmss"
@@ -123,4 +144,18 @@ resource "azurerm_virtual_machine_scale_set_extension" "OmsAgentForLinux" {
         "workspaceKey": "${data.azurerm_log_analytics_workspace.law.primary_shared_key}"
     }
     PROTECTED_SETTINGS
+}
+
+
+module "splunk-uf" {
+  count = var.install_splunk_uf ? 1 : 0
+
+  source = "git::https://github.com/hmcts/terraform-module-splunk-universal-forwarder.git?ref=master"
+
+  auto_upgrade_minor_version   = true
+  virtual_machine_type         = "vmss"
+  virtual_machine_scale_set_id = azurerm_linux_virtual_machine_scale_set.main.id
+  splunk_username              = data.azurerm_key_vault_secret.splunk_username.value
+  splunk_password              = data.azurerm_key_vault_secret.splunk_password.value
+
 }

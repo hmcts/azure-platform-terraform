@@ -4,6 +4,7 @@ module "prod_dynatrace_activegate_private" {
   providers = {
     azurerm     = azurerm
     azurerm.law = azurerm.law_prod
+    azurerm.soc = azurerm.soc
   }
 
   source               = "../../modules/dynatrace-activegate"

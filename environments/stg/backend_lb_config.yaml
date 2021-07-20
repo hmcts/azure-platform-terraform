@@ -216,6 +216,8 @@ gateways:
         component: api
       - product: fees-register
         component: api
+      - product: ccpay
+        component: refunds-api
 
       # CMC
       - product: cmc

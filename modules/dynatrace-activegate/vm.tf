@@ -73,6 +73,12 @@ data "azurerm_key_vault_secret" "splunk_password" {
   key_vault_id = data.azurerm_key_vault.soc_vault.id
 }
 
+data "azurerm_key_vault_secret" "splunk_pass4symmkey" {
+  provider     = azurerm.soc
+  name         = var.splunk_pass4symmkey_secret
+  key_vault_id = data.azurerm_key_vault.soc_vault.id
+}
+
 
 
 resource "azurerm_linux_virtual_machine_scale_set" "main" {
@@ -157,5 +163,6 @@ module "splunk-uf" {
   virtual_machine_scale_set_id = azurerm_linux_virtual_machine_scale_set.main.id
   splunk_username              = data.azurerm_key_vault_secret.splunk_username.value
   splunk_password              = data.azurerm_key_vault_secret.splunk_password.value
+  splunk_pass4symmkey          = data.azurerm_key_vault_secret.splunk_pass4symmkey.value
 
 }

@@ -86,3 +86,7 @@ variable "splunk_username_secret" {
 variable "splunk_password_secret" {
   default = "splunk-gui-admin-password"
 }
+
+variable "splunk_pass4symmkey_secret" {
+  default = "pass4SymmKey-forwarders-encryptedstring"
+}

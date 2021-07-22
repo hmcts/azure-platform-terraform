@@ -220,6 +220,10 @@ gateways:
         component: location-ref-api
       - product: rd
         component: professional-api-int
+      - product: rd
+        component: profile-sync-int
+      - product: rd
+        component: user-profile-api-int
 
       # FACT
       - product: fact

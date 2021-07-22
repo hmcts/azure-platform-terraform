@@ -13,7 +13,7 @@ module "nonprod_dynatrace_activegate" {
   network_zone            = "azure.cft"
   install_splunk_uf       = true
   enable_log_analytics    = true
-  common_tags = module.ctags.common_tags
+  common_tags             = module.ctags.common_tags
 }
 
 module "ctags" {

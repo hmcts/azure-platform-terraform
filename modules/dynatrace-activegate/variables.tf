@@ -88,5 +88,5 @@ variable "splunk_password_secret" {
 }
 
 variable "splunk_pass4symmkey_secret" {
-  default = "pass4SymmKey-forwarders-encryptedstring"
+  default = "pass4SymmKey-forwarders-plaintext"
 }

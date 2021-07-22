@@ -12,6 +12,7 @@ module "prod_dynatrace_activegate_private" {
   network_zone         = "azure.cft"
   config_file_name     = "cloudconfig-private"
   enable_log_analytics = true
+  install_splunk_uf    = true
 
   common_tags = module.ctags.common_tags
 }

@@ -11,8 +11,9 @@ module "nonprod_dynatrace_activegate" {
   dynatrace_instance_name = "yrk32651"
   env                     = "nonprod"
   network_zone            = "azure.cft"
-
-  common_tags = module.ctags.common_tags
+  install_splunk_uf       = true
+  enable_log_analytics    = true
+  common_tags             = module.ctags.common_tags
 }
 
 module "ctags" {

@@ -1164,7 +1164,7 @@ frontends = [
     mode             = "Detection"
     custom_domain    = "appeal-immigration-asylum-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "appeal-immigration-asylum-decision.service.gov.uk"
+    certificate_name = "appeal-immigration-asylum-decision-service-gov-uk"
   },
   {
     product          = "fees"

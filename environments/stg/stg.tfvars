@@ -4,7 +4,7 @@ env                    = "aat"
 subscription           = "stg"
 certificate_name_check = false
 
-app_gw_private_ip_address = ["10.10.24.121", "10.10.24.125"]
+app_gw_private_ip_address = ["10.10.24.121"]
 data_subscription         = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription   = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                   = "nonprod"

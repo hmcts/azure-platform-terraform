@@ -183,6 +183,10 @@ gateways:
         component: message-publisher
       - product: ccd
         component: case-document-am-api  
+        
+    # CPO (CDM)
+      - product: cpo
+        component: case-payment-orders-api
 
     # AAC (CDM)
       - product: aac

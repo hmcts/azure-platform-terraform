@@ -1,7 +1,7 @@
 resource "azurerm_cdn_endpoint" "shutter_endpoint" {
   for_each = { for frontend in var.shutter_apps : frontend.name => frontend
   }
-  name                   = substr("hmcts-${split(".", replace("${each.value.custom_domain}", "www.", ""))[0]}-shutter-${var.env}", 0, 49)
+  name                   = substr("hmcts-${split(".", replace("${each.value.custom_domain}", "www.", ""))[0]}-shutter-${var.env}", 0, 48)
   profile_name           = azurerm_cdn_profile.main["${each.value.product}"].name
   location               = "West US"
   resource_group_name    = data.azurerm_resource_group.shutter.name

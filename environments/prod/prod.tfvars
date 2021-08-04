@@ -1167,9 +1167,9 @@ frontends = [
     product          = "ia"
     name             = "ia-aip"
     mode             = "Detection"
-    custom_domain    = "immigration-appeal.platform.hmcts.net"
+    custom_domain    = "appeal-immigration-asylum-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "immigration-appeal-platform-hmcts-net"
+    certificate_name = "appeal-immigration-asylum-decision-service-gov-uk"
   },
   {
     product          = "fees"

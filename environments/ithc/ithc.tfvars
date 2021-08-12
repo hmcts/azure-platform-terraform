@@ -3,7 +3,7 @@ location     = "uksouth"
 env          = "ithc"
 subscription = "ithc"
 
-app_gw_private_ip_address = ["10.11.192.121"]
+app_gw_private_ip_address = ["10.11.225.121"]
 data_subscription         = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription   = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                   = "nonprod"
@@ -18,8 +18,8 @@ shutter_apps = [
   "TODO"
 ]
 
-cft_apps_ag_ip_address = "10.11.192.123"
-cft_apps_cluster_ips   = ["10.10.35.250", "10.10.39.250"]
+cft_apps_ag_ip_address = "10.11.225.123"
+cft_apps_cluster_ips   = ["10.11.192.250", "10.11.208.250"]
 
 
 frontends = [

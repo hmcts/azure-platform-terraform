@@ -1,5 +1,5 @@
 locals {
-  env = (var.env == "aat") ? "stg" : (var.env == "ithc") ? "ithc" : "${(var.env == "perftest") ? "test" : "${var.env}"}"
+  env = (var.env == "aat") ? "stg" : "${(var.env == "perftest") ? "test" : "${var.env}"}"
 
   vnet_rg   = var.env == "sbox" || var.env == "perftest" || var.env == "aat" || var.env == "ithc" ? "cft-${var.env}-network-rg" : "aks-infra-${var.env}-rg"
   vnet_name = var.env == "sbox" || var.env == "perftest" || var.env == "aat" || var.env == "ithc" ? "cft-${var.env}-vnet" : "core-${var.env}-vnet"

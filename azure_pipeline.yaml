@@ -11,15 +11,36 @@ trigger:
     - /modules/azure-landing-zone/*
     - /components/global/*
 
+resources:
+  repositories:
+  - repository: cnp-azuredevops-libraries
+    type: github
+    ref: refs/heads/master
+    name: hmcts/cnp-azuredevops-libraries
+    endpoint: 'hmcts'
+
 variables:
-  terraformVersion: 0.12.26
-  timeoutInMinutes: 60
-  agentPool: 'ubuntu-18.04'
-  build: $(Build.BuildNumber)
-  isMaster: $[eq(variables['Build.SourceBranch'], 'refs/heads/master')]
-  action:
+  - name: timeoutInMinutes
+    value: 60
+  - name: agentPool
+    value: ubuntu-18.04
+  - name: build
+    value: $(Build.BuildNumber)
+  - name: product
+    value: cft-platform
+  - name: terraformInitSubscription
+    value: 04d27a32-7a07-48b3-95b8-3c8691e1a263
+  - template: vars/input-variables.yaml@cnp-azuredevops-libraries
 
 parameters:
+  - name: overrideAction
+    type: string
+    default: plan
+    values:
+    - plan
+    - apply
+    - destroy
+
   - name: environment_components
     type: object
     default:
@@ -47,14 +68,14 @@ parameters:
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
 
-    - deployment: 'sbox_compliance'
+    - deployment: 'sbox_private_dns'
       environment: 'sbox'
-      component: 'compliance'
+      component: 'cftapps_private_dns'
       service_connection: 'dcd-cftapps-sbox'
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
-    
+
     - deployment: 'ptl_dynatrace_activegate'
       environment: 'ptl'
       component: 'dynatrace_activegate'
@@ -79,25 +100,25 @@ parameters:
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_cftapps_cluster_lb'
 
-    - deployment: 'ldata_cftapps_cluster_lb'
-      environment: 'ldata'
-      component: 'cftapps_cluster_lb'
-      service_connection: 'azurerm-ethosldata'
-      storage_account_rg: 'core-infra-ldata-rg'
-      storage_account_name: 'ethosldata'
-      dependsOn: 'sbox_cftapps_cluster_lb'
-
-    - deployment: 'ldata_cftapps_cluster_lb_backend'
-      environment: 'ldata'
-      component: 'cftapps_cluster_lb_backend'
-      service_connection: 'azurerm-ethosldata'
-      storage_account_rg: 'core-infra-ldata-rg'
-      storage_account_name: 'ethosldata'
+    - deployment: 'ithc_private_dns'
+      environment: 'ithc'
+      component: 'cftapps_private_dns'
+      service_connection: 'dcd-cftapps-ithc'
+      storage_account_rg: 'core-infra-ithc-rg'
+      storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_cftapps_cluster_lb'
 
     - deployment: 'demo_cftapps_cluster_lb_backend'
       environment: 'demo'
       component: 'cftapps_cluster_lb_backend'
+      service_connection: 'dcd-cftapps-demo'
+      storage_account_rg: 'core-infra-demo-rg'
+      storage_account_name: 'cftappsdemo'
+      dependsOn: 'sbox_cftapps_cluster_lb'
+
+    - deployment: 'demo_private_dns'
+      environment: 'demo'
+      component: 'cftapps_private_dns'
       service_connection: 'dcd-cftapps-demo'
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
@@ -119,6 +140,14 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_cftapps_cluster_lb'
 
+    - deployment: 'test_cftapps_private_dns'
+      environment: 'test'
+      component: 'cftapps_private_dns'
+      service_connection: 'dcd-cftapps-test'
+      storage_account_rg: 'core-infra-test-rg'
+      storage_account_name: 'cftappstest'
+      dependsOn: 'sbox_cftapps_cluster_lb'
+
     - deployment: 'stg_cftapps_cluster_lb'
       environment: 'stg'
       component: 'cftapps_cluster_lb'
@@ -130,6 +159,14 @@ parameters:
     - deployment: 'stg_cftapps_cluster_lb_backend'
       environment: 'stg'
       component: 'cftapps_cluster_lb_backend'
+      service_connection: 'dcd-cftapps-stg'
+      storage_account_rg: 'core-infra-stg-rg'
+      storage_account_name: 'cftappsstg'
+      dependsOn: 'sbox_cftapps_cluster_lb'
+
+    - deployment: 'stg_private_dns'
+      environment: 'stg'
+      component: 'cftapps_private_dns'
       service_connection: 'dcd-cftapps-stg'
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
@@ -151,7 +188,7 @@ parameters:
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_cftapps_cluster_lb'
 
-    - deployment: 'prod_shutter' 
+    - deployment: 'prod_shutter'
       environment: 'prod'
       component: 'shutter'
       service_connection: 'dcd-cftapps-prod'
@@ -159,55 +196,44 @@ parameters:
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_cftapps_cluster_lb'
 
+    - deployment: 'prod_private_dns'
+      environment: 'prod'
+      component: 'cftapps_private_dns'
+      service_connection: 'dcd-cftapps-prod'
+      storage_account_rg: 'core-infra-prod-rg'
+      storage_account_name: 'cftappsprod'
+      dependsOn: 'sbox_cftapps_cluster_lb'
+
+
 stages:
   - stage: Precheck
     jobs:
-      - job: Validate
-        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-        pool:   
+      - job:
+        pool:
           vmImage: ${{ variables.agentPool }}
+        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
         steps:
-        - task: AzureKeyVault@1
-          displayName: Retrieve keyvault secret for ADO token
-          inputs:
-            ConnectedServiceName: azurerm-sandbox
-            keyVaultName: infra-vault-nonprod
-            secretsFilter: 'azure-devops-token'
-            runAsPreJob: false
-        - task: Bash@3
-          displayName: Prevent parallel run
-          env:
-            thisbuild: $(Build.BuildId)
-            pipelinedefinition: $(System.DefinitionId)
-            azuredevopstoken: $(azure-devops-token)
-          inputs:
-            filePath: pipeline-scripts/builds-check.sh
-        - task: PowerShell@2
-          displayName: Run tests
-          inputs:
-            targetType: 'filePath'
-            filePath: $(System.DefaultWorkingDirectory)/pipeline-scripts/pester-tests.ps1
-            pwsh: true
-        - task: PublishTestResults@2
-          displayName: 'Publish Test Results **/TEST-*.xml'
-          inputs:
-            testResultsFormat: NUnit
-            failTaskOnFailedTests: true
-          condition: always()
+          - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
+            parameters:
+              keyvaultName: 'infra-vault-nonprod'
+              keyvaultSecret: 'azure-devops-token'
+              serviceConnection: 'azurerm-sandbox'
+
 
   - ${{ each deployment in parameters.environment_components }}:
     - stage: ${{ deployment.deployment }}
       dependsOn: ${{ deployment.dependsOn }}
       jobs:
-        - template: pipeline-templates/terraform.yaml
-          parameters:       
-            environment: ${{ deployment.environment }}
-            component: ${{ deployment.component }}
-            service_connection: ${{ deployment.service_connection }}
-            storage_account_rg: ${{ deployment.storage_account_rg }}
-            storage_account_name: ${{ deployment.storage_account_name }}
-            build: ${{ variables.build }}
-            terraformVersion: ${{ variables.terraformVersion }}
-            timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-            pool:   
-              vmImage: ${{ variables.agentPool }}
+        - job: TerraformPlanApply
+          pool:
+            vmImage: ${{ variables.agentPool }}
+          timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+          steps:
+          - template: steps/terraform.yaml@cnp-azuredevops-libraries
+            parameters:
+              overrideAction: ${{ parameters.overrideAction }}
+              environment: ${{ deployment.environment }}
+              component: ${{ deployment.component }}
+              serviceConnection: ${{ deployment.service_connection }}
+              terraformInitSubscription: ${{ variables.terraformInitSubscription }}
+              product: ${{ variables.product }}

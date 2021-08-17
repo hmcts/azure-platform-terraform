@@ -1,24 +1,24 @@
-project                    = "hmcts"
-location                   = "uksouth"
-env                        = "prod"
-subscription               = "prod"
-enable_ssl                 = true
-ssl_mode                   = "AzureKeyVault"
-certificate_key_vault_name = "cft-apps-prod"
-certificate_name_check     = false
+project                = "hmcts"
+location               = "uksouth"
+env                    = "prod"
+subscription           = "prod"
+ssl_mode               = "FrontDoor"
+certificate_name_check = false
 
-app_gw_private_ip_address = "10.13.32.120"
+app_gw_private_ip_address = ["10.13.32.120"]
 data_subscription         = "8999dec3-0104-4a27-94ee-6588559729d1"
+privatedns_subscription   = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                   = "prod"
 
 cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-prod-rg"
 
 cft_apps_ag_ip_address = "10.13.32.122"
-cft_apps_cluster_ips   = ["10.13.15.250","10.13.31.250"]
+cft_apps_cluster_ips   = ["10.13.15.250", "10.13.31.250"]
 
 frontends = [
   {
+    product          = "div"
     name             = "div-dn"
     mode             = "Prevention"
     custom_domain    = "www.decree-nisi.apply-divorce.service.gov.uk"
@@ -90,6 +90,7 @@ frontends = [
     ]
   },
   {
+    product          = "div"
     name             = "div-da"
     mode             = "Prevention"
     custom_domain    = "www.decree-absolute.apply-divorce.service.gov.uk"
@@ -151,6 +152,7 @@ frontends = [
     ]
   },
   {
+    product          = "div"
     name             = "div-rfe"
     mode             = "Prevention"
     custom_domain    = "www.respond-divorce.service.gov.uk"
@@ -212,6 +214,7 @@ frontends = [
     ]
   },
   {
+    product          = "div"
     name             = "div-pfe"
     mode             = "Prevention"
     custom_domain    = "www.apply-divorce.service.gov.uk"
@@ -306,6 +309,7 @@ frontends = [
     ]
   },
   {
+    product          = "sscs"
     name             = "sscs-tribunals"
     mode             = "Prevention"
     custom_domain    = "www.appeal-benefit-decision.service.gov.uk"
@@ -375,14 +379,50 @@ frontends = [
         operator       = "Equals"
         selector       = "otherReasonForAppealing"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reasonForNoMRN"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reasonForBeingLate"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "nino"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "signer"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "selection.signLanguage.language"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "selection.anythingElse.language"
+      }
     ]
   },
   {
+    product          = "sscs"
     name             = "sscs-tya"
     mode             = "Prevention"
     custom_domain    = "www.track-benefit-appeal.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "manage-appeal-benefit-decision-service-gov-uk"
+    certificate_name = "www-track-benefit-appeal-service-gov-uk"
     disabled_rules = {
       SQLI = [
         "942100",
@@ -430,11 +470,12 @@ frontends = [
     ]
   },
   {
+    product          = "sscs"
     name             = "sscs-cor"
     mode             = "Prevention"
     custom_domain    = "www.manage.appeal-benefit-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "manage-appeal-benefit-decision-service-gov-uk"
+    certificate_name = "www-manage-appeal-benefit-decision-service-gov-uk"
     disabled_rules = {
       SQLI = [
         "942100",
@@ -467,14 +508,40 @@ frontends = [
         operator       = "Equals"
         selector       = "iss"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "question-field"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "describeTheEvidence"
+      }
     ]
   },
   {
+    product          = "xui"
     name             = "xui-webapp"
     mode             = "Detection"
     custom_domain    = "manage-case.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "manage-case"
+    certificate_name = "manage-case-platform-hmcts-net"
     disabled_rules = {
       SQLI = [
         "942100",
@@ -516,6 +583,7 @@ frontends = [
     ]
   },
   {
+    product          = "xui"
     name             = "xui-manage-org"
     mode             = "Detection"
     custom_domain    = "manage-org.platform.hmcts.net"
@@ -557,6 +625,7 @@ frontends = [
     ]
   },
   {
+    product          = "xui"
     name             = "xui-approve-org"
     mode             = "Detection"
     custom_domain    = "administer-orgs.platform.hmcts.net"
@@ -598,6 +667,7 @@ frontends = [
     ]
   },
   {
+    product          = "xui"
     name             = "xui-register-org"
     mode             = "Detection"
     custom_domain    = "register-org.platform.hmcts.net"
@@ -634,6 +704,7 @@ frontends = [
     ]
   },
   {
+    product          = "cmc"
     name             = "cmc"
     mode             = "Prevention"
     custom_domain    = "www.moneyclaims.service.gov.uk"
@@ -720,6 +791,7 @@ frontends = [
 
   },
   {
+    product          = "cmc"
     name             = "cmc-legal"
     mode             = "Prevention"
     custom_domain    = "www.moneyclaim-legal.platform.hmcts.net"
@@ -779,6 +851,7 @@ frontends = [
 
   },
   {
+    product          = "ccd"
     name             = "www-ccd"
     mode             = "Prevention"
     custom_domain    = "www.ccd.platform.hmcts.net"
@@ -796,13 +869,44 @@ frontends = [
         selector       = "dtSa"
       },
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_sm_au"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "ssm_au"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "ssm_au_c"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "sn"
+      },
     ]
   },
   {
+    product          = "ccd"
     name             = "gateway-ccd"
     mode             = "Prevention"
     custom_domain    = "gateway.ccd.platform.hmcts.net"
@@ -835,23 +939,162 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "dtSa"
+        selector       = "__auth__"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_sm_au"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_sm_au_c"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "ai_session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "ai_user"
       },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "accessToken"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "BNES_dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "XSRF-TOKEN"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "roles"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "ssm_au"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "ssm_au_c"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "xui-webapp"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.appeal.appellant.identity.nino"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.appealReferenceNumber"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.caseReference"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.D8caseReference"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.deceasedSurname"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.divorceCaseNumber"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.deceasedForenames"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.D8PetitionerEmail"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.ethosCaseReference"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.familyManCaseNumber"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "case.previousServiceCaseReference"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "postcode"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
     ]
   },
   {
+    product          = "ccd"
     name             = "return-case-doc-ccd"
     mode             = "Detection"
     custom_domain    = "return-case-doc.ccd.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "ccd-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      }
+    ]
   },
   {
+    product          = "probate"
     name             = "probate"
     mode             = "Prevention"
     custom_domain    = "www.apply-for-probate.service.gov.uk"
@@ -913,24 +1156,160 @@ frontends = [
         operator       = "Equals"
         selector       = "isUploadingDocument"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cm-user-preferences"
+      },
     ]
   },
   {
+    product          = "ia"
     name             = "ia-aip"
     mode             = "Detection"
-    custom_domain    = "immigration-appeal.platform.hmcts.net"
+    custom_domain    = "www.appeal-immigration-asylum-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "immigration-appeal-platform-hmcts-net"
+    certificate_name = "appeal-immigration-asylum-decision-service-gov-uk"
   },
   {
+    product          = "fees"
     name             = "fees-register"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "fees-register.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "fees-register-platform-hmcts-net"
     www_redirect     = true
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestUri"
+            operator           = "EndsWith"
+            negation_condition = false
+            match_values = [
+              "/fees"
+            ]
+          },
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "81.134.202.29/32",
+              "51.145.6.230/32",
+              "194.33.192.0/25",
+              "194.33.193.0/25",
+              "194.33.196.0/25",
+              "194.33.197.0/25",
+              "52.210.206.51/32",
+              "62.25.109.201/32",
+              "62.25.109.203/32",
+              "51.143.139.240/32",
+              "51.145.4.100/32"
+            ]
+          }
+        ]
+      },
+    ],
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__redirect"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "DecodedUrl"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "QueryParamName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "DecodedPath"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "PostParamName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "expression"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "GroupName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "NFuse_Application"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "banner_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "callback"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reply_message_template"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "name"
+      },
+      {
+        match_variable = "RequestHeaderNames"
+        operator       = "Equals"
+        selector       = "User-Agent"
+      },
+      {
+        match_variable = "RequestHeaderNames"
+        operator       = "Equals"
+        selector       = "content-type"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "csvFees"
+      },
+    ]
   },
   {
+    product          = "fees"
     name             = "paybubble"
     mode             = "Prevention"
     custom_domain    = "paybubble.platform.hmcts.net"
@@ -978,9 +1357,20 @@ frontends = [
         operator       = "Equals"
         selector       = "DecodedUrl"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__pcipal-info"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
     ]
   },
   {
+    product          = "fees"
     name             = "manage-payments"
     mode             = "Detection"
     custom_domain    = "manage-payments.platform.hmcts.net"
@@ -989,8 +1379,10 @@ frontends = [
     www_redirect     = true
   },
   {
+    product          = "idam"
     name             = "idam-web-public"
     custom_domain    = "hmcts-access.service.gov.uk"
+    ssl_mode         = "AzureKeyVault"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "hmcts-access-service-gov-uk"
     cache_enabled    = "false"
@@ -1013,7 +1405,62 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookies_policy"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookies_preferences_set"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "seen_cookie_message"
       },
       {
         match_variable = "RequestCookieNames"
@@ -1125,9 +1572,15 @@ frontends = [
         operator       = "Equals"
         selector       = "code"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "nonce"
+      },
     ]
   },
   {
+    product          = "pcq"
     name             = "pcq"
     mode             = "Prevention"
     custom_domain    = "equality-and-diversity.platform.hmcts.net"
@@ -1147,13 +1600,15 @@ frontends = [
     ]
   },
   {
+    product          = "fact"
     name             = "fact"
-    mode             = "Prevention"
+    mode             = "Detection"
     custom_domain    = "www.find-court-tribunal.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "find-court-tribunal-service-gov-uk"
   },
   {
+    product          = "fact"
     name             = "fact-admin"
     mode             = "Detection"
     custom_domain    = "admin.find-court-tribunal.service.gov.uk"
@@ -1161,11 +1616,22 @@ frontends = [
     certificate_name = "find-court-tribunal-service-gov-uk"
   },
   {
+    product          = "fact-redirect"
+    name             = "fact-redirect"
+    mode             = "Detection"
+    custom_domain    = "courttribunalfinder.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    ssl_mode         = "AzureKeyVault"
+    certificate_name = "courttribunalfinder-service-gov-uk"
+  },
+  {
+    product          = "jui"
     name             = "jui-redirect"
     mode             = "Detection"
     custom_domain    = "jcm.judiciary.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "manage-case"
+    certificate_name = "jcm-judiciary-uk"
+    ssl_mode         = "AzureKeyVault"
     disabled_rules = {
       SQLI = [
         "942100",
@@ -1180,6 +1646,7 @@ frontends = [
     }
   },
   {
+    product                     = "idam"
     name                        = "idam-web-admin"
     custom_domain               = "idam-web-admin.platform.hmcts.net"
     backend_domain              = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
@@ -1198,8 +1665,10 @@ frontends = [
             operator           = "IPMatch"
             negation_condition = true
             match_values = [
+              "51.145.34.88/32",
               "81.134.202.29/32",
               "51.145.6.230/32",
+              "51.145.4.100/32",
               "194.33.192.0/25",
               "194.33.196.0/25",
               "52.210.206.51/32",
@@ -1304,6 +1773,7 @@ frontends = [
     ]
   },
   {
+    product          = "hmi"
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-hmiapimprod.uksouth.cloudapp.azure.com"]
@@ -1311,6 +1781,7 @@ frontends = [
     cache_enabled    = "false"
   },
   {
+    product             = "reform-scan"
     name                = "reformscan"
     custom_domain       = "reformscan.platform.hmcts.net"
     host_header         = "reformscanprod.blob.core.windows.net"

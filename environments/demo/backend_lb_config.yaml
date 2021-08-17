@@ -5,6 +5,7 @@ gateways:
       host_name_suffix: service.core-compute-demo.internal
       ssl_host_name_suffix: demo.platform.hmcts.net
       certificate_name: wildcard-demo-platform-hmcts-net
+      private_ip_address: 10.51.32.121
     app_configuration:
     # RPE
       - product: draft-store
@@ -18,6 +19,11 @@ gateways:
       # Camunda
       - product: camunda
         component: api
+      - product: camunda
+        component: optimize
+        ssl_enabled: true
+        cookie_based_affinity: Enabled
+        health_path_override: /api/readyz
     # Divorce
       - product: div
         component: emca
@@ -59,6 +65,8 @@ gateways:
     # ccpay
       - product: ccpay
         component: bulkscanning-api
+      - product: ccpay
+        component: refunds-api
 
     # BAR
       - product: bar
@@ -72,9 +80,15 @@ gateways:
       - product: ia
         component: case-notifications-api
       - product: ia
+        component: home-office-integration-api
+      - product: ia
+        component: home-office-mock-api
+      - product: ia
         component: case-payments-api
       - product: ia
         component: timed-event-service
+      - product: ia
+        component: case-access-api
 
     # SSCS
       - product: sscs
@@ -103,10 +117,18 @@ gateways:
         component: user-profile-api
       - product: ccd
         component: case-activity-api
+      - product: ccd
+        component: message-publisher
+      - product: ccd
+        component: case-document-am-api
 
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
+
+    # CPO (CDM)
+      - product: cpo
+        component: case-payment-orders-api
 
     # Probate
       - product: probate
@@ -158,6 +180,10 @@ gateways:
         component: showcase
       - product: em
         component: icp
+      - product: em
+        component: hrs-api
+      - product: em
+        component: hrs-ingestor
       - product: dg
         component: docassembly
       - product: dm
@@ -190,6 +216,20 @@ gateways:
         component: judicial-api
       - product: rd
         component: judicial-data-load
+      - product: rd
+        component: location-ref-api
+      - product: rd
+        component: professional-api-int
+      - product: rd
+        component: profile-sync-int
+      - product: rd
+        component: user-profile-api-int
+      - product: rd
+        component: caseworker-ref-api-int
+      - product: rd
+        component: judicial-api-int
+      - product: rd
+        component: location-ref-api-int
 
       # FACT
       - product: fact
@@ -197,22 +237,37 @@ gateways:
 
       # NFDIV
       - product: nfdiv
-        component: cos
-      - product: nfdiv
-        component: cms
+        component: case-api
 
      # rse
       - product: rse
         component: check
 
-     # Unspec
-      - product: unspec
+     # Civil
+      - product: civil
         component: service
 
-     # WA
+      # WA - Work Allocation
       - product: wa
         component: workflow-api
       - product: wa
         component: task-management-api
       - product: wa
         component: task-configuration-api
+      - product: wa
+        component: case-event-handler
+      - product: wa
+        component: task-monitor
+
+    # SIDAM
+      - product: idam
+        component: api
+        ssl_enabled: true
+
+    # Docmosis
+      - product: dg
+        component: docmosis
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+        host_name_prefix: docmosis
+        http_to_https_redirect: true

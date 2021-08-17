@@ -1,6 +1,5 @@
-env                        = "ptl"
-certificate_key_vault_name = "cftptl-intsvc"
-subscription               = "ptl"
+env          = "ptl"
+subscription = "ptl"
 
 # BFA variables
 mgmt_vnet_name = "core-cftptl-intsvc-vnet"

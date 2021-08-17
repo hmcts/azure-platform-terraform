@@ -3,15 +3,17 @@ data "template_file" "customdomain" {
 }
 
 resource "azurerm_template_deployment" "custom_domain" {
-  count               = length(var.shutter_apps)
+  for_each = { for frontend in var.shutter_apps : frontend.name => frontend if !contains(["jui-redirect", "fact-redirect"], frontend.name)
+  }
+
   template_body       = data.template_file.customdomain.rendered
-  name                = split(".", replace(var.shutter_apps[count.index].custom_domain, "www.", ""))[0]
+  name                = split(".", replace("${each.value.custom_domain}", "www.", ""))[0]
   resource_group_name = data.azurerm_resource_group.shutter.name
   deployment_mode     = "Incremental"
 
   parameters = {
-    name     = "${var.cdn_profile}/${azurerm_cdn_endpoint.shutter_endpoint[count.index].name}/${replace(var.shutter_apps[count.index].custom_domain, ".", "-")}"
-    hostName = var.shutter_apps[count.index].custom_domain
+    name     = "${azurerm_cdn_profile.main["${each.value.product}"].name}/${azurerm_cdn_endpoint.shutter_endpoint["${each.value.name}"].name}/${replace("${each.value.custom_domain}", ".", "-")}"
+    hostName = "${each.value.custom_domain}"
   }
 
   depends_on = [azurerm_cdn_endpoint.shutter_endpoint]

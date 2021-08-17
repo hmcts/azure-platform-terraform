@@ -5,6 +5,7 @@ gateways:
       host_name_suffix: service.core-compute-prod.internal
       ssl_host_name_suffix: platform.hmcts.net
       certificate_name: wildcard-platform-hmcts-net
+      private_ip_address: 10.13.32.120
     app_configuration:
     # RPE
       - product: draft-store
@@ -22,6 +23,11 @@ gateways:
         cookie_based_affinity: Enabled
       - product: camunda
         component: api
+      - product: camunda
+        component: optimize
+        ssl_enabled: true
+        cookie_based_affinity: Enabled
+        health_path_override: /api/readyz
     # Probate
       - product: probate
         component: business-service
@@ -49,6 +55,8 @@ gateways:
         component: home-office-integration-api
       - product: ia
         component: case-payments-api
+      - product: ia
+        component: case-access-api
 
     # Divorce
       - product: div
@@ -89,6 +97,10 @@ gateways:
         component: ccd-orchestrator
       - product: em
         component: icp
+      - product: em
+        component: hrs-api
+      - product: em
+        component: hrs-ingestor
       - product: dg
         component: docassembly
       - product: dm
@@ -136,10 +148,18 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
-        
+      - product: ccd
+        component: message-publisher
+      - product: ccd
+        component: case-document-am-api
+
     # AAC (CDM)
       - product: aac
-        component: manage-case-assignment    
+        component: manage-case-assignment
+
+    # CPO (CDM)
+      - product: cpo
+        component: case-payment-orders-api
 
     # BAR
       - product: bar
@@ -156,6 +176,14 @@ gateways:
         component: judicial-api
       - product: rd
         component: location-ref-api
+      - product: rd
+        component: caseworker-ref-api
+
+    # Access Management
+      - product: am
+        component: role-assignment-service
+      - product: am
+        component: org-role-mapping-service
 
     # Bulk scan and print
       - product: bulk-scan
@@ -193,7 +221,30 @@ gateways:
         component: web-admin
         cookie_based_affinity: Enabled
         ssl_enabled: true
- 
+
  # FACT
       - product: fact
         component: api
+
+ # Docmosis
+      - product: dg
+        component: docmosis
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+        host_name_prefix: docmosis
+
+ # WA - Work Allocation
+      - product: wa
+        component: workflow-api
+      - product: wa
+        component: task-management-api
+      - product: wa
+        component: task-configuration-api
+      - product: wa
+        component: case-event-handler
+      - product: wa
+        component: task-monitor
+
+ # CIVIL
+      - product: civil
+        component: service

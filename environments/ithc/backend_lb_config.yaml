@@ -5,6 +5,7 @@ gateways:
       host_name_suffix: service.core-compute-ithc.internal
       ssl_host_name_suffix: ithc.platform.hmcts.net
       certificate_name: wildcard-ithc-platform-hmcts-net
+      private_ip_address: 10.10.40.121
     app_configuration:
     # RPE
       - product: draft-store
@@ -22,6 +23,11 @@ gateways:
         cookie_based_affinity: Enabled
       - product: camunda
         component: api
+      - product: camunda
+        component: optimize
+        ssl_enabled: true
+        cookie_based_affinity: Enabled
+        health_path_override: /api/readyz
 
       # Probate
       - product: probate
@@ -50,6 +56,16 @@ gateways:
         component: home-office-mock-api
       - product: ia
         component: timed-event-service
+      - product: ia
+        component: case-access-api
+      - product: ia
+        component: case-payments-api
+
+    # Access Management
+      - product: am
+        component: role-assignment-service
+      - product: am
+        component: org-role-mapping-service
 
     # Reference DATA
       - product: rd
@@ -122,6 +138,8 @@ gateways:
         component: api
       - product: ccpay
         component: bulkscanning-api
+      - product: ccpay
+        component: refunds-api
 
     # BAR
       - product: bar
@@ -140,6 +158,10 @@ gateways:
         component: ccdorc
       - product: em
         component: icp
+      - product: em
+        component: hrs-api
+      - product: em
+        component: hrs-ingestor
       - product: dg
         component: docassembly
       - product: dm
@@ -157,20 +179,26 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
-    
+      - product: ccd
+        component: message-publisher
+      - product: ccd
+        component: case-document-am-api  
+        
+    # CPO (CDM)
+      - product: cpo
+        component: case-payment-orders-api
+
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
-     
+
     # FACT
       - product: fact
         component: api
 
     # NFDIV
       - product: nfdiv
-        component: cos
-      - product: nfdiv
-        component: cms
+        component: case-api
 
       # xui
       - product: xui
@@ -192,3 +220,28 @@ gateways:
     # Send-letter
       - product: rpe
         component: send-letter-service
+
+    # Docmosis
+      - product: dg
+        component: docmosis
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+        host_name_prefix: docmosis
+        http_to_https_redirect: true
+
+    # WA - Work Allocation
+      - product: wa
+        component: workflow-api
+      - product: wa
+        component: task-management-api
+      - product: wa
+        component: task-configuration-api
+      - product: wa
+        component: case-event-handler
+      - product: wa
+        component: task-monitor
+
+
+    # Civil
+      - product: civil
+        component: service

@@ -3,5 +3,5 @@ output "cosmos_db_url" {
 }
 
 output "primary_master_key" {
-  value = "${azurerm_cosmosdb_account.main.primary_master_key}"
+  value = azurerm_cosmosdb_account.main.primary_master_key
 }

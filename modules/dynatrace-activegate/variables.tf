@@ -58,3 +58,35 @@ variable "storage_account" {
 variable "storage_container" {
   default = "plugin"
 }
+
+variable "config_file_name" {
+  default = "cloudconfig"
+}
+
+variable "enable_log_analytics" {
+  default = false
+}
+
+variable "install_splunk_uf" {
+  default = false
+}
+
+variable "soc_vault_name" {
+  default = "soc-prod"
+}
+
+variable "soc_vault_rg" {
+  default = "soc-core-infra-prod-rg"
+}
+
+variable "splunk_username_secret" {
+  default = "splunk-gui-admin-username"
+}
+
+variable "splunk_password_secret" {
+  default = "splunk-gui-admin-password"
+}
+
+variable "splunk_pass4symmkey_secret" {
+  default = "pass4SymmKey-forwarders-plaintext"
+}

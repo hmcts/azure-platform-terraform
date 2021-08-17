@@ -5,6 +5,7 @@ gateways:
       host_name_suffix: service.core-compute-perftest.internal
       ssl_host_name_suffix: perftest.platform.hmcts.net
       certificate_name: wildcard-perftest-platform-hmcts-net
+      private_ip_address: 10.48.96.121
     app_configuration:
     # RPE
       - product: draft-store
@@ -22,6 +23,12 @@ gateways:
         cookie_based_affinity: Enabled
       - product: camunda
         component: api
+      - product: camunda
+        component: optimize
+        ssl_enabled: true
+        cookie_based_affinity: Enabled
+        health_path_override: /api/readyz
+      
       # Evidence Management
       - product: em
         component: anno
@@ -33,6 +40,10 @@ gateways:
         component: showcase
       - product: em
         component: ccd-orchestrator
+      - product: em
+        component: hrs-api
+      - product: em
+        component: hrs-ingestor
       - product: dg
         component: docassembly
       - product: dm
@@ -60,6 +71,14 @@ gateways:
         component: case-documents-api
       - product: ia
         component: timed-event-service
+      - product: ia
+        component: case-access-api
+      - product: ia
+        component: case-payments-api
+      - product: ia
+        component: home-office-integration-api
+      - product: ia
+        component: home-office-mock-api
 
     # Reference DATA
       - product: rd
@@ -140,6 +159,10 @@ gateways:
     # ccpay
       - product: ccpay
         component: bulkscanning-api
+      - product: ccpay
+        component: refunds-api
+        
+        
 
     # CCD
       - product: ccd
@@ -153,11 +176,19 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
+      - product: ccd
+        component: message-publisher
+      - product: ccd
+        component: case-document-am-api
 
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
-
+   
+   # CPO (CDM)
+      - product: cpo
+        component: case-payment-orders-api
+        
    # CTSC
       - product: ctsc
         component: work-allocation
@@ -192,9 +223,7 @@ gateways:
 
     # NFDIV
       - product: nfdiv
-        component: cos
-      - product: nfdiv
-        component: cms
+        component: case-api
 
     # Access Management
       - product: am
@@ -214,4 +243,28 @@ gateways:
         ssl_enabled: true
       - product: idam
         component: keycloak
+        health_path_override: /auth/realms/master
+
+    # Docmosis
+      - product: dg
+        component: docmosis
         cookie_based_affinity: Enabled
+        ssl_enabled: true
+        host_name_prefix: docmosis
+        http_to_https_redirect: true
+
+    # WA - Work Allocation
+      - product: wa
+        component: workflow-api
+      - product: wa
+        component: task-management-api
+      - product: wa
+        component: task-configuration-api
+      - product: wa
+        component: case-event-handler
+      - product: wa
+        component: task-monitor
+
+    # Civil
+      - product: civil
+        component: service

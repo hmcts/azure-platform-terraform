@@ -224,6 +224,12 @@ gateways:
         component: profile-sync-int
       - product: rd
         component: user-profile-api-int
+      - product: rd
+        component: caseworker-ref-api-int
+      - product: rd
+        component: judicial-api-int
+      - product: rd
+        component: location-ref-api-int
 
       # FACT
       - product: fact

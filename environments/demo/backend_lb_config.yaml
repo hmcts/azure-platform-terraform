@@ -121,6 +121,8 @@ gateways:
         component: message-publisher
       - product: ccd
         component: case-document-am-api
+      - product: ccd
+        component: ac-int-data-store-api  
 
     # AAC (CDM)
       - product: aac

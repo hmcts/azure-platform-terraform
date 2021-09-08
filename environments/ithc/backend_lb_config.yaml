@@ -130,6 +130,10 @@ gateways:
         component: tribunals-api
       - product: sscs
         component: evidence-share
+      - product: sscs
+        component: tya-notif
+      - product: sscs
+        component: ccd-callback-orchestrator
 
     # FPLA
       - product: fpl

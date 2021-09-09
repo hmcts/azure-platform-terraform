@@ -121,8 +121,6 @@ gateways:
         component: message-publisher
       - product: ccd
         component: case-document-am-api
-      - product: ccd
-        component: ac-int-data-store-api  
 
     # AAC (CDM)
       - product: aac
@@ -277,3 +275,13 @@ gateways:
         ssl_enabled: true
         host_name_prefix: docmosis
         http_to_https_redirect: true
+
+  - gateway_configuration:
+      host_name_suffix: service.core-compute-demo.internal
+      ssl_host_name_suffix: demo.platform.hmcts.net
+      certificate_name: wildcard-demo-platform-hmcts-net
+      private_ip_address: 10.51.32.125
+    app_configuration:
+    # CCD
+      - product: ccd
+        component: ac-int-data-store-api  

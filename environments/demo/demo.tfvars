@@ -1,6 +1,6 @@
 env                       = "demo"
 subscription              = "demo"
-app_gw_private_ip_address = ["10.51.32.121"]
+app_gw_private_ip_address = ["10.51.32.121", "10.51.32.125"]
 cft_apps_cluster_ips      = ["10.51.31.250"]
 certificate_name_check    = false
 

@@ -127,8 +127,6 @@ gateways:
         component: api
       - product: fees-register
         component: api
-      - product: ccpay
-        component: paymentoutcome-web
 
     # Ethos
       - product: ethos

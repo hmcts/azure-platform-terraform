@@ -102,6 +102,12 @@ gateways:
       - product: fpl
         component: case-service
 
+    # Family Private Law
+      - product: fprl
+        component: cos
+      - product: fprl
+        component: dgs
+
     # Adoption
       - product: adoption
         component: backend

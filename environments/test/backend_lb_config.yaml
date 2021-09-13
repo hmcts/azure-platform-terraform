@@ -165,8 +165,8 @@ gateways:
         component: bulkscanning-api
       - product: ccpay
         component: refunds-api
-        
-        
+      - product: ccpay
+        component: paymentoutcome-web 
 
     # CCD
       - product: ccd

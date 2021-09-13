@@ -222,6 +222,8 @@ gateways:
         component: api
       - product: ccpay
         component: refunds-api
+      - product: ccpay
+        component: paymentoutcome-web
 
       # CMC
       - product: cmc

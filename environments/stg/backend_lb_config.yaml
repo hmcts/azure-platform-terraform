@@ -102,12 +102,6 @@ gateways:
       - product: fpl
         component: case-service
 
-    # Family Private Law
-      - product: fprl
-        component: cos
-      - product: fprl
-        component: dgs
-
     # Adoption
       - product: adoption
         component: backend
@@ -330,3 +324,9 @@ gateways:
         ssl_enabled: true
         cookie_based_affinity: Enabled
         health_path_override: /api/readyz
+
+    # Family Private Law
+      - product: fprl
+        component: cos
+      - product: fprl
+        component: dgs

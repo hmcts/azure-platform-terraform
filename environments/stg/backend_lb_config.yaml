@@ -142,6 +142,8 @@ gateways:
       - product: dg
         component: docassembly
       - product: dm
+        component: store
+      - product: dm
         component: store-staging
 
     # Bulk scan and print

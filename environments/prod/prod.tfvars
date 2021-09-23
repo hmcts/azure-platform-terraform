@@ -1306,6 +1306,11 @@ frontends = [
         operator       = "Equals"
         selector       = "csvFees"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "description"
+      },
     ]
   },
   {

@@ -121,8 +121,6 @@ gateways:
         component: message-publisher
       - product: ccd
         component: case-document-am-api
-      - product: ccd
-        component: test-stubs-service
 
     # AAC (CDM)
       - product: aac
@@ -286,4 +284,6 @@ gateways:
     app_configuration:
     # CCD
       - product: ccd
-        component: ac-int-data-store-api  
+        component: ac-int-data-store-api
+      - product: ccd
+        component: test-stubs-service

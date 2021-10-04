@@ -43,6 +43,10 @@ gateways:
       - product: pcq
         component: backend
 
+      # Log and Audit - Case
+      - product: lau-case
+        component: case-backend
+
     # I&A
       - product: ia
         component: case-api

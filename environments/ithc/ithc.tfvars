@@ -479,6 +479,12 @@ frontends = [
 
   },
   {
+    name           = "lau-case"
+    mode           = "Detection"
+    custom_domain  = "lau-case.ithc.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "paybubble"
     custom_domain  = "paybubble.ithc.platform.hmcts.net"
     mode           = "Detection"

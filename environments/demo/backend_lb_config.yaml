@@ -144,6 +144,10 @@ gateways:
       - product: pcq
         component: backend
 
+      # Log and Audit - Case
+      - product: lau-case
+        component: case-backend
+
     # CMC
       - product: cmc
         component: claim-store

@@ -54,6 +54,10 @@ gateways:
       - product: pcq
         component: backend
 
+      # Log and Audit - Case
+      - product: lau-case
+        component: case-backend
+
     # Divorce
       - product: div
         component: emca

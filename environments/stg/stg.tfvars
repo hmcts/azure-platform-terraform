@@ -386,6 +386,12 @@ frontends = [
 
   },
   {
+    name           = "lau-case"
+    mode           = "Detection"
+    custom_domain  = "lau-case.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "adoption"
     custom_domain  = "adoption.aat.platform.hmcts.net"
     mode           = "Detection"

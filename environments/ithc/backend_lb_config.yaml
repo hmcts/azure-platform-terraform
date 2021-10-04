@@ -43,8 +43,8 @@ gateways:
       - product: pcq
         component: backend
 
-      # Log and Audit - Case
-      - product: lau-case
+    # Log and Audit
+      - product: lau
         component: case-backend
 
     # I&A
@@ -130,6 +130,10 @@ gateways:
         component: tribunals-api
       - product: sscs
         component: evidence-share
+      - product: sscs
+        component: tya-notif
+      - product: sscs
+        component: ccd-callback-orchestrator
 
     # FPLA
       - product: fpl

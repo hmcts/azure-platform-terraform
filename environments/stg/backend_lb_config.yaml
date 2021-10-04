@@ -54,8 +54,8 @@ gateways:
       - product: pcq
         component: backend
 
-      # Log and Audit - Case
-      - product: lau-case
+    # Log and Audit
+      - product: lau
         component: case-backend
 
     # Divorce
@@ -143,6 +143,8 @@ gateways:
         component: docassembly
       - product: dm
         component: store
+      - product: dm
+        component: store-staging
 
     # Bulk scan and print
       - product: bulk-scan
@@ -324,3 +326,9 @@ gateways:
         ssl_enabled: true
         cookie_based_affinity: Enabled
         health_path_override: /api/readyz
+
+    # Family Private Law
+      - product: fprl
+        component: cos
+      - product: fprl
+        component: dgs

@@ -287,3 +287,5 @@ gateways:
         component: ac-int-data-store-api
       - product: ccd
         component: test-stubs-service
+      - product: ccd
+        component: ac-int-definition-store-api

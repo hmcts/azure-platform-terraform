@@ -300,7 +300,7 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames",
         operator       = "StartsWith",
-        selector       = "password"
+        selector       = "email"
       },
       {
         match_variable = "QueryStringArgNames"

@@ -290,7 +290,7 @@ gateways:
       - product: ccd
         component: ac-int-definition-store-api
     # PRL
-      - product: prl
+      - product: fprl
         component: cos-api
-      - product: prl
+      - product: fprl
         component: dgs-api

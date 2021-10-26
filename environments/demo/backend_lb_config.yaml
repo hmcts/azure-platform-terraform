@@ -289,3 +289,8 @@ gateways:
         component: test-stubs-service
       - product: ccd
         component: ac-int-definition-store-api
+    # PRL
+      - product: prl
+        component: cos-api
+      - product: prl
+        component: dgs-api

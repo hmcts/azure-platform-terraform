@@ -292,3 +292,7 @@ gateways:
     # FPRL
       - product: fprl
         component: cos
+      - product: prl
+        component: cos
+      - product: prl
+        component: dgs

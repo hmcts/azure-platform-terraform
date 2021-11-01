@@ -502,8 +502,8 @@ frontends = [
     backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
   },
   {
-    name           = "adoption"
-    custom_domain  = "adoption.aat.platform.hmcts.net"
+    name           = "adoption-cos-api"
+    custom_domain  = "adoption-cos-api.aat.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
 

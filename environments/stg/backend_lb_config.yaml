@@ -102,9 +102,9 @@ gateways:
       - product: fpl
         component: case-service
 
-    # Adoption
+    # Adoption COS API
       - product: adoption
-        component: backend
+        component: cos-api
 
     # Ethos
       - product: ethos

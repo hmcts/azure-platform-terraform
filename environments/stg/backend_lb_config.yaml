@@ -332,3 +332,7 @@ gateways:
         component: cos
       - product: fprl
         component: dgs
+      - product: prl
+        component: cos
+      - product: prl
+        component: dgs

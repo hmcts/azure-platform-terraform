@@ -296,3 +296,6 @@ gateways:
         component: cos
       - product: prl
         component: dgs
+    # Adoption
+      - product: adoption
+        component: cos-api

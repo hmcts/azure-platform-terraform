@@ -94,3 +94,11 @@ variable "common_tags" {
 variable "add_access_policy" {
   default = true
 }
+
+variable "department" { 
+  default = "cft" 
+}
+
+variable "apim_sku_name" { 
+  default = "Developer" 
+}

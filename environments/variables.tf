@@ -102,7 +102,3 @@ variable "department" {
 variable "apim_sku_name" {
   default = "Developer"
 }
-
-variable "apim_subnet_address_prefix" {
-  default = []
-}

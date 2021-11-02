@@ -26,7 +26,6 @@ module "api-mgmt" {
   virtual_network_type           = "Internal"
   department                     = var.department
   common_tags                    = module.ctags.common_tags
-  depends_on                     = [azurerm_subnet.api-mgmt-subnet]
 }
 
 resource "azurerm_api_management_named_value" "environment" {

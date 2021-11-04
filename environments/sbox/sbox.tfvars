@@ -374,10 +374,10 @@ frontends = [
     cache_enabled    = "false"
   },
   {
-    product          = "core-api-mgmt"
-    name             = "core-api-mgmt"
-    custom_domain    = "core-api-mgmt.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-coreapimgmtsbox.uksouth.cloudapp.azure.com"]
+    product          = "cft-api-mgmt"
+    name             = "cft-api-mgmt"
+    custom_domain    = "cft-api-mgmt.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-cftapimgmt.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     cache_enabled    = "false"
   },

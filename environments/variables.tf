@@ -103,4 +103,6 @@ variable "apim_sku_name" {
   default = "Developer"
 }
 
-variable "hub" {}
+variable "hub" {
+  default = "sbox"
+}

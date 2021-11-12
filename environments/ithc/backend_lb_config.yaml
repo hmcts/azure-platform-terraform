@@ -46,6 +46,8 @@ gateways:
     # Log and Audit
       - product: lau
         component: case-backend
+      - product: lau
+        component: idam-backend
 
     # I&A
       - product: ia

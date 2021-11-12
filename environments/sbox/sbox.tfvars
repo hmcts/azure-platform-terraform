@@ -17,6 +17,8 @@ shutter_rg = "shutter-app-sbox-rg"
 cft_apps_ag_ip_address = "10.2.13.124"
 cft_apps_cluster_ips   = ["10.2.9.250", "10.2.11.250"]
 
+hub = "sbox"
+
 frontends = [
   {
     product          = "idam"

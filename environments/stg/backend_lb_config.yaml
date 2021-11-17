@@ -340,5 +340,5 @@ gateways:
         component: dgs
 
     # Domestic Abuse
-    - product: da
-      component: cos-api
+      - product: da
+        component: cos-api

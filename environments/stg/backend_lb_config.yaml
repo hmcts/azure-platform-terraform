@@ -212,6 +212,8 @@ gateways:
         component: caseworker-ref-api
       - product: rd
         component: location-ref-api
+      - product: rd
+        component: commondata-api
 
       # Send-letter
       - product: rpe

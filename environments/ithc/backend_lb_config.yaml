@@ -90,6 +90,8 @@ gateways:
         component: location-ref-api
       - product: rd
         component: location-ref-data-load
+      - product: rd
+        component: commondata-api
 
     # Divorce
       - product: div

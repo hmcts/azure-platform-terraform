@@ -399,6 +399,5 @@ frontends = [
     custom_domain               = "labs-cftmokainos-sbox.service.core-compute-sandbox.internal"
     backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-sandbox-platform-hmcts-net"
-    appgw_cookie_based_affinity = "Enabled"
   }
 ]

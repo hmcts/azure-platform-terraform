@@ -54,6 +54,9 @@ gateways:
     # Plum Frontend
       - product: plum
         component: frontend
+    #labs
+      - product: labs
+        component: cftmokainos
 
     # SIDAM 
       - product: idam

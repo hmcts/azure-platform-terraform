@@ -225,6 +225,8 @@ gateways:
       - product: rd
         component: location-ref-api
       - product: rd
+        component: commondata-api
+      - product: rd
         component: professional-api-int
       - product: rd
         component: profile-sync-int

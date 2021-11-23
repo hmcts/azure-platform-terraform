@@ -225,8 +225,6 @@ gateways:
       - product: rd
         component: location-ref-api
       - product: rd
-        component: commondata-api
-      - product: rd
         component: professional-api-int
       - product: rd
         component: profile-sync-int
@@ -303,3 +301,6 @@ gateways:
     # Adoption
       - product: adoption
         component: cos-api
+    # Reference Data
+      - product: rd
+        component: commondata-api

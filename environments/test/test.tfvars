@@ -952,4 +952,12 @@ frontends = [
       },
     ]
   },
+  {
+    product          = "cft-api-mgmt"
+    name             = "cft-api-mgmt"
+    custom_domain    = "cft-api-mgmt.perftest.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
+    cache_enabled    = "false"
+  },
 ]

@@ -56,7 +56,7 @@ gateways:
         component: frontend
     #labs
       - product: labs
-        component: cftmokainos
+        component: mokainosspringboot
 
     # SIDAM 
       - product: idam

@@ -489,15 +489,15 @@ frontends = [
 
   },
   {
-    name           = "lau-case"
+    name           = "lau"
     mode           = "Detection"
-    custom_domain  = "lau-case.ithc.platform.hmcts.net"
+    custom_domain  = "lau.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
   },
   {
-    name           = "lau-idam"
+    name           = "lau-case"
     mode           = "Detection"
-    custom_domain  = "lau-idam.ithc.platform.hmcts.net"
+    custom_domain  = "lau-case.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
   },
   {

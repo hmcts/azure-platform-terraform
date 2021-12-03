@@ -462,15 +462,15 @@ frontends = [
 
   },
   {
-    name           = "lau-case"
+    name           = "lau"
     mode           = "Detection"
-    custom_domain  = "lau-case.perftest.platform.hmcts.net"
+    custom_domain  = "lau.perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
   },
   {
-    name           = "lau-idam"
+    name           = "lau-case"
     mode           = "Detection"
-    custom_domain  = "lau-idam.perftest.platform.hmcts.net"
+    custom_domain  = "lau-case.perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
   },
   {

@@ -1,5 +1,5 @@
 locals {
-  env = (var.env == "aat") ? "stg" : (var.env == "perftest") ? "test" : (var.env == "sbox") ? "sandbox" :"${var.env}"
+  env = (var.env == "aat") ? "stg" : (var.env == "perftest") ? "test" : (var.env == "sbox") ? "sandbox" : "${var.env}"
 
   dns_zone = (var.env == "sbox") ? "sandbox" : "${var.env}"
 

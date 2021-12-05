@@ -1,5 +1,5 @@
 locals {
-  env = (var.env == "aat") ? "stg" : (var.env == "perftest") ? "test" : (var.env == "sbox") ? "sandbox" : "${var.env}"
+  env = (var.env == "aat") ? "stg" : "${(var.env == "perftest") ? "test" : "${var.env}"}"
 
   dns_zone = (var.env == "sbox") ? "sandbox" : "${var.env}"
 
@@ -8,7 +8,7 @@ locals {
   a_records = flatten([
     for gateways, gateway in local.gateways : [
       for app in gateway.app_configuration : {
-        name   = "${app.product}-${app.component}-${var.env}",
+        name   = "${app.product}-${app.component}-${var.dns_zone}",
         ttl    = 300,
         record = ["${gateway.gateway_configuration.private_ip_address}"]
       }

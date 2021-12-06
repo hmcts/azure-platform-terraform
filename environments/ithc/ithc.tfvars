@@ -501,6 +501,12 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
   },
   {
+    name           = "lau-idam"
+    mode           = "Detection"
+    custom_domain  = "lau-idam.ithc.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "paybubble"
     custom_domain  = "paybubble.ithc.platform.hmcts.net"
     mode           = "Detection"

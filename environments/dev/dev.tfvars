@@ -6,6 +6,8 @@ subscription = "dev"
 data_subscription = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 oms_env           = "nonprod"
 
+hub = "nonprod"
+
 frontends = [
   {
     name           = "hmi-apim"

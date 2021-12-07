@@ -164,6 +164,14 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_cftapps_cluster_lb'
 
+    - deployment: 'preview_apim'
+      environment: 'dev'
+      component: 'apim'
+      service_connection: 'dcd-cftapps-dev'
+      storage_account_rg: 'core-infra-dev-rg'
+      storage_account_name: 'cftappsdev'
+      dependsOn: 'sbox_cftapps_cluster_lb'
+
     - deployment: 'stg_cftapps_cluster_lb'
       environment: 'stg'
       component: 'cftapps_cluster_lb'

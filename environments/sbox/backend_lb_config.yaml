@@ -58,7 +58,7 @@ gateways:
       - product: labs
         component: mokainosspringboot
       - product: labs
-        component: mohanalatest
+        component: mokainosjavaapp
 
 
     # SIDAM 

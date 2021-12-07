@@ -15,7 +15,7 @@ data "azurerm_subscription" "current" {}
 
 locals {
   key_vault_name = "acme${replace(lower(data.azurerm_subscription.current.display_name), "-", "")}"
-  env = = (var.env == "sbox") ? "sandbox" : "${var.env}"
+  env = (var.env == "sbox") ? "sandbox" : "${var.env}"
 }
 
 module "app-gw" {

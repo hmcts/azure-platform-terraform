@@ -15,14 +15,14 @@ data "azurerm_subscription" "current" {}
 
 locals {
   key_vault_name = "acme${replace(lower(data.azurerm_subscription.current.display_name), "-", "")}"
-  env = (var.env == "sbox") ? "sandbox" : "${var.env}"
+  dns_zone = (var.env == "sbox") ? "sandbox" : local.env
 }
 
 module "app-gw" {
   source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=master"
 
   yaml_path                  = "${path.cwd}/../../environments/${local.env}/backend_lb_config.yaml"
-  env                        = local.env
+  env                        = local.dns_zone
   location                   = var.location
   private_ip_address         = var.app_gw_private_ip_address
   backend_pool_ip_addresses  = var.cft_apps_cluster_ips

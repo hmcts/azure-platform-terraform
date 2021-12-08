@@ -59,6 +59,8 @@ gateways:
         component: mokainosspringboot
       - product: labs
         component: mokainosjavaapp
+      - product: "labs"
+        component: msl8r      
 
 
     # SIDAM 

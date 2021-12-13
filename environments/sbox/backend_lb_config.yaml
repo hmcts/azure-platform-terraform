@@ -60,7 +60,9 @@ gateways:
       - product: labs
         component: mokainosjavaapp
       - product: "labs"
-        component: msl8r      
+        component: msl8r
+      - product: "labs"
+        component: ssian2
 
 
     # SIDAM 

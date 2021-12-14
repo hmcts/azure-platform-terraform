@@ -63,8 +63,6 @@ gateways:
         component: msl8r
       - product: "labs"
         component: ssian2
-      - product: "labs"
-        component: zc-hmcts
 
 
     # SIDAM 

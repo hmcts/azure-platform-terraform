@@ -304,3 +304,8 @@ gateways:
     # Reference Data
       - product: rd
         component: commondata-api
+    # ET
+      - product: et
+        component: cos
+      - product: et
+        component: msg-handler

@@ -324,7 +324,7 @@ gateways:
         component: camunda-data-store-staging
       - product: civil
         component: camunda-definition-store-staging
-        
+
       - product: camunda
         component: optimize
         ssl_enabled: true
@@ -344,3 +344,9 @@ gateways:
     # Domestic Abuse
       - product: da
         component: cos-api
+
+    # ET
+      - product: et
+        component: cos
+      - product: et
+        component: msg-handler

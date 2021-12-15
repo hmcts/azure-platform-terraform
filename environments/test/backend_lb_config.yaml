@@ -28,7 +28,7 @@ gateways:
         ssl_enabled: true
         cookie_based_affinity: Enabled
         health_path_override: /api/readyz
-      
+
       # Evidence Management
       - product: em
         component: anno
@@ -169,8 +169,8 @@ gateways:
         component: bulkscanning-api
       - product: ccpay
         component: refunds-api
-        
-        
+
+
 
     # CCD
       - product: ccd
@@ -192,11 +192,11 @@ gateways:
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
-   
+
    # CPO (CDM)
       - product: cpo
         component: case-payment-orders-api
-        
+
    # CTSC
       - product: ctsc
         component: work-allocation
@@ -276,3 +276,9 @@ gateways:
     # Civil
       - product: civil
         component: service
+
+    # ET
+      - product: et
+        component: cos
+      - product: et
+        component: msg-handler

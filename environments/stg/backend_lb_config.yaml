@@ -228,6 +228,8 @@ gateways:
         component: api
       - product: ccpay
         component: refunds-api
+      - product: ccpay
+        component: notifications-service
 
       # CMC
       - product: cmc

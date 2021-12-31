@@ -127,6 +127,8 @@ gateways:
         component: api
       - product: fees-register
         component: api
+      - product: ccpay
+        component: refunds-api
 
     # Ethos
       - product: ethos

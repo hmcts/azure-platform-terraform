@@ -56,7 +56,18 @@ gateways:
         component: frontend
     #labs
       - product: labs
-        component: cftmokainos
+        component: mokainosspringboot
+      - product: labs
+        component: mokainosjavaapp
+      - product: "labs"
+        component: msl8r
+      - product: "labs"
+        component: ssian2
+      - product: "labs"
+        component: zc-hmcts
+      - product: "labs"
+        component: ozzyib
+
 
     # SIDAM 
       - product: idam

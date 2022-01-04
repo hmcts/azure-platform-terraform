@@ -169,6 +169,8 @@ gateways:
         component: bulkscanning-api
       - product: ccpay
         component: refunds-api
+      - product: ccpay
+        component: notifications-service
 
 
 

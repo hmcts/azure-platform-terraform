@@ -343,10 +343,6 @@ gateways:
       - product: prl
         component: dgs
 
-    # Domestic Abuse
-      - product: da
-        component: cos-api
-
     # ET
       - product: et
         component: cos

@@ -1081,6 +1081,42 @@ frontends = [
     ]
   },
   {
+    name                        = "idam-user-dashboard"
+    custom_domain               = "idam-user-dashboard.aat.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name            = "wildcard-aat-platform-hmcts-net"
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "20.50.109.148/32",
+              "20.50.108.242/32",
+              "51.11.124.216/32",
+              "51.11.124.205/32",
+              "81.134.202.29/32",
+              "51.104.22.147/32",
+              "51.145.6.230/32",
+              "51.145.4.100/32",
+              "194.33.192.0/25",
+              "194.33.196.0/25",
+              "52.210.206.51/32",
+              "62.25.109.201/32",
+              "62.25.109.203/32"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     name                = "reformscan"
     custom_domain       = "reformscan.aat.platform.hmcts.net"
     host_header         = "reformscanaat.blob.core.windows.net"

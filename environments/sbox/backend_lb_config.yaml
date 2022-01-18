@@ -67,6 +67,9 @@ gateways:
         component: zc-hmcts
       - product: "labs"
         component: endakelly
+      - product: "labs"
+        component: ozzyib
+        
 
     # SIDAM 
       - product: idam

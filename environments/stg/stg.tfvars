@@ -1084,10 +1084,11 @@ frontends = [
     ]
   },
   {
-    name                        = "idam-user-dashboard"
-    custom_domain               = "idam-user-dashboard.aat.platform.hmcts.net"
-    backend_domain              = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-aat-platform-hmcts-net"
+    name             = "idam-user-dashboard"
+    custom_domain    = "idam-user-dashboard.aat.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
     custom_rules = [
       {
         name     = "IPMatchWhitelist"

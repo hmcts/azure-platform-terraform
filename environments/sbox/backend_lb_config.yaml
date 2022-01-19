@@ -69,6 +69,8 @@ gateways:
         component: endakelly
       - product: "labs"
         component: ozzyib
+      - product: "labs"
+        component: paflaher2
         
 
     # SIDAM 

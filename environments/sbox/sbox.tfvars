@@ -391,5 +391,14 @@ frontends = [
     certificate_name            = "wildcard-sandbox-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
     cache_enabled               = "false"
+  },
+  {
+    product                     = "labs"
+    name                        = "labs-louisehuyton-nodejs"
+    custom_domain               = "labs-louisehuyton-nodejs.sandbox.platform.hmcts.net"
+    backend_domain              = ["firewall-sbox-int-palo-louisehuyton-nodejs.uksouth.cloudapp.azure.com"]
+    certificate_name            = "wildcard-sandbox-platform-hmcts-net"
+    appgw_cookie_based_affinity = "Enabled"
+    cache_enabled               = "false"
   }
 ]

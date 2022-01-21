@@ -253,7 +253,6 @@ gateways:
         ssl_enabled: true
       - product: idam
         component: user-dashboard
-        cookie_based_affinity: Enabled
         ssl_enabled: true
 
 # rse

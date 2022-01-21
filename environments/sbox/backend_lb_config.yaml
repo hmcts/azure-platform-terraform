@@ -69,8 +69,6 @@ gateways:
         component: endakelly
       - product: "labs"
         component: ozzyib
-      - product: "labs"
-        component: louisehuyton-nodejs
         
 
     # SIDAM 

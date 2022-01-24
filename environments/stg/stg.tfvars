@@ -1193,6 +1193,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "scope"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
       }
     ]
   },

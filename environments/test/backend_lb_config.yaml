@@ -252,6 +252,9 @@ gateways:
         cookie_based_affinity: Enabled
         ssl_enabled: true
       - product: idam
+        component: user-dashboard
+        ssl_enabled: true
+      - product: idam
         component: keycloak
         health_path_override: /auth/realms/master
 

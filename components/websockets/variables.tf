@@ -30,6 +30,10 @@ variable "frontends" {
 
 variable "oms_env" {}
 
+variable "usage_name" {
+  default = "hub"
+}
+
 variable "waf_mode" {
   default = "Detection"
 }

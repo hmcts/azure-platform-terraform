@@ -19,28 +19,8 @@ locals {
   dns_zone       = (var.env == "sbox") ? "sandbox" : var.env
 }
 
-module "cftapps-websockets-lb" {
-  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=changes-for-apim-appgw"
-
-  env                        = var.env
-  subscription               = var.subscription
-  location                   = var.location
-  private_ip_address         = var.cft_apps_ag_ip_address
-  destinations               = var.cft_apps_cluster_ips
-  frontends                  = var.frontends
-  common_tags                = module.ctags.common_tags
-  oms_env                    = var.oms_env
-  project                    = var.project
-  vnet_rg                    = local.vnet_rg
-  vnet_name                  = local.vnet_name
-  subnet_name                = local.subnet_name
-  log_analytics_workspace_id = module.logworkspace.workspace_id
-  waf_mode                   = var.waf_mode
-
-}
-
 module "app-gw" {
-  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=master"
+  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=changes-for-apim-appgw"
 
   yaml_path                  = "${path.cwd}/../../environments/${local.env}/apim_appgw_config.yaml"
   env                        = local.dns_zone
@@ -53,6 +33,8 @@ module "app-gw" {
   common_tags                = module.ctags.common_tags
   log_analytics_workspace_id = module.logworkspace.workspace_id
   key_vault_resource_group   = local.key_vault_resource_group
+  subnet_name                = local.subnet_name
+  usage_name                 = var.usage_name
   waf_mode                   = var.waf_mode
 
 }

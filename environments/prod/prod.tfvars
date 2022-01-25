@@ -962,61 +962,6 @@ frontends = [
   },
   {
     product          = "ccd"
-    name             = "www-ccd"
-    mode             = "Prevention"
-    custom_domain    = "www.ccd.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "ccd-platform-hmcts-net"
-    disabled_rules = {
-      SQLI = [
-        "942440",
-      ]
-    }
-    global_exclusions = [
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "dtSa"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "_sm_au"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "ssm_au"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "ssm_au_c"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "iss"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "code"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "rf"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "sn"
-      },
-    ]
-  },
-  {
-    product          = "ccd"
     name             = "gateway-ccd"
     mode             = "Prevention"
     custom_domain    = "gateway.ccd.platform.hmcts.net"

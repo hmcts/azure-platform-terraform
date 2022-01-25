@@ -28,6 +28,14 @@ variable "frontends" {
   default = []
 }
 
+variable "app_gw_private_ip_address" {
+  default = []
+}
+
+variable "cft_apps_cluster_ips" {
+  default = []
+}
+
 variable "oms_env" {}
 
 variable "usage_name" {

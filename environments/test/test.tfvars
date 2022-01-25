@@ -86,13 +86,6 @@ frontends = [
 
   },
   {
-    name           = "www-ccd"
-    mode           = "Detection"
-    custom_domain  = "www-ccd.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
-
-  },
-  {
     name           = "gateway-ccd"
     mode           = "Detection"
     custom_domain  = "gateway-ccd.perftest.platform.hmcts.net"

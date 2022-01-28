@@ -67,8 +67,6 @@ gateways:
         component: bulkscanning-api
       - product: ccpay
         component: refunds-api
-      - product: ccpay
-        component: notifications-service
 
     # BAR
       - product: bar
@@ -149,8 +147,6 @@ gateways:
     # Log and Audit
       - product: lau
         component: case-backend
-      - product: lau
-        component: idam-backend
 
     # CMC
       - product: cmc
@@ -311,3 +307,9 @@ gateways:
         component: cos
       - product: et
         component: msg-handler
+    # ccpay
+      - product: ccpay
+        component: notifications-service
+    # Log and Audit
+      - product: lau
+        component: idam-backend

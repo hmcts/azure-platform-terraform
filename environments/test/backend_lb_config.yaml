@@ -289,7 +289,7 @@ gateways:
       host_name_suffix: service.core-compute-perftest.internal
       ssl_host_name_suffix: perftest.platform.hmcts.net
       certificate_name: wildcard-perftest-platform-hmcts-net
-      private_ip_address: 10.48.96.125
+      private_ip_address: 10.48.96.127  
     app_configuration:
     # IDAM
       - product: idam

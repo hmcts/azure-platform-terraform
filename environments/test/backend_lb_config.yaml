@@ -252,9 +252,6 @@ gateways:
         cookie_based_affinity: Enabled
         ssl_enabled: true
       - product: idam
-        component: user-dashboard
-        ssl_enabled: true
-      - product: idam
         component: keycloak
         health_path_override: /auth/realms/master
 
@@ -287,3 +284,14 @@ gateways:
         component: cos
       - product: et
         component: msg-handler
+
+  - gateway_configuration:
+      host_name_suffix: service.core-compute-perftest.internal
+      ssl_host_name_suffix: perftest.platform.hmcts.net
+      certificate_name: wildcard-perftest-platform-hmcts-net
+      private_ip_address: 10.48.96.125
+    app_configuration:
+    # IDAM
+      - product: idam
+        component: user-dashboard
+        ssl_enabled: true

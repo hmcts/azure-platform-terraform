@@ -251,9 +251,6 @@ gateways:
         component: web-admin
         cookie_based_affinity: Enabled
         ssl_enabled: true
-      - product: idam
-        component: user-dashboard
-        ssl_enabled: true
 
 # rse
       - product: rse
@@ -351,3 +348,8 @@ gateways:
         component: cos
       - product: et
         component: msg-handler
+
+    # IDAM
+      - product: idam
+        component: user-dashboard
+        ssl_enabled: true

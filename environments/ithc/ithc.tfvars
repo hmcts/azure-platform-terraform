@@ -323,6 +323,12 @@ frontends = [
     ]
   },
   {
+    name           = "civil-citizen-ui"
+    mode           = "Detection"
+    custom_domain  = "civil-citizen-ui.ithc.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "cmc"
     mode           = "Detection"
     custom_domain  = "moneyclaims.ithc.platform.hmcts.net"

@@ -73,6 +73,12 @@ frontends = [
     ]
   },
   {
+    name           = "civil-citizen-ui"
+    mode           = "Detection"
+    custom_domain  = "civil-citizen-ui.perftest.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "cmc"
     mode           = "Detection"
     custom_domain  = "moneyclaims.perftest.platform.hmcts.net"

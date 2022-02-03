@@ -20,7 +20,7 @@ frontends = [
   {
     product          = "div"
     name             = "div-dn"
-    mode             = "Prevention"
+    mode             = "Detection"
     custom_domain    = "www.decree-nisi.apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "decree-nisi-apply-divorce-service-gov-uk"
@@ -92,7 +92,7 @@ frontends = [
   {
     product          = "div"
     name             = "div-da"
-    mode             = "Prevention"
+    mode             = "Detection"
     custom_domain    = "www.decree-absolute.apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "decree-absolute-apply-divorce-service-gov-uk"
@@ -154,7 +154,7 @@ frontends = [
   {
     product          = "div"
     name             = "div-rfe"
-    mode             = "Prevention"
+    mode             = "Detection"
     custom_domain    = "www.respond-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "respond-divorce-service-gov-uk"
@@ -216,7 +216,7 @@ frontends = [
   {
     product          = "div"
     name             = "div-pfe"
-    mode             = "Prevention"
+    mode             = "Detection"
     custom_domain    = "www.apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-divorce-service-gov-uk"

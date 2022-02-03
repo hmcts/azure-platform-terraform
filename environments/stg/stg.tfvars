@@ -409,6 +409,12 @@ frontends = [
 
   },
   {
+    name           = "civil-citizen-ui"
+    mode           = "Detection"
+    custom_domain  = "civil-citizen-ui.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "cmc"
     mode           = "Detection"
     custom_domain  = "moneyclaims.aat.platform.hmcts.net"

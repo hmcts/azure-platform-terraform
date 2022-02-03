@@ -26,7 +26,7 @@ frontends = [
   {
     name           = "div-dn"
     custom_domain  = "decree-nisi-aks.aat.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
@@ -60,7 +60,7 @@ frontends = [
   {
     name           = "div-da"
     custom_domain  = "decree-absolute-aks.aat.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
@@ -89,7 +89,7 @@ frontends = [
   {
     name           = "div-rfe"
     custom_domain  = "respond-divorce-aks.aat.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
@@ -118,7 +118,7 @@ frontends = [
   {
     name           = "div-pfe"
     custom_domain  = "petitioner-frontend-aks.aat.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [

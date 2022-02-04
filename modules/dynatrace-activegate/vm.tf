@@ -164,4 +164,5 @@ module "splunk-uf" {
   splunk_username              = data.azurerm_key_vault_secret.splunk_username.value
   splunk_password              = data.azurerm_key_vault_secret.splunk_password.value
   splunk_pass4symmkey          = data.azurerm_key_vault_secret.splunk_pass4symmkey.value
+  os_type                      = "Linux"
 }

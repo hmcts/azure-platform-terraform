@@ -497,13 +497,6 @@ frontends = [
 
   },
   {
-    name           = "www-ccd"
-    mode           = "Detection"
-    custom_domain  = "www-ccd.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-
-  },
-  {
     name           = "gateway-ccd"
     mode           = "Detection"
     custom_domain  = "gateway-ccd.aat.platform.hmcts.net"

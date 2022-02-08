@@ -467,18 +467,6 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
   },
   {
-    name           = "lau-case"
-    mode           = "Detection"
-    custom_domain  = "lau-case.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
-  },
-  {
-    name           = "lau-idam"
-    mode           = "Detection"
-    custom_domain  = "lau-idam.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
-  },
-  {
     name           = "paybubble"
     custom_domain  = "paybubble.perftest.platform.hmcts.net"
     mode           = "Prevention"

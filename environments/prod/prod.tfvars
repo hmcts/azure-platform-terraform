@@ -14,7 +14,7 @@ cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-prod-rg"
 
 cft_apps_ag_ip_address = "10.90.96.122"
-cft_apps_cluster_ips   = ["10.90.95.250"]
+cft_apps_cluster_ips   = ["10.90.79.250", "10.90.95.250"]
 
 frontends = [
   {

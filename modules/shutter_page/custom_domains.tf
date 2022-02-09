@@ -3,7 +3,7 @@ data "template_file" "customdomain" {
 }
 
 resource "azurerm_template_deployment" "custom_domain" {
-  for_each = { for frontend in var.shutter_apps : frontend.name => frontend if !contains(["jui-redirect", "fact-redirect"], frontend.name)
+  for_each = { for frontend in var.shutter_apps : frontend.name => frontend if !contains(["fact-redirect"], frontend.name)
   }
 
   template_body       = data.template_file.customdomain.rendered

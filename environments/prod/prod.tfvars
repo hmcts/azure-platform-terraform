@@ -1725,27 +1725,6 @@ frontends = [
     certificate_name = "courttribunalfinder-service-gov-uk"
   },
   {
-    product          = "jui"
-    name             = "jui-redirect"
-    mode             = "Detection"
-    custom_domain    = "jcm.judiciary.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "jcm-judiciary-uk"
-    ssl_mode         = "AzureKeyVault"
-    disabled_rules = {
-      SQLI = [
-        "942100",
-        "942150",
-        "942200",
-        "942210",
-        "942230",
-        "942361",
-        "942380",
-        "942400",
-      ]
-    }
-  },
-  {
     product                     = "idam"
     name                        = "idam-web-admin"
     custom_domain               = "idam-web-admin.platform.hmcts.net"

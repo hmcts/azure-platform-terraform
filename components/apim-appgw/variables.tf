@@ -32,7 +32,11 @@ variable "app_gw_private_ip_address" {
   default = []
 }
 
-variable "cft_apps_cluster_ips" {
+variable "apim_appgw_backend_pool_ips" {
+  default = []
+}
+
+variable "apim_appgw_backend_pool_fqdns" {
   default = []
 }
 

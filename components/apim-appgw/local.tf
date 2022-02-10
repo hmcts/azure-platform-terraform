@@ -7,8 +7,8 @@ locals {
 
   key_vault_resource_group = "cft-platform-${var.subscription}-rg"
 
-  apim {
-    sbox {
+  apim = {
+    sbox = {
       dest_ip = "20.58.19.69"
     }
   }

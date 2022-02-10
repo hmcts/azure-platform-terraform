@@ -19,6 +19,8 @@ cft_apps_ag_ip_address = "10.2.13.124"
 frontend_agw_private_ip_address = "10.2.13.114"
 cft_apps_cluster_ips   = ["10.2.9.250", "10.2.11.250"]
 
+apim_appgw_backend_pool_fqdns = ["cft-api-mgmt.sandbox.platform.hmcts.net"]
+
 hub = "sbox"
 
 frontends = [

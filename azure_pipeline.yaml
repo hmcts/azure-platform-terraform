@@ -100,9 +100,9 @@ parameters:
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
 
-    - deployment: 'sbox_websockets'
+    - deployment: 'sbox_apim_appgw'
       environment: 'sbox'
-      component: 'websockets'
+      component: 'apim-appgw'
       service_connection: 'dcd-cftapps-sbox'
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'

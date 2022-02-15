@@ -39,4 +39,13 @@ locals {
       }
     }
   }
+
+  exclusions = [
+    {
+      match_variable = "QueryStringArgNames"
+      operator       = "Equals"
+      selector       = "iss"
+    },
+  ]
+
 }

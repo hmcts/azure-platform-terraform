@@ -41,7 +41,7 @@ module "app-gw" {
 }
 
 resource "azurerm_route_table" "apim_route_table" {
-  name                = "apim-${var.environment}"
+  name                = "apim-${var.env}"
   resource_group_name = local.vnet_rg
   location            = var.location
 }

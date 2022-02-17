@@ -301,9 +301,6 @@ gateways:
     # Adoption
       - product: adoption
         component: cos-api
-    # Reference Data
-      - product: rd
-        component: commondata-api
     # ET
       - product: et
         component: cos

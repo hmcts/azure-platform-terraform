@@ -234,6 +234,8 @@ gateways:
         component: judicial-api-int
       - product: rd
         component: location-ref-api-int
+      - product: rd
+        component: commondata-api
 
       # FACT
       - product: fact

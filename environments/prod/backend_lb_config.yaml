@@ -180,6 +180,8 @@ gateways:
         component: location-ref-api
       - product: rd
         component: caseworker-ref-api
+      - product: rd
+        component: commondata-api
 
     # Access Management
       - product: am

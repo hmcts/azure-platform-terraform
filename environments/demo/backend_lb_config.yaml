@@ -234,6 +234,8 @@ gateways:
         component: judicial-api-int
       - product: rd
         component: location-ref-api-int
+      - product: rd
+        component: commondata-api
 
       # FACT
       - product: fact
@@ -299,9 +301,6 @@ gateways:
     # Adoption
       - product: adoption
         component: cos-api
-    # Reference Data
-      - product: rd
-        component: commondata-api
     # ET
       - product: et
         component: cos

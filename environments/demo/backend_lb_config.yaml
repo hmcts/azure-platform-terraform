@@ -315,4 +315,4 @@ gateways:
 
     # AAC (CDM)
       - product: aac
-        component: aac-ac-int-manage-case-assignment
+        component: ac-int-manage-case-assignment

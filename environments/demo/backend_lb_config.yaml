@@ -125,8 +125,6 @@ gateways:
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
-      - product: aac
-        component: aac-ac-int-manage-case-assignment
         
     # CPO (CDM)
       - product: cpo
@@ -314,3 +312,7 @@ gateways:
     # Log and Audit
       - product: lau
         component: idam-backend
+
+    # AAC (CDM)
+      - product: aac
+        component: aac-ac-int-manage-case-assignment

@@ -125,7 +125,9 @@ gateways:
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
-
+      - product: aac
+        component: aac-ac-int-manage-case-assignment
+        
     # CPO (CDM)
       - product: cpo
         component: case-payment-orders-api

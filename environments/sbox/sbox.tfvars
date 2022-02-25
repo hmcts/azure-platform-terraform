@@ -401,8 +401,8 @@ frontends = [
   },
   {
     product                     = "labs"
-    name                        = "labs-zc-hmcts-nodejs"
-    custom_domain               = "labs-zc-hmcts-nodejs.sandbox.platform.hmcts.net"
+    name                        = "labs-zchmcts-nodejs"
+    custom_domain               = "labs-zchmcts-nodejs.sandbox.platform.hmcts.net"
     backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-sandbox-platform-hmcts-net"
   }

@@ -64,7 +64,7 @@ gateways:
       - product: "labs"
         component: ssian2
       - product: "labs"
-        component: zc-hmcts
+        component: zchmcts
       - product: "labs"
         component: endakelly
       - product: "labs"

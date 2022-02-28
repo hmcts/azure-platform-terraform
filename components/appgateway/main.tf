@@ -1,7 +1,6 @@
 module "logworkspace" {
   source      = "git::https://github.com/hmcts/terraform-module-log-analytics-workspace-id.git?ref=master"
   environment = var.env
-
 }
 
 module "ctags" {
@@ -29,5 +28,4 @@ module "appgateway" {
   vnet_name                          = local.vnet_name
   log_analytics_workspace_id         = module.logworkspace.workspace_id
   enable_multiple_availability_zones = true
-
 }

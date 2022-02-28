@@ -13,7 +13,7 @@ module "ctags" {
 
 data "azurerm_subscription" "current" {}
 
-module "cftapps-frontend-cluster-lb" {
+module "appgateway" {
   source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
 
   env                                = var.env

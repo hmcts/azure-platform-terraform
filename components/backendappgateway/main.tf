@@ -18,7 +18,7 @@ locals {
   dns_zone       = (var.env == "sbox") ? "sandbox" : var.env
 }
 
-module "app-gw" {
+module "backendappgateway" {
   source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=master"
 
   yaml_path                          = "${path.cwd}/../../environments/${local.env}/backend_lb_config.yaml"

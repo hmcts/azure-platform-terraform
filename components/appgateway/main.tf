@@ -19,7 +19,7 @@ module "appgateway" {
   env                                = var.env
   subscription                       = var.subscription
   location                           = var.location
-  private_ip_address                 = var.cft_apps_ag_ip_address
+  private_ip_address                 = var.cft_apps_ag2_ip_address
   destinations                       = var.cft_apps_cluster_ips
   frontends                          = var.frontends
   common_tags                        = module.ctags.common_tags

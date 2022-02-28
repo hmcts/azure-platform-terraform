@@ -24,7 +24,7 @@ module "backendappgateway" {
   yaml_path                          = "${path.cwd}/../../environments/${local.env}/backend_lb_config.yaml"
   env                                = local.dns_zone
   location                           = var.location
-  private_ip_address                 = var.app_gw_private_ip_address
+  private_ip_address                 = var.app_gw2_private_ip_address
   backend_pool_ip_addresses          = var.cft_apps_cluster_ips
   vault_name                         = local.key_vault_name
   vnet_rg                            = local.vnet_rg

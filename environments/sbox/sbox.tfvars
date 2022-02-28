@@ -3,7 +3,8 @@ location     = "uksouth"
 env          = "sbox"
 subscription = "sbox"
 
-app_gw_private_ip_address = ["10.2.13.122", "10.2.13.132"]
+app_gw_private_ip_address = ["10.2.13.122"]
+app_gw2_private_ip_address = ["10.2.13.112"]
 data_subscription         = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
 privatedns_subscription   = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
 oms_env                   = "sandbox"
@@ -15,6 +16,7 @@ cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-sbox-rg"
 
 cft_apps_ag_ip_address = "10.2.13.124"
+cft_apps_ag2_ip_address = "10.2.13.114"
 cft_apps_cluster_ips   = ["10.2.9.250", "10.2.11.250"]
 
 hub = "sbox"

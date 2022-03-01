@@ -12,13 +12,13 @@ module "ctags" {
 
 data "azurerm_subscription" "current" {}
 
-module "appgateway" {
+module "frontendappgateway" {
   source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
 
   env                                = var.env
   subscription                       = var.subscription
   location                           = var.location
-  private_ip_address                 = var.cft_apps_ag2_ip_address
+  private_ip_address                 = var.frontend_agw_private_ip_address
   destinations                       = var.cft_apps_cluster_ips
   frontends                          = var.frontends
   common_tags                        = module.ctags.common_tags

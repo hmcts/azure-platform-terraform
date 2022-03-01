@@ -53,7 +53,7 @@ variable "cft_apps_cluster_ips" {
 variable "cft_apps_ag_ip_address" {
   default = []
 }
-variable "cft_apps_ag2_ip_address" {
+variable "frontend_agw_private_ip_address" {
   default = []
 }
 variable "sscssya_shutter" {
@@ -69,7 +69,7 @@ variable "sscscor_shutter" {
 variable "app_gw_private_ip_address" {
   default = []
 }
-variable "app_gw2_private_ip_address" {
+variable "backend_agw_private_ip_address" {
   default = []
 }
 

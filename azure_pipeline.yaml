@@ -60,9 +60,9 @@ parameters:
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
 
-    - deployment: 'sbox_appgateway'
+    - deployment: 'sbox_frontendappgateway'
       environment: 'sbox'
-      component: 'appgateway'
+      component: 'frontendappgateway'
       service_connection: 'dcd-cftapps-sbox'
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'

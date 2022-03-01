@@ -1702,7 +1702,7 @@ frontends = [
   {
     product          = "lau"
     name             = "lau"
-    mode             = "Prevention"
+    mode             = "Detection"
     custom_domain    = "log-and-audit.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "log-and-audit-platform-hmcts-net"
@@ -1715,7 +1715,17 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "Idam.Session"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "lau-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "lau-session"
       },
     ]
   },

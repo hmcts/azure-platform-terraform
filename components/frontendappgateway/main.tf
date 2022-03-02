@@ -13,7 +13,7 @@ module "ctags" {
 data "azurerm_subscription" "current" {}
 
 module "frontendappgateway" {
-  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
+  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=dtspo-3187-multi-az-agw"
 
   env                                = var.env
   subscription                       = var.subscription
@@ -28,4 +28,5 @@ module "frontendappgateway" {
   vnet_name                          = local.vnet_name
   log_analytics_workspace_id         = module.logworkspace.workspace_id
   enable_multiple_availability_zones = true
+  create_new_agw                     = var.new_agw
 }

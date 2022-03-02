@@ -112,3 +112,7 @@ variable "apim_sku_name" {
 variable "hub" {
   default = "sbox"
 }
+
+variable "new_agw" {
+  default = false
+}

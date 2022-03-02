@@ -28,5 +28,5 @@ module "frontendappgateway" {
   vnet_name                          = local.vnet_name
   log_analytics_workspace_id         = module.logworkspace.workspace_id
   enable_multiple_availability_zones = true
-  create_new_agw                     = true
+  resource_prefix                    = "cft"
 }

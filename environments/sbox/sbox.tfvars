@@ -4,7 +4,6 @@ env          = "sbox"
 subscription = "sbox"
 
 app_gw_private_ip_address = ["10.2.13.122"]
-new_agw                   = true
 backend_agw_private_ip_address = ["10.2.13.112"]
 data_subscription         = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
 privatedns_subscription   = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"

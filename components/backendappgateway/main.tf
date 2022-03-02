@@ -19,7 +19,7 @@ locals {
 }
 
 module "backendappgateway" {
-  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=master"
+  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=dtspo-3187-multi-az-agw"
 
   yaml_path                          = "${path.cwd}/../../environments/${local.env}/backend_lb_config.yaml"
   env                                = local.dns_zone
@@ -33,4 +33,5 @@ module "backendappgateway" {
   log_analytics_workspace_id         = module.logworkspace.workspace_id
   key_vault_resource_group           = local.key_vault_resource_group
   enable_multiple_availability_zones = true
+  create_new_agw                     = true
 }

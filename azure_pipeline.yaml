@@ -60,6 +60,22 @@ parameters:
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
 
+    - deployment: 'sbox_frontendappgateway'
+      environment: 'sbox'
+      component: 'frontendappgateway'
+      service_connection: 'dcd-cftapps-sbox'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+
+    - deployment: 'sbox_backendappgateway'
+      environment: 'sbox'
+      component: 'backendappgateway'
+      service_connection: 'dcd-cftapps-sbox'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+
     - deployment: 'sbox_shutter'
       environment: 'sbox'
       component: 'shutter'

@@ -411,3 +411,11 @@ frontends = [
     certificate_name            = "wildcard-sandbox-platform-hmcts-net"
   }
 ]
+
+apim_appgw_exclusions = [
+  {
+    match_variable = "QueryStringArgNames"
+    operator       = "Equals"
+    selector       = "iss"
+  }
+]

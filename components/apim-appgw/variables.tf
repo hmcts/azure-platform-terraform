@@ -40,6 +40,10 @@ variable "apim_appgw_backend_pool_fqdns" {
   default = []
 }
 
+variable "apim_appgw_exclusions" {
+  default = []
+}
+
 variable "oms_env" {}
 
 variable "usage_name" {

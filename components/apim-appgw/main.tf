@@ -37,6 +37,7 @@ module "app-gw" {
   subnet_name                = local.subnet_name
   usage_name                 = var.usage_name
   waf_mode                   = var.waf_mode
+  exclusions                 = var.apim_appgw_exclusions
 
 }
 
@@ -52,5 +53,9 @@ resource "azurerm_route" "to_palo_route" {
   resource_group_name    = local.vnet_rg
   address_prefix         = local.apim[var.env].dest_ip
   next_hop_type          = var.route_next_hop_type
-  next_hop_in_ip_address = local.hub[var.hub].ukSouth.next_hop_ip
+  next_hop_in_ip_address = local.palo[var.hub].ukSouth.next_hop_ip
+}
+
+data "local_file" "configuration" {
+  filename = "${path.cwd}/../../environments/${local.env}/apim_appgw_config.yaml"
 }

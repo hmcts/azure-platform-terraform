@@ -365,7 +365,7 @@ frontends = [
     product          = "plum"
     name             = "plum"
     custom_domain    = "plum.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-sbox-int-palo-sbox-test.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   },

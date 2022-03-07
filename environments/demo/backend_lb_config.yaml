@@ -316,3 +316,10 @@ gateways:
     # AAC (CDM)
       - product: aac
         component: ac-int-manage-case-assignment
+
+    # Camunda
+      - product: camunda
+        component: bpm
+        ssl_enabled: true
+        cookie_based_affinity: Enabled
+        

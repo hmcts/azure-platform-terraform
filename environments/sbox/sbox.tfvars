@@ -3,7 +3,8 @@ location     = "uksouth"
 env          = "sbox"
 subscription = "sbox"
 
-app_gw_private_ip_address = ["10.2.13.122", "10.2.13.132"]
+app_gw_private_ip_address = ["10.2.13.122"]
+backend_agw_private_ip_address = ["10.2.13.112"]
 data_subscription         = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
 privatedns_subscription   = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
 oms_env                   = "sandbox"
@@ -15,6 +16,7 @@ cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-sbox-rg"
 
 cft_apps_ag_ip_address = "10.2.13.124"
+frontend_agw_private_ip_address = "10.2.13.114"
 cft_apps_cluster_ips   = ["10.2.9.250", "10.2.11.250"]
 
 hub = "sbox"
@@ -363,7 +365,7 @@ frontends = [
     product          = "plum"
     name             = "plum"
     custom_domain    = "plum.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-sbox-int-palo-sbox-test.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   },
@@ -401,8 +403,8 @@ frontends = [
   },
   {
     product                     = "labs"
-    name                        = "labs-zc-hmcts-nodejs"
-    custom_domain               = "labs-zc-hmcts-nodejs.sandbox.platform.hmcts.net"
+    name                        = "labs-zcwalkthrough-nodejs"
+    custom_domain               = "labs-zcwalkthrough-nodejs.sandbox.platform.hmcts.net"
     backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-sandbox-platform-hmcts-net"
   }

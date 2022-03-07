@@ -87,6 +87,9 @@ gateways:
         component: web-admin-sprod
         cookie_based_affinity: Enabled
         ssl_enabled: true
+      - product: idam
+        component: testing-support-api
+        ssl_enabled: true
 
       # BulkScan
       - product: bulk-scan

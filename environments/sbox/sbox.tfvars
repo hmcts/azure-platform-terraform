@@ -26,7 +26,7 @@ frontends = [
     product          = "idam"
     name             = "idam-web-public"
     custom_domain    = "idam-web-public.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-sbox-int-palo-sbox-test.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     global_exclusions = [
       {
@@ -235,7 +235,7 @@ frontends = [
     product                     = "idam"
     name                        = "idam-web-admin"
     custom_domain               = "idam-web-admin.sandbox.platform.hmcts.net"
-    backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    backend_domain              = ["firewall-sbox-int-palo-sbox-test.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-sandbox-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
     custom_rules = [
@@ -398,14 +398,14 @@ frontends = [
     product                     = "labs"
     name                        = "labs-louisehuyton-walkthrough"
     custom_domain               = "labs-louisehuyton-walkthrough.sandbox.platform.hmcts.net"
-    backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    backend_domain              = ["firewall-sbox-int-palo-sbox-test.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-sandbox-platform-hmcts-net"
   },
   {
     product                     = "labs"
     name                        = "labs-zcwalkthrough-nodejs"
     custom_domain               = "labs-zcwalkthrough-nodejs.sandbox.platform.hmcts.net"
-    backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    backend_domain              = ["firewall-sbox-int-palo-sbox-test.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-sandbox-platform-hmcts-net"
   }
 ]

@@ -212,6 +212,14 @@ parameters:
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_cftapps_cluster_lb'
 
+    - deployment: 'stg_apim'
+      environment: 'stg'
+      component: 'apim'
+      service_connection: 'dcd-cftapps-stg'
+      storage_account_rg: 'core-infra-stg-rg'
+      storage_account_name: 'cftappsstg'
+      dependsOn: 'sbox_cftapps_cluster_lb'
+
     - deployment: 'prod_cftapps_cluster_lb'
       environment: 'prod'
       component: 'cftapps_cluster_lb'

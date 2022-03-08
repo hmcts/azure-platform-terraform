@@ -44,22 +44,6 @@ parameters:
   - name: environment_components
     type: object
     default:
-    - deployment: 'sbox_cftapps_cluster_lb'
-      environment: 'sbox'
-      component: 'cftapps_cluster_lb'
-      service_connection: 'dcd-cftapps-sbox'
-      storage_account_rg: 'core-infra-sbox-rg'
-      storage_account_name: 'cftappssbox'
-      dependsOn: 'Precheck'
-
-    - deployment: 'sbox_cftapps_cluster_lb_backend'
-      environment: 'sbox'
-      component: 'cftapps_cluster_lb_backend'
-      service_connection: 'dcd-cftapps-sbox'
-      storage_account_rg: 'core-infra-sbox-rg'
-      storage_account_name: 'cftappssbox'
-      dependsOn: 'Precheck'
-
     - deployment: 'sbox_frontendappgateway'
       environment: 'sbox'
       component: 'frontendappgateway'

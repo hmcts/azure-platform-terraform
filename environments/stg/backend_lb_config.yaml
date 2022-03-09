@@ -348,6 +348,8 @@ gateways:
         component: cos
       - product: et
         component: msg-handler
+      - product: et
+        component: sya-api
 
     # IDAM
       - product: idam

@@ -1464,6 +1464,15 @@ frontends = [
     www_redirect     = true
   },
   {
+    product          = "fees"
+    name             = "payment-outcome"
+    mode             = "Detection"
+    custom_domain    = "payment-outcome.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "payment-outcome-platform-hmcts-net"
+    www_redirect     = true
+  },
+  {
     product          = "idam"
     name             = "idam-web-public"
     custom_domain    = "hmcts-access.service.gov.uk"
@@ -1903,12 +1912,12 @@ frontends = [
     ]
   },
   {
-    product                     = "idam"
-    name                        = "idam-user-dashboard"
-    custom_domain               = "idam-user-dashboard.platform.hmcts.net"
-    backend_domain              = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name            = "idam-user-dashboard-platform-hmcts-net"
-    cache_enabled               = "false"
+    product          = "idam"
+    name             = "idam-user-dashboard"
+    custom_domain    = "idam-user-dashboard.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "idam-user-dashboard-platform-hmcts-net"
+    cache_enabled    = "false"
     custom_rules = [
       {
         name     = "IPMatchWhitelist"

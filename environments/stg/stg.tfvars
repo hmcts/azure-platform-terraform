@@ -1288,7 +1288,7 @@ frontends = [
     name             = "cft-api-mgmt"
     custom_domain    = "cft-api-mgmt.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftapimgmtstg.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    certificate_name = "cft-api-mgmt-aat-platform-hmcts-net"
     cache_enabled    = "false"
   }
 ]

@@ -1469,7 +1469,7 @@ frontends = [
     mode             = "Detection"
     custom_domain    = "payment-outcome.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "payment-outcome-platform-hmcts-net"
+    certificate_name = "paymentoutcome-web-platform-hmcts-net"
     www_redirect     = true
   },
   {

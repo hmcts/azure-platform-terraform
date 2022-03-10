@@ -1276,6 +1276,19 @@ frontends = [
     health_protocol     = "Https"
     cache_enabled       = "false"
   },
+   {
+    name           = "ds-ui"
+    custom_domain  = "ds-ui.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
   {
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.staging.platform.hmcts.net"

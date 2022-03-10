@@ -14,7 +14,7 @@ cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-prod-rg"
 
 cft_apps_ag_ip_address = "10.13.32.122"
-cft_apps_cluster_ips   = ["10.13.15.250", "10.13.31.250"]
+cft_apps_cluster_ips   = ["10.13.31.250"]
 
 frontends = [
   {
@@ -1464,6 +1464,15 @@ frontends = [
     www_redirect     = true
   },
   {
+    product          = "fees"
+    name             = "payment-outcome"
+    mode             = "Detection"
+    custom_domain    = "paymentoutcome-web.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "paymentoutcome-web-platform-hmcts-net"
+    www_redirect     = true
+  },
+  {
     product          = "idam"
     name             = "idam-web-public"
     custom_domain    = "hmcts-access.service.gov.uk"
@@ -1903,12 +1912,12 @@ frontends = [
     ]
   },
   {
-    product                     = "idam"
-    name                        = "idam-user-dashboard"
-    custom_domain               = "idam-user-dashboard.platform.hmcts.net"
-    backend_domain              = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name            = "idam-user-dashboard-platform-hmcts-net"
-    cache_enabled               = "false"
+    product          = "idam"
+    name             = "idam-user-dashboard"
+    custom_domain    = "idam-user-dashboard.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "idam-user-dashboard-platform-hmcts-net"
+    cache_enabled    = "false"
     custom_rules = [
       {
         name     = "IPMatchWhitelist"

@@ -465,6 +465,13 @@ frontends = [
 
   },
   {
+    name           = "rpts"
+    mode           = "Detection"
+    custom_domain  = "rpts.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+
+  },
+  {
     name           = "nfdiv"
     mode           = "Detection"
     custom_domain  = "nfdiv.aat.platform.hmcts.net"

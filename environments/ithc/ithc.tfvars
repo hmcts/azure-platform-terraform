@@ -357,6 +357,12 @@ frontends = [
 
   },
   {
+    name             = "rpts"
+    mode             = "Detection"
+    custom_domain    = "rpts.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "nfdiv"
     mode           = "Detection"
     custom_domain  = "nfdiv.ithc.platform.hmcts.net"

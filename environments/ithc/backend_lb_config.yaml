@@ -262,3 +262,7 @@ gateways:
     # Civil
       - product: civil
         component: service
+
+      # RPTS
+      - product: rpts
+        component: api

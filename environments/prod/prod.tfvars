@@ -1706,6 +1706,16 @@ frontends = [
         operator       = "Equals"
         selector       = "_csrf"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "pcq-cookie-preferences"
+      },
     ]
   },
   {

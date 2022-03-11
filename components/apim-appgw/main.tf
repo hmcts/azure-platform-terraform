@@ -21,7 +21,6 @@ locals {
 
 module "app-gw" {
   source                     = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=changes-for-apim-appgw"
-  provider                   = "hub-${var.env}"
   yaml_path                  = "${path.cwd}/../../environments/${local.env}/apim_appgw_config.yaml"
   env                        = local.dns_zone
   location                   = var.location

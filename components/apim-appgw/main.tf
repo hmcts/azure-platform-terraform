@@ -21,7 +21,7 @@ locals {
 
 module "app-gw" {
   source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=changes-for-apim-appgw"
-
+  provider                   = "hub-${var.env}"
   yaml_path                  = "${path.cwd}/../../environments/${local.env}/apim_appgw_config.yaml"
   env                        = local.dns_zone
   location                   = var.location
@@ -38,7 +38,6 @@ module "app-gw" {
   usage_name                 = var.usage_name
   waf_mode                   = var.waf_mode
   exclusions                 = var.apim_appgw_exclusions
-
 }
 
 resource "azurerm_route_table" "apim_route_table" {
@@ -53,7 +52,7 @@ resource "azurerm_route" "to_palo_route" {
   resource_group_name    = local.vnet_rg
   address_prefix         = local.apim[var.env].dest_ip
   next_hop_type          = var.route_next_hop_type
-  next_hop_in_ip_address = local.palo[var.hub].ukSouth.next_hop_ip
+  next_hop_in_ip_address = local.hub[var.env].ukSouth.next_hop_ip
 }
 
 data "local_file" "configuration" {

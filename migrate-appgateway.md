@@ -66,7 +66,7 @@ Prior to switching over traffic to the new application gateways, test the fronte
   ![Validate Button](Images/old_gateways_destroy.png)
   </details>
 
-- Confirm pipeline run complete successfully without error and confirm the old application gateways and associated resources have been removed
+- Confirm pipeline run completes successfully without errors and confirm the old application gateways and associated resources have been removed
 
 #### Azure Firewall
 - Update the environment [`.tfvars configuration file`](https://github.com/hmcts/rdo-terraform-hub-dmz/tree/1b47237e07a759fb05c74adf749e4749d8f88b8c/env_tfvars) with the changes below  
@@ -83,3 +83,4 @@ Prior to switching over traffic to the new application gateways, test the fronte
 See [Example PR](https://github.com/hmcts/rdo-terraform-hub-dmz/pull/553)
 
 After merging PR for the changes above, confirm the [hmcts.rdo-terraform-hub-dmz](https://dev.azure.com/hmcts/PlatformOperations/_build?definitionId=226) pipeline run complete successfully without errors.  
+**Note**: If the pipeline run above errors during removal of the Azure Firewall public IP address (see [example error](https://dev.azure.com/hmcts/PlatformOperations/_build/results?buildId=216441&view=logs&j=f2f45dd6-3c86-5d47-e566-a018bc1bfd27&t=c825a317-ded8-5e7b-e541-2086ac118932&s=846d4319-49ec-5071-69a8-bd43ffa774f6)), manually remove the public IP address and re-run the pipeline

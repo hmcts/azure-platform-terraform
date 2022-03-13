@@ -66,7 +66,10 @@ Prior to switching over traffic to the new application gateways, test the fronte
   ![Validate Button](Images/old_gateways_destroy.png)
   </details>
 
-- Confirm pipeline run completes successfully without errors and confirm the old application gateways and associated resources have been removed
+- Confirm pipeline run completes successfully without errors and confirm the old application gateways and associated resources have been removed  
+
+#### Application Gateway Pipeline 
+- Update the Azure DevOps pipeline [configuration](https://github.com/hmcts/azure-platform-terraform/blob/master/azure_pipeline.yaml) and remove the pipeline stages for the `<env>_cftapps_cluster_lb` and `<env>-cftapps_cluster_lb_backend` gateways  (See [Example PR](https://github.com/hmcts/azure-platform-terraform/pull/1050/files#diff-ac7c0ec21b006c4edccc0f5da7fd89bc8bd73dc77ee8c6ec6b117bb39747416cL47-L62))
 
 #### Azure Firewall
 - Update the environment [`.tfvars configuration file`](https://github.com/hmcts/rdo-terraform-hub-dmz/tree/1b47237e07a759fb05c74adf749e4749d8f88b8c/env_tfvars) with the changes below  

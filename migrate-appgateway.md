@@ -54,8 +54,20 @@ Prior to switching over traffic to the new application gateways, test the fronte
   See [Example PR](https://github.com/hmcts/azure-platform-terraform/pull/1049)    
   
 - After merging PR for the changes above, confirm the [hmcts.rdo-terraform-hub-dmz](https://dev.azure.com/hmcts/PlatformOperations/_build?definitionId=226) pipeline run complete successfully without errors  
-- Confirm applications switched over are access as normal  
-- Check application traffic can be seen in the access logs for both frontend and backend application gateways  
+- Confirm applications switched over are accessible as normal  
+- Check applications traffic can be seen in the access logs for both frontend and backend application gateways  
 - Disable previously-enabled application gateway access logs 
   
 ### Cleanup old application gateway resources  
+
+#### Azure Firewall
+- Update the environment [`.tfvars configuration file`](https://github.com/hmcts/rdo-terraform-hub-dmz/tree/1b47237e07a759fb05c74adf749e4749d8f88b8c/env_tfvars) with the changes below  
+  - Remove the new entry earlier created for the new frontend application gateway
+  - Update the entry for the existing frontend application gateway and change the `palo_ips` to the new frontend application gateway
+
+#### Palo Alto
+- Update the [`hub-pan-baseline.j2`](https://github.com/hmcts/rdo-terraform-hub-dmz/blob/master/modules/palo-alto/ansible/templates/hub-pan-baseline.j2) configuration file with the change below  
+  - Remove the previously created server object entry (`name/ip address`) for new `frontendappgateway` (one with the `-2` name suffix)
+  - Remove the previously created address group object entries (`<member>AKS-<env>-APPGW-2</member>`) for the new frontend application gateway   
+  - Update the IP address entry of the existing server object to point to the `frontendappgateway` private IP address  
+  See [Example PR](https://github.com/hmcts/rdo-terraform-hub-dmz/pull/553)  

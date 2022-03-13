@@ -1,8 +1,6 @@
 # Migrating to Availability Zone-Enabled Access Gateway  
 
-## Implementation (No downtime)
-
-### Create AZ-enabled frontend/backend application gateway resources
+### 1. Create AZ-enabled frontend/backend application gateway resources
 
 - Identify available IP addresses for the new frontend and backend application gateways
 - Update the environment <env>.tfvars file and add values for the below variables  
@@ -15,7 +13,7 @@
   Also confirm there are no changes in the terraform plans for the existing `cftapps_cluster_lb` and `cftapps_cluster_lb_backend` appgateway components
 - Run the [azure-platform-terraform](https://dev.azure.com/hmcts/CNP/_build?definitionId=235) pipeline `apply` to create the new `frontendappgateway` and `backendappgateway` components 
 
-### Create Azure Firewall and Palo Alto entries
+### 2. Create Azure Firewall and Palo Alto entries
 
 #### Azure Firewall  
 - Update the environment [`.tfvars configuration file`](https://github.com/hmcts/rdo-terraform-hub-dmz/tree/1b47237e07a759fb05c74adf749e4749d8f88b8c/env_tfvars) and add an entry for the new `frontendappgateway`  
@@ -39,7 +37,7 @@ After merging PR for the changes above, confirm the [hmcts.rdo-terraform-hub-dmz
 - Confirm on the Palo Alto, the server and address group objects for the `frontendappgateway` were created
 
 
-### Test frontendappgateway traffic routing 
+### 3. Test frontendappgateway traffic routing 
 Prior to switching over traffic to the new application gateways, test the frontendappgateway by switching a single frontend application to route FrontDoor traffic through the new gateway
 
 - In the environment [`.tfvars configuration file`](https://github.com/hmcts/rdo-terraform-hub-dmz/tree/1b47237e07a759fb05c74adf749e4749d8f88b8c/env_tfvars), identify a suitable frontend application to use for testing. Speak to application team where necessary to make them aware of testing
@@ -58,7 +56,7 @@ Prior to switching over traffic to the new application gateways, test the fronte
 - Check applications traffic can be seen in the access logs for both frontend and backend application gateways  
 - Disable previously-enabled application gateway access logs 
   
-### Cleanup old application gateway resources  
+### 4. Cleanup old application gateway resources  
 
 #### Application Gateway
 - Run [azure-platform-terraform](https://dev.azure.com/hmcts/CNP/_build?definitionId=235) pipeline `destroy` with **ONLY** the old application gateways `<env>_cftapps_cluster_lb` and `<env>_cftapps_cluster_backend_lb` and `Precheck` stages selected  

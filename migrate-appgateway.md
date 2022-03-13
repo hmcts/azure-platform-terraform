@@ -60,14 +60,28 @@ Prior to switching over traffic to the new application gateways, test the fronte
   
 ### Cleanup old application gateway resources  
 
+#### Application Gateway
+- Run [azure-platform-terraform](https://dev.azure.com/hmcts/CNP/_build?definitionId=235) pipeline `destroy` with **ONLY** the old application gateways `<env>_cftapps_cluster_lb` and `<env>_cftapps_cluster_backend_lb` and `Precheck` stages selected  
+  <details>
+  <summary>Example destroy pipeline stages selection</summary>
+
+  ![Validate Button](Images/old_gateways_destroy.png)
+  </details>
+
+- Confirm pipeline run complete successfully without error and confirm the old application gateways and associated resources have been removed
+
 #### Azure Firewall
 - Update the environment [`.tfvars configuration file`](https://github.com/hmcts/rdo-terraform-hub-dmz/tree/1b47237e07a759fb05c74adf749e4749d8f88b8c/env_tfvars) with the changes below  
   - Remove the new entry earlier created for the new frontend application gateway
   - Update the entry for the existing frontend application gateway and change the `palo_ips` to the new frontend application gateway
+  - After merging PR for the changes above, confirm the [hmcts.rdo-terraform-hub-dmz](https://dev.azure.com/hmcts/PlatformOperations/_build?definitionId=226) pipeline run complete successfully without errors  
 
 #### Palo Alto
 - Update the [`hub-pan-baseline.j2`](https://github.com/hmcts/rdo-terraform-hub-dmz/blob/master/modules/palo-alto/ansible/templates/hub-pan-baseline.j2) configuration file with the change below  
   - Remove the previously created server object entry (`name/ip address`) for new `frontendappgateway` (one with the `-2` name suffix)
   - Remove the previously created address group object entries (`<member>AKS-<env>-APPGW-2</member>`) for the new frontend application gateway   
   - Update the IP address entry of the existing server object to point to the `frontendappgateway` private IP address  
-  See [Example PR](https://github.com/hmcts/rdo-terraform-hub-dmz/pull/553)  
+    
+See [Example PR](https://github.com/hmcts/rdo-terraform-hub-dmz/pull/553)
+
+After merging PR for the changes above, confirm the [hmcts.rdo-terraform-hub-dmz](https://dev.azure.com/hmcts/PlatformOperations/_build?definitionId=226) pipeline run complete successfully without errors.  

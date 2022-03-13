@@ -46,7 +46,7 @@ Prior to switching over traffic to the new application gateways, test the fronte
 - After PR merge and pipeline run completed, test connection to the Front Door URL for the application and confirm working as normal
 - Temporarily enable `frontendappgateway` diagnostics settings access logs and confirm application traffic for the switched applications can be seen in the logs  (Note: It may take a few minutes before log entries start appearing)
 
-### Switchover FrontDoor traffic routing and Private DNS to new gateways
+### 4. Switchover FrontDoor traffic routing and Private DNS to new gateways
 - In the environment [`.tfvars configuration file`](https://github.com/hmcts/rdo-terraform-hub-dmz/tree/1b47237e07a759fb05c74adf749e4749d8f88b8c/env_tfvars), for each application whose `backend domain` points to the`DNS name` of the Azure Firewall public IP address of the existing frontend application gateway (**Note**: some applications such as APIM do not go via the application gateway), update the `backend domain` to DNS name of the Azure Firewall public IP address created for the new `frontendappgateway`    
 - In the environment [`backend_lb_configuration.yaml file`](https://github.com/hmcts/azure-platform-terraform/tree/master/environments), for each gateway (some environments have two), update the `private_ip_address` to point to the new `backendappgateway` private iP address  
   See [Example PR](https://github.com/hmcts/azure-platform-terraform/pull/1049)    
@@ -56,7 +56,7 @@ Prior to switching over traffic to the new application gateways, test the fronte
 - Check applications traffic can be seen in the access logs for both frontend and backend application gateways  
 - Disable previously-enabled application gateway access logs 
   
-### 4. Cleanup old application gateway resources  
+### 5. Cleanup old application gateway resources  
 
 #### Application Gateway
 - Run [azure-platform-terraform](https://dev.azure.com/hmcts/CNP/_build?definitionId=235) pipeline `destroy` with **ONLY** the old application gateways `<env>_cftapps_cluster_lb` and `<env>_cftapps_cluster_backend_lb` and `Precheck` stages selected  

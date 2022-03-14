@@ -289,6 +289,12 @@ gateways:
       - product: adoption
         component: cos-api
 
+    # PrivateLaw(prl) cos api
+      - product: prl
+        component: cos
+      - product: prl
+        component: dgs
+
   - gateway_configuration:
       host_name_suffix: service.core-compute-perftest.internal
       ssl_host_name_suffix: perftest.platform.hmcts.net

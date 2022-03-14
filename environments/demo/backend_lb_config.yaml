@@ -322,3 +322,11 @@ gateways:
         component: location-ref-api-int
       - product: rd
         component: commondata-api
+        
+    # HMC
+      - product: hmc
+        component: cft-hearing-service
+      - product: hmc
+        component: hmi-inbound-adapter
+      - product: hmc
+        component: hmi-outbound-adapter

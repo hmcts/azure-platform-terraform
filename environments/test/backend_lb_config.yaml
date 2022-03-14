@@ -285,10 +285,6 @@ gateways:
       - product: et
         component: msg-handler
     
-    # Adoption COS API
-      - product: adoption
-        component: cos-api
-
   - gateway_configuration:
       host_name_suffix: service.core-compute-perftest.internal
       ssl_host_name_suffix: perftest.platform.hmcts.net
@@ -299,3 +295,7 @@ gateways:
       - product: idam
         component: user-dashboard
         ssl_enabled: true
+
+    # Adoption COS API
+      - product: adoption
+        component: cos-api

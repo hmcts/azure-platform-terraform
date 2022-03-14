@@ -325,8 +325,8 @@ gateways:
         
     # HMC
       - product: hmc
-        component: hmc-cft-hearing-service
+        component: cft-hearing-service
       - product: hmc
-        component: hmc-hmi-inbound-adapter
+        component: hmi-inbound-adapter
       - product: hmc
-        component: hmc-hmi-outbound-adapter
+        component: hmi-outbound-adapter

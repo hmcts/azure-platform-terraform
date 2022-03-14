@@ -239,10 +239,6 @@ gateways:
       - product: fact
         component: api
 
-      #RPTS
-      - product: rpts
-        component: api
-
       # NFDIV
       - product: nfdiv
         component: case-api
@@ -359,3 +355,7 @@ gateways:
       - product: idam
         component: user-dashboard
         ssl_enabled: true
+
+    # RPTS
+      - product: rpts
+        component: api

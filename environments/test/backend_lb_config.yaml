@@ -296,6 +296,12 @@ gateways:
         component: user-dashboard
         ssl_enabled: true
 
+    # PrivateLaw(prl) cos api
+      - product: prl
+        component: cos
+      - product: prl
+        component: dgs
+
     # Adoption COS API
       - product: adoption
         component: cos-api

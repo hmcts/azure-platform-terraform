@@ -284,6 +284,10 @@ gateways:
         component: cos
       - product: et
         component: msg-handler
+    
+    # Adoption COS API
+      - product: adoption
+        component: cos-api
 
   - gateway_configuration:
       host_name_suffix: service.core-compute-perftest.internal

@@ -931,4 +931,17 @@ frontends = [
       }
     ]
   },
+  {
+    name           = "adoption-web"
+    custom_domain  = "adoption-web.ithc.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
 ]

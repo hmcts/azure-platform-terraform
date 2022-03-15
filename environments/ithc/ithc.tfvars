@@ -930,6 +930,7 @@ frontends = [
     custom_domain  = "adoption-web.ithc.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"

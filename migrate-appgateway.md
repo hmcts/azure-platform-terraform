@@ -11,6 +11,8 @@ Enabling availability zones on the existing application gateways will require do
 
 ## Migration steps
 
+**NOTE:** A change request is required for Production implementation
+
 ### 1. Create AZ-enabled frontend/backend application gateway resources
 
 - Identify available IP addresses (in the same `appgw` subnet as the existing gateways) for the new frontend and backend application gateways. Take note some environments (demo, perftest and aat) have two backend application gateway and will require 3 IP addresses in total

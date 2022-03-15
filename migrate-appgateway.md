@@ -9,13 +9,18 @@ Network flow diagram placeholder
 
 ### 1. Create AZ-enabled frontend/backend application gateway resources
 
-- Identify available IP addresses for the new frontend and backend application gateways
+- Identify available IP addresses (in the same `appgw` subnet as the existing gateways) for the new frontend and backend application gateways
 - Update the environment <env>.tfvars file and add values for the below variables  
     
-  `frontend_agw_private_ip_address = "<frontend ip address>"`
-   `backend_agw_private_ip_address = ["<backend ip address>"]`  
+  `frontend_agw_private_ip_address = "<frontend ip address>"`  
+  `backend_agw_private_ip_address = ["<backend ip address>"]`  
+  
+  See [sbox example](https://github.com/hmcts/azure-platform-terraform/blob/3088e61546dfc921b73540575ba67f40448fa9c1/environments/sbox/sbox.tfvars#L19)  
 
-- Create Azure DevOps pipeline stages for the new `frontendappgateway` and `backendappgateway` components. See [sbox pipeline stages example](https://github.com/hmcts/azure-platform-terraform/blob/master/azure_pipeline.yaml#L47-L61)
+
+- Create Azure DevOps pipeline stages for the new `frontendappgateway` and `backendappgateway` components  
+  See [sbox pipeline stages example](https://github.com/hmcts/azure-platform-terraform/blob/master/azure_pipeline.yaml#L47-L61)  
+  
 - Run [azure-platform-terraform](https://dev.azure.com/hmcts/CNP/_build?definitionId=235) pipeline `plan` and confirm the terraform plans for the new appgateway components are correct.  
   Also confirm there are no changes in the terraform plans for the existing `cftapps_cluster_lb` and `cftapps_cluster_lb_backend` appgateway components
 - Run the [azure-platform-terraform](https://dev.azure.com/hmcts/CNP/_build?definitionId=235) pipeline `apply` to create the new `frontendappgateway` and `backendappgateway` components 

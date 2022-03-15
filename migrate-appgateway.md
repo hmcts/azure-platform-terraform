@@ -3,7 +3,11 @@ The frontend and backend application gateways deployed in CFT do not support ava
 Enabling availability zones on the existing application gateways will require downtime as the resources will be destroyed and recreated.  The process below details the steps taken to replace the existing application gateways with new availablity zones enabled gateways without application downtime.  
 
 ## Traffic flow overview  
-Network flow diagram placeholder
+  <details>
+  <summary>Network flow diagram</summary>
+
+![Validate Button](Images/app-gateway-migration.png)
+  </details>
 
 ## Migration steps
 

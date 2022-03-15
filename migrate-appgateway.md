@@ -13,7 +13,7 @@ Enabling availability zones on the existing application gateways will require do
 
 ### 1. Create AZ-enabled frontend/backend application gateway resources
 
-- Identify available IP addresses (in the same `appgw` subnet as the existing gateways) for the new frontend and backend application gateways
+- Identify available IP addresses (in the same `appgw` subnet as the existing gateways) for the new frontend and backend application gateways. Take note some environments (demo, perftest and aat) have two backend application gateway and will require 3 IP addresses in total
 - Update the environment <env>.tfvars file and add values for the below variables  
     
   `frontend_agw_private_ip_address = "<frontend ip address>"`  

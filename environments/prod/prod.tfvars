@@ -1779,6 +1779,7 @@ frontends = [
       mode             = "Detection"
       custom_domain    = "www.residential-property-tribunals-service.gov.uk"
       backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+      certificate_name = "residential-property-tribunals-service-gov-uk"
     },
   {
     product          = "jui"

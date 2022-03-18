@@ -941,4 +941,11 @@ frontends = [
       },
     ]
   },
+  {
+    name             = "payment-outcome"
+    mode             = "Detection"
+    custom_domain    = "payment-outcome.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    www_redirect     = true
+  },
 ]

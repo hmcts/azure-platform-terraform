@@ -1116,9 +1116,9 @@ frontends = [
   },
   {
     product          = "fees"
-    name             = "payment-outcome"
+    name             = "paymentoutcome-web"
     mode             = "Detection"
-    custom_domain    = "payment-outcome.perftest.platform.hmcts.net"
+    custom_domain    = "paymentoutcome-web.perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     www_redirect     = true
   },

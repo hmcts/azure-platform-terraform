@@ -942,9 +942,9 @@ frontends = [
     ]
   },
   {
-    name             = "payment-outcome"
+    name             = "paymentoutcome-web"
     mode             = "Detection"
-    custom_domain    = "payment-outcome.ithc.platform.hmcts.net"
+    custom_domain    = "paymentoutcome-web.ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
     www_redirect     = true
   },

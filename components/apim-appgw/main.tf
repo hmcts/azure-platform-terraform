@@ -20,7 +20,13 @@ locals {
 }
 
 module "app-gw" {
-  source                     = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=changes-for-apim-appgw"
+
+  providers = {
+    azurerm     = azurerm
+    azurerm.hub = azurerm.hub
+  }
+
+  source                     = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=dtspo-5696-apim-appgw"
   yaml_path                  = "${path.cwd}/../../environments/${local.env}/apim_appgw_config.yaml"
   env                        = local.dns_zone
   location                   = var.location

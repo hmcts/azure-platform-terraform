@@ -1310,5 +1310,12 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-cftapimgmtstg.uksouth.cloudapp.azure.com"]
     certificate_name = "cft-api-mgmt-aat-platform-hmcts-net"
     cache_enabled    = "false"
+  },
+{
+    name             = "paymentoutcome-web"
+    mode             = "Detection"
+    custom_domain    = "paymentoutcome-web.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-aat.uksouth.cloudapp.azure.com"]
+    www_redirect     = true
   }
 ]

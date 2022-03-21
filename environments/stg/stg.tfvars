@@ -1315,7 +1315,7 @@ frontends = [
     name             = "paymentoutcome-web"
     mode             = "Detection"
     custom_domain    = "paymentoutcome-web.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com""]
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     www_redirect     = true
   }
 ]

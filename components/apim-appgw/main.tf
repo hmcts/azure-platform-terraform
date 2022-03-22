@@ -24,6 +24,7 @@ module "app-gw" {
   providers = {
     azurerm     = azurerm
     azurerm.hub = azurerm.hub-sbox
+    azurerm.kv  = azurerm.kv
   }
 
   source                     = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=dtspo-5696-apim-appgw"

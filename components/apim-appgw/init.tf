@@ -35,3 +35,10 @@ provider "azurerm" {
   features {}
   alias = "hub-prod"
 }
+
+provider "azurerm" {
+  subscription_id            = data.azurerm_subscription.current.subscription_id
+  skip_provider_registration = "true"
+  features {}
+  alias = "kv"
+}

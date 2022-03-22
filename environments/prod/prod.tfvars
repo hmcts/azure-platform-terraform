@@ -331,7 +331,7 @@ frontends = [
   {
     product          = "nfdiv"
     name             = "nfdiv-civil-partnership"
-    mode             = "Prevention"
+    mode             = "Detection"
     custom_domain    = "www.end-civil-partnership.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "end-civil-partnership-service-gov-uk"
@@ -390,32 +390,22 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "cookies_policy"
+        selector       = "nfdiv-cookie-preferences"
       },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "connect.sid"
+        selector       = "dtCookie"
       },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "__auth-token"
+        selector       = "nfdiv-session"
       },
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
-        selector       = "iss"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "__auth-token"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "_csrf"
+        selector       = "lng"
       },
       {
         match_variable = "RequestBodyPostArgNames"

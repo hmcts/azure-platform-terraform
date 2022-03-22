@@ -1250,6 +1250,33 @@ frontends = [
     custom_domain    = "www.appeal-immigration-asylum-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "appeal-immigration-asylum-decision-service-gov-uk"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookies_policy"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "session"
+      },
+    ]
   },
   {
     product          = "fees"

@@ -414,7 +414,7 @@ frontends = [
 
 apim_appgw_exclusions = [
   {
-    match_variable = "QueryStringArgNames"
+    match_variable = "RequestArgNames"
     operator       = "Equals"
     selector       = "iss"
   }

@@ -1,3 +1,3 @@
 # common-platform-terraform
-All things terraform
+All things terraform.
 

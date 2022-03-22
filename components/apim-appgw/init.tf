@@ -6,7 +6,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "2.82.0"
+      version = "2.99.0"
     }
   }
 }
@@ -16,6 +16,29 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  alias = "hub"
+  subscription_id            = local.hub[var.hub].subscription
+  skip_provider_registration = "true"
   features {}
+  alias = "hub"
+}
+
+provider "azurerm" {
+  subscription_id            = local.hub["sbox"].subscription
+  skip_provider_registration = "true"
+  features {}
+  alias = "hub-sbox"
+}
+
+provider "azurerm" {
+  subscription_id            = local.hub["nonprod"].subscription
+  skip_provider_registration = "true"
+  features {}
+  alias = "hub-nonprod"
+}
+
+provider "azurerm" {
+  subscription_id            = local.hub["prod"].subscription
+  skip_provider_registration = "true"
+  features {}
+  alias = "hub-prod"
 }

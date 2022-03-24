@@ -1397,6 +1397,11 @@ frontends = [
         operator       = "Equals"
         selector       = "cookies_policy"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
     ]
   },
   {

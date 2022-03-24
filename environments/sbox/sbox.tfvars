@@ -3,6 +3,7 @@ location     = "uksouth"
 env          = "sbox"
 subscription = "sbox"
 
+app_gw_private_ip_address = ["10.2.13.122"]
 backend_agw_private_ip_address = ["10.2.13.112"]
 data_subscription         = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
 key_vault_subscription    = "b72ab7b7-723f-4b18-b6f6-03b0f2c6a1bb"

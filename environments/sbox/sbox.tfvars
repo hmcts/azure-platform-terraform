@@ -16,7 +16,6 @@ add_access_policy = false
 cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-sbox-rg"
 
-cft_apps_ag_ip_address = "10.2.13.124"
 frontend_agw_private_ip_address = "10.2.13.114"
 cft_apps_cluster_ips   = ["10.2.9.250", "10.2.11.250"]
 

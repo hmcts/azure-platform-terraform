@@ -73,6 +73,11 @@ variable "sscscor_shutter" {
 variable "app_gw_private_ip_address" {
   default = []
 }
+
+variable "hub_app_gw_private_ip_address" {
+  default = []
+}
+
 variable "backend_agw_private_ip_address" {
   default = []
 }

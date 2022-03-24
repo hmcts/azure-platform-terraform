@@ -331,7 +331,7 @@ frontends = [
   {
     product          = "nfdiv"
     name             = "nfdiv-civil-partnership"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.end-civil-partnership.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "end-civil-partnership-service-gov-uk"

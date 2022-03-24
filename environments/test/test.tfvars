@@ -1101,4 +1101,25 @@ frontends = [
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     cache_enabled    = "false"
   },
+  {
+    name           = "adoption-web"
+    custom_domain  = "adoption-web.perftest.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
+    product          = "fees"
+    name             = "paymentoutcome-web"
+    mode             = "Detection"
+    custom_domain    = "paymentoutcome-web.perftest.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    www_redirect     = true
+  },
 ]

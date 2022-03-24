@@ -465,6 +465,13 @@ frontends = [
 
   },
   {
+    name           = "rpts"
+    mode           = "Detection"
+    custom_domain  = "rpts.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+
+  },
+  {
     name           = "nfdiv"
     mode           = "Detection"
     custom_domain  = "nfdiv.aat.platform.hmcts.net"
@@ -1276,6 +1283,19 @@ frontends = [
     health_protocol     = "Https"
     cache_enabled       = "false"
   },
+   {
+    name           = "ds-ui"
+    custom_domain  = "ds-ui.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
   {
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.staging.platform.hmcts.net"
@@ -1290,5 +1310,12 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-cftapimgmtstg.uksouth.cloudapp.azure.com"]
     certificate_name = "cft-api-mgmt-aat-platform-hmcts-net"
     cache_enabled    = "false"
+  },
+{
+    name             = "paymentoutcome-web"
+    mode             = "Detection"
+    custom_domain    = "paymentoutcome-web.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    www_redirect     = true
   }
 ]

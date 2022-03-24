@@ -348,8 +348,14 @@ gateways:
         component: cos
       - product: et
         component: msg-handler
+      - product: et
+        component: sya-api
 
     # IDAM
       - product: idam
         component: user-dashboard
         ssl_enabled: true
+
+    # RPTS
+      - product: rpts
+        component: api

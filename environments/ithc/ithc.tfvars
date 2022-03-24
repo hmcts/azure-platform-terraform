@@ -8,6 +8,8 @@ data_subscription         = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription   = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                   = "nonprod"
 
+hub = "nonprod"
+
 shutter_storage = "TODO"
 cdn_sku         = "TODO"
 shutter_rg      = "TODO"
@@ -353,6 +355,13 @@ frontends = [
     name           = "fact-admin"
     mode           = "Detection"
     custom_domain  = "fact-admin.ithc.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "rpts"
+    mode           = "Detection"
+    custom_domain  = "rpts.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
 
   },
@@ -924,5 +933,26 @@ frontends = [
         selector       = "describeTheEvidence"
       }
     ]
+  },
+  {
+    name           = "adoption-web"
+    custom_domain  = "adoption-web.ithc.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
+    name             = "paymentoutcome-web"
+    mode             = "Detection"
+    custom_domain    = "paymentoutcome-web.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    www_redirect     = true
   },
 ]

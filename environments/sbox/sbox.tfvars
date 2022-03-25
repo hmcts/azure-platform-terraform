@@ -19,7 +19,7 @@ shutter_rg = "shutter-app-sbox-rg"
 frontend_agw_private_ip_address = "10.2.13.114"
 cft_apps_cluster_ips   = ["10.2.9.250", "10.2.11.250"]
 
-apim_appgw_backend_pool_fqdns = ["cft-api-mgmt.sandbox.platform.hmcts.net"]
+apim_appgw_backend_pool_fqdns = ["firewall-sbox-int-palo-cftapimgmt.uksouth.cloudapp.azure.com"]
 
 hub = "sbox"
 

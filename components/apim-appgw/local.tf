@@ -20,13 +20,13 @@ locals {
     sbox = {
       subscription = "ea3a8c1e-af9d-4108-bc86-a7e2d267f49c"
       ukSouth = {
-        name        = "hmcts-hub-sbox-int"
-        next_hop_ip = "10.10.200.36"
+        name              = "hmcts-hub-sbox-int"
+        next_hop_ip       = "10.10.200.36"
         appgw_next_hop_ip = "20.90.242.134" # Azure Firewall
       }
       ukWest = {
-        name        = "ukw-hub-sbox-int"
-        next_hop_ip = "10.48.200.36"
+        name              = "ukw-hub-sbox-int"
+        next_hop_ip       = "10.48.200.36"
         appgw_next_hop_ip = "51.11.114.133" # Azure Firewall
       }
     }

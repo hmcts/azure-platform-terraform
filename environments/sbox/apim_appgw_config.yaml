@@ -12,3 +12,4 @@ gateways:
         component: api-mgmt
         ssl_enabled: true
         use_public_ip: true
+        health_path_override: "/status-0123456789abcdef"

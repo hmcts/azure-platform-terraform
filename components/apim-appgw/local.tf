@@ -22,10 +22,12 @@ locals {
       ukSouth = {
         name        = "hmcts-hub-sbox-int"
         next_hop_ip = "10.10.200.36"
+        appgw_next_hop_ip = "20.90.242.134" # Azure Firewall
       }
       ukWest = {
         name        = "ukw-hub-sbox-int"
         next_hop_ip = "10.48.200.36"
+        appgw_next_hop_ip = "51.11.114.133" # Azure Firewall
       }
     }
     nonprod = {

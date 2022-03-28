@@ -252,8 +252,6 @@ gateways:
       - product: wa
         component: task-management-api
       - product: wa
-        component: task-configuration-api
-      - product: wa
         component: case-event-handler
       - product: wa
         component: task-monitor

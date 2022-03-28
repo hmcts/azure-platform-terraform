@@ -1310,6 +1310,19 @@ frontends = [
     ]
   },
   {
+    name           = "privatelaw"
+    custom_domain  = "privatelaw.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.staging.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-hmiapimaat.uksouth.cloudapp.azure.com"]

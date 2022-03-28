@@ -265,8 +265,6 @@ gateways:
         component: workflow-api
       - product: wa
         component: task-management-api
-      - product: wa
-        component: task-configuration-api
 
     # Docmosis
       - product: dg

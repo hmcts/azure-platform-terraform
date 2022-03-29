@@ -52,8 +52,8 @@ resource "azurerm_route_table" "apim_route_table" {
   location            = var.location
 }
 
-resource "azurerm_route" "to_palo_route" {
-  name                   = "to_palo"
+resource "azurerm_route" "to_az_firewall_route" {
+  name                   = "to_az_firewall"
   route_table_name       = azurerm_route_table.apim_route_table.name
   resource_group_name    = local.vnet_rg
   address_prefix         = local.apim[var.env].dest_ip

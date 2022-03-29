@@ -12,7 +12,7 @@ locals {
 
   apim = {
     sbox = {
-      dest_ip = "20.58.19.69"
+      dest_ip = "20.58.19.69/32"
     }
   }
 

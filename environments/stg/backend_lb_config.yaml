@@ -316,6 +316,26 @@ gateways:
         component: ccd-definition-store-staging
 
       - product: civil
+        component: ga-ccd-xui-staging
+        ssl_enabled: true
+      - product: civil
+        component: ga-ccd-camunda-staging
+      - product: civil
+        component: ga-ccd-data-store-staging
+      - product: civil
+        component: ga-ccd-definition-store-staging
+
+      - product: civil
+        component: ga-xui-staging
+        ssl_enabled: true
+      - product: civil
+        component: ga-camunda-staging
+      - product: civil
+        component: ga-data-store-staging
+      - product: civil
+        component: ga-definition-store-staging
+
+      - product: civil
         component: camunda-xui-staging
         ssl_enabled: true
       - product: civil

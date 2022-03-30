@@ -6,17 +6,16 @@ module "ctags" {
 }
 
 module "api-mgmt" {
-  source                         = "git::https://github.com/hmcts/cnp-module-api-mgmt-private.git?ref=dtspo-5696-apim-appgw"
-  location                       = var.location
-  sku_name                       = var.apim_sku_name
-  virtual_network_resource_group = local.vnet_rg
-  virtual_network_name           = local.vnet_name
-  environment                    = var.env
-  virtual_network_type           = "Internal"
-  department                     = var.department
-  common_tags                    = module.ctags.common_tags
-  route_next_hop_in_ip_address   = local.hub[var.hub].ukSouth.next_hop_ip
-  additional_custom_domains      = var.apim_custom_domain_prefixes
+  source                                  = "git::https://github.com/hmcts/cnp-module-api-mgmt-private.git?ref=dtspo-5696-apim-appgw"
+  location                                = var.location
+  sku_name                                = var.apim_sku_name
+  virtual_network_resource_group          = local.vnet_rg
+  virtual_network_name                    = local.vnet_name
+  environment                             = var.env
+  virtual_network_type                    = "Internal"
+  department                              = var.department
+  common_tags                             = module.ctags.common_tags
+  route_next_hop_in_ip_address            = local.hub[var.hub].ukSouth.next_hop_ip
 }
 
 resource "azurerm_api_management_named_value" "environment" {

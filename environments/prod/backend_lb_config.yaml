@@ -259,3 +259,7 @@ gateways:
  # CIVIL
       - product: civil
         component: service
+
+ # NFDIV
+      - product: nfdiv
+        component: case-api

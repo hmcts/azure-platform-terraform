@@ -432,6 +432,11 @@ frontends = [
         operator       = "Equals"
         selector       = "applicant1UploadedFiles"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2UploadedFiles"
+      },
     ]
   },
   {

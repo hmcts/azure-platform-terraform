@@ -408,6 +408,21 @@ frontends = [
         selector       = "lng"
       },
       {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
+      },      
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },      
+      {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "_csrf"

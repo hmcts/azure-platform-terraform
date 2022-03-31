@@ -9,7 +9,7 @@ gateways:
       private_ip_address: 10.10.200.212
     app_configuration:
       - product: cft
-        component: api-mgmt
+        component: api-mgmt-appgw
         ssl_enabled: true
         use_public_ip: true
         health_path_override: "/status-0123456789abcdef"

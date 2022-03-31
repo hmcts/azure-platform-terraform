@@ -198,6 +198,8 @@ gateways:
         component: terms-and-conditions
       - product: xui
         component: terms-and-conditions-int
+      - product: xui
+        component: activity-tracker-api
 
     # Access Management
       - product: am

@@ -194,6 +194,8 @@ gateways:
     # xui
       - product: xui
         component: terms-and-conditions
+      - product: xui
+        component: activity-tracker-api
 
     # BAR
       - product: bar

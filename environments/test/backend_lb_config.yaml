@@ -206,6 +206,8 @@ gateways:
     # xui
       - product: xui
         component: terms-and-conditions
+      - product: xui
+        component: activity-tracker-api
 
     # Bulk scan and print
       - product: bulk-scan

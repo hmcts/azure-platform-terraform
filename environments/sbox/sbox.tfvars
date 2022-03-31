@@ -419,7 +419,3 @@ apim_appgw_exclusions = [
     selector       = "iss"
   }
 ]
-
-apim_custom_domain_prefixes = [
-  "cft-api-mgmt-appgw"
-]

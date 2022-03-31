@@ -145,7 +145,3 @@ variable "apim_appgw_backend_pool_fqdns" {
 variable "apim_appgw_exclusions" {
   default = []
 }
-
-variable "apim_custom_domain_prefixes" {
-  default = []
-}

@@ -265,3 +265,7 @@ gateways:
  # NFDIV
       - product: nfdiv
         component: case-api
+
+ # Adoption
+      - product: adoption
+        component: cos-api

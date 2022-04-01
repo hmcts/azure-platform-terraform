@@ -46,6 +46,8 @@ gateways:
     # Log and Audit
       - product: lau
         component: case-backend
+      - product: lau
+        component: idam-backend
 
     # I&A
       - product: ia
@@ -88,6 +90,8 @@ gateways:
         component: location-ref-api
       - product: rd
         component: location-ref-data-load
+      - product: rd
+        component: commondata-api
 
     # Divorce
       - product: div
@@ -148,6 +152,8 @@ gateways:
         component: bulkscanning-api
       - product: ccpay
         component: refunds-api
+      - product: ccpay
+        component: notifications-service
 
     # BAR
       - product: bar
@@ -211,6 +217,8 @@ gateways:
       # xui
       - product: xui
         component: terms-and-conditions
+      - product: xui
+        component: activity-tracker-api
 
     # SIDAM
       - product: idam
@@ -219,6 +227,9 @@ gateways:
       - product: idam
         component: web-admin
         cookie_based_affinity: Enabled
+        ssl_enabled: true
+      - product: idam
+        component: user-dashboard
         ssl_enabled: true
 
     # CMC
@@ -243,8 +254,6 @@ gateways:
       - product: wa
         component: task-management-api
       - product: wa
-        component: task-configuration-api
-      - product: wa
         component: case-event-handler
       - product: wa
         component: task-monitor
@@ -253,3 +262,17 @@ gateways:
     # Civil
       - product: civil
         component: service
+
+      # RPTS
+      - product: rpts
+        component: api
+
+    # Adoption COS API
+      - product: adoption
+        component: cos-api
+
+    # PrivateLaw(prl) cos api
+      - product: prl
+        component: cos
+      - product: prl
+        component: dgs

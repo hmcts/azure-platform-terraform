@@ -28,7 +28,7 @@ gateways:
         ssl_enabled: true
         cookie_based_affinity: Enabled
         health_path_override: /api/readyz
-      
+
       # Evidence Management
       - product: em
         component: anno
@@ -65,6 +65,8 @@ gateways:
     # Log and Audit
       - product: lau
         component: case-backend
+      - product: lau
+        component: idam-backend
 
     # I&A
       - product: ia
@@ -101,6 +103,8 @@ gateways:
         component: location-ref-api
       - product: rd
         component: location-ref-data-load
+      - product: rd
+        component: commondata-api
 
     # Divorce
       - product: div
@@ -165,8 +169,10 @@ gateways:
         component: bulkscanning-api
       - product: ccpay
         component: refunds-api
-        
-        
+      - product: ccpay
+        component: notifications-service
+
+
 
     # CCD
       - product: ccd
@@ -188,11 +194,11 @@ gateways:
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
-   
+
    # CPO (CDM)
       - product: cpo
         component: case-payment-orders-api
-        
+
    # CTSC
       - product: ctsc
         component: work-allocation
@@ -200,6 +206,8 @@ gateways:
     # xui
       - product: xui
         component: terms-and-conditions
+      - product: xui
+        component: activity-tracker-api
 
     # Bulk scan and print
       - product: bulk-scan
@@ -263,8 +271,6 @@ gateways:
       - product: wa
         component: task-management-api
       - product: wa
-        component: task-configuration-api
-      - product: wa
         component: case-event-handler
       - product: wa
         component: task-monitor
@@ -272,3 +278,30 @@ gateways:
     # Civil
       - product: civil
         component: service
+
+    # ET
+      - product: et
+        component: cos
+      - product: et
+        component: msg-handler
+    
+  - gateway_configuration:
+      host_name_suffix: service.core-compute-perftest.internal
+      ssl_host_name_suffix: perftest.platform.hmcts.net
+      certificate_name: wildcard-perftest-platform-hmcts-net
+      private_ip_address: 10.48.96.124
+    app_configuration:
+    # IDAM
+      - product: idam
+        component: user-dashboard
+        ssl_enabled: true
+
+    # PrivateLaw(prl) cos api
+      - product: prl
+        component: cos
+      - product: prl
+        component: dgs
+
+    # Adoption COS API
+      - product: adoption
+        component: cos-api

@@ -125,7 +125,7 @@ gateways:
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
-
+        
     # CPO (CDM)
       - product: cpo
         component: case-payment-orders-api
@@ -198,6 +198,8 @@ gateways:
         component: terms-and-conditions
       - product: xui
         component: terms-and-conditions-int
+      - product: xui
+        component: activity-tracker-api
 
     # Access Management
       - product: am
@@ -207,7 +209,93 @@ gateways:
       - product: am
         component: org-role-mapping-service
 
-    # Reference DATA
+      # FACT
+      - product: fact
+        component: api
+
+      # NFDIV
+      - product: nfdiv
+        component: case-api
+
+     # rse
+      - product: rse
+        component: check
+
+     # Civil
+      - product: civil
+        component: service
+      - product: civil
+        component: general-applications
+
+      # WA - Work Allocation
+      - product: wa
+        component: workflow-api
+      - product: wa
+        component: task-management-api
+      - product: wa
+        component: case-event-handler
+      - product: wa
+        component: task-monitor
+
+    # SIDAM
+      - product: idam
+        component: api
+        ssl_enabled: true
+
+    # Docmosis
+      - product: dg
+        component: docmosis
+        cookie_based_affinity: Enabled
+        ssl_enabled: true
+        host_name_prefix: docmosis
+        http_to_https_redirect: true
+
+  - gateway_configuration:
+      host_name_suffix: service.core-compute-demo.internal
+      ssl_host_name_suffix: demo.platform.hmcts.net
+      certificate_name: wildcard-demo-platform-hmcts-net
+      private_ip_address: 10.50.97.125
+    app_configuration:
+    # CCD
+      - product: ccd
+        component: ac-int-data-store-api
+      - product: ccd
+        component: test-stubs-service
+      - product: ccd
+        component: ac-int-definition-store-api
+    # FPRL
+      - product: fprl
+        component: cos
+      - product: prl
+        component: cos
+      - product: prl
+        component: dgs
+    # Adoption
+      - product: adoption
+        component: cos-api
+    # ET
+      - product: et
+        component: cos
+      - product: et
+        component: msg-handler
+    # ccpay
+      - product: ccpay
+        component: notifications-service
+    # Log and Audit
+      - product: lau
+        component: idam-backend
+
+    # AAC (CDM)
+      - product: aac
+        component: ac-int-manage-case-assignment
+
+    # Camunda
+      - product: camunda
+        component: bpm
+        ssl_enabled: true
+        cookie_based_affinity: Enabled
+        
+# Reference DATA
       - product: rd
         component: professional-api
       - product: rd
@@ -234,61 +322,13 @@ gateways:
         component: judicial-api-int
       - product: rd
         component: location-ref-api-int
-
-      # FACT
-      - product: fact
-        component: api
-
-      # NFDIV
-      - product: nfdiv
-        component: case-api
-
-     # rse
-      - product: rse
-        component: check
-
-     # Civil
-      - product: civil
-        component: service
-
-      # WA - Work Allocation
-      - product: wa
-        component: workflow-api
-      - product: wa
-        component: task-management-api
-      - product: wa
-        component: task-configuration-api
-      - product: wa
-        component: case-event-handler
-      - product: wa
-        component: task-monitor
-
-    # SIDAM
-      - product: idam
-        component: api
-        ssl_enabled: true
-
-    # Docmosis
-      - product: dg
-        component: docmosis
-        cookie_based_affinity: Enabled
-        ssl_enabled: true
-        host_name_prefix: docmosis
-        http_to_https_redirect: true
-
-  - gateway_configuration:
-      host_name_suffix: service.core-compute-demo.internal
-      ssl_host_name_suffix: demo.platform.hmcts.net
-      certificate_name: wildcard-demo-platform-hmcts-net
-      private_ip_address: 10.51.32.125
-    app_configuration:
-    # CCD
-      - product: ccd
-        component: ac-int-data-store-api
-      - product: ccd
-        component: test-stubs-service
-      - product: ccd
-        component: ac-int-definition-store-api
-    # FPRL
-      - product: fprl
-        component: cos
+      - product: rd
+        component: commondata-api
+        
+    # HMC
+      - product: hmc
+        component: cft-hearing-service
+      - product: hmc
+        component: hmi-inbound-adapter
+      - product: hmc
+        component: hmi-outbound-adapter

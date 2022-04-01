@@ -23,5 +23,13 @@ frontends = [
     health_path         = "/"
     health_protocol     = "Https"
     cache_enabled       = "false"
+  },
+  {
+    product          = "cft-api-mgmt"
+    name             = "cft-api-mgmt"
+    custom_domain    = "cft-api-mgmt.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftapimgmtdemo.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+    cache_enabled    = "false"
   }
 ]

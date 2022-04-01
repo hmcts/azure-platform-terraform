@@ -5,7 +5,7 @@ gateways:
       host_name_suffix: service.core-compute-sandbox.internal
       ssl_host_name_suffix: sandbox.platform.hmcts.net
       certificate_name: wildcard-sandbox-platform-hmcts-net
-      private_ip_address: 10.2.13.122
+      private_ip_address: 10.2.13.112
     app_configuration:
     # RPE
       - product: draft-store
@@ -54,6 +54,24 @@ gateways:
     # Plum Frontend
       - product: plum
         component: frontend
+    #labs
+      - product: labs
+        component: mokainosspringboot
+      - product: labs
+        component: mokainosjavaapp
+      - product: "labs"
+        component: msl8r
+      - product: "labs"
+        component: ssian2
+      - product: "labs"
+        component: zc-hmcts
+      - product: "labs"
+        component: endakelly
+      - product: "labs"
+        component: ozzyib
+      - product: "labs"
+        component: rajivkapoor1
+        
 
     # SIDAM 
       - product: idam
@@ -70,6 +88,9 @@ gateways:
       - product: idam
         component: web-admin-sprod
         cookie_based_affinity: Enabled
+        ssl_enabled: true
+      - product: idam
+        component: testing-support-api
         ssl_enabled: true
 
       # BulkScan

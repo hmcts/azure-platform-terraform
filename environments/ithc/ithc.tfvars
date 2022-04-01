@@ -3,10 +3,13 @@ location     = "uksouth"
 env          = "ithc"
 subscription = "ithc"
 
-app_gw_private_ip_address = ["10.11.225.121"]
-data_subscription         = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
-privatedns_subscription   = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
-oms_env                   = "nonprod"
+app_gw_private_ip_address      = ["10.11.225.121"]
+backend_agw_private_ip_address = ["10.11.225.111"]
+data_subscription              = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
+privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
+oms_env                        = "nonprod"
+
+hub = "nonprod"
 
 shutter_storage = "TODO"
 cdn_sku         = "TODO"
@@ -18,8 +21,9 @@ shutter_apps = [
   "TODO"
 ]
 
-cft_apps_ag_ip_address = "10.11.225.123"
-cft_apps_cluster_ips   = ["10.11.207.250", "10.11.223.250"]
+cft_apps_ag_ip_address          = "10.11.225.123"
+frontend_agw_private_ip_address = "10.11.225.113"
+cft_apps_cluster_ips            = ["10.11.207.250", "10.11.223.250"]
 
 frontends = [
   {
@@ -323,6 +327,12 @@ frontends = [
     ]
   },
   {
+    name           = "civil-citizen-ui"
+    mode           = "Detection"
+    custom_domain  = "civil-citizen-ui.ithc.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "cmc"
     mode           = "Detection"
     custom_domain  = "moneyclaims.ithc.platform.hmcts.net"
@@ -351,6 +361,42 @@ frontends = [
 
   },
   {
+    name           = "rpts"
+    mode           = "Prevention"
+    custom_domain  = "rpts.ithc.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    custom_rules = [
+          {
+            name     = "IPMatchWhitelist"
+            priority = 1
+            type     = "MatchRule"
+            action   = "Block"
+            match_conditions = [
+              {
+                match_variable     = "RemoteAddr"
+                operator           = "IPMatch"
+                negation_condition = true
+                match_values = [
+                  "81.134.202.29/32",
+                  "51.145.6.230/32",
+                  "51.145.4.100/32",
+                  "194.33.192.0/25",
+                  "194.33.196.0/25",
+                  "52.210.206.51/32",
+                  "62.25.109.201/32",
+                  "62.25.109.203/32",
+                  "51.140.8.67/32",
+                  "20.50.109.148/32",
+                  "20.50.108.242/32",
+                  "51.11.124.205/32",
+                  "51.11.124.216/32",
+                ]
+              }
+            ]
+          },
+        ]
+  },
+  {
     name           = "nfdiv"
     mode           = "Detection"
     custom_domain  = "nfdiv.ithc.platform.hmcts.net"
@@ -369,13 +415,6 @@ frontends = [
     mode          = "Detection"
     custom_domain = "nfdiv-end-civil-partnership.ithc.platform.hmcts.net"
     backend       = "nfdiv"
-
-  },
-  {
-    name           = "www-ccd"
-    mode           = "Detection"
-    custom_domain  = "www-ccd.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
 
   },
   {
@@ -479,6 +518,11 @@ frontends = [
         operator       = "Equals"
         selector       = "isUploadingDocument"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cm-user-preferences"
+      },
     ]
   },
   {
@@ -489,9 +533,9 @@ frontends = [
 
   },
   {
-    name           = "lau-case"
+    name           = "lau"
     mode           = "Detection"
-    custom_domain  = "lau-case.ithc.platform.hmcts.net"
+    custom_domain  = "lau.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
   },
   {
@@ -645,6 +689,154 @@ frontends = [
     ]
   },
   {
+    name             = "idam-user-dashboard"
+    custom_domain    = "idam-user-dashboard.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "81.134.202.29/32",
+              "51.145.6.230/32",
+              "51.145.4.100/32",
+              "194.33.192.0/25",
+              "194.33.196.0/25",
+              "52.210.206.51/32",
+              "62.25.109.201/32",
+              "62.25.109.203/32",
+              "51.140.8.67/32",
+              "20.50.109.148/32",
+              "20.50.108.242/32",
+              "51.11.124.205/32",
+              "51.11.124.216/32",
+            ]
+          }
+        ]
+      },
+    ],
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.AuthId"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.Session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "idam-user-dashboard-session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "jwt"
+      },
+      {
+        match_variable = "QueryStringArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "refresh_token"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "refresh_token"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "response_type"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "scope"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      }
+    ]
+  },
+  {
     name           = "sscs-tribunals"
     custom_domain  = "benefit-appeal.ithc.platform.hmcts.net"
     mode           = "Detection"
@@ -772,5 +964,26 @@ frontends = [
         selector       = "describeTheEvidence"
       }
     ]
+  },
+  {
+    name           = "adoption-web"
+    custom_domain  = "adoption-web.ithc.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
+    name             = "paymentoutcome-web"
+    mode             = "Detection"
+    custom_domain    = "paymentoutcome-web.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    www_redirect     = true
   },
 ]

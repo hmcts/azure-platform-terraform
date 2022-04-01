@@ -9,6 +9,8 @@ data_subscription         = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription   = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                   = "nonprod"
 
+hub = "prod"
+
 shutter_storage = "TODO"
 cdn_sku         = "TODO"
 shutter_rg      = "TODO"
@@ -26,6 +28,7 @@ frontends = [
   {
     name           = "div-dn"
     custom_domain  = "decree-nisi-aks.aat.platform.hmcts.net"
+    mode           = "Prevention"
     backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
@@ -33,6 +36,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookies_policy"
       },
       {
         match_variable = "RequestCookieNames"
@@ -54,6 +62,7 @@ frontends = [
   {
     name           = "div-da"
     custom_domain  = "decree-absolute-aks.aat.platform.hmcts.net"
+    mode           = "Prevention"
     backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
@@ -61,6 +70,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookies_policy"
       },
       {
         match_variable = "RequestCookieNames"
@@ -77,6 +91,7 @@ frontends = [
   {
     name           = "div-rfe"
     custom_domain  = "respond-divorce-aks.aat.platform.hmcts.net"
+    mode           = "Prevention"
     backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
@@ -84,6 +99,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookies_policy"
       },
       {
         match_variable = "RequestCookieNames"
@@ -100,7 +120,7 @@ frontends = [
   {
     name           = "div-pfe"
     custom_domain  = "petitioner-frontend-aks.aat.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
@@ -108,6 +128,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookies_policy"
       },
       {
         match_variable = "RequestCookieNames"
@@ -406,6 +431,12 @@ frontends = [
 
   },
   {
+    name           = "civil-citizen-ui"
+    mode           = "Detection"
+    custom_domain  = "civil-citizen-ui.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "cmc"
     mode           = "Detection"
     custom_domain  = "moneyclaims.aat.platform.hmcts.net"
@@ -434,6 +465,43 @@ frontends = [
 
   },
   {
+    name           = "rpts"
+    mode           = "Prevention"
+    custom_domain  = "rpts.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    custom_rules = [
+              {
+                name     = "IPMatchWhitelist"
+                priority = 1
+                type     = "MatchRule"
+                action   = "Block"
+                match_conditions = [
+                  {
+                    match_variable     = "RemoteAddr"
+                    operator           = "IPMatch"
+                    negation_condition = true
+                    match_values = [
+                      "81.134.202.29/32",
+                      "51.145.6.230/32",
+                      "51.145.4.100/32",
+                      "194.33.192.0/25",
+                      "194.33.196.0/25",
+                      "52.210.206.51/32",
+                      "62.25.109.201/32",
+                      "62.25.109.203/32",
+                      "51.140.8.67/32",
+                      "20.50.109.148/32",
+                      "20.50.108.242/32",
+                      "51.11.124.205/32",
+                      "51.11.124.216/32",
+                    ]
+                  }
+                ]
+              },
+            ]
+
+  },
+  {
     name           = "nfdiv"
     mode           = "Detection"
     custom_domain  = "nfdiv.aat.platform.hmcts.net"
@@ -454,6 +522,13 @@ frontends = [
     backend       = "nfdiv"
   },
   {
+    name           = "et-sya"
+    mode           = "Detection"
+    custom_domain  = "et-sya.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+
+  },
+  {
     name           = "ia-aip"
     mode           = "Detection"
     custom_domain  = "immigration-appeal.aat.platform.hmcts.net"
@@ -464,13 +539,6 @@ frontends = [
     name           = "wa-proto-frontend"
     mode           = "Detection"
     custom_domain  = "wa-proto-frontend.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-
-  },
-  {
-    name           = "www-ccd"
-    mode           = "Detection"
-    custom_domain  = "www-ccd.aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
 
   },
@@ -496,9 +564,9 @@ frontends = [
 
   },
   {
-    name           = "lau-case"
+    name           = "lau"
     mode           = "Detection"
-    custom_domain  = "lau-case.aat.platform.hmcts.net"
+    custom_domain  = "lau.aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
   },
   {
@@ -506,7 +574,19 @@ frontends = [
     custom_domain  = "adoption.aat.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-
+  },
+  {
+    name           = "adoption-web"
+    custom_domain  = "adoption-web.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
   },
   {
     name           = "probate"
@@ -1064,6 +1144,154 @@ frontends = [
     ]
   },
   {
+    name             = "idam-user-dashboard"
+    custom_domain    = "idam-user-dashboard.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "20.50.109.148/32",
+              "20.50.108.242/32",
+              "51.11.124.216/32",
+              "51.11.124.205/32",
+              "81.134.202.29/32",
+              "51.104.22.147/32",
+              "51.145.6.230/32",
+              "51.145.4.100/32",
+              "194.33.192.0/25",
+              "194.33.196.0/25",
+              "52.210.206.51/32",
+              "62.25.109.201/32",
+              "62.25.109.203/32"
+            ]
+          }
+        ]
+      }
+    ],
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.AuthId"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.Session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "idam-user-dashboard-session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "jwt"
+      },
+      {
+        match_variable = "QueryStringArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "refresh_token"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "refresh_token"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "response_type"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "scope"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      }
+    ]
+  },
+  {
     name                = "reformscan"
     custom_domain       = "reformscan.aat.platform.hmcts.net"
     host_header         = "reformscanaat.blob.core.windows.net"
@@ -1085,11 +1313,65 @@ frontends = [
     health_protocol     = "Https"
     cache_enabled       = "false"
   },
+   {
+    name           = "ds-ui"
+    custom_domain  = "ds-ui.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
+    name           = "fis-ds-web"
+    custom_domain  = "fis-ds-web.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
+    name           = "privatelaw"
+    custom_domain  = "privatelaw.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
   {
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.staging.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-hmiapimaat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-staging-platform-hmcts-net"
     cache_enabled    = "false"
+  },
+  {
+    product          = "cft-api-mgmt"
+    name             = "cft-api-mgmt"
+    custom_domain    = "cft-api-mgmt.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-cftapimgmtstg.uksouth.cloudapp.azure.com"]
+    certificate_name = "cft-api-mgmt-aat-platform-hmcts-net"
+    cache_enabled    = "false"
+  },
+{
+    name             = "paymentoutcome-web"
+    mode             = "Detection"
+    custom_domain    = "paymentoutcome-web.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    www_redirect     = true
   }
 ]

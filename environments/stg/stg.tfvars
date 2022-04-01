@@ -1340,6 +1340,32 @@ frontends = [
     ]
   },
   {
+    name           = "fis-cos-api"
+    custom_domain  = "fis-cos-api.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
+    name           = "fis-bulk-scan-api"
+    custom_domain  = "fis-bulk-scan-api.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
     name           = "privatelaw"
     custom_domain  = "privatelaw.aat.platform.hmcts.net"
     mode           = "Detection"

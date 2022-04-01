@@ -5,7 +5,7 @@ gateways:
       host_name_suffix: service.core-compute-demo.internal
       ssl_host_name_suffix: demo.platform.hmcts.net
       certificate_name: wildcard-demo-platform-hmcts-net
-      private_ip_address: 10.51.32.121
+      private_ip_address: 10.50.97.121
     app_configuration:
     # RPE
       - product: draft-store
@@ -254,7 +254,7 @@ gateways:
       host_name_suffix: service.core-compute-demo.internal
       ssl_host_name_suffix: demo.platform.hmcts.net
       certificate_name: wildcard-demo-platform-hmcts-net
-      private_ip_address: 10.51.32.125
+      private_ip_address: 10.50.97.125
     app_configuration:
     # CCD
       - product: ccd

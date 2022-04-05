@@ -231,6 +231,11 @@ frontends = [
         operator       = "Equals"
         selector       = "nonce"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "post_logout_redirect_uri"
+      },
     ]
   },
   {

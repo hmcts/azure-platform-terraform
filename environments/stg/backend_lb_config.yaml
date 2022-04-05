@@ -379,3 +379,9 @@ gateways:
     # RPTS
       - product: rpts
         component: api
+        
+    # FIS
+      - product: fis
+        component: cos-api
+      - product: fis
+        component: bulk-scan-api  

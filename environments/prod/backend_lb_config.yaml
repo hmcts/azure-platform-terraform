@@ -269,3 +269,10 @@ gateways:
  # Adoption
       - product: adoption
         component: cos-api
+        
+ 
+# Private Law
+      - product: prl
+        component: cos
+      - product: prl
+        component: dgs

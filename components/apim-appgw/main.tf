@@ -27,7 +27,7 @@ module "app-gw" {
     azurerm.kv  = azurerm.kv
   }
 
-  source                     = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=dtspo-5696-apim-appgw"
+  source                     = "git::https://github.com/hmcts/terraform-module-apim-application-gateway.git?ref=module-create"
   yaml_path                  = "${path.cwd}/../../environments/${local.env}/apim_appgw_config.yaml"
   env                        = local.dns_zone
   location                   = var.location

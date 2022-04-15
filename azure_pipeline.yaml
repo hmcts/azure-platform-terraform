@@ -39,7 +39,6 @@ parameters:
     values:
     - plan
     - apply
-    - destroy
 
   - name: environment_components
     type: object

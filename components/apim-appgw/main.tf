@@ -27,7 +27,7 @@ module "app-gw" {
     azurerm.kv  = azurerm.kv
   }
 
-  source                     = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=dtspo-5696-apim-appgw"
+  source                     = "git::https://github.com/hmcts/terraform-module-apim-application-gateway.git?ref=main"
   yaml_path                  = "${path.cwd}/../../environments/${local.env}/apim_appgw_config.yaml"
   env                        = local.dns_zone
   location                   = var.location
@@ -41,7 +41,6 @@ module "app-gw" {
   log_analytics_workspace_id = module.logworkspace.workspace_id
   key_vault_resource_group   = local.key_vault_resource_group
   subnet_name                = local.subnet_name
-  usage_name                 = var.usage_name
   waf_mode                   = var.waf_mode
   exclusions                 = var.apim_appgw_exclusions
 }

@@ -41,7 +41,6 @@ module "app-gw" {
   log_analytics_workspace_id = module.logworkspace.workspace_id
   key_vault_resource_group   = local.key_vault_resource_group
   subnet_name                = local.subnet_name
-  usage_name                 = var.usage_name
   waf_mode                   = var.waf_mode
   exclusions                 = var.apim_appgw_exclusions
 }

@@ -122,10 +122,6 @@ variable "hub" {
   default = "sbox"
 }
 
-variable "usage_name" {
-  default = "hub"
-}
-
 variable "waf_mode" {
   default = "Detection"
 }

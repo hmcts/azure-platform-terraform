@@ -248,6 +248,10 @@ gateways:
         host_name_prefix: docmosis
         http_to_https_redirect: true
 
+    # CNP
+      - product: plum
+        component: recipe-backend
+
     # WA - Work Allocation
       - product: wa
         component: workflow-api

@@ -305,3 +305,7 @@ gateways:
     # Adoption COS API
       - product: adoption
         component: cos-api
+
+    # CNP
+      - product: plum
+        component: recipe-backend

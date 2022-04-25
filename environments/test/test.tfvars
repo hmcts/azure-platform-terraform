@@ -1127,4 +1127,11 @@ frontends = [
     backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     www_redirect     = true
   },
+  {
+    product          = "plum"
+    name             = "plum"
+    custom_domain    = "plum.perftest.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
+  },
 ]

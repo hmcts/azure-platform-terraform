@@ -316,6 +316,8 @@ gateways:
         component: ccd-data-store-staging
       - product: civil
         component: ccd-definition-store-staging
+      - product: civil
+        component: ga-civil-service-staging
 
       - product: civil
         component: ga-ccd-xui-staging
@@ -326,6 +328,8 @@ gateways:
         component: ga-ccd-data-store-staging
       - product: civil
         component: ga-ccd-definition-store-staging
+      - product: civil
+        component: ga-ccd-civil-service-staging
 
       - product: civil
         component: ga-xui-staging

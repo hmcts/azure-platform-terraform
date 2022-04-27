@@ -29,7 +29,7 @@ frontends = [
   {
     name           = "div-dn"
     custom_domain  = "decree-nisi-aks.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -52,7 +52,7 @@ frontends = [
   {
     name           = "div-da"
     custom_domain  = "decree-absolute-aks.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -75,7 +75,7 @@ frontends = [
   {
     name           = "div-rfe"
     custom_domain  = "respond-divorce-aks.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -98,7 +98,7 @@ frontends = [
   {
     name           = "div-pfe"
     custom_domain  = "petitioner-frontend-aks.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -121,7 +121,7 @@ frontends = [
   {
     name           = "idam-web-public"
     custom_domain  = "idam-web-public.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -335,41 +335,41 @@ frontends = [
     name           = "civil-citizen-ui"
     mode           = "Detection"
     custom_domain  = "civil-citizen-ui.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "cmc"
     mode           = "Detection"
     custom_domain  = "moneyclaims.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "cmc-legal"
     mode           = "Detection"
     custom_domain  = "moneyclaims-legal.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "fact"
     mode           = "Detection"
     custom_domain  = "fact.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "fact-admin"
     mode           = "Detection"
     custom_domain  = "fact-admin.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "rpts"
     mode           = "Prevention"
     custom_domain  = "rpts.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     custom_rules = [
           {
             name     = "IPMatchWhitelist"
@@ -405,7 +405,7 @@ frontends = [
     name           = "nfdiv"
     mode           = "Detection"
     custom_domain  = "nfdiv.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
   },
   {
@@ -426,56 +426,56 @@ frontends = [
     name           = "gateway-ccd"
     mode           = "Detection"
     custom_domain  = "gateway-ccd.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "return-case-doc-ccd"
     mode           = "Detection"
     custom_domain  = "return-case-doc-ccd.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "xui-approve-org"
     mode           = "Detection"
     custom_domain  = "administer-orgs.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "xui-manage-org"
     mode           = "Detection"
     custom_domain  = "manage-org.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "xui-register-org"
     mode           = "Detection"
     custom_domain  = "register-org.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "xui-webapp"
     mode           = "Detection"
     custom_domain  = "manage-case.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "ia-aip"
     mode           = "Detection"
     custom_domain  = "immigration-appeal.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "probate"
     mode           = "Prevention"
     custom_domain  = "probate.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -534,40 +534,40 @@ frontends = [
     name           = "pcq"
     custom_domain  = "pcq.ithc.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "lau"
     mode           = "Detection"
     custom_domain  = "lau.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "paybubble"
     custom_domain  = "paybubble.ithc.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "bar"
     custom_domain  = "bar.ithc.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "fees-register"
     custom_domain  = "fees-register.ithc.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
   },
   {
     name                        = "idam-web-admin"
     custom_domain               = "idam-web-admin.ithc.platform.hmcts.net"
-    backend_domain              = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain              = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-ithc-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
     custom_rules = [
@@ -696,7 +696,7 @@ frontends = [
   {
     name             = "idam-user-dashboard"
     custom_domain    = "idam-user-dashboard.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     custom_rules = [
       {
@@ -845,7 +845,7 @@ frontends = [
     name           = "sscs-tribunals"
     custom_domain  = "benefit-appeal.ithc.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -909,7 +909,7 @@ frontends = [
     name           = "sscs-cor"
     mode           = "Detection"
     custom_domain  = "sscs-cor.ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
     disabled_rules = {
       SQLI = [
@@ -974,7 +974,7 @@ frontends = [
     name           = "adoption-web"
     custom_domain  = "adoption-web.ithc.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
@@ -988,7 +988,7 @@ frontends = [
     name             = "paymentoutcome-web"
     mode             = "Detection"
     custom_domain    = "paymentoutcome-web.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-ithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     www_redirect     = true
   },
   {

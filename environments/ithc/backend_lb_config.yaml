@@ -5,7 +5,7 @@ gateways:
       host_name_suffix: service.core-compute-ithc.internal
       ssl_host_name_suffix: ithc.platform.hmcts.net
       certificate_name: wildcard-ithc-platform-hmcts-net
-      private_ip_address: 10.11.225.121
+      private_ip_address: 10.11.225.111
     app_configuration:
     # RPE
       - product: draft-store

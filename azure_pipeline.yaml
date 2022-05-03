@@ -116,22 +116,6 @@ parameters:
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_frontendappgateway'
 
-    - deployment: 'ithc_cftapps_cluster_lb'
-      environment: 'ithc'
-      component: 'cftapps_cluster_lb'
-      service_connection: 'dcd-cftapps-ithc'
-      storage_account_rg: 'core-infra-ithc-rg'
-      storage_account_name: 'cftappsithc'
-      dependsOn: 'sbox_frontendappgateway'
-
-    - deployment: 'ithc_cftapps_cluster_lb_backend'
-      environment: 'ithc'
-      component: 'cftapps_cluster_lb_backend'
-      service_connection: 'dcd-cftapps-ithc'
-      storage_account_rg: 'core-infra-ithc-rg'
-      storage_account_name: 'cftappsithc'
-      dependsOn: 'sbox_frontendappgateway'
-
     - deployment: 'ithc_private_dns'
       environment: 'ithc'
       component: 'cftapps_private_dns'

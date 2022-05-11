@@ -89,6 +89,8 @@ gateways:
         component: timed-event-service
       - product: ia
         component: case-access-api
+      - product: ia
+        component: bail-case-api
 
     # SSCS
       - product: sscs

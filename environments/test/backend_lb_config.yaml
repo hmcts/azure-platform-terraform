@@ -85,6 +85,8 @@ gateways:
         component: home-office-integration-api
       - product: ia
         component: home-office-mock-api
+      - product: ia
+        component: bail-case-api
 
     # Reference DATA
       - product: rd

@@ -255,6 +255,9 @@ gateways:
         component: web-admin
         cookie_based_affinity: Enabled
         ssl_enabled: true
+      - product: idam
+        component: testing-support-api
+        ssl_enabled: true
 
 # rse
       - product: rse

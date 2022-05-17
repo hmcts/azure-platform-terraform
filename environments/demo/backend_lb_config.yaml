@@ -7,6 +7,11 @@ gateways:
       certificate_name: wildcard-demo-platform-hmcts-net
       private_ip_address: 10.50.97.121
     app_configuration:
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION, SCROLL TO THE NEXT ONE
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION, SCROLL TO THE NEXT ONE
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION, SCROLL TO THE NEXT ONE
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION, SCROLL TO THE NEXT ONE
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION, SCROLL TO THE NEXT ONE
     # RPE
       - product: draft-store
         component: service
@@ -103,8 +108,6 @@ gateways:
         component: ccd-callback-orchestrator
       - product: sscs
         component: tya-notif
-      - product: sscs
-        component: hearings-api
 
     # Ethos
       - product: ethos
@@ -253,7 +256,11 @@ gateways:
         ssl_enabled: true
         host_name_prefix: docmosis
         http_to_https_redirect: true
-
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
   - gateway_configuration:
       host_name_suffix: service.core-compute-demo.internal
       ssl_host_name_suffix: demo.platform.hmcts.net
@@ -336,3 +343,6 @@ gateways:
         component: hmi-inbound-adapter
       - product: hmc
         component: hmi-outbound-adapter
+        
+      - product: sscs
+        component: hearings-api

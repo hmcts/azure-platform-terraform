@@ -85,8 +85,6 @@ gateways:
         component: home-office-integration-api
       - product: ia
         component: home-office-mock-api
-      - product: ia
-        component: bail-case-api
 
     # Reference DATA
       - product: rd
@@ -311,3 +309,7 @@ gateways:
     # CNP
       - product: plum
         component: recipe-backend
+
+    # I&A
+      - product: ia
+        component: bail-case-api

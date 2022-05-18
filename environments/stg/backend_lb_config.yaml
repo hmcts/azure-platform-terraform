@@ -275,7 +275,11 @@ gateways:
         ssl_enabled: true
         host_name_prefix: docmosis
         http_to_https_redirect: true
-
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
   - gateway_configuration:
       host_name_suffix: service.core-compute-aat.internal
       ssl_host_name_suffix: aat.platform.hmcts.net

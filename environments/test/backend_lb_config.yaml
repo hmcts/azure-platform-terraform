@@ -85,8 +85,6 @@ gateways:
         component: home-office-integration-api
       - product: ia
         component: home-office-mock-api
-      - product: ia
-        component: bail-case-api
 
     # Reference DATA
       - product: rd
@@ -286,7 +284,11 @@ gateways:
         component: cos
       - product: et
         component: msg-handler
-    
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING    
   - gateway_configuration:
       host_name_suffix: service.core-compute-perftest.internal
       ssl_host_name_suffix: perftest.platform.hmcts.net
@@ -311,3 +313,7 @@ gateways:
     # CNP
       - product: plum
         component: recipe-backend
+
+    # I&A
+      - product: ia
+        component: bail-case-api

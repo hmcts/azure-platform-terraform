@@ -230,7 +230,7 @@ frontends = [
   },
   {
     product          = "div"
-    name             = "div-pfe"
+    name             = "nfdiv-frontend"
     mode             = "Detection"
     custom_domain    = "www.apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
@@ -330,7 +330,7 @@ frontends = [
   },
   {
       product          = "div"
-      name             = "div-amend-pfe"
+      name             = "div-pfe"
       mode             = "Detection"
       custom_domain    = "www.manage-application.apply-divorce.service.gov.uk"
       backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]

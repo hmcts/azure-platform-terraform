@@ -2019,6 +2019,7 @@ frontends = [
         operator       = "Equals"
         selector       = "pcq-cookie-preferences"
       },
+      // Google Analytics Exclusions
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -2034,6 +2035,7 @@ frontends = [
         operator       = "Equals"
         selector       = "_gat"
       },
+      // Dynatrace Exclusions
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -2138,6 +2140,31 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "end"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "$tvn"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "$tvt"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "$tvm"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "$tvtrg"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "$rt"
       }
     ]
   },

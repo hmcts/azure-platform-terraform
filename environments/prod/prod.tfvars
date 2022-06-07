@@ -2003,6 +2003,12 @@ frontends = [
     custom_domain    = "equality-and-diversity.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "equality-and-diversity-platform-hmcts-net"
+    disabled_rules = {
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

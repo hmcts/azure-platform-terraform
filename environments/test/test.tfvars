@@ -1126,7 +1126,7 @@ frontends = [
   },
   {
     name           = "privatelaw"
-    custom_domain  = "privatelaw.ithc.platform.hmcts.net"
+    custom_domain  = "privatelaw.perftest.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
   },

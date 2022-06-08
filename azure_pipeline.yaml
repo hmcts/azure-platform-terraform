@@ -252,6 +252,13 @@ parameters:
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_frontendappgateway'
 
+    - deployment: 'prod_apim'
+      environment: 'prod'
+      component: 'apim'
+      service_connection: 'dcd-cftapps-prod'
+      storage_account_rg: 'core-infra-prod-rg'
+      storage_account_name: 'cftappsprod'
+      dependsOn: 'sbox_frontendappgateway'
 
 stages:
   - stage: Precheck

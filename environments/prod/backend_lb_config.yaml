@@ -276,3 +276,11 @@ gateways:
         component: cos
       - product: prl
         component: dgs
+        
+# HMC
+      - product: hmc
+        component: cft-hearing-service
+      - product: hmc
+        component: hmi-inbound-adapter
+      - product: hmc
+        component: hmi-outbound-adapter

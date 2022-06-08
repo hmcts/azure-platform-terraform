@@ -1,6 +1,6 @@
 locals {
-  vnet_rg   = var.env == "sbox" || var.env == "perftest" || var.env == "aat" || var.env == "ithc" || var.env == "demo" ? "cft-${var.env}-network-rg" : "aks-infra-${var.env}-rg"
-  vnet_name = var.env == "sbox" || var.env == "perftest" || var.env == "aat" || var.env == "ithc" || var.env == "demo" ? "cft-${var.env}-vnet" : "core-${var.env}-vnet"
+  vnet_rg   = "cft-${var.env}-network-rg"
+  vnet_name = "cft-${var.env}-vnet" 
 
   hub = {
     nonprod = {

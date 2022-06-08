@@ -988,6 +988,12 @@ frontends = [
     ]
   },
   {
+    name           = "privatelaw"
+    custom_domain  = "privatelaw.ithc.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+  },
+  {
     name             = "paymentoutcome-web"
     mode             = "Detection"
     custom_domain    = "paymentoutcome-web.ithc.platform.hmcts.net"

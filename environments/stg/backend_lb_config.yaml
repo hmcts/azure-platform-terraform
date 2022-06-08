@@ -398,3 +398,11 @@ gateways:
         component: cos-api
       - product: fis
         component: bulk-scan-api  
+        
+    # HMC
+      - product: hmc
+        component: cft-hearing-service
+      - product: hmc
+        component: hmi-inbound-adapter
+      - product: hmc
+        component: hmi-outbound-adapter

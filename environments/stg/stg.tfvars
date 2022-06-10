@@ -571,6 +571,7 @@ frontends = [
           {
             match_variable     = "RequestMethod"
             operator           = "Equal"
+            negation_condition = false
             transforms = [
               "Uppercase"
             ]
@@ -581,6 +582,7 @@ frontends = [
           {
             match_variable     = "RequestUri"
             operator           = "Contains"
+            negation_condition = false
             match_values = [
               "/rb_"
             ]

@@ -19,7 +19,7 @@ locals {
 }
 
 module "app-gw" {
-  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=master"
+  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=terraform-v2.99-upgrade"
 
   yaml_path                  = "${path.cwd}/../../environments/${local.env}/backend_lb_config.yaml"
   env                        = local.dns_zone

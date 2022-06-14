@@ -2073,102 +2073,36 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "rxvt"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "type"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "svrid"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "rf"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "sn"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "app"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "dbg"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "flavor"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "vi"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "modifiedSince"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "bp"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "contentType"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "crc"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "v"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "end"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "StartsWith"
-        selector       = "$tvn"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "StartsWith"
-        selector       = "$tvt"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "StartsWith"
-        selector       = "$tvm"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "StartsWith"
-        selector       = "$tvtrg"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "StartsWith"
-        selector       = "$rt"
       }
+    ],
+    custom_rules = [
+      {
+        name     = "RumBeaconExclusion"
+        priority = 100
+        type     = "MatchRule"
+        action   = "Allow"
+        match_conditions = [
+          {
+            match_variable     = "RequestMethod"
+            operator           = "Equal"
+            negation_condition = false
+            transforms = [
+              "Uppercase"
+            ]
+            match_values = [
+              "POST"
+            ]
+          },
+          {
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values = [
+              "/rb_"
+            ]
+          }
+        ]
+      },
     ]
   },
   {

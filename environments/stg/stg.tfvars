@@ -21,8 +21,9 @@ shutter_apps = [
   "TODO"
 ]
 
-cft_apps_ag_ip_address = "10.10.161.123"
-cft_apps_cluster_ips   = ["10.10.143.250", "10.10.159.250"]
+cft_apps_ag_ip_address             = "10.10.161.123"
+cft_apps_cluster_ips               = ["10.10.143.250", "10.10.159.250"]
+enable_multiple_availability_zones = true
 
 frontends = [
   {
@@ -470,35 +471,35 @@ frontends = [
     custom_domain  = "rpts.aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
     custom_rules = [
-              {
-                name     = "IPMatchWhitelist"
-                priority = 1
-                type     = "MatchRule"
-                action   = "Block"
-                match_conditions = [
-                  {
-                    match_variable     = "RemoteAddr"
-                    operator           = "IPMatch"
-                    negation_condition = true
-                    match_values = [
-                      "81.134.202.29/32",
-                      "51.145.6.230/32",
-                      "51.145.4.100/32",
-                      "194.33.192.0/25",
-                      "194.33.196.0/25",
-                      "52.210.206.51/32",
-                      "62.25.109.201/32",
-                      "62.25.109.203/32",
-                      "51.140.8.67/32",
-                      "20.50.109.148/32",
-                      "20.50.108.242/32",
-                      "51.11.124.205/32",
-                      "51.11.124.216/32",
-                    ]
-                  }
-                ]
-              },
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "81.134.202.29/32",
+              "51.145.6.230/32",
+              "51.145.4.100/32",
+              "194.33.192.0/25",
+              "194.33.196.0/25",
+              "52.210.206.51/32",
+              "62.25.109.201/32",
+              "62.25.109.203/32",
+              "51.140.8.67/32",
+              "20.50.109.148/32",
+              "20.50.108.242/32",
+              "51.11.124.205/32",
+              "51.11.124.216/32",
             ]
+          }
+        ]
+      },
+    ]
 
   },
   {
@@ -867,7 +868,7 @@ frontends = [
         operator       = "Equals"
         selector       = "nonce"
       },
-       {
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "post_logout_redirect_uri"
@@ -1379,7 +1380,7 @@ frontends = [
     health_protocol     = "Https"
     cache_enabled       = "false"
   },
-   {
+  {
     name           = "ds-ui"
     custom_domain  = "ds-ui.aat.platform.hmcts.net"
     mode           = "Detection"
@@ -1433,11 +1434,11 @@ frontends = [
     certificate_name = "cft-api-mgmt-aat-platform-hmcts-net"
     cache_enabled    = "false"
   },
-{
-    name             = "paymentoutcome-web"
-    mode             = "Detection"
-    custom_domain    = "paymentoutcome-web.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
-    www_redirect     = true
+  {
+    name           = "paymentoutcome-web"
+    mode           = "Detection"
+    custom_domain  = "paymentoutcome-web.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    www_redirect   = true
   }
 ]

@@ -3,12 +3,12 @@ location     = "uksouth"
 env          = "sbox"
 subscription = "sbox"
 
-hub_app_gw_private_ip_address = ["10.10.200.212"]
+hub_app_gw_private_ip_address  = ["10.10.200.212"]
 backend_agw_private_ip_address = ["10.2.13.112"]
-data_subscription         = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
-key_vault_subscription    = "b72ab7b7-723f-4b18-b6f6-03b0f2c6a1bb"
-privatedns_subscription   = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
-oms_env                   = "sandbox"
+data_subscription              = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
+key_vault_subscription         = "b72ab7b7-723f-4b18-b6f6-03b0f2c6a1bb"
+privatedns_subscription        = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
+oms_env                        = "sandbox"
 
 #FrontDoor access policy
 add_access_policy = false
@@ -17,7 +17,7 @@ cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-sbox-rg"
 
 frontend_agw_private_ip_address = "10.2.13.114"
-cft_apps_cluster_ips   = ["10.2.9.250", "10.2.11.250"]
+cft_apps_cluster_ips            = ["10.2.9.250", "10.2.11.250"]
 
 apim_appgw_backend_pool_fqdns = ["firewall-sbox-int-palo-cftapimgmt.uksouth.cloudapp.azure.com"]
 
@@ -407,18 +407,18 @@ frontends = [
     cache_enabled               = "false"
   },
   {
-    product                     = "labs"
-    name                        = "labs-louisehuyton-walkthrough"
-    custom_domain               = "labs-louisehuyton-walkthrough.sandbox.platform.hmcts.net"
-    backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-sandbox-platform-hmcts-net"
+    product          = "labs"
+    name             = "labs-louisehuyton-walkthrough"
+    custom_domain    = "labs-louisehuyton-walkthrough.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
   },
   {
-    product                     = "labs"
-    name                        = "labs-zcwalkthrough-nodejs"
-    custom_domain               = "labs-zcwalkthrough-nodejs.sandbox.platform.hmcts.net"
-    backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-sandbox-platform-hmcts-net"
+    product          = "labs"
+    name             = "labs-zcwalkthrough-nodejs"
+    custom_domain    = "labs-zcwalkthrough-nodejs.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
   }
 ]
 

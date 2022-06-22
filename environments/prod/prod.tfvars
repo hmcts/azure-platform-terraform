@@ -13,11 +13,12 @@ oms_env                   = "prod"
 cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-prod-rg"
 
-cft_apps_ag_ip_address = "10.13.32.122"
-cft_apps_cluster_ips   = ["10.13.15.250", "10.13.31.250"]
+cft_apps_ag_ip_address             = "10.13.32.122"
+cft_apps_cluster_ips               = ["10.13.15.250", "10.13.31.250"]
+enable_multiple_availability_zones = true
 
-hub                = "prod"
-apim_sku_name      = "Premium"
+hub           = "prod"
+apim_sku_name = "Premium"
 
 frontends = [
   {
@@ -332,105 +333,105 @@ frontends = [
     ]
   },
   {
-      product          = "div"
-      name             = "div-amend"
-      mode             = "Detection"
-      custom_domain    = "www.manage-application.apply-divorce.service.gov.uk"
-      backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-      certificate_name = "manage-application-apply-divorce-service-gov-uk"
-      disabled_rules = {
-        SQLI = [
-          "942100",
-          "942150",
-          "942200",
-          "942210",
-          "942230",
-          "942361",
-          "942380",
-          "942400",
-          "942430",
-        ]
-        LFI = [
-          "930100", // false positive on multi-part uploads
-          "930110", // false positive on multi-part uploads
-        ]
-        RCE = [
-          "932100"
-        ]
-      }
-      global_exclusions = [
-        {
-          match_variable = "RequestCookieNames"
-          operator       = "Equals"
-          selector       = "dtSa"
-        },
-        {
-          match_variable = "RequestCookieNames"
-          operator       = "Equals"
-          selector       = "cookies_policy"
-        },
-        {
-          match_variable = "RequestCookieNames"
-          operator       = "Equals"
-          selector       = "connect.sid"
-        },
-        {
-          match_variable = "RequestCookieNames"
-          operator       = "Equals"
-          selector       = "__auth-token"
-        },
-        {
-          match_variable = "QueryStringArgNames"
-          operator       = "Equals"
-          selector       = "iss"
-        },
-        {
-          match_variable = "QueryStringArgNames"
-          operator       = "Equals"
-          selector       = "__auth-token"
-        },
-        {
-          match_variable = "QueryStringArgNames"
-          operator       = "Equals"
-          selector       = "_csrf"
-        },
-        {
-          match_variable = "RequestBodyPostArgNames"
-          operator       = "Equals"
-          selector       = "_csrf"
-        },
-        {
-          match_variable = "RequestBodyPostArgNames"
-          operator       = "StartsWith"
-          selector       = "reasonForDivorceBehaviourDetails" // free text field that gets pinged a lot for sql like characters
-        },
-        {
-          match_variable = "RequestBodyPostArgNames"
-          operator       = "Equals"
-          selector       = "file" // prevent WebKitFormBoundary path traversal FPs
-        },
-        {
-          match_variable = "QueryStringArgNames"
-          operator       = "Equals"
-          selector       = "fileUrl" // this is used as a HAL ID for the document, it's a URI and a URL
-        },
-        {
-          match_variable = "RequestBodyPostArgNames"
-          operator       = "Equals"
-          selector       = "legalProceedingsDetails"
-        },
-        {
-          match_variable = "RequestBodyPostArgNames"
-          operator       = "Equals"
-          selector       = "petitionerNameChangedHowOtherDetails"
-        },
-        {
-          match_variable = "RequestBodyPostArgNames"
-          operator       = "StartsWith"
-          selector       = "address"
-        },
+    product          = "div"
+    name             = "div-amend"
+    mode             = "Detection"
+    custom_domain    = "www.manage-application.apply-divorce.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    certificate_name = "manage-application-apply-divorce-service-gov-uk"
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+        "942430",
       ]
-    },
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+      RCE = [
+        "932100"
+      ]
+    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookies_policy"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "reasonForDivorceBehaviourDetails" // free text field that gets pinged a lot for sql like characters
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "file" // prevent WebKitFormBoundary path traversal FPs
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "fileUrl" // this is used as a HAL ID for the document, it's a URI and a URL
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "legalProceedingsDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "petitionerNameChangedHowOtherDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "address"
+      },
+    ]
+  },
   {
     product          = "nfdiv"
     name             = "nfdiv-civil-partnership"
@@ -519,12 +520,12 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "client_id"
-      },      
+      },
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
-      },      
+      },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"

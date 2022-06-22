@@ -16,17 +16,18 @@ data "azurerm_subscription" "current" {}
 module "cftapps-frontend-cluster-lb" {
   source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=terraform-azurerm-v3"
 
-  env                        = var.env
-  subscription               = var.subscription
-  location                   = var.location
-  private_ip_address         = var.cft_apps_ag_ip_address
-  destinations               = var.cft_apps_cluster_ips
-  frontends                  = var.frontends
-  common_tags                = module.ctags.common_tags
-  oms_env                    = var.oms_env
-  project                    = var.project
-  vnet_rg                    = local.vnet_rg
-  vnet_name                  = local.vnet_name
-  log_analytics_workspace_id = module.logworkspace.workspace_id
+  env                                = var.env
+  subscription                       = var.subscription
+  location                           = var.location
+  private_ip_address                 = var.cft_apps_ag_ip_address
+  destinations                       = var.cft_apps_cluster_ips
+  frontends                          = var.frontends
+  common_tags                        = module.ctags.common_tags
+  oms_env                            = var.oms_env
+  project                            = var.project
+  vnet_rg                            = local.vnet_rg
+  vnet_name                          = local.vnet_name
+  log_analytics_workspace_id         = module.logworkspace.workspace_id
+  enable_multiple_availability_zones = var.enable_multiple_availability_zones
 
 }

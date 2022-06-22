@@ -20,9 +20,9 @@ shutter_apps = [
   "TODO"
 ]
 
-frontend_agw_private_ip_address    = "10.11.225.113"
-cft_apps_cluster_ips               = ["10.11.207.250", "10.11.223.250"]
-enable_multiple_availability_zones = true
+frontend_agw_private_ip_address              = "10.11.225.113"
+cft_apps_cluster_ips                         = ["10.11.207.250", "10.11.223.250"]
+public_ip_enable_multiple_availability_zones = true
 
 frontends = [
   {

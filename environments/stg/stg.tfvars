@@ -21,9 +21,9 @@ shutter_apps = [
   "TODO"
 ]
 
-cft_apps_ag_ip_address             = "10.10.161.123"
-cft_apps_cluster_ips               = ["10.10.143.250", "10.10.159.250"]
-enable_multiple_availability_zones = true
+cft_apps_ag_ip_address                       = "10.10.161.123"
+cft_apps_cluster_ips                         = ["10.10.143.250", "10.10.159.250"]
+public_ip_enable_multiple_availability_zones = true
 
 frontends = [
   {

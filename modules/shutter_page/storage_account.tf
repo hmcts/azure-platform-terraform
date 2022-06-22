@@ -9,6 +9,7 @@ resource "azurerm_storage_account" "shutter_store" {
   account_replication_type  = "RAGRS"
   account_kind              = "StorageV2"
   enable_https_traffic_only = true
+  allow_nested_items_to_be_public = false
 
   static_website {
     index_document     = "index.html"

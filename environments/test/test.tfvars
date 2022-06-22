@@ -19,8 +19,9 @@ shutter_apps = [
   "TODO"
 ]
 
-cft_apps_ag_ip_address = "10.48.96.123"
-cft_apps_cluster_ips   = ["10.48.79.250", "10.48.95.250"]
+cft_apps_ag_ip_address                       = "10.48.96.123"
+cft_apps_cluster_ips                         = ["10.48.79.250", "10.48.95.250"]
+public_ip_enable_multiple_availability_zones = true
 
 hub = "nonprod"
 

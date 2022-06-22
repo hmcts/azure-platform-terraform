@@ -13,4 +13,3 @@ gateways:
         ssl_enabled: true
         use_public_ip: true
         health_path_override: "/status-0123456789abcdef"
-        enable_multiple_availability_zones: true

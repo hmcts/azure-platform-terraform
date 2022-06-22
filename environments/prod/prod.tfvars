@@ -19,6 +19,8 @@ cft_apps_cluster_ips   = ["10.13.15.250", "10.13.31.250"]
 hub           = "prod"
 apim_sku_name = "Premium"
 
+backend_public_ip_enable_multiple_availability_zones = true
+
 frontends = [
   {
     product          = "div"

@@ -142,6 +142,6 @@ variable "apim_appgw_exclusions" {
   default = []
 }
 
-variable "public_ip_enable_multiple_availability_zones" {
+variable "backend_public_ip_enable_multiple_availability_zones" {
   default = false
 }

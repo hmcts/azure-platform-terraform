@@ -10,6 +10,8 @@ oms_env                 = "nonprod"
 
 hub = "nonprod"
 
+backend_public_ip_enable_multiple_availability_zones = true
+
 frontends = [
   {
     name                = "reformscan"

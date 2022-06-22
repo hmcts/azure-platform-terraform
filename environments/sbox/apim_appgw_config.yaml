@@ -7,6 +7,7 @@ gateways:
       certificate_name: wildcard-sandbox-platform-hmcts-net
       exclude_env_in_app_name: true
       private_ip_address: 10.10.200.212
+      enable_multiple_availability_zones: true
     app_configuration:
       - product: cft
         component: api-mgmt-appgw

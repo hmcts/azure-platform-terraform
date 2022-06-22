@@ -43,7 +43,6 @@ module "app-gw" {
   subnet_name                        = local.subnet_name
   waf_mode                           = var.waf_mode
   exclusions                         = var.apim_appgw_exclusions
-  enable_multiple_availability_zones = var.enable_multiple_availability_zones
 }
 
 resource "azurerm_route_table" "apim_route_table" {

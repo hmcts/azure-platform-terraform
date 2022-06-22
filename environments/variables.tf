@@ -141,7 +141,3 @@ variable "apim_appgw_backend_pool_fqdns" {
 variable "apim_appgw_exclusions" {
   default = []
 }
-
-variable "enable_multiple_availability_zones" {
-  default = false
-}

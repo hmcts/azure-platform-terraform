@@ -1795,6 +1795,11 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
+        selector       = "client_id"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "code"
       },
       {

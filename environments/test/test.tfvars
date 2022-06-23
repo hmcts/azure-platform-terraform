@@ -4,7 +4,7 @@ env                    = "perftest"
 subscription           = "test"
 certificate_name_check = false
 
-app_gw_private_ip_address = ["10.48.96.121","10.48.96.124"]
+app_gw_private_ip_address = ["10.48.96.121", "10.48.96.124"]
 data_subscription         = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription   = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                   = "nonprod"
@@ -1138,12 +1138,12 @@ frontends = [
     ]
   },
   {
-    product          = "fees"
-    name             = "paymentoutcome-web"
-    mode             = "Detection"
-    custom_domain    = "paymentoutcome-web.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
-    www_redirect     = true
+    product        = "fees"
+    name           = "paymentoutcome-web"
+    mode           = "Detection"
+    custom_domain  = "paymentoutcome-web.perftest.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    www_redirect   = true
   },
   {
     product          = "plum"

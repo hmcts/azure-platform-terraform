@@ -2141,6 +2141,14 @@ frontends = [
     ]
   },
   {
+    product          = "cft-api-mgmt"
+    name             = "cft-api-mgmt"
+    custom_domain    = "cft-api-mgmt.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-cftapimgmtprod.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-platform-hmcts-net"
+    cache_enabled    = "false"
+  },
+  {
     product          = "fact"
     name             = "fact"
     mode             = "Detection"

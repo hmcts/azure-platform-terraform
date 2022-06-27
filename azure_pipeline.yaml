@@ -15,7 +15,7 @@ resources:
   repositories:
   - repository: cnp-azuredevops-libraries
     type: github
-    ref: refs/heads/master
+    ref: refs/heads/DTSPO-8837/sbox-apply
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
 

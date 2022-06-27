@@ -1129,6 +1129,13 @@ frontends = [
     custom_domain  = "privatelaw.perftest.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
   },
   {
     product        = "fees"

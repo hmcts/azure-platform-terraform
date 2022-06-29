@@ -156,6 +156,22 @@ parameters:
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_frontendappgateway'
 
+    - deployment: 'test_frontendappgateway'
+      environment: 'test'
+      component: 'frontendappgateway'
+      service_connection: 'dcd-cftapps-test'
+      storage_account_rg: 'core-infra-test-rg'
+      storage_account_name: 'cftappstest'
+      dependsOn: 'sbox_frontendappgateway'
+
+    - deployment: 'test_backendappgateway'
+      environment: 'test'
+      component: 'backendappgateway'
+      service_connection: 'dcd-cftapps-test'
+      storage_account_rg: 'core-infra-test-rg'
+      storage_account_name: 'cftappstest'
+      dependsOn: 'sbox_frontendappgateway'
+
     - deployment: 'test_cftapps_cluster_lb'
       environment: 'test'
       component: 'cftapps_cluster_lb'

@@ -325,3 +325,6 @@ gateways:
         component: hmi-inbound-adapter
       - product: hmc
         component: hmi-outbound-adapter
+    # ET
+      - product: et
+        component: sya-api

@@ -1151,7 +1151,7 @@ frontends = [
     product          = "plum"
     name             = "plum"
     custom_domain    = "plum.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
 ]

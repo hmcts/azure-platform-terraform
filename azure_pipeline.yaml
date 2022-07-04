@@ -194,7 +194,7 @@ parameters:
       service_connection: 'dcd-cftapps-test'
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
-      dependsOn: 'sbox_frontendappgateway'
+      dependsOn: 'sbox_private_dns'
 
     - deployment: 'test_apim'
       environment: 'test'

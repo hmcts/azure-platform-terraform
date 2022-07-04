@@ -66,7 +66,7 @@ parameters:
       service_connection: 'dcd-cftapps-demo'
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
-      dependsOn: 'Precheck'
+      dependsOn: 'sbox_global'
 
     - deployment: 'dev_global'
       environment: 'dev'
@@ -74,7 +74,7 @@ parameters:
       service_connection: 'dcd-cftapps-dev'
       storage_account_rg: 'core-infra-dev-rg'
       storage_account_name: 'cftappsdev'
-      dependsOn: 'Precheck'
+      dependsOn: 'sbox_global'
 
     - deployment: 'ithc_global'
       environment: 'ithc'
@@ -82,7 +82,7 @@ parameters:
       service_connection: 'dcd-cftapps-ithc'
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
-      dependsOn: 'Precheck'
+      dependsOn: 'sbox_global'
 
     - deployment: 'perftest_global'
       environment: 'test'
@@ -90,7 +90,7 @@ parameters:
       service_connection: 'dcd-cftapps-test'
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
-      dependsOn: 'Precheck'
+      dependsOn: 'sbox_global'
 
     - deployment: 'aat_global'
       environment: 'stg'

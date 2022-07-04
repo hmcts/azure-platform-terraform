@@ -1389,6 +1389,35 @@ frontends = [
     custom_domain    = "www.apply-for-probate.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-for-probate-service-gov-uk"
+    custom_rules = [
+      {
+        name     = "RumBeaconExclusion"
+        priority = 100
+        type     = "MatchRule"
+        action   = "Allow"
+        match_conditions = [
+          {
+            match_variable     = "RequestMethod"
+            operator           = "Equal"
+            negation_condition = false
+            transforms = [
+              "Uppercase"
+            ]
+            match_values = [
+              "POST"
+            ]
+          },
+          {
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values = [
+              "/rb_"
+            ]
+          }
+        ]
+      },
+    ],
     disabled_rules = {
       RCE = [
         "932115"

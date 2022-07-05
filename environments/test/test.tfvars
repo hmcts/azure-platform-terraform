@@ -1157,7 +1157,7 @@ frontends = [
   {
     product          = "et-sya"
     name             = "et-sya"
-    custom_domain    = "et-sya.hmcts-perftest.azurefd.net"
+    custom_domain    = "et-sya.perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },

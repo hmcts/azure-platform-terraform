@@ -31,7 +31,7 @@ frontends = [
     name           = "sscs-tribunals"
     custom_domain  = "benefit-appeal.perftest.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -60,7 +60,7 @@ frontends = [
     name           = "sscs-cor"
     mode           = "Detection"
     custom_domain  = "sscs-cor.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -78,40 +78,40 @@ frontends = [
     name           = "civil-citizen-ui"
     mode           = "Detection"
     custom_domain  = "civil-citizen-ui.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "cmc"
     mode           = "Detection"
     custom_domain  = "moneyclaims.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "cmc-legal"
     mode           = "Detection"
     custom_domain  = "moneyclaims-legal.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "gateway-ccd"
     mode           = "Detection"
     custom_domain  = "gateway-ccd.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "return-case-doc-ccd"
     mode           = "Detection"
     custom_domain  = "return-case-doc-ccd.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "fact"
     custom_domain  = "fact.perftest.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -125,7 +125,7 @@ frontends = [
     name           = "fact-admin"
     custom_domain  = "fact-admin.perftest.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -139,7 +139,7 @@ frontends = [
     name           = "nfdiv"
     custom_domain  = "nfdiv.perftest.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -181,7 +181,7 @@ frontends = [
     name           = "idam-web-public"
     mode           = "Detection"
     custom_domain  = "idam-web-public.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     disabled_rules = {}
     global_exclusions = [
@@ -400,7 +400,7 @@ frontends = [
   {
     name           = "probate"
     custom_domain  = "probate.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     disabled_rules = {
       RCE = [
@@ -469,20 +469,20 @@ frontends = [
     name           = "pcq"
     custom_domain  = "pcq.perftest.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "lau"
     mode           = "Detection"
     custom_domain  = "lau.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "paybubble"
     custom_domain  = "paybubble.perftest.platform.hmcts.net"
     mode           = "Prevention"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -541,14 +541,14 @@ frontends = [
     name           = "bar"
     custom_domain  = "bar.perftest.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "fees-register"
     custom_domain  = "fees-register.perftest.platform.hmcts.net"
     mode           = "Prevention"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     custom_rules = [
       {
@@ -683,34 +683,34 @@ frontends = [
     name           = "xui-approve-org"
     mode           = "Detection"
     custom_domain  = "administer-orgs.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "xui-manage-org"
     mode           = "Detection"
     custom_domain  = "manage-org.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "xui-register-org"
     mode           = "Detection"
     custom_domain  = "register-org.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "ia-aip"
     mode           = "Detection"
     custom_domain  = "immigration-appeal.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "xui-webapp"
     mode           = "Detection"
     custom_domain  = "manage-case.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
   {
@@ -1013,7 +1013,7 @@ frontends = [
     name           = "div-dn"
     mode           = "Detection"
     custom_domain  = "decree-nisi-aks.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -1037,7 +1037,7 @@ frontends = [
     name           = "div-da"
     mode           = "Detection"
     custom_domain  = "decree-absolute-aks.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -1061,7 +1061,7 @@ frontends = [
     name           = "div-rfe"
     mode           = "Detection"
     custom_domain  = "respond-divorce-aks.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -1085,7 +1085,7 @@ frontends = [
     name           = "div-pfe"
     mode           = "Detection"
     custom_domain  = "petitioner-frontend-aks.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -1117,7 +1117,7 @@ frontends = [
     name           = "adoption-web"
     custom_domain  = "adoption-web.perftest.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -1130,7 +1130,7 @@ frontends = [
     name           = "privatelaw"
     custom_domain  = "privatelaw.perftest.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -1144,7 +1144,7 @@ frontends = [
     name           = "paymentoutcome-web"
     mode           = "Detection"
     custom_domain  = "paymentoutcome-web.perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     www_redirect   = true
   },
   {

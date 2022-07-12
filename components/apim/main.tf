@@ -1,3 +1,10 @@
+module "ctags" {
+  source      = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=master"
+  environment = var.env
+  product     = var.product
+  builtFrom   = var.builtFrom
+}
+
 module "api-mgmt" {
   source                         = "git::https://github.com/hmcts/cnp-module-api-mgmt-private.git?ref=main"
   location                       = var.location

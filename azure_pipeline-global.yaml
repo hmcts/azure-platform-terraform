@@ -138,5 +138,4 @@ stages:
                   serviceConnection: ${{ deployment.service_connection }}
                   terraformInitSubscription: ${{ variables.terraformInitSubscription }}
                   product: ${{ variables.product }}
-                  keyvaultName: 'infra-vault-nonprod'
                   keyvaultSecret: 'azure-devops-token'

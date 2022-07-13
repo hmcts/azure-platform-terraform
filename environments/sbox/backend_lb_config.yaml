@@ -68,8 +68,6 @@ gateways:
       - product: "labs"
         component: endakelly
       - product: "labs"
-        component: ozzyib
-      - product: "labs"
         component: rajivkapoor1
       - product: "labs"
         component: matthewsearle01-v3

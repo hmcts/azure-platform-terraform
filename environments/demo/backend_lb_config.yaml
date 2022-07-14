@@ -66,8 +66,6 @@ gateways:
         component: api
       - product: fees-register
         component: api
-      - product: payment
-        component: api-int
 
     # ccpay
       - product: ccpay
@@ -348,3 +346,7 @@ gateways:
         
       - product: sscs
         component: hearings-api
+        
+     # Fees and Pay
+      - product: payment
+        component: api-int

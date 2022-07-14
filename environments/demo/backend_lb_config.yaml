@@ -346,3 +346,7 @@ gateways:
         
       - product: sscs
         component: hearings-api
+        
+     # Fees and Pay
+      - product: payment
+        component: api-int

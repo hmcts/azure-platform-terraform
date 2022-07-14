@@ -290,3 +290,6 @@ gateways:
         component: hmi-inbound-adapter
       - product: hmc
         component: hmi-outbound-adapter
+    #SSCS
+      - product: sscs
+        component: hearings-api

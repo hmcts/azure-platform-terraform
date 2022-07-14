@@ -66,6 +66,8 @@ gateways:
         component: api
       - product: fees-register
         component: api
+      - product: payment
+        component: api-int
 
     # ccpay
       - product: ccpay

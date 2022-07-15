@@ -5,6 +5,7 @@ All things terraform
 This repository has been configured with pre-commit hooks. To install pre-commit see its [installation guide](https://pre-commit.com/#installation)
 
 
-Additional for this repository, additional dependencies: 
+For this repository you will also need these dependencies: 
+
 - terraform [Installation here](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - yq [Installation here](https://github.com/mikefarah/yq#install)

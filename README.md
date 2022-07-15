@@ -7,5 +7,5 @@ This repository has been configured with pre-commit hooks. To install pre-commit
 
 For this repository you will also need these dependencies: 
 
-- terraform [Installation here](https://learn.hashicorp.com/tutorials/terraform/install-cli)
-- yq [Installation here](https://github.com/mikefarah/yq#install)
+- [terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+- [yq](https://github.com/mikefarah/yq#install)

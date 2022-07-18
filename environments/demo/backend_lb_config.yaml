@@ -350,3 +350,5 @@ gateways:
      # Fees and Pay
       - product: payment
         component: api-int
+      - product: ccpay
+        component: refunds-api-int

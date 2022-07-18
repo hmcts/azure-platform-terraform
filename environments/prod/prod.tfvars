@@ -952,6 +952,8 @@ frontends = [
             ]
           }
         ]
+      },
+    ] 
   },
   {
     product          = "xui"
@@ -993,8 +995,7 @@ frontends = [
         operator       = "Equals"
         selector       = "xui-manage-org"
       },
-    ]
-    
+    ],
     custom_rules = [
       {
         name     = "RumBeaconExclusion"
@@ -1022,6 +1023,8 @@ frontends = [
             ]
           }
         ]
+      },
+    ]
   },
   {
     product          = "xui"

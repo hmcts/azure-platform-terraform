@@ -18,6 +18,11 @@ resources:
     ref: refs/heads/master
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
+  - repository: pre-commit-hooks
+    type: github
+    ref: refs/heads/master
+    name: hmcts/pre-commit-hooks
+    endpoint: 'hmcts'
 
 variables:
   - name: timeoutInMinutes

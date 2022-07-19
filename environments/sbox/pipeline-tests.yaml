@@ -1,0 +1,106 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: Perform tests
+    block:
+    - name: Test http response (idam-web-public)
+      ansible.builtin.uri:
+        url: "https://idam-web-public.sandbox.platform.hmcts.net/health"
+      register: http_response
+      failed_when: http_response.json.status != "UP"
+
+    - name: Test http response (idam-web-admin)
+      ansible.builtin.uri:
+        url: "https://idam-web-admin.sandbox.platform.hmcts.net/"
+      register: http_response
+      failed_when: http_response.status != 403
+
+    - name: Test http redirect (hmi-apim)
+      ansible.builtin.uri:
+        url: "http://hmi-apim.sandbox.platform.hmcts.net/"
+        follow_redirects: no
+      register: http_response
+      failed_when: http_response.status != 301
+
+    - name: Test http redirect (plum)
+      ansible.builtin.uri:
+        url: "http://plum.sandbox.platform.hmcts.net/"
+        follow_redirects: no
+      register: http_response
+      failed_when: http_response.status != 302
+    ignore_errors: yes
+
+      #  - name: Test health endpoints
+      #    ansible.builtin.uri:
+      #      url: "{{ item.protocol }}://{{ item.name }}.{{ item.domain }}{{ item.path }}"
+      #      follow_redirects: '{{ item.follow_redirects | default("safe") }}'
+      #    register: health_endpoint
+      #    failed_when:
+      #      - health_endpoint.status != item.status_code
+      #    loop:
+      #      - name: idam-web-public
+      #        domain: sandbox.platform.hmcts.net
+      #        path: /health
+      #        protocol: https
+      #        status_code: 200
+      #      - name: idam-web-admin
+      #        domain: sandbox.platform.hmcts.net
+      #        path: /
+      #        protocol: http
+      #        status_code: 403
+      #      - name: hmcts-sbox #defaultRouting
+      #        domain: azurefd.net
+      #        path: /
+      #        protocol: https
+      #        status_code: 200
+      #      - name: reformscan
+      #        domain: sandbox.platform.hmcts.net
+      #        path: /health
+      #        protocol: https
+      #        status_code: 409
+      #      - name: hmi-apim
+      #        domain: sandbox.platform.hmcts.net
+      #        path: /health
+      #        protocol: https
+      #        status_code: 404
+      #      - name: hmi-apim
+      #        domain: sandbox.platform.hmcts.net
+      #        path: /
+      #        protocol: http
+      #        status_code: 301
+      #        follow_redirects: no
+      #      - name: idam-web-public
+      #        domain: sandbox.platform.hmcts.net
+      #        path: /
+      #        protocol: http
+      #        status_code: 301
+      #        follow_redirects: no
+      #      - name: hmi-apim
+      #        domain: sandbox.platform.hmcts.net
+      #        path: /
+      #        protocol: http
+      #        status_code: 301
+      #        follow_redirects: no
+      #      - name: plum
+      #        domain: sandbox.platform.hmcts.net
+      #        path: /
+      #        protocol: http
+      #        status_code: 301
+      #        follow_redirects: no
+      #      - name: plum
+      #        domain: sandbox.platform.hmcts.net
+      #        path: /health
+      #        protocol: https
+      #        status_code: 200
+      #      - name: cft-api-mgmt
+      #        domain: sandbox.platform.hmcts.net
+      #        path: /health
+      #        protocol: https
+      #        status_code: 404
+      #      - name: cft-api-mgmt
+      #        domain: sandbox.platform.hmcts.net
+      #        path: /
+      #        protocol: http
+      #        status_code: 301
+      #        follow_redirects: no

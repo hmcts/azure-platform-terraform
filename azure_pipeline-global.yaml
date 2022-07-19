@@ -58,6 +58,7 @@ parameters:
       service_connection: 'dcd-cftapps-sbox'
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
+      pipeline_tests: true
       dependsOn: 'Precheck'
 
     - deployment: 'demo_global'
@@ -66,6 +67,7 @@ parameters:
       service_connection: 'dcd-cftapps-demo'
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
+      pipeline_tests: false
       dependsOn: 'sbox_global'
 
     - deployment: 'dev_global'
@@ -138,3 +140,32 @@ stages:
                   serviceConnection: ${{ deployment.service_connection }}
                   terraformInitSubscription: ${{ variables.terraformInitSubscription }}
                   product: ${{ variables.product }}
+          - ${{ if eq(deployment.pipeline_tests, true) }}:
+            - job: PipelineTests
+              #pool:  ${{ variables.agentPool }}
+              timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+              dependsOn: TerraformPlanApply
+              steps:
+                - task: Bash@3
+                  displayName: Run pipeline tests
+                  inputs:
+                    targetType: 'inline'
+                    script: |
+                      mkdir junit
+                      echo "localhost ansible_connection=local" > /tmp/hosts
+                      ansible-playbook pipeline-tests.yaml -i /tmp/hosts
+                    workingDirectory: '$(Pipeline.Workspace)/s/environments/${{ deployment.environment }}'
+                    failOnStderr: true
+                  env:
+                    ANSIBLE_LOCALHOST_WARNING: false
+                    ANSIBLE_CALLBACKS_ENABLED: junit
+                    JUNIT_FAIL_ON_IGNORE: true
+                    JUNIT_OUTPUT_DIR: '$(Pipeline.Workspace)/s/environments/${{ deployment.environment }}/junit'
+                - task: PublishTestResults@2
+                  displayName: Publish pipeline tests
+                  condition: always()
+                  inputs:
+                    testResultsFormat: 'JUnit'
+                    failTaskOnFailedTests: true
+                    testResultsFiles: '$(Pipeline.Workspace)/s/environments/${{ deployment.environment }}/junit/pipeline-tests-*.*.xml'
+                    testRunTitle: 'Platform Pipeline Tests'

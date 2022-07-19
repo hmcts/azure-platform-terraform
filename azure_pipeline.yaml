@@ -18,6 +18,11 @@ resources:
     ref: refs/heads/master
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
+  - repository: pre-commit-hooks
+    type: github
+    ref: refs/heads/master
+    name: hmcts/pre-commit-hooks
+    endpoint: 'hmcts'
 
 variables:
   - name: timeoutInMinutes
@@ -284,12 +289,18 @@ stages:
           vmImage: ${{ variables.agentPool }}
         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
         steps:
+          - checkout: pre-commit-hooks
           - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
             parameters:
               keyvaultName: 'infra-vault-nonprod'
               keyvaultSecret: 'azure-devops-token'
               serviceConnection: 'azurerm-sandbox'
-
+          - task: Bash@3
+            displayName: "Application Gateway Backend Check"
+            inputs:
+              targetType: 'inline'
+              script: cd azure-platform-terraform && ../pre-commit-hooks/pre-commit-hooks/app_gateway_backend_check.sh
+              failOnStderr: true
 
   - ${{ each deployment in parameters.environment_components }}:
     - stage: ${{ deployment.deployment }}

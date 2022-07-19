@@ -18,6 +18,11 @@ resources:
     ref: refs/heads/master
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
+  - repository: pre-commit-hooks
+    type: github
+    ref: refs/heads/master
+    name: hmcts/pre-commit-hooks
+    endpoint: 'hmcts'
 
 variables:
   - name: timeoutInMinutes
@@ -289,7 +294,15 @@ stages:
               keyvaultName: 'infra-vault-nonprod'
               keyvaultSecret: 'azure-devops-token'
               serviceConnection: 'azurerm-sandbox'
-
+      - job: TestAppGws
+        pool:
+          vmImage: ${{ variables.agentPool }}
+        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+          - task: Bash@3
+              inputs:
+              targetType: 'filePath'
+              filePath: "pre-commit-hooks/pre-commit-hooks/app_gateway_backend_check.sh@pre-commit-hooks"
+              failOnStderr: true
 
   - ${{ each deployment in parameters.environment_components }}:
     - stage: ${{ deployment.deployment }}

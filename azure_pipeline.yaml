@@ -297,9 +297,9 @@ stages:
 
           - task: Bash@3
               inputs:
-              targetType: 'filePath'
-              filePath: "pre-commit-hooks/pre-commit-hooks/app_gateway_backend_check.sh@pre-commit-hooks"
-              failOnStderr: true
+                targetType: 'filePath'
+                filePath: "pre-commit-hooks/pre-commit-hooks/app_gateway_backend_check.sh@pre-commit-hooks"
+                failOnStderr: true
 
   - ${{ each deployment in parameters.environment_components }}:
     - stage: ${{ deployment.deployment }}

@@ -300,7 +300,7 @@ stages:
           - task: Bash@3
             inputs:
               targetType: 'inline'
-              script: cd azure-platform-terraform && ls && ../pre-commit-hooks/pre-commit-hooks/app_gateway_backend_check.sh
+              script: cd azure-platform-terraform && ../pre-commit-hooks/pre-commit-hooks/app_gateway_backend_check.sh
               failOnStderr: true
 
   - ${{ each deployment in parameters.environment_components }}:

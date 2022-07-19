@@ -289,7 +289,13 @@ stages:
               keyvaultName: 'infra-vault-nonprod'
               keyvaultSecret: 'azure-devops-token'
               serviceConnection: 'azurerm-sandbox'
-
+          - checkout: self
+          - checkout: pre-commit-hooks
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: cd azure-platform-terraform && ls && ../pre-commit-hooks/pre-commit-hooks/app_gateway_backend_checks.sh
+              failOnStderr: true
 
   - ${{ each deployment in parameters.environment_components }}:
     - stage: ${{ deployment.deployment }}

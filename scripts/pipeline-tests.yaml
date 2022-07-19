@@ -1,0 +1,31 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    global_domain: "{{ lookup('ansible.builtin.env', 'GLOBAL_DOMAIN_NAME') }}"
+
+  tasks:
+  - name: Perform tests
+    block:
+    - name: Test http redirect (plum)
+      ansible.builtin.uri:
+        url: "http://plum.{{ global_domain }}/"
+        follow_redirects: no
+        status_code: 301
+      register: http_response
+      failed_when: >
+        http_response.location !=  "https://plum." + global_domain + "/"
+
+    - name: Test http response (plum/health)
+      ansible.builtin.uri:
+        url: "https://plum.{{ global_domain }}/health"
+      register: http_response
+      failed_when: http_response.json.status != "UP"
+
+    - name: Test http response (plum/)
+      ansible.builtin.uri:
+        url: "https://plum.{{ global_domain }}/"
+        return_content: yes
+      register: http_response
+      failed_when: "'There are no recipes' not in http_response.content"
+    ignore_errors: yes

@@ -132,7 +132,7 @@ gateways:
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
-        
+
     # CPO (CDM)
       - product: cpo
         component: case-payment-orders-api
@@ -305,7 +305,7 @@ gateways:
         component: bpm
         ssl_enabled: true
         cookie_based_affinity: Enabled
-        
+
 # Reference DATA
       - product: rd
         component: professional-api
@@ -335,7 +335,7 @@ gateways:
         component: location-ref-api-int
       - product: rd
         component: commondata-api
-        
+
     # HMC
       - product: hmc
         component: cft-hearing-service
@@ -343,6 +343,6 @@ gateways:
         component: hmi-inbound-adapter
       - product: hmc
         component: hmi-outbound-adapter
-        
+
       - product: sscs
         component: hearings-api

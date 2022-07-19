@@ -289,15 +289,12 @@ stages:
           vmImage: ${{ variables.agentPool }}
         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
         steps:
-          - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
-            parameters:
-              keyvaultName: 'infra-vault-nonprod'
-              keyvaultSecret: 'azure-devops-token'
-              serviceConnection: 'azurerm-sandbox'
-      - job: TestAppGws
-        pool:
-          vmImage: ${{ variables.agentPool }}
-        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+          # - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
+          #   parameters:
+          #     keyvaultName: 'infra-vault-nonprod'
+          #     keyvaultSecret: 'azure-devops-token'
+          #     serviceConnection: 'azurerm-sandbox'
+
           - task: Bash@3
               inputs:
               targetType: 'filePath'

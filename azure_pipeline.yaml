@@ -294,8 +294,9 @@ stages:
               keyvaultName: 'infra-vault-nonprod'
               keyvaultSecret: 'azure-devops-token'
               serviceConnection: 'azurerm-sandbox'
-          - checkout: self
+          # - checkout: self
           - checkout: pre-commit-hooks
+          - script: ls 
           - task: Bash@3
             inputs:
               targetType: 'inline'

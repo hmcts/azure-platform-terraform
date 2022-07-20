@@ -8,6 +8,8 @@ gateways:
       private_ip_address: 10.48.96.111
     app_configuration:
     # RPE
+      - product: prl
+        component: dgs2
       - product: draft-store
         component: service
       - product: cmc

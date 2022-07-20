@@ -953,7 +953,7 @@ frontends = [
           }
         ]
       },
-    ] 
+    ]
   },
   {
     product          = "xui"

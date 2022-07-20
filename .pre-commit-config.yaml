@@ -4,6 +4,6 @@ repos:
   hooks:
     - id: terraform_fmt
 - repo: https://github.com/hmcts/pre-commit-hooks
-  rev: 0.0.2
+  rev: 0.0.3
   hooks:
     - id: app_gateway_backend_check

@@ -39,8 +39,7 @@ jobs:
         with:
           # Optional. Commit message for the created commit.
           # Defaults to "Apply automatic changes"
-          commit_message: Automated Change by pre-commit CI
-          file_pattern: src/* *.tfvars
+          file_pattern: src/*.js tests/*.js *.tfvars
 
       - uses: pre-commit/action@v3.0.0
         with: 

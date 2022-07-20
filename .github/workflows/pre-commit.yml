@@ -21,7 +21,6 @@ jobs:
           ./cnp-azuredevops-libraries/scripts/tfenv-install-terraform.sh
         working-directory: ./
         shell: bash
-
       - uses: actions/setup-python@v3
       - name: yq - portable yaml processor
         uses: mikefarah/yq@v4.26.1

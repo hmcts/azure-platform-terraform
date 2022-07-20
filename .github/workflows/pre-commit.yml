@@ -9,18 +9,23 @@ jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Checkout
         uses: actions/checkout@v3
         with:
           repository: hmcts/cnp-azuredevops-libraries
           path: cnp-azuredevops-libraries
-      - name: Setup Terraform
+
+      - name: Setup Script
         run: |
-           chmod +x cnp-azuredevops-libraries/scripts/tfenv-install-terraform.sh
-          ./cnp-azuredevops-libraries/scripts/tfenv-install-terraform.sh
+          chmod +x cnp-azuredevops-libraries/scripts/tfenv-install-terraform.sh
+      - name: Setup Terraform
+        run: ./cnp-azuredevops-libraries/scripts/tfenv-install-terraform.sh
         working-directory: ./
         shell: bash
+
       - uses: actions/setup-python@v3
       - name: yq - portable yaml processor
         uses: mikefarah/yq@v4.26.1

@@ -1,0 +1,7 @@
+[32mInstalling Terraform v1.2.4[0m
+[32mDownloading release tarball from https://releases.hashicorp.com/terraform/1.2.4/terraform_1.2.4_linux_amd64.zip[0m
+[32mDownloading SHA hash file from https://releases.hashicorp.com/terraform/1.2.4/terraform_1.2.4_SHA256SUMS[0m
+[33mNo keybase install found, skipping OpenPGP signature verification[0m
+[32mArchive:  tfenv_download.jfnhCK/terraform_1.2.4_linux_amd64.zip[0m
+[32m  inflating: /home/runner/.tfenv/versions/1.2.4/terraform  [0m
+[32mInstallation of terraform v1.2.4 successful. To make this your default version, run 'tfenv use 1.2.4'[0m

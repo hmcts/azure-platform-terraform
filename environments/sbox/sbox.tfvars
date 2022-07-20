@@ -25,11 +25,11 @@ hub = "sbox"
 
 frontends = [
   {
-    product          = "idam"
-    name             = "idam-web-public"
-    custom_domain    = "idam-web-public.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    product          =             "idam"
+    name             =     "idam-web-public"
+    custom_domain    =    "idam-web-public.sandbox.platform.hmcts.net"
+    backend_domain   =     ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name =  "wildcard-sandbox-platform-hmcts-net"
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"

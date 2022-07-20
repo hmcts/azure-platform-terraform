@@ -3,6 +3,8 @@ repos:
   rev: v1.74.1
   hooks:
     - id: terraform_fmt
+      args:
+      - --args=-write=true
 - repo: https://github.com/hmcts/pre-commit-hooks
   rev: 0.0.3
   hooks:

@@ -13,6 +13,9 @@ gateways:
       private_ip_address: 10.11.225.111
     app_configuration:
     # RPE
+       - product: testing
+        component: service
+
       - product: draft-store
         component: service
       - product: cmc

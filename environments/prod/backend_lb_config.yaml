@@ -286,7 +286,13 @@ gateways:
       - product: hmc
         component: hmi-outbound-adapter
 
-# ET
+  - gateway_configuration:
+      host_name_suffix: service.core-compute-prod.internal
+      ssl_host_name_suffix: platform.hmcts.net
+      certificate_name: wildcard-platform-hmcts-net
+      private_ip_address: 10.13.32.110
+    app_configuration:
+      # ET
       - product: et
         component: cos
       - product: et

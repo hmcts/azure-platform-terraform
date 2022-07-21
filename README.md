@@ -1,7 +1,7 @@
 # common-platform-terraform
 All things terraform
 
-### Pre-commit Installation
+## Pre-commit Installation
 This repository has been configured with pre-commit hooks. To install pre-commit see its [installation guide](https://pre-commit.com/#installation)
 
 

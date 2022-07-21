@@ -285,3 +285,9 @@ gateways:
         component: hmi-inbound-adapter
       - product: hmc
         component: hmi-outbound-adapter
+
+# ET
+      - product: et
+        component: cos
+      - product: et
+        component: msg-handler

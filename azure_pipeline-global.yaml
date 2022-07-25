@@ -24,7 +24,7 @@ resources:
   repositories:
     - repository: cnp-azuredevops-libraries
       type: github
-      ref: refs/heads/master
+      ref: refs/heads/DTSPO-9054/spike_02_bats
       name: hmcts/cnp-azuredevops-libraries
       endpoint: 'hmcts'
 variables:
@@ -54,10 +54,12 @@ parameters:
     default:
     - deployment: 'sbox_global'
       environment: 'sbox'
+      domain_prefix: 'sandbox'
       component: 'global'
       service_connection: 'dcd-cftapps-sbox'
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
+      pipeline_tests: true
       dependsOn: 'Precheck'
 
     - deployment: 'demo_global'
@@ -138,3 +140,15 @@ stages:
                   serviceConnection: ${{ deployment.service_connection }}
                   terraformInitSubscription: ${{ variables.terraformInitSubscription }}
                   product: ${{ variables.product }}
+          - ${{ if eq(deployment.pipeline_tests, true) }}:
+            - job: PipelineTests
+              timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+              dependsOn: TerraformPlanApply
+              steps:
+                - template: steps/pipeline-tests-bats.yaml@cnp-azuredevops-libraries
+                  parameters:
+                    workingDirectory: $(Pipeline.Workspace)/s/scripts
+                    test_file: tests.bats
+                    junit_output_dir: $(Pipeline.Workspace)/s/environments/${{ deployment.environment }}/junit
+                    environment: ${{ deployment.environment }}
+                    domain_prefix: ${{ deployment.domain_prefix }}

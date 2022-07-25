@@ -346,6 +346,8 @@ gateways:
         
       - product: sscs
         component: hearings-api
+      - product: platops
+        component: test-app
         
      # Fees and Pay
       - product: payment

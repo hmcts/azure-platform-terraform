@@ -2,8 +2,6 @@ import { fail } from "assert";
 
 import axios, { AxiosResponse } from "axios";
 
-var e: object;
-
 const GLOBAL_DOMAIN_NAME =
   process.env.GLOBAL_DOMAIN_NAME || "sandbox.platform.hmcts.net";
 
@@ -23,16 +21,13 @@ describe("Smoke Test", () => {
             maxRedirects: 0,
             validateStatus: false,
           })
-          .catch(function (error) {
-            e = error;
-          });
 
         expect(response.status).toBe(301);
         expect(response.headers.location).toBe(
           `https://plum.${GLOBAL_DOMAIN_NAME}/`
         );
-      } catch {
-        fail(e.stack);
+      } catch(error) {
+        fail(error.stack);
       }
     });
     test("Test http response (plum/health)", async () => {
@@ -47,13 +42,10 @@ describe("Smoke Test", () => {
               "Accept-Encoding": "gzip",
             },
           })
-          .catch(function (error) {
-            e = error;
-          });
 
         expect(response.data.status).toBe("UP");
-      } catch {
-        fail(e.stack);
+      } catch(error) {
+        fail(error.stack);
       }
     });
     test("Test http response (plum/)", async () => {
@@ -67,12 +59,9 @@ describe("Smoke Test", () => {
               "Accept-Encoding": "gzip",
             },
           })
-          .catch(function (error) {
-            e = error;
-          });
         expect(response.data).toContain("There are no recipes");
-      } catch {
-        fail(e.stack);
+      } catch(error) {
+        fail(error.stack);
       }
     });
   });

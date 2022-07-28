@@ -261,26 +261,27 @@ gateways:
         component: test1
       - product: test
         component: test2
-       - product: test
+      - product: test
         component: test3
       - product: test
         component: test4
       - product: test
         component: test5
-       - product: test
+      - product: test
         component: test6
       - product: test
         component: test7
       - product: test
         component: test8
-       - product: test
+      - product: test
         component: test9
       - product: test
         component: test10
       - product: test
         component: test11
-       - product: test
+      - product: test
         component: test12
+        
     ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
     ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
     ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING

@@ -285,6 +285,10 @@ gateways:
         component: hmi-inbound-adapter
       - product: hmc
         component: hmi-outbound-adapter
+        
+# TS
+      - product: ts
+        component: translation-service
 
   - gateway_configuration:
       host_name_suffix: service.core-compute-prod.internal

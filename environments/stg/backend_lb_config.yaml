@@ -49,10 +49,6 @@ gateways:
         component: timed-event-service
       - product: ia
         component: case-payments-api
-      - product: ia
-        component: case-access-api
-      - product: ia
-        component: bail-case-api
 
     # Protected Characteristics Questions
       - product: pcq
@@ -299,6 +295,12 @@ gateways:
     # CPO (CDM)
       - product: cpo
         component: case-payment-orders-api
+
+      # I&A
+      - product: ia
+        component: case-access-api
+      - product: ia
+        component: bail-case-api
 
       # Civil
       - product: civil

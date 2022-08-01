@@ -315,7 +315,11 @@ gateways:
     # CNP
       - product: plum
         component: recipe-backend
-        
+
+    # I&A
+      - product: ia
+        component: bail-case-api
+
     # HMC
       - product: hmc
         component: cft-hearing-service

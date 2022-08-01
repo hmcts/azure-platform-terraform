@@ -317,7 +317,7 @@ gateways:
     # I&A
       - product: ia
         component: bail-case-api
-        
+
     # HMC
       - product: hmc
         component: cft-hearing-service

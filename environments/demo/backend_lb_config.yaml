@@ -352,3 +352,7 @@ gateways:
         component: api-int
       - product: ccpay
         component: refunds-api-int
+        
+     # TS
+      - product: ts
+        component: translation-service

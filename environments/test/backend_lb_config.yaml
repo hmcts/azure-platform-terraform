@@ -331,3 +331,6 @@ gateways:
     # SSCS
       - product: sscs
         component: hearings-api
+    # TS
+      - product: ts
+        component: translation-service

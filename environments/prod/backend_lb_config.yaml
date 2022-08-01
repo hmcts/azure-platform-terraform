@@ -63,6 +63,8 @@ gateways:
         component: case-payments-api
       - product: ia
         component: case-access-api
+      - product: ia
+        component: bail-case-api
 
     # Divorce
       - product: div

@@ -9,7 +9,7 @@ describe("Smoke Test", () => {
   describe("Test case: plum endpoints", () => {
     test("Test http redirect (plum)", async () => {
       try {
-        const url = `http://plum404.${GLOBAL_DOMAIN_NAME}/`;
+        const url = `http://plum.${GLOBAL_DOMAIN_NAME}/`;
         const response: AxiosResponse = await axios
           .request({
             method: "GET",
@@ -24,7 +24,7 @@ describe("Smoke Test", () => {
 
         expect(response.status).toBe(301);
         expect(response.headers.location).toBe(
-          `https://plum404.${GLOBAL_DOMAIN_NAME}/`
+          `https://plum.${GLOBAL_DOMAIN_NAME}/`
         );
       } catch(error) {
         fail(error.stack);
@@ -32,7 +32,7 @@ describe("Smoke Test", () => {
     });
     test("Test http response (plum/health)", async () => {
       try {
-        const url = `https://plum.${GLOBAL_DOMAIN_NAME}/health2`;
+        const url = `https://plum.${GLOBAL_DOMAIN_NAME}/health`;
         const response: AxiosResponse = await axios
           .request({
             method: "GET",
@@ -59,7 +59,7 @@ describe("Smoke Test", () => {
               "Accept-Encoding": "gzip",
             },
           })
-        expect(response.data).toContain("There are no recipesOoPS");
+        expect(response.data).toContain("There are no recipes");
       } catch(error) {
         fail(error.stack);
       }

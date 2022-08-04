@@ -149,7 +149,7 @@ stages:
               timeoutInMinutes: ${{ variables.timeoutInMinutes }}
               dependsOn: TerraformPlanApply
               steps:
-                - template: steps/pipeline_tests.yaml@cnp-azuredevops-libraries
+                - template: steps/pipeline_tests.yaml@cnp-azuredevops-libraries@DTSPO-9054/pipeline_tests_template
                   parameters:
                     workingDirectory: $(Pipeline.Workspace)/s/scripts
                     junit_output_dir: $(Pipeline.Workspace)/s/environments/${{ deployment.environment }}/junit

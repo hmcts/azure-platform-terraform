@@ -24,7 +24,7 @@ resources:
   repositories:
     - repository: cnp-azuredevops-libraries
       type: github
-      ref: refs/heads/master
+      ref: refs/heads/DTSPO-9054/pipeline_tests_template
       name: hmcts/cnp-azuredevops-libraries
       endpoint: 'hmcts'
 variables:
@@ -149,7 +149,7 @@ stages:
               timeoutInMinutes: ${{ variables.timeoutInMinutes }}
               dependsOn: TerraformPlanApply
               steps:
-                - template: steps/pipeline_tests.yaml@cnp-azuredevops-libraries@DTSPO-9054/pipeline_tests_template
+                - template: steps/pipeline_tests.yaml@cnp-azuredevops-libraries
                   parameters:
                     workingDirectory: $(Pipeline.Workspace)/s/scripts
                     junit_output_dir: $(Pipeline.Workspace)/s/environments/${{ deployment.environment }}/junit

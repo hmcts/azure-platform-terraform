@@ -14,11 +14,11 @@
         status_code: 301
       register: http_response
       failed_when: >
-        http_response.location !=  "https://plum404." + global_domain + "/"
+        http_response.location !=  "https://plum." + global_domain + "/"
 
     - name: Test http response (plum/health)
       ansible.builtin.uri:
-        url: "https://plum.{{ global_domain }}/health2"
+        url: "https://plum.{{ global_domain }}/health"
       register: http_response
       failed_when: http_response.json.status != "UP"
 
@@ -27,5 +27,5 @@
         url: "https://plum.{{ global_domain }}/"
         return_content: yes
       register: http_response
-      failed_when: "'There are no recipesOoPS' not in http_response.content"
+      failed_when: "'There are no recipes' not in http_response.content"
     ignore_errors: yes

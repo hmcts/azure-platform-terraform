@@ -6,39 +6,45 @@ on:
     branches: [master]
 
 jobs:
-  pre-commit:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  terraform_fmt:
+    uses: hmcts/cnp-azuredevops-libraries/.github/workflows/terraform-fmt.yaml@githubaction-template-terraform
+    with:
+      terraform_file_patterns: environments/* components/* modules/*
 
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          repository: hmcts/cnp-azuredevops-libraries
-          path: cnp-azuredevops-libraries
+# jobs:
+#   pre-commit:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
 
-      - name: Setup Script
-        run: |
-          chmod +x cnp-azuredevops-libraries/scripts/tfenv-install-terraform.sh
-      - name: Setup Terraform
-        run: ./cnp-azuredevops-libraries/scripts/tfenv-install-terraform.sh
-        working-directory: ./
-        shell: bash
+#       - name: Checkout
+#         uses: actions/checkout@v3
+#         with:
+#           repository: hmcts/cnp-azuredevops-libraries
+#           path: cnp-azuredevops-libraries
 
-      - uses: actions/setup-python@v3
-      - name: yq - portable yaml processor
-        uses: mikefarah/yq@v4.27.2
+#       - name: Setup Script
+#         run: |
+#           chmod +x cnp-azuredevops-libraries/scripts/tfenv-install-terraform.sh
+#       - name: Setup Terraform
+#         run: ./cnp-azuredevops-libraries/scripts/tfenv-install-terraform.sh
+#         working-directory: ./
+#         shell: bash
 
-      - uses: pre-commit/action@v3.0.0
-        with: 
-          extra_args: terraform_fmt --all-files
-        continue-on-error: true
+#       - uses: actions/setup-python@v3
+#       - name: yq - portable yaml processor
+#         uses: mikefarah/yq@v4.27.2
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          file_pattern: environments/* components/* modules/*
+#       - uses: pre-commit/action@v3.0.0
+#         with: 
+#           extra_args: terraform_fmt --all-files
+#         continue-on-error: true
 
-      - uses: pre-commit/action@v3.0.0
-        with: 
-          extra_args: app_gateway_backend_check --all-files
+#       - uses: stefanzweifel/git-auto-commit-action@v4
+#         with:
+#           file_pattern: environments/* components/* modules/*
+
+#       - uses: pre-commit/action@v3.0.0
+#         with: 
+#           extra_args: app_gateway_backend_check --all-files

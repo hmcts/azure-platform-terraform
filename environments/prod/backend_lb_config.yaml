@@ -297,3 +297,11 @@ gateways:
         component: cos
       - product: et
         component: msg-handler
+        
+      # TS
+      - product: ts
+        component: translation-service
+
+      # I&A
+      - product: ia
+        component: bail-case-api

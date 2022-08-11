@@ -938,6 +938,11 @@ frontends = [
         operator       = "Equals"
         selector       = "connect.sid"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "ccpay-bubble-cookie-preferences"
+      },
     ]
   },
   {

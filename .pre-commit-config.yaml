@@ -6,6 +6,6 @@ repos:
       args:
       - --args=-write=true
 - repo: https://github.com/hmcts/pre-commit-hooks
-  rev: 0.0.3
+  rev: 0.0.4
   hooks:
     - id: app_gateway_backend_check

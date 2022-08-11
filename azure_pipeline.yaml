@@ -309,13 +309,13 @@ stages:
               serviceConnection: ${{ deployment.service_connection }}
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
-      - ${{ if eq(deployment.pipeline_tests, true) }}:
-        - job: PipelineTests
-          timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-          dependsOn: TerraformPlanApply
-          steps:
-            - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
-              parameters:
-                domain_prefix: ${{ deployment.domain_prefix }}
-                workingDirectory: $(Pipeline.Workspace)/s/scripts
-                junit_output_dir: $(Pipeline.Workspace)/s/environments/${{ deployment.environment }}/junit
+        - ${{ if eq(deployment.pipeline_tests, true) }}:
+          - job: PipelineTests
+            timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+            dependsOn: TerraformPlanApply
+            steps:
+              - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
+                parameters:
+                  domain_prefix: ${{ deployment.domain_prefix }}
+                  workingDirectory: $(Pipeline.Workspace)/s/scripts
+                  junit_output_dir: $(Pipeline.Workspace)/s/environments/${{ deployment.environment }}/junit

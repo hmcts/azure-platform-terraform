@@ -362,3 +362,8 @@ gateways:
         # FIS
       - product: fis
         component: fis-cos-api  
+        
+      # SIDAM
+      - product: idam
+        component: testing-support-api
+        ssl_enabled: true

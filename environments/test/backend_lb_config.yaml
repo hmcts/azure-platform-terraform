@@ -299,6 +299,9 @@ gateways:
       - product: idam
         component: user-dashboard
         ssl_enabled: true
+      - product: idam
+        component: testing-support-api
+        ssl_enabled: true
 
     # PrivateLaw(prl) cos api
       - product: prl

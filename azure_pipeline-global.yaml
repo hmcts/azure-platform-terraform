@@ -65,9 +65,11 @@ parameters:
     - deployment: 'demo_global'
       environment: 'demo'
       component: 'global'
+      domain_prefix: 'demo'
       service_connection: 'dcd-cftapps-demo'
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
+      pipeline_tests: true
       dependsOn: 'sbox_global'
 
     - deployment: 'dev_global'
@@ -80,26 +82,33 @@ parameters:
 
     - deployment: 'ithc_global'
       environment: 'ithc'
+      domain_prefix: 'ithc'
       component: 'global'
       service_connection: 'dcd-cftapps-ithc'
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
+      pipeline_tests: true
       dependsOn: 'sbox_global'
+
 
     - deployment: 'perftest_global'
       environment: 'test'
+      domain_prefix: 'perftest'
       component: 'global'
       service_connection: 'dcd-cftapps-test'
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
+      pipeline_tests: true
       dependsOn: 'sbox_global'
 
     - deployment: 'aat_global'
       environment: 'stg'
+      domain_prefix: 'aat'
       component: 'global'
       service_connection: 'dcd-cftapps-stg'
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
+      pipeline_tests: true
       dependsOn: 'sbox_global'
 
     - deployment: 'prod_global'
@@ -142,6 +151,8 @@ stages:
                   product: ${{ variables.product }}
           - ${{ if eq(deployment.pipeline_tests, true) }}:
             - job: PipelineTests
+              pool:
+                vmImage: ${{ variables.agentPool }}
               timeoutInMinutes: ${{ variables.timeoutInMinutes }}
               dependsOn: TerraformPlanApply
               steps:

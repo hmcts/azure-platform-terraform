@@ -190,7 +190,7 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_frontendappgateway'
       pipeline_tests: true
-      domain_prefix: 'test'
+      domain_prefix: 'perftest'
 
     - deployment: 'test_backendappgateway'
       environment: 'test'
@@ -200,7 +200,7 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_backendappgateway'
       pipeline_tests: true
-      domain_prefix: 'test'
+      domain_prefix: 'perftest'
 
     - deployment: 'test_cftapps_cluster_lb'
       environment: 'test'
@@ -210,7 +210,7 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_frontendappgateway'
       pipeline_tests: true
-      domain_prefix: 'test'
+      domain_prefix: 'perftest'
 
     - deployment: 'test_cftapps_cluster_lb_backend'
       environment: 'test'
@@ -220,7 +220,7 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_backendappgateway'
       pipeline_tests: true
-      domain_prefix: 'test'
+      domain_prefix: 'perftest'
 
     - deployment: 'test_cftapps_private_dns'
       environment: 'test'
@@ -230,7 +230,7 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_private_dns'
       pipeline_tests: true
-      domain_prefix: 'test'
+      domain_prefix: 'perftest'
 
     - deployment: 'test_apim'
       environment: 'test'
@@ -240,7 +240,7 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_apim'
       pipeline_tests: true
-      domain_prefix: 'test'
+      domain_prefix: 'perftest'
 
     - deployment: 'stg_cftapps_cluster_lb'
       environment: 'stg'
@@ -366,3 +366,4 @@ stages:
                   domain_prefix: ${{ deployment.domain_prefix }}
                   workingDirectory: $(Pipeline.Workspace)/s/scripts
                   junit_output_dir: $(Pipeline.Workspace)/s/environments/${{ deployment.environment }}/junit
+                  environment: ${{ deployment.environment }}

@@ -160,3 +160,4 @@ stages:
                     domain_prefix: ${{ deployment.domain_prefix }}
                     workingDirectory: $(Pipeline.Workspace)/s/scripts
                     junit_output_dir: $(Pipeline.Workspace)/s/environments/${{ deployment.environment }}/junit
+                    environment: ${{ deployment.environment }}

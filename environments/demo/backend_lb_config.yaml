@@ -367,4 +367,3 @@ gateways:
       - product: idam
         component: testing-support-api
         ssl_enabled: true
-        

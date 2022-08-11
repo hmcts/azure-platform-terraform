@@ -26,6 +26,13 @@ cft_apps_cluster_ips   = ["10.10.143.250", "10.10.159.250"]
 
 frontends = [
   {
+    name           = "plum"
+    custom_domain  = "plum.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+
+    disabled_rules = {}
+  },
+  {
     name           = "div-dn"
     custom_domain  = "decree-nisi-aks.aat.platform.hmcts.net"
     mode           = "Prevention"

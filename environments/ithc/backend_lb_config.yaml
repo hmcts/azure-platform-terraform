@@ -313,3 +313,8 @@ gateways:
     # TS
       - product: ts
         component: translation-service
+        
+    # SIDAM
+      - product: idam
+        component: testing-support-api
+        ssl_enabled: true

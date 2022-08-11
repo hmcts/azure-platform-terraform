@@ -52,6 +52,7 @@ parameters:
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
       pipeline_tests: true
+      domain_prefix: 'sandbox'
 
     - deployment: 'sbox_backendappgateway'
       environment: 'sbox'

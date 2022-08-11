@@ -151,8 +151,7 @@ stages:
                   product: ${{ variables.product }}
           - ${{ if eq(deployment.pipeline_tests, true) }}:
             - job: PipelineTests
-              pool:
-                vmImage: ${{ variables.agentPool }}
+              pool: ${{ variables.agentPool }}
               timeoutInMinutes: ${{ variables.timeoutInMinutes }}
               dependsOn: TerraformPlanApply
               steps:

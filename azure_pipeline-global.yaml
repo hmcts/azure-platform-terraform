@@ -32,6 +32,8 @@ variables:
     value: 300
   - name: agentPool
     value: 'hmcts-cftptl-agent-pool'
+  - name: vmImage
+    value: 'ubuntu-latest'
   - name: build
     value: $(Build.BuildNumber)
   - name: product
@@ -151,7 +153,8 @@ stages:
                   product: ${{ variables.product }}
           - ${{ if eq(deployment.pipeline_tests, true) }}:
             - job: PipelineTests
-              pool: ${{ variables.agentPool }}
+              pool:
+                vmImage: ${{ variables.vmImage }}
               timeoutInMinutes: ${{ variables.timeoutInMinutes }}
               dependsOn: TerraformPlanApply
               steps:

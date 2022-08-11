@@ -51,6 +51,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
+      pipeline_tests: true
 
     - deployment: 'sbox_backendappgateway'
       environment: 'sbox'
@@ -308,3 +309,13 @@ stages:
               serviceConnection: ${{ deployment.service_connection }}
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
+      - ${{ if eq(deployment.pipeline_tests, true) }}:
+        - job: PipelineTests
+          timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+          dependsOn: TerraformPlanApply
+          steps:
+            - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
+              parameters:
+                domain_prefix: ${{ deployment.domain_prefix }}
+                workingDirectory: $(Pipeline.Workspace)/s/scripts
+                junit_output_dir: $(Pipeline.Workspace)/s/environments/${{ deployment.environment }}/junit

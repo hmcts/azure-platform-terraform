@@ -362,6 +362,5 @@ stages:
                   workingDirectory: $(Pipeline.Workspace)/s/scripts
                   junit_output_dir: $(Pipeline.Workspace)/s/environments/${{ deployment.environment }}/junit
                   dns_zone: ${{ deployment.dns_zone }}
-                  app_name: ${{ variables.appName }}
-                  environment: ${{ deployment.environment }}
+                  app_name: ${{ variables.app_name }}
                   test_title: '${{ deployment.environment }}_${{ deployment.component }}'

@@ -9,7 +9,7 @@ describe("Smoke Test", () => {
   describe("Test case: plum endpoints", () => {
     test("Test http redirect (plum)", async () => {
       try {
-        const url = `http://${TEST_URL}`;
+        const url = `http://${TEST_URL}/`;
         const response: AxiosResponse = await axios
           .request({
             method: "GET",
@@ -24,7 +24,7 @@ describe("Smoke Test", () => {
 
         expect(response.status).toBe(301);
         expect(response.headers.location).toBe(
-          `${TEST_URL}`
+          `${TEST_URL}/`
         );
       } catch(error) {
         fail(error.stack);
@@ -50,7 +50,7 @@ describe("Smoke Test", () => {
     });
     test("Test http response (plum/)", async () => {
       try {
-        const url = `https://${TEST_URL}`;
+        const url = `https://${TEST_URL}/`;
         const response: AxiosResponse = await axios
           .request({
             method: "GET",

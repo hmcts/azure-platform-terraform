@@ -31,10 +31,8 @@ variables:
   - name: terraformInitSubscription
     value: 04d27a32-7a07-48b3-95b8-3c8691e1a263
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
-  - name: testApp
+  - name: appName
     value: plum
-  - name: rootDomain
-    value: platform.hmcts.net
 
 parameters:
   - name: overrideAction
@@ -56,6 +54,7 @@ parameters:
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
       pipeline_tests: true
+      dns_zone: sandbox.platform.hmcts.net
 
     - deployment: 'sbox_backendappgateway'
       environment: 'sbox'
@@ -65,6 +64,7 @@ parameters:
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
       pipeline_tests: true
+      dns_zone: sandbox.platform.hmcts.net
 
     - deployment: 'sbox_shutter'
       environment: 'sbox'
@@ -74,6 +74,7 @@ parameters:
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
       pipeline_tests: true
+      dns_zone: sandbox.platform.hmcts.net
 
     - deployment: 'sbox_private_dns'
       environment: 'sbox'
@@ -83,6 +84,7 @@ parameters:
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
       pipeline_tests: true
+      dns_zone: sandbox.platform.hmcts.net
 
     - deployment: 'sbox_apim'
       environment: 'sbox'
@@ -92,6 +94,7 @@ parameters:
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
       pipeline_tests: true
+      dns_zone: sandbox.platform.hmcts.net
 
     - deployment: 'sbox_apim_appgw'
       environment: 'sbox'
@@ -101,6 +104,7 @@ parameters:
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
       pipeline_tests: true
+      dns_zone: sandbox.platform.hmcts.net
 
     - deployment: 'ptl_dynatrace_activegate'
       environment: 'ptl'
@@ -118,6 +122,7 @@ parameters:
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_frontendappgateway'
       pipeline_tests: true
+      dns_zone: ithc.platform.hmcts.net
 
     - deployment: 'ithc_backendappgateway'
       environment: 'ithc'
@@ -127,6 +132,7 @@ parameters:
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_backendappgateway'
       pipeline_tests: true
+      dns_zone: ithc.platform.hmcts.net
 
     - deployment: 'ithc_private_dns'
       environment: 'ithc'
@@ -136,6 +142,7 @@ parameters:
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_private_dns'
       pipeline_tests: true
+      dns_zone: ithc.platform.hmcts.net
 
     - deployment: 'ithc_apim'
       environment: 'ithc'
@@ -145,6 +152,7 @@ parameters:
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_apim'
       pipeline_tests: true
+      dns_zone: ithc.platform.hmcts.net
 
     - deployment: 'demo_cftapps_cluster_lb_backend'
       environment: 'demo'
@@ -178,6 +186,7 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_frontendappgateway'
       pipeline_tests: true
+      dns_zone: perftest.platform.hmcts.net
 
     - deployment: 'test_backendappgateway'
       environment: 'test'
@@ -187,6 +196,7 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_backendappgateway'
       pipeline_tests: true
+      dns_zone: perftest.platform.hmcts.net
 
     - deployment: 'test_cftapps_cluster_lb'
       environment: 'test'
@@ -196,6 +206,7 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_frontendappgateway'
       pipeline_tests: true
+      dns_zone: perftest.platform.hmcts.net
 
     - deployment: 'test_cftapps_cluster_lb_backend'
       environment: 'test'
@@ -205,6 +216,7 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_backendappgateway'
       pipeline_tests: true
+      dns_zone: perftest.platform.hmcts.net
 
     - deployment: 'test_cftapps_private_dns'
       environment: 'test'
@@ -214,6 +226,7 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_private_dns'
       pipeline_tests: true
+      dns_zone: perftest.platform.hmcts.net
 
     - deployment: 'test_apim'
       environment: 'test'
@@ -223,6 +236,7 @@ parameters:
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_apim'
       pipeline_tests: true
+      dns_zone: perftest.platform.hmcts.net
 
     - deployment: 'stg_cftapps_cluster_lb'
       environment: 'stg'
@@ -232,6 +246,7 @@ parameters:
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_frontendappgateway'
       pipeline_tests: true
+      dns_zone: aat.platform.hmcts.net
 
     - deployment: 'stg_cftapps_cluster_lb_backend'
       environment: 'stg'
@@ -241,6 +256,7 @@ parameters:
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_backendappgateway'
       pipeline_tests: true
+      dns_zone: aat.platform.hmcts.net
 
     - deployment: 'stg_private_dns'
       environment: 'stg'
@@ -250,6 +266,7 @@ parameters:
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_private_dns'
       pipeline_tests: true
+      dns_zone: aat.platform.hmcts.net
 
     - deployment: 'stg_apim'
       environment: 'stg'
@@ -259,6 +276,7 @@ parameters:
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_apim'
       pipeline_tests: true
+      dns_zone: aat.platform.hmcts.net
 
     - deployment: 'prod_cftapps_cluster_lb'
       environment: 'prod'
@@ -341,17 +359,8 @@ stages:
             steps:
               - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
                 parameters:
-                  ${{ if eq(deployment.environment, 'prod') }}:
-                    test_url: '${{ variables.testApp }}.${{ variables.rootDomain }}'
-                  ${{ elseif eq(deployment.environment, 'sbox') }}:
-                    test_url: '${{ variables.testApp }}.sandbox.${{ variables.rootDomain }}'
-                  ${{ elseif eq(deployment.environment, 'stg') }}:
-                    test_url: '${{ variables.testApp }}.aat.${{ variables.rootDomain }}'
-                  ${{ elseif eq(deployment.environment, 'test') }}:
-                    test_url: '${{ variables.testApp }}.perftest.${{ variables.rootDomain }}'
-                  ${{ else }}:
-                    test_url: '${{ variables.testApp }}.${{ deployment.environment }}.${{ variables.rootDomain }}'
                   workingDirectory: $(Pipeline.Workspace)/s/scripts
                   junit_output_dir: $(Pipeline.Workspace)/s/environments/${{ deployment.environment }}/junit
+                  dns_zone: ${{ deployment.dns_zone }}
                   environment: ${{ deployment.environment }}
                   test_title: '${{ deployment.environment }}_${{ deployment.component }}'

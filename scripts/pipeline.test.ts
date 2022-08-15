@@ -3,7 +3,7 @@ import { fail } from "assert";
 import axios, { AxiosResponse } from "axios";
 
 const GLOBAL_DOMAIN_NAME =
-  process.env.GLOBAL_DOMAIN_NAME || "sandbox.platform.hmcts.net";
+  process.env.GLOBAL_DOMAIN_NAME || ".sandbox.platform.hmcts.net";
 
 describe("Smoke Test", () => {
   describe("Test case: plum endpoints", () => {

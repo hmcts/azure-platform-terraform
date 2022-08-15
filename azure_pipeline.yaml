@@ -159,8 +159,6 @@ parameters:
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_backendappgateway'
-      pipeline_tests: true
-      domain_prefix: 'demo'
 
     - deployment: 'demo_private_dns'
       environment: 'demo'
@@ -169,8 +167,6 @@ parameters:
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_private_dns'
-      pipeline_tests: true
-      domain_prefix: 'demo'
 
     - deployment: 'demo_apim'
       environment: 'demo'
@@ -179,8 +175,6 @@ parameters:
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_apim'
-      pipeline_tests: true
-      domain_prefix: 'demo'
 
     - deployment: 'test_frontendappgateway'
       environment: 'test'

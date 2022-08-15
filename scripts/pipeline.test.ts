@@ -2,14 +2,14 @@ import { fail } from "assert";
 
 import axios, { AxiosResponse } from "axios";
 
-const GLOBAL_DOMAIN_NAME =
-  process.env.GLOBAL_DOMAIN_NAME || "sandbox.platform.hmcts.net";
+const TEST_URL =
+  process.env.TEST_URL || "sandbox.platform.hmcts.net";
 
 describe("Smoke Test", () => {
   describe("Test case: plum endpoints", () => {
     test("Test http redirect (plum)", async () => {
       try {
-        const url = `http://plum.${GLOBAL_DOMAIN_NAME}/`;
+        const url = `http://${TEST_URL}`;
         const response: AxiosResponse = await axios
           .request({
             method: "GET",
@@ -24,7 +24,7 @@ describe("Smoke Test", () => {
 
         expect(response.status).toBe(301);
         expect(response.headers.location).toBe(
-          `https://plum.${GLOBAL_DOMAIN_NAME}/`
+          `${TEST_URL}`
         );
       } catch(error) {
         fail(error.stack);
@@ -32,7 +32,7 @@ describe("Smoke Test", () => {
     });
     test("Test http response (plum/health)", async () => {
       try {
-        const url = `https://plum.${GLOBAL_DOMAIN_NAME}/health`;
+        const url = `https://${TEST_URL}/health`;
         const response: AxiosResponse = await axios
           .request({
             method: "GET",
@@ -50,7 +50,7 @@ describe("Smoke Test", () => {
     });
     test("Test http response (plum/)", async () => {
       try {
-        const url = `https://plum.${GLOBAL_DOMAIN_NAME}/`;
+        const url = `https://${TEST_URL}`;
         const response: AxiosResponse = await axios
           .request({
             method: "GET",

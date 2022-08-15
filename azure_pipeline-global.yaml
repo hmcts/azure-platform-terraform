@@ -118,6 +118,7 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_global'
+      pipeline_tests: true
 
 
 stages:

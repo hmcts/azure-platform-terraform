@@ -2,12 +2,18 @@ import { fail } from "assert";
 
 import axios, { AxiosResponse } from "axios";
 
-const TEST_URL =
-  process.env.TEST_URL || "sandbox.platform.hmcts.net";
+
+const APP_NAME =
+  process.env.APP_NAME
+
+const DNS_ZONE =
+  process.env.DNS_ZONE
+
+const TEST_URL = `${APP_NAME}.${DNS_ZONE}`
 
 describe("Smoke Test", () => {
-  describe("Test case: plum endpoints", () => {
-    test("Test http redirect (plum)", async () => {
+  describe(`Test case: ${APP_NAME} endpoints`, () => {
+    test(`Test http redirect (${APP_NAME})`, async () => {
       try {
         const url = `http://${TEST_URL}/`;
         const response: AxiosResponse = await axios
@@ -30,7 +36,7 @@ describe("Smoke Test", () => {
         fail(error.stack);
       }
     });
-    test("Test http response (plum/health)", async () => {
+    test(`Test http response (${APP_NAME}/health)`, async () => {
       try {
         const url = `https://${TEST_URL}/health`;
         const response: AxiosResponse = await axios
@@ -48,7 +54,7 @@ describe("Smoke Test", () => {
         fail(error.stack);
       }
     });
-    test("Test http response (plum/)", async () => {
+    test(`Test http response (${APP_NAME}/)`, async () => {
       try {
         const url = `https://${TEST_URL}/`;
         const response: AxiosResponse = await axios

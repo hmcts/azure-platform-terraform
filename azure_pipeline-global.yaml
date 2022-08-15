@@ -56,12 +56,12 @@ parameters:
     default:
     - deployment: 'sbox_global'
       environment: 'sbox'
-      domain_prefix: 'sandbox'
       component: 'global'
       service_connection: 'dcd-cftapps-sbox'
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       pipeline_tests: true
+      dns_zone: sandbox.platform.hmcts.net
       dependsOn: 'Precheck'
 
     - deployment: 'demo_global'
@@ -82,33 +82,32 @@ parameters:
 
     - deployment: 'ithc_global'
       environment: 'ithc'
-      domain_prefix: 'ithc'
       component: 'global'
       service_connection: 'dcd-cftapps-ithc'
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
       pipeline_tests: true
       dependsOn: 'sbox_global'
-
+      dns_zone: ithc.platform.hmcts.net
 
     - deployment: 'perftest_global'
       environment: 'test'
-      domain_prefix: 'perftest'
       component: 'global'
       service_connection: 'dcd-cftapps-test'
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       pipeline_tests: true
+      dns_zone: perftest.platform.hmcts.net
       dependsOn: 'sbox_global'
 
     - deployment: 'aat_global'
       environment: 'stg'
-      domain_prefix: 'aat'
       component: 'global'
       service_connection: 'dcd-cftapps-stg'
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       pipeline_tests: true
+      dns_zone: aat.platform.hmcts.net
       dependsOn: 'sbox_global'
 
     - deployment: 'prod_global'
@@ -157,7 +156,6 @@ stages:
               steps:
                 - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
                   parameters:
-                    domain_prefix: ${{ deployment.domain_prefix }}
                     workingDirectory: $(Pipeline.Workspace)/s/scripts
                     junit_output_dir: $(Pipeline.Workspace)/s/environments/${{ deployment.environment }}/junit
                     dns_zone: ${{ deployment.dns_zone }}

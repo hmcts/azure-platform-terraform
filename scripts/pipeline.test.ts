@@ -6,10 +6,8 @@ import axios, { AxiosResponse } from "axios";
 const APP_NAME =
   process.env.APP_NAME
 
-const DNS_ZONE =
-  process.env.DNS_ZONE
-
-const TEST_URL = `${APP_NAME}.${DNS_ZONE}`
+const TEST_URL =
+  process.env.TEST_URL
 
 describe("Smoke Test", () => {
   describe(`Test case: ${APP_NAME} endpoints`, () => {

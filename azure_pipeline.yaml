@@ -341,13 +341,13 @@ stages:
             steps:
               - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
                 parameters:
-                  ${{ if eq(parameters.environment, 'prod') }}:
+                  ${{ if eq(deployment.environment, 'prod') }}:
                     test_url: '${{ variables.testApp }}.${{ variables.rootDomain }}'
-                  ${{ elseif eq(parameters.environment, 'sbox') }}:
+                  ${{ elseif eq(deployment.environment, 'sbox') }}:
                     test_url: '${{ variables.testApp }}.sandbox.${{ variables.rootDomain }}'
-                  ${{ elseif eq(parameters.environment, 'stg') }}:
+                  ${{ elseif eq(deployment.environment, 'stg') }}:
                     test_url: '${{ variables.testApp }}.aat.${{ variables.rootDomain }}'
-                  ${{ elseif eq(parameters.environment, 'test') }}:
+                  ${{ elseif eq(deployment.environment, 'test') }}:
                     test_url: '${{ variables.testApp }}.perftest.${{ variables.rootDomain }}'
                   ${{ else }}:
                     test_url: '${{ variables.testApp }}.${{ deployment.environment }}.${{ variables.rootDomain }}'

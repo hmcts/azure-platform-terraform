@@ -24,7 +24,7 @@ describe("Smoke Test", () => {
 
         expect(response.status).toBe(301);
         expect(response.headers.location).toBe(
-          `${TEST_URL}/`
+          `https://${TEST_URL}/`
         );
       } catch(error) {
         fail(error.stack);

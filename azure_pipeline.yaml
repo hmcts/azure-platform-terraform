@@ -365,4 +365,5 @@ stages:
                   domain_prefix: ${{ deployment.domain_prefix }}
                   workingDirectory: $(Pipeline.Workspace)/s/scripts
                   junit_output_dir: $(Pipeline.Workspace)/s/environments/${{ deployment.environment }}/junit
-                  environment: '${{ deployment.environment }}_${{ deployment.component }}'
+                  environment: ${{ deployment.environment }}
+                  test_title: '${{ deployment.environment }}_${{ deployment.component }}'

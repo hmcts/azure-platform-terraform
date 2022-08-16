@@ -352,6 +352,14 @@ gateways:
         component: api-int
       - product: ccpay
         component: refunds-api-int
+      - product: fees-register
+        component: api-int
+      - product: ccpay
+        component: bulkscanning-api-int
+        
+     # BAR
+      - product: bar
+        component: api-int
         
      # TS
       - product: ts

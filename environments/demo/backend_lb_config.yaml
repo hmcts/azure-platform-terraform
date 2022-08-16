@@ -356,6 +356,8 @@ gateways:
         component: api-int
       - product: ccpay
         component: bulkscanning-api-int
+      - product: ccpay
+        component: notifications-service-int
         
      # BAR
       - product: bar

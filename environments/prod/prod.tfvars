@@ -33,14 +33,6 @@ frontends = [
         action   = "Block"
         match_conditions = [
           {
-            match_variable     = "RequestUri"
-            operator           = "EndsWith"
-            negation_condition = false
-            match_values = [
-              "/fees"
-            ]
-          },
-          {
             match_variable     = "RemoteAddr"
             operator           = "IPMatch"
             negation_condition = true

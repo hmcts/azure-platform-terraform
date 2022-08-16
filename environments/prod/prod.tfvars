@@ -51,7 +51,7 @@ frontends = [
             ]
           }
         ]
-      },
+      }
   },
   {
     product          = "div"

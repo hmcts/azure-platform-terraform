@@ -155,4 +155,5 @@ stages:
                     workingDirectory: $(Pipeline.Workspace)/s/scripts
                     junit_output_dir: $(Pipeline.Workspace)/s/environments/${{ deployment.environment }}/junit
                     environment: ${{ deployment.environment }}
+                    product: ${{ variables.product }}
                     test_title: '${{ deployment.environment }}_${{ deployment.component }}'

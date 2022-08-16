@@ -41,8 +41,6 @@ variables:
   - name: terraformInitSubscription
     value: 04d27a32-7a07-48b3-95b8-3c8691e1a263
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
-  - name: appName
-    value: plum
 
 parameters:
   - name: overrideAction
@@ -63,7 +61,6 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       pipeline_tests: true
-      dns_zone: sandbox.platform.hmcts.net
       dependsOn: 'Precheck'
 
     - deployment: 'demo_global'
@@ -90,7 +87,6 @@ parameters:
       storage_account_name: 'cftappsithc'
       pipeline_tests: true
       dependsOn: 'sbox_global'
-      dns_zone: ithc.platform.hmcts.net
 
     - deployment: 'perftest_global'
       environment: 'test'
@@ -99,7 +95,6 @@ parameters:
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       pipeline_tests: true
-      dns_zone: perftest.platform.hmcts.net
       dependsOn: 'sbox_global'
 
     - deployment: 'aat_global'
@@ -109,7 +104,6 @@ parameters:
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       pipeline_tests: true
-      dns_zone: aat.platform.hmcts.net
       dependsOn: 'sbox_global'
 
     - deployment: 'prod_global'
@@ -160,6 +154,5 @@ stages:
                   parameters:
                     workingDirectory: $(Pipeline.Workspace)/s/scripts
                     junit_output_dir: $(Pipeline.Workspace)/s/environments/${{ deployment.environment }}/junit
-                    dns_zone: ${{ deployment.dns_zone }}
-                    app_name: ${{ variables.appName }}
+                    environment: ${{ deployment.environment }}
                     test_title: '${{ deployment.environment }}_${{ deployment.component }}'

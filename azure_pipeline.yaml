@@ -31,6 +31,8 @@ variables:
   - name: terraformInitSubscription
     value: 04d27a32-7a07-48b3-95b8-3c8691e1a263
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
+  - name: repo_name
+    value: $[replace(variables['Build.Repository.Name'], 'hmcts/', '')]
 
 parameters:
   - name: overrideAction
@@ -337,8 +339,8 @@ stages:
             steps:
               - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
                 parameters:
-                  workingDirectory: $(Pipeline.Workspace)/s/$[replace(variables['Build.Repository.Name'], 'hmcts/', '')]/scripts
-                  junit_output_dir: $(Pipeline.Workspace)/s/$[replace(variables['Build.Repository.Name'], 'hmcts/', '')]/environments/${{ deployment.environment }}/junit
+                  workingDirectory: $(Pipeline.Workspace)/s/${{ variables.repo_name }}/scripts
+                  junit_output_dir: $(Pipeline.Workspace)/s/${{ variables.repo_name }}/environments/${{ deployment.environment }}/junit
                   environment: ${{ deployment.environment }}
                   product: ${{ variables.product }}
                   test_title: '${{ deployment.environment }}_${{ deployment.component }}'

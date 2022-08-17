@@ -11,7 +11,7 @@ const TEST_URL =
 
 describe("Smoke Test", () => {
   describe(`Test case: ${APP_NAME} endpoints`, () => {
-    test(`Test http redirect (${APP_NAME})`, async () => {
+    test(`redirects http to https for ${APP_NAME}`, async () => {
       try {
         const url = `http://${TEST_URL}/`;
         const response: AxiosResponse = await axios

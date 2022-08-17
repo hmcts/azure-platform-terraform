@@ -321,19 +321,19 @@ stages:
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
         - ${{ if eq(deployment.pipeline_tests, true) }}:
-            ${{ if eq(deployment.component, 'apim') }}:
-            - job: APIM Tests
-            ${{ else }}:
-            - job: PipelineTests
-              pool:
-                vmImage: ${{ variables.agentPool }}
-              timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-              dependsOn: TerraformPlanApply
-              steps:
-                - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
-                  parameters:
-                    workingDirectory: $(Pipeline.Workspace)/s/azure-platform-terraform/scripts
-                    junit_output_dir: $(Pipeline.Workspace)/s/azure-platform-terraform/environments/${{ deployment.environment }}/junit
-                    environment: ${{ deployment.environment }}
-                    product: ${{ variables.product }}
-                    test_title: '${{ deployment.environment }}_${{ deployment.component }}'
+            - ${{ if eq(deployment.component, 'apim') }}:
+              - job: APIM Tests
+            - ${{ else }}:
+              - job: PipelineTests
+                pool:
+                  vmImage: ${{ variables.agentPool }}
+                timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+                dependsOn: TerraformPlanApply
+                steps:
+                  - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
+                    parameters:
+                      workingDirectory: $(Pipeline.Workspace)/s/azure-platform-terraform/scripts
+                      junit_output_dir: $(Pipeline.Workspace)/s/azure-platform-terraform/environments/${{ deployment.environment }}/junit
+                      environment: ${{ deployment.environment }}
+                      product: ${{ variables.product }}
+                      test_title: '${{ deployment.environment }}_${{ deployment.component }}'

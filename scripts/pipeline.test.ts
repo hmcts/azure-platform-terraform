@@ -63,7 +63,7 @@ describe("Smoke Test", () => {
               "Accept-Encoding": "gzip",
             },
           })
-        expect(response.data).toContain("There are no recipes");
+        expect(response.status).toBe(200);
       } catch(error) {
         fail(error.stack);
       }

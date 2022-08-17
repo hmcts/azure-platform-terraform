@@ -15,7 +15,7 @@ resources:
   repositories:
   - repository: cnp-azuredevops-libraries
     type: github
-    ref: refs/heads/master
+    ref: refs/heads/DTSPO-9055/test_pattern
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
 
@@ -86,6 +86,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
+      pipeline_tests: true
 
     - deployment: 'sbox_apim_appgw'
       environment: 'sbox'
@@ -321,19 +322,20 @@ stages:
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
         - ${{ if eq(deployment.pipeline_tests, true) }}:
-            - ${{ if eq(deployment.component, 'apim') }}:
-              - job: APIM Tests
-            - ${{ else }}:
-              - job: PipelineTests
-                pool:
-                  vmImage: ${{ variables.agentPool }}
-                timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-                dependsOn: TerraformPlanApply
-                steps:
-                  - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
-                    parameters:
-                      workingDirectory: $(Pipeline.Workspace)/s/azure-platform-terraform/scripts
-                      junit_output_dir: $(Pipeline.Workspace)/s/azure-platform-terraform/environments/${{ deployment.environment }}/junit
-                      environment: ${{ deployment.environment }}
-                      product: ${{ variables.product }}
-                      test_title: '${{ deployment.environment }}_${{ deployment.component }}'
+          - job: PipelineTests
+            pool:
+              vmImage: ${{ variables.agentPool }}
+            timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+            dependsOn: TerraformPlanApply
+            steps:
+              - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
+                parameters:
+                  workingDirectory: $(Pipeline.Workspace)/s/azure-platform-terraform/scripts
+                  junit_output_dir: $(Pipeline.Workspace)/s/azure-platform-terraform/environments/${{ deployment.environment }}/junit
+                  environment: ${{ deployment.environment }}
+                  product: ${{ variables.product }}
+                  test_title: '${{ deployment.environment }}_${{ deployment.component }}'
+                  - ${{ if eq(deployment.component, 'apim') }}:
+                    test_pattern: apim.test.ts
+                  - ${{ else }}:
+                    test_pattern: pipeline.test.ts

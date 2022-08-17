@@ -86,7 +86,6 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
-      pipeline_tests: true
 
     - deployment: 'sbox_apim_appgw'
       environment: 'sbox'

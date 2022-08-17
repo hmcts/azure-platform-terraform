@@ -157,3 +157,4 @@ stages:
                     environment: ${{ deployment.environment }}
                     product: ${{ variables.product }}
                     test_title: '${{ deployment.environment }}_${{ deployment.component }}'
+                    test_pattern: pipeline.test.ts

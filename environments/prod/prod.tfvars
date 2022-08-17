@@ -21,9 +21,9 @@ apim_sku_name = "Premium"
 
 frontends = [
   {
-    name           = "plum"
-    custom_domain  = "plum.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    name             = "plum"
+    custom_domain    = "plum.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
     custom_rules = [
       {
@@ -32,7 +32,7 @@ frontends = [
         type     = "MatchRule"
         action   = "Block"
         match_conditions = [
-                    {
+          {
             match_variable     = "RemoteAddr"
             operator           = "IPMatch"
             negation_condition = true

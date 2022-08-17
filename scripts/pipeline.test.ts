@@ -52,7 +52,7 @@ describe("Smoke Test", () => {
         fail(error.stack);
       }
     });
-    test(`Test http response (${APP_NAME}/)`, async () => {
+    test(`expected content loads (${APP_NAME}/)`, async () => {
       try {
         const url = `https://${TEST_URL}/`;
         const response: AxiosResponse = await axios

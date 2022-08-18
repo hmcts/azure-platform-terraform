@@ -15,7 +15,7 @@ resources:
   repositories:
   - repository: cnp-azuredevops-libraries
     type: github
-    ref: refs/heads/master
+    ref: refs/heads/DTSPO-9055/test_pattern_component
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
 
@@ -86,6 +86,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
+      pipeline_tests: true
 
     - deployment: 'sbox_apim_appgw'
       environment: 'sbox'
@@ -137,6 +138,7 @@ parameters:
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_apim'
+      pipeline_tests: true
 
     - deployment: 'demo_cftapps_cluster_lb_backend'
       environment: 'demo'
@@ -161,6 +163,7 @@ parameters:
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_apim'
+      pipeline_tests: true
 
     - deployment: 'test_frontendappgateway'
       environment: 'test'
@@ -213,6 +216,7 @@ parameters:
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_apim'
+      pipeline_tests: true
 
     - deployment: 'stg_cftapps_cluster_lb'
       environment: 'stg'
@@ -247,6 +251,7 @@ parameters:
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_apim'
+      pipeline_tests: true
 
     - deployment: 'prod_cftapps_cluster_lb'
       environment: 'prod'
@@ -287,6 +292,7 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_apim'
+      pipeline_tests: true
 
 stages:
   - stage: Precheck
@@ -334,6 +340,7 @@ stages:
                   environment: ${{ deployment.environment }}
                   product: ${{ variables.product }}
                   test_title: '${{ deployment.environment }}_${{ deployment.component }}'
+                  component: ${{ deployment.component }}
                   ${{ if eq(deployment.component, 'apim') }}:
                     test_pattern: apim.test.ts
                   ${{ else }}:

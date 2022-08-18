@@ -10,10 +10,10 @@ const TEST_URL =
   process.env.TEST_URL
 
 describe("Smoke Test", () => {
-  describe(`Test case: dummy test`, () => {
-    test(`expected content loads (${APP_NAME}/)`, async () => {
+  describe(`Test case: apim test`, () => {
+    test(`expected content loads (${APP_NAME})`, async () => {
       try {
-        const url = `https://${TEST_URL}/`;
+        const url = `https://${TEST_URL}/health/liveness`;
         const response: AxiosResponse = await axios
           .request({
             method: "GET",

@@ -15,7 +15,7 @@ resources:
   repositories:
   - repository: cnp-azuredevops-libraries
     type: github
-    ref: refs/heads/DTSPO-9055/test_pattern_component
+    ref: refs/heads/master
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
 
@@ -338,7 +338,6 @@ stages:
                   environment: ${{ deployment.environment }}
                   product: ${{ variables.product }}
                   test_title: '${{ deployment.environment }}_${{ deployment.component }}'
-                  component: ${{ deployment.component }}
                   ${{ if eq(deployment.component, 'apim') }}:
                     test_pattern: apim.test.ts
                   ${{ else }}:

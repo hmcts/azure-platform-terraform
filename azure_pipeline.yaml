@@ -138,7 +138,6 @@ parameters:
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_apim'
-      pipeline_tests: true
 
     - deployment: 'demo_cftapps_cluster_lb_backend'
       environment: 'demo'
@@ -292,7 +291,6 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_apim'
-      pipeline_tests: true
 
 stages:
   - stage: Precheck

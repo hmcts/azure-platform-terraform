@@ -235,7 +235,7 @@ parameters:
       pipeline_tests: true
 
     - deployment: 'prod_frontendappgateway'
-      environment: 'test'
+      environment: 'prod'
       component: 'frontendappgateway'
       service_connection: 'dcd-cftapps-prod'
       storage_account_rg: 'core-infra-prod-rg'
@@ -244,7 +244,7 @@ parameters:
       pipeline_tests: true
 
     - deployment: 'prod_backendappgateway'
-      environment: 'test'
+      environment: 'prod'
       component: 'backendappgateway'
       service_connection: 'dcd-cftapps-prod'
       storage_account_rg: 'core-infra-prod-rg'

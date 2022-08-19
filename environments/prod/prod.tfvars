@@ -5,7 +5,7 @@ subscription           = "prod"
 ssl_mode               = "FrontDoor"
 certificate_name_check = false
 
-app_gw_private_ip_address = ["10.13.32.120"]
+app_gw_private_ip_address = ["10.13.32.120", "10.13.32.110"]
 data_subscription         = "8999dec3-0104-4a27-94ee-6588559729d1"
 privatedns_subscription   = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                   = "prod"
@@ -924,6 +924,35 @@ frontends = [
         operator       = "Equals"
         selector       = "rf"
       },
+    ],
+    custom_rules = [
+      {
+        name     = "RumBeaconExclusion"
+        priority = 100
+        type     = "MatchRule"
+        action   = "Allow"
+        match_conditions = [
+          {
+            match_variable     = "RequestMethod"
+            operator           = "Equal"
+            negation_condition = false
+            transforms = [
+              "Uppercase"
+            ]
+            match_values = [
+              "POST"
+            ]
+          },
+          {
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values = [
+              "/rb_"
+            ]
+          }
+        ]
+      },
     ]
   },
   {
@@ -965,6 +994,35 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "xui-manage-org"
+      },
+    ],
+    custom_rules = [
+      {
+        name     = "RumBeaconExclusion"
+        priority = 100
+        type     = "MatchRule"
+        action   = "Allow"
+        match_conditions = [
+          {
+            match_variable     = "RequestMethod"
+            operator           = "Equal"
+            negation_condition = false
+            transforms = [
+              "Uppercase"
+            ]
+            match_values = [
+              "POST"
+            ]
+          },
+          {
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values = [
+              "/rb_"
+            ]
+          }
+        ]
       },
     ]
   },
@@ -1786,6 +1844,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "ccpay-bubble-cookie-preferences"
       },
     ]
   },

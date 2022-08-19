@@ -3,7 +3,7 @@ location     = "uksouth"
 env          = "ithc"
 subscription = "ithc"
 
-backend_agw_private_ip_address = ["10.11.225.111"]
+backend_agw_private_ip_address = ["10.11.225.111", "10.11.225.115"]
 data_subscription              = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                        = "nonprod"
@@ -988,10 +988,10 @@ frontends = [
     ]
   },
   {
-    name           = "privatelaw"
-    custom_domain  = "privatelaw.ithc.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    name             = "privatelaw"
+    custom_domain    = "privatelaw.ithc.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {

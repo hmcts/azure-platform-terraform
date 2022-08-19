@@ -23,7 +23,7 @@ variables:
   - name: timeoutInMinutes
     value: 60
   - name: agentPool
-    value: ubuntu-18.04
+    value: 'ubuntu-latest'
   - name: build
     value: $(Build.BuildNumber)
   - name: product
@@ -51,6 +51,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
+      pipeline_tests: true
 
     - deployment: 'sbox_backendappgateway'
       environment: 'sbox'
@@ -59,6 +60,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
+      pipeline_tests: true
 
     - deployment: 'sbox_shutter'
       environment: 'sbox'
@@ -67,6 +69,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
+      pipeline_tests: true
 
     - deployment: 'sbox_private_dns'
       environment: 'sbox'
@@ -83,6 +86,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
+      pipeline_tests: true
 
     - deployment: 'sbox_apim_appgw'
       environment: 'sbox'
@@ -91,6 +95,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
+      pipeline_tests: true
 
     - deployment: 'ptl_dynatrace_activegate'
       environment: 'ptl'
@@ -107,6 +112,7 @@ parameters:
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_frontendappgateway'
+      pipeline_tests: true
 
     - deployment: 'ithc_backendappgateway'
       environment: 'ithc'
@@ -115,6 +121,7 @@ parameters:
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_backendappgateway'
+      pipeline_tests: true
 
     - deployment: 'ithc_private_dns'
       environment: 'ithc'
@@ -155,6 +162,7 @@ parameters:
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_apim'
+      pipeline_tests: true
 
     - deployment: 'test_frontendappgateway'
       environment: 'test'
@@ -163,6 +171,7 @@ parameters:
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_frontendappgateway'
+      pipeline_tests: true
 
     - deployment: 'test_backendappgateway'
       environment: 'test'
@@ -171,6 +180,7 @@ parameters:
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_backendappgateway'
+      pipeline_tests: true
 
     - deployment: 'test_cftapps_private_dns'
       environment: 'test'
@@ -187,6 +197,7 @@ parameters:
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_apim'
+      pipeline_tests: true
 
     - deployment: 'stg_cftapps_cluster_lb'
       environment: 'stg'
@@ -195,6 +206,7 @@ parameters:
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_frontendappgateway'
+      pipeline_tests: true
 
     - deployment: 'stg_cftapps_cluster_lb_backend'
       environment: 'stg'
@@ -203,6 +215,7 @@ parameters:
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_backendappgateway'
+      pipeline_tests: true
 
     - deployment: 'stg_private_dns'
       environment: 'stg'
@@ -219,6 +232,7 @@ parameters:
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_apim'
+      pipeline_tests: true
 
     - deployment: 'prod_cftapps_cluster_lb'
       environment: 'prod'
@@ -292,3 +306,21 @@ stages:
               serviceConnection: ${{ deployment.service_connection }}
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
+        - ${{ if eq(deployment.pipeline_tests, true) }}:
+          - job: PipelineTests
+            pool:
+              vmImage: ${{ variables.agentPool }}
+            timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+            dependsOn: TerraformPlanApply
+            steps:
+              - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
+                parameters:
+                  workingDirectory: $(Pipeline.Workspace)/s/azure-platform-terraform/scripts
+                  junit_output_dir: $(Pipeline.Workspace)/s/azure-platform-terraform/environments/${{ deployment.environment }}/junit
+                  environment: ${{ deployment.environment }}
+                  product: ${{ variables.product }}
+                  test_title: '${{ deployment.environment }}_${{ deployment.component }}'
+                  ${{ if eq(deployment.component, 'apim') }}:
+                    test_pattern: apim.test.ts
+                  ${{ else }}:
+                    test_pattern: pipeline.test.ts

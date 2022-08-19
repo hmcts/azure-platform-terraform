@@ -1,6 +1,11 @@
 ---
 
 gateways:
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
   - gateway_configuration:
       host_name_suffix: service.core-compute-ithc.internal
       ssl_host_name_suffix: ithc.platform.hmcts.net
@@ -282,7 +287,21 @@ gateways:
         component: cos
       - product: prl
         component: dgs
-        
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+  - gateway_configuration:
+      host_name_suffix: service.core-compute-ithc.internal
+      ssl_host_name_suffix: ithc.platform.hmcts.net
+      certificate_name: wildcard-ithc-platform-hmcts-net
+      private_ip_address: 10.11.225.115
+    app_configuration:
+    # SSCS
+      - product: sscs
+        component: hearings-api
+
     # HMC
       - product: hmc
         component: cft-hearing-service
@@ -290,3 +309,12 @@ gateways:
         component: hmi-inbound-adapter
       - product: hmc
         component: hmi-outbound-adapter
+        
+    # TS
+      - product: ts
+        component: translation-service
+        
+    # SIDAM
+      - product: idam
+        component: testing-support-api
+        ssl_enabled: true

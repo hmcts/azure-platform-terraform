@@ -346,3 +346,34 @@ gateways:
         
       - product: sscs
         component: hearings-api
+        
+     # Fees and Pay
+      - product: payment
+        component: api-int
+      - product: ccpay
+        component: refunds-api-int
+      - product: fees-register
+        component: api-int
+      - product: ccpay
+        component: bulkscanning-api-int
+      - product: ccpay
+        component: notifications-service-int
+        
+     # BAR
+      - product: bar
+        component: api-int
+        
+     # TS
+      - product: ts
+        component: translation-service
+    # FIS
+      - product: fis
+        component: fis-bulk-scan-api
+        # FIS
+      - product: fis
+        component: fis-cos-api  
+        
+      # SIDAM
+      - product: idam
+        component: testing-support-api
+        ssl_enabled: true

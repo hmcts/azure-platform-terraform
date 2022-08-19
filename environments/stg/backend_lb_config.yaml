@@ -406,3 +406,11 @@ gateways:
         component: hmi-inbound-adapter
       - product: hmc
         component: hmi-outbound-adapter
+        
+    # TS
+      - product: ts
+        component: translation-service
+    
+    # CNP
+      - product: plum
+        component: recipe-backend

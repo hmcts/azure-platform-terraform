@@ -182,24 +182,6 @@ parameters:
       dependsOn: 'sbox_backendappgateway'
       pipeline_tests: true
 
-    - deployment: 'test_cftapps_cluster_lb'
-      environment: 'test'
-      component: 'cftapps_cluster_lb'
-      service_connection: 'dcd-cftapps-test'
-      storage_account_rg: 'core-infra-test-rg'
-      storage_account_name: 'cftappstest'
-      dependsOn: 'sbox_frontendappgateway'
-      pipeline_tests: true
-
-    - deployment: 'test_cftapps_cluster_lb_backend'
-      environment: 'test'
-      component: 'cftapps_cluster_lb_backend'
-      service_connection: 'dcd-cftapps-test'
-      storage_account_rg: 'core-infra-test-rg'
-      storage_account_name: 'cftappstest'
-      dependsOn: 'sbox_backendappgateway'
-      pipeline_tests: true
-
     - deployment: 'test_cftapps_private_dns'
       environment: 'test'
       component: 'cftapps_private_dns'

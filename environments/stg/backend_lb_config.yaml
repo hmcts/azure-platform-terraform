@@ -304,16 +304,6 @@ gateways:
 
       # Civil
       - product: civil
-        component: service-xui-staging
-        ssl_enabled: true
-      - product: civil
-        component: service-camunda-staging
-      - product: civil
-        component: service-data-store-staging
-      - product: civil
-        component: service-definition-store-staging
-
-      - product: civil
         component: ccd-xui-staging
         ssl_enabled: true
       - product: civil

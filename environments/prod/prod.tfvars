@@ -22,6 +22,7 @@ apim_sku_name = "Premium"
 frontends = [
   {
     name             = "plum"
+    product          = "cnp"
     custom_domain    = "plum.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"

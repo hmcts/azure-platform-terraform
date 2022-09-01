@@ -721,7 +721,7 @@ frontends = [
   {
     name                        = "idam-web-admin"
     custom_domain               = "idam-web-admin.perftest.platform.hmcts.net"
-    backend_domain              = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain              = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-perftest-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
     custom_rules = [
@@ -869,7 +869,7 @@ frontends = [
   {
     name             = "idam-user-dashboard"
     custom_domain    = "idam-user-dashboard.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.ukwest.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     custom_rules = [
       {
@@ -1163,7 +1163,7 @@ frontends = [
     product          = "et-sya"
     name             = "et-sya"
     custom_domain    = "et-sya.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
 ]

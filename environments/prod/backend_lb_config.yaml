@@ -305,3 +305,7 @@ gateways:
       # I&A
       - product: ia
         component: bail-case-api
+      
+      # CNP
+      - product: plum
+        component: recipe-backend

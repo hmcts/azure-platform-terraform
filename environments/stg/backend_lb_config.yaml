@@ -303,26 +303,6 @@ gateways:
         component: bail-case-api
 
       # Civil
-      - product: civil
-        component: ccd-xui-staging
-        ssl_enabled: true
-      - product: civil
-        component: ccd-camunda-staging
-      - product: civil
-        component: ccd-data-store-staging
-      - product: civil
-        component: ccd-definition-store-staging
-
-      - product: civil
-        component: camunda-xui-staging
-        ssl_enabled: true
-      - product: civil
-        component: camunda-camunda-staging
-      - product: civil
-        component: camunda-data-store-staging
-      - product: civil
-        component: camunda-definition-store-staging
-
       - product: camunda
         component: optimize
         ssl_enabled: true

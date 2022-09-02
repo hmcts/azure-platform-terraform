@@ -302,7 +302,7 @@ gateways:
       - product: ia
         component: bail-case-api
 
-      # Civil
+      # Camunda
       - product: camunda
         component: optimize
         ssl_enabled: true

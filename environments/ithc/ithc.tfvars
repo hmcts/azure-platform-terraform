@@ -1002,6 +1002,13 @@ frontends = [
     ]
   },
   {
+    name             = "hmi-apim"
+    custom_domain    = "hmi-apim.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-hmiapimithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    cache_enabled    = "false"
+  },
+  {
     name           = "paymentoutcome-web"
     mode           = "Detection"
     custom_domain  = "paymentoutcome-web.ithc.platform.hmcts.net"

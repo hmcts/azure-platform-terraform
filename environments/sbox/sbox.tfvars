@@ -374,6 +374,7 @@ frontends = [
     ]
   },
   {
+    product          = "idam"
     name             = "idam-user-dashboard"
     custom_domain    = "idam-user-dashboard.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]

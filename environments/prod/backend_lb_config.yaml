@@ -309,3 +309,7 @@ gateways:
       # CNP
       - product: plum
         component: recipe-backend
+        
+      # Access Management
+      - product: am
+        component: judicial-booking-service

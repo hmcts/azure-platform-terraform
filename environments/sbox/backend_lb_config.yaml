@@ -98,6 +98,9 @@ gateways:
       - product: idam
         component: testing-support-api
         ssl_enabled: true
+      - product: idam
+        component: user-dashboard
+        ssl_enabled: true
 
       # BulkScan
       - product: bulk-scan

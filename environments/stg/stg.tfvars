@@ -5,7 +5,7 @@ subscription           = "stg"
 certificate_name_check = false
 
 app_gw_private_ip_address      = ["10.10.161.121", "10.10.161.125"]
-backend_agw_private_ip_address = ["10.10.161.111", "10.10.161.114"]
+backend_agw_private_ip_address = ["10.10.161.111", "10.10.161.115"]
 data_subscription              = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                        = "nonprod"

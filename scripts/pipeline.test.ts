@@ -71,4 +71,27 @@ if (APP_NAME.indexOf('plum') == -1) {
       });
     });
   });
+}else{
+  describe("Smoke Test", () => {
+    describe(`Test case: ${APP_NAME} endpoints`, () => {
+      test(`app is IP whitelisted (${APP_NAME})`, async () => {
+        try {
+          const url = `https://${TEST_URL}`;
+          const response: AxiosResponse = await axios
+            .request({
+              method: "GET",
+              url: url,
+              headers: {
+                Accept: "application/json, text/plain, */*",
+                "Accept-Encoding": "gzip",
+              },
+            })
+
+          expect(response.status).toBe(403);
+        } catch(error) {
+          fail(error.stack);
+        }
+      });
+    });
+  });
 }

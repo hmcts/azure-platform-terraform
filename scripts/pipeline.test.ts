@@ -75,6 +75,7 @@ if (APP_NAME.indexOf('plum') == -1) {
   describe("Plum Smoke Test", () => {
     describe(`Test case: Skipping ${APP_NAME} tests`, () => {
       test(`Taut ${APP_NAME}`, async () => {
+        console.log(process.env)
         expect(true).toBe(true);
       });
     });

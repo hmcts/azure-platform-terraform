@@ -9,7 +9,7 @@ const APP_NAME =
 const TEST_URL =
   process.env.TEST_URL
 
-if (!${APP_NAME}.includes('plum')) { 
+if (${APP_NAME}.indexOf('plum') !== -1) { 
   describe("Smoke Test", () => {
     describe(`Test case: ${APP_NAME} endpoints`, () => {
       test(`redirects http to https for ${APP_NAME}`, async () => {

@@ -1,11 +1,16 @@
 ---
 
 gateways:
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
   - gateway_configuration:
       host_name_suffix: service.core-compute-ithc.internal
       ssl_host_name_suffix: ithc.platform.hmcts.net
       certificate_name: wildcard-ithc-platform-hmcts-net
-      private_ip_address: 10.11.225.121
+      private_ip_address: 10.11.225.111
     app_configuration:
     # RPE
       - product: draft-store
@@ -66,6 +71,8 @@ gateways:
         component: case-access-api
       - product: ia
         component: case-payments-api
+      - product: ia
+        component: bail-case-api
 
     # Access Management
       - product: am
@@ -217,6 +224,8 @@ gateways:
       # xui
       - product: xui
         component: terms-and-conditions
+      - product: xui
+        component: activity-tracker-api
 
     # SIDAM
       - product: idam
@@ -246,13 +255,15 @@ gateways:
         host_name_prefix: docmosis
         http_to_https_redirect: true
 
+    # CNP
+      - product: plum
+        component: recipe-backend
+
     # WA - Work Allocation
       - product: wa
         component: workflow-api
       - product: wa
         component: task-management-api
-      - product: wa
-        component: task-configuration-api
       - product: wa
         component: case-event-handler
       - product: wa
@@ -262,3 +273,48 @@ gateways:
     # Civil
       - product: civil
         component: service
+
+      # RPTS
+      - product: rpts
+        component: api
+
+    # Adoption COS API
+      - product: adoption
+        component: cos-api
+
+    # PrivateLaw(prl) cos api
+      - product: prl
+        component: cos
+      - product: prl
+        component: dgs
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+  - gateway_configuration:
+      host_name_suffix: service.core-compute-ithc.internal
+      ssl_host_name_suffix: ithc.platform.hmcts.net
+      certificate_name: wildcard-ithc-platform-hmcts-net
+      private_ip_address: 10.11.225.115
+    app_configuration:
+    # SSCS
+      - product: sscs
+        component: hearings-api
+
+    # HMC
+      - product: hmc
+        component: cft-hearing-service
+      - product: hmc
+        component: hmi-inbound-adapter
+      - product: hmc
+        component: hmi-outbound-adapter
+        
+    # TS
+      - product: ts
+        component: translation-service
+        
+    # SIDAM
+      - product: idam
+        component: testing-support-api
+        ssl_enabled: true

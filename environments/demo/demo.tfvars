@@ -1,12 +1,14 @@
 env                       = "demo"
 subscription              = "demo"
-app_gw_private_ip_address = ["10.51.32.121", "10.51.32.125"]
-cft_apps_cluster_ips      = ["10.51.31.250"]
+app_gw_private_ip_address = ["10.50.97.121", "10.50.97.125"]
+cft_apps_cluster_ips      = ["10.50.79.246", "10.50.95.246"]
 certificate_name_check    = false
 
 data_subscription       = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                 = "nonprod"
+
+hub = "nonprod"
 
 frontends = [
   {
@@ -19,5 +21,13 @@ frontends = [
     health_path         = "/"
     health_protocol     = "Https"
     cache_enabled       = "false"
+  },
+  {
+    product          = "cft-api-mgmt"
+    name             = "cft-api-mgmt"
+    custom_domain    = "cft-api-mgmt.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftapimgmtdemo.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+    cache_enabled    = "false"
   }
 ]

@@ -194,6 +194,8 @@ gateways:
     # xui
       - product: xui
         component: terms-and-conditions
+      - product: xui
+        component: activity-tracker-api
 
     # BAR
       - product: bar
@@ -265,8 +267,6 @@ gateways:
         component: workflow-api
       - product: wa
         component: task-management-api
-      - product: wa
-        component: task-configuration-api
 
     # Docmosis
       - product: dg
@@ -275,7 +275,11 @@ gateways:
         ssl_enabled: true
         host_name_prefix: docmosis
         http_to_https_redirect: true
-
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
   - gateway_configuration:
       host_name_suffix: service.core-compute-aat.internal
       ssl_host_name_suffix: aat.platform.hmcts.net
@@ -295,38 +299,10 @@ gateways:
       # I&A
       - product: ia
         component: case-access-api
+      - product: ia
+        component: bail-case-api
 
-      # Civil
-      - product: civil
-        component: service-xui-staging
-        ssl_enabled: true
-      - product: civil
-        component: service-camunda-staging
-      - product: civil
-        component: service-data-store-staging
-      - product: civil
-        component: service-definition-store-staging
-
-      - product: civil
-        component: ccd-xui-staging
-        ssl_enabled: true
-      - product: civil
-        component: ccd-camunda-staging
-      - product: civil
-        component: ccd-data-store-staging
-      - product: civil
-        component: ccd-definition-store-staging
-
-      - product: civil
-        component: camunda-xui-staging
-        ssl_enabled: true
-      - product: civil
-        component: camunda-camunda-staging
-      - product: civil
-        component: camunda-data-store-staging
-      - product: civil
-        component: camunda-definition-store-staging
-
+      # Camunda
       - product: camunda
         component: optimize
         ssl_enabled: true
@@ -348,8 +324,39 @@ gateways:
         component: cos
       - product: et
         component: msg-handler
+      - product: et
+        component: sya-api
 
     # IDAM
       - product: idam
         component: user-dashboard
         ssl_enabled: true
+      - product: idam
+        component: testing-support-api
+        ssl_enabled: true
+
+    # RPTS
+      - product: rpts
+        component: api
+        
+    # FIS
+      - product: fis
+        component: cos-api
+      - product: fis
+        component: bulk-scan-api  
+        
+    # HMC
+      - product: hmc
+        component: cft-hearing-service
+      - product: hmc
+        component: hmi-inbound-adapter
+      - product: hmc
+        component: hmi-outbound-adapter
+        
+    # TS
+      - product: ts
+        component: translation-service
+    
+    # CNP
+      - product: plum
+        component: recipe-backend

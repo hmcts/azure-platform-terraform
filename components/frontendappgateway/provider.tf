@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 0.13.0"
+  required_version = ">= 0.13"
 
   backend "azurerm" {}
   required_providers {
@@ -10,18 +10,14 @@ terraform {
   }
 }
 
+
 provider "azurerm" {
-  features {}
   skip_provider_registration = true
+  features {}
 }
 
 provider "azurerm" {
-  alias = "data"
-  features {}
+  alias           = "data"
   subscription_id = var.data_subscription
+  features {}
 }
-
-provider "local" {
-  version = "=2.2.3"
-}
-

@@ -297,6 +297,8 @@ gateways:
         component: cos
       - product: et
         component: msg-handler
+      - product: et
+        component: sya-api        
         
       # TS
       - product: ts

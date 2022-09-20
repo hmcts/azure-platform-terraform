@@ -338,7 +338,7 @@ stages:
                   environment: ${{ deployment.environment }}
                   product: ${{ variables.product }}
                   test_title: '${{ deployment.environment }}_${{ deployment.component }}'
-                  ${{ if or(eq(deployment.component, 'apim'), and(eq(deployment.component, 'frontendappgateway'), eq(deployment.environment, 'prod')), and(eq(deployment.component, 'backendappgateway'), eq(deployment.environment, 'prod')) }}:
+                  ${{ if or(eq(deployment.component, 'apim'), and(eq(deployment.component, 'frontendappgateway'), eq(deployment.environment, 'prod')), and(eq(deployment.component, 'backendappgateway'), eq(deployment.environment, 'prod'))) }}:
                     test_pattern: apim.test.ts
                   ${{ else }}:
                     test_pattern: pipeline.test.ts

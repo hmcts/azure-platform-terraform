@@ -2678,7 +2678,7 @@ frontends = [
     backend_domain = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
  },
  {
-    product        = "et"    
+    product        = "et"
     name           = "et-ra"
     mode           = "Detection"
     custom_domain  = "respond-employment-tribunals.service.gov.uk"

@@ -5,7 +5,7 @@ subscription           = "prod"
 ssl_mode               = "FrontDoor"
 certificate_name_check = false
 
-app_gw_private_ip_address = ["10.90.96.120"]
+app_gw_private_ip_address = ["10.90.96.120", "10.90.96.110"]
 data_subscription         = "8999dec3-0104-4a27-94ee-6588559729d1"
 privatedns_subscription   = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                   = "prod"

@@ -71,12 +71,12 @@ if (APP_NAME.indexOf('plum') == -1) {
       });
     });
   });
-}else{
+} else { 
   describe("Smoke Test", () => {
     describe(`Test case: ${APP_NAME} endpoints`, () => {
-      test(`app is IP whitelisted (${APP_NAME})`, async () => {
+      test(`Plum service is healthy (${APP_NAME})`, async () => {
         try {
-          const url = `https://${TEST_URL}`;
+          const url = `https://${TEST_URL}/health`;
           const response: AxiosResponse = await axios
             .request({
               method: "GET",
@@ -86,8 +86,23 @@ if (APP_NAME.indexOf('plum') == -1) {
                 "Accept-Encoding": "gzip",
               },
             })
-
-          expect(response.status).toBe(403);
+          expect(response.data.status).toBe("UP");
+        } catch(error) {
+          fail(error.stack);
+        }
+      });
+      test(`expected content loads (${APP_NAME}/)`, async () => {
+        try {
+          const url = `https://${TEST_URL}/`;
+          const response: AxiosResponse = await axios
+            .request({
+              method: "GET",
+              url: url,
+              headers: {
+                "Accept-Encoding": "gzip",
+              },
+            })
+          expect(response.status).toBe(200);
         } catch(error) {
           fail(error.stack);
         }

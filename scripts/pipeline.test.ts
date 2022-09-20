@@ -11,14 +11,6 @@ const TEST_URL =
 
 describe("Smoke Test", () => {
   describe(`Test case: ${APP_NAME} endpoints`, () => {
-    // skip tests of prod in plum
-    if (APP_NAME.indexOf('plum') !== -1) {
-      if (process.env.SYSTEM_STAGEDISPLAYNAME.indexOf('prod') !==-1){
-        test(`Skip plum tests in PROD`, async () => {
-          expect(true).toBe(true)
-        });
-      }
-    }
     test(`redirects http to https for ${APP_NAME}`, async () => {
       try {
         const url = `http://${TEST_URL}/`;

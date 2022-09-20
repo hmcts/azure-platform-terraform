@@ -31,7 +31,7 @@ describe("Smoke Test", () => {
             `https://${TEST_URL}/`
           );
         } else {
-          expect(response.status).toBe(200);
+          expect(response.status).toBe(301);
         }
       } catch(error) {
         fail(error.stack);

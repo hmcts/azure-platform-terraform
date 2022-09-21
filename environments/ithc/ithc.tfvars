@@ -1023,7 +1023,7 @@ frontends = [
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
-    product          = "et-sya"
+    product          = "et"
     name             = "et-sya"
     mode             = "Detection"
     custom_domain    = "et-sya.ithc.platform.hmcts.net"

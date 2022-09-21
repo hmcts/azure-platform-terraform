@@ -12,7 +12,7 @@ const TEST_URL =
 describe("Smoke Test", () => {
   describe(`Test case: ${APP_NAME} endpoints`, () => {
     if (APP_NAME.indexOf('plum') !== -1) {
-      console.log("env is: " process.env.DNS_ENVIRONMENT)
+      console.log("env is: " + process.env.DNS_ENVIRONMENT)
       if (process.env.DNS_ENVIRONMENT == ""){
         test(`Skip plum tests in PROD`, async () => {
           expect(true).toBe(true)

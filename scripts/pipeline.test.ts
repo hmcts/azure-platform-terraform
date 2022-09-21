@@ -11,6 +11,13 @@ const TEST_URL =
 
 describe("Smoke Test", () => {
   describe(`Test case: ${APP_NAME} endpoints`, () => {
+    if (APP_NAME.indexOf('plum') !== -1) {
+      if (process.env.DNS_ZONE == ""){
+        test(`Skip plum tests in PROD`, async () => {
+          expect(true).toBe(true)
+        });
+      }
+    }
     test(`redirects http to https for ${APP_NAME}`, async () => {
       try {
         const url = `http://${TEST_URL}/`;

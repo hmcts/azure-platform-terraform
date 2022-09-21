@@ -18,11 +18,6 @@ resources:
     ref: refs/heads/master
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
-  - repository: cnp-azuredevops-libraries-prod-arm-tf
-    type: github
-    ref: refs/heads/prod_arm_tf
-    name: hmcts/cnp-azuredevops-libraries
-    endpoint: 'hmcts'
 
 variables:
   - name: timeoutInMinutes
@@ -256,7 +251,7 @@ parameters:
       dependsOn: 'sbox_backendappgateway'
 
     - deployment: 'prod_cftapps_cluster_lb_arm_tf'
-      environment: 'prod_arm_tf'
+      environment: 'prod'
       component: 'cftapps_cluster_lb_arm_tf'
       service_connection: 'dcd-cftapps-prod'
       storage_account_rg: 'core-infra-prod-rg'
@@ -264,7 +259,7 @@ parameters:
       dependsOn: 'sbox_frontendappgateway'
 
     - deployment: 'prod_cftapps_cluster_lb_backend_arm_tf'
-      environment: 'prod_arm_tf'
+      environment: 'prod'
       component: 'cftapps_cluster_lb_backend_arm_tf'
       service_connection: 'dcd-cftapps-prod'
       storage_account_rg: 'core-infra-prod-rg'
@@ -345,38 +340,3 @@ stages:
                     test_pattern: apim.test.ts
                   ${{ else }}:
                     test_pattern: pipeline.test.ts
-
-# THIS IS TEMPORARY AND WILL GO ONCE WE MOVE TO HA APP GW'S
-  - stage: ARM to TF AppGW
-    jobs:
-      - job: TerraformPlanApply
-        pool:
-          vmImage: ${{ variables.agentPool }}
-        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-        steps:
-        - template: steps/terraform_prod_arm_tf.yaml@cnp-azuredevops-libraries-prod-arm-tf
-          parameters:
-            overrideAction: ${{ parameters.overrideAction }}
-            environment: ${{ deployment.environment }}
-            component: ${{ deployment.component }}
-            serviceConnection: ${{ deployment.service_connection }}
-            terraformInitSubscription: ${{ variables.terraformInitSubscription }}
-            product: ${{ variables.product }}
-      - ${{ if eq(deployment.pipeline_tests, true) }}:
-        - job: PipelineTests
-          pool:
-            vmImage: ${{ variables.agentPool }}
-          timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-          dependsOn: TerraformPlanApply
-          steps:
-            - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries-prod-arm-tf
-              parameters:
-                workingDirectory: $(Pipeline.Workspace)/s/azure-platform-terraform/scripts
-                junit_output_dir: $(Pipeline.Workspace)/s/azure-platform-terraform/environments/${{ deployment.environment }}/junit
-                environment: ${{ deployment.environment }}
-                product: ${{ variables.product }}
-                test_title: '${{ deployment.environment }}_${{ deployment.component }}'
-                ${{ if eq(deployment.component, 'apim') }}:
-                  test_pattern: apim.test.ts
-                ${{ else }}:
-                  test_pattern: pipeline.test.ts

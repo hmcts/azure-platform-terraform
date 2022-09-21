@@ -21,11 +21,11 @@ locals {
 module "app-gw" {
   source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=master"
 
-  yaml_path                  = "${path.cwd}/../../environments/prod_arm_tf/backend_lb_config.yaml"
+  yaml_path                  = "${path.cwd}/../../environments/prod/backend_lb_config_arm_to_tf.yaml"
   env                        = local.dns_zone
   location                   = var.location
-  private_ip_address         = var.app_gw_private_ip_address
-  backend_pool_ip_addresses  = var.cft_apps_cluster_ips
+  private_ip_address         = var.app_gw_private_ip_address_arm_to_tf
+  backend_pool_ip_addresses  = var.cft_apps_cluster_ips_arm_to_tf
   vault_name                 = local.key_vault_name
   vnet_rg                    = local.vnet_rg
   vnet_name                  = local.vnet_name

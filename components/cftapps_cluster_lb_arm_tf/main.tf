@@ -19,8 +19,8 @@ module "cftapps-frontend-cluster-lb" {
   env                        = var.env
   subscription               = var.subscription
   location                   = var.location
-  private_ip_address         = var.cft_apps_ag_ip_address
-  destinations               = var.cft_apps_cluster_ips
+  private_ip_address         = var.cft_apps_ag_ip_address_arm_to_tf
+  destinations               = var.cft_apps_cluster_ips_arm_to_tf
   frontends                  = var.frontends
   common_tags                = module.ctags.common_tags
   oms_env                    = var.oms_env

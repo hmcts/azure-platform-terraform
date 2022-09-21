@@ -21,7 +21,7 @@ locals {
 module "app-gw" {
   source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=master"
 
-  yaml_path                  = "${path.cwd}/../../environments/${local.env}/backend_lb_config.yaml"
+  yaml_path                  = "${path.cwd}/../../environments/prod_arm_tf/backend_lb_config.yaml"
   env                        = local.dns_zone
   location                   = var.location
   private_ip_address         = var.app_gw_private_ip_address

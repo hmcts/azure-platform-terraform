@@ -54,7 +54,13 @@ variable "ssl_mode" {
 variable "cft_apps_cluster_ips" {
   default = []
 }
+variable "cft_apps_cluster_ips_arm_to_tf" {
+  default = []
+}
 variable "cft_apps_ag_ip_address" {
+  default = []
+}
+variable "cft_apps_ag_ip_address_arm_to_tf" {
   default = []
 }
 variable "frontend_agw_private_ip_address" {
@@ -71,6 +77,10 @@ variable "sscscor_shutter" {
 }
 
 variable "app_gw_private_ip_address" {
+  default = []
+}
+
+variable "app_gw_private_ip_address_arm_to_tf" {
   default = []
 }
 

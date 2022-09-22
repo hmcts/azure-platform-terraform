@@ -318,3 +318,11 @@ gateways:
       - product: idam
         component: testing-support-api
         ssl_enabled: true
+
+    # ET
+      - product: et
+        component: cos
+      - product: et
+        component: msg-handler
+      - product: et
+        component: sya-api

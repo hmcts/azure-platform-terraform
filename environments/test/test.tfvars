@@ -1160,8 +1160,9 @@ frontends = [
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
   {
-    product          = "et-sya"
+    product          = "et"
     name             = "et-sya"
+    mode             = "Detection"
     custom_domain    = "et-sya.perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"

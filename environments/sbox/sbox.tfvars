@@ -3,10 +3,12 @@ location     = "uksouth"
 env          = "sbox"
 subscription = "sbox"
 
-app_gw_private_ip_address = ["10.2.13.122", "10.2.13.132"]
-data_subscription         = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
-privatedns_subscription   = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
-oms_env                   = "sandbox"
+hub_app_gw_private_ip_address  = ["10.10.200.212"]
+backend_agw_private_ip_address = ["10.2.13.112"]
+data_subscription              = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
+key_vault_subscription         = "b72ab7b7-723f-4b18-b6f6-03b0f2c6a1bb"
+privatedns_subscription        = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
+oms_env                        = "sandbox"
 
 #FrontDoor access policy
 add_access_policy = false
@@ -14,8 +16,10 @@ add_access_policy = false
 cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-sbox-rg"
 
-cft_apps_ag_ip_address = "10.2.13.124"
-cft_apps_cluster_ips   = ["10.2.9.250", "10.2.11.250"]
+frontend_agw_private_ip_address = "10.2.13.114"
+cft_apps_cluster_ips            = ["10.2.9.250", "10.2.11.250"]
+
+apim_appgw_backend_pool_fqdns = ["firewall-sbox-int-palo-cftapimgmt.uksouth.cloudapp.azure.com"]
 
 hub = "sbox"
 
@@ -29,6 +33,11 @@ frontends = [
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "client_id"
       },
@@ -227,6 +236,11 @@ frontends = [
         operator       = "Equals"
         selector       = "nonce"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "post_logout_redirect_uri"
+      },
     ]
   },
   {
@@ -360,6 +374,155 @@ frontends = [
     ]
   },
   {
+    product          = "idam"
+    name             = "idam-user-dashboard"
+    custom_domain    = "idam-user-dashboard.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "52.151.96.225/32",
+              "81.134.202.29/32",
+              "51.145.6.230/32",
+              "51.145.4.100/32",
+              "194.33.192.0/25",
+              "194.33.196.0/25",
+              "52.210.206.51/32",
+              "62.25.109.201/32",
+              "62.25.109.203/32",
+              "20.39.162.203/32",
+              "20.39.161.231/32",
+              "20.49.137.7/32",
+              "20.49.137.196/32"
+            ]
+          }
+        ]
+      }
+    ],
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.AuthId"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.Session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "idam-user-dashboard-session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "jwt"
+      },
+      {
+        match_variable = "QueryStringArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "refresh_token"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "refresh_token"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "response_type"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "scope"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      }
+    ]
+  },
+  {
     product          = "plum"
     name             = "plum"
     custom_domain    = "plum.sandbox.platform.hmcts.net"
@@ -393,10 +556,25 @@ frontends = [
     cache_enabled               = "false"
   },
   {
-    product                     = "labs"
-    name                        = "labs-louisehuyton-nodejs"
-    custom_domain               = "labs-louisehuyton-nodejs.sandbox.platform.hmcts.net"
-    backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-sandbox-platform-hmcts-net"
+    product          = "labs"
+    name             = "labs-louisehuyton-walkthrough"
+    custom_domain    = "labs-louisehuyton-walkthrough.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+  },
+  {
+    product          = "labs"
+    name             = "labs-zcwalkthrough-nodejs"
+    custom_domain    = "labs-zcwalkthrough-nodejs.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+  }
+]
+
+apim_appgw_exclusions = [
+  {
+    match_variable = "RequestArgNames"
+    operator       = "Equals"
+    selector       = "iss"
   }
 ]

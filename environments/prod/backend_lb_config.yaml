@@ -42,6 +42,12 @@ gateways:
       - product: pcq
         component: backend
 
+    # Log and Audit
+      - product: lau
+        component: case-backend
+      - product: lau
+        component: idam-backend
+
     # I&A
       - product: ia
         component: case-api
@@ -180,6 +186,8 @@ gateways:
         component: location-ref-api
       - product: rd
         component: caseworker-ref-api
+      - product: rd
+        component: commondata-api
 
     # Access Management
       - product: am
@@ -210,6 +218,8 @@ gateways:
     # xui
       - product: xui
         component: terms-and-conditions
+      - product: xui
+        component: activity-tracker-api
 
     # CMC
       - product: cmc
@@ -223,7 +233,10 @@ gateways:
         component: web-admin
         cookie_based_affinity: Enabled
         ssl_enabled: true
-
+      - product: idam
+        component: user-dashboard
+        ssl_enabled: true
+        
  # FACT
       - product: fact
         component: api
@@ -234,14 +247,13 @@ gateways:
         cookie_based_affinity: Enabled
         ssl_enabled: true
         host_name_prefix: docmosis
+        http_to_https_redirect: true
 
  # WA - Work Allocation
       - product: wa
         component: workflow-api
       - product: wa
         component: task-management-api
-      - product: wa
-        component: task-configuration-api
       - product: wa
         component: case-event-handler
       - product: wa
@@ -250,3 +262,50 @@ gateways:
  # CIVIL
       - product: civil
         component: service
+
+ # NFDIV
+      - product: nfdiv
+        component: case-api
+
+ # Adoption
+      - product: adoption
+        component: cos-api
+        
+ 
+# Private Law
+      - product: prl
+        component: cos
+      - product: prl
+        component: dgs
+        
+# HMC
+      - product: hmc
+        component: cft-hearing-service
+      - product: hmc
+        component: hmi-inbound-adapter
+      - product: hmc
+        component: hmi-outbound-adapter
+
+  - gateway_configuration:
+      host_name_suffix: service.core-compute-prod.internal
+      ssl_host_name_suffix: platform.hmcts.net
+      certificate_name: wildcard-platform-hmcts-net
+      private_ip_address: 10.13.32.110
+    app_configuration:
+      # ET
+      - product: et
+        component: cos
+      - product: et
+        component: msg-handler
+        
+      # TS
+      - product: ts
+        component: translation-service
+
+      # I&A
+      - product: ia
+        component: bail-case-api
+        
+      # Access Management
+      - product: am
+        component: judicial-booking-service

@@ -6,6 +6,10 @@ variable "subscription" {
   default = []
 }
 
+variable "key_vault_subscription" {
+  default = []
+}
+
 variable "env" {
   default = []
 }
@@ -50,7 +54,16 @@ variable "ssl_mode" {
 variable "cft_apps_cluster_ips" {
   default = []
 }
+variable "cft_apps_cluster_ips_arm_to_tf" {
+  default = []
+}
 variable "cft_apps_ag_ip_address" {
+  default = []
+}
+variable "cft_apps_ag_ip_address_arm_to_tf" {
+  default = []
+}
+variable "frontend_agw_private_ip_address" {
   default = []
 }
 variable "sscssya_shutter" {
@@ -64,6 +77,18 @@ variable "sscscor_shutter" {
 }
 
 variable "app_gw_private_ip_address" {
+  default = []
+}
+
+variable "app_gw_private_ip_address_arm_to_tf" {
+  default = []
+}
+
+variable "hub_app_gw_private_ip_address" {
+  default = []
+}
+
+variable "backend_agw_private_ip_address" {
   default = []
 }
 
@@ -105,4 +130,24 @@ variable "apim_sku_name" {
 
 variable "hub" {
   default = "sbox"
+}
+
+variable "waf_mode" {
+  default = "Detection"
+}
+
+variable "route_next_hop_type" {
+  default = "VirtualAppliance"
+}
+
+variable "apim_appgw_backend_pool_ips" {
+  default = []
+}
+
+variable "apim_appgw_backend_pool_fqdns" {
+  default = []
+}
+
+variable "apim_appgw_exclusions" {
+  default = []
 }

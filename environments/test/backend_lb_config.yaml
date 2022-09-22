@@ -5,7 +5,7 @@ gateways:
       host_name_suffix: service.core-compute-perftest.internal
       ssl_host_name_suffix: perftest.platform.hmcts.net
       certificate_name: wildcard-perftest-platform-hmcts-net
-      private_ip_address: 10.48.96.121
+      private_ip_address: 10.48.96.111
     app_configuration:
     # RPE
       - product: draft-store
@@ -206,6 +206,8 @@ gateways:
     # xui
       - product: xui
         component: terms-and-conditions
+      - product: xui
+        component: activity-tracker-api
 
     # Bulk scan and print
       - product: bulk-scan
@@ -269,8 +271,6 @@ gateways:
       - product: wa
         component: task-management-api
       - product: wa
-        component: task-configuration-api
-      - product: wa
         component: case-event-handler
       - product: wa
         component: task-monitor
@@ -284,14 +284,56 @@ gateways:
         component: cos
       - product: et
         component: msg-handler
-
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
+    ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING    
   - gateway_configuration:
       host_name_suffix: service.core-compute-perftest.internal
       ssl_host_name_suffix: perftest.platform.hmcts.net
       certificate_name: wildcard-perftest-platform-hmcts-net
-      private_ip_address: 10.48.96.127
+      private_ip_address: 10.48.96.114
     app_configuration:
     # IDAM
       - product: idam
         component: user-dashboard
         ssl_enabled: true
+      - product: idam
+        component: testing-support-api
+        ssl_enabled: true
+
+    # PrivateLaw(prl) cos api
+      - product: prl
+        component: cos
+      - product: prl
+        component: dgs
+
+    # Adoption COS API
+      - product: adoption
+        component: cos-api
+
+    # CNP
+      - product: plum
+        component: recipe-backend
+
+    # I&A
+      - product: ia
+        component: bail-case-api
+
+    # HMC
+      - product: hmc
+        component: cft-hearing-service
+      - product: hmc
+        component: hmi-inbound-adapter
+      - product: hmc
+        component: hmi-outbound-adapter
+    # ET
+      - product: et
+        component: sya-api
+    # SSCS
+      - product: sscs
+        component: hearings-api
+    # TS
+      - product: ts
+        component: translation-service

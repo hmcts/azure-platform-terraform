@@ -32,6 +32,8 @@ variables:
     value: 300
   - name: agentPool
     value: 'hmcts-cftptl-agent-pool'
+  - name: vmImage
+    value: 'ubuntu-latest'
   - name: build
     value: $(Build.BuildNumber)
   - name: product
@@ -58,6 +60,7 @@ parameters:
       service_connection: 'dcd-cftapps-sbox'
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
+      pipeline_tests: true
       dependsOn: 'Precheck'
 
     - deployment: 'demo_global'
@@ -66,7 +69,7 @@ parameters:
       service_connection: 'dcd-cftapps-demo'
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
-      dependsOn: 'Precheck'
+      dependsOn: 'sbox_global'
 
     - deployment: 'dev_global'
       environment: 'dev'
@@ -74,7 +77,7 @@ parameters:
       service_connection: 'dcd-cftapps-dev'
       storage_account_rg: 'core-infra-dev-rg'
       storage_account_name: 'cftappsdev'
-      dependsOn: 'Precheck'
+      dependsOn: 'sbox_global'
 
     - deployment: 'ithc_global'
       environment: 'ithc'
@@ -82,7 +85,8 @@ parameters:
       service_connection: 'dcd-cftapps-ithc'
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
-      dependsOn: 'Precheck'
+      pipeline_tests: true
+      dependsOn: 'sbox_global'
 
     - deployment: 'perftest_global'
       environment: 'test'
@@ -90,7 +94,8 @@ parameters:
       service_connection: 'dcd-cftapps-test'
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
-      dependsOn: 'Precheck'
+      pipeline_tests: true
+      dependsOn: 'sbox_global'
 
     - deployment: 'aat_global'
       environment: 'stg'
@@ -98,6 +103,7 @@ parameters:
       service_connection: 'dcd-cftapps-stg'
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
+      pipeline_tests: true
       dependsOn: 'sbox_global'
 
     - deployment: 'prod_global'
@@ -107,7 +113,6 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_global'
-
 
 stages:
   - stage: Precheck
@@ -138,3 +143,18 @@ stages:
                   serviceConnection: ${{ deployment.service_connection }}
                   terraformInitSubscription: ${{ variables.terraformInitSubscription }}
                   product: ${{ variables.product }}
+          - ${{ if eq(deployment.pipeline_tests, true) }}:
+            - job: PipelineTests
+              pool:
+                vmImage: ${{ variables.vmImage }}
+              timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+              dependsOn: TerraformPlanApply
+              steps:
+                - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
+                  parameters:
+                    workingDirectory: $(Pipeline.Workspace)/s/azure-platform-terraform/scripts
+                    junit_output_dir: $(Pipeline.Workspace)/s/azure-platform-terraform/environments/${{ deployment.environment }}/junit
+                    environment: ${{ deployment.environment }}
+                    product: ${{ variables.product }}
+                    test_title: '${{ deployment.environment }}_${{ deployment.component }}'
+                    test_pattern: pipeline.test.ts

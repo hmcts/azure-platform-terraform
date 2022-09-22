@@ -1,7 +1,5 @@
 locals {
 
-  dns_zone = (var.env == "sbox") ? "sandbox" : "${var.env}"
-
   gateways = yamldecode(data.local_file.configuration.content).gateways
 
   a_records = flatten([
@@ -27,4 +25,3 @@ module "privatedns" {
   resource_group_name = "core-infra-intsvc-rg"
   zone_name           = "service.core-compute-${local.dns_zone}.internal"
 }
-#

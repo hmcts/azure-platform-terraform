@@ -1,6 +1,5 @@
 locals {
-  env = (var.env == "aat") ? "stg" : "${(var.env == "perftest") ? "test" : "${var.env}"}"
-
+    
   dns_zone = (var.env == "sbox") ? "sandbox" : "${var.env}"
 
   gateways = yamldecode(data.local_file.configuration.content).gateways

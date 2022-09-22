@@ -1029,5 +1029,13 @@ frontends = [
     custom_domain    = "plum.ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
+  },
+  {
+    product          = "et"
+    name             = "et-sya"
+    mode             = "Detection"
+    custom_domain    = "et-sya.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
   }
 ]

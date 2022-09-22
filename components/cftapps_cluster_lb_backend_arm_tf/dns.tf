@@ -1,5 +1,5 @@
 locals {
-    
+
   dns_zone = (var.env == "sbox") ? "sandbox" : "${var.env}"
 
   gateways = yamldecode(data.local_file.configuration.content).gateways

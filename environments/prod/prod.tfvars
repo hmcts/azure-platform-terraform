@@ -5,16 +5,19 @@ subscription           = "prod"
 ssl_mode               = "FrontDoor"
 certificate_name_check = false
 
-app_gw_private_ip_address = ["10.13.32.120", "10.13.32.110"]
-data_subscription         = "8999dec3-0104-4a27-94ee-6588559729d1"
-privatedns_subscription   = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
-oms_env                   = "prod"
+app_gw_private_ip_address           = ["10.13.32.120", "10.13.32.110"]
+app_gw_private_ip_address_arm_to_tf = ["10.90.96.120", "10.90.96.110"]
+data_subscription                   = "8999dec3-0104-4a27-94ee-6588559729d1"
+privatedns_subscription             = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
+oms_env                             = "prod"
 
 cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-prod-rg"
 
-cft_apps_ag_ip_address = "10.13.32.122"
-cft_apps_cluster_ips   = ["10.13.15.250", "10.13.31.250"]
+cft_apps_ag_ip_address           = "10.13.32.122"
+cft_apps_ag_ip_address_arm_to_tf = "10.90.96.122"
+cft_apps_cluster_ips             = ["10.13.15.250", "10.13.31.250"]
+cft_apps_cluster_ips_arm_to_tf   = ["10.90.79.250", "10.90.95.250"]
 
 hub           = "prod"
 apim_sku_name = "Premium"
@@ -24,7 +27,7 @@ frontends = [
     name             = "plum"
     product          = "cnp"
     custom_domain    = "plum.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
     custom_rules = [
       {

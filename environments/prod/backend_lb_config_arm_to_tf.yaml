@@ -9,3 +9,13 @@ gateways:
       # CNP
       - product: plum
         component: recipe-backend
+
+  - gateway_configuration:
+      host_name_suffix: service.core-compute-prod.internal
+      ssl_host_name_suffix: platform.hmcts.net
+      certificate_name: wildcard-platform-hmcts-net
+      private_ip_address: 10.90.96.110
+    app_configuration:
+      # CNP
+      - product: plum
+        component: recipe-backend

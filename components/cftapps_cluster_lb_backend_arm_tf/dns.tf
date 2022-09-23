@@ -26,7 +26,7 @@ data "azurerm_private_dns_zone" "zone" {
 }
 
 resource "azurerm_private_dns_a_record" "appgw" {
-  for_each            = { for record in var.a_recordsets : record.name => record }
+  for_each            = { for record in local.a_records : record.name => record }
   name                = lower(each.value.name)
   zone_name           = data.azurerm_private_dns_zone.zone.name
   resource_group_name = "core-infra-intsvc-rg"

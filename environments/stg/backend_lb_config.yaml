@@ -140,6 +140,8 @@ gateways:
       - product: em
         component: hrs-api
       - product: em
+        component: ped-api
+      - product: em
         component: hrs-ingestor
       - product: dg
         component: docassembly

@@ -360,3 +360,7 @@ gateways:
     # CNP
       - product: plum
         component: recipe-backend
+
+    # Evidence Management
+      - product: em
+        component: ped-api

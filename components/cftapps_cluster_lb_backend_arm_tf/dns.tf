@@ -24,4 +24,5 @@ module "privatedns" {
   env                 = local.dns_zone
   resource_group_name = "core-infra-intsvc-rg"
   zone_name           = "service.core-compute-${local.dns_zone}.internal"
+  providers           = { azurerm = azurerm.privatedns }
 }

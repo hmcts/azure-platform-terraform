@@ -18,11 +18,20 @@ data "local_file" "configuration" {
   filename = "${path.cwd}/../../environments/${local.env}/backend_lb_config_arm_to_tf.yaml"
 }
 
-module "privatedns" {
-  source              = "git::https://github.com/hmcts/azure-private-dns.git//modules/azure-private-dns?ref=master"
-  a_recordsets        = local.a_records
-  env                 = local.dns_zone
+
+data "azurerm_private_dns_zone" "zone" {
+  provider            = azurerm.privatedns
+  name                = "service.core-compute-${local.dns_zone}.internal"
   resource_group_name = "core-infra-intsvc-rg"
-  zone_name           = "service.core-compute-${local.dns_zone}.internal"
-  providers           = { azurerm = azurerm.privatedns }
 }
+
+resource "azurerm_private_dns_a_record" "appgw" {
+  for_each            = { for record in local.a_records : record.name => record }
+  name                = lower(each.value.name)
+  zone_name           = data.azurerm_private_dns_zone.zone.name
+  resource_group_name = "core-infra-intsvc-rg"
+  ttl                 = 300
+  records             = each.value.record
+  provider            = azurerm.privatedns
+}
+

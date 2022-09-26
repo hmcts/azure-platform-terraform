@@ -9,6 +9,8 @@ gateways:
       # CNP
       - product: plum
         component: recipe-backend
+      - product: plum
+        component: recipe-backend3
 
   - gateway_configuration:
       host_name_suffix: service.core-compute-prod.internal

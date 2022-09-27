@@ -29,41 +29,13 @@ frontends = [
     custom_domain    = "plum.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
-    custom_rules = [
-      {
-        name     = "IPMatchWhitelist"
-        priority = 1
-        type     = "MatchRule"
-        action   = "Block"
-        match_conditions = [
-          {
-            match_variable     = "RemoteAddr"
-            operator           = "IPMatch"
-            negation_condition = true
-            match_values = [
-              "81.134.202.29/32",
-              "51.145.6.230/32",
-              "194.33.192.0/25",
-              "194.33.193.0/25",
-              "194.33.196.0/25",
-              "194.33.197.0/25",
-              "52.210.206.51/32",
-              "62.25.109.201/32",
-              "62.25.109.203/32",
-              "51.143.139.240/32",
-              "51.145.4.100/32"
-            ]
-          }
-        ]
-      },
-    ]
   },
   {
     product          = "div"
     name             = "div-dn"
     mode             = "Prevention"
     custom_domain    = "www.decree-nisi.apply-divorce.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "decree-nisi-apply-divorce-service-gov-uk"
     disabled_rules = {
       SQLI = [
@@ -140,7 +112,7 @@ frontends = [
     name             = "div-da"
     mode             = "Prevention"
     custom_domain    = "www.decree-absolute.apply-divorce.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "decree-absolute-apply-divorce-service-gov-uk"
     disabled_rules = {
       SQLI = [
@@ -207,7 +179,7 @@ frontends = [
     name             = "div-rfe"
     mode             = "Prevention"
     custom_domain    = "www.respond-divorce.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "respond-divorce-service-gov-uk"
     disabled_rules = {
       SQLI = [
@@ -274,7 +246,7 @@ frontends = [
     name             = "div-pfe"
     mode             = "Detection"
     custom_domain    = "www.apply-divorce.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-divorce-service-gov-uk"
     disabled_rules = {
       SQLI = [
@@ -374,7 +346,7 @@ frontends = [
     name             = "div-amend"
     mode             = "Detection"
     custom_domain    = "www.manage-application.apply-divorce.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "manage-application-apply-divorce-service-gov-uk"
     disabled_rules = {
       SQLI = [
@@ -474,7 +446,7 @@ frontends = [
     name             = "nfdiv-civil-partnership"
     mode             = "Detection"
     custom_domain    = "www.end-civil-partnership.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "end-civil-partnership-service-gov-uk"
     disabled_rules = {
       SQLI = [
@@ -585,7 +557,7 @@ frontends = [
     name             = "sscs-tribunals"
     mode             = "Prevention"
     custom_domain    = "www.appeal-benefit-decision.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "www-appeal-benefit-decision-service-gov-uk"
     disabled_rules = {
       SQLI = [
@@ -748,7 +720,7 @@ frontends = [
     name             = "sscs-tya"
     mode             = "Prevention"
     custom_domain    = "www.track-benefit-appeal.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "www-track-benefit-appeal-service-gov-uk"
     disabled_rules = {
       SQLI = [
@@ -801,7 +773,7 @@ frontends = [
     name             = "sscs-cor"
     mode             = "Prevention"
     custom_domain    = "www.manage.appeal-benefit-decision.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "www-manage-appeal-benefit-decision-service-gov-uk"
     disabled_rules = {
       SQLI = [
@@ -922,7 +894,7 @@ frontends = [
     name             = "xui-webapp"
     mode             = "Detection"
     custom_domain    = "manage-case.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "manage-case-platform-hmcts-net"
     disabled_rules = {
       SQLI = [
@@ -998,7 +970,7 @@ frontends = [
     name             = "xui-manage-org"
     mode             = "Detection"
     custom_domain    = "manage-org.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "manage-org-platform-hmcts-net"
     disabled_rules = {
       SQLI = [
@@ -1069,7 +1041,7 @@ frontends = [
     name             = "xui-approve-org"
     mode             = "Detection"
     custom_domain    = "administer-orgs.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "administer-orgs-platform-hmcts-net"
     disabled_rules = {
       SQLI = [
@@ -1111,7 +1083,7 @@ frontends = [
     name             = "xui-register-org"
     mode             = "Detection"
     custom_domain    = "register-org.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "register-org-platform-hmcts-net"
     disabled_rules = {
       SQLI = [
@@ -1148,7 +1120,7 @@ frontends = [
     name             = "cmc"
     mode             = "Prevention"
     custom_domain    = "www.moneyclaims.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "moneyclaims-service-gov-uk"
     disabled_rules = {
       SQLI = [
@@ -1235,7 +1207,7 @@ frontends = [
     name             = "cmc-legal"
     mode             = "Prevention"
     custom_domain    = "www.moneyclaim-legal.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "www-moneyclaim-legal-platform-hmcts-net"
     disabled_rules = {
       SQLI = [
@@ -1295,7 +1267,7 @@ frontends = [
     name             = "gateway-ccd"
     mode             = "Prevention"
     custom_domain    = "gateway.ccd.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "ccd-platform-hmcts-net"
     disabled_rules = {
       SQLI = [
@@ -1468,7 +1440,7 @@ frontends = [
     name             = "return-case-doc-ccd"
     mode             = "Detection"
     custom_domain    = "return-case-doc.ccd.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "ccd-platform-hmcts-net"
     global_exclusions = [
       {
@@ -1483,7 +1455,7 @@ frontends = [
     name             = "probate"
     mode             = "Prevention"
     custom_domain    = "www.apply-for-probate.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-for-probate-service-gov-uk"
     custom_rules = [
       {
@@ -1602,7 +1574,7 @@ frontends = [
     name             = "ia-aip"
     mode             = "Detection"
     custom_domain    = "www.appeal-immigration-asylum-decision.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "appeal-immigration-asylum-decision-service-gov-uk"
     global_exclusions = [
       {
@@ -1687,7 +1659,7 @@ frontends = [
     name             = "fees-register"
     mode             = "Prevention"
     custom_domain    = "fees-register.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "fees-register-platform-hmcts-net"
     www_redirect     = true
     custom_rules = [
@@ -1829,7 +1801,7 @@ frontends = [
     name             = "paybubble"
     mode             = "Prevention"
     custom_domain    = "paybubble.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "paybubble-platform-hmcts-net"
     www_redirect     = true
     global_exclusions = [
@@ -1895,7 +1867,7 @@ frontends = [
     name             = "manage-payments"
     mode             = "Detection"
     custom_domain    = "manage-payments.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "manage-payments-platform-hmcts-net"
     www_redirect     = true
   },
@@ -1904,7 +1876,7 @@ frontends = [
     name             = "payment-outcome"
     mode             = "Detection"
     custom_domain    = "paymentoutcome-web.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "paymentoutcome-web-platform-hmcts-net"
     www_redirect     = true
   },
@@ -1913,7 +1885,7 @@ frontends = [
     name             = "idam-web-public"
     custom_domain    = "hmcts-access.service.gov.uk"
     ssl_mode         = "AzureKeyVault"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "hmcts-access-service-gov-uk"
     cache_enabled    = "false"
     global_exclusions = [
@@ -2139,7 +2111,7 @@ frontends = [
     name             = "pcq"
     mode             = "Prevention"
     custom_domain    = "equality-and-diversity.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "equality-and-diversity-platform-hmcts-net"
     global_exclusions = [
       {
@@ -2245,7 +2217,7 @@ frontends = [
     name             = "lau"
     mode             = "Detection"
     custom_domain    = "log-and-audit.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "log-and-audit-platform-hmcts-net"
     global_exclusions = [
       {
@@ -2283,7 +2255,7 @@ frontends = [
     name             = "fact"
     mode             = "Detection"
     custom_domain    = "www.find-court-tribunal.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "find-court-tribunal-service-gov-uk"
   },
   {
@@ -2291,7 +2263,7 @@ frontends = [
     name             = "fact-admin"
     mode             = "Detection"
     custom_domain    = "admin.find-court-tribunal.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "find-court-tribunal-service-gov-uk"
   },
   {
@@ -2299,7 +2271,7 @@ frontends = [
     name             = "fact-redirect"
     mode             = "Detection"
     custom_domain    = "courttribunalfinder.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     ssl_mode         = "AzureKeyVault"
     certificate_name = "courttribunalfinder-service-gov-uk"
   },
@@ -2308,7 +2280,7 @@ frontends = [
     name             = "jui-redirect"
     mode             = "Detection"
     custom_domain    = "jcm.judiciary.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "jcm-judiciary-uk"
     ssl_mode         = "AzureKeyVault"
     disabled_rules = {
@@ -2328,7 +2300,7 @@ frontends = [
     product                     = "idam"
     name                        = "idam-web-admin"
     custom_domain               = "idam-web-admin.platform.hmcts.net"
-    backend_domain              = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain              = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name            = "idam-web-admin-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
     cache_enabled               = "false"
@@ -2455,7 +2427,7 @@ frontends = [
     product          = "idam"
     name             = "idam-user-dashboard"
     custom_domain    = "idam-user-dashboard.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "idam-user-dashboard-platform-hmcts-net"
     cache_enabled    = "false"
     custom_rules = [
@@ -2593,7 +2565,7 @@ frontends = [
     name             = "adoption"
     mode             = "Detection"
     custom_domain    = "apply-for-adoption.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-for-adoption-platform-hmcts-net"
     global_exclusions = [
       {

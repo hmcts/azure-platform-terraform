@@ -1009,6 +1009,14 @@ frontends = [
     cache_enabled    = "false"
   },
   {
+    product          = "cft-api-mgmt"
+    name             = "cft-api-mgmt"
+    custom_domain    = "cft-api-mgmt.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftapimgmtithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    cache_enabled    = "false"
+  },
+  {
     name           = "paymentoutcome-web"
     mode           = "Detection"
     custom_domain  = "paymentoutcome-web.ithc.platform.hmcts.net"

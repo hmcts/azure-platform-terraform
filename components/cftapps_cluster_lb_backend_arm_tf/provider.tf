@@ -25,3 +25,10 @@ provider "local" {
   version = "=2.2.3"
 }
 
+
+provider "azurerm" {
+  features {}
+  skip_provider_registration = true
+  subscription_id            = var.privatedns_subscription
+  alias                      = "privatedns"
+}

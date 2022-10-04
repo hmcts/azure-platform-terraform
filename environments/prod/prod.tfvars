@@ -2649,7 +2649,7 @@ frontends = [
     product          = "et"
     name             = "et-sya"
     mode             = "Detection"
-    custom_domain    = "et-sya.claim-employment-tribunals.service.gov.uk"
+    custom_domain    = "claim-employment-tribunals.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-claim-employment-tribunals-service-gov-uk"
   },

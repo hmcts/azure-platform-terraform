@@ -99,8 +99,6 @@ gateways:
         component: tya-notif
       - product: sscs
         component: ccd-callback-orchestrator
-      - product: sscs
-        component: hearings-api
 
     # FPLA
       - product: fpl
@@ -366,3 +364,7 @@ gateways:
     # Evidence Management
       - product: em
         component: ped-api
+        
+    # SSCS
+      - product: sscs
+        component: hearings-api

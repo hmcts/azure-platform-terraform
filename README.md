@@ -26,7 +26,6 @@ Within the variable `frontends` add the basic object to the array:
 ```
 
 ### WAF Exclusions
-
 If you have blocks on the Web Application Firewall(WAF) you may want to exclude them to allow traffic.
 Please first see if the block is really required to exclude and if there is an alternative route first to keep as much protection in place.
 

@@ -41,18 +41,22 @@ Enabling availability zones on the existing application gateways will require do
   - palo_ips: IP address for the new `frontendappgateway`. Specify same values for both uksouth and ukwest
   - index: Pick the next available number
   
-#### Palo Alto
-- Update the [`hub-pan-baseline.j2`](https://github.com/hmcts/rdo-terraform-hub-dmz/blob/master/modules/palo-alto/ansible/templates/hub-pan-baseline.j2) configuration file with the following
-  - Locate the server object entry (`name/ip address`) for the current frontend application gateway. Directly below this entry, add a server object for the new `frontendappgateway` using a `-2` name suffix   
-  - Locate the address group object entry (`<member>AKS-<env>-APPGW</member>`) for the current frontend application. Add an entry for server object created above 
+#### Panorama
+- Update the [`address objects`](https://github.com/hmcts/hub-panorama-terraform/tree/master/components/configuration/groups/objects/address-objects) terraform file with the following
+  - Locate the current address object entry (`AKS-<ENV>APPGW`) for the current frontend application gateway. Directly below this entry, add an address object for the new `frontendappgateway` using a `CFT-` name suffix with the new IP address [`example here`](https://github.com/hmcts/hub-panorama-terraform/pull/168/files#diff-0c42cd3d1ea545d1d517f97c83b27056c2ccb88b6c3b38ebc481e4efdf0cdd8a)
+  - Locate the [`address group`](https://github.com/hmcts/hub-panorama-terraform/blob/master/components/configuration/groups/objects/address-groups/03-address-groups-nonprod.tf) entry (`AKS-<ENV>-APPGW`) for the current frontend application. Add an entry for server object created above (`CFT-AKS-<ENV>-APPGW`) [`example here`](https://github.com/hmcts/hub-panorama-terraform/pull/168/files#diff-526b80efaa7838cfbedc705a9fd7597d84ad49d04691315a8dcb88a611eea27d)
+  - Locate the [`security policy rule`](https://github.com/hmcts/hub-panorama-terraform/blob/master/components/configuration/groups/policies/security-policy-rules/05-policy-rules-nonprod.tf) for the current AppGw and add in the new address object for the new AppGw [`example here`](https://github.com/hmcts/hub-panorama-terraform/pull/168/files#diff-05ae6c1cde1822a3a1ab839cbd6f072c75bec4a02ffbbcee5cef83c19b0ed302)
 
-See [Example PR](https://github.com/hmcts/rdo-terraform-hub-dmz/pull/549)
+See [`Example Panorma PR`](https://github.com/hmcts/hub-panorama-terraform/pull/168)
 
-After merging PR for the changes above, confirm the [hmcts.rdo-terraform-hub-dmz](https://dev.azure.com/hmcts/PlatformOperations/_build?definitionId=226) pipeline run complete successfully without errors.
+After merging PR for the changes above, confirm the [hmcts.hub-terraform-hub-dmz](https://dev.azure.com/hmcts/PlatformOperations/_build?definitionId=226) pipeline run complete successfully without errors for the Azure Firewall
+Confirm the [`hmcts.hub-panorama-terraform](https://dev.azure.com/hmcts/PlatformOperations/_build?definitionId=527) pipeline run complete successfully without errors for Panorama
 - Confirm the following were created in Azure Firewall in both uksouth and ukwest
   - A `public IP address` associated with the regional Azure firewall
   - A destination NAT `NAT rule collection` entry translating inbound traffic (from Azure Front Door) to the newly created public IP to `frontendappgateway' private IP address
-- Confirm on the Palo Alto, the server and address group objects for the `frontendappgateway` were created
+- You now need to push out the panorama changes on the panoramas themselves.
+  - login to the panorama portal while on VPN on both [`UK South`](https://panorama-prod-uks-0.platform.hmcts.net/) and [`UK West`](https://panorama-prod-ukw-0.platform.hmcts.net/)
+  - In the top right hand corner, click on the Commit button, you will need to commit and push to the the devices. You can watch a more in depth guide on how to do this [`here in the KT session video`](https://cjscommonplatform.sharepoint.com/:v:/s/DTSPlatformOperationsTeam/EZxMJk7wOipBnXZX0YfKiTsBew4Niw-5EcaiqwvSXVp1Dw?e=zxWbI0)
 
 
 ### 3. Test frontendappgateway traffic routing 
@@ -95,11 +99,10 @@ Prior to switching over traffic to the new application gateways, test the fronte
   - Update the entry for the existing frontend application gateway and change the `palo_ips` to the new frontend application gateway
   - After merging PR for the changes above, confirm the [hmcts.rdo-terraform-hub-dmz](https://dev.azure.com/hmcts/PlatformOperations/_build?definitionId=226) pipeline run complete successfully without errors  
 
-#### Palo Alto
-- Update the [`hub-pan-baseline.j2`](https://github.com/hmcts/rdo-terraform-hub-dmz/blob/master/modules/palo-alto/ansible/templates/hub-pan-baseline.j2) configuration file with the change below  
-  - Remove the previously created server object entry (`name/ip address`) for new `frontendappgateway` (one with the `-2` name suffix)
-  - Remove the previously created address group object entries (`<member>AKS-<env>-APPGW-2</member>`) for the new frontend application gateway   
-  - Update the IP address entry of the existing server object to point to the `frontendappgateway` private IP address  
+#### Panorama
+- [`Example PR`](https://github.com/hmcts/hub-panorama-terraform/pull/171/files) on cleanup of Panorama for old AppGw's
+- login to the panorama portal while on VPN on both [`UK South`](https://panorama-prod-uks-0.platform.hmcts.net/) and [`UK West`](https://panorama-prod-ukw-0.platform.hmcts.net/)
+  - In the top right hand corner, click on the Commit button, you will need to commit and push to the the devices. You can watch a more in depth guide on how to do this [`here in the KT session video`](https://cjscommonplatform.sharepoint.com/:v:/s/DTSPlatformOperationsTeam/EZxMJk7wOipBnXZX0YfKiTsBew4Niw-5EcaiqwvSXVp1Dw?e=zxWbI0)
     
 See [Example PR](https://github.com/hmcts/rdo-terraform-hub-dmz/pull/553)
 

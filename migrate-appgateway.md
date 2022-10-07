@@ -52,7 +52,7 @@ Enabling availability zones on the existing application gateways will require do
 See [`Example Panorma PR`](https://github.com/hmcts/hub-panorama-terraform/pull/168)
 
 After merging PR for the changes above, confirm the [hmcts.hub-terraform-hub-dmz](https://dev.azure.com/hmcts/PlatformOperations/_build?definitionId=226) pipeline run complete successfully without errors for the Azure Firewall
-Confirm the [`hmcts.hub-panorama-terraform](https://dev.azure.com/hmcts/PlatformOperations/_build?definitionId=527) pipeline run complete successfully without errors for Panorama
+and the [`hmcts.hub-panorama-terraform](https://dev.azure.com/hmcts/PlatformOperations/_build?definitionId=527) pipeline run completes successfully without errors for Panorama
 - Confirm the following were created in Azure Firewall in both uksouth and ukwest
   - A `public IP address` associated with the regional Azure firewall
   - A destination NAT `NAT rule collection` entry translating inbound traffic (from Azure Front Door) to the newly created public IP to `frontendappgateway' private IP address

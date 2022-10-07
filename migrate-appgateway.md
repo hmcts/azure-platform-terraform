@@ -58,7 +58,7 @@ and the [`hmcts.hub-panorama-terraform](https://dev.azure.com/hmcts/PlatformOper
   - A destination NAT `NAT rule collection` entry translating inbound traffic (from Azure Front Door) to the newly created public IP to `frontendappgateway' private IP address
 - You now need to push out the panorama changes on the panoramas themselves.
   - login to the panorama portal while on VPN on both [`UK South`](https://panorama-prod-uks-0.platform.hmcts.net/) and [`UK West`](https://panorama-prod-ukw-0.platform.hmcts.net/)
-  - In the top right hand corner, click on the Commit button, you will need to commit and push to the the devices. You can watch a more in depth guide on how to do this [`here in the KT session video`](https://cjscommonplatform.sharepoint.com/:v:/s/DTSPlatformOperationsTeam/EZxMJk7wOipBnXZX0YfKiTsBew4Niw-5EcaiqwvSXVp1Dw?e=zxWbI0)
+  - In the top right hand corner, click on the Commit button, you will need to commit and push to the the devices. You can watch a more in depth guide on how to do this [`here in the KT session video from 45 minutes on`](https://cjscommonplatform.sharepoint.com/sites/DTSPlatformOperationsTeam/_layouts/15/stream.aspx?id=%2Fsites%2FDTSPlatformOperationsTeam%2FShared%20Documents%2FKnowledgeShare%2FRedSquadKTSessions%2FPanorama%2C%20Terraform%20and%20the%20Azure%20DevOps%20pipeline%2D20220218%5F101923%2DMeeting%20Recording%2Emp4)
 
 
 ### 3. Test frontendappgateway traffic routing 
@@ -104,8 +104,7 @@ Prior to switching over traffic to the new application gateways, test the fronte
 #### Panorama
 - [`Example PR`](https://github.com/hmcts/hub-panorama-terraform/pull/171/files) on cleanup of Panorama for old AppGw's
 - login to the panorama portal while on VPN on both [`UK South`](https://panorama-prod-uks-0.platform.hmcts.net/) and [`UK West`](https://panorama-prod-ukw-0.platform.hmcts.net/)
-  - In the top right hand corner, click on the Commit button, you will need to commit and push to the the devices. You can watch a more in depth guide on how to do this [`here in the KT session video`](https://cjscommonplatform.sharepoint.com/:v:/s/DTSPlatformOperationsTeam/EZxMJk7wOipBnXZX0YfKiTsBew4Niw-5EcaiqwvSXVp1Dw?e=zxWbI0)
-- Further information on the panoramas can be found in the [`hub-panorama-terraform repo additonal materials section`](https://github.com/hmcts/hub-panorama-terraform#additional-materials)
+  - In the top right hand corner, click on the Commit button, you will need to commit and push to the the devices. You can watch a more in depth guide on how to do this [`here in the KT session video from 45 minutes on`](https://cjscommonplatform.sharepoint.com/sites/DTSPlatformOperationsTeam/_layouts/15/stream.aspx?id=%2Fsites%2FDTSPlatformOperationsTeam%2FShared%20Documents%2FKnowledgeShare%2FRedSquadKTSessions%2FPanorama%2C%20Terraform%20and%20the%20Azure%20DevOps%20pipeline%2D20220218%5F101923%2DMeeting%20Recording%2Emp4)
     
 See [Example PR](https://github.com/hmcts/rdo-terraform-hub-dmz/pull/553)
 

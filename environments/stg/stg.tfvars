@@ -4,10 +4,11 @@ env                    = "aat"
 subscription           = "stg"
 certificate_name_check = false
 
-app_gw_private_ip_address = ["10.10.161.121", "10.10.161.125"]
-data_subscription         = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
-privatedns_subscription   = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
-oms_env                   = "nonprod"
+app_gw_private_ip_address      = ["10.10.161.121", "10.10.161.125"]
+backend_agw_private_ip_address = ["10.10.161.100", "10.10.161.101"]
+data_subscription              = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
+privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
+oms_env                        = "nonprod"
 
 hub = "prod"
 
@@ -21,8 +22,9 @@ shutter_apps = [
   "TODO"
 ]
 
-cft_apps_ag_ip_address = "10.10.161.123"
-cft_apps_cluster_ips   = ["10.10.143.250", "10.10.159.250"]
+cft_apps_ag_ip_address          = "10.10.161.123"
+frontend_agw_private_ip_address = "10.10.161.102"
+cft_apps_cluster_ips            = ["10.10.143.250", "10.10.159.250"]
 
 frontends = [
   {

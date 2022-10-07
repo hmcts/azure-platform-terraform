@@ -19,6 +19,7 @@ locals {
 }
 
 data "azurerm_key_vault" "example" {
+  provider = control
   name                = local.key_vault_name
   resource_group_name = "enterprise-${var.env}-rg"
 }

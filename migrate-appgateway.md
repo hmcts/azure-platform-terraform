@@ -47,6 +47,8 @@ Enabling availability zones on the existing application gateways will require do
   - Locate the [`address group`](https://github.com/hmcts/hub-panorama-terraform/blob/master/components/configuration/groups/objects/address-groups/03-address-groups-nonprod.tf) entry (`AKS-<ENV>-APPGW`) for the current frontend application. Add an entry for server object created above (`CFT-AKS-<ENV>-APPGW`) [`example here`](https://github.com/hmcts/hub-panorama-terraform/pull/168/files#diff-526b80efaa7838cfbedc705a9fd7597d84ad49d04691315a8dcb88a611eea27d)
   - Locate the [`security policy rule`](https://github.com/hmcts/hub-panorama-terraform/blob/master/components/configuration/groups/policies/security-policy-rules/05-policy-rules-nonprod.tf) for the current AppGw and add in the new address object for the new AppGw [`example here`](https://github.com/hmcts/hub-panorama-terraform/pull/168/files#diff-05ae6c1cde1822a3a1ab839cbd6f072c75bec4a02ffbbcee5cef83c19b0ed302)
 
+- Further information on the panoramas can be found in the [`hub-panorama-terraform repo additonal materials section`](https://github.com/hmcts/hub-panorama-terraform#additional-materials)
+
 See [`Example Panorma PR`](https://github.com/hmcts/hub-panorama-terraform/pull/168)
 
 After merging PR for the changes above, confirm the [hmcts.hub-terraform-hub-dmz](https://dev.azure.com/hmcts/PlatformOperations/_build?definitionId=226) pipeline run complete successfully without errors for the Azure Firewall
@@ -103,6 +105,7 @@ Prior to switching over traffic to the new application gateways, test the fronte
 - [`Example PR`](https://github.com/hmcts/hub-panorama-terraform/pull/171/files) on cleanup of Panorama for old AppGw's
 - login to the panorama portal while on VPN on both [`UK South`](https://panorama-prod-uks-0.platform.hmcts.net/) and [`UK West`](https://panorama-prod-ukw-0.platform.hmcts.net/)
   - In the top right hand corner, click on the Commit button, you will need to commit and push to the the devices. You can watch a more in depth guide on how to do this [`here in the KT session video`](https://cjscommonplatform.sharepoint.com/:v:/s/DTSPlatformOperationsTeam/EZxMJk7wOipBnXZX0YfKiTsBew4Niw-5EcaiqwvSXVp1Dw?e=zxWbI0)
+- Further information on the panoramas can be found in the [`hub-panorama-terraform repo additonal materials section`](https://github.com/hmcts/hub-panorama-terraform#additional-materials)
     
 See [Example PR](https://github.com/hmcts/rdo-terraform-hub-dmz/pull/553)
 

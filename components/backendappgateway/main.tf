@@ -13,8 +13,12 @@ module "ctags" {
 
 data "azurerm_subscription" "current" {}
 
+data "azurerm_subscription" "sandbox" {
+  subscription_id = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
+}
+
 locals {
-  key_vault_name = "acme${replace(lower(data.azurerm_subscription.current.display_name), "-", "")}"
+  key_vault_name = "acme${replace(lower(data.azurerm_subscription.sandbox.display_name), "-", "")}"
   dns_zone       = (var.env == "sbox") ? "sandbox" : var.env
 }
 

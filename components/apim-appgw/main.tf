@@ -14,9 +14,19 @@ module "logworkspace" {
 
 data "azurerm_subscription" "current" {}
 
+data "azurerm_subscription" "sandbox" {
+  subscription_id = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
+}
+
 locals {
-  key_vault_name = "acmedcdcftapps${var.subscription}"
+  key_vault_name = "acme${replace(lower(data.azurerm_subscription.sandbox.display_name), "-", "")}"
   dns_zone       = (var.env == "sbox") ? "sandbox" : var.env
+}
+
+data "azurerm_key_vault" "example" {
+  provider            = azurerm.control
+  name                = local.key_vault_name
+  resource_group_name = "enterprise-${var.env}-rg"
 }
 
 module "app-gw" {
@@ -27,19 +37,18 @@ module "app-gw" {
     azurerm.kv  = azurerm.kv
   }
 
-  source                     = "git::https://github.com/hmcts/terraform-module-apim-application-gateway.git?ref=main"
+  source                     = "git::https://github.com/hmcts/terraform-module-apim-application-gateway.git?ref=DTSPO-9746/fix-kv"
   yaml_path                  = "${path.cwd}/../../environments/${local.env}/apim_appgw_config.yaml"
   env                        = local.dns_zone
   location                   = var.location
   private_ip_address         = var.hub_app_gw_private_ip_address
   backend_pool_ip_addresses  = var.apim_appgw_backend_pool_ips
   backend_pool_fqdns         = var.apim_appgw_backend_pool_fqdns
-  vault_name                 = local.key_vault_name
+  key_vault_id                       = data.azurerm_key_vault.example.id
   vnet_rg                    = local.vnet_rg
   vnet_name                  = local.vnet_name
   common_tags                = module.ctags.common_tags
   log_analytics_workspace_id = module.logworkspace.workspace_id
-  key_vault_resource_group   = local.key_vault_resource_group
   subnet_name                = local.subnet_name
   waf_mode                   = var.waf_mode
   exclusions                 = var.apim_appgw_exclusions

@@ -44,7 +44,7 @@ module "app-gw" {
   private_ip_address         = var.hub_app_gw_private_ip_address
   backend_pool_ip_addresses  = var.apim_appgw_backend_pool_ips
   backend_pool_fqdns         = var.apim_appgw_backend_pool_fqdns
-  key_vault_id                       = data.azurerm_key_vault.example.id
+  key_vault_id               = data.azurerm_key_vault.example.id
   vnet_rg                    = local.vnet_rg
   vnet_name                  = local.vnet_name
   common_tags                = module.ctags.common_tags

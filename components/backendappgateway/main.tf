@@ -22,7 +22,7 @@ locals {
   dns_zone       = (var.env == "sbox") ? "sandbox" : var.env
 }
 
-data "azurerm_key_vault" "example" {
+data "azurerm_key_vault" "acme" {
   provider            = azurerm.control
   name                = local.key_vault_name
   resource_group_name = "enterprise-${var.env}-rg"
@@ -36,7 +36,7 @@ module "backendappgateway" {
   location                           = var.location
   private_ip_address                 = var.backend_agw_private_ip_address
   backend_pool_ip_addresses          = var.cft_apps_cluster_ips
-  key_vault_id                       = data.azurerm_key_vault.example.id
+  key_vault_id                       = data.azurerm_key_vault.acme.id
   vnet_rg                            = local.vnet_rg
   vnet_name                          = local.vnet_name
   common_tags                        = module.ctags.common_tags

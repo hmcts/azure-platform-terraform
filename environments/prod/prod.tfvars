@@ -2651,10 +2651,10 @@ frontends = [
     ]
   },
   {
-    product          = "et"
-    name             = "et-sya"
-    mode             = "Detection"
-    custom_domain    = "www.claim-employment-tribunals.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
+    product        = "et"
+    name           = "et-sya"
+    mode           = "Detection"
+    custom_domain  = "www.claim-employment-tribunals.service.gov.uk"
+    backend_domain = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
   },
 ]

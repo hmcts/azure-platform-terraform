@@ -276,6 +276,24 @@ parameters:
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_shutter'
 
+    - deployment: 'prod_frontendappgateway'
+      environment: 'prod'
+      component: 'frontendappgateway'
+      service_connection: 'dcd-cftapps-prod'
+      storage_account_rg: 'core-infra-prod-rg'
+      storage_account_name: 'cftappsprod'
+      dependsOn: 'sbox_frontendappgateway'
+      pipeline_tests: true
+
+    - deployment: 'prod_backendappgateway'
+      environment: 'prod'
+      component: 'backendappgateway'
+      service_connection: 'dcd-cftapps-prod'
+      storage_account_rg: 'core-infra-prod-rg'
+      storage_account_name: 'cftappsprod'
+      dependsOn: 'sbox_backendappgateway'
+      pipeline_tests: true
+
 #    - deployment: 'prod_private_dns'
 #      environment: 'prod'
 #      component: 'cftapps_private_dns'

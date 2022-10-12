@@ -1,1 +1,1 @@
-# This file is not used currently, please use backend_lb_config_arm_to_tf.yaml for prod backend LB config
+backend_lb_config_arm_to_tf.yaml

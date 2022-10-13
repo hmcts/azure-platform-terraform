@@ -2658,6 +2658,6 @@ frontends = [
     mode             = "Detection"
     custom_domain    = "www.claim-employment-tribunals.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-prod.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-claim-employment-tribunals-service-gov-uk"
+    certificate_name = "claim-employment-tribunals-service-gov-uk"
   },
 ]

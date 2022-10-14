@@ -370,10 +370,9 @@ gateways:
         component: translation-service
     # FIS
       - product: fis
-        component: fis-bulk-scan-api
-        # FIS
+        component: bulk-scan-api
       - product: fis
-        component: fis-cos-api  
+        component: cos-api  
         
       # SIDAM
       - product: idam

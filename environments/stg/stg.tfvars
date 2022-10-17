@@ -30,7 +30,7 @@ frontends = [
   {
     name           = "plum"
     custom_domain  = "plum.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat-2.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
     disabled_rules = {}
   },

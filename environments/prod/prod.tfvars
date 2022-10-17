@@ -29,7 +29,7 @@ frontends = [
     name             = "plum"
     product          = "cnp"
     custom_domain    = "plum.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-cft-prod.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
   },
   {

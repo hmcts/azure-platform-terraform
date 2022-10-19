@@ -199,24 +199,6 @@ parameters:
       dependsOn: 'sbox_apim'
       pipeline_tests: true
 
-    - deployment: 'stg_cftapps_cluster_lb'
-      environment: 'stg'
-      component: 'cftapps_cluster_lb'
-      service_connection: 'dcd-cftapps-stg'
-      storage_account_rg: 'core-infra-stg-rg'
-      storage_account_name: 'cftappsstg'
-      dependsOn: 'sbox_frontendappgateway'
-      pipeline_tests: true
-
-    - deployment: 'stg_cftapps_cluster_lb_backend'
-      environment: 'stg'
-      component: 'cftapps_cluster_lb_backend'
-      service_connection: 'dcd-cftapps-stg'
-      storage_account_rg: 'core-infra-stg-rg'
-      storage_account_name: 'cftappsstg'
-      dependsOn: 'sbox_backendappgateway'
-      pipeline_tests: true
-
     - deployment: 'stg_private_dns'
       environment: 'stg'
       component: 'cftapps_private_dns'

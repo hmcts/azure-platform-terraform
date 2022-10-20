@@ -17,7 +17,7 @@ shutter_rg = "shutter-app-prod-rg"
 
 cft_apps_ag_ip_address           = "10.13.32.122"
 cft_apps_ag_ip_address_arm_to_tf = "10.90.96.122"
-cft_apps_cluster_ips             = ["10.13.15.250", "10.13.31.250"]
+cft_apps_cluster_ips             = ["10.90.79.250", "10.90.95.250"]
 cft_apps_cluster_ips_arm_to_tf   = ["10.90.79.250", "10.90.95.250"]
 frontend_agw_private_ip_address  = "10.90.96.12"
 

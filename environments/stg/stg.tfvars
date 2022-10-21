@@ -4,7 +4,6 @@ env                    = "aat"
 subscription           = "stg"
 certificate_name_check = false
 
-app_gw_private_ip_address      = ["10.10.161.121", "10.10.161.125"]
 backend_agw_private_ip_address = ["10.10.161.100", "10.10.161.101"]
 data_subscription              = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
@@ -22,7 +21,6 @@ shutter_apps = [
   "TODO"
 ]
 
-cft_apps_ag_ip_address          = "10.10.161.123"
 frontend_agw_private_ip_address = "10.10.161.102"
 cft_apps_cluster_ips            = ["10.10.143.250", "10.10.159.250"]
 
@@ -38,7 +36,7 @@ frontends = [
     name           = "div-dn"
     custom_domain  = "decree-nisi-aks.aat.platform.hmcts.net"
     mode           = "Prevention"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -72,7 +70,7 @@ frontends = [
     name           = "div-da"
     custom_domain  = "decree-absolute-aks.aat.platform.hmcts.net"
     mode           = "Prevention"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -101,7 +99,7 @@ frontends = [
     name           = "div-rfe"
     custom_domain  = "respond-divorce-aks.aat.platform.hmcts.net"
     mode           = "Prevention"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -130,7 +128,7 @@ frontends = [
     name           = "div-pfe"
     custom_domain  = "petitioner-frontend-aks.aat.platform.hmcts.net"
     mode           = "Prevention"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -191,7 +189,7 @@ frontends = [
     name           = "sscs-tribunals"
     custom_domain  = "benefit-appeal.aat.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -310,7 +308,7 @@ frontends = [
     name           = "sscs-cor"
     mode           = "Detection"
     custom_domain  = "sscs-cor.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -408,76 +406,76 @@ frontends = [
     name           = "sscs-tya"
     mode           = "Detection"
     custom_domain  = "track-appeal.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "xui-webapp"
     mode           = "Detection"
     custom_domain  = "manage-case.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "xui-manage-org"
     mode           = "Detection"
     custom_domain  = "manage-org.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "xui-approve-org"
     mode           = "Detection"
     custom_domain  = "administer-orgs.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "xui-register-org"
     mode           = "Detection"
     custom_domain  = "register-org.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "civil-citizen-ui"
     mode           = "Detection"
     custom_domain  = "civil-citizen-ui.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "cmc"
     mode           = "Detection"
     custom_domain  = "moneyclaims.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "cmc-legal"
     mode           = "Detection"
     custom_domain  = "moneyclaims-legal.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "fact"
     mode           = "Detection"
     custom_domain  = "fact.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "fact-admin"
     mode           = "Detection"
     custom_domain  = "fact-admin.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "rpts"
     mode           = "Prevention"
     custom_domain  = "rpts.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     custom_rules = [
       {
         name     = "IPMatchWhitelist"
@@ -514,7 +512,7 @@ frontends = [
     name           = "nfdiv"
     mode           = "Detection"
     custom_domain  = "nfdiv.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
   {
@@ -534,42 +532,42 @@ frontends = [
     name           = "et-sya"
     mode           = "Detection"
     custom_domain  = "et-sya.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "ia-aip"
     mode           = "Detection"
     custom_domain  = "immigration-appeal.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "wa-proto-frontend"
     mode           = "Detection"
     custom_domain  = "wa-proto-frontend.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "gateway-ccd"
     mode           = "Detection"
     custom_domain  = "gateway-ccd.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "return-case-doc-ccd"
     mode           = "Detection"
     custom_domain  = "return-case-doc-ccd.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "pcq"
     mode           = "Detection"
     custom_domain  = "pcq.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     custom_rules = [
       {
         name     = "RumBeaconExclusion"
@@ -604,19 +602,19 @@ frontends = [
     name           = "lau"
     mode           = "Detection"
     custom_domain  = "lau.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "adoption"
     custom_domain  = "adoption.aat.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "adoption-web"
     custom_domain  = "adoption-web.aat.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -629,7 +627,7 @@ frontends = [
     name           = "probate"
     custom_domain  = "probate.aat.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     custom_rules = [
       {
         name     = "RumBeaconExclusion"
@@ -668,7 +666,7 @@ frontends = [
   {
     name           = "idam-web-public"
     custom_domain  = "idam-web-public.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -887,7 +885,7 @@ frontends = [
     name           = "paybubble"
     custom_domain  = "paybubble.aat.platform.hmcts.net"
     mode           = "Prevention"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {
@@ -951,14 +949,14 @@ frontends = [
     name           = "bar"
     custom_domain  = "bar.aat.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "fees-register"
     custom_domain  = "fees-register.aat.platform.hmcts.net"
     mode           = "Prevention"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
     custom_rules = [
       {
@@ -1097,7 +1095,7 @@ frontends = [
   {
     name                        = "idam-web-admin"
     custom_domain               = "idam-web-admin.aat.platform.hmcts.net"
-    backend_domain              = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain              = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-aat-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
     custom_rules = [
@@ -1226,7 +1224,7 @@ frontends = [
   {
     name             = "idam-user-dashboard"
     custom_domain    = "idam-user-dashboard.aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
     custom_rules = [
       {
@@ -1397,7 +1395,7 @@ frontends = [
     name           = "ds-ui"
     custom_domain  = "ds-ui.aat.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -1410,7 +1408,7 @@ frontends = [
     name           = "fis-ds-web"
     custom_domain  = "fis-ds-web.aat.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -1423,7 +1421,7 @@ frontends = [
     name           = "privatelaw"
     custom_domain  = "privatelaw.aat.platform.hmcts.net"
     mode           = "Detection"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -1451,7 +1449,7 @@ frontends = [
     name           = "paymentoutcome-web"
     mode           = "Detection"
     custom_domain  = "paymentoutcome-web.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-aat.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     www_redirect   = true
   }
 ]

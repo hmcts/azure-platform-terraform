@@ -5,7 +5,7 @@ gateways:
       host_name_suffix: service.core-compute-prod.internal
       ssl_host_name_suffix: platform.hmcts.net
       certificate_name: wildcard-platform-hmcts-net
-      private_ip_address: 10.90.96.120
+      private_ip_address: 10.90.96.20
     app_configuration:
     # RPE
       - product: draft-store
@@ -290,7 +290,7 @@ gateways:
       host_name_suffix: service.core-compute-prod.internal
       ssl_host_name_suffix: platform.hmcts.net
       certificate_name: wildcard-platform-hmcts-net
-      private_ip_address: 10.90.96.110
+      private_ip_address: 10.90.96.21
     app_configuration:
       # plum
       - product: plum

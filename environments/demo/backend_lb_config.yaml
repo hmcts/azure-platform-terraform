@@ -297,6 +297,10 @@ gateways:
     # Log and Audit
       - product: lau
         component: idam-backend
+      - product: lau
+        component: idam-backend-int
+      - product: lau
+        component: case-backend-int        
 
     # AAC (CDM)
       - product: aac

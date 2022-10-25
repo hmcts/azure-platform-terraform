@@ -879,6 +879,11 @@ frontends = [
         operator       = "Equals"
         selector       = "post_logout_redirect_uri"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "id_token_hint"
+      },
     ]
   },
   {

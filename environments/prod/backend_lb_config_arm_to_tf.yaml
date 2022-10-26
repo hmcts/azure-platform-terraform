@@ -314,3 +314,7 @@ gateways:
       # Access Management
       - product: am
         component: judicial-booking-service
+       
+      # SSCS
+      - product: sscs
+        component: hearings-api

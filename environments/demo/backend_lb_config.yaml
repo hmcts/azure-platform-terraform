@@ -295,10 +295,6 @@ gateways:
       - product: ccpay
         component: notifications-service
         
-    # Protected Characteristics Questions
-      - product: pcq
-        component: backend-int
-        
     # Log and Audit
       - product: lau
         component: idam-backend
@@ -306,6 +302,10 @@ gateways:
         component: idam-backend-int
       - product: lau
         component: case-backend-int        
+
+    # Protected Characteristics Questions
+      - product: pcq
+        component: backend-int
 
     # AAC (CDM)
       - product: aac

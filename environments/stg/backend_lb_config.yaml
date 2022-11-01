@@ -344,6 +344,8 @@ gateways:
         component: cos-api
       - product: fis
         component: bulk-scan-api  
+      - product: fis
+        component: hmc-api
         
     # HMC
       - product: hmc

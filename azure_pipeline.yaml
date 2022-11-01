@@ -266,14 +266,6 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
 
-    - deployment: 'demo_cftapps_cluster_lb_backend'
-      environment: 'demo'
-      component: 'cftapps_cluster_lb_backend'
-      service_connection: 'dcd-cftapps-demo'
-      storage_account_rg: 'core-infra-demo-rg'
-      storage_account_name: 'cftappsdemo'
-      dependsOn: 'sbox_backendappgateway'
-
 #    - deployment: 'prod_private_dns'
 #      environment: 'prod'
 #      component: 'cftapps_private_dns'

@@ -139,13 +139,6 @@ parameters:
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_apim'
 
-    - deployment: 'demo_cftapps_cluster_lb_backend'
-      environment: 'demo'
-      component: 'cftapps_cluster_lb_backend'
-      service_connection: 'dcd-cftapps-demo'
-      storage_account_rg: 'core-infra-demo-rg'
-      storage_account_name: 'cftappsdemo'
-      dependsOn: 'sbox_backendappgateway'
 
     - deployment: 'demo_private_dns'
       environment: 'demo'
@@ -233,22 +226,6 @@ parameters:
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_backendappgateway'
       pipeline_tests: true
-
-    - deployment: 'prod_cftapps_cluster_lb_arm_tf'
-      environment: 'prod'
-      component: 'cftapps_cluster_lb_arm_tf'
-      service_connection: 'dcd-cftapps-prod'
-      storage_account_rg: 'core-infra-prod-rg'
-      storage_account_name: 'cftappsprod'
-      dependsOn: 'sbox_frontendappgateway'
-
-    - deployment: 'prod_cftapps_cluster_lb_backend_arm_tf'
-      environment: 'prod'
-      component: 'cftapps_cluster_lb_backend_arm_tf'
-      service_connection: 'dcd-cftapps-prod'
-      storage_account_rg: 'core-infra-prod-rg'
-      storage_account_name: 'cftappsprod'
-      dependsOn: 'sbox_backendappgateway'
 
     - deployment: 'prod_shutter'
       environment: 'prod'

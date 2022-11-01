@@ -332,6 +332,11 @@ frontends = [
         operator       = "Equals"
         selector       = "post_logout_redirect_uri"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "id_token_hint"
+      },
     ]
   },
   {
@@ -841,6 +846,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
       }
     ]
   },

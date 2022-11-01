@@ -382,6 +382,8 @@ gateways:
         component: bulk-scan-api
       - product: fis
         component: cos-api  
+      - product: fis
+        component: hmc-api 
         
       # SIDAM
       - product: idam

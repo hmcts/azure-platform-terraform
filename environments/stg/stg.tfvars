@@ -1016,6 +1016,11 @@ frontends = [
         selector       = "__redirect"
       },
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "fee-register-admin-web-cookie-preferences"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "rf"

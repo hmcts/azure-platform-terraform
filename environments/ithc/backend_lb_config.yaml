@@ -318,7 +318,11 @@ gateways:
       - product: idam
         component: testing-support-api
         ssl_enabled: true
-
+        
+    # Access Management
+      - product: am
+        component: judicial-booking-service
+        
     # ET
       - product: et
         component: cos

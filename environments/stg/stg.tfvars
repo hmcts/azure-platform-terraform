@@ -887,6 +887,14 @@ frontends = [
     ]
   },
   {
+    product        = "idam"
+    name           = "hmcts-access"
+    mode           = "Detection"
+    custom_domain  = "hmcts-access.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+
+  },
+  {
     name           = "paybubble"
     custom_domain  = "paybubble.aat.platform.hmcts.net"
     mode           = "Prevention"

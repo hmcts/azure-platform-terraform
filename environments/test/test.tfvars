@@ -403,6 +403,14 @@ frontends = [
     ]
   },
   {
+    product        = "idam"
+    name           = "hmcts-access"
+    mode           = "Detection"
+    custom_domain  = "hmcts-access.perftest.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+
+  },
+  {
     name           = "probate"
     custom_domain  = "probate.perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]

@@ -340,6 +340,14 @@ frontends = [
     ]
   },
   {
+    product        = "idam"
+    name           = "hmcts-access"
+    mode           = "Detection"
+    custom_domain  = "hmcts-access.ithc.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+
+  },
+  {
     name           = "civil-citizen-ui"
     mode           = "Detection"
     custom_domain  = "civil-citizen-ui.ithc.platform.hmcts.net"

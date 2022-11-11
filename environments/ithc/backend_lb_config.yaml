@@ -238,9 +238,6 @@ gateways:
       - product: idam
         component: user-dashboard
         ssl_enabled: true
-      - product: idam
-        component: hmcts-access
-        ssl_enabled: true
 
     # CMC
       - product: cmc
@@ -320,6 +317,9 @@ gateways:
     # SIDAM
       - product: idam
         component: testing-support-api
+        ssl_enabled: true
+      - product: idam
+        component: hmcts-access
         ssl_enabled: true
         
     # Access Management

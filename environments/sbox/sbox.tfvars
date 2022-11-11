@@ -249,11 +249,12 @@ frontends = [
     ]
   },
   {
-    product        = "idam"
-    name           = "hmcts-access"
-    mode           = "Detection"
-    custom_domain  = "hmcts-access.sandbox.platform.hmcts.net"
-    backend_domain = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    product          = "idam"
+    name             = "hmcts-access"
+    mode             = "Detection"
+    custom_domain    = "hmcts-access.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
 
   },
   {

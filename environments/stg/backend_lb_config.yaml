@@ -328,10 +328,10 @@ gateways:
         component: sya-api
 
     # SPTRIBS
-          - product: sptribs
-            component: case-api
-          - product: sptribs
-            component: dss-backend
+      - product: sptribs
+        component: case-api
+      - product: sptribs
+        component: dss-backend
 
     # IDAM
       - product: idam

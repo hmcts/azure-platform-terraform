@@ -278,8 +278,6 @@ gateways:
     # Civil
       - product: civil
         component: service
-      - product: civil
-        component: general-applications
 
     # ET
       - product: et
@@ -339,3 +337,6 @@ gateways:
     # TS
       - product: ts
         component: translation-service
+    # Civil
+    -   product: civil
+        component: general-applications

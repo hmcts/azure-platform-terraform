@@ -262,8 +262,6 @@ gateways:
  # CIVIL
       - product: civil
         component: service
-      - product: civil
-        component: general-applications
 
  # NFDIV
       - product: nfdiv
@@ -320,3 +318,7 @@ gateways:
       # Access Management
       - product: am
         component: judicial-booking-service
+
+      # Civil
+      - product: civil
+        component: general-applications

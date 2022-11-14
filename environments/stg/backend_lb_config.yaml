@@ -261,8 +261,6 @@ gateways:
      # Civil
       - product: civil
         component: service
-      - product: civil
-        component: general-applications
 
       # Work Allocation
       - product: wa
@@ -372,3 +370,6 @@ gateways:
     # SSCS
       - product: sscs
         component: hearings-api
+    # Civil
+      - product: civil
+        component: general-applications

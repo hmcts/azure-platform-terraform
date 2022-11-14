@@ -221,6 +221,12 @@ gateways:
       - product: nfdiv
         component: case-api
 
+    # SPTRIBS
+`     - product: sptribs
+        component: case-api
+      - product: sptribs
+        component: dss-backend
+
       # xui
       - product: xui
         component: terms-and-conditions

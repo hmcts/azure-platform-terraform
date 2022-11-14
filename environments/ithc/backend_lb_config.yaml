@@ -273,8 +273,6 @@ gateways:
     # Civil
       - product: civil
         component: service
-      - product: civil
-        component: general-applications
 
       # RPTS
       - product: rpts
@@ -332,3 +330,6 @@ gateways:
         component: msg-handler
       - product: et
         component: sya-api
+    # Civil
+      - product: civil
+        component: general-applications

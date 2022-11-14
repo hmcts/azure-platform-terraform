@@ -261,6 +261,8 @@ gateways:
      # Civil
       - product: civil
         component: service
+      - product: civil
+        component: general-applications
 
       # Work Allocation
       - product: wa

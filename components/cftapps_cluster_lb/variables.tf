@@ -1,1 +1,0 @@
-../../environments/variables.tf

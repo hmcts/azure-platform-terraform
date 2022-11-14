@@ -267,6 +267,12 @@ gateways:
       - product: nfdiv
         component: case-api
 
+# SPTRIBS
+      - product: sptribs
+        component: case-api
+      - product: sptribs
+        component: dss-backend
+
  # Adoption
       - product: adoption
         component: cos-api

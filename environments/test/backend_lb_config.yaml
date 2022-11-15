@@ -337,3 +337,6 @@ gateways:
     # TS
       - product: ts
         component: translation-service
+    # Civil
+      -   product: civil
+          component: general-applications

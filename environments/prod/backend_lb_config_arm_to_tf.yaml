@@ -317,4 +317,3 @@ gateways:
         
       # Access Management
       - product: am
-        component: judicial-booking-service

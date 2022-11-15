@@ -327,12 +327,6 @@ gateways:
       - product: et
         component: sya-api
 
-    # SPTRIBS
-      - product: sptribs
-        component: case-api
-      - product: sptribs
-        component: dss-backend
-
     # IDAM
       - product: idam
         component: user-dashboard
@@ -379,3 +373,9 @@ gateways:
     # Civil
       - product: civil
         component: general-applications
+
+    # SPTRIBS
+      - product: sptribs
+        component: case-api
+      - product: sptribs
+        component: dss-backend

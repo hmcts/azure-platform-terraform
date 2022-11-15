@@ -322,3 +322,9 @@ gateways:
       # Civil
       - product: civil
         component: general-applications
+
+      # SPTRIBS
+      - product: sptribs
+        component: case-api
+      - product: sptribs
+        component: dss-backend

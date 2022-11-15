@@ -336,3 +336,6 @@ gateways:
         component: msg-handler
       - product: et
         component: sya-api
+    # Civil
+      - product: civil
+        component: general-applications

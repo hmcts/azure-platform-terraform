@@ -370,3 +370,6 @@ gateways:
     # SSCS
       - product: sscs
         component: hearings-api
+    # Civil
+      - product: civil
+        component: general-applications

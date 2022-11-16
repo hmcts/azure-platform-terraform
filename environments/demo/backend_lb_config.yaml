@@ -392,3 +392,9 @@ gateways:
       - product: idam
         component: hmcts-access
         ssl_enabled: true
+
+      # SPTRIBS
+      - product: sptribs
+        component: case-api
+      - product: sptribs
+        component: dss-backend

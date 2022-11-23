@@ -318,6 +318,9 @@ gateways:
       - product: idam
         component: testing-support-api
         ssl_enabled: true
+      - product: idam
+        component: hmcts-access
+        ssl_enabled: true
         
     # Access Management
       - product: am

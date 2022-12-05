@@ -5,7 +5,7 @@ locals {
 }
 
 module "landing_zone" {
-  source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=master"
+  source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=DTSPO-10835/global-azurerm-2.99"
 
   common_tags                = module.ctags.common_tags
   env                        = var.env

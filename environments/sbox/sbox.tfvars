@@ -550,6 +550,14 @@ frontends = [
     disabled_rules   = {}
   },
   {
+    product          = "toffee"
+    name             = "toffee"
+    custom_domain    = "toffee.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
+  {
     product          = "hmi"
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.sandbox.platform.hmcts.net"

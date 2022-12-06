@@ -19,7 +19,7 @@ locals {
 }
 
 module "backendappgateway" {
-  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=DTSPO-10835/azurerm-2.99"
+  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=terraform-v2.99"
 
   yaml_path                          = "${path.cwd}/../../environments/${local.env}/backend_lb_config.yaml"
   env                                = local.dns_zone

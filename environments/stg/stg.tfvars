@@ -565,7 +565,7 @@ frontends = [
   },
   {
     name           = "pcq"
-    mode           = "Prevention"
+    mode           = "Detection"
     custom_domain  = "pcq.aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     global_exclusions = [

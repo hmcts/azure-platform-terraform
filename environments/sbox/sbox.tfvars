@@ -556,7 +556,7 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
-    cache_enabled    = false
+    # cache_enabled    = false
   },
   {
     product          = "hmi"

@@ -24,14 +24,14 @@ resources:
   repositories:
     - repository: cnp-azuredevops-libraries
       type: github
-      ref: refs/heads/master
+      ref: refs/heads/jgw/parallel_run_test
       name: hmcts/cnp-azuredevops-libraries
       endpoint: 'hmcts'
 variables:
   - name: timeoutInMinutes
     value: 300
   - name: agentPool
-    value: 'hmcts-cftptl-agent-pool'
+    value: 'hmcts-sandbox-agent-pool'
   - name: vmImage
     value: 'ubuntu-latest'
   - name: build

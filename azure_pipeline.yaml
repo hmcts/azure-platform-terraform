@@ -145,7 +145,7 @@ parameters:
       service_connection: 'dcd-cftapps-demo'
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
-      dependsOn: 'Precheck'
+      dependsOn: 'sbox_frontendappgateway'
 
     - deployment: 'demo_backendappgateway'
       environment: 'demo'
@@ -153,7 +153,7 @@ parameters:
       service_connection: 'dcd-cftapps-demo'
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
-      dependsOn: 'Precheck'
+      dependsOn: 'sbox_backendappgateway'
 
     - deployment: 'demo_private_dns'
       environment: 'demo'

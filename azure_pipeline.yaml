@@ -78,6 +78,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
+      pipeline_tests: true
 
     - deployment: 'sbox_apim'
       environment: 'sbox'
@@ -130,6 +131,7 @@ parameters:
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_private_dns'
+      pipeline_tests: true
 
     - deployment: 'ithc_apim'
       environment: 'ithc'
@@ -162,6 +164,7 @@ parameters:
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_private_dns'
+      pipeline_tests: true
 
     - deployment: 'demo_apim'
       environment: 'demo'
@@ -197,6 +200,7 @@ parameters:
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_private_dns'
+      pipeline_tests: true
 
     - deployment: 'test_apim'
       environment: 'test'
@@ -214,6 +218,7 @@ parameters:
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_private_dns'
+      pipeline_tests: true
 
     - deployment: 'stg_apim'
       environment: 'stg'
@@ -275,6 +280,7 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_private_dns'
+      pipeline_tests: true
 
     - deployment: 'prod_apim'
       environment: 'prod'

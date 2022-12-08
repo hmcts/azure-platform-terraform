@@ -1,4 +1,5 @@
 #cloud-config
+#Note - updating this causes VMs to restart
 package_upgrade: true
 
 runcmd:

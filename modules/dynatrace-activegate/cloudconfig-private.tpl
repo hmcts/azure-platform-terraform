@@ -1,4 +1,5 @@
 #cloud-config for private ActiveGate synthethic monitoring
+#Note - updating this causes VMs to restart
 package_upgrade: true
 
 runcmd:

@@ -136,6 +136,18 @@ stages:
             pool:  ${{ variables.agentPool }}
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
             steps:
+              - task: Bash@3
+                displayName: run bash commands on internal infrastructure for build test
+                inputs:
+                  targetType: 'inline'
+                  script: |
+                    curl -v ifconfig.co
+                    ls -laht
+                    pwd
+                    mkdir scripts/
+                    echo "pwd" > scripts/test.sh
+                    chmod +x scripts/test.sh
+      
               - template: steps/terraform.yaml@cnp-azuredevops-libraries
                 parameters:
                   overrideAction: ${{ parameters.overrideAction }}

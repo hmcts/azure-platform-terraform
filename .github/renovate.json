@@ -34,8 +34,7 @@
                 "github-releases"
             ],
             "matchPackageNames": [
-                "antonbabenko/pre-commit-terraform",
-                "pre-commit/pre-commit-hooks"
+                "antonbabenko/pre-commit-terraform"
             ],
             "extractVersion": "^(?<version>v\\d+\\.\\d+\\.\\d+)$",
             "versioning": "regex:^v(?<major>\\d+)(\\.(?<minor>\\d+)\\.(?<patch>\\d+))?$"

@@ -141,7 +141,7 @@ stages:
                 inputs:
                   targetType: 'inline'
                   script: |
-                    curl -v ifconfig.co
+                    curl -v icanhazip.com
                     ls -laht
                     pwd
                     mkdir scripts/

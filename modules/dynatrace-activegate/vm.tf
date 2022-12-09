@@ -93,7 +93,8 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
     username   = local.adminuser
     public_key = data.azurerm_key_vault_secret.ssh_public_key.value
   }
-
+  
+  # Please note that custom_data updates will cause VMs to restart
   custom_data = data.template_cloudinit_config.config.rendered
 
   source_image_reference {

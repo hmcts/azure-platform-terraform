@@ -102,4 +102,4 @@ The shuttering service currently requires an ACME certificate, you will need to 
 ## Custom Data Updates
 Please note that custom_data updates will cause VMs to restart.
 
-For example updates to modules/dynatrace-activegate/cloudconfig-private.tpl and cloudconfig.tpl
+For example updates to [cloudconfig-private.tpl](https://github.com/hmcts/azure-platform-terraform/blob/master/modules/dynatrace-activegate/cloudconfig-private.tpl) & [cloudconfig.tpl](https://github.com/hmcts/azure-platform-terraform/blob/master/modules/dynatrace-activegate/cloudconfig.tpl)

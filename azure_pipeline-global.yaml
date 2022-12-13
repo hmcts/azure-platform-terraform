@@ -127,6 +127,7 @@ stages:
               keyvaultName: 'infra-vault-nonprod'
               keyvaultSecret: 'azure-devops-token'
               serviceConnection: 'azurerm-sandbox'
+              overrideAction: ${{ parameters.overrideAction }}
 
   - ${{ each deployment in parameters.environment_components }}:
       - stage: ${{ deployment.deployment }}

@@ -13,7 +13,7 @@ module "ctags" {
 data "azurerm_subscription" "current" {}
 
 module "frontendappgateway" {
-  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=terraform-azurerm-v3"
+  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
 
   env                                = var.env
   subscription                       = var.subscription

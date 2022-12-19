@@ -1556,5 +1556,12 @@ frontends = [
     custom_domain  = "paymentoutcome-web.aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     www_redirect   = true
+  },
+  {
+    name           = "em-icp"
+    mode           = "Detection"
+    custom_domain  = "em-icp.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+
   }
 ]

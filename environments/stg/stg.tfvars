@@ -1558,6 +1558,7 @@ frontends = [
     www_redirect   = true
   },
   {
+    product        = "em"
     name           = "em-icp"
     mode           = "Detection"
     custom_domain  = "em-icp.aat.platform.hmcts.net"

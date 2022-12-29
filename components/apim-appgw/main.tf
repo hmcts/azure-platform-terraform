@@ -3,7 +3,7 @@ module "ctags" {
   environment  = var.env
   product      = var.product
   builtFrom    = var.builtFrom
-  expiresAfter = var.expiresAfter 
+  expiresAfter = var.expiresAfter
 }
 
 module "logworkspace" {

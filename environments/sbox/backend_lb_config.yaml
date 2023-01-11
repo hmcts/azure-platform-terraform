@@ -77,6 +77,8 @@ gateways:
         component: matthewsearle01-v3
       - product: "labs"
         component: jefex7
+      - product: "labs"
+        component: jasonpaige
         
 
     # SIDAM 

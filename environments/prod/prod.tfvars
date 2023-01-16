@@ -2665,5 +2665,12 @@ frontends = [
     custom_domain    = "www.claim-employment-tribunals.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "claim-employment-tribunals-service-gov-uk"
+  },
+  {
+    name             = "dtsse-ardoq-adapter"
+    product          = "dtsse"
+    custom_domain    = "dtsse-ardoq-adapter.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-platform-hmcts-net"
   }
 ]

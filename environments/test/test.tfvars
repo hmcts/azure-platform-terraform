@@ -141,7 +141,7 @@ frontends = [
           ]
         },
       ]
-    }
+  },
   {
     name           = "fact"
     custom_domain  = "fact.perftest.platform.hmcts.net"

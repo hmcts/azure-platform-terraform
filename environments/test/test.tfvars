@@ -111,7 +111,7 @@ frontends = [
       custom_domain  = "rpts.perftest.platform.hmcts.net"
       mode           = "Detection"
       backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
-  custom_rules = [
+      custom_rules = [
         {
           name     = "IPMatchWhitelist"
           priority = 1

@@ -78,8 +78,6 @@ gateways:
       - product: "labs"
         component: jefex7
       - product: "labs"
-        component: jasonpaige
-      - product: "labs"
         component: hw469
       - product: "labs"
         component: StuartBJustice

@@ -235,7 +235,7 @@ gateways:
 
     # RPTS
       - product: rpts
-      component: api
+        component: api
 
     # NFDIV
       - product: nfdiv

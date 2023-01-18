@@ -80,7 +80,7 @@ gateways:
       - product: "labs"
         component: hw469
       - product: "labs"
-        component: StuartBJustice
+        component: stuartblabs
 
     # SIDAM 
       - product: idam

@@ -237,7 +237,7 @@ gateways:
       - product: rpts
         component: api
 
-      # NFDIV
+    # NFDIV
       - product: nfdiv
         component: case-api
 

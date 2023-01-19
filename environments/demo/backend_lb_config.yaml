@@ -398,3 +398,7 @@ gateways:
         component: case-api
       - product: sptribs
         component: dss-backend
+
+      # RPTS
+      - product: rpts
+        component: api

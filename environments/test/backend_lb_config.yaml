@@ -343,3 +343,6 @@ gateways:
     # Civil
       -   product: civil
           component: general-applications
+    # RPTS
+      - product: rpts
+        component: api

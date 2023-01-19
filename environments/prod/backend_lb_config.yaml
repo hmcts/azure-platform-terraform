@@ -322,3 +322,7 @@ gateways:
       # SPTRIBS
       - product: sptribs
         component: case-api
+
+      # DTSSE
+      - product: dtsse
+        component: ardoq-adapter

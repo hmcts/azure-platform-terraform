@@ -311,6 +311,14 @@ gateways:
       - product: ts
         component: translation-service
 
+      # FIS
+      - product: fis
+        component: bulk-scan-api
+      - product: fis
+        component: cos-api
+      - product: fis
+        component: hmc-api
+
       # I&A
       - product: ia
         component: bail-case-api

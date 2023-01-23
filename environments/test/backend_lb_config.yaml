@@ -340,6 +340,13 @@ gateways:
     # TS
       - product: ts
         component: translation-service
+    # FIS
+      - product: fis
+        component: bulk-scan-api
+      - product: fis
+        component: cos-api
+      - product: fis
+        component: hmc-api
     # Civil
       -   product: civil
           component: general-applications

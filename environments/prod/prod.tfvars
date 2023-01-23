@@ -2673,5 +2673,12 @@ frontends = [
     custom_domain    = "dtsse-ardoq-adapter.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "PostParamName"
+      }
+    ]
   }
 ]

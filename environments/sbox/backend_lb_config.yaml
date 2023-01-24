@@ -81,6 +81,8 @@ gateways:
         component: hw469
       - product: "labs"
         component: StuartBJustice
+      - product: "labs"
+        component: raraybould
 
     # SIDAM 
       - product: idam

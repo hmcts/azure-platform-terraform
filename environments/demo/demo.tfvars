@@ -31,5 +31,12 @@ frontends = [
     backend_domain   = ["firewall-nonprodi-palo-cftapimgmtdemo.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
     cache_enabled    = "false"
+  },
+  {
+    product          = "plum-public"
+    name             = "plum-public"
+    custom_domain    = "plum-public.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
   }
 ]

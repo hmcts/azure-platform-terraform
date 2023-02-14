@@ -176,7 +176,7 @@ gateways:
       - product: em
         component: showcase
       - product: em
-        component: ccdorc
+        component: ccd-orchestrator
       - product: em
         component: icp
       - product: em

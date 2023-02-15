@@ -138,6 +138,11 @@ frontends = [
         selector       = "code"
       },
       {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "scope"
+      },
+      {
         match_variable = "RequestBodyPostArgNames",
         operator       = "Equals",
         selector       = "description"

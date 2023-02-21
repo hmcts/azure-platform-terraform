@@ -186,7 +186,7 @@ gateways:
       - product: em
         component: stitching
       - product: em
-        component: ccdorc
+        component: ccd-orchestrator
       - product: em
         component: showcase
       - product: em

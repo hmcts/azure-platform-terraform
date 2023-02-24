@@ -1515,17 +1515,17 @@ frontends = [
     ]
   },
   {
-      name           = "fis-ds-update-web"
-      custom_domain  = "fis-ds-update-web.aat.platform.hmcts.net"
-      mode           = "Detection"
-      backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
-      global_exclusions = [
-        {
-          match_variable = "QueryStringArgNames"
-          operator       = "Equals"
-          selector       = "rf"
-        },
-      ]
+    name           = "fis-ds-update-web"
+    custom_domain  = "fis-ds-update-web.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
   },
   {
     name           = "sptribs-frontend"

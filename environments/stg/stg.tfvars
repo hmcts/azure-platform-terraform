@@ -459,7 +459,7 @@ frontends = [
   },
   {
     name           = "fact"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "fact.aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 

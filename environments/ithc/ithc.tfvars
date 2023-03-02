@@ -465,7 +465,6 @@ frontends = [
                 selector       = "_oauth2_proxy"
               }
             ]
-
   },
   {
     name           = "fact-admin"

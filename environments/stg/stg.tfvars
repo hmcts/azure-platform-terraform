@@ -485,7 +485,6 @@ frontends = [
         selector       = "iss"
       },
     ]
-
   },
   {
     name           = "fact-admin"

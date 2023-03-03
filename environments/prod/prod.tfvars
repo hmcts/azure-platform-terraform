@@ -2360,6 +2360,7 @@ frontends = [
             selector       = "_oauth2_proxy"
           }
         ]
+
   },
   {
     product          = "fact"

@@ -402,3 +402,7 @@ gateways:
       # RPTS
       - product: rpts
         component: api
+
+      # CNP
+      - product: cnp
+        component: recipe-backend

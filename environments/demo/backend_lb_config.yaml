@@ -404,5 +404,5 @@ gateways:
         component: api
 
       # CNP
-      - product: cnp
+      - product: plum
         component: recipe-backend

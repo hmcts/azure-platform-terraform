@@ -763,6 +763,12 @@ frontends = [
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
   },
   {
+    name           = "judicial-payments"
+    mode           = "Detection"
+    custom_domain  = "judicial-payments.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "adoption"
     custom_domain  = "adoption.aat.platform.hmcts.net"
     mode           = "Detection"

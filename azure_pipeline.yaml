@@ -15,7 +15,7 @@ resources:
   repositories:
   - repository: cnp-azuredevops-libraries
     type: github
-    ref: refs/heads/install-needed-module
+    ref: refs/heads/master
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
 

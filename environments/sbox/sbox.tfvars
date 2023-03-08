@@ -590,6 +590,13 @@ frontends = [
   },
   {
     product          = "labs"
+    name             = "labs-ozzyib-walkthrough"
+    custom_domain    = "labs-ozzyib-walkthrough.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+  },
+  {
+    product          = "labs"
     name             = "labs-zcwalkthrough-nodejs"
     custom_domain    = "labs-zcwalkthrough-nodejs.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]

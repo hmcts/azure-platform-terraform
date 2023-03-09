@@ -610,14 +610,6 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   },
-  {
-    product          = "labs-goldenpath-tyler"
-    name             = "labs-goldenpath-tyler"
-    custom_domain    = "labs-goldenpath-tyler.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-labsgoldenpathtyler.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
 ]
 
 apim_appgw_exclusions = [

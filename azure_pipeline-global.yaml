@@ -151,7 +151,7 @@ stages:
               vmImage: ${{ variables.vmImage }}
             timeoutInMinutes: ${{ variables.timeoutInMinutes }}
             dependsOn: TerraformPlanApply
-            condition: eq(${{ deployment.pipeline_tests}}, true) 
+            condition: eq('${{ deployment.pipeline_tests }}', 'true') 
             steps:
               - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
                 parameters:

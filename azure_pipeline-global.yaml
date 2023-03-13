@@ -145,7 +145,6 @@ stages:
                   serviceConnection: ${{ deployment.service_connection }}
                   terraformInitSubscription: ${{ variables.terraformInitSubscription }}
                   product: ${{ variables.product }}
-          # - ${{ if eq(deployment.pipeline_tests, true) }}:
           - job: PipelineTests
             pool:
               vmImage: ${{ variables.vmImage }}

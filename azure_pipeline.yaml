@@ -328,7 +328,7 @@ stages:
             vmImage: ${{ variables.agentPool }}
           timeoutInMinutes: ${{ variables.timeoutInMinutes }}
           dependsOn: TerraformPlanApply
-          condition: and(succeeded(), eq(${{ deployment.pipeline_tests }}, true))
+          condition: and(succeeded(), eq(variables['isMain'], true), ${{ deployment.pipeline_tests }} )
           steps:
           - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
             parameters:

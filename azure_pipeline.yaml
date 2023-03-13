@@ -323,7 +323,7 @@ stages:
               serviceConnection: ${{ deployment.service_connection }}
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
-        - ${{ if eq(deployment.pipeline_tests, true) }}:
+        - ${{ if and (eq(deployment.pipeline_tests, true), eq(variables['isMain'], true)) }}:
           - job: PipelineTests
             pool:
               vmImage: ${{ variables.agentPool }}

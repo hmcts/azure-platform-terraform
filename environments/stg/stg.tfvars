@@ -737,9 +737,6 @@ frontends = [
             match_variable     = "RequestMethod"
             operator           = "Equal"
             negation_condition = false
-            transforms = [
-              "Uppercase"
-            ]
             match_values = [
               "POST"
             ]
@@ -760,6 +757,12 @@ frontends = [
     name           = "lau"
     mode           = "Detection"
     custom_domain  = "lau.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+  },
+  {
+    name           = "judicial-payments"
+    mode           = "Detection"
+    custom_domain  = "judicial-payments.aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
   },
   {
@@ -797,9 +800,6 @@ frontends = [
             match_variable     = "RequestMethod"
             operator           = "Equal"
             negation_condition = false
-            transforms = [
-              "Uppercase"
-            ]
             match_values = [
               "POST"
             ]
@@ -1599,6 +1599,19 @@ frontends = [
   {
     name           = "fis-ds-web"
     custom_domain  = "fis-ds-web.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
+    name           = "fis-ds-update-web"
+    custom_domain  = "fis-ds-update-web.aat.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     global_exclusions = [

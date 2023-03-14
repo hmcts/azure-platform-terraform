@@ -948,9 +948,6 @@ frontends = [
             match_variable     = "RequestMethod"
             operator           = "Equal"
             negation_condition = false
-            transforms = [
-              "Uppercase"
-            ]
             match_values = [
               "POST"
             ]
@@ -1019,9 +1016,6 @@ frontends = [
             match_variable     = "RequestMethod"
             operator           = "Equal"
             negation_condition = false
-            transforms = [
-              "Uppercase"
-            ]
             match_values = [
               "POST"
             ]
@@ -1471,9 +1465,6 @@ frontends = [
             match_variable     = "RequestMethod"
             operator           = "Equal"
             negation_condition = false
-            transforms = [
-              "Uppercase"
-            ]
             match_values = [
               "POST"
             ]
@@ -2208,9 +2199,6 @@ frontends = [
             match_variable     = "RequestMethod"
             operator           = "Equal"
             negation_condition = false
-            transforms = [
-              "Uppercase"
-            ]
             match_values = [
               "POST"
             ]
@@ -2561,7 +2549,8 @@ frontends = [
               "20.49.168.141/32",
               "20.49.168.17/32",
               "20.50.109.148/32",
-              "20.50.108.242/32"
+              "20.50.108.242/32",
+              "20.108.187.55/32"
             ]
           }
         ]

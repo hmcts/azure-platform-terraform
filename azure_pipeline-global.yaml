@@ -145,18 +145,18 @@ stages:
                   serviceConnection: ${{ deployment.service_connection }}
                   terraformInitSubscription: ${{ variables.terraformInitSubscription }}
                   product: ${{ variables.product }}
-          - ${{ if eq(deployment.pipeline_tests, true) }}:
-            - job: PipelineTests
-              pool:
-                vmImage: ${{ variables.vmImage }}
-              timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-              dependsOn: TerraformPlanApply
-              steps:
-                - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
-                  parameters:
-                    workingDirectory: $(Pipeline.Workspace)/s/azure-platform-terraform/scripts
-                    junit_output_dir: $(Pipeline.Workspace)/s/azure-platform-terraform/environments/${{ deployment.environment }}/junit
-                    environment: ${{ deployment.environment }}
-                    product: ${{ variables.product }}
-                    test_title: '${{ deployment.environment }}_${{ deployment.component }}'
-                    test_pattern: pipeline.test.ts
+          - job: PipelineTests
+            pool:
+              vmImage: ${{ variables.vmImage }}
+            timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+            dependsOn: TerraformPlanApply
+            condition: and(succeeded(), eq(variables['isMain'], true), eq('${{ deployment.pipeline_tests }}', 'true'))
+            steps:
+              - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
+                parameters:
+                  workingDirectory: $(Pipeline.Workspace)/s/azure-platform-terraform/scripts
+                  junit_output_dir: $(Pipeline.Workspace)/s/azure-platform-terraform/environments/${{ deployment.environment }}/junit
+                  environment: ${{ deployment.environment }}
+                  product: ${{ variables.product }}
+                  test_title: '${{ deployment.environment }}_${{ deployment.component }}'
+                  test_pattern: pipeline.test.ts

@@ -382,3 +382,7 @@ gateways:
         component: case-api
       - product: sptribs
         component: dss-backend
+    
+    # ccpay
+      - product: ccpay
+        component: cpo-update-service

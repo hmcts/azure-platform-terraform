@@ -661,7 +661,7 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
-   {
+  {
     name           = "return-case-doc-ccd-int"
     mode           = "Detection"
     custom_domain  = "return-case-doc-ccd-int.demo.platform.hmcts.net"
@@ -1863,7 +1863,7 @@ frontends = [
       },
     ]
   },
-  
+
   {
     name           = "paymentoutcome-web"
     mode           = "Detection"

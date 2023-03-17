@@ -1610,19 +1610,6 @@ frontends = [
     ]
   },
   {
-    name           = "fis-ds-update-web"
-    custom_domain  = "fis-ds-update-web.aat.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
-    global_exclusions = [
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "rf"
-      },
-    ]
-  },
-  {
     name           = "sptribs-frontend"
     custom_domain  = "sptribs-frontend.aat.platform.hmcts.net"
     mode           = "Detection"
@@ -1677,5 +1664,18 @@ frontends = [
     custom_domain  = "em-icp.aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
+  },
+  {
+    name           = "fis-ds-update-web"
+    custom_domain  = "dss-update-case.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
   }
 ]

@@ -274,8 +274,7 @@ gateways:
         component: test-stubs-service
       - product: ccd
         component: ac-int-definition-store-api
-      - product: ccd
-        component: admin-web
+
     # FPRL
       - product: fprl
         component: cos
@@ -408,11 +407,3 @@ gateways:
       # CNP
       - product: plum
         component: recipe-backend
-
-      # ccd-int
-      - product: dm
-        component: store-ccd-int
-      - product: em
-        component: anno-ccd-int
-      - product: ccd
-        component: admin-ccd-int

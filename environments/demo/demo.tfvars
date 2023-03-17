@@ -1806,19 +1806,6 @@ frontends = [
     ]
   },
   {
-    name           = "fis-ds-update-web"
-    custom_domain  = "fis-ds-update-web.demo.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-    global_exclusions = [
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "rf"
-      },
-    ]
-  },
-  {
     name           = "sptribs-frontend"
     custom_domain  = "sptribs-frontend.demo.platform.hmcts.net"
     mode           = "Detection"

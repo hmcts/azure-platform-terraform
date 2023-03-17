@@ -889,12 +889,6 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   },
   {
-    name           = "adoption"
-    custom_domain  = "adoption.demo.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-  },
-  {
     name           = "adoption-web"
     custom_domain  = "adoption-web.demo.platform.hmcts.net"
     mode           = "Detection"

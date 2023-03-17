@@ -1878,6 +1878,13 @@ frontends = [
     mode           = "Detection"
     custom_domain  = "em-icp.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
+  },
+  {
+    product          = "fis-ds-update-web"
+    name             = "fis-ds-update-web"
+    custom_domain    = "dss-update-case.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftapimgmtdemo.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+    cache_enabled    = "false"
   }
 ]

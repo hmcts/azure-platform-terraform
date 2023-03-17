@@ -274,7 +274,6 @@ gateways:
         component: test-stubs-service
       - product: ccd
         component: ac-int-definition-store-api
-
     # FPRL
       - product: fprl
         component: cos

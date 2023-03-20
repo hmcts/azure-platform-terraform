@@ -431,6 +431,48 @@ frontends = [
 
   },
   {
+    name           = "xui-webapp-int"
+    mode           = "Detection"
+    custom_domain  = "manage-case-int.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-srt"
+    mode           = "Detection"
+    custom_domain  = "manage-case-srt.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-wa-int"
+    mode           = "Detection"
+    custom_domain  = "manage-case-wa-int.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-ac-int"
+    mode           = "Detection"
+    custom_domain  = "manage-case-ac-int.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-caa-ac"
+    mode           = "Detection"
+    custom_domain  = "manage-case-caa-assigned-case-view.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-hearings-int"
+    mode           = "Detection"
+    custom_domain  = "manage-case-hearings-int.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
     name           = "xui-manage-org"
     mode           = "Detection"
     custom_domain  = "manage-org.demo.platform.hmcts.net"

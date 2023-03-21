@@ -562,13 +562,6 @@ frontends = [
 
   },
   {
-    name           = "et-sya"
-    mode           = "Detection"
-    custom_domain  = "et-sya.demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
-  },
-  {
     name           = "gateway-ccd"
     mode           = "Detection"
     custom_domain  = "gateway-ccd.demo.platform.hmcts.net"

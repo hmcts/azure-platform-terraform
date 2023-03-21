@@ -188,18 +188,6 @@ frontends = [
     ]
   },
   {
-    name           = "pet-app1"
-    custom_domain  = "pet-app1.demo.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-pet-demo.uksouth.cloudapp.azure.com"]
-
-  },
-  {
-    name           = "pet-app2"
-    custom_domain  = "pet-app2.demo.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-pet-demo.uksouth.cloudapp.azure.com"]
-
-  },
-  {
     name           = "sscs-tribunals"
     custom_domain  = "benefit-appeal.demo.platform.hmcts.net"
     mode           = "Detection"
@@ -424,6 +412,114 @@ frontends = [
 
   },
   {
+    name           = "fact"
+    mode           = "Prevention"
+    custom_domain  = "fact.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookies_policy"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "i18next"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "fact-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_oauth2_proxy"
+      }
+    ]
+  },
+  {
+    name           = "fact-admin"
+    mode           = "Detection"
+    custom_domain  = "fact-admin.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "et-sya"
+    mode           = "Detection"
+    custom_domain  = "et-sya.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
     name           = "xui-webapp"
     mode           = "Detection"
     custom_domain  = "manage-case.demo.platform.hmcts.net"
@@ -466,6 +562,13 @@ frontends = [
 
   },
   {
+    name           = "et-sya"
+    mode           = "Detection"
+    custom_domain  = "et-sya.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
     name           = "gateway-ccd"
     mode           = "Detection"
     custom_domain  = "gateway-ccd.demo.platform.hmcts.net"
@@ -483,20 +586,6 @@ frontends = [
     name           = "ac-int-gateway-ccd"
     mode           = "Detection"
     custom_domain  = "ac-int-gateway-ccd.demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
-  },
-  {
-    name           = "return-case-doc-ccd"
-    mode           = "Detection"
-    custom_domain  = "return-case-doc-ccd.demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
-  },
-  {
-    name           = "return-case-doc-ccd-int"
-    mode           = "Detection"
-    custom_domain  = "return-case-doc-ccd-int.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },

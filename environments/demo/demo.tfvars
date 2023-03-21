@@ -1761,13 +1761,6 @@ frontends = [
     www_redirect   = true
   },
   {
-    product        = "em"
-    name           = "em-icp"
-    mode           = "Detection"
-    custom_domain  = "em-icp.demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-  },
-  {
     product          = "fis-ds-update-web"
     name             = "fis-ds-update-web"
     custom_domain    = "dss-update-case.demo.platform.hmcts.net"

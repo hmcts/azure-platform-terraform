@@ -1824,6 +1824,14 @@ frontends = [
     ]
   },
   {
+    name             = "rpts"
+    mode             = "Prevention"
+    ssl_mode         = "AzureKeyVault"
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+    custom_domain    = "rpts.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+  },
+  {
     product          = "dss-update-case"
     name             = "dss-update-case"
     custom_domain    = "dss-update-case.demo.platform.hmcts.net"

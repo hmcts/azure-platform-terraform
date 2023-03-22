@@ -86,10 +86,6 @@ gateways:
       - product: finrem
         component: ps
       - product: finrem
-        component: emca
-      - product: finrem
-        component: dgcs
-      - product: finrem
         component: cos
 
     # Evidence Management

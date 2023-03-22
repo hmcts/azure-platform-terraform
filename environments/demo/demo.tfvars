@@ -45,53 +45,5 @@ frontends = [
     custom_domain    = "plum.demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
-  },
-  {
-    name           = "div-dn"
-    custom_domain  = "decree-nisi-aks.demo.platform.hmcts.net"
-    mode           = "Prevention"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
-    global_exclusions = [
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "connect.sid"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "cookies_policy"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "__auth-token"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "session"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "iss"
-      },
-    ]
-  },
-  {
-    product          = "dss-update-case"
-    name             = "dss-update-case"
-    custom_domain    = "dss-update-case.demo.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-cftapimgmtdemo.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-demo-platform-hmcts-net"
-    cache_enabled    = "false"
-  },
-  {
-    name           = "rpts"
-    mode           = "Prevention"
-    custom_domain  = "rpts.demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   }
 ]

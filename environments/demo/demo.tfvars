@@ -89,16 +89,9 @@ frontends = [
     cache_enabled    = "false"
   },
   {
-    name           = "fis-ds-web"
-    custom_domain  = "fis-ds-web.demo.platform.hmcts.net"
-    mode           = "Detection"
+    name           = "rpts"
+    mode           = "Prevention"
+    custom_domain  = "rpts.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-    global_exclusions = [
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "rf"
-      },
-    ]
-  },
+  }
 ]

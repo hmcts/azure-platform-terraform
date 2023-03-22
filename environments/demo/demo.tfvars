@@ -47,6 +47,13 @@ frontends = [
     certificate_name = "wildcard-demo-platform-hmcts-net"
   },
   {
+    name             = "hmi-apim"
+    custom_domain    = "hmi-apim.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-hmiapimdemo.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+    cache_enabled    = "false"
+  },
+  {
     name             = "div-dn"
     custom_domain    = "decree-nisi-aks.demo.platform.hmcts.net"
     ssl_mode         = "AzureKeyVault"

@@ -3,6 +3,7 @@
     "config:base"
   ],
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "schedule": "after 7am and before 11am every weekday",
   "packageRules": [
     {      
       "matchUpdateTypes": ["minor", "patch"],

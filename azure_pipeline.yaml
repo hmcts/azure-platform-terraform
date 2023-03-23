@@ -6,10 +6,6 @@ trigger:
   branches:
     include:
     - master
-  paths:
-    exclude:
-    - /modules/azure-landing-zone/*
-    - /components/global/*
 
 resources:
   repositories:

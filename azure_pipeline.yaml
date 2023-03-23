@@ -289,14 +289,14 @@ parameters:
       dependsOn: 'sbox_backendappgateway'
       pipeline_tests: true
 
-    # - deployment: 'aat_global'
-    #   environment: 'stg'
-    #   component: 'global'
-    #   service_connection: 'dcd-cftapps-stg'
-    #   storage_account_rg: 'core-infra-stg-rg'
-    #   storage_account_name: 'cftappsstg'
-    #   pipeline_tests: true
-    #   dependsOn: 'sbox_global'
+    - deployment: 'aat_global'
+      environment: 'stg'
+      component: 'global'
+      service_connection: 'dcd-cftapps-stg'
+      storage_account_rg: 'core-infra-stg-rg'
+      storage_account_name: 'cftappsstg'
+      pipeline_tests: true
+      dependsOn: 'sbox_global'
 
     - deployment: 'prod_shutter'
       environment: 'prod'
@@ -341,6 +341,15 @@ parameters:
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_apim'
       pipeline_tests: true
+
+    - deployment: 'prod_global'
+      environment: 'prod'
+      component: 'global'
+      service_connection: 'dcd-cftapps-prod'
+      storage_account_rg: 'core-infra-prod-rg'
+      storage_account_name: 'cftappsprod'
+      pipeline_tests: true
+      dependsOn: 'sbox_global'
 
 stages:
   - stage: Precheck

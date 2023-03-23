@@ -1666,7 +1666,7 @@ frontends = [
 
   },
   {
-    name             = "dss-update-case"
+    name             = "fis-ds-update-web"
     custom_domain    = "dss-update-case.aat.platform.hmcts.net"
     certificate_name = "wildcard-aat-platform-hmcts-net"
     mode             = "Detection"

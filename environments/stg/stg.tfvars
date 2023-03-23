@@ -1666,10 +1666,10 @@ frontends = [
 
   },
   {
-    name             = "fis-ds-update-web"
-    custom_domain    = "dss-update-case.aat.platform.hmcts.net"
-    mode             = "Detection"
-    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    name           = "fis-ds-update-web"
+    custom_domain  = "dss-update-case.aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"

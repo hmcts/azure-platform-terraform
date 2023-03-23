@@ -54,48 +54,6 @@ parameters:
   - name: environment_components
     type: object
     default:
-    # - deployment: 'sbox_global'
-    #   environment: 'sbox'
-    #   component: 'global'
-    #   service_connection: 'dcd-cftapps-sbox'
-    #   storage_account_rg: 'core-infra-sbox-rg'
-    #   storage_account_name: 'cftappssbox'
-    #   pipeline_tests: true
-    #   dependsOn: 'Precheck'
-
-    - deployment: 'demo_global'
-      environment: 'demo'
-      component: 'global'
-      service_connection: 'dcd-cftapps-demo'
-      storage_account_rg: 'core-infra-demo-rg'
-      storage_account_name: 'cftappsdemo'
-      dependsOn: 'Precheck'
-
-    - deployment: 'dev_global'
-      environment: 'dev'
-      component: 'global'
-      service_connection: 'dcd-cftapps-dev'
-      storage_account_rg: 'core-infra-dev-rg'
-      storage_account_name: 'cftappsdev'
-      dependsOn: 'demo_global'
-
-    - deployment: 'ithc_global'
-      environment: 'ithc'
-      component: 'global'
-      service_connection: 'dcd-cftapps-ithc'
-      storage_account_rg: 'core-infra-ithc-rg'
-      storage_account_name: 'cftappsithc'
-      pipeline_tests: true
-      dependsOn: 'demo_global'
-
-    - deployment: 'perftest_global'
-      environment: 'test'
-      component: 'global'
-      service_connection: 'dcd-cftapps-test'
-      storage_account_rg: 'core-infra-test-rg'
-      storage_account_name: 'cftappstest'
-      pipeline_tests: true
-      dependsOn: 'demo_global'
 
     - deployment: 'aat_global'
       environment: 'stg'
@@ -104,7 +62,7 @@ parameters:
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       pipeline_tests: true
-      dependsOn: 'demo_global'
+      dependsOn: 'precheck'
 
     - deployment: 'prod_global'
       environment: 'prod'
@@ -113,7 +71,7 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
       pipeline_tests: true
-      dependsOn: 'demo_global'
+      dependsOn: 'aat_global'
 
 stages:
   - stage: Precheck

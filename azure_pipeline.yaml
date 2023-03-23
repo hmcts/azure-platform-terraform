@@ -115,6 +115,14 @@ parameters:
       storage_account_name: 'cftptlintsvc'
       dependsOn: 'Precheck'
 
+    - deployment: 'dev_global'
+      environment: 'dev'
+      component: 'global'
+      service_connection: 'dcd-cftapps-dev'
+      storage_account_rg: 'core-infra-dev-rg'
+      storage_account_name: 'cftappsdev'
+      dependsOn: 'sbox_global'
+
     - deployment: 'ithc_frontendappgateway'
       environment: 'ithc'
       component: 'frontendappgateway'
@@ -133,6 +141,15 @@ parameters:
       dependsOn: 'sbox_backendappgateway'
       pipeline_tests: true
 
+    - deployment: 'ithc_global'
+      environment: 'ithc'
+      component: 'global'
+      service_connection: 'dcd-cftapps-ithc'
+      storage_account_rg: 'core-infra-ithc-rg'
+      storage_account_name: 'cftappsithc'
+      pipeline_tests: true
+      dependsOn: 'sbox_global'
+
     - deployment: 'ithc_private_dns'
       environment: 'ithc'
       component: 'cftapps_private_dns'
@@ -149,6 +166,14 @@ parameters:
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_apim'
+
+    - deployment: 'demo_global'
+      environment: 'demo'
+      component: 'global'
+      service_connection: 'dcd-cftapps-demo'
+      storage_account_rg: 'core-infra-demo-rg'
+      storage_account_name: 'cftappsdemo'
+      dependsOn: 'sbox_global'
 
     - deployment: 'demo_frontendappgateway'
       environment: 'demo'
@@ -219,6 +244,15 @@ parameters:
       dependsOn: 'sbox_apim'
       pipeline_tests: true
 
+    - deployment: 'perftest_global'
+      environment: 'test'
+      component: 'global'
+      service_connection: 'dcd-cftapps-test'
+      storage_account_rg: 'core-infra-test-rg'
+      storage_account_name: 'cftappstest'
+      pipeline_tests: true
+      dependsOn: 'sbox_global'
+
     - deployment: 'stg_private_dns'
       environment: 'stg'
       component: 'cftapps_private_dns'
@@ -254,6 +288,15 @@ parameters:
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_backendappgateway'
       pipeline_tests: true
+
+    # - deployment: 'aat_global'
+    #   environment: 'stg'
+    #   component: 'global'
+    #   service_connection: 'dcd-cftapps-stg'
+    #   storage_account_rg: 'core-infra-stg-rg'
+    #   storage_account_name: 'cftappsstg'
+    #   pipeline_tests: true
+    #   dependsOn: 'sbox_global'
 
     - deployment: 'prod_shutter'
       environment: 'prod'

@@ -53,6 +53,15 @@ parameters:
       dependsOn: 'Precheck'
       pipeline_tests: true
 
+    - deployment: 'sbox_global'
+      environment: 'sbox'
+      component: 'global'
+      service_connection: 'dcd-cftapps-sbox'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+      pipeline_tests: true
+
     - deployment: 'sbox_backendappgateway'
       environment: 'sbox'
       component: 'backendappgateway'

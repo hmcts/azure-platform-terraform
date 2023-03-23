@@ -20,7 +20,7 @@ shutter_rg      = "TODO"
 shutter_apps = [
   "TODO"
 ]
-
+# trigger precommit
 frontend_agw_private_ip_address = "10.10.161.102"
 cft_apps_cluster_ips            = ["10.10.143.250", "10.10.159.250"]
 

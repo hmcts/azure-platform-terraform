@@ -2,8 +2,9 @@
 /environments/demo/ 
 /environments/sbox/ 
 
+
+# Do not require code owners for renovate updates
 scripts/package.json
 scripts/yarn.lock
-
 **/.terraform-version
 components/**/provider.tf

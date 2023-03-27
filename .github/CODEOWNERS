@@ -1,3 +1,9 @@
 * @hmcts/platform-operations
 /environments/demo/ 
 /environments/sbox/ 
+
+scripts/package.json
+scripts/yarn.lock
+
+**/.terraform-version
+components/**/provider.tf

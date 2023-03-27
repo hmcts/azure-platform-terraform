@@ -1156,7 +1156,7 @@ frontends = [
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
-    name             = "dss-update-case"
+    name             = "fis-ds-update-web"
     custom_domain    = "dss-update-case.ithc.platform.hmcts.net"
     mode             = "Detection"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]

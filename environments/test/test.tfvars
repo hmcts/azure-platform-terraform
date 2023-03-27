@@ -1318,20 +1318,5 @@ frontends = [
     custom_domain    = "et-sya.perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
-  },
-  {
-    product          = "dss-update-case"
-    name             = "dss-update-case"
-    custom_domain    = "dss-update-case.perftest.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-cftperftestappgateway.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-perftest-platform-hmcts-net"
-    cache_enabled    = "false"
-    global_exclusions = [
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "rf"
-      },
-    ]
   }
 ]

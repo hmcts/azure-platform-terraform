@@ -1154,20 +1154,5 @@ frontends = [
     custom_domain    = "et-sya.ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
-  },
-  {
-    product          = "dss-update-case"
-    name             = "dss-update-case"
-    custom_domain    = "dss-update-case.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-cftithcappgateway.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-ithc-platform-hmcts-net"
-    cache_enabled    = "false"
-    global_exclusions = [
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "rf"
-      },
-    ]
   }
 ]

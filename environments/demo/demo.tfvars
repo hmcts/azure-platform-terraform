@@ -766,7 +766,7 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
-   {
+  {
     name           = "pcq"
     mode           = "Detection"
     custom_domain  = "pcq.demo.platform.hmcts.net"

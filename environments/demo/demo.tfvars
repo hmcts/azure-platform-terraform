@@ -47,7 +47,8 @@ frontends = [
     certificate_name = "wildcard-demo-platform-hmcts-net"
   },
   {
-    name             = "fis-ds-update-web"
+    product          = "dss-update-case"
+    name             = "dss-update-case"
     custom_domain    = "dss-update-case.demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"

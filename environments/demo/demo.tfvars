@@ -11,7 +11,7 @@ privatedns_subscription = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                 = "nonprod"
 
 hub = "nonprod"
-# trigger precommit
+
 frontends = [
   {
     name                = "reformscan"

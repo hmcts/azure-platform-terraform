@@ -1815,5 +1815,61 @@ frontends = [
     custom_domain  = "manage-case-hearings-int.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
+  },
+  {
+    name           = "xui-register-org"
+    mode           = "Detection"
+    custom_domain  = "register-org.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-approve-org"
+    mode           = "Detection"
+    custom_domain  = "administer-orgs.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-manage-org"
+    mode           = "Detection"
+    custom_domain  = "manage-org.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-int1"
+    mode           = "Detection"
+    custom_domain  = "manage-case-int1.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-int2"
+    mode           = "Detection"
+    custom_domain  = "manage-case-int2.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp"
+    mode           = "Detection"
+    custom_domain  = "manage-case.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-srt"
+    mode           = "Detection"
+    custom_domain  = "manage-case-srt.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-wa-int"
+    mode           = "Detection"
+    custom_domain  = "manage-case-wa-int.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
   }
 ]

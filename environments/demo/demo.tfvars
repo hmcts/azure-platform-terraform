@@ -1759,5 +1759,61 @@ frontends = [
         selector       = "token"
       },
     ]
+  },
+   {
+    name           = "gateway-ccd"
+    mode           = "Detection"
+    custom_domain  = "gateway-ccd.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "gateway-ccd-int"
+    mode           = "Detection"
+    custom_domain  = "gateway-ccd-int.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "return-case-doc-ccd"
+    mode           = "Detection"
+    custom_domain  = "return-case-doc-ccd.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "return-case-doc-ccd-int"
+    mode           = "Detection"
+    custom_domain  = "return-case-doc-ccd-int.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-ac-int"
+    mode           = "Detection"
+    custom_domain  = "manage-case-ac-int.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-int"
+    mode           = "Detection"
+    custom_domain  = "manage-case-int.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-caa-ac"
+    mode           = "Detection"
+    custom_domain  = "manage-case-caa-assigned-case-view.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-hearings-int"
+    mode           = "Detection"
+    custom_domain  = "manage-case-hearings-int.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
   }
 ]

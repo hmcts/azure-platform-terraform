@@ -9,7 +9,7 @@ backend_agw_private_ip_address  = ["10.50.97.118", "10.50.97.119"]
 data_subscription       = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                 = "nonprod"
-
+#trigger precommit
 hub = "nonprod"
 
 frontends = [
@@ -1759,5 +1759,61 @@ frontends = [
         selector       = "token"
       },
     ]
+  },
+  {
+    name           = "gateway-ccd"
+    mode           = "Detection"
+    custom_domain  = "gateway-ccd.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "gateway-ccd-int"
+    mode           = "Detection"
+    custom_domain  = "gateway-ccd-int.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "return-case-doc-ccd"
+    mode           = "Detection"
+    custom_domain  = "return-case-doc-ccd.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "return-case-doc-ccd-int"
+    mode           = "Detection"
+    custom_domain  = "return-case-doc-ccd-int.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-ac-int"
+    mode           = "Detection"
+    custom_domain  = "manage-case-ac-int.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-int"
+    mode           = "Detection"
+    custom_domain  = "manage-case-int.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-caa-ac"
+    mode           = "Detection"
+    custom_domain  = "manage-case-caa-assigned-case-view.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "xui-webapp-hearings-int"
+    mode           = "Detection"
+    custom_domain  = "manage-case-hearings-int.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
   }
 ]

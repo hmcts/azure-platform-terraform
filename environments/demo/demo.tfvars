@@ -1760,7 +1760,7 @@ frontends = [
       },
     ]
   },
-   {
+  {
     name           = "gateway-ccd"
     mode           = "Detection"
     custom_domain  = "gateway-ccd.demo.platform.hmcts.net"

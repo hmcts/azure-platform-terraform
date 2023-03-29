@@ -1668,6 +1668,7 @@ frontends = [
   {
     product          = "dss-update-case"
     name             = "dss-update-case"
+    mode             = "Detection"
     custom_domain    = "dss-update-case.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"

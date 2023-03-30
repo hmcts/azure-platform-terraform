@@ -1,15 +1,6 @@
 {
   "extends": [
-    "config:base"
-  ],
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "schedule": "after 7am and before 11am every weekday",
-  "packageRules": [
-    {      
-      "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true,
-      "automergeType": "pr"
-    }
-  ],
-  "platformAutomerge": true
+    "github>hmcts/.github//renovate/global",
+    "github>hmcts/.github//renovate/automerge-minor"
+  ]
 }

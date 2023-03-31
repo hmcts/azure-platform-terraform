@@ -272,6 +272,7 @@ gateways:
         component: ac-int-definition-store-api
       - product: ccd
         component: admin-web
+        ssl_enabled: true
         
     # FPRL
       - product: fprl

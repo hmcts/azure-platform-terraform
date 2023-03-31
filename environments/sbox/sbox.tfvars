@@ -580,36 +580,7 @@ frontends = [
     certificate_name            = "wildcard-sandbox-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
     cache_enabled               = "false"
-  },
-  {
-    product          = "labs"
-    name             = "labs-louisehuyton-walkthrough"
-    custom_domain    = "labs-louisehuyton-walkthrough.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-  },
-  {
-    product          = "labs"
-    name             = "labs-ozzyib-nodejs"
-    custom_domain    = "labs-ozzyib-nodejs.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-  },
-  {
-    product          = "labs"
-    name             = "labs-zcwalkthrough-nodejs"
-    custom_domain    = "labs-zcwalkthrough-nodejs.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-  },
-  {
-    product          = "labs-goldenpath-felix"
-    name             = "labs-goldenpath-felix"
-    custom_domain    = "labs-goldenpath-felix.sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-labsgoldenpathfelix.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
+  }
 ]
 
 apim_appgw_exclusions = [

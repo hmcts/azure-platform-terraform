@@ -12,7 +12,7 @@ For this repository you will also need these dependencies:
 
 ## Frontdoor
 
-To setup a basic Frontdoor configuration, go to the required environment within `environments` folder and edit the environments `tfvars` file
+To setup a basic Frontdoor configuration, go to the required environment within `environments` folder and edit the environments `tfvars` file 
 
 Within the variable `frontends` add the basic object to the array:
 ```terraform

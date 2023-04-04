@@ -8,3 +8,4 @@ scripts/package.json
 scripts/yarn.lock
 **/.terraform-version
 components/**/provider.tf
+components/**/init.tf

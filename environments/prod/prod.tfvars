@@ -2660,9 +2660,9 @@ frontends = [
     product          = "prl"
     name             = "private-law"
     mode             = "Detection"
-    custom_domain    = "www.childarrangement-familyinjunction.service.gov.uk"
+    custom_domain    = "www.apply-to-court-about-child-arrangements-c100.service.gov.uk/"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "childarrangement-familyinjunction-service-gov-uk"
+    certificate_name = "apply-to-court-about-child-arrangements-c100-service-gov-uk"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

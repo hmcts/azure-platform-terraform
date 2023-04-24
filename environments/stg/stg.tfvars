@@ -1626,7 +1626,7 @@ frontends = [
   },
   {
     name           = "privatelaw"
-    custom_domain  = "privatelaw.aat.platform.hmcts.net"
+    custom_domain  = "prl-citizen-frontend-staging.aat.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     global_exclusions = [

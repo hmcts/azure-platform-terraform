@@ -5,7 +5,7 @@ locals {
 }
 
 module "landing_zone" {
-  source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=redirect-feature"
+  source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=master"
 
   common_tags                = module.ctags.common_tags
   env                        = var.env

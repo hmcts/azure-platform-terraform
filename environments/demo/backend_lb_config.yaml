@@ -414,3 +414,9 @@ gateways:
         component: anno-ccd-int
       - product: ccd
         component: admin-ccd-int
+
+    # CIVIL
+      - product: civil
+        component: sdt
+      - product: civil
+        component: sdt-gateway

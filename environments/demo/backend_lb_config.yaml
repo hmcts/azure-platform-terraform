@@ -47,8 +47,6 @@ gateways:
 
     # Financial Remedy
       - product: finrem
-        component: ns
-      - product: finrem
         component: ps
       - product: finrem
         component: cos

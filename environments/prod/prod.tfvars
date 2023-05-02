@@ -2121,9 +2121,9 @@ frontends = [
     certificate_name = "equality-and-diversity-platform-hmcts-net"
     global_exclusions = [
       {
-        match_variable = "RequestArgs"
+        match_variable = "QueryStringArgNames"
         operator       = "Equals"
-        selector       = "returnUrl:onlineplea.cjscp.org.uk/onlineplea/check-your-answers.xhtml"
+        selector       = "returnUrl"
       },
       {
         match_variable = "RequestCookieNames"

@@ -2135,6 +2135,11 @@ frontends = [
         operator       = "Equals"
         selector       = "pcq-cookie-preferences"
       },
+      {
+        match_variable = "QueryParamValue:returnUrl"
+        operator       = "Equals"
+        selector       = "onlineplea.cjscp.org.uk/onlineplea/check-your-answers.xhtml"
+      },
       // Google Analytics Exclusions
       {
         match_variable = "RequestCookieNames"

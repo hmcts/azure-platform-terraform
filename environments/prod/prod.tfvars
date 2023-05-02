@@ -2121,6 +2121,11 @@ frontends = [
     certificate_name = "equality-and-diversity-platform-hmcts-net"
     global_exclusions = [
       {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "returnUrl"
+      },
+      {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "connect.sid"

@@ -46,21 +46,6 @@ module "app-gw" {
   public_ip_enable_multiple_availability_zones = true
 }
 
-resource "azurerm_route_table" "apim_route_table" {
-  name                = "apim-${var.env}"
-  resource_group_name = local.vnet_rg
-  location            = var.location
-}
-
-resource "azurerm_route" "to_az_firewall_route" {
-  name                   = "to_az_firewall"
-  route_table_name       = azurerm_route_table.apim_route_table.name
-  resource_group_name    = local.vnet_rg
-  address_prefix         = local.apim[var.env].dest_ip
-  next_hop_type          = var.route_next_hop_type
-  next_hop_in_ip_address = local.hub[var.env].ukSouth.appgw_next_hop_ip
-}
-
 data "local_file" "configuration" {
   filename = "${path.cwd}/../../environments/${local.env}/apim_appgw_config.yaml"
 }

@@ -10,11 +10,6 @@ locals {
 
   gateways = yamldecode(data.local_file.configuration.content).gateways
 
-  apim = {
-    sbox = {
-      dest_ip = "20.58.19.69/32"
-    }
-  }
 
   hub = {
     sbox = {

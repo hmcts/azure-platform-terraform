@@ -2850,7 +2850,7 @@ frontends = [
   },
   {
     product          = "st"
-    name             = "sptribs-case-api"
+    name             = "sptribs-frontend"
     mode             = "Prevention"
     custom_domain    = "www.special-tribunals.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]

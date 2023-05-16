@@ -370,6 +370,8 @@ gateways:
         component: case-api
       - product: sptribs
         component: dss-backend
+      - product: sptribs
+        component: frontend
     
     # ccpay
       - product: ccpay

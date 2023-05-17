@@ -350,3 +350,5 @@ gateways:
     # SPTRIBS
       - product: sptribs
         component: case-api
+      - product: sptribs
+        component: frontend

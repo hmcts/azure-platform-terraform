@@ -369,8 +369,6 @@ gateways:
       - product: sptribs
         component: case-api
       - product: sptribs
-        component: dss-backend
-      - product: sptribs
         component: frontend
     
     # ccpay

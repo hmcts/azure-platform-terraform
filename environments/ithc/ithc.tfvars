@@ -1157,11 +1157,11 @@ frontends = [
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
-    product        = "sptribs-frontend"
-    name           = "sptribs-frontend"
-    custom_domain  = "sptribs-frontend.ithc.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    product          = "sptribs-frontend"
+    name             = "sptribs-frontend"
+    custom_domain    = "sptribs-frontend.ithc.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {

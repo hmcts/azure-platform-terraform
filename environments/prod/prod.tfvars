@@ -2849,6 +2849,15 @@ frontends = [
     certificate_name = "claim-employment-tribunals-service-gov-uk"
   },
   {
+    product          = "sptribs"
+    name             = "sptribs-frontend"
+    mode             = "Prevention"
+    custom_domain    = "www.special-tribunals.service.gov.uk"
+    ssl_mode         = "AzureKeyVault"
+    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name = "special-tribunals-service-gov-uk"
+  },
+  {
     name             = "dtsse-ardoq-adapter"
     product          = "dtsse"
     custom_domain    = "dtsse-ardoq-adapter.platform.hmcts.net"

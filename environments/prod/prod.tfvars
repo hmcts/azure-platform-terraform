@@ -2850,7 +2850,7 @@ frontends = [
   },
   {
     product          = "sptribs"
-    name             = "frontend"
+    name             = "sptribs-frontend"
     mode             = "Prevention"
     custom_domain    = "www.special-tribunals.service.gov.uk"
     ssl_mode         = "AzureKeyVault"

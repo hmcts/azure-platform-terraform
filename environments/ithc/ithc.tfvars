@@ -1157,6 +1157,14 @@ frontends = [
     certificate_name = "wildcard-ithc-platform-hmcts-net"
   },
   {
+    product          = "sptribs"
+    name             = "frontend"
+    mode             = "Detection"
+    custom_domain    = "sptribs-frontend.ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+  },
+  {
     product          = "dss-update-case"
     name             = "dss-update-case"
     custom_domain    = "dss-update-case.ithc.platform.hmcts.net"

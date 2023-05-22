@@ -2849,8 +2849,8 @@ frontends = [
     certificate_name = "claim-employment-tribunals-service-gov-uk"
   },
   {
-    product          = "st"
-    name             = "sptribs-frontend"
+    product          = "sptribs"
+    name             = "frontend"
     mode             = "Prevention"
     custom_domain    = "www.special-tribunals.service.gov.uk"
     ssl_mode         = "AzureKeyVault"

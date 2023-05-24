@@ -328,6 +328,8 @@ gateways:
     # ET
       - product: et
         component: sya-api
+      - product: et
+        component: hearings-api
     # SSCS
       - product: sscs
         component: hearings-api

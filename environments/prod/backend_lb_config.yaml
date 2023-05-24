@@ -298,6 +298,8 @@ gateways:
         component: msg-handler
       - product: et
         component: sya-api
+      - product: et
+        component: hearings-api
         
       # SSCS
       - product: sscs

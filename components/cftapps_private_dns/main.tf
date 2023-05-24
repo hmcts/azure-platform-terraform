@@ -8,35 +8,35 @@ locals {
   # <XXX>.internal
   internal_zone_name = "service.core-compute-${local.dns_zone}.internal"
   internal_records = flatten([
-  for gateways, gateway in local.gateways : [
-    for app in gateway.app_configuration : {
+    for gateways, gateway in local.gateways : [
+      for app in gateway.app_configuration : {
         name   = "${app.product}-${app.component}-${local.dns_zone}"
         ttl    = 300
         record = ["${gateway.gateway_configuration.private_ip_address}"]
       } if app.ssl_enabled == false
-  ]
+    ]
   ])
 
   # <XXX>.<ENV>.platform.hmcts.net
   platform_zone_name = "${local.env}.platform.hmcts.net"
   platform_records = flatten([
-  for gateways, gateway in local.gateways : [
-    for app in gateway.app_configuration : {
+    for gateways, gateway in local.gateways : [
+      for app in gateway.app_configuration : {
         name   = "${app.product}-${app.component}-${local.dns_zone}"
         ttl    = 300
         record = ["${gateway.gateway_configuration.private_ip_address}"]
       } if app.ssl_enabled == true
-  ]
+    ]
   ])
 
 }
 
-variable dns_iterator {
+variable "dns_iterator" {
   type = map(object({
     name = string
   }))
   default = {
-     internal_dns = {
+    internal_dns = {
       name = "internal_dns"
     }
     platform_dns = {

@@ -97,7 +97,7 @@ parameters:
     - deployment: 'sbox_apim_appgw'
       environment: 'sbox'
       component: 'apim-appgw'
-      service_connection: 'HMCTS-HUB-SBOX-INTSVC-cnp'
+      service_connection: 'HMCTS-HUB-SBOX-INTSVC'
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'

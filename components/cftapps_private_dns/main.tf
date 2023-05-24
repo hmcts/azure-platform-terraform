@@ -6,41 +6,41 @@ locals {
   gateways = yamldecode(data.local_file.configuration.content).gateways
 
   # <XXX>.internal
+  internal_zone_name = "service.core-compute-${local.dns_zone}.internal"
   internal_records = flatten([
   for gateways, gateway in local.gateways : [
     for app in gateway.app_configuration : {
         name   = "${app.product}-${app.component}-${local.dns_zone}"
         ttl    = 300
         record = ["${gateway.gateway_configuration.private_ip_address}"]
-      } if !can(app, "ssl_enabled") || app.ssl_enabled == false
+      } if app.ssl_enabled == false
   ]
   ])
 
   # <XXX>.<ENV>.platform.hmcts.net
+  platform_zone_name = "${local.env}.platform.hmcts.net"
   platform_records = flatten([
   for gateways, gateway in local.gateways : [
     for app in gateway.app_configuration : {
         name   = "${app.product}-${app.component}-${local.dns_zone}"
         ttl    = 300
         record = ["${gateway.gateway_configuration.private_ip_address}"]
-      } if can(app, "ssl_enabled") && app.ssl_enabled == true
+      } if app.ssl_enabled == true
   ]
   ])
+
 }
 
-variable "dns_records" {
+variable dns_iterator {
   type = map(object({
-    a_recordset = string
-    zone_name = string
+    name = string
   }))
   default = {
      internal_dns = {
-      a_recordset = local.internal_records
-      zone_name = "service.core-compute-${local.dns_zone}.internal"
+      name = "internal_dns"
     }
     platform_dns = {
-      a_recordset = local.platform_records
-      zone_name = "${local.env}.platform.hmcts.net"
+      name = "platform_dns"
     }
   }
 }
@@ -50,12 +50,11 @@ data "local_file" "configuration" {
 }
 
 module "privatedns" {
-  for_each = var.dns_records
+  for_each = var.dns_iterator
 
   source              = "git::https://github.com/hmcts/azure-private-dns.git//modules/azure-private-dns?ref=master"
-  a_recordsets        = each.value.a_recordset
+  a_recordsets        = each.key == "internal_dns" ? local.internal_records : local.platform_records
   env                 = local.dns_zone
   resource_group_name = "core-infra-intsvc-rg"
-  zone_name           = each.value.zone_name
-
+  zone_name           = each.key == "internal_dns" ? local.internal_zone_name : local.platform_zone_name
 }

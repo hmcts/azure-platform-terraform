@@ -655,10 +655,15 @@ frontends = [
   },
   {
     name           = "pcq"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "pcq.aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "returnUrl"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"

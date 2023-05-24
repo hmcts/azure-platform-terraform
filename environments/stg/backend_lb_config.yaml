@@ -318,6 +318,8 @@ gateways:
         component: msg-handler
       - product: et
         component: sya-api
+      - product: et
+        component: hearings-api
 
     # IDAM
       - product: idam

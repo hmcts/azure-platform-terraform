@@ -36,7 +36,7 @@ data "local_file" "configuration" {
 }
 
 # <XXX>.internal
-module "privatedns" {
+module "privatedns" "internal_dns_zone_records" {
   source              = "git::https://github.com/hmcts/azure-private-dns.git//modules/azure-private-dns?ref=master"
   a_recordsets        = local.internal_records
   env                 = local.dns_zone
@@ -45,7 +45,7 @@ module "privatedns" {
 }
 
 # <XXX>.<ENV>.platform.hmcts.net
-module "privatedns" {
+module "privatedns" "platform_dns_zone_records" {
   source              = "git::https://github.com/hmcts/azure-private-dns.git//modules/azure-private-dns?ref=master"
   a_recordsets        = local.platform_records
   env                 = local.dns_zone

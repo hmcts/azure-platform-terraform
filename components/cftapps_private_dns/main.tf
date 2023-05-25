@@ -44,8 +44,8 @@ module "privatedns" {
   zone_name           = local.internal_zone_name
 }
 
- # <XXX>.<ENV>.platform.hmcts.net
- module "privatedns" {
+# <XXX>.<ENV>.platform.hmcts.net
+module "privatedns" {
   source              = "git::https://github.com/hmcts/azure-private-dns.git//modules/azure-private-dns?ref=master"
   a_recordsets        = local.platform_records
   env                 = local.dns_zone

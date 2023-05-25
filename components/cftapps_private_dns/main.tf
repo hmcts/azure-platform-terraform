@@ -45,10 +45,10 @@ module "privatedns" {
 }
 
 # # <XXX>.<ENV>.platform.hmcts.net
-# module "privatedns_platform" {
-#   source              = "git::https://github.com/hmcts/azure-private-dns.git//modules/azure-private-dns?ref=master"
-#   a_recordsets        = local.platform_records
-#   env                 = local.dns_zone
-#   resource_group_name = "core-infra-intsvc-rg"
-#   zone_name           = local.platform_zone_name
-# }
+module "privatedns_platform" {
+  source              = "git::https://github.com/hmcts/azure-private-dns.git//modules/azure-private-dns?ref=master"
+  a_recordsets        = local.platform_records
+  env                 = local.dns_zone
+  resource_group_name = "core-infra-intsvc-rg"
+  zone_name           = local.platform_zone_name
+}

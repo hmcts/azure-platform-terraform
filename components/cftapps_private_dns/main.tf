@@ -36,7 +36,7 @@ data "local_file" "configuration" {
 }
 
 # <XXX>.internal
-module "privatedns_internal" {
+module "privatedns" {
   source              = "git::https://github.com/hmcts/azure-private-dns.git//modules/azure-private-dns?ref=master"
   a_recordsets        = local.internal_records
   env                 = local.dns_zone
@@ -44,11 +44,11 @@ module "privatedns_internal" {
   zone_name           = local.internal_zone_name
 }
 
-# <XXX>.<ENV>.platform.hmcts.net
-module "privatedns_platform" {
-  source              = "git::https://github.com/hmcts/azure-private-dns.git//modules/azure-private-dns?ref=master"
-  a_recordsets        = local.platform_records
-  env                 = local.dns_zone
-  resource_group_name = "core-infra-intsvc-rg"
-  zone_name           = local.platform_zone_name
-}
+# # <XXX>.<ENV>.platform.hmcts.net
+# module "privatedns_platform" {
+#   source              = "git::https://github.com/hmcts/azure-private-dns.git//modules/azure-private-dns?ref=master"
+#   a_recordsets        = local.platform_records
+#   env                 = local.dns_zone
+#   resource_group_name = "core-infra-intsvc-rg"
+#   zone_name           = local.platform_zone_name
+# }

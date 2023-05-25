@@ -31,30 +31,24 @@ locals {
 
 }
 
-variable "dns_iterator" {
-  type = map(object({
-    name = string
-  }))
-  default = {
-    internal_dns = {
-      name = "internal_dns"
-    }
-    platform_dns = {
-      name = "platform_dns"
-    }
-  }
-}
-
 data "local_file" "configuration" {
   filename = "${path.cwd}/../../environments/${local.env}/backend_lb_config.yaml"
 }
 
+# <XXX>.internal
 module "privatedns" {
-  for_each = var.dns_iterator
-
   source              = "git::https://github.com/hmcts/azure-private-dns.git//modules/azure-private-dns?ref=master"
-  a_recordsets        = each.key == "internal_dns" ? local.internal_records : local.platform_records
+  a_recordsets        = local.internal_records
   env                 = local.dns_zone
   resource_group_name = "core-infra-intsvc-rg"
-  zone_name           = each.key == "internal_dns" ? local.internal_zone_name : local.platform_zone_name
+  zone_name           = local.internal_zone_name
+}
+
+ # <XXX>.<ENV>.platform.hmcts.net
+ module "privatedns" {
+  source              = "git::https://github.com/hmcts/azure-private-dns.git//modules/azure-private-dns?ref=master"
+  a_recordsets        = local.platform_records
+  env                 = local.dns_zone
+  resource_group_name = "core-infra-intsvc-rg"
+  zone_name           = local.platform_zone_name
 }

@@ -18,7 +18,7 @@ locals {
   ])
 
   # <XXX>.<ENV>.platform.hmcts.net
-  platform_zone_name = "${local.env}.platform.hmcts.net"
+  platform_zone_name = "${local.dns_zone}.platform.hmcts.net"
   platform_records = flatten([
     for gateways, gateway in local.gateways : [
       for app in gateway.app_configuration : {

@@ -51,4 +51,5 @@ module "privatedns_platform" {
   env                 = local.dns_zone
   resource_group_name = "core-infra-intsvc-rg"
   zone_name           = local.platform_zone_name
+  create_zone         = false
 }

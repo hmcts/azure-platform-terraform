@@ -42,7 +42,6 @@ module "privatedns" {
   env                 = local.dns_zone
   resource_group_name = "core-infra-intsvc-rg"
   zone_name           = local.internal_zone_name
-  create_zone         = false
 }
 
 # # <XXX>.<ENV>.platform.hmcts.net

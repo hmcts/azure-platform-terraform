@@ -1059,10 +1059,12 @@ frontends = [
     ]
   },
   {
-    name           = "sptribs-frontend"
-    custom_domain  = "sptribs-frontend.demo.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    product          = "sptribs-frontend"
+    name             = "sptribs-frontend"
+    custom_domain    = "sptribs-frontend.demo.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"

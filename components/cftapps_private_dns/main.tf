@@ -13,7 +13,7 @@ locals {
         name   = "${app.product}-${app.component}-${local.dns_zone}",
         ttl    = 300,
         record = ["${gateway.gateway_configuration.private_ip_address}"]
-      } if !contains(keys(app), "ssl_enabled") ? false : !app.ssl_enabled
+      } if !contains(keys(app), "ssl_enabled") ? true : !app.ssl_enabled
     ]
   ])
 

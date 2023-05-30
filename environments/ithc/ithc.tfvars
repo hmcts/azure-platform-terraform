@@ -1171,6 +1171,11 @@ frontends = [
         operator       = "Equals"
         selector       = "rf"
       },
+      {
+        match_variable = "CookieValue:frontend-cookie-preferences"
+        operator       = "Equals"
+        selector       = "{“analytics”:“on”,“apm”:“on”}"
+      },
     ]
   },
   {

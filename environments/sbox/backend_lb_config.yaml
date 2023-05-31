@@ -36,7 +36,7 @@ gateways:
         component: user-profile-api
       - product: rd
         component: profile-sync
-        
+
     # Divorce
       - product: div
         component: emca
@@ -58,11 +58,7 @@ gateways:
     # Plum Frontend
       - product: plum
         component: frontend
-<<<<<<< Updated upstream
-        
-=======
 
->>>>>>> Stashed changes
     #labs
       - product: labs
         component: mokainosspringboot
@@ -133,7 +129,6 @@ gateways:
         component: web-public-sprod
         ssl_enabled: true
 
-
       # BulkScan
       - product: bulk-scan
         component: processor
@@ -159,13 +154,9 @@ gateways:
         cookie_based_affinity: Enabled
         ssl_enabled: true
         host_name_prefix: docmosis
-<<<<<<< Updated upstream
-        http_to_https_redirect: true
-=======
         http_to_https_redirect: true
 
     # HMI
       - product: hmi
         component: apim
         ssl_enabled: true
->>>>>>> Stashed changes

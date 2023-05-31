@@ -1325,7 +1325,7 @@ frontends = [
     name             = "sptribs-frontend"
     custom_domain    = "sptribs-frontend.perftest.platform.hmcts.net"
     mode             = "Detection"
-    backend_domain   = ["firewall-nonprodi-palo-perftest.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     global_exclusions = [
       {

@@ -58,34 +58,47 @@ gateways:
     # Plum Frontend
       - product: plum
         component: frontend
+<<<<<<< Updated upstream
         
+=======
+
+>>>>>>> Stashed changes
     #labs
       - product: labs
         component: mokainosspringboot
       - product: labs
         component: mokainosjavaapp
-      - product: "labs"
+      - product: labs
         component: msl8r
-      - product: "labs"
+      - product: labs
         component: ssian2
-      - product: "labs"
+      - product: labs
         component: zc-hmcts
-      - product: "labs"
+      - product: labs
         component: endakelly
-      - product: "labs"
+      - product: labs
         component: ozzyib
-      - product: "labs"
+      - product: labs
         component: rajivkapoor1
-      - product: "labs"
+      - product: labs
         component: matthewsearle01-v3
-      - product: "labs"
+      - product: labs
         component: jefex7
-      - product: "labs"
+      - product: labs
         component: hw469
-      - product: "labs"
+      - product: labs
         component: StuartBJustice
-      - product: "labs"
+      - product: labs
         component: raraybould
+      - product: labs
+        component: louisehuyton-walthrough
+        ssl_enabled: true
+      - product: labs
+        component: rhodrif-nodejs
+        ssl_enabled: true
+      - product: labs
+        component: zcwalkthrough-nodejs
+        ssl_enabled: true
 
     # SIDAM 
       - product: idam
@@ -113,6 +126,14 @@ gateways:
         component: hmcts-access
         ssl_enabled: true
 
+      - product: idam
+        component: web-public
+        ssl_enabled: true 
+      - product: idam
+        component: web-public-sprod
+        ssl_enabled: true
+
+
       # BulkScan
       - product: bulk-scan
         component: processor
@@ -138,4 +159,13 @@ gateways:
         cookie_based_affinity: Enabled
         ssl_enabled: true
         host_name_prefix: docmosis
+<<<<<<< Updated upstream
         http_to_https_redirect: true
+=======
+        http_to_https_redirect: true
+
+    # HMI
+      - product: hmi
+        component: apim
+        ssl_enabled: true
+>>>>>>> Stashed changes

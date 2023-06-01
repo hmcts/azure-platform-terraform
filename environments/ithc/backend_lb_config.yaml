@@ -25,12 +25,14 @@ gateways:
       - product: camunda
         component: bpm
         ssl_enabled: true
+        platform_record: true
         cookie_based_affinity: Enabled
       - product: camunda
         component: api
       - product: camunda
         component: optimize
         ssl_enabled: true
+        platform_record: true
         cookie_based_affinity: Enabled
         health_path_override: /api/readyz
 
@@ -194,6 +196,7 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
+        platform_record: true
       - product: ccd
         component: message-publisher
       - product: ccd
@@ -225,13 +228,16 @@ gateways:
       - product: idam
         component: api
         ssl_enabled: true
+        platform_record: true
       - product: idam
         component: web-admin
         cookie_based_affinity: Enabled
         ssl_enabled: true
+        platform_record: true
       - product: idam
         component: user-dashboard
         ssl_enabled: true
+        platform_record: true
 
     # CMC
       - product: cmc
@@ -246,6 +252,7 @@ gateways:
         component: docmosis
         cookie_based_affinity: Enabled
         ssl_enabled: true
+        platform_record: true
         host_name_prefix: docmosis
         http_to_https_redirect: true
 
@@ -320,9 +327,11 @@ gateways:
       - product: idam
         component: testing-support-api
         ssl_enabled: true
+        platform_record: true
       - product: idam
         component: hmcts-access
         ssl_enabled: true
+        platform_record: true
         
     # Access Management
       - product: am

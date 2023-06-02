@@ -229,11 +229,13 @@ gateways:
         component: api
         ssl_enabled: true
         platform_record: true
+      # front door
       - product: idam
         component: web-admin
         cookie_based_affinity: Enabled
         ssl_enabled: true
         platform_record: true
+      # front door
       - product: idam
         component: user-dashboard
         ssl_enabled: true
@@ -331,7 +333,6 @@ gateways:
       - product: idam
         component: hmcts-access
         ssl_enabled: true
-        platform_record: true
         
     # Access Management
       - product: am

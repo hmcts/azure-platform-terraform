@@ -86,30 +86,17 @@ gateways:
         component: StuartBJustice
       - product: labs
         component: raraybould
-      - product: labs
-        component: louisehuyton-walthrough
-        ssl_enabled: true
-        platform_record: true
-      - product: labs
-        component: rhodrif-nodejs
-        ssl_enabled: true
-        platform_record: true
-      - product: labs
-        component: zcwalkthrough-nodejs
-        ssl_enabled: true
-        platform_record: true
 
     # SIDAM 
       - product: idam
         component: api
         ssl_enabled: true
         platform_record: true
+      # front door
       - product: idam
         component: web-admin
         cookie_based_affinity: Enabled
         ssl_enabled: true
-        platform_record: true
-
       - product: idam
         component: api-sprod
         ssl_enabled: true
@@ -123,14 +110,14 @@ gateways:
         component: testing-support-api
         ssl_enabled: true
         platform_record: true
+      # front door
       - product: idam
         component: user-dashboard
         ssl_enabled: true
-        platform_record: true
+      # front door
       - product: idam
         component: hmcts-access
         ssl_enabled: true
-        platform_record: true
 
       - product: idam
         component: web-public
@@ -169,8 +156,22 @@ gateways:
         host_name_prefix: docmosis
         http_to_https_redirect: true
 
-    # HMI
-      - product: hmi
-        component: apim
+    # Prometheus
+      - product: prometheus
+        component: 00
+        ssl_enabled: true
+        platform_record: true
+      - product: prometheus
+        component: 01
+        ssl_enabled: true
+        platform_record: true
+
+    # Alert Manager
+      - product: alertmanager
+        component: 00
+        ssl_enabled: true
+        platform_record: true
+      - product: alertmanager
+        component: 01
         ssl_enabled: true
         platform_record: true

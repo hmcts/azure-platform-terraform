@@ -55,10 +55,6 @@ gateways:
       - product: payment
         component: api
 
-    # Plum Frontend
-      - product: plum
-        component: frontend
-
     #labs
       - product: labs
         component: mokainosspringboot
@@ -92,11 +88,6 @@ gateways:
         component: api
         ssl_enabled: true
         platform_record: true
-      # front door
-      - product: idam
-        component: web-admin
-        cookie_based_affinity: Enabled
-        ssl_enabled: true
       - product: idam
         component: api-sprod
         ssl_enabled: true
@@ -108,23 +99,6 @@ gateways:
         platform_record: true
       - product: idam
         component: testing-support-api
-        ssl_enabled: true
-        platform_record: true
-      # front door
-      - product: idam
-        component: user-dashboard
-        ssl_enabled: true
-      # front door
-      - product: idam
-        component: hmcts-access
-        ssl_enabled: true
-
-      - product: idam
-        component: web-public
-        ssl_enabled: true
-        platform_record: true
-      - product: idam
-        component: web-public-sprod
         ssl_enabled: true
         platform_record: true
 

@@ -354,3 +354,33 @@ gateways:
     # SPTRIBS
       - product: sptribs
         component: case-api
+
+    # Traefik
+      - product: traefik
+        component: cft-00
+        ssl_enabled: true
+        platform_record: true
+      - product: traefik
+        component: cft-01
+        ssl_enabled: true
+        platform_record: true
+
+    # Prometheus
+      - product: prometheus
+        component: 00
+        ssl_enabled: true
+        platform_record: true
+      - product: prometheus
+        component: 01
+        ssl_enabled: true
+        platform_record: true
+
+    # Alertmanager
+      - product: alertmanager
+        component: 00
+        ssl_enabled: true
+        platform_record: true
+      - product: alertmanager
+        component: 01
+        ssl_enabled: true
+        platform_record: true

@@ -242,11 +242,6 @@ gateways:
 # IDAM AAT
       - product: idam
         component: api
-      - product: idam
-        component: web-admin
-        cookie_based_affinity: Enabled
-        ssl_enabled: true
-        platform_record: true
 
 # rse
       - product: rse

@@ -149,18 +149,12 @@ gateways:
     # Fees and Pay
       - product: payment
         component: api
-      - product: fees-register
-        component: api
       - product: ccpay
         component: bulkscanning-api
       - product: ccpay
         component: refunds-api
       - product: ccpay
         component: notifications-service
-
-    # BAR
-      - product: bar
-        component: api
 
     # Evidence Management
       - product: em
@@ -227,19 +221,6 @@ gateways:
     # SIDAM
       - product: idam
         component: api
-        ssl_enabled: true
-        platform_record: true
-      # front door
-      - product: idam
-        component: web-admin
-        cookie_based_affinity: Enabled
-        ssl_enabled: true
-        platform_record: true
-      # front door
-      - product: idam
-        component: user-dashboard
-        ssl_enabled: true
-        platform_record: true
 
     # CMC
       - product: cmc
@@ -328,11 +309,6 @@ gateways:
     # SIDAM
       - product: idam
         component: testing-support-api
-        ssl_enabled: true
-        platform_record: true
-      - product: idam
-        component: hmcts-access
-        ssl_enabled: true
         
     # Access Management
       - product: am

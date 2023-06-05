@@ -83,6 +83,8 @@ gateways:
         component: StuartBJustice
       - product: "labs"
         component: raraybould
+      - product: "labs"
+        component: rhodrif
 
     # SIDAM 
       - product: idam

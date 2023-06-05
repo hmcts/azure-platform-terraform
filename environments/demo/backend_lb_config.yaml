@@ -385,9 +385,9 @@ gateways:
       - product: fis
         component: bulk-scan-api
       - product: fis
-        component: cos-api  
+        component: cos-api
       - product: fis
-        component: hmc-api 
+        component: hmc-api
         
       # SIDAM
       - product: idam
@@ -421,20 +421,20 @@ gateways:
         
     # Alertmanager
       - product: alertmanager
-        component: 00
+        component: "00"
         ssl_enabled: true
         platform_record: true
       - product: alertmanager
-        component: 01
+        component: "01"
         ssl_enabled: true
         platform_record: true
 
     # Prometheus
       - product: prometheus
-        component: 00
+        component: "00"
         ssl_enabled: true
         platform_record: true
       - product: prometheus
-        component: 01
+        component: "01"
         ssl_enabled: true
         platform_record: true

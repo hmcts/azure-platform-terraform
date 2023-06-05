@@ -384,20 +384,20 @@ gateways:
 
     # Prometheus
       - product: prometheus
-        component: 00
+        component: "00"
         ssl_enabled: true
         platform_record: true
       - product: prometheus
-        component: 01
+        component: "01"
         ssl_enabled: true
         platform_record: true
 
     # Alertmanager
       - product: alertmanager
-        component: 00
+        component: "00"
         ssl_enabled: true
         platform_record: true
       - product: alertmanager
-        component: 01
+        component: "01"
         ssl_enabled: true
         platform_record: true

@@ -86,21 +86,13 @@ gateways:
     # SIDAM 
       - product: idam
         component: api
-        ssl_enabled: true
-        platform_record: true
       - product: idam
         component: api-sprod
-        ssl_enabled: true
-        platform_record: true
       - product: idam
         component: web-admin-sprod
         cookie_based_affinity: Enabled
-        ssl_enabled: true
-        platform_record: true
       - product: idam
         component: testing-support-api
-        ssl_enabled: true
-        platform_record: true
 
       # BulkScan
       - product: bulk-scan

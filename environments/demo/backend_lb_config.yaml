@@ -24,9 +24,12 @@ gateways:
       # Camunda
       - product: camunda
         component: api
+        ssl_enabled: true
+        platform_record: true
       - product: camunda
         component: optimize
         ssl_enabled: true
+        platform_record: true
         cookie_based_affinity: Enabled
         health_path_override: /api/readyz
     # Divorce
@@ -241,13 +244,13 @@ gateways:
     # SIDAM
       - product: idam
         component: api
-        ssl_enabled: true
 
     # Docmosis
       - product: dg
         component: docmosis
         cookie_based_affinity: Enabled
         ssl_enabled: true
+        platform_record: true
         host_name_prefix: docmosis
         http_to_https_redirect: true
     ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
@@ -271,6 +274,7 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
+        platform_record: true
         
     # FPRL
       - product: fprl
@@ -381,17 +385,13 @@ gateways:
       - product: fis
         component: bulk-scan-api
       - product: fis
-        component: cos-api  
+        component: cos-api
       - product: fis
-        component: hmc-api 
+        component: hmc-api
         
       # SIDAM
       - product: idam
         component: testing-support-api
-        ssl_enabled: true
-      - product: idam
-        component: hmcts-access
-        ssl_enabled: true
 
       # SPTRIBS
       - product: sptribs
@@ -418,3 +418,23 @@ gateways:
         component: sdt
       - product: civil
         component: sdt-gateway
+        
+    # Alertmanager
+      - product: alertmanager
+        component: "00"
+        ssl_enabled: true
+        platform_record: true
+      - product: alertmanager
+        component: "01"
+        ssl_enabled: true
+        platform_record: true
+
+    # Prometheus
+      - product: prometheus
+        component: "00"
+        ssl_enabled: true
+        platform_record: true
+      - product: prometheus
+        component: "01"
+        ssl_enabled: true
+        platform_record: true

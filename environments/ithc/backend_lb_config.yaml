@@ -25,12 +25,14 @@ gateways:
       - product: camunda
         component: bpm
         ssl_enabled: true
+        platform_record: true
         cookie_based_affinity: Enabled
       - product: camunda
         component: api
       - product: camunda
         component: optimize
         ssl_enabled: true
+        platform_record: true
         cookie_based_affinity: Enabled
         health_path_override: /api/readyz
 
@@ -147,18 +149,12 @@ gateways:
     # Fees and Pay
       - product: payment
         component: api
-      - product: fees-register
-        component: api
       - product: ccpay
         component: bulkscanning-api
       - product: ccpay
         component: refunds-api
       - product: ccpay
         component: notifications-service
-
-    # BAR
-      - product: bar
-        component: api
 
     # Evidence Management
       - product: em
@@ -194,6 +190,7 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
+        platform_record: true
       - product: ccd
         component: message-publisher
       - product: ccd
@@ -224,14 +221,6 @@ gateways:
     # SIDAM
       - product: idam
         component: api
-        ssl_enabled: true
-      - product: idam
-        component: web-admin
-        cookie_based_affinity: Enabled
-        ssl_enabled: true
-      - product: idam
-        component: user-dashboard
-        ssl_enabled: true
 
     # CMC
       - product: cmc
@@ -246,6 +235,7 @@ gateways:
         component: docmosis
         cookie_based_affinity: Enabled
         ssl_enabled: true
+        platform_record: true
         host_name_prefix: docmosis
         http_to_https_redirect: true
 
@@ -319,10 +309,6 @@ gateways:
     # SIDAM
       - product: idam
         component: testing-support-api
-        ssl_enabled: true
-      - product: idam
-        component: hmcts-access
-        ssl_enabled: true
         
     # Access Management
       - product: am
@@ -344,3 +330,33 @@ gateways:
     # SPTRIBS
       - product: sptribs
         component: case-api
+
+    # Traefik
+      - product: traefik
+        component: cft-00
+        ssl_enabled: true
+        platform_record: true
+      - product: traefik
+        component: cft-01
+        ssl_enabled: true
+        platform_record: true
+
+    # Prometheus
+      - product: prometheus
+        component: "00"
+        ssl_enabled: true
+        platform_record: true
+      - product: prometheus
+        component: "01"
+        ssl_enabled: true
+        platform_record: true
+
+    # Alertmanager
+      - product: alertmanager
+        component: "00"
+        ssl_enabled: true
+        platform_record: true
+      - product: alertmanager
+        component: "01"
+        ssl_enabled: true
+        platform_record: true

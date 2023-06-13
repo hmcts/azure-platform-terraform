@@ -10,6 +10,7 @@ gateways:
     # RPE
       - product: draft-store
         component: service
+        
     # Probate
       - product: probate
         component: business-service
@@ -17,6 +18,7 @@ gateways:
         component: orchestrator-service
       - product: probate
         component: submit-service
+        
     # I&A
       - product: ia
         component: case-api
@@ -53,35 +55,32 @@ gateways:
       - product: payment
         component: api
 
-    # Plum Frontend
-      - product: plum
-        component: frontend
     #labs
       - product: labs
         component: mokainosspringboot
       - product: labs
         component: mokainosjavaapp
-      - product: "labs"
+      - product: labs
         component: msl8r
-      - product: "labs"
+      - product: labs
         component: ssian2
-      - product: "labs"
+      - product: labs
         component: zc-hmcts
-      - product: "labs"
+      - product: labs
         component: endakelly
-      - product: "labs"
+      - product: labs
         component: ozzyib
-      - product: "labs"
+      - product: labs
         component: rajivkapoor1
-      - product: "labs"
+      - product: labs
         component: matthewsearle01-v3
-      - product: "labs"
+      - product: labs
         component: jefex7
-      - product: "labs"
+      - product: labs
         component: hw469
-      - product: "labs"
+      - product: labs
         component: StuartBJustice
-      - product: "labs"
+      - product: labs
         component: raraybould
       - product: "labs"
         component: rhodrif
@@ -89,28 +88,13 @@ gateways:
     # SIDAM 
       - product: idam
         component: api
-        ssl_enabled: true
-      - product: idam
-        component: web-admin
-        cookie_based_affinity: Enabled
-        ssl_enabled: true
-
       - product: idam
         component: api-sprod
-        ssl_enabled: true
       - product: idam
         component: web-admin-sprod
         cookie_based_affinity: Enabled
-        ssl_enabled: true
       - product: idam
         component: testing-support-api
-        ssl_enabled: true
-      - product: idam
-        component: user-dashboard
-        ssl_enabled: true
-      - product: idam
-        component: hmcts-access
-        ssl_enabled: true
 
       # BulkScan
       - product: bulk-scan
@@ -121,9 +105,11 @@ gateways:
         component: sample-app
       - product: bulk-scan
         component: payment-processor
+        
       # Bulk Print (DTS)
       - product: rpe
         component: send-letter-service
+        
       # ReformScan (like BulkScan but separate namespace for non-CFT members)
       - product: reform-scan
         component: blob-router
@@ -134,5 +120,26 @@ gateways:
         component: docmosis
         cookie_based_affinity: Enabled
         ssl_enabled: true
+        platform_record: true
         host_name_prefix: docmosis
         http_to_https_redirect: true
+
+    # Prometheus
+      - product: prometheus
+        component: "00"
+        ssl_enabled: true
+        platform_record: true
+      - product: prometheus
+        component: "01"
+        ssl_enabled: true
+        platform_record: true
+
+    # Alert Manager
+      - product: alertmanager
+        component: "00"
+        ssl_enabled: true
+        platform_record: true
+      - product: alertmanager
+        component: "01"
+        ssl_enabled: true
+        platform_record: true

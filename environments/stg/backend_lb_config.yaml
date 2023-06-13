@@ -20,6 +20,7 @@ gateways:
       - product: camunda
         component: bpm
         ssl_enabled: true
+        platform_record: true
         cookie_based_affinity: Enabled
       - product: camunda
         component: api
@@ -170,6 +171,7 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
+        platform_record: true
       - product: ccd
         component: case-document-am-api
       - product: ccd
@@ -240,11 +242,6 @@ gateways:
 # IDAM AAT
       - product: idam
         component: api
-        ssl_enabled: true
-      - product: idam
-        component: web-admin
-        cookie_based_affinity: Enabled
-        ssl_enabled: true
 
 # rse
       - product: rse
@@ -265,6 +262,7 @@ gateways:
         component: docmosis
         cookie_based_affinity: Enabled
         ssl_enabled: true
+        platform_record: true
         host_name_prefix: docmosis
         http_to_https_redirect: true
     ##### DO NOT ADD ANY MORE SERVICES TO THIS GATEWAY CONFIGURATION ABOVE, USE THE ONE BELOW THIS WARNING
@@ -298,6 +296,7 @@ gateways:
       - product: camunda
         component: optimize
         ssl_enabled: true
+        platform_record: true
         cookie_based_affinity: Enabled
         health_path_override: /api/readyz
 
@@ -323,14 +322,7 @@ gateways:
 
     # IDAM
       - product: idam
-        component: user-dashboard
-        ssl_enabled: true
-      - product: idam
         component: testing-support-api
-        ssl_enabled: true
-      - product: idam
-        component: hmcts-access
-        ssl_enabled: true
 
     # RPTS
       - product: rpts
@@ -374,3 +366,33 @@ gateways:
     # ccpay
       - product: ccpay
         component: cpo-update-service
+
+    # Traefik
+      - product: traefik
+        component: cft-00
+        ssl_enabled: true
+        platform_record: true
+      - product: traefik
+        component: cft-01
+        ssl_enabled: true
+        platform_record: true
+
+    # Prometheus
+      - product: prometheus
+        component: "00"
+        ssl_enabled: true
+        platform_record: true
+      - product: prometheus
+        component: "01"
+        ssl_enabled: true
+        platform_record: true
+
+    # Alertmanager
+      - product: alertmanager
+        component: "00"
+        ssl_enabled: true
+        platform_record: true
+      - product: alertmanager
+        component: "01"
+        ssl_enabled: true
+        platform_record: true

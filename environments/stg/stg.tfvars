@@ -1467,6 +1467,16 @@ frontends = [
         selector       = "idam-user-dashboard-session"
       },
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "idam_user_dashboard_session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "auth_verification"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "jwt"

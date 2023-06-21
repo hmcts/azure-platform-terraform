@@ -335,15 +335,15 @@ gateways:
     # RPTS
       - product: rpts
         component: api
-        
+
     # FIS
       - product: fis
         component: cos-api
       - product: fis
-        component: bulk-scan-api  
+        component: bulk-scan-api
       - product: fis
         component: hmc-api
-        
+
     # HMC
       - product: hmc
         component: cft-hearing-service
@@ -351,15 +351,15 @@ gateways:
         component: hmi-inbound-adapter
       - product: hmc
         component: hmi-outbound-adapter
-        
+
     # TS
       - product: ts
         component: translation-service
-    
+
     # CNP
       - product: plum
         component: recipe-backend
-        
+
     # SSCS
       - product: sscs
         component: hearings-api
@@ -370,7 +370,11 @@ gateways:
     # SPTRIBS
       - product: sptribs
         component: case-api
-    
+
     # ccpay
       - product: ccpay
         component: cpo-update-service
+
+    # jps
+      - product: jps
+        component: judicial-payment-service

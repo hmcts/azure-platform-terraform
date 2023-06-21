@@ -352,3 +352,6 @@ gateways:
     # SPTRIBS
       - product: sptribs
         component: case-api
+    # jps
+      - product: jps
+        component: judicial-payment-service

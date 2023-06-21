@@ -232,7 +232,7 @@ gateways:
       - product: idam
         component: user-dashboard
         ssl_enabled: true
-        
+
  # FACT
       - product: fact
         component: api
@@ -266,14 +266,14 @@ gateways:
  # Adoption
       - product: adoption
         component: cos-api
-        
- 
+
+
 # Private Law
       - product: prl
         component: cos
       - product: prl
         component: dgs
-        
+
 # HMC
       - product: hmc
         component: cft-hearing-service
@@ -300,7 +300,7 @@ gateways:
         component: sya-api
       - product: et
         component: hearings-api
-        
+
       # SSCS
       - product: sscs
         component: hearings-api
@@ -320,7 +320,7 @@ gateways:
       # I&A
       - product: ia
         component: bail-case-api
-        
+
       # Access Management
       - product: am
         component: judicial-booking-service
@@ -332,3 +332,7 @@ gateways:
       # DTSSE
       - product: dtsse
         component: ardoq-adapter
+
+      # jps
+      - product: jps
+        component: judicial-payment-service

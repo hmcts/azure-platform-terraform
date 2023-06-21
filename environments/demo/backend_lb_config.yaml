@@ -126,7 +126,7 @@ gateways:
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
-        
+
     # CPO (CDM)
       - product: cpo
         component: case-payment-orders-api
@@ -271,7 +271,7 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
-        
+
     # FPRL
       - product: fprl
         component: cos
@@ -294,14 +294,14 @@ gateways:
     # ccpay
       - product: ccpay
         component: notifications-service
-        
+
     # Log and Audit
       - product: lau
         component: idam-backend
       - product: lau
         component: idam-backend-int
       - product: lau
-        component: case-backend-int        
+        component: case-backend-int
 
     # Protected Characteristics Questions
       - product: pcq
@@ -316,7 +316,7 @@ gateways:
         component: bpm
         ssl_enabled: true
         cookie_based_affinity: Enabled
-        
+
 # Reference DATA
       - product: rd
         component: professional-api
@@ -346,7 +346,7 @@ gateways:
         component: location-ref-api-int
       - product: rd
         component: commondata-api
-        
+
     # HMC
       - product: hmc
         component: cft-hearing-service
@@ -354,10 +354,10 @@ gateways:
         component: hmi-inbound-adapter
       - product: hmc
         component: hmi-outbound-adapter
-        
+
       - product: sscs
         component: hearings-api
-        
+
      # Fees and Pay
       - product: payment
         component: api-int
@@ -369,11 +369,11 @@ gateways:
         component: bulkscanning-api-int
       - product: ccpay
         component: notifications-service-int
-        
+
      # BAR
       - product: bar
         component: api-int
-        
+
      # TS
       - product: ts
         component: translation-service
@@ -381,10 +381,10 @@ gateways:
       - product: fis
         component: bulk-scan-api
       - product: fis
-        component: cos-api  
+        component: cos-api
       - product: fis
-        component: hmc-api 
-        
+        component: hmc-api
+
       # SIDAM
       - product: idam
         component: testing-support-api
@@ -418,3 +418,7 @@ gateways:
         component: sdt
       - product: civil
         component: sdt-gateway
+
+      # jps
+      - product: jps
+        component: judicial-payment-service

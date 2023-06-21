@@ -197,8 +197,8 @@ gateways:
       - product: ccd
         component: message-publisher
       - product: ccd
-        component: case-document-am-api  
-        
+        component: case-document-am-api
+
     # CPO (CDM)
       - product: cpo
         component: case-payment-orders-api
@@ -303,7 +303,7 @@ gateways:
         component: hmi-inbound-adapter
       - product: hmc
         component: hmi-outbound-adapter
-        
+
     # TS
       - product: ts
         component: translation-service
@@ -323,11 +323,11 @@ gateways:
       - product: idam
         component: hmcts-access
         ssl_enabled: true
-        
+
     # Access Management
       - product: am
         component: judicial-booking-service
-        
+
     # ET
       - product: et
         component: cos
@@ -344,3 +344,7 @@ gateways:
     # SPTRIBS
       - product: sptribs
         component: case-api
+
+    # jps
+      - product: jps
+        component: judicial-payment-service

@@ -756,6 +756,22 @@ frontends = [
             ]
           }
         ]
+       },
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Allow"
+        match_conditions = [
+          {
+            match_variable = "QueryStringArgNames"
+            operator       = "Equals"
+            selector       = "returnUrl"
+            match_values = [
+              "10.100.40.245/3000"
+            ]
+          }
+        ]
       },
     ]
   },

@@ -756,7 +756,7 @@ frontends = [
             ]
           }
         ]
-       },
+      },
       {
         name     = "IPMatchWhitelist"
         priority = 1

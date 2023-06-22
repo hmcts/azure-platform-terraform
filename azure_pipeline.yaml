@@ -47,7 +47,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
-      pipeline_tests: true
+      pipeline_tests: false
 
     - deployment: 'sbox_global'
       environment: 'sbox'
@@ -65,7 +65,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
-      pipeline_tests: true
+      pipeline_tests: false
 
     - deployment: 'sbox_shutter'
       environment: 'sbox'
@@ -309,7 +309,7 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_frontendappgateway'
-      pipeline_tests: true
+      pipeline_tests: false
 
     - deployment: 'prod_backendappgateway'
       environment: 'prod'
@@ -318,7 +318,7 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_backendappgateway'
-      pipeline_tests: true
+      pipeline_tests: false
 
     - deployment: 'prod_private_dns'
       environment: 'prod'

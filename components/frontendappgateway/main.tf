@@ -30,4 +30,5 @@ module "frontendappgateway" {
   log_analytics_workspace_id         = module.logworkspace.workspace_id
   enable_multiple_availability_zones = true
   resource_prefix                    = "cft"
+  min_capacity                       = var.frontend_agw_min_capacity
 }

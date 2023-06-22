@@ -35,4 +35,5 @@ module "backendappgateway" {
   key_vault_resource_group           = local.key_vault_resource_group
   enable_multiple_availability_zones = true
   resource_prefix                    = "cft"
+  min_capacity                       = var.backend_agw_min_capacity
 }

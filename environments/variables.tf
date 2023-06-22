@@ -139,3 +139,13 @@ variable "expiresAfter" {
   description = "Date when Sandbox resources can be deleted. Format: YYYY-MM-DD"
   default     = "3000-01-01"
 }
+
+variable "backend_agw_min_capacity" {
+  description = "Backend Appgw Min capacity"
+  default     = 2
+}
+
+variable "frontend_agw_min_capacity" {
+  description = "Backend Appgw Min capacity"
+  default     = 2
+}

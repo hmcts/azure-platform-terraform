@@ -7,6 +7,7 @@ certificate_name_check = false
 
 
 backend_agw_private_ip_address = ["10.90.96.20", "10.90.96.21"]
+backend_agw_min_capacity       = 5
 data_subscription              = "8999dec3-0104-4a27-94ee-6588559729d1"
 privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                        = "prod"
@@ -17,6 +18,7 @@ shutter_rg = "shutter-app-prod-rg"
 
 cft_apps_cluster_ips            = ["10.90.79.250", "10.90.95.250"]
 frontend_agw_private_ip_address = "10.90.96.12"
+frontend_agw_min_capacity       = 5
 
 hub           = "prod"
 apim_sku_name = "Premium"

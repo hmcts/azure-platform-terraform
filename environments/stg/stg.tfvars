@@ -764,9 +764,10 @@ frontends = [
         action   = "Allow"
         match_conditions = [
           {
-            match_variable = "QueryStringArgNames"
-            operator       = "Equals"
-            selector       = "returnUrl"
+            match_variable     = "QueryStringArgNames"
+            operator           = "Contains"
+            selector           = "returnUrl"
+            negation_condition = false
             match_values = [
               "10.100.40.245/3000"
             ]

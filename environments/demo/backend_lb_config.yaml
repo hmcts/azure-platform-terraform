@@ -417,6 +417,8 @@ gateways:
       - product: civil
         component: sdt
       - product: civil
+        component: sdt-commissioning
+      - product: civil
         component: sdt-gateway
 
     # jps

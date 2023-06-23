@@ -344,8 +344,14 @@ gateways:
       - product: fis
         component: hmc-api
     # Civil
-      -   product: civil
-          component: general-applications
+      - product: civil
+        component: general-applications
+      - product: civil
+        component: sdt
+      - product: civil
+        component: sdt-commissioning
+      - product: civil
+        component: sdt-gateway
     # RPTS
       - product: rpts
         component: api

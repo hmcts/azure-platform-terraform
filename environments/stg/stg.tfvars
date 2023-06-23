@@ -764,7 +764,7 @@ frontends = [
         action   = "Block"
         match_conditions = [
           {
-            match_variable     = "QueryStringArgNames"
+            match_variable     = "QueryString"
             selector           = "returnUrl"
             operator           = "Contains"
             negation_condition = true

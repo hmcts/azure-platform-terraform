@@ -761,15 +761,19 @@ frontends = [
         name     = "IPMatchWhitelist"
         priority = 1
         type     = "MatchRule"
-        action   = "Block"
+        action   = "Allow"
         match_conditions = [
           {
             match_variable     = "QueryString"
             selector           = "returnUrl"
             operator           = "Contains"
-            negation_condition = true
+            negation_condition = false
             match_values = [
-              "10.100.40.245/3000"
+              "10.100.40.241/3000",
+              "10.100.40.242/3000",
+              "10.100.40.243/3000",
+              "10.100.40.245/3000",
+              "10.100.40.246/3000"
             ]
           }
         ]

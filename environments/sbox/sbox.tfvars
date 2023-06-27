@@ -627,7 +627,7 @@ apim_appgw_exclusions = [
   }
 ]
 
-test_frontend =
+test_frontend = [
   {
     product          = "plum"
     name             = "plum"
@@ -636,3 +636,4 @@ test_frontend =
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   }
+]

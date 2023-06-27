@@ -26,8 +26,10 @@ module "landing_zone" {
 module "frontdoor_for_testing_migration" {
   source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=master"
 
+  count = var.env == sbox ? 1 : 0
+
   common_tags                = module.ctags.common_tags
-  env                        = "sbox"
+  env                        = var.env
   project                    = "test"
   location                   = var.location
   frontends                  = var.test_frontend

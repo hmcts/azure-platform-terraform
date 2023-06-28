@@ -258,6 +258,8 @@ gateways:
  # CIVIL
       - product: civil
         component: service
+      - product: civil
+        component: general-applications
 
  # NFDIV
       - product: nfdiv

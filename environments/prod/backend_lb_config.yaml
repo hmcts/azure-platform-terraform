@@ -148,8 +148,6 @@ gateways:
       - product: ccd
         component: case-print-service
       - product: ccd
-        component: case-activity-api
-      - product: ccd
         component: admin-web
         ssl_enabled: true
       - product: ccd
@@ -302,6 +300,10 @@ gateways:
         component: sya-api
       - product: et
         component: hearings-api
+
+      # CCD
+      - product: ccd
+        component: case-activity-api
 
       # SSCS
       - product: sscs

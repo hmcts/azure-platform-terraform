@@ -146,6 +146,16 @@ variable "backend_agw_min_capacity" {
 }
 
 variable "frontend_agw_min_capacity" {
-  description = "Backend Appgw Min capacity"
+  description = "Frontend Appgw Min capacity"
   default     = 2
+}
+
+variable "backend_agw_max_capacity" {
+  description = "Backend Appgw Min capacity"
+  default     = 10
+}
+
+variable "frontend_agw_max_capacity" {
+  description = "Frontend Appgw Min capacity"
+  default     = 10
 }

@@ -31,4 +31,5 @@ module "frontendappgateway" {
   enable_multiple_availability_zones = true
   resource_prefix                    = "cft"
   min_capacity                       = var.frontend_agw_min_capacity
+  max_capacity                       = var.frontend_agw_max_capacity
 }

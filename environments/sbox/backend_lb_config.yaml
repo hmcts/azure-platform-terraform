@@ -85,6 +85,8 @@ gateways:
         component: raraybould
       - product: "labs"
         component: rhodrif
+      - product: "labs"
+        component: peterpilgrim-v2
 
     # SIDAM 
       - product: idam

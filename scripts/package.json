@@ -14,7 +14,7 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
-    "@babel/core": "7.22.7",
+    "@babel/core": "7.22.8",
     "@types/jest": "29.5.2",
     "babel-jest": "29.6.0"
   }

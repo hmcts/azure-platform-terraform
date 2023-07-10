@@ -2886,9 +2886,9 @@ frontends = [
     ]
   },
   {
-    name             = "response"
-    custom_domain    = "response.platform.hmcts.net"
-    shutter_app      = false
-    redirect         = "incidents.hmcts.net"
+    name          = "response"
+    custom_domain = "response.platform.hmcts.net"
+    shutter_app   = false
+    redirect      = "incidents.hmcts.net"
   }
 ]

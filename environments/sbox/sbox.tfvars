@@ -616,6 +616,7 @@ frontends = [
     custom_domain    = "labs-rhodrif-nodejs.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    shutter_app      = false
   }
 ]
 

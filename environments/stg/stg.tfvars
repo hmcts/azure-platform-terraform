@@ -719,17 +719,17 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "dtSa"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
         selector       = "rxVisitor"
       },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "rxvt"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
       }
     ],
     custom_rules = [

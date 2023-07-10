@@ -8,7 +8,7 @@ module "shutter" {
   source                     = "../../modules/shutter_page"
   resource_group_name        = var.shutter_rg
   env                        = var.env
-  shutter_apps               = var.frontends
+  shutter_apps               = local.shutter_apps
   common_tags                = module.ctags.common_tags
   certificate_key_vault_name = local.key_vault_name
   subscription               = var.subscription

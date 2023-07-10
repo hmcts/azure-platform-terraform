@@ -797,11 +797,6 @@ frontends = [
         selector       = "connect.sid"
       },
       {
-        match_variable = "QueryParamValue"
-        operator       = "Equals"
-        selector       = "iss"
-      },
-      {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "lau-cookie-preferences"

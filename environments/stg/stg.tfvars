@@ -787,15 +787,30 @@ frontends = [
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
         match_variable = "QueryParamValue"
         operator       = "Equals"
         selector       = "iss"
       },
       {
-        match_variable = "CookieValue"
+        match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "lau-cookie-preferences"
-      }
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "lau-session"
+      },
     ]
   },
   {

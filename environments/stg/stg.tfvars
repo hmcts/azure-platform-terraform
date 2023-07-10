@@ -785,6 +785,18 @@ frontends = [
     mode           = "Detection"
     custom_domain  = "lau.aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryParamValue"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "CookieValue"
+        operator       = "Equals"
+        selector       = "lau-cookie-preferences"
+      }
+    ]
   },
   {
     name           = "judicial-payments"

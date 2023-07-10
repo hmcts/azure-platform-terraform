@@ -2884,5 +2884,13 @@ frontends = [
         selector       = "PostParamName"
       }
     ]
+  },
+  {
+    product          = "response"
+    name             = "response"
+    custom_domain    = "response.platform.hmcts.net"
+    shutter_app      = false
+    redirect         = "incidents.hmcts.net"
+    certificate_name = "wildcard-platform-hmcts-net"
   }
 ]

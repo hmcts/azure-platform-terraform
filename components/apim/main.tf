@@ -18,7 +18,7 @@ module "api-mgmt" {
   department                     = var.department
   common_tags                    = module.ctags.common_tags
   route_next_hop_in_ip_address   = local.hub[var.hub].ukSouth.next_hop_ip
-  publisher_email                = "DTSPlatformOps@HMCTS.NET"
+  publisher_email                = var.publisher_email
 }
 
 resource "azurerm_api_management_named_value" "environment" {

@@ -25,6 +25,8 @@ frontend_agw_max_capacity       = 15
 hub           = "prod"
 apim_sku_name = "Premium"
 
+publisher_email = "DTSPlatformOps@HMCTS.NET"
+
 frontends = [
   {
     name             = "plum"

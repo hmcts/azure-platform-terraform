@@ -159,3 +159,8 @@ variable "frontend_agw_max_capacity" {
   description = "Frontend Appgw Max capacity"
   default     = 10
 }
+
+variable "publisher_email" {
+  type    = string
+  default = "DTSPlatformOperations@justice.gov.uk"
+}

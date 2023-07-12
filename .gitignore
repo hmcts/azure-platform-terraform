@@ -3,7 +3,8 @@
 **/*.tfstate.backup
 **/.terraform
 **/.terraform/*
-**/.terraform/.terraform.lock.hcl
+**/.terraform/
+**.terraform.lock.hcl
 **/.DS_Store
 tfplan
 

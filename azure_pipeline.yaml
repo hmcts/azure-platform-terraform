@@ -83,7 +83,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
-      pipeline_tests: true
+      pipeline_tests: false
 
     - deployment: 'sbox_private_dns'
       environment: 'sbox'

@@ -21,4 +21,4 @@ variable "expiresAfter" {
   description = "Expiration date"
   default     = "3000-01-01"
 }
-variable "environment" {}
+#variable "environment" {}

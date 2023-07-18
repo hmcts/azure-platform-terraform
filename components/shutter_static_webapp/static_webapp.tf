@@ -1,5 +1,5 @@
 locals {
-  shutter_apps = [for k, v in var.frontends : v if lookup(v, "shutter_app", true)]
+  shutter_apps = [for k, v in var.frontends : v if lookup(v, "shutter_app", false)]
 }
 module "static_webapp" {
   providers = {

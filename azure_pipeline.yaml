@@ -76,6 +76,15 @@ parameters:
       dependsOn: 'Precheck'
       pipeline_tests: true
 
+    - deployment: 'sbox_shutter_webapp'
+      environment: 'sbox'
+      component: 'shutter_static_webapp'
+      service_connection: 'dcd-cftapps-sbox'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+      pipeline_tests: false
+
     - deployment: 'sbox_private_dns'
       environment: 'sbox'
       component: 'cftapps_private_dns'

@@ -32,6 +32,7 @@ frontends = [
     name             = "plum"
     product          = "cnp"
     custom_domain    = "plum.platform.hmcts.net"
+    dns_zone_name    = "platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
     shutter_app      = true
@@ -2119,6 +2120,16 @@ frontends = [
         operator       = "Equals"
         selector       = "post_logout_redirect_uri"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code_challenge"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code_challenge"
+      }
     ]
   },
   {

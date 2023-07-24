@@ -34,6 +34,9 @@ frontends = [
     custom_domain    = "plum.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
+    shutter_app      = true
+    dns_zone_name    = "platform.hmcts.net"
+
   },
   {
     product          = "div"

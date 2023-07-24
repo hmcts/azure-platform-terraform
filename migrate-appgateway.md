@@ -38,7 +38,7 @@ Enabling availability zones on the existing application gateways will require do
   See [sbox example](https://github.com/hmcts/rdo-terraform-hub-dmz/blob/1b47237e07a759fb05c74adf749e4749d8f88b8c/env_tfvars/hub-sbox-int.tfvars#L59-L66)  
   Note:   
   - name: Append `-2` suffix to the environment name (though sbox example shown uses a `-test` suffix)  
-  - palo_ips: IP address for the new `frontendappgateway`. Specify same values for both uksouth and ukwest
+  - palo_ips: IP address for the new `frontendappgateway`. Specify same value for uksouth
   - index: Pick the next available number
   
 #### Panorama
@@ -53,11 +53,11 @@ See [`Example Panorma PR`](https://github.com/hmcts/hub-panorama-terraform/pull/
 
 After merging PR for the changes above, confirm the [hmcts.hub-terraform-hub-dmz](https://dev.azure.com/hmcts/PlatformOperations/_build?definitionId=226) pipeline run complete successfully without errors for the Azure Firewall
 and the [`hmcts.hub-panorama-terraform](https://dev.azure.com/hmcts/PlatformOperations/_build?definitionId=527) pipeline run completes successfully without errors for Panorama
-- Confirm the following were created in Azure Firewall in both uksouth and ukwest
+- Confirm the following were created in Azure Firewall in uksouth
   - A `public IP address` associated with the regional Azure firewall
   - A destination NAT `NAT rule collection` entry translating inbound traffic (from Azure Front Door) to the newly created public IP to `frontendappgateway' private IP address
 - You now need to push out the panorama changes on the panoramas themselves.
-  - login to the panorama portal while on VPN on both [`UK South`](https://panorama-prod-uks-0.platform.hmcts.net/) and [`UK West`](https://panorama-prod-ukw-0.platform.hmcts.net/)
+  - login to the panorama portal while on VPN on [`UK South`](https://panorama-prod-uks-0.platform.hmcts.net/)
   - In the top right hand corner, click on the Commit button, you will need to commit and push to the the devices. You can watch a more in depth guide on how to do this [`here in the KT session video from 45 minutes on`](https://cjscommonplatform.sharepoint.com/sites/DTSPlatformOperationsTeam/_layouts/15/stream.aspx?id=%2Fsites%2FDTSPlatformOperationsTeam%2FShared%20Documents%2FKnowledgeShare%2FRedSquadKTSessions%2FPanorama%2C%20Terraform%20and%20the%20Azure%20DevOps%20pipeline%2D20220218%5F101923%2DMeeting%20Recording%2Emp4)
 
 
@@ -103,7 +103,7 @@ Prior to switching over traffic to the new application gateways, test the fronte
 
 #### Panorama
 - [`Example PR`](https://github.com/hmcts/hub-panorama-terraform/pull/171/files) on cleanup of Panorama for old AppGw's
-- login to the panorama portal while on VPN on both [`UK South`](https://panorama-prod-uks-0.platform.hmcts.net/) and [`UK West`](https://panorama-prod-ukw-0.platform.hmcts.net/)
+- login to the panorama portal while on VPN on [`UK South`](https://panorama-prod-uks-0.platform.hmcts.net/) 
   - In the top right hand corner, click on the Commit button, you will need to commit and push to the the devices. You can watch a more in depth guide on how to do this [`here in the KT session video from 45 minutes on`](https://cjscommonplatform.sharepoint.com/sites/DTSPlatformOperationsTeam/_layouts/15/stream.aspx?id=%2Fsites%2FDTSPlatformOperationsTeam%2FShared%20Documents%2FKnowledgeShare%2FRedSquadKTSessions%2FPanorama%2C%20Terraform%20and%20the%20Azure%20DevOps%20pipeline%2D20220218%5F101923%2DMeeting%20Recording%2Emp4)
     
 See [Example PR](https://github.com/hmcts/rdo-terraform-hub-dmz/pull/553)

@@ -2118,6 +2118,16 @@ frontends = [
         operator       = "Equals"
         selector       = "post_logout_redirect_uri"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code_challenge"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code_challenge"
+      }
     ]
   },
   {

@@ -342,6 +342,16 @@ frontends = [
         operator       = "Equals"
         selector       = "id_token_hint"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code_challenge"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code_challenge"
+      }
     ]
   },
   {

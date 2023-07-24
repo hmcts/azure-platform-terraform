@@ -21,7 +21,7 @@ shutter_apps = [
 
 cft_apps_ag_ip_address          = "10.48.96.123"
 frontend_agw_private_ip_address = "10.48.96.113"
-cft_apps_cluster_ips            = ["10.48.79.250", "10.48.95.250"]
+cft_apps_cluster_ips            = ["10.48.95.250"]
 
 hub = "nonprod"
 
@@ -523,6 +523,16 @@ frontends = [
         operator       = "Equals"
         selector       = "id_token_hint"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code_challenge"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code_challenge"
+      }
     ]
   },
   {

@@ -227,6 +227,8 @@ gateways:
         component: service
       - product: civil
         component: general-applications
+      - product: civil
+        component: orchestrator-service
 
       # WA - Work Allocation
       - product: wa

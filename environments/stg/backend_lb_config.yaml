@@ -366,6 +366,8 @@ gateways:
     # Civil
       - product: civil
         component: general-applications
+      - product: civil
+        component: orchestrator-service
 
     # SPTRIBS
       - product: sptribs

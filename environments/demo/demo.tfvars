@@ -4,7 +4,7 @@ cft_apps_cluster_ips   = ["10.50.79.221", "10.50.95.221"]
 certificate_name_check = false
 
 frontend_agw_private_ip_address = "10.50.97.122"
-backend_agw_private_ip_address  = ["10.50.97.118", "10.50.97.119"]
+backend_agw_private_ip_address  = ["10.50.97.118"]
 
 data_subscription       = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"

@@ -2940,7 +2940,7 @@ frontends = [
     mode             = "Detection"
     custom_domain    = "www.claim-employment-tribunals.service.gov.uk"
     dns_zone_name    = "claim-employment-tribunals.service.gov.uk"
-    shutter_app       = true
+    shutter_app      = true
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "claim-employment-tribunals-service-gov-uk"
   },
@@ -2950,7 +2950,7 @@ frontends = [
     mode             = "Prevention"
     custom_domain    = "www.special-tribunals.service.gov.uk"
     dns_zone_name    = "pecial-tribunals.service.gov.uk"
-    shutter_app       = true
+    shutter_app      = true
     ssl_mode         = "AzureKeyVault"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "special-tribunals-service-gov-uk"

@@ -626,16 +626,6 @@ frontends = [
     cache_enabled               = "false"
   },
   {
-    product          = "safe-settings"
-    name             = "safe-settings"
-    custom_domain    = "safe-settings.sandbox.platform.hmcts.net"
-    shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-    health_path      = "/"
-  },
-  {
     product          = "labs"
     name             = "labs-rhodrif-nodejs"
     custom_domain    = "labs-rhodrif-nodejs.sandbox.platform.hmcts.net"

@@ -26,3 +26,6 @@ variable "expiresAfter" {
 variable "sku_tier" {
   description = "SKU tier of the Static Web App"
 }
+variable "sku_size" {
+  description = "SKU size of the Static Web App"
+}

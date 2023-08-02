@@ -2966,13 +2966,6 @@ frontends = [
     dns_zone_name = "platform.hmcts.net"
     shutter_app   = false
     redirect      = "sandbox-build.hmcts.net"
-  },
-  {
-    name          = "static-sandbox-build"
-    custom_domain = "static-sandbox-build.platform.hmcts.net"
-    dns_zone_name = "platform.hmcts.net"
-    shutter_app   = false
-    redirect      = "static-sandbox-build.hmcts.net"
   }
 
 ]

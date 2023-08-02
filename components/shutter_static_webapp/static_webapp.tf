@@ -14,6 +14,7 @@ module "static_webapp" {
   gh_token            = data.azurerm_key_vault_secret.githubapi.value
   env                 = var.env
   sku_tier            = var.sku_tier
+  sku_size            = var.sku_size
 }
 
 module "ctags" {

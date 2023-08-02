@@ -5,6 +5,7 @@ subscription           = "prod"
 ssl_mode               = "FrontDoor"
 certificate_name_check = false
 sku_tier               = "Standard"
+sku_size               = "Standard"
 
 
 backend_agw_private_ip_address = ["10.90.96.20", "10.90.96.21"]

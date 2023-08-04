@@ -113,6 +113,9 @@ gateways:
       - product: idam
         component: hmcts-access
         ssl_enabled: true
+      - product: idam
+        component: user-profile-bridge
+        ssl_enabled: true
 
       # BulkScan
       - product: bulk-scan

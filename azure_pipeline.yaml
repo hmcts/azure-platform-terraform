@@ -358,7 +358,7 @@ stages:
           - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
             parameters:
               keyvaultName: 'infra-vault-nonprod'
-              keyvaultSecret: 'azure-devops-token'
+              keyvaultSecret: 'azure-devops-sp-token'
               serviceConnection: 'azurerm-sandbox'
               overrideAction: ${{ parameters.overrideAction }}
 

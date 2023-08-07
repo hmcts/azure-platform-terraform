@@ -67,15 +67,6 @@ parameters:
       dependsOn: 'Precheck'
       pipeline_tests: false
 
-    - deployment: 'sbox_shutter'
-      environment: 'sbox'
-      component: 'shutter'
-      service_connection: 'dcd-cftapps-sbox'
-      storage_account_rg: 'core-infra-sbox-rg'
-      storage_account_name: 'cftappssbox'
-      dependsOn: 'Precheck'
-      pipeline_tests: true
-
     - deployment: 'sbox_shutter_webapp'
       environment: 'sbox'
       component: 'shutter_static_webapp'
@@ -302,14 +293,6 @@ parameters:
       storage_account_name: 'cftappsstg'
       pipeline_tests: true
       dependsOn: 'sbox_global'
-
-    - deployment: 'prod_shutter'
-      environment: 'prod'
-      component: 'shutter'
-      service_connection: 'dcd-cftapps-prod'
-      storage_account_rg: 'core-infra-prod-rg'
-      storage_account_name: 'cftappsprod'
-      dependsOn: 'sbox_shutter'
 
     - deployment: 'prod_shutter_webapp'
       environment: 'prod'

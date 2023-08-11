@@ -44,8 +44,10 @@ module "app-gw" {
   waf_mode                                     = var.waf_mode
   exclusions                                   = var.apim_appgw_exclusions
   public_ip_enable_multiple_availability_zones = true
+  trusted_client_certificate_data              = file("${path.module}/merged.pem")
+  depends_on                                   = [data.external.bash_script]
 }
 
-data "local_file" "configuration" {
-  filename = "${path.cwd}/../../environments/${local.env}/apim_appgw_config.yaml"
+data "external" "bash_script" {
+  program = ["bash", "${path.module}/download_root_certs.bash"]
 }

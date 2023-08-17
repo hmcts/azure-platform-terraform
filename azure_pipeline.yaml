@@ -347,39 +347,39 @@ parameters:
 #       pipeline_tests: true
 #       dependsOn: 'sbox_global'
 
-# stages:
-#   - stage: Precheck
-#     jobs:
-#       - job:
-#         pool:
-#           vmImage: ${{ variables.agentPool }}
-#         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-#         steps:
-#           - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
-#             parameters:
-#               keyvaultName: 'infra-vault-nonprod'
-#               keyvaultSecret: 'azure-devops-sp-token'
-#               serviceConnection: 'azurerm-sandbox'
-#               overrideAction: ${{ parameters.overrideAction }}
+stages:
+  - stage: Precheck
+    jobs:
+      - job:
+        pool:
+          vmImage: ${{ variables.agentPool }}
+        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+        steps:
+          - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
+            parameters:
+              keyvaultName: 'infra-vault-nonprod'
+              keyvaultSecret: 'azure-devops-sp-token'
+              serviceConnection: 'azurerm-sandbox'
+              overrideAction: ${{ parameters.overrideAction }}
 
 
-#   - ${{ each deployment in parameters.environment_components }}:
-#     - stage: ${{ deployment.deployment }}
-#       dependsOn: ${{ deployment.dependsOn }}
-#       jobs:
-#         - job: TerraformPlanApply
-#           pool:
-#             vmImage: ${{ variables.agentPool }}
-#           timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-#           steps:
-#           - template: steps/terraform.yaml@cnp-azuredevops-libraries
-#             parameters:
-#               overrideAction: ${{ parameters.overrideAction }}
-#               environment: ${{ deployment.environment }}
-#               component: ${{ deployment.component }}
-#               serviceConnection: ${{ deployment.service_connection }}
-#               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
-#               product: ${{ variables.product }}
+  - ${{ each deployment in parameters.environment_components }}:
+    - stage: ${{ deployment.deployment }}
+      dependsOn: ${{ deployment.dependsOn }}
+      jobs:
+        - job: TerraformPlanApply
+          pool:
+            vmImage: ${{ variables.agentPool }}
+          timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+          steps:
+          - template: steps/terraform.yaml@cnp-azuredevops-libraries
+            parameters:
+              overrideAction: ${{ parameters.overrideAction }}
+              environment: ${{ deployment.environment }}
+              component: ${{ deployment.component }}
+              serviceConnection: ${{ deployment.service_connection }}
+              terraformInitSubscription: ${{ variables.terraformInitSubscription }}
+              product: ${{ variables.product }}
 
 #         - job: PipelineTests
 #           pool:

@@ -10,6 +10,7 @@ module "ctags" {
   product      = var.product
   builtFrom    = var.builtFrom
   expiresAfter = var.expiresAfter
+  autoShutdown = var.autoShutdown
 }
 
 data "azurerm_subscription" "current" {}

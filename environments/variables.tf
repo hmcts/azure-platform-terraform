@@ -164,3 +164,7 @@ variable "publisher_email" {
   type    = string
   default = "DTSPlatformOperations@justice.gov.uk"
 }
+
+variable "autoShutdown" {
+  default = false
+}

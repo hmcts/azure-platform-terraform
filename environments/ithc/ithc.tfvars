@@ -1217,5 +1217,11 @@ frontends = [
         selector       = "rf"
       },
     ]
+  },
+  {
+    product        = "cui"
+    name           = "cui-ra"
+    custom_domain  = "cui-ra.ithc.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
   }
 ]

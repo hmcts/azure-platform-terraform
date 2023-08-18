@@ -1903,5 +1903,11 @@ frontends = [
     custom_domain  = "manage-case-wa-int.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
+  },
+  {
+    product        = "cui"
+    name           = "cui-ra"
+    custom_domain  = "cui-ra.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   }
 ]

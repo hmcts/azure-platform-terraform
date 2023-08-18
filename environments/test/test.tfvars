@@ -1379,5 +1379,11 @@ frontends = [
         selector       = "rf"
       },
     ]
+  },
+  {
+    product        = "cui"
+    name           = "cui-ra"
+    custom_domain  = "cui-ra.perftest.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
   }
 ]

@@ -380,7 +380,3 @@ gateways:
     # jps
       - product: jps
         component: judicial-payment-service
-
-    # CUI
-      - product: cui
-        component: cui-ra

@@ -1762,5 +1762,11 @@ frontends = [
         selector       = "rf"
       },
     ]
-  }
+  },
+  {
+    product        = "cui"
+    name           = "cui-ra"
+    custom_domain  = "cui-ra.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+  },
 ]

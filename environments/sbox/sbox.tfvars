@@ -620,6 +620,11 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-cftapimgmt.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     cache_enabled    = "false"
+    disabled_rules = {
+      XSS = [
+        "941340",
+      ]
+    }
   },
   {
     product                     = "reform"

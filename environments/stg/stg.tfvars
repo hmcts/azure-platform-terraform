@@ -1772,6 +1772,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "cui-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "dtCookie"
       },
       {

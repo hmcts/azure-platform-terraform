@@ -387,12 +387,15 @@ gateways:
       - product: fis
         component: hmc-api
 
-      # SIDAM
+      # IDAM
       - product: idam
         component: testing-support-api
         ssl_enabled: true
       - product: idam
         component: hmcts-access
+        ssl_enabled: true
+      - product: idam
+        component: user-profile-bridge
         ssl_enabled: true
 
       # SPTRIBS

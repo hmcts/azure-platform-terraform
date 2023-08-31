@@ -874,7 +874,7 @@ frontends = [
     mode           = "Detection"
     custom_domain  = "manage-case.perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
-
+    cache_enabled    = "false"
   },
   {
     name                        = "idam-web-admin"

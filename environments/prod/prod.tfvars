@@ -919,7 +919,6 @@ frontends = [
     dns_zone_name    = "platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "manage-case-platform-hmcts-net"
-    cache_enabled    = "false"
     disabled_rules = {
       SQLI = [
         "942100",

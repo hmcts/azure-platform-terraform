@@ -1832,7 +1832,6 @@ frontends = [
     mode           = "Detection"
     custom_domain  = "manage-case-int.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-    cache_enabled  = "false"
 
   },
   {
@@ -1847,6 +1846,7 @@ frontends = [
     mode           = "Detection"
     custom_domain  = "manage-case-hearings-int.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cache_enabled    = "false"
 
   },
   {

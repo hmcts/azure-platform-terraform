@@ -2974,6 +2974,60 @@ frontends = [
     dns_zone_name = "platform.hmcts.net"
     shutter_app   = false
     redirect      = "sandbox-build.hmcts.net"
-  }
+  },
+  {
+    name             = "et-pet"
+    product          = "et-pet"
+    custom_domain    = "employmenttribunals.service.gov.uk"
+    dns_zone_name    = "employmenttribunals.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-platform-hmcts-net"
+    shutter_app      = true
+    dns_zone_name    = "employmenttribunals.service.gov.uk"
 
+  },
+  {
+    name             = "et-staff-pet"
+    product          = "et-staff-pet"
+    custom_domain    = "admin.employmenttribunals.service.gov.uk"
+    dns_zone_name    = "admin.employmenttribunals.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-platform-hmcts-net"
+    shutter_app      = true
+    dns_zone_name    = "employmenttribunals.service.gov.uk"
+
+  },
+  {
+    name             = "tt-pet"
+    product          = "tt-pet"
+    custom_domain    = "appeal-tax-tribunal.service.gov.uk"
+    dns_zone_name    = "appeal-tax-tribunal.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-platform-hmcts-net"
+    shutter_app      = true
+    dns_zone_name    = "appeal-tax-tribunal.service.gov.uk"
+
+  },
+  {
+    name             = "hwf-pet"
+    product          = "hwf-pet"
+    custom_domain    = "helpwithcourtfees.service.gov.uk"
+    dns_zone_name    = "helpwithcourtfees.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-platform-hmcts-net"
+    shutter_app      = true
+    dns_zone_name    = "helpwithcourtfees.service.gov.uk"
+
+  },
+  {
+    name             = "hwf-staff-pet"
+    product          = "hwf-staff-pet"
+    custom_domain    = "staff.helpwithcourtfees.service.gov.uk"
+    dns_zone_name    = "staff.helpwithcourtfees.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-platform-hmcts-net"
+    shutter_app      = true
+    dns_zone_name    = "helpwithcourtfees.service.gov.uk"
+
+  }
 ]

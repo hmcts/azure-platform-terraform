@@ -27,7 +27,7 @@ module "app-gw" {
     azurerm.kv  = azurerm.kv
   }
 
-  source                                       = "git::https://github.com/hmcts/terraform-module-apim-application-gateway.git?ref==multiple-ssl-profile"
+  source                                       = "git::https://github.com/hmcts/terraform-module-apim-application-gateway.git?ref=multiple-ssl-profile"
   yaml_path                                    = "${path.cwd}/../../environments/${local.env}/apim_appgw_config.yaml"
   env                                          = local.dns_zone
   location                                     = var.location
@@ -48,7 +48,7 @@ module "app-gw" {
     "lets_encrypt" = {
       path = file("${path.module}/merged.pem")
     }
-    "civil-sdt-root-ca" = {
+    "civil_sdt_root_ca" = {
       path = data.azurerm_key_vault_secret.civil-sdt-root-ca.value
     }
   }

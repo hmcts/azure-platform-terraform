@@ -2981,7 +2981,7 @@ frontends = [
     custom_domain    = "employmenttribunals.service.gov.uk"
     dns_zone_name    = "employmenttribunals.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-platform-hmcts-net"
+    certificate_name = "employmenttribunals-service-gov-uk"
     shutter_app      = true
     dns_zone_name    = "employmenttribunals.service.gov.uk"
 
@@ -2992,7 +2992,7 @@ frontends = [
     custom_domain    = "admin.employmenttribunals.service.gov.uk"
     dns_zone_name    = "admin.employmenttribunals.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-platform-hmcts-net"
+    certificate_name = "employmenttribunals-service-gov-uk"
     shutter_app      = true
     dns_zone_name    = "employmenttribunals.service.gov.uk"
 
@@ -3003,7 +3003,7 @@ frontends = [
     custom_domain    = "appeal-tax-tribunal.service.gov.uk"
     dns_zone_name    = "appeal-tax-tribunal.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-platform-hmcts-net"
+    certificate_name = "appeal-tax-tribunal-service-gov-uk"
     shutter_app      = true
     dns_zone_name    = "appeal-tax-tribunal.service.gov.uk"
 
@@ -3014,7 +3014,7 @@ frontends = [
     custom_domain    = "helpwithcourtfees.service.gov.uk"
     dns_zone_name    = "helpwithcourtfees.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-platform-hmcts-net"
+    certificate_name = "helpwithcourtfees-service-gov-uk"
     shutter_app      = true
     dns_zone_name    = "helpwithcourtfees.service.gov.uk"
 
@@ -3025,7 +3025,7 @@ frontends = [
     custom_domain    = "staff.helpwithcourtfees.service.gov.uk"
     dns_zone_name    = "staff.helpwithcourtfees.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-platform-hmcts-net"
+    certificate_name = "helpwithcourtfees-service-gov-uk"
     shutter_app      = true
     dns_zone_name    = "helpwithcourtfees.service.gov.uk"
 

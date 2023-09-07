@@ -52,7 +52,7 @@ module "app-gw" {
       path = data.azurerm_key_vault_secret.civil-sdt-root-ca.value
     }
   }
-  depends_on                                   = [data.external.bash_script]
+  depends_on = [data.external.bash_script]
 }
 
 data "external" "bash_script" {

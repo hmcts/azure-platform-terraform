@@ -2999,6 +2999,17 @@ frontends = [
 
   },
   {
+    name             = "et-response-pet"
+    product          = "et-response-pet"
+    custom_domain    = "tribunal-response.employmenttribunals.service.gov.uk"
+    dns_zone_name    = "tribunal-response.employmenttribunals.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name = "employmenttribunals-service-gov-uk"
+    shutter_app      = true
+    dns_zone_name    = "employmenttribunals.service.gov.uk"
+
+  },
+  {
     name             = "tt-pet"
     product          = "tt-pet"
     custom_domain    = "appeal-tax-tribunal.service.gov.uk"

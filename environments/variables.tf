@@ -22,7 +22,7 @@ variable "product" {
 }
 
 variable "publisher_email" {
-  default = "DTSPlatformOps@HMCTS.NET"
+  default = "DTSPlatformOperations@justice.gov.uk"
 }
 
 variable "builtFrom" {

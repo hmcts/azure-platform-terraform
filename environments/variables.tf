@@ -21,6 +21,10 @@ variable "project" {
 variable "product" {
 }
 
+variable "publisher_email"{
+  default = "DTSPlatformOps@HMCTS.NET"
+}
+
 variable "builtFrom" {
 }
 

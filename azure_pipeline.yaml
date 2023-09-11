@@ -246,7 +246,7 @@ parameters:
       service_connection: 'dcd-cftapps-test'
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
-      dependsOn: 'Precheck'
+      dependsOn: 'sbox_apim_appgw'
       pipeline_tests: true
 
     - deployment: 'perftest_global'

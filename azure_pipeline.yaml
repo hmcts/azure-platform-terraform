@@ -240,6 +240,15 @@ parameters:
       dependsOn: 'sbox_apim'
       pipeline_tests: true
 
+    - deployment: 'test_apim_appgw'
+      environment: 'sbox'
+      component: 'apim-appgw'
+      service_connection: 'dcd-cftapps-test'
+      storage_account_rg: 'core-infra-test-rg'
+      storage_account_name: 'cftappstest'
+      dependsOn: 'Precheck'
+      pipeline_tests: true
+
     - deployment: 'perftest_global'
       environment: 'test'
       component: 'global'

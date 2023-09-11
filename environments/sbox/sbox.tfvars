@@ -22,7 +22,8 @@ cft_apps_cluster_ips            = ["10.2.9.250", "10.2.11.250"]
 
 apim_appgw_backend_pool_fqdns = ["firewall-sbox-int-palo-cftapimgmt.uksouth.cloudapp.azure.com"]
 
-hub = "sbox"
+hub             = "sbox"
+publisher_email = "DTSPlatformOps@HMCTS.NET"
 
 frontends = [
   {

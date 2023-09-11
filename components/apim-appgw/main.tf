@@ -23,7 +23,7 @@ module "app-gw" {
 
   providers = {
     azurerm     = azurerm
-    azurerm.hub = azurerm.hub-sbox
+    azurerm.hub = azurerm.hub
     azurerm.kv  = azurerm.kv
   }
 
@@ -45,6 +45,8 @@ module "app-gw" {
   exclusions                                   = var.apim_appgw_exclusions
   public_ip_enable_multiple_availability_zones = true
   trusted_client_certificate_data              = file("${path.module}/merged.pem")
+  min_capacity                                 = var.apim_appgw_min_capacity
+  max_capacity                                 = var.apim_appgw_max_capacity
   depends_on                                   = [data.external.bash_script]
 }
 

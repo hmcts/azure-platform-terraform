@@ -21,6 +21,10 @@ variable "project" {
 variable "product" {
 }
 
+variable "publisher_email" {
+  default = "DTSPlatformOperations@justice.gov.uk"
+}
+
 variable "builtFrom" {
 }
 
@@ -160,7 +164,10 @@ variable "frontend_agw_max_capacity" {
   default     = 10
 }
 
-variable "publisher_email" {
-  type    = string
-  default = "DTSPlatformOperations@justice.gov.uk"
+variable "apim_appgw_min_capacity" {
+  default = 1
+}
+
+variable "apim_appgw_max_capacity" {
+  default = 2
 }

@@ -241,7 +241,7 @@ parameters:
       pipeline_tests: true
 
     - deployment: 'test_apim_appgw'
-      environment: 'sbox'
+      environment: 'test'
       component: 'apim-appgw'
       service_connection: 'dcd-cftapps-test'
       storage_account_rg: 'core-infra-test-rg'

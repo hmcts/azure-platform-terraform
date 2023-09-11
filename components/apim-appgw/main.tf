@@ -23,7 +23,7 @@ module "app-gw" {
 
   providers = {
     azurerm     = azurerm
-    azurerm.hub = azurerm.hub-sbox
+    azurerm.hub = azurerm.hub
     azurerm.kv  = azurerm.kv
   }
 

@@ -25,7 +25,7 @@ cft_apps_cluster_ips            = ["10.48.79.250", "10.48.95.250"]
 
 hub                           = "nonprod"
 key_vault_subscription        = "8a07fdcd-6abd-48b3-ad88-ff737a4b9e3c"
-hub_app_gw_private_ip_address = ["10.11.72.224"]
+hub_app_gw_private_ip_address = ["10.11.72.228"]
 apim_appgw_backend_pool_fqdns = ["firewall-nonprodi-palo-cftapimgmtperftest.uksouth.cloudapp.azure.com"]
 
 frontends = [

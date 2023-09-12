@@ -1812,27 +1812,27 @@ frontends = [
     ]
   },
   {
-    product        = "et-pet-et1"
-    name           = "et-pet-et1"
-    mode           = "Detection"
-    custom_domain  = "et-pet-et1.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    product          = "et-pet-et1"
+    name             = "et-pet-et1"
+    mode             = "Detection"
+    custom_domain    = "et-pet-et1.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },
   {
-    product        = "et-pet-et3"
-    name           = "et-pet-et3"
-    mode           = "Detection"
-    custom_domain  = "et-pet-et3.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    product          = "et-pet-et3"
+    name             = "et-pet-et3"
+    mode             = "Detection"
+    custom_domain    = "et-pet-et3.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },
   {
-    product        = "et-pet-admin"
-    name           = "et-pet-admin"
-    mode           = "Detection"
-    custom_domain  = "et-pet-admin.demo.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    product          = "et-pet-admin"
+    name             = "et-pet-admin"
+    mode             = "Detection"
+    custom_domain    = "et-pet-admin.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },
 ]

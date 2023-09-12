@@ -383,3 +383,9 @@ gateways:
     # jps
       - product: jps
         component: judicial-payment-service
+
+    # et-pet
+      - product: et-pet
+        component: api-base
+      - product: et-pet
+        component: ccd-export-base

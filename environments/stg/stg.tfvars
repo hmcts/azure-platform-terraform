@@ -1831,7 +1831,7 @@ frontends = [
     product          = "et-pet-admin"
     name             = "et-pet-admin"
     mode             = "Detection"
-    custom_domain    = "et-pet-admin.demo.platform.hmcts.net"
+    custom_domain    = "et-pet-admin.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },

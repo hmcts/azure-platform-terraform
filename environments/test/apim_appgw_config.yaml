@@ -6,7 +6,7 @@ gateways:
       ssl_host_name_suffix: perftest.platform.hmcts.net
       certificate_name: wildcard-perftest-platform-hmcts-net
       exclude_env_in_app_name: true
-      private_ip_address: 10.11.72.228
+      private_ip_address: 10.11.72.241
     app_configuration:
       - product: cft
         component: api-mgmt-appgw

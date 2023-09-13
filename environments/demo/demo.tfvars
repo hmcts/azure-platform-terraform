@@ -1906,7 +1906,7 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
-    {
+  {
     product          = "et-pet-et1"
     name             = "et-pet-et1"
     mode             = "Detection"

@@ -258,12 +258,6 @@ gateways:
         component: service
       - product: civil
         component: general-applications
-      - product: civil
-        component: sdt
-      - product: civil
-        component: sdt-commissioning
-      - product: civil
-        component: sdt-gateway  
 
  # NFDIV
       - product: nfdiv
@@ -346,3 +340,11 @@ gateways:
       # jps
       - product: jps
         component: judicial-payment-service
+
+      # CIVIL SDT
+      - product: civil
+        component: sdt
+      - product: civil
+        component: sdt-commissioning
+      - product: civil
+        component: sdt-gateway

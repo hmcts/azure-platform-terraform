@@ -55,7 +55,7 @@ module "app-gw" {
     }
   }
 
-  depends_on                                   = [data.external.bash_script]
+  depends_on = [data.external.bash_script]
 }
 
 data "external" "bash_script" {

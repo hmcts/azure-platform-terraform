@@ -3022,6 +3022,7 @@ frontends = [
             ]
           }
         ]
+    ],
   },
   {
     name             = "et-staff-pet"

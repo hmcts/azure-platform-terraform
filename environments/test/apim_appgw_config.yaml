@@ -2,14 +2,18 @@
 
 gateways:
   - gateway_configuration:
-      host_name_suffix: perftest.platform.hmcts.net
-      ssl_host_name_suffix: perftest.platform.hmcts.net
-      certificate_name: wildcard-perftest-platform-hmcts-net
       exclude_env_in_app_name: true
       private_ip_address: 10.11.72.241
+    ssl_certificates:
+      - certificate_name: wildcard-perftest-platform-hmcts-net
+      - certificate_name: civil-sdt-commissioning-nle
+      - certificate_name: civil-sdt-nle
     app_configuration:
       - product: cft
         component: api-mgmt-appgw
         ssl_enabled: true
         use_public_ip: true
         health_path_override: "/status-0123456789abcdef"
+        ssl_certificate_name: wildcard-perftest-platform-hmcts-net
+        host_name_suffix: perftest.platform.hmcts.net
+        ssl_host_name_suffix: perftest.platform.hmcts.net

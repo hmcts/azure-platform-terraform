@@ -2985,7 +2985,26 @@ frontends = [
     certificate_name = "employmenttribunals-service-gov-uk"
     shutter_app      = true
     dns_zone_name    = "employmenttribunals.service.gov.uk"
-
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "86.13.182.74/32",
+              "151.225.237.115/32",
+              "109.175.168.211/32"
+            ]
+          }
+        ]
+      },
+    ],
   },
   {
     name             = "et-staff-pet"
@@ -2996,7 +3015,26 @@ frontends = [
     certificate_name = "employmenttribunals-service-gov-uk"
     shutter_app      = true
     dns_zone_name    = "employmenttribunals.service.gov.uk"
-
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "86.13.182.74/32",
+              "151.225.237.115/32",
+              "109.175.168.211/32"
+            ]
+          }
+        ]
+      },
+    ],
   },
   {
     name             = "et-response-pet"
@@ -3007,7 +3045,26 @@ frontends = [
     certificate_name = "employmenttribunals-service-gov-uk"
     shutter_app      = true
     dns_zone_name    = "employmenttribunals.service.gov.uk"
-
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "86.13.182.74/32",
+              "151.225.237.115/32",
+              "109.175.168.211/32"
+            ]
+          }
+        ]
+      },
+    ],
   },
   {
     name             = "tt-pet"

@@ -170,7 +170,7 @@ variable "apim_appgw_min_capacity" {
 
 variable "autoShutdown" {
   default = false
-
+}
 variable "apim_appgw_max_capacity" {
   default = 2
 

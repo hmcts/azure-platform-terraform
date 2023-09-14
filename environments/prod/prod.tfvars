@@ -2978,7 +2978,7 @@ frontends = [
   {
     name             = "et-pet"
     product          = "et-pet"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "employmenttribunals.service.gov.uk"
     dns_zone_name    = "employmenttribunals.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
@@ -3029,7 +3029,7 @@ frontends = [
   {
     name             = "et-staff-pet"
     product          = "et-staff-pet"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "admin.employmenttribunals.service.gov.uk"
     dns_zone_name    = "admin.employmenttribunals.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]

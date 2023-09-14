@@ -386,6 +386,6 @@ gateways:
 
     # et-pet
       - product: et-pet
-        component: api-base
+        component: api
       - product: et-pet
-        component: ccd-export-base
+        component: ccd-export

@@ -1835,4 +1835,12 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },
+  {
+    product          = "tax-tribunals-datacapture"
+    name             = "tax-tribunals-datacapture"
+    mode             = "Detection"
+    custom_domain    = "tax-tribunals-datacapture.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
 ]

@@ -2993,17 +2993,36 @@ frontends = [
         action   = "Block"
         match_conditions = [
           {
+            match_variable     = "RequestUri"
+            operator           = "EndsWith"
+            negation_condition = false
+            match_values = [
+              "/apply/admin"
+            ]
+          },
+          {
             match_variable     = "RemoteAddr"
             operator           = "IPMatch"
             negation_condition = true
             match_values = [
-              "86.13.182.74/32",
-              "151.225.237.115/32",
-              "109.175.168.211/32"
+              "81.134.202.29/32",
+              "51.145.6.230/32",
+              "194.33.192.0/25",
+              "194.33.196.0/25",
+              "51.145.4.100/32",
+              "157.203.176.139/32",
+              "157.203.176.138/32",
+              "157.203.176.140/32",
+              "157.203.176.190/32",
+              "157.203.176.191/32",
+              "157.203.176.192/32",
+              "51.149.249.32/27",
+              "51.149.249.0/27",
+              "20.108.187.55/32"
             ]
           }
         ]
-      },
+      }
     ],
   },
   {
@@ -3027,9 +3046,20 @@ frontends = [
             operator           = "IPMatch"
             negation_condition = true
             match_values = [
-              "86.13.182.74/32",
-              "151.225.237.115/32",
-              "109.175.168.211/32"
+              "81.134.202.29/32",
+              "51.145.6.230/32",
+              "194.33.192.0/25",
+              "194.33.196.0/25",
+              "51.145.4.100/32",
+              "157.203.176.139/32",
+              "157.203.176.138/32",
+              "157.203.176.140/32",
+              "157.203.176.190/32",
+              "157.203.176.191/32",
+              "157.203.176.192/32",
+              "51.149.249.32/27",
+              "51.149.249.0/27",
+              "20.108.187.55/32"
             ]
           }
         ]
@@ -3045,26 +3075,6 @@ frontends = [
     certificate_name = "employmenttribunals-service-gov-uk"
     shutter_app      = true
     dns_zone_name    = "employmenttribunals.service.gov.uk"
-    custom_rules = [
-      {
-        name     = "IPMatchWhitelist"
-        priority = 1
-        type     = "MatchRule"
-        action   = "Block"
-        match_conditions = [
-          {
-            match_variable     = "RemoteAddr"
-            operator           = "IPMatch"
-            negation_condition = true
-            match_values = [
-              "86.13.182.74/32",
-              "151.225.237.115/32",
-              "109.175.168.211/32"
-            ]
-          }
-        ]
-      },
-    ],
   },
   {
     name             = "tt-pet"

@@ -2,6 +2,7 @@ env                    = "demo"
 subscription           = "demo"
 cft_apps_cluster_ips   = ["10.50.79.221", "10.50.95.221"]
 certificate_name_check = false
+autoShutdown           = true
 
 frontend_agw_private_ip_address = "10.50.97.122"
 backend_agw_private_ip_address  = ["10.50.97.118", "10.50.97.119"]
@@ -1905,5 +1906,29 @@ frontends = [
     custom_domain  = "manage-case-wa-int.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
+  },
+  {
+    product          = "et-pet-et1"
+    name             = "et-pet-et1"
+    mode             = "Detection"
+    custom_domain    = "et-pet-et1.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+  },
+  {
+    product          = "et-pet-et3"
+    name             = "et-pet-et3"
+    mode             = "Detection"
+    custom_domain    = "et-pet-et3.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+  },
+  {
+    product          = "et-pet-admin"
+    name             = "et-pet-admin"
+    mode             = "Detection"
+    custom_domain    = "et-pet-admin.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
   }
 ]

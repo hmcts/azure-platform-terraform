@@ -168,6 +168,10 @@ variable "apim_appgw_min_capacity" {
   default = 1
 }
 
+variable "autoShutdown" {
+  default = false
+}
 variable "apim_appgw_max_capacity" {
   default = 2
+
 }

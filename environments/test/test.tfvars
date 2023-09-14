@@ -8,10 +8,10 @@ backend_agw_private_ip_address = ["10.48.96.111", "10.48.96.114"]
 data_subscription              = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                        = "nonprod"
-
-shutter_storage = "TODO"
-cdn_sku         = "TODO"
-shutter_rg      = "TODO"
+autoShutdown                   = true
+shutter_storage                = "TODO"
+cdn_sku                        = "TODO"
+shutter_rg                     = "TODO"
 
 # Applications associated with default storage account shutter static website.
 # Teams that need a default shutter page, should add their app frontend names to the list below.

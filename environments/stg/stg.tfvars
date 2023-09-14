@@ -8,8 +8,8 @@ backend_agw_private_ip_address = ["10.10.161.100", "10.10.161.101"]
 data_subscription              = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                        = "nonprod"
-
-hub = "prod"
+autoShutdown                   = true
+hub                            = "prod"
 
 shutter_storage = "TODO"
 cdn_sku         = "TODO"
@@ -1810,5 +1810,29 @@ frontends = [
         selector       = "rf"
       },
     ]
+  },
+  {
+    product          = "et-pet-et1"
+    name             = "et-pet-et1"
+    mode             = "Detection"
+    custom_domain    = "et-pet-et1.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
+    product          = "et-pet-et3"
+    name             = "et-pet-et3"
+    mode             = "Detection"
+    custom_domain    = "et-pet-et3.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
+    product          = "et-pet-admin"
+    name             = "et-pet-admin"
+    mode             = "Detection"
+    custom_domain    = "et-pet-admin.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
   },
 ]

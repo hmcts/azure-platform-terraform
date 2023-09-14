@@ -17,3 +17,14 @@ gateways:
         ssl_certificate_name: wildcard-perftest-platform-hmcts-net
         host_name_suffix: perftest.platform.hmcts.net
         ssl_host_name_suffix: perftest.platform.hmcts.net
+      - product: cft-mtls
+        component: api-mgmt-appgw
+        ssl_enabled: true
+        use_public_ip: true
+        health_path_override: "/status-0123456789abcdef"
+        add_ssl_profile: true
+        verify_client_cert_issuer_dn: true
+        rootca_certificate_name: lets_encrypt
+        ssl_certificate_name: wildcard-perftest-platform-hmcts-net
+        host_name_suffix: perftest.platform.hmcts.net
+        ssl_host_name_suffix: perftest.platform.hmcts.net

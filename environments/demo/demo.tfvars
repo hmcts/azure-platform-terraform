@@ -1931,7 +1931,7 @@ frontends = [
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
   },
-    {
+  {
     product          = "tax-tribunals-datacapture"
     name             = "tax-tribunals-datacapture"
     mode             = "Detection"

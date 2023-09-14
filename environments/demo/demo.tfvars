@@ -1847,6 +1847,7 @@ frontends = [
     mode           = "Detection"
     custom_domain  = "manage-case-hearings-int.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cache_enabled  = "false"
 
   },
   {
@@ -1889,6 +1890,7 @@ frontends = [
     mode           = "Detection"
     custom_domain  = "manage-case.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cache_enabled  = "false"
 
   },
   {
@@ -1904,5 +1906,29 @@ frontends = [
     custom_domain  = "manage-case-wa-int.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
+  },
+  {
+    product          = "et-pet-et1"
+    name             = "et-pet-et1"
+    mode             = "Detection"
+    custom_domain    = "et-pet-et1.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+  },
+  {
+    product          = "et-pet-et3"
+    name             = "et-pet-et3"
+    mode             = "Detection"
+    custom_domain    = "et-pet-et3.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+  },
+  {
+    product          = "et-pet-admin"
+    name             = "et-pet-admin"
+    mode             = "Detection"
+    custom_domain    = "et-pet-admin.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
   }
 ]

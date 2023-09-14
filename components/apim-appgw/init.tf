@@ -16,24 +16,10 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  subscription_id            = local.hub["sbox"].subscription
+  subscription_id            = local.hub[local.hub_env].subscription
   skip_provider_registration = "true"
   features {}
-  alias = "hub-sbox"
-}
-
-provider "azurerm" {
-  subscription_id            = local.hub["nonprod"].subscription
-  skip_provider_registration = "true"
-  features {}
-  alias = "hub-nonprod"
-}
-
-provider "azurerm" {
-  subscription_id            = local.hub["prod"].subscription
-  skip_provider_registration = "true"
-  features {}
-  alias = "hub-prod"
+  alias = "hub"
 }
 
 provider "azurerm" {

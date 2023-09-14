@@ -1762,5 +1762,77 @@ frontends = [
         selector       = "rf"
       },
     ]
-  }
+  },
+  {
+    product        = "cui"
+    name           = "cui-ra"
+    custom_domain  = "cui-ra.aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"],
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cui-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
+    product          = "et-pet-et1"
+    name             = "et-pet-et1"
+    mode             = "Detection"
+    custom_domain    = "et-pet-et1.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
+    product          = "et-pet-et3"
+    name             = "et-pet-et3"
+    mode             = "Detection"
+    custom_domain    = "et-pet-et3.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
+  {
+    product          = "et-pet-admin"
+    name             = "et-pet-admin"
+    mode             = "Detection"
+    custom_domain    = "et-pet-admin.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+  },
 ]

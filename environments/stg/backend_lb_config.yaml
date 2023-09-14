@@ -331,6 +331,9 @@ gateways:
       - product: idam
         component: hmcts-access
         ssl_enabled: true
+      - product: idam
+        component: user-profile-bridge
+        ssl_enabled: true
 
     # RPTS
       - product: rpts
@@ -380,3 +383,9 @@ gateways:
     # jps
       - product: jps
         component: judicial-payment-service
+
+    # et-pet
+      - product: et-pet
+        component: api-base
+      - product: et-pet
+        component: ccd-export-base

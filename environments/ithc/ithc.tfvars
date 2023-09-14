@@ -7,8 +7,8 @@ backend_agw_private_ip_address = ["10.11.225.111", "10.11.225.115"]
 data_subscription              = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                        = "nonprod"
-
-hub = "nonprod"
+autoShutdown                   = true
+hub                            = "nonprod"
 
 shutter_storage = "TODO"
 cdn_sku         = "TODO"

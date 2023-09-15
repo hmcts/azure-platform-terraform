@@ -2997,6 +2997,31 @@ frontends = [
         operator       = "Equals"
         selector       = "_app_session"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_utma"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_utmb"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_utmc"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_utmz"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
     ]
     custom_rules = [
       {
@@ -3048,6 +3073,13 @@ frontends = [
     certificate_name = "employmenttribunals-service-gov-uk"
     shutter_app      = true
     dns_zone_name    = "employmenttribunals.service.gov.uk"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_super_session"
+      },
+    ]
     custom_rules = [
       {
         name     = "IPMatchWhitelist"

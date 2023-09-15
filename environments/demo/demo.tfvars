@@ -736,6 +736,19 @@ frontends = [
 
   },
   {
+    name           = "fis-ds-update-web"
+    custom_domain  = "fis-ds-update-web.demo.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
     name           = "lau"
     mode           = "Detection"
     custom_domain  = "lau.demo.platform.hmcts.net"

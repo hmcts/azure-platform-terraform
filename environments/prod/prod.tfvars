@@ -2990,7 +2990,7 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "cookie_settings"
+        selector       = "cookie_setting"
       },
       {
         match_variable = "RequestCookieNames"

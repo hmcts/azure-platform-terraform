@@ -1910,23 +1910,47 @@ frontends = [
   {
     product          = "et-pet-et1"
     name             = "et-pet-et1"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "et-pet-et1.demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookie_setting"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_app_session"
+      },
+    ]
   },
   {
     product          = "et-pet-et3"
     name             = "et-pet-et3"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "et-pet-et3.demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookie_setting"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_app_session"
+      },
+    ]
   },
   {
     product          = "et-pet-admin"
     name             = "et-pet-admin"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "et-pet-admin.demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"

@@ -2986,6 +2986,18 @@ frontends = [
     certificate_name = "employmenttribunals-service-gov-uk"
     shutter_app      = true
     dns_zone_name    = "employmenttribunals.service.gov.uk"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookie_setting"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_app_session"
+      },
+    ]
     custom_rules = [
       {
         name     = "IPMatchWhitelist"

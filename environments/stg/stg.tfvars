@@ -1814,26 +1814,62 @@ frontends = [
   {
     product          = "et-pet-et1"
     name             = "et-pet-et1"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "et-pet-et1.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookie_setting"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_app_session"
+      },
+    ]
   },
   {
     product          = "et-pet-et3"
     name             = "et-pet-et3"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "et-pet-et3.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookie_setting"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_app_session"
+      },
+    ]
   },
   {
     product          = "et-pet-admin"
     name             = "et-pet-admin"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "et-pet-admin.aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookie_setting"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_app_session"
+      },
+    ]
   },
   {
     product          = "tax-tribunals-datacapture"

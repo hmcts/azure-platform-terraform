@@ -37,7 +37,7 @@ module "frontdoor_classic" {
 
   common_tags                = module.ctags.common_tags
   env                        = var.env
-  project                    = var.project
+  project                    = "cnphmcts-classic"
   location                   = var.location
   frontends                  = var.frontend_classic
   ssl_mode                   = var.ssl_mode

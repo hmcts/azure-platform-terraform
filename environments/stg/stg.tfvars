@@ -1879,4 +1879,44 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
   },
+  {
+    product          = "help-with-fees-publicapp"
+    name             = "help-with-fees-publicapp"
+    mode             = "Prevention"
+    custom_domain    = "hwf-publicapp.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookie_setting"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_app_session"
+      },
+    ]
+  },
+  {
+    product          = "help-with-fees-staffapp"
+    name             = "help-with-fees-staffapp"
+    mode             = "Prevention"
+    custom_domain    = "hwf-staffapp.aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookie_setting"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_app_session"
+      },
+    ]
+  },
 ]

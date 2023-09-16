@@ -1913,6 +1913,16 @@ frontends = [
         operator       = "Equals"
         selector       = "_ga"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "authenticity_token"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "address_lookup_url"
+      }
     ]
   },
   {

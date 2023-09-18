@@ -648,3 +648,14 @@ apim_appgw_exclusions = [
     selector       = "iss"
   }
 ]
+
+frontend_classic = [
+  {
+
+    name             = "plumclassic"
+    custom_domain    = "plumclassic.sandbox.platform.hmcts.net"
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    disabled_rules   = {}
+  }
+]

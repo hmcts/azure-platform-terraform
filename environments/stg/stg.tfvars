@@ -1922,6 +1922,16 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "address_lookup_url"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "steps_closure_support_documents_form[having_problems_uploading][]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "steps_details_documents_upload_form[having_problems_uploading][]"
       }
     ]
   },

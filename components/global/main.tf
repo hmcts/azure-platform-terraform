@@ -48,6 +48,7 @@ module "frontdoor_classic" {
   project                    = "cnphmcts-classic"
   location                   = var.location
   frontends                  = var.frontend_classic
+  new_frontends              = var.frontend_classic
   ssl_mode                   = var.ssl_mode
   resource_group             = data.azurerm_resource_group.main.name
   subscription_id            = data.azurerm_subscription.current.subscription_id

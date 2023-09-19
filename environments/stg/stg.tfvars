@@ -1974,10 +1974,10 @@ frontends = [
         selector       = "_gid"
       },
       {
-        match_variable = "RequestCookieNames"
+        match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "address_lookup_url"
-      },
+      }
     ]
   },
   {
@@ -2024,10 +2024,11 @@ frontends = [
         selector       = "homepage_visited_timestamp"
       },
       {
-        match_variable = "RequestCookieNames"
+        match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "address_lookup_url"
-      },
+      }
+
     ]
   },
 ]

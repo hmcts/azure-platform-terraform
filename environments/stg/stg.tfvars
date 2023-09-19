@@ -1973,6 +1973,11 @@ frontends = [
         operator       = "Equals"
         selector       = "_gid"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "address_lookup_url"
+      },
     ]
   },
   {
@@ -2017,6 +2022,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "homepage_visited_timestamp"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "address_lookup_url"
       },
     ]
   },

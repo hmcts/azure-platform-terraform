@@ -1958,6 +1958,11 @@ frontends = [
         operator       = "Equals"
         selector       = "_gid"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "address_lookup_url"
+      }
     ]
   },
   {
@@ -2003,6 +2008,11 @@ frontends = [
         operator       = "Equals"
         selector       = "homepage_visited_timestamp"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "address_lookup_url"
+      }
     ]
   },
 ]

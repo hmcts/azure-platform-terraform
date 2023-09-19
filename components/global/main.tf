@@ -33,7 +33,7 @@ module "ctags" {
 
 module "frontdoor_classic" {
   count  = var.env == "sbox" ? 1 : 0
-  source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=remove-retention-days"
+  source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=DTSPO-13992-test-new-version-of-frontdoor"
 
   common_tags                = module.ctags.common_tags
   env                        = var.env
@@ -48,6 +48,7 @@ module "frontdoor_classic" {
   certificate_name_check     = var.certificate_name_check
   key_vault_resource_group   = data.azurerm_resource_group.key_vault.name
   log_analytics_workspace_id = module.log_analytics_workspace.workspace_id
+  front_door_sku_name        = "Premium_AzureFrontDoor"
   add_access_policy          = "false"
   add_access_policy_role     = "false"
 }

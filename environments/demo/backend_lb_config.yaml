@@ -435,3 +435,7 @@ gateways:
         component: api
       - product: et-pet
         component: ccd-export
+
+      # help-with-fees
+      - product: help-with-fees
+        component: benefit-checker-api

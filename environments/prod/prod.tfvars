@@ -3195,8 +3195,13 @@ frontends = [
       },
       {
         match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "authenticity_token"
+        operator       = "StartsWith"
+        selector       = "steps_closure_support_documents_form"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "steps_details_documents_upload_form"
       }
     ]
   },

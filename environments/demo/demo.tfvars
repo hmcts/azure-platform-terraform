@@ -2006,7 +2006,97 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "address_lookup_url"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "steps_closure_support_documents_form"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "steps_details_documents_upload_form"
       }
+    ]
+  },
+  {
+    product          = "help-with-fees-publicapp"
+    name             = "help-with-fees-publicapp"
+    mode             = "Prevention"
+    custom_domain    = "hwf-publicapp.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookie_setting"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_hwf-publicapp_session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+    ]
+  },
+  {
+    product          = "help-with-fees-staffapp"
+    name             = "help-with-fees-staffapp"
+    mode             = "Prevention"
+    custom_domain    = "hwf-staffapp.demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookie_setting"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_fr-staffapp_session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "fr_username"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "homepage_visited_timestamp"
+      },
     ]
   },
 ]

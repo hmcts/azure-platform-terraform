@@ -173,5 +173,4 @@ variable "autoShutdown" {
 }
 variable "apim_appgw_max_capacity" {
   default = 2
-
 }

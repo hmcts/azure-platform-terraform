@@ -3206,8 +3206,8 @@ frontends = [
     ]
   },
   {
-    name             = "hwf-staffapp"
-    product          = "hwf-staffapp"
+    name             = "wf-staff-pet"
+    product          = "wf-staff-pet"
     mode             = "Prevention"
     custom_domain    = "staff.helpwithcourtfees.service.gov.uk"
     dns_zone_name    = "staff.helpwithcourtfees.service.gov.uk"
@@ -3295,8 +3295,8 @@ frontends = [
     ],
   },
   {
-    name             = "hwf-publicapp"
-    product          = "hwf-publicapp"
+    name             = "hwf-pet"
+    product          = "hwf-pet"
     mode             = "Prevention"
     custom_domain    = "helpwithcourtfees.service.gov.uk"
     dns_zone_name    = "helpwithcourtfees.service.gov.uk"

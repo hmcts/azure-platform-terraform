@@ -1983,7 +1983,6 @@ frontends = [
         operator       = "Equals"
         selector       = "authenticity_token"
       }
-
     ]
   },
   {

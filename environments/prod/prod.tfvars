@@ -3206,26 +3206,136 @@ frontends = [
     ]
   },
   {
+    name             = "hwf-staff-pet"
+    product          = "hwf-staff-pet"
+    mode             = "Prevention"
+    custom_domain    = "staff.helpwithcourtfees.service.gov.uk"
+    dns_zone_name    = "staff.helpwithcourtfees.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name = "helpwithcourtfees-service-gov-uk"
+    shutter_app      = true
+    dns_zone_name    = "helpwithcourtfees-service-gov-uk"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookie_setting"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_fr-staffapp_session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "fr_username"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "homepage_visited_timestamp"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "address_lookup_url"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "authenticity_token"
+      }
+    ]
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "81.134.202.29/32",
+              "51.145.6.230/32",
+              "194.33.192.0/25",
+              "194.33.196.0/25",
+              "51.145.4.100/32",
+              "157.203.176.139/32",
+              "157.203.176.138/32",
+              "157.203.176.140/32",
+              "157.203.176.190/32",
+              "157.203.176.191/32",
+              "157.203.176.192/32",
+              "51.149.249.32/27",
+              "51.149.249.0/27",
+              "20.108.187.55/32"
+            ]
+          }
+        ]
+      },
+    ],
+  },
+  {
     name             = "hwf-pet"
     product          = "hwf-pet"
+    mode             = "Prevention"
     custom_domain    = "helpwithcourtfees.service.gov.uk"
     dns_zone_name    = "helpwithcourtfees.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     ssl_mode         = "AzureKeyVault"
     certificate_name = "helpwithcourtfees-service-gov-uk"
     shutter_app      = true
-    dns_zone_name    = "helpwithcourtfees.service.gov.uk"
-
+    dns_zone_name    = "helpwithcourtfees-service-gov-uk"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookie_setting"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_fr-staffapp_session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "address_lookup_url"
+      }
+    ]
   },
-  {
-    name             = "hwf-staff-pet"
-    product          = "hwf-staff-pet"
-    custom_domain    = "staff.helpwithcourtfees.service.gov.uk"
-    dns_zone_name    = "staff.helpwithcourtfees.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "helpwithcourtfees-service-gov-uk"
-    shutter_app      = true
-    dns_zone_name    = "helpwithcourtfees.service.gov.uk"
-
-  }
 ]

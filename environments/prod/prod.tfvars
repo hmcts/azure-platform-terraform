@@ -3301,6 +3301,7 @@ frontends = [
     custom_domain    = "helpwithcourtfees.service.gov.uk"
     dns_zone_name    = "helpwithcourtfees.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    ssl_mode         = "AzureKeyVault"
     certificate_name = "helpwithcourtfees-service-gov-uk"
     shutter_app      = true
     dns_zone_name    = "helpwithcourtfees-service-gov-uk"

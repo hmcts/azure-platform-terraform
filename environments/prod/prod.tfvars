@@ -3206,8 +3206,8 @@ frontends = [
     ]
   },
   {
-    name             = "wf-staff-pet"
-    product          = "wf-staff-pet"
+    name             = "hwf-staff-pet"
+    product          = "hwf-staff-pet"
     mode             = "Prevention"
     custom_domain    = "staff.helpwithcourtfees.service.gov.uk"
     dns_zone_name    = "staff.helpwithcourtfees.service.gov.uk"

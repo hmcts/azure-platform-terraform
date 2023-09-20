@@ -174,5 +174,3 @@ variable "autoShutdown" {
 variable "apim_appgw_max_capacity" {
   default = 2
 }
-
-variable "frontend_classic" { default = {} }

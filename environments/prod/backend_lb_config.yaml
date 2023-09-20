@@ -354,3 +354,7 @@ gateways:
         component: sdt-commissioning
       - product: civil
         component: sdt-gateway
+
+      # help-with-fees
+      - product: help-with-fees
+        component: benefit-checker-api

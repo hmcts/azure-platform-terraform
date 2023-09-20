@@ -3314,6 +3314,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "_hwf-publicapp_session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "_fr-staffapp_session"
       },
       {
@@ -3335,6 +3340,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "address_lookup_url"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "authenticity_token"
       }
     ]
   },

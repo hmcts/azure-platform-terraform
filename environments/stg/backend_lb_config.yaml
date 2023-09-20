@@ -391,5 +391,5 @@ gateways:
         component: ccd-export
 
     # help-with-fees
-      - product: help-with-fees
+      - product: hwf
         component: benefit-checker-api

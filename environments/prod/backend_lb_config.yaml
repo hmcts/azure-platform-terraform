@@ -356,5 +356,5 @@ gateways:
         component: sdt-gateway
 
       # help-with-fees
-      - product: help-with-fees
+      - product: hwf
         component: benefit-checker-api

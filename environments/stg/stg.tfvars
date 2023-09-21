@@ -2037,7 +2037,13 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "authenticity_token"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "notification[message]"
       }
+
     ]
   },
 ]

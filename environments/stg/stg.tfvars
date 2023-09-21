@@ -2043,7 +2043,6 @@ frontends = [
         operator       = "Equals"
         selector       = "notification[message]"
       }
-
     ]
   },
 ]

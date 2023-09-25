@@ -603,6 +603,7 @@ frontends = [
     disabled_rules   = {}
     shutter_app      = true
   },
+  {
     product          = "plum"
     name             = "plumclassic"
     custom_domain    = "plumclassic.sandbox.platform.hmcts.net"

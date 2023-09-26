@@ -28,3 +28,4 @@ gateways:
         ssl_certificate_name: wildcard-perftest-platform-hmcts-net
         host_name_suffix: perftest.platform.hmcts.net
         ssl_host_name_suffix: perftest.platform.hmcts.net
+        add_rewrite_rule: true

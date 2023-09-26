@@ -26,6 +26,7 @@ variable "publisher_email" {
 }
 
 variable "builtFrom" {
+  default = "hmcts/azure-platform-terraform"
 }
 
 variable "shutter_rg" {

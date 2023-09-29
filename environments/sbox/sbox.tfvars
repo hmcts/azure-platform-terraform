@@ -611,7 +611,7 @@ frontends = [
     backend_domain = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     # certificate_name = "frontdoor-sandbox-platform-hmcts-net"
     disabled_rules = {}
-    shutter_app    = true
+    shutter_app    = false
     # ssl_mode         = "AzureKeyVault"
   },
   {

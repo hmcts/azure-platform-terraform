@@ -320,6 +320,8 @@ gateways:
     # I&A
       - product: ia
         component: bail-case-api
+      - product: ia
+        component: hearings-api
 
     # HMC
       - product: hmc

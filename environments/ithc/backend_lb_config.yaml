@@ -73,6 +73,8 @@ gateways:
         component: case-payments-api
       - product: ia
         component: bail-case-api
+      - product: ia
+        component: hearings-api
 
     # Access Management
       - product: am

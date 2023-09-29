@@ -90,6 +90,8 @@ gateways:
         component: case-access-api
       - product: ia
         component: bail-case-api
+      - product: ia
+        component: hearings-api
 
     # SSCS
       - product: sscs

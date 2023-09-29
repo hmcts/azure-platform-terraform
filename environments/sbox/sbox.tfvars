@@ -604,16 +604,6 @@ frontends = [
     shutter_app      = true
   },
   {
-    product          = "plum"
-    name             = "plumclassic"
-    custom_domain    = "frontdoor.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-    shutter_app      = true
-  },
-  {
     product          = "hmi"
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.sandbox.platform.hmcts.net"

@@ -1222,7 +1222,7 @@ frontends = [
     product          = "tax-tribunals-datacapture"
     name             = "tax-tribunals-datacapture"
     custom_domain    = "tax-tribunals-datacapture.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-cftithc.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {

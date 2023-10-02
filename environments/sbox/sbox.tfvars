@@ -604,9 +604,9 @@ frontends = [
     shutter_app      = true
   },
   {
-    product          = "plum"
+    product          = "plumclassic"
     name             = "plumclassic"
-    custom_domain    = "hmcts-sbox.azurefd.net"
+    custom_domain    = "frontdoor.sandbox.platform.hmcts.net"
     dns_zone_name    = "frontdoor.sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "frontdoor-sandbox-platform-hmcts-net"

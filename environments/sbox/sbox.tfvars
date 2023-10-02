@@ -604,6 +604,17 @@ frontends = [
     shutter_app      = true
   },
   {
+    product          = "plum"
+    name             = "plumclassic"
+    custom_domain    = "hmcts-sbox.azurefd.net"
+    dns_zone_name    = "frontdoor.sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "frontdoor-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+    shutter_app      = true
+    ssl_mode         = "AzureKeyVault"
+  },
+  {
     product          = "hmi"
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.sandbox.platform.hmcts.net"

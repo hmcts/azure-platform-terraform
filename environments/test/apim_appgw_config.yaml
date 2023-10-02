@@ -17,6 +17,25 @@ gateways:
         ssl_certificate_name: wildcard-perftest-platform-hmcts-net
         host_name_suffix: perftest.platform.hmcts.net
         ssl_host_name_suffix: perftest.platform.hmcts.net
+        add_rewrite_rule: true
+        rewrite_rules:
+          - name: "SdtAddCustomHeadersRule"
+            sequence: "100"
+            request_headers:
+              - header_name: "CLIENT-IP-AGW"
+                header_value: "{var_client_ip}"
+              - header_name: "X-ARR-ClientCertSub-AGW"
+                header_value: "{var_client_certificate_subject}"
+              - header_name: "URI-PATH-AGW"
+                header_value: "{var_uri_path}"
+          - name: "SdtUrlRewriteRule"
+            sequence: "200"
+            conditions:
+              - variable: "{var_uri_path}"
+                pattern: ".*/producers(?>-comx)?/service/sdtapi"
+            url:
+              components: "path_only"
+              path: "/sdt-gateway"
       - product: cft-mtls
         component: api-mgmt-appgw
         ssl_enabled: true
@@ -29,3 +48,21 @@ gateways:
         host_name_suffix: perftest.platform.hmcts.net
         ssl_host_name_suffix: perftest.platform.hmcts.net
         add_rewrite_rule: true
+        rewrite_rules:
+          - name: "SdtAddCustomHeadersRule"
+            sequence: "100"
+            request_headers:
+              - header_name: "CLIENT-IP-AGW"
+                header_value: "{var_client_ip}"
+              - header_name: "X-ARR-ClientCertSub-AGW"
+                header_value: "{var_client_certificate_subject}"
+              - header_name: "URI-PATH-AGW"
+                header_value: "{var_uri_path}"
+          - name: "SdtUrlRewriteRule"
+            sequence: "200"
+            conditions:
+              - variable: "{var_uri_path}"
+                pattern: ".*/producers(?>-comx)?/service/sdtapi"
+            url:
+              components: "path_only"
+              path: "/sdt-gateway"

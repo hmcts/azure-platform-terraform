@@ -33,7 +33,6 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     shutter_app      = false
-    ssl_mode         = ""
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -273,12 +272,12 @@ frontends = [
     ]
   },
   {
-    product          = "idam"
-    name             = "hmcts-access"
-    mode             = "Detection"
-    custom_domain    = "hmcts-access.sandbox.platform.hmcts.net"
-    shutter_app      = false
-    ssl_mode         = ""
+    product       = "idam"
+    name          = "hmcts-access"
+    mode          = "Detection"
+    custom_domain = "hmcts-access.sandbox.platform.hmcts.net"
+    shutter_app   = false
+
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
 
@@ -291,7 +290,6 @@ frontends = [
     backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-sandbox-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
-    ssl_mode                    = ""
     custom_rules = [
       {
         name     = "IPMatchWhitelist"
@@ -428,7 +426,7 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    ssl_mode         = ""
+
     custom_rules = [
       {
         name     = "IPMatchWhitelist"
@@ -607,7 +605,7 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
-    ssl_mode         = ""
+
   },
   {
     product          = "plumclassic"
@@ -628,7 +626,6 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     cache_enabled    = "false"
-    ssl_mode         = ""
   },
   {
     product          = "cft-api-mgmt"
@@ -638,7 +635,6 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-cftapimgmt.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     cache_enabled    = "false"
-    ssl_mode         = ""
   },
   {
     product                     = "reform"
@@ -649,7 +645,6 @@ frontends = [
     certificate_name            = "wildcard-sandbox-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
     cache_enabled               = "false"
-    ssl_mode                    = ""
   },
   {
     product          = "labs"
@@ -658,7 +653,6 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    ssl_mode         = ""
   }
 ]
 

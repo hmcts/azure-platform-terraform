@@ -18,10 +18,10 @@ import {
   id = "/subscriptions/${data.azurerm_subscription.current.subscription_id}/resourceGroups/${data.azurerm_resource_group.main.name}/providers/Microsoft.Cdn/profiles/${var.project}-${var.env}/afdEndpoints/${var.project}-${var.env}/routes/defaultRouting"
 }
 
-import {
-  to = module.premium_front_door[0].azurerm_key_vault_access_policy.frontdoor_premium_kv_access[0]
-  id = "/subscriptions/${data.azurerm_subscription.current.subscription_id}/resourceGroups/${data.azurerm_resource_group.main.name}/providers/Microsoft.KeyVault/vaults/acmedcdcftapps${var.env}/objectId/8523e6b9-8461-46fd-abb9-1b2491384367"
-}
+# import {
+#   to = module.premium_front_door[0].azurerm_key_vault_access_policy.frontdoor_premium_kv_access[0]
+#   id = "/subscriptions/${data.azurerm_subscription.current.subscription_id}/resourceGroups/${data.azurerm_resource_group.main.name}/providers/Microsoft.KeyVault/vaults/acmedcdcftapps${var.env}/objectId/8523e6b9-8461-46fd-abb9-1b2491384367"
+# }
 
 
 import {

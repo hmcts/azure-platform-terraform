@@ -49,14 +49,14 @@ parameters:
       dependsOn: 'Precheck'
       pipeline_tests: false
 
-    # - deployment: 'sbox_global'
-    #   environment: 'sbox'
-    #   component: 'global'
-    #   service_connection: 'dcd-cftapps-sbox'
-    #   storage_account_rg: 'core-infra-sbox-rg'
-    #   storage_account_name: 'cftappssbox'
-    #   dependsOn: 'Precheck'
-    #   pipeline_tests: true
+    - deployment: 'sbox_global'
+      environment: 'sbox'
+      component: 'global'
+      service_connection: 'dcd-cftapps-sbox'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+      pipeline_tests: true
 
     - deployment: 'sbox_backendappgateway'
       environment: 'sbox'
@@ -117,7 +117,7 @@ parameters:
       service_connection: 'dcd-cftapps-dev'
       storage_account_rg: 'core-infra-dev-rg'
       storage_account_name: 'cftappsdev'
-      dependsOn: 'Precheck'
+      dependsOn: 'sbox_global'
 
     - deployment: 'ithc_frontendappgateway'
       environment: 'ithc'
@@ -144,7 +144,7 @@ parameters:
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
       pipeline_tests: true
-      dependsOn: 'dev_global'
+      dependsOn: 'sbox_global'
 
     - deployment: 'ithc_private_dns'
       environment: 'ithc'
@@ -169,7 +169,7 @@ parameters:
       service_connection: 'dcd-cftapps-demo'
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
-      dependsOn: 'dev_global'
+      dependsOn: 'sbox_global'
 
     - deployment: 'demo_frontendappgateway'
       environment: 'demo'
@@ -256,7 +256,7 @@ parameters:
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       pipeline_tests: true
-      dependsOn: 'dev_global'
+      dependsOn: 'sbox_global'
 
     - deployment: 'stg_private_dns'
       environment: 'stg'
@@ -301,7 +301,7 @@ parameters:
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       pipeline_tests: true
-      dependsOn: 'dev_global'
+      dependsOn: 'sbox_global'
 
     - deployment: 'prod_shutter_webapp'
       environment: 'prod'
@@ -354,7 +354,7 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
       pipeline_tests: true
-      dependsOn: 'dev_global'
+      dependsOn: 'sbox_global'
 
 stages:
   - stage: Precheck

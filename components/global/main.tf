@@ -23,6 +23,10 @@ module "landing_zone" {
   log_analytics_workspace_id = module.log_analytics_workspace.workspace_id
   add_access_policy          = var.add_access_policy
 }
+moved {
+  from = module.landing_zone
+  to   = module.landing_zone[0]
+}
 
 module "premium_front_door" {
   count  = var.upgrade_frontdoor ? 1 : 0

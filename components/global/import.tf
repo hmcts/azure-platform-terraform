@@ -18,7 +18,7 @@ import {
   id = "/subscriptions/${data.azurerm_subscription.current.subscription_id}/resourceGroups/${data.azurerm_resource_group.main.name}/providers/Microsoft.Cdn/profiles/${var.project}-${var.env}/afdEndpoints/${var.project}-${var.env}/routes/defaultRouting"
 }
 
-import {
-  to = module.premium_front_door[0].azurerm_monitor_diagnostic_setting.frontdoor_diagnostics
-  id = "/subscriptions/${data.azurerm_subscription.current.subscription_id}/resourceGroups/${data.azurerm_resource_group.main.name}/providers/Microsoft.Cdn/profiles/${var.project}-${var.env}|fd-log-analytics"
-}
+# import {
+#   to = module.premium_front_door[0].azurerm_monitor_diagnostic_setting.frontdoor_diagnostics
+#   id = "/subscriptions/${data.azurerm_subscription.current.subscription_id}/resourceGroups/${data.azurerm_resource_group.main.name}/providers/Microsoft.Cdn/profiles/${var.project}-${var.env}|fd-log-analytics"
+# }

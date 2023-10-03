@@ -31,7 +31,7 @@ gateways:
           - name: "SdtUrlRewriteRule"
             sequence: "200"
             conditions:
-              - variable: "{var_uri_path}"
+              - variable: "uri_path"
                 pattern: ".*/producers(?>-comx)?/service/sdtapi"
             url:
               components: "path_only"
@@ -61,7 +61,7 @@ gateways:
           - name: "SdtUrlRewriteRule"
             sequence: "200"
             conditions:
-              - variable: "{var_uri_path}"
+              - variable: "uri_path"
                 pattern: ".*/producers(?>-comx)?/service/sdtapi"
             url:
               components: "path_only"

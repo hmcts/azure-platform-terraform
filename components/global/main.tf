@@ -46,12 +46,7 @@ module "premium_front_door" {
   key_vault_resource_group   = data.azurerm_resource_group.key_vault.name
   log_analytics_workspace_id = module.log_analytics_workspace.workspace_id
   add_access_policy          = var.add_access_policy
-
-  #   # new variables for premium
-
-  new_frontends       = var.frontends            # premium
-  front_door_sku_name = "Premium_AzureFrontDoor" # premium
-
+  front_door_sku_name        = "Premium_AzureFrontDoor" # premium
 }
 
 module "ctags" {

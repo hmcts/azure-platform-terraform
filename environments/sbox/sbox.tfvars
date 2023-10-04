@@ -12,7 +12,7 @@ privatedns_subscription        = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
 oms_env                        = "sandbox"
 
 #FrontDoor access policy
-add_access_policy = false
+add_access_policy = true
 
 cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-sbox-rg"
@@ -22,8 +22,9 @@ cft_apps_cluster_ips            = ["10.2.11.250", "10.2.9.250"]
 
 apim_appgw_backend_pool_fqdns = ["firewall-sbox-int-palo-cftapimgmt.uksouth.cloudapp.azure.com"]
 
-hub          = "sbox"
-autoShutdown = true
+hub               = "sbox"
+autoShutdown      = true
+upgrade_frontdoor = true
 frontends = [
   {
     product          = "idam"
@@ -271,11 +272,12 @@ frontends = [
     ]
   },
   {
-    product          = "idam"
-    name             = "hmcts-access"
-    mode             = "Detection"
-    custom_domain    = "hmcts-access.sandbox.platform.hmcts.net"
-    shutter_app      = false
+    product       = "idam"
+    name          = "hmcts-access"
+    mode          = "Detection"
+    custom_domain = "hmcts-access.sandbox.platform.hmcts.net"
+    shutter_app   = false
+
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
 
@@ -424,6 +426,7 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
+
     custom_rules = [
       {
         name     = "IPMatchWhitelist"
@@ -602,6 +605,7 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
+
   },
   {
     product          = "plumclassic"

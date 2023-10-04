@@ -175,3 +175,7 @@ variable "autoShutdown" {
 variable "apim_appgw_max_capacity" {
   default = 2
 }
+variable "upgrade_frontdoor" {
+  type    = bool
+  default = false
+}

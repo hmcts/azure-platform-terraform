@@ -24,8 +24,6 @@ gateways:
             request_headers:
               - header_name: "CLIENT-IP-AGW"
                 header_value: "{var_client_ip}"
-              - header_name: "X-ARR-ClientCertSub-AGW"
-                header_value: "{var_client_certificate_subject}"
               - header_name: "URI-PATH-AGW"
                 header_value: "{var_uri_path}"
           - name: "SdtUrlRewriteRule"

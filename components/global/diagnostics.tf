@@ -8,7 +8,7 @@ resource "azurerm_storage_account" "diagnostics" {
   tags = module.ctags.common_tags
 }
 
-resource "azurerm_storage_management_policy" "example" {
+resource "azurerm_storage_management_policy" "diagnostics" {
   storage_account_id = azurerm_storage_account.diagnostics.id
 
   rule {

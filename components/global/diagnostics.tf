@@ -25,7 +25,7 @@ resource "azurerm_storage_management_policy" "diagnostics" {
         delete_after_days_since_creation_greater_than = 90
       }
       version {
-        delete_after_days_since_creation_greater_than = 90
+        delete_after_days_since_creation = 90
       }
     }
   }

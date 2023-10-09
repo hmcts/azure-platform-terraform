@@ -22,10 +22,9 @@ module "landing_zone" {
   key_vault_resource_group   = data.azurerm_resource_group.key_vault.name
   log_analytics_workspace_id = module.log_analytics_workspace.workspace_id
   add_access_policy          = var.add_access_policy
-}
-moved {
-  from = module.landing_zone
-  to   = module.landing_zone[0]
+
+  diagnostics_storage_account_id    = azurerm_storage_account.diagnostics.id
+  send_access_logs_to_log_analytics = false
 }
 
 module "premium_front_door" {
@@ -46,6 +45,9 @@ module "premium_front_door" {
   key_vault_resource_group   = data.azurerm_resource_group.key_vault.name
   log_analytics_workspace_id = module.log_analytics_workspace.workspace_id
   add_access_policy          = var.add_access_policy
+
+  diagnostics_storage_account_id    = azurerm_storage_account.diagnostics.id
+  send_access_logs_to_log_analytics = false
 }
 
 module "ctags" {

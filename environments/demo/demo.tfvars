@@ -2099,4 +2099,10 @@ frontends = [
       },
     ]
   },
+  {
+    name           = "judicial-payments"
+    mode           = "Detection"
+    custom_domain  = "judicial-payments.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+  }
 ]

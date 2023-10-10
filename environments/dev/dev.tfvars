@@ -21,3 +21,5 @@ frontends = [
     cache_enabled               = "false"
   }
 ]
+
+upgrade_frontdoor = true

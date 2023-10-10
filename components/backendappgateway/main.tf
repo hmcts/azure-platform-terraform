@@ -38,4 +38,5 @@ module "backendappgateway" {
   resource_prefix                    = "cft"
   min_capacity                       = var.backend_agw_min_capacity
   max_capacity                       = var.backend_agw_max_capacity
+  diagnostics_storage_account_id     = data.azurerm_storage_account.diagnostics.id
 }

@@ -46,7 +46,8 @@ frontends = [
     custom_domain    = "plum.demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
-  },
+  }
+  ,
   {
     product          = "dss-update-case"
     name             = "dss-update-case"
@@ -1455,7 +1456,6 @@ frontends = [
     name           = "idam-web-public"
     custom_domain  = "idam-web-public.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -2100,3 +2100,5 @@ frontends = [
     ]
   },
 ]
+
+upgrade_frontdoor = true

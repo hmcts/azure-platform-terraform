@@ -46,8 +46,7 @@ frontends = [
     custom_domain    = "plum.demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
-  }
-  ,
+  },
   {
     product          = "dss-update-case"
     name             = "dss-update-case"

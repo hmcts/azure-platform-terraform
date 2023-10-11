@@ -249,14 +249,14 @@ parameters:
       dependsOn: 'sbox_apim_appgw'
       pipeline_tests: true
 
-    # - deployment: 'perftest_global'
-    #   environment: 'test'
-    #   component: 'global'
-    #   service_connection: 'dcd-cftapps-test'
-    #   storage_account_rg: 'core-infra-test-rg'
-    #   storage_account_name: 'cftappstest'
-    #   pipeline_tests: true
-    #   dependsOn: 'sbox_global'
+    - deployment: 'perftest_global'
+      environment: 'test'
+      component: 'global'
+      service_connection: 'dcd-cftapps-test'
+      storage_account_rg: 'core-infra-test-rg'
+      storage_account_name: 'cftappstest'
+      pipeline_tests: true
+      dependsOn: 'sbox_global'
 
     - deployment: 'stg_private_dns'
       environment: 'stg'

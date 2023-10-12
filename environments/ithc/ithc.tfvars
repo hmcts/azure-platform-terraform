@@ -21,7 +21,7 @@ shutter_apps = [
 ]
 
 frontend_agw_private_ip_address = "10.11.225.113"
-cft_apps_cluster_ips            = ["10.11.207.250", "10.11.223.250"]
+cft_apps_cluster_ips            = ["10.11.207.250"]
 
 frontends = [
   {
@@ -533,21 +533,18 @@ frontends = [
     mode           = "Detection"
     custom_domain  = "nfdiv.ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
-
   },
   {
-    name          = "nfdiv-apply"
-    mode          = "Detection"
-    custom_domain = "nfdiv-apply-for-divorce.ithc.platform.hmcts.net"
-    backend       = "nfdiv"
-
+    name           = "nfdiv-apply"
+    mode           = "Detection"
+    custom_domain  = "nfdiv-apply-for-divorce.ithc.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
   },
   {
-    name          = "nfdiv-civil"
-    mode          = "Detection"
-    custom_domain = "nfdiv-end-civil-partnership.ithc.platform.hmcts.net"
-    backend       = "nfdiv"
-
+    name           = "nfdiv-civil"
+    mode           = "Detection"
+    custom_domain  = "nfdiv-end-civil-partnership.ithc.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "gateway-ccd"
@@ -1283,3 +1280,5 @@ frontends = [
     ]
   },
 ]
+
+upgrade_frontdoor = true

@@ -1,6 +1,6 @@
 env                    = "demo"
 subscription           = "demo"
-cft_apps_cluster_ips   = ["10.50.79.221"]
+cft_apps_cluster_ips   = ["10.50.79.221", "10.50.95.221"]
 certificate_name_check = false
 autoShutdown           = true
 
@@ -1455,7 +1455,6 @@ frontends = [
     name           = "idam-web-public"
     custom_domain  = "idam-web-public.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -2099,4 +2098,12 @@ frontends = [
       },
     ]
   },
+  {
+    name           = "judicial-payments"
+    mode           = "Detection"
+    custom_domain  = "judicial-payments.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+  }
 ]
+
+upgrade_frontdoor = true

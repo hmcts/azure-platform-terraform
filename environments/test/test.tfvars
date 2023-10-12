@@ -21,7 +21,7 @@ shutter_apps = [
 
 cft_apps_ag_ip_address          = "10.48.96.123"
 frontend_agw_private_ip_address = "10.48.96.113"
-cft_apps_cluster_ips            = ["10.48.79.250", "10.48.95.250"]
+cft_apps_cluster_ips            = ["10.48.95.250"]
 
 hub                           = "nonprod"
 key_vault_subscription        = "8a07fdcd-6abd-48b3-ad88-ff737a4b9e3c"
@@ -275,7 +275,6 @@ frontends = [
     custom_domain = "nfdiv-apply-for-divorce.perftest.platform.hmcts.net"
     mode          = "Detection"
     backend       = "nfdiv"
-
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -289,7 +288,6 @@ frontends = [
     custom_domain = "nfdiv-end-civil-partnership.perftest.platform.hmcts.net"
     mode          = "Detection"
     backend       = "nfdiv"
-
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -1384,3 +1382,4 @@ frontends = [
     ]
   }
 ]
+upgrade_frontdoor = true

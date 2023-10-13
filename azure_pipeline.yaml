@@ -294,14 +294,14 @@ parameters:
       dependsOn: 'sbox_backendappgateway'
       pipeline_tests: true
 
-    - deployment: 'aat_global'
-      environment: 'stg'
-      component: 'global'
-      service_connection: 'dcd-cftapps-stg'
-      storage_account_rg: 'core-infra-stg-rg'
-      storage_account_name: 'cftappsstg'
-      pipeline_tests: true
-      dependsOn: 'sbox_global'
+    # - deployment: 'aat_global'
+    #   environment: 'stg'
+    #   component: 'global'
+    #   service_connection: 'dcd-cftapps-stg'
+    #   storage_account_rg: 'core-infra-stg-rg'
+    #   storage_account_name: 'cftappsstg'
+    #   pipeline_tests: true
+    #   dependsOn: 'sbox_global'
 
     - deployment: 'prod_shutter_webapp'
       environment: 'prod'

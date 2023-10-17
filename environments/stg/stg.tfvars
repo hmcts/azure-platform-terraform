@@ -416,6 +416,7 @@ frontends = [
     mode           = "Detection"
     custom_domain  = "manage-case.aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    cache_enabled  = "false"
 
   },
   {

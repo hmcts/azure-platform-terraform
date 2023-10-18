@@ -2844,10 +2844,11 @@ frontends = [
     product          = "adoption"
     name             = "child-adoption"
     mode             = "Detection"
-    custom_domain    = "www.apply-to-adopt-a-child-placed-in-your-care.service.gov.uk"
+    custom_domain    = "apply-to-adopt-a-child-placed-in-your-care.service.gov.uk"
     dns_zone_name    = "apply-to-adopt-a-child-placed-in-your-care.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-to-adopt-a-child-placed-in-your-care-service-gov-uk"
+    www_redirect     = true
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

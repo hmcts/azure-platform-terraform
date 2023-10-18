@@ -3275,7 +3275,13 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "notification[message]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "user[password]"
       }
+
     ]
     custom_rules = [
       {

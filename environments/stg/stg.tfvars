@@ -416,6 +416,7 @@ frontends = [
     mode           = "Detection"
     custom_domain  = "manage-case.aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    cache_enabled  = "false"
 
   },
   {
@@ -2052,6 +2053,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "user[name]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "notification[message]"
       }
     ]
   },

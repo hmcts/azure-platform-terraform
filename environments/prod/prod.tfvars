@@ -2976,13 +2976,6 @@ frontends = [
     redirect      = "sandbox-build.hmcts.net"
   },
   {
-    name          = "sds-sandbox-build"
-    custom_domain = "sds-sandbox-build.platform.hmcts.net"
-    dns_zone_name = "platform.hmcts.net"
-    shutter_app   = false
-    redirect      = "sds-sandbox-build.hmcts.net"
-  },
-  {
     name             = "et-pet"
     product          = "et-pet"
     mode             = "Prevention"

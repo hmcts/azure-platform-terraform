@@ -762,6 +762,19 @@ frontends = [
 
   },
   {
+    name          = "nfdiv-apply"
+    mode          = "Detection"
+    custom_domain = "nfdiv-apply-for-divorce.demo.platform.hmcts.net"
+    backend       = "nfdiv"
+
+  },
+  {
+    name          = "nfdiv-civil"
+    mode          = "Detection"
+    custom_domain = "nfdiv-end-civil-partnership.demo.platform.hmcts.net"
+    backend       = "nfdiv"
+  },
+  {
     name           = "pcq"
     mode           = "Detection"
     custom_domain  = "pcq.demo.platform.hmcts.net"

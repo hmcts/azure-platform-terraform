@@ -361,3 +361,9 @@ gateways:
     # jps
       - product: jps
         component: judicial-payment-service
+
+    # Ethos (ECM)
+      - product: ethos
+        component: repl-docmosis-backend
+      - product: ethos
+        component: ecm-consumer

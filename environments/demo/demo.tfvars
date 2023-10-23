@@ -759,20 +759,20 @@ frontends = [
     mode           = "Detection"
     custom_domain  = "nfdiv.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
   },
   {
-    name          = "nfdiv-apply"
-    mode          = "Detection"
-    custom_domain = "nfdiv-apply-for-divorce.demo.platform.hmcts.net"
-    backend       = "nfdiv"
-
+    name             = "nfdiv-apply"
+    mode             = "Detection"
+    custom_domain    = "nfdiv-apply-for-divorce.demo.platform.hmcts.net"
+    backend          = "nfdiv"
+    certificate_name = "wildcard-demo-platform-hmcts-net"
   },
   {
-    name          = "nfdiv-civil"
-    mode          = "Detection"
-    custom_domain = "nfdiv-end-civil-partnership.demo.platform.hmcts.net"
-    backend       = "nfdiv"
+    name             = "nfdiv-civil"
+    mode             = "Detection"
+    custom_domain    = "nfdiv-end-civil-partnership.demo.platform.hmcts.net"
+    backend          = "nfdiv"
+    certificate_name = "wildcard-demo-platform-hmcts-net"
   },
   {
     name           = "pcq"

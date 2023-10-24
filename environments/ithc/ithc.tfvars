@@ -1284,7 +1284,7 @@ frontends = [
     name             = "et-pet-et1"
     mode             = "Prevention"
     custom_domain    = "et-pet-et1.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
@@ -1304,7 +1304,7 @@ frontends = [
     name             = "et-pet-et3"
     mode             = "Prevention"
     custom_domain    = "et-pet-et3.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
@@ -1324,7 +1324,7 @@ frontends = [
     name             = "et-pet-admin"
     mode             = "Prevention"
     custom_domain    = "et-pet-admin.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {

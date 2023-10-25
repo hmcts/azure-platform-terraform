@@ -3063,6 +3063,20 @@ frontends = [
     redirect      = "sandbox-build.hmcts.net"
   },
   {
+    name          = "build"
+    custom_domain = "build.platform.hmcts.net"
+    dns_zone_name = "platform.hmcts.net"
+    shutter_app   = false
+    redirect      = "build.hmcts.net"
+  },
+  {
+    name          = "static-build"
+    custom_domain = "static-build.platform.hmcts.net"
+    dns_zone_name = "platform.hmcts.net"
+    shutter_app   = false
+    redirect      = "static-build.hmcts.net"
+  },
+  {
     name             = "et-pet"
     product          = "et-pet"
     mode             = "Prevention"

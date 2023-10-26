@@ -1040,12 +1040,6 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   },
   {
-    name           = "civil-citizen-ui"
-    mode           = "Detection"
-    custom_domain  = "civil-citizen-ui.demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-  },
-  {
     name           = "bar"
     custom_domain  = "bar.demo.platform.hmcts.net"
     mode           = "Detection"

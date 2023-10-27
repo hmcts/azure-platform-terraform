@@ -748,9 +748,16 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   },
   {
-    name           = "cmc"
+    name           = "civil-citizen-ui"
     mode           = "Detection"
     custom_domain  = "moneyclaims.demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+  },
+  {
+    name           = "cmc"
+    mode           = "Detection"
+    custom_domain  = "moneyclaims1.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -1030,12 +1037,6 @@ frontends = [
     name           = "rpts"
     mode           = "Prevention"
     custom_domain  = "rpts.demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-  },
-  {
-    name           = "civil-citizen-ui"
-    mode           = "Detection"
-    custom_domain  = "civil-citizen-ui.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   },
   {

@@ -608,6 +608,7 @@ frontends = [
 
   },
   {
+    product       = "netbox"
     name          = "netbox-sandbox"
     custom_domain = "netbox.sandbox.platform.hmcts.net"
     dns_zone_name = "sandbox.platform.hmcts.net"

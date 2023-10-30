@@ -3400,6 +3400,7 @@ frontends = [
     custom_domain    = "apply-to-adopt-a-child-placed-in-your-care.service.gov.uk"
     dns_zone_name    = "apply-to-adopt-a-child-placed-in-your-care.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    ssl_mode         = "AzureKeyVault"
     certificate_name = "apply-to-adopt-a-child-placed-in-your-care-service-gov-uk"
     www_redirect     = true
     global_exclusions = [

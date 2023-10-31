@@ -653,15 +653,6 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-  },
-  {
-    product          = "labs-goldenpath-mfox"
-    name             = "labs-goldenpath-mfox"
-    custom_domain    = "labs-goldenpath-mfox.sandbox.platform.hmcts.net"
-    shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-labsgoldenpathmfox.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
   }
 ]
 

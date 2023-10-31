@@ -176,18 +176,6 @@ frontends = [
     ]
   },
   {
-    name           = "pet-app1"
-    custom_domain  = "pet-app1.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-pet-aat.uksouth.cloudapp.azure.com"]
-
-  },
-  {
-    name           = "pet-app2"
-    custom_domain  = "pet-app2.aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-pet-aat.uksouth.cloudapp.azure.com"]
-
-  },
-  {
     name           = "sscs-tribunals"
     custom_domain  = "benefit-appeal.aat.platform.hmcts.net"
     mode           = "Detection"

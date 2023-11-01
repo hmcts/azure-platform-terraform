@@ -608,6 +608,14 @@ frontends = [
 
   },
   {
+    product       = "netbox"
+    name          = "netbox-sandbox"
+    custom_domain = "netbox.sandbox.platform.hmcts.net"
+    dns_zone_name = "sandbox.platform.hmcts.net"
+    shutter_app   = false
+    redirect      = "netbox-sandbox.hmcts.net"
+  },
+  {
     product          = "plumclassic"
     name             = "plumclassic"
     custom_domain    = "frontdoor.sandbox.platform.hmcts.net"

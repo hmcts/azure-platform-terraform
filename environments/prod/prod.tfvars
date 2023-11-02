@@ -2991,6 +2991,14 @@ frontends = [
     redirect      = "static-build.hmcts.net"
   },
   {
+    product       = "netbox"
+    name          = "netbox"
+    custom_domain = "netbox.platform.hmcts.net"
+    dns_zone_name = "platform.hmcts.net"
+    shutter_app   = false
+    redirect      = "netbox.hmcts.net"
+  },
+  {
     name             = "et-pet"
     product          = "et-pet"
     mode             = "Prevention"

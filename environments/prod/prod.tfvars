@@ -2742,18 +2742,19 @@ frontends = [
     cache_enabled    = "false"
   },
   {
-    product             = "reform-scan"
-    name                = "reformscan"
-    custom_domain       = "reformscan.platform.hmcts.net"
-    dns_zone_name       = "platform.hmcts.net"
-    host_header         = "reformscanprod.blob.core.windows.net"
-    mode                = "Detection"
-    backend_domain      = ["firewall-prod-int-palo-reformscanprod.uksouth.cloudapp.azure.com"]
-    certificate_name    = "wildcard-platform-hmcts-net"
-    forwarding_protocol = "MatchRequest"
-    health_path         = "/"
-    health_protocol     = "Https"
-    cache_enabled       = "false"
+    product                        = "reform-scan"
+    name                           = "reformscan"
+    custom_domain                  = "reformscan.platform.hmcts.net"
+    dns_zone_name                  = "platform.hmcts.net"
+    host_header                    = "reformscanprod.blob.core.windows.net"
+    mode                           = "Detection"
+    backend_domain                 = ["firewall-prod-int-palo-reformscanprod.uksouth.cloudapp.azure.com"]
+    certificate_name               = "wildcard-platform-hmcts-net"
+    forwarding_protocol            = "MatchRequest"
+    health_path                    = "/"
+    health_protocol                = "Https"
+    cache_enabled                  = "false"
+    certificate_name_check_enabled = false
   },
   {
     product          = "adoption"

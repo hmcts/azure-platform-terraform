@@ -15,15 +15,16 @@ hub = "nonprod"
 
 frontends = [
   {
-    name                = "reformscan"
-    custom_domain       = "reformscan.demo.platform.hmcts.net"
-    host_header         = "reformscandemo.blob.core.windows.net"
-    mode                = "Detection"
-    backend_domain      = ["firewall-nonprodi-palo-reformscandemo.uksouth.cloudapp.azure.com"]
-    forwarding_protocol = "MatchRequest"
-    health_path         = "/"
-    health_protocol     = "Https"
-    cache_enabled       = "false"
+    name                           = "reformscan"
+    custom_domain                  = "reformscan.demo.platform.hmcts.net"
+    host_header                    = "reformscandemo.blob.core.windows.net"
+    mode                           = "Detection"
+    backend_domain                 = ["firewall-nonprodi-palo-reformscandemo.uksouth.cloudapp.azure.com"]
+    forwarding_protocol            = "MatchRequest"
+    health_path                    = "/"
+    health_protocol                = "Https"
+    cache_enabled                  = "false"
+    certificate_name_check_enabled = false
   },
   {
     product          = "cft-api-mgmt"

@@ -1227,6 +1227,94 @@ frontends = [
   },
   {
     product          = "cmc"
+    name             = "ocmc"
+    mode             = "Prevention"
+    custom_domain    = "www1.moneyclaims.service.gov.uk"
+    dns_zone_name    = "moneyclaims.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name = "moneyclaims-service-gov-uk"
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942110",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942260",
+        "942300",
+        "942310",
+        "942330",
+        "942340",
+        "942361",
+        "942370",
+        "942380",
+        "942390",
+        "942400",
+        "942410",
+        "942430",
+        "942450",
+      ]
+      RCE = [
+        "932105",
+        "932115",
+        "932150",
+      ]
+      PROTOCOL-ATTACK = [
+        "921110"
+      ]
+    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "SESSION_ID"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "signerRole"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reason"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "rows"
+      },
+    ]
+
+  },
+  {
+    product          = "cmc"
     name             = "cmc-legal"
     mode             = "Prevention"
     custom_domain    = "www.moneyclaim-legal.platform.hmcts.net"

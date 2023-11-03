@@ -1016,16 +1016,17 @@ frontends = [
     cache_enabled    = "false"
   },
   {
-    name                = "reformscan"
-    custom_domain       = "reformscan.perftest.platform.hmcts.net"
-    host_header         = "reformscanperftest.blob.core.windows.net"
-    mode                = "Detection"
-    backend_domain      = ["firewall-nonprodi-palo-reformscanperftest.uksouth.cloudapp.azure.com"]
-    certificate_name    = "wildcard-perftest-platform-hmcts-net"
-    forwarding_protocol = "MatchRequest"
-    health_path         = "/"
-    health_protocol     = "Https"
-    cache_enabled       = "false"
+    name                           = "reformscan"
+    custom_domain                  = "reformscan.perftest.platform.hmcts.net"
+    host_header                    = "reformscanperftest.blob.core.windows.net"
+    mode                           = "Detection"
+    backend_domain                 = ["firewall-nonprodi-palo-reformscanperftest.uksouth.cloudapp.azure.com"]
+    certificate_name               = "wildcard-perftest-platform-hmcts-net"
+    forwarding_protocol            = "MatchRequest"
+    health_path                    = "/"
+    health_protocol                = "Https"
+    cache_enabled                  = "false"
+    certificate_name_check_enabled = false
   },
   {
     name             = "idam-user-dashboard"

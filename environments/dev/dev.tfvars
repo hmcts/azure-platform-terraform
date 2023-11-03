@@ -14,11 +14,12 @@ frontends = [
     cache_enabled  = "false"
   },
   {
-    name                        = "reformscan"
-    custom_domain               = "reformscan.preview.platform.hmcts.net"
-    backend_domain              = ["firewall-prod-int-palo-reformscanpreview.uksouth.cloudapp.azure.com"]
-    appgw_cookie_based_affinity = "Enabled"
-    cache_enabled               = "false"
+    name                           = "reformscan"
+    custom_domain                  = "reformscan.preview.platform.hmcts.net"
+    backend_domain                 = ["firewall-prod-int-palo-reformscanpreview.uksouth.cloudapp.azure.com"]
+    appgw_cookie_based_affinity    = "Enabled"
+    cache_enabled                  = "false"
+    certificate_name_check_enabled = false
   }
 ]
 

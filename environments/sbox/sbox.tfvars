@@ -645,14 +645,15 @@ frontends = [
     cache_enabled    = "false"
   },
   {
-    product                     = "reform"
-    name                        = "reformscan"
-    custom_domain               = "reformscan.sandbox.platform.hmcts.net"
-    shutter_app                 = false
-    backend_domain              = ["firewall-prod-int-palo-reformscansbox.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-sandbox-platform-hmcts-net"
-    appgw_cookie_based_affinity = "Enabled"
-    cache_enabled               = "false"
+    product                        = "reform"
+    name                           = "reformscan"
+    custom_domain                  = "reformscan.sandbox.platform.hmcts.net"
+    shutter_app                    = false
+    backend_domain                 = ["firewall-prod-int-palo-reformscansbox.uksouth.cloudapp.azure.com"]
+    certificate_name               = "wildcard-sandbox-platform-hmcts-net"
+    appgw_cookie_based_affinity    = "Enabled"
+    cache_enabled                  = "false"
+    certificate_name_check_enabled = false
   },
   {
     product          = "labs"

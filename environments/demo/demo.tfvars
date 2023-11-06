@@ -51,7 +51,7 @@ frontends = [
   {
     product          = "dss-update-case"
     name             = "dss-update-case"
-    custom_domain    = "dss-update-case.demo.platform.hmcts.net"
+    custom_domain    = "fis-ds-update-web.demo.platform.hmcts.net"
     mode             = "Detection"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
@@ -735,6 +735,19 @@ frontends = [
     custom_domain  = "immigration-appeal.demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
+  },
+  {
+    name           = "fis-ds-update-web"
+    custom_domain  = "fis-ds-update-web.demo.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
   },
   {
     name           = "lau"

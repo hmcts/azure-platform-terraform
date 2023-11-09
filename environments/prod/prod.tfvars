@@ -27,8 +27,8 @@ frontend_agw_max_capacity       = 15
 hub           = "prod"
 apim_sku_name = "Premium"
 
-publisher_email = "DTSPlatformOps@HMCTS.NET"
-
+publisher_email   = "DTSPlatformOps@HMCTS.NET"
+upgrade_frontdoor = true
 frontends = [
   {
     name             = "plum"
@@ -38,8 +38,6 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
     shutter_app      = true
-    dns_zone_name    = "platform.hmcts.net"
-
   },
   {
     product          = "div"

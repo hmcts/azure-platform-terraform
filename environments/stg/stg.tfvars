@@ -24,8 +24,8 @@ shutter_apps = [
 frontend_agw_private_ip_address = "10.10.161.102"
 cft_apps_cluster_ips            = ["10.10.143.250", "10.10.159.250"]
 
-publisher_email   = "DTSPlatformOps@HMCTS.NET"
-upgrade_frontdoor = true
+publisher_email = "DTSPlatformOps@HMCTS.NET"
+
 frontends = [
   {
     name           = "plum"

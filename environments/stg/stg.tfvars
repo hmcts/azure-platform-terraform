@@ -1647,15 +1647,16 @@ frontends = [
     certificate_name_check_enabled = false
   },
   {
-    name                = "reformscanstg"
-    custom_domain       = "reformscanstg.aat.platform.hmcts.net"
-    host_header         = "reformscanaatstaging.blob.core.windows.net"
-    backend_domain      = ["firewall-prod-int-palo-reformscanaatstg.uksouth.cloudapp.azure.com"]
-    certificate_name    = "wildcard-aat-platform-hmcts-net"
-    forwarding_protocol = "MatchRequest"
-    health_path         = "/"
-    health_protocol     = "Https"
-    cache_enabled       = "false"
+    name                           = "reformscanstg"
+    custom_domain                  = "reformscanstg.aat.platform.hmcts.net"
+    host_header                    = "reformscanaatstaging.blob.core.windows.net"
+    backend_domain                 = ["firewall-prod-int-palo-reformscanaatstg.uksouth.cloudapp.azure.com"]
+    certificate_name               = "wildcard-aat-platform-hmcts-net"
+    forwarding_protocol            = "MatchRequest"
+    health_path                    = "/"
+    health_protocol                = "Https"
+    cache_enabled                  = "false"
+    certificate_name_check_enabled = false
   },
   {
     name           = "ds-ui"

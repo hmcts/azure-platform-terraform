@@ -22,9 +22,9 @@ cft_apps_cluster_ips            = ["10.2.11.250", "10.2.9.250"]
 
 apim_appgw_backend_pool_fqdns = ["firewall-sbox-int-palo-cftapimgmt.uksouth.cloudapp.azure.com"]
 
-hub               = "sbox"
-autoShutdown      = true
-upgrade_frontdoor = true
+hub          = "sbox"
+autoShutdown = true
+
 frontends = [
   {
     product          = "idam"

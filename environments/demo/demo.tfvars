@@ -2170,4 +2170,3 @@ frontends = [
   }
 ]
 
-upgrade_frontdoor = true

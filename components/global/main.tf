@@ -9,7 +9,7 @@ moved {
   to   = module.premium_front_door
 }
 module "premium_front_door" {
-  source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=DTSPO-13992-test-new-version-of-frontdoor"
+  source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=master"
 
   common_tags                = module.ctags.common_tags
   env                        = var.env

@@ -17,6 +17,7 @@ frontends = [
   {
     name                           = "reformscan"
     custom_domain                  = "reformscan.demo.platform.hmcts.net"
+    dns_zone_name                  = "demo.platform.hmcts.net"
     host_header                    = "reformscandemo.blob.core.windows.net"
     mode                           = "Detection"
     backend_domain                 = ["firewall-nonprodi-palo-reformscandemo.uksouth.cloudapp.azure.com"]
@@ -30,6 +31,7 @@ frontends = [
     product          = "cft-api-mgmt"
     name             = "cft-api-mgmt"
     custom_domain    = "cft-api-mgmt.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftapimgmtdemo.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
     cache_enabled    = "false"
@@ -38,6 +40,7 @@ frontends = [
     product          = "plum-public"
     name             = "plum-public"
     custom_domain    = "plum-public.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
   },
@@ -45,6 +48,7 @@ frontends = [
     product          = "plum"
     name             = "plum"
     custom_domain    = "plum.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
   },
@@ -52,6 +56,7 @@ frontends = [
     product          = "dss-update-case"
     name             = "dss-update-case"
     custom_domain    = "dss-update-case.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
     mode             = "Detection"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
@@ -67,6 +72,7 @@ frontends = [
   {
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-hmiapimdemo.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
     cache_enabled    = "false"
@@ -74,6 +80,7 @@ frontends = [
   {
     name           = "div-dn"
     custom_domain  = "decree-nisi-aks.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
@@ -108,6 +115,7 @@ frontends = [
   {
     name           = "div-da"
     custom_domain  = "decree-absolute-aks.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
@@ -137,6 +145,7 @@ frontends = [
   {
     name           = "div-rfe"
     custom_domain  = "respond-divorce-aks.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
@@ -166,6 +175,7 @@ frontends = [
   {
     name           = "div-pfe"
     custom_domain  = "petitioner-frontend-aks.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
@@ -216,6 +226,7 @@ frontends = [
     name           = "fact"
     mode           = "Prevention"
     custom_domain  = "fact.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
@@ -310,6 +321,7 @@ frontends = [
     name           = "fact-admin"
     mode           = "Detection"
     custom_domain  = "fact-admin.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -317,12 +329,14 @@ frontends = [
     name           = "et-sya"
     mode           = "Detection"
     custom_domain  = "et-sya.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "paybubble"
     custom_domain  = "paybubble.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
@@ -387,6 +401,7 @@ frontends = [
   {
     name           = "paybubble-int"
     custom_domain  = "paybubble-int.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
@@ -452,6 +467,7 @@ frontends = [
     name           = "paymentoutcome-web"
     mode           = "Detection"
     custom_domain  = "paymentoutcome-web.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     www_redirect   = true
   },
@@ -459,12 +475,14 @@ frontends = [
     name           = "paymentoutcome-web-int"
     mode           = "Detection"
     custom_domain  = "paymentoutcome-web-int.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     www_redirect   = true
   },
   {
     name           = "fees-register"
     custom_domain  = "fees-register.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
@@ -592,6 +610,7 @@ frontends = [
   {
     name           = "fees-register-int"
     custom_domain  = "fees-register-int.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
@@ -719,6 +738,7 @@ frontends = [
   {
     name           = "fis-ds-web"
     custom_domain  = "fis-ds-web.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     global_exclusions = [
@@ -733,6 +753,7 @@ frontends = [
     name           = "ia-aip"
     mode           = "Detection"
     custom_domain  = "immigration-appeal.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -740,18 +761,21 @@ frontends = [
     name           = "lau"
     mode           = "Detection"
     custom_domain  = "lau.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "lau-int"
     mode           = "Detection"
     custom_domain  = "lau-int.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "civil-citizen-ui"
     mode           = "Detection"
     custom_domain  = "moneyclaims.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -759,6 +783,7 @@ frontends = [
     name           = "cmc"
     mode           = "Detection"
     custom_domain  = "moneyclaims1.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -766,12 +791,14 @@ frontends = [
     name           = "nfdiv"
     mode           = "Detection"
     custom_domain  = "nfdiv.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   },
   {
     name             = "nfdiv-apply"
     mode             = "Detection"
     custom_domain    = "nfdiv-apply-for-divorce.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
     backend          = "nfdiv"
     certificate_name = "wildcard-demo-platform-hmcts-net"
   },
@@ -779,6 +806,7 @@ frontends = [
     name             = "nfdiv-civil"
     mode             = "Detection"
     custom_domain    = "nfdiv-end-civil-partnership.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
     backend          = "nfdiv"
     certificate_name = "wildcard-demo-platform-hmcts-net"
   },
@@ -786,6 +814,7 @@ frontends = [
     name           = "pcq"
     mode           = "Detection"
     custom_domain  = "pcq.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
@@ -887,6 +916,7 @@ frontends = [
     name           = "pcq-int"
     mode           = "Detection"
     custom_domain  = "pcq-int.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
@@ -987,6 +1017,7 @@ frontends = [
   {
     name           = "privatelaw"
     custom_domain  = "privatelaw.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     global_exclusions = [
@@ -1000,6 +1031,7 @@ frontends = [
   {
     name           = "probate"
     custom_domain  = "probate.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     custom_rules = [
@@ -1038,11 +1070,13 @@ frontends = [
     name           = "rpts"
     mode           = "Prevention"
     custom_domain  = "rpts.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "bar"
     custom_domain  = "bar.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
@@ -1050,6 +1084,7 @@ frontends = [
   {
     name           = "bar-int"
     custom_domain  = "bar-int.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
@@ -1058,12 +1093,14 @@ frontends = [
     name           = "ac-int-gateway-ccd"
     mode           = "Detection"
     custom_domain  = "ac-int-gateway-ccd.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "adoption-web"
     custom_domain  = "adoption-web.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     global_exclusions = [
@@ -1078,6 +1115,7 @@ frontends = [
     product          = "sptribs-frontend"
     name             = "sptribs-frontend"
     custom_domain    = "sptribs-frontend.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
     mode             = "Detection"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
@@ -1093,6 +1131,7 @@ frontends = [
     name           = "sscs-cor"
     mode           = "Detection"
     custom_domain  = "sscs-cor.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
@@ -1190,6 +1229,7 @@ frontends = [
   {
     name           = "sscs-tribunals"
     custom_domain  = "benefit-appeal.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
@@ -1311,12 +1351,14 @@ frontends = [
     name           = "hmcts-access"
     mode           = "Detection"
     custom_domain  = "hmcts-access.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
   {
     name             = "idam-user-dashboard"
     custom_domain    = "idam-user-dashboard.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
     global_exclusions = [
@@ -1456,6 +1498,7 @@ frontends = [
     name           = "xui-approve-org-int"
     mode           = "Detection"
     custom_domain  = "administer-orgs-int.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -1463,12 +1506,14 @@ frontends = [
     name           = "xui-manage-org-int"
     mode           = "Detection"
     custom_domain  = "manage-org-int.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "idam-web-public"
     custom_domain  = "idam-web-public.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
@@ -1711,6 +1756,7 @@ frontends = [
   {
     name                        = "idam-web-admin"
     custom_domain               = "idam-web-admin.demo.platform.hmcts.net"
+    dns_zone_name               = "demo.platform.hmcts.net"
     backend_domain              = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-demo-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
@@ -1811,6 +1857,7 @@ frontends = [
     name           = "gateway-ccd"
     mode           = "Detection"
     custom_domain  = "gateway-ccd.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -1818,6 +1865,7 @@ frontends = [
     name           = "gateway-ccd-int"
     mode           = "Detection"
     custom_domain  = "gateway-ccd-int.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -1825,6 +1873,7 @@ frontends = [
     name           = "return-case-doc-ccd"
     mode           = "Detection"
     custom_domain  = "return-case-doc-ccd.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -1832,6 +1881,7 @@ frontends = [
     name           = "return-case-doc-ccd-int"
     mode           = "Detection"
     custom_domain  = "return-case-doc-ccd-int.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -1839,6 +1889,7 @@ frontends = [
     name           = "xui-webapp-ac-int"
     mode           = "Detection"
     custom_domain  = "manage-case-ac-int.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -1846,6 +1897,7 @@ frontends = [
     name           = "xui-webapp-int"
     mode           = "Detection"
     custom_domain  = "manage-case-int.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -1853,6 +1905,7 @@ frontends = [
     name           = "xui-webapp-caa-ac"
     mode           = "Detection"
     custom_domain  = "manage-case-caa-assigned-case-view.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -1860,6 +1913,7 @@ frontends = [
     name           = "xui-webapp-hearings-int"
     mode           = "Detection"
     custom_domain  = "manage-case-hearings-int.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     cache_enabled  = "false"
 
@@ -1868,6 +1922,7 @@ frontends = [
     name           = "xui-register-org"
     mode           = "Detection"
     custom_domain  = "register-org.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -1875,6 +1930,7 @@ frontends = [
     name           = "xui-approve-org"
     mode           = "Detection"
     custom_domain  = "administer-orgs.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -1882,6 +1938,7 @@ frontends = [
     name           = "xui-manage-org"
     mode           = "Detection"
     custom_domain  = "manage-org.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -1889,6 +1946,7 @@ frontends = [
     name           = "xui-webapp-int1"
     mode           = "Detection"
     custom_domain  = "manage-case-int1.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -1896,6 +1954,7 @@ frontends = [
     name           = "xui-webapp-int2"
     mode           = "Detection"
     custom_domain  = "manage-case-int2.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -1903,6 +1962,7 @@ frontends = [
     name           = "xui-webapp"
     mode           = "Detection"
     custom_domain  = "manage-case.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     cache_enabled  = "false"
 
@@ -1911,6 +1971,7 @@ frontends = [
     name           = "xui-webapp-srt"
     mode           = "Detection"
     custom_domain  = "manage-case-srt.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -1918,6 +1979,7 @@ frontends = [
     name           = "xui-webapp-wa-int"
     mode           = "Detection"
     custom_domain  = "manage-case-wa-int.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
   },
@@ -1926,6 +1988,7 @@ frontends = [
     name             = "et-pet-et1"
     mode             = "Prevention"
     custom_domain    = "et-pet-et1.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
     global_exclusions = [
@@ -1946,6 +2009,7 @@ frontends = [
     name             = "et-pet-et3"
     mode             = "Prevention"
     custom_domain    = "et-pet-et3.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
     global_exclusions = [
@@ -1966,6 +2030,7 @@ frontends = [
     name             = "et-pet-admin"
     mode             = "Prevention"
     custom_domain    = "et-pet-admin.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
   },
@@ -1973,6 +2038,7 @@ frontends = [
     product          = "tax-tribunals-datacapture"
     name             = "tax-tribunals-datacapture"
     custom_domain    = "tax-tribunals-datacapture.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
     global_exclusions = [
@@ -2038,6 +2104,7 @@ frontends = [
     name             = "help-with-fees-publicapp"
     mode             = "Prevention"
     custom_domain    = "hwf-publicapp.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
     global_exclusions = [
@@ -2088,6 +2155,7 @@ frontends = [
     name             = "help-with-fees-staffapp"
     mode             = "Prevention"
     custom_domain    = "hwf-staffapp.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
     global_exclusions = [
@@ -2167,6 +2235,7 @@ frontends = [
     name           = "judicial-payments"
     mode           = "Detection"
     custom_domain  = "judicial-payments.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   },
   {
@@ -2174,6 +2243,7 @@ frontends = [
     name           = "cui-ra"
     mode           = "Prevention"
     custom_domain  = "cui-ra.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"],
     global_exclusions = [
       {

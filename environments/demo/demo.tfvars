@@ -2133,6 +2133,21 @@ frontends = [
         operator       = "Equals"
         selector       = "_gid"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "address_lookup_url"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "authenticity_token"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "notification[message]"
+      }
     ]
   },
   {
@@ -2179,6 +2194,41 @@ frontends = [
         operator       = "Equals"
         selector       = "homepage_visited_timestamp"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "address_lookup_url"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "authenticity_token"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "commit"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "user[name]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "notification[message]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "user[password]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "user[password_confirmation]"
+      }
     ]
   },
   {

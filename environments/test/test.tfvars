@@ -32,6 +32,7 @@ frontends = [
   {
     name           = "sscs-tribunals"
     custom_domain  = "benefit-appeal.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
@@ -62,6 +63,7 @@ frontends = [
     name           = "sscs-cor"
     mode           = "Detection"
     custom_domain  = "sscs-cor.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
@@ -80,18 +82,21 @@ frontends = [
     name           = "civil-citizen-ui"
     mode           = "Detection"
     custom_domain  = "civil-citizen-ui.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "cmc"
     mode           = "Detection"
     custom_domain  = "moneyclaims.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "cmc-legal"
     mode           = "Detection"
     custom_domain  = "moneyclaims-legal.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
@@ -99,6 +104,7 @@ frontends = [
     name           = "gateway-ccd"
     mode           = "Detection"
     custom_domain  = "gateway-ccd.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
@@ -106,12 +112,14 @@ frontends = [
     name           = "return-case-doc-ccd"
     mode           = "Detection"
     custom_domain  = "return-case-doc-ccd.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "rpts"
     custom_domain  = "rpts.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
@@ -151,6 +159,7 @@ frontends = [
   {
     name           = "fact"
     custom_domain  = "fact.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
@@ -245,6 +254,7 @@ frontends = [
   {
     name           = "fact-admin"
     custom_domain  = "fact-admin.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
@@ -259,6 +269,7 @@ frontends = [
   {
     name           = "nfdiv"
     custom_domain  = "nfdiv.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
@@ -273,6 +284,7 @@ frontends = [
   {
     name          = "nfdiv-apply"
     custom_domain = "nfdiv-apply-for-divorce.perftest.platform.hmcts.net"
+    dns_zone_name = "perftest.platform.hmcts.net"
     mode          = "Detection"
     backend       = "nfdiv"
     global_exclusions = [
@@ -286,6 +298,7 @@ frontends = [
   {
     name          = "nfdiv-civil"
     custom_domain = "nfdiv-end-civil-partnership.perftest.platform.hmcts.net"
+    dns_zone_name = "perftest.platform.hmcts.net"
     mode          = "Detection"
     backend       = "nfdiv"
     global_exclusions = [
@@ -300,6 +313,7 @@ frontends = [
     name           = "idam-web-public"
     mode           = "Detection"
     custom_domain  = "idam-web-public.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     disabled_rules = {}
@@ -546,12 +560,14 @@ frontends = [
     name           = "hmcts-access"
     mode           = "Detection"
     custom_domain  = "hmcts-access.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "probate"
     custom_domain  = "probate.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     disabled_rules = {
@@ -620,6 +636,7 @@ frontends = [
   {
     name           = "pcq"
     custom_domain  = "pcq.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
@@ -628,11 +645,13 @@ frontends = [
     name           = "lau"
     mode           = "Detection"
     custom_domain  = "lau.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "paybubble"
     custom_domain  = "paybubble.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
@@ -697,6 +716,7 @@ frontends = [
   {
     name           = "bar"
     custom_domain  = "bar.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
@@ -704,6 +724,7 @@ frontends = [
   {
     name           = "fees-register"
     custom_domain  = "fees-register.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
@@ -847,6 +868,7 @@ frontends = [
     name           = "xui-approve-org"
     mode           = "Detection"
     custom_domain  = "administer-orgs.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
@@ -854,6 +876,7 @@ frontends = [
     name           = "xui-manage-org"
     mode           = "Detection"
     custom_domain  = "manage-org.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
@@ -861,6 +884,7 @@ frontends = [
     name           = "xui-register-org"
     mode           = "Detection"
     custom_domain  = "register-org.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
@@ -868,18 +892,21 @@ frontends = [
     name           = "ia-aip"
     mode           = "Detection"
     custom_domain  = "immigration-appeal.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "xui-webapp"
     mode           = "Detection"
     custom_domain  = "manage-case.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     cache_enabled  = "false"
   },
   {
     name                        = "idam-web-admin"
     custom_domain               = "idam-web-admin.perftest.platform.hmcts.net"
+    dns_zone_name               = "perftest.platform.hmcts.net"
     backend_domain              = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-perftest-platform-hmcts-net"
     appgw_cookie_based_affinity = "Enabled"
@@ -1011,6 +1038,7 @@ frontends = [
   {
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.test.platform.hmcts.net"
+    dns_zone_name    = "test.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-hmiapimtest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-test-platform-hmcts-net"
     cache_enabled    = "false"
@@ -1018,6 +1046,7 @@ frontends = [
   {
     name                           = "reformscan"
     custom_domain                  = "reformscan.perftest.platform.hmcts.net"
+    dns_zone_name                  = "perftest.platform.hmcts.net"
     host_header                    = "reformscanperftest.blob.core.windows.net"
     mode                           = "Detection"
     backend_domain                 = ["firewall-nonprodi-palo-reformscanperftest.uksouth.cloudapp.azure.com"]
@@ -1031,6 +1060,7 @@ frontends = [
   {
     name             = "idam-user-dashboard"
     custom_domain    = "idam-user-dashboard.perftest.platform.hmcts.net"
+    dns_zone_name    = "perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     custom_rules = [
@@ -1204,6 +1234,7 @@ frontends = [
     name           = "div-dn"
     mode           = "Detection"
     custom_domain  = "decree-nisi-aks.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
@@ -1228,6 +1259,7 @@ frontends = [
     name           = "div-da"
     mode           = "Detection"
     custom_domain  = "decree-absolute-aks.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
@@ -1252,6 +1284,7 @@ frontends = [
     name           = "div-rfe"
     mode           = "Detection"
     custom_domain  = "respond-divorce-aks.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
@@ -1276,6 +1309,7 @@ frontends = [
     name           = "div-pfe"
     mode           = "Detection"
     custom_domain  = "petitioner-frontend-aks.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
@@ -1300,6 +1334,7 @@ frontends = [
     product          = "cft-api-mgmt"
     name             = "cft-api-mgmt"
     custom_domain    = "cft-api-mgmt.perftest.platform.hmcts.net"
+    dns_zone_name    = "perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftapimgmtperftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     cache_enabled    = "false"
@@ -1307,6 +1342,7 @@ frontends = [
   {
     name           = "adoption-web"
     custom_domain  = "adoption-web.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     global_exclusions = [
@@ -1320,6 +1356,7 @@ frontends = [
   {
     name           = "privatelaw"
     custom_domain  = "privatelaw.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Detection"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     global_exclusions = [
@@ -1335,6 +1372,7 @@ frontends = [
     name           = "paymentoutcome-web"
     mode           = "Detection"
     custom_domain  = "paymentoutcome-web.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     www_redirect   = true
   },
@@ -1342,6 +1380,7 @@ frontends = [
     product          = "plum"
     name             = "plum"
     custom_domain    = "plum.perftest.platform.hmcts.net"
+    dns_zone_name    = "perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
@@ -1350,6 +1389,7 @@ frontends = [
     name             = "et-sya"
     mode             = "Detection"
     custom_domain    = "et-sya.perftest.platform.hmcts.net"
+    dns_zone_name    = "perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
   },
@@ -1357,6 +1397,7 @@ frontends = [
     product          = "sptribs-frontend"
     name             = "sptribs-frontend"
     custom_domain    = "sptribs-frontend.perftest.platform.hmcts.net"
+    dns_zone_name    = "perftest.platform.hmcts.net"
     mode             = "Detection"
     backend_domain   = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
@@ -1372,6 +1413,7 @@ frontends = [
     product          = "dss-update-case"
     name             = "dss-update-case"
     custom_domain    = "dss-update-case.perftest.platform.hmcts.net"
+    dns_zone_name    = "perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     cache_enabled    = "false"
@@ -1387,6 +1429,7 @@ frontends = [
     product        = "cui"
     name           = "cui-ra"
     custom_domain  = "cui-ra.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"],
     global_exclusions = [
       {

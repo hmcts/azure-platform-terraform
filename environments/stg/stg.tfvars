@@ -2127,5 +2127,5 @@ frontends = [
         selector       = "user[password_confirmation]"
       }
     ]
-  },
+  }
 ]

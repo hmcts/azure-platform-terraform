@@ -22,6 +22,15 @@ frontends = [
     appgw_cookie_based_affinity    = "Enabled"
     cache_enabled                  = "false"
     certificate_name_check_enabled = false
+  },
+  {
+    name                           = "plum"
+    custom_domain                  = "plum.preview.platform.hmcts.net"
+    dns_zone_name                  = "preview.platform.hmcts.net"
+    backend_domain                 = ["firewall-nonprodi-palo-plumpreview.uksouth.cloudapp.azure.com"]
+    appgw_cookie_based_affinity    = "Enabled"
+    cache_enabled                  = "false"
+    certificate_name_check_enabled = false
   }
 ]
 

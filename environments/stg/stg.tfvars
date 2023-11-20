@@ -36,6 +36,14 @@ frontends = [
     disabled_rules = {}
   },
   {
+    name           = "plum-frontend-staging"
+    custom_domain  = "plum-frontend-staging.aat.platform.hmcts.net"
+    dns_zone_name  = "aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+
+    disabled_rules = {}
+  },
+  {
     name           = "div-dn"
     custom_domain  = "decree-nisi-aks.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
@@ -2119,5 +2127,5 @@ frontends = [
         selector       = "user[password_confirmation]"
       }
     ]
-  },
+  }
 ]

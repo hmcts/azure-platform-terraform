@@ -11,7 +11,7 @@ resources:
   repositories:
   - repository: cnp-azuredevops-libraries
     type: github
-    ref: refs/heads/master
+    ref: refs/heads/dtspo-15333-ado-auto-env-start
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
 
@@ -370,6 +370,9 @@ stages:
               keyvaultSecret: 'azure-devops-sp-token'
               serviceConnection: 'azurerm-sandbox'
               overrideAction: ${{ parameters.overrideAction }}
+              projectName: 'cft'
+              cluster: '00'
+              environment: 'sbox'
 
 
   - ${{ each deployment in parameters.environment_components }}:

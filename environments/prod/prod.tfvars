@@ -3575,5 +3575,59 @@ frontends = [
         selector       = "rf"
       }
     ]
+  },
+  {
+    product        = "cui"
+    name           = "cui-ra"
+    mode           = "Prevention"
+    custom_domain    = "www.manage-your-support-for-hmcts-services.service.gov.uk"
+    dns_zone_name    = "manage-your-support-for-hmcts-services.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    ssl_mode         = "AzureKeyVault"
+    certificate_name = "manage-your-support-for-hmcts-services-service-gov-uk"
+    backend_domain = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    www_redirect     = true
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cui-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
   }
 ]

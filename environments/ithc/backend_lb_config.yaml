@@ -361,3 +361,15 @@ gateways:
     # jps
       - product: jps
         component: judicial-payment-service
+
+    # et-pet
+      - product: et-pet
+        component: api
+      - product: et-pet
+        component: ccd-export
+
+    # Ethos (ECM)
+      - product: ethos
+        component: repl-docmosis-backend
+      - product: ethos
+        component: ecm-consumer

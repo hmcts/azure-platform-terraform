@@ -38,8 +38,6 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
     shutter_app      = true
-    dns_zone_name    = "platform.hmcts.net"
-
   },
   {
     product          = "div"
@@ -1142,6 +1140,94 @@ frontends = [
     name             = "cmc"
     mode             = "Prevention"
     custom_domain    = "www.moneyclaims.service.gov.uk"
+    dns_zone_name    = "moneyclaims.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name = "moneyclaims-service-gov-uk"
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942110",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942260",
+        "942300",
+        "942310",
+        "942330",
+        "942340",
+        "942361",
+        "942370",
+        "942380",
+        "942390",
+        "942400",
+        "942410",
+        "942430",
+        "942450",
+      ]
+      RCE = [
+        "932105",
+        "932115",
+        "932150",
+      ]
+      PROTOCOL-ATTACK = [
+        "921110"
+      ]
+    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "SESSION_ID"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "signerRole"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reason"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "rows"
+      },
+    ]
+
+  },
+  {
+    product          = "cmc"
+    name             = "ocmc"
+    mode             = "Prevention"
+    custom_domain    = "www1.moneyclaims.service.gov.uk"
     dns_zone_name    = "moneyclaims.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "moneyclaims-service-gov-uk"
@@ -2621,7 +2707,8 @@ frontends = [
               "20.49.168.17/32",
               "20.50.109.148/32",
               "20.50.108.242/32",
-              "20.108.187.55/32"
+              "20.108.187.55/32",
+              "20.58.23.145/32",
             ]
           }
         ]
@@ -2719,6 +2806,11 @@ frontends = [
         selector       = "iss"
       },
       {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "_csrf"
@@ -2741,18 +2833,19 @@ frontends = [
     cache_enabled    = "false"
   },
   {
-    product             = "reform-scan"
-    name                = "reformscan"
-    custom_domain       = "reformscan.platform.hmcts.net"
-    dns_zone_name       = "platform.hmcts.net"
-    host_header         = "reformscanprod.blob.core.windows.net"
-    mode                = "Detection"
-    backend_domain      = ["firewall-prod-int-palo-reformscanprod.uksouth.cloudapp.azure.com"]
-    certificate_name    = "wildcard-platform-hmcts-net"
-    forwarding_protocol = "MatchRequest"
-    health_path         = "/"
-    health_protocol     = "Https"
-    cache_enabled       = "false"
+    product                        = "reform-scan"
+    name                           = "reformscan"
+    custom_domain                  = "reformscan.platform.hmcts.net"
+    dns_zone_name                  = "platform.hmcts.net"
+    host_header                    = "reformscanprod.blob.core.windows.net"
+    mode                           = "Detection"
+    backend_domain                 = ["firewall-prod-int-palo-reformscanprod.uksouth.cloudapp.azure.com"]
+    certificate_name               = "wildcard-platform-hmcts-net"
+    forwarding_protocol            = "MatchRequest"
+    health_path                    = "/"
+    health_protocol                = "Https"
+    cache_enabled                  = "false"
+    certificate_name_check_enabled = false
   },
   {
     product          = "adoption"
@@ -2976,6 +3069,20 @@ frontends = [
     redirect      = "sandbox-build.hmcts.net"
   },
   {
+    name          = "build"
+    custom_domain = "build.platform.hmcts.net"
+    dns_zone_name = "platform.hmcts.net"
+    shutter_app   = false
+    redirect      = "build.hmcts.net"
+  },
+  {
+    name          = "static-build"
+    custom_domain = "static-build.platform.hmcts.net"
+    dns_zone_name = "platform.hmcts.net"
+    shutter_app   = false
+    redirect      = "static-build.hmcts.net"
+  },
+  {
     name             = "et-pet"
     product          = "et-pet"
     mode             = "Prevention"
@@ -2986,7 +3093,6 @@ frontends = [
     www_redirect     = true
     certificate_name = "employmenttribunals-service-gov-uk"
     shutter_app      = true
-    dns_zone_name    = "employmenttribunals.service.gov.uk"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -3057,7 +3163,8 @@ frontends = [
               "157.203.176.192/32",
               "51.149.249.32/27",
               "51.149.249.0/27",
-              "20.108.187.55/32"
+              "20.108.187.55/32",
+              "20.58.23.145/32",
             ]
           }
         ]
@@ -3069,7 +3176,6 @@ frontends = [
     product          = "et-staff-pet"
     mode             = "Prevention"
     custom_domain    = "admin.employmenttribunals.service.gov.uk"
-    dns_zone_name    = "admin.employmenttribunals.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "employmenttribunals-service-gov-uk"
     shutter_app      = true
@@ -3106,7 +3212,8 @@ frontends = [
               "157.203.176.192/32",
               "51.149.249.32/27",
               "51.149.249.0/27",
-              "20.108.187.55/32"
+              "20.108.187.55/32",
+              "20.58.23.145/32",
             ]
           }
         ]
@@ -3118,7 +3225,6 @@ frontends = [
     product          = "et-response-pet"
     mode             = "Detection"
     custom_domain    = "tribunal-response.employmenttribunals.service.gov.uk"
-    dns_zone_name    = "tribunal-response.employmenttribunals.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     ssl_mode         = "AzureKeyVault"
     certificate_name = "employmenttribunals-service-gov-uk"
@@ -3146,7 +3252,6 @@ frontends = [
     ssl_mode         = "AzureKeyVault"
     certificate_name = "appeal-tax-tribunal-service-gov-uk"
     shutter_app      = true
-    dns_zone_name    = "appeal-tax-tribunal.service.gov.uk"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -3210,7 +3315,6 @@ frontends = [
     product          = "hwf-staff-pet"
     mode             = "Prevention"
     custom_domain    = "staff.helpwithcourtfees.service.gov.uk"
-    dns_zone_name    = "staff.helpwithcourtfees.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "helpwithcourtfees-service-gov-uk"
     shutter_app      = true
@@ -3265,7 +3369,28 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "commit"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "user[name]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "notification[message]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "user[password]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "user[password_confirmation]"
       }
+
     ]
     custom_rules = [
       {
@@ -3292,7 +3417,8 @@ frontends = [
               "157.203.176.192/32",
               "51.149.249.32/27",
               "51.149.249.0/27",
-              "20.108.187.55/32"
+              "20.108.187.55/32",
+              "20.58.23.145/32",
             ]
           }
         ]
@@ -3309,7 +3435,6 @@ frontends = [
     ssl_mode         = "AzureKeyVault"
     certificate_name = "helpwithcourtfees-service-gov-uk"
     shutter_app      = true
-    dns_zone_name    = "helpwithcourtfees.service.gov.uk"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -3355,7 +3480,100 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "notification[message]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "commit"
       }
     ]
   },
+  {
+    product          = "adoption"
+    name             = "child-adoption"
+    mode             = "Detection"
+    custom_domain    = "apply-to-adopt-a-child-placed-in-your-care.service.gov.uk"
+    dns_zone_name    = "apply-to-adopt-a-child-placed-in-your-care.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    ssl_mode         = "AzureKeyVault"
+    certificate_name = "apply-to-adopt-a-child-placed-in-your-care-service-gov-uk"
+    www_redirect     = true
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookies_policy"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      }
+    ]
+  }
 ]

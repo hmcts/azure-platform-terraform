@@ -22,14 +22,15 @@ cft_apps_cluster_ips            = ["10.2.11.250", "10.2.9.250"]
 
 apim_appgw_backend_pool_fqdns = ["firewall-sbox-int-palo-cftapimgmt.uksouth.cloudapp.azure.com"]
 
-hub               = "sbox"
-autoShutdown      = true
-upgrade_frontdoor = true
+hub          = "sbox"
+autoShutdown = true
+
 frontends = [
   {
     product          = "idam"
     name             = "idam-web-public"
     custom_domain    = "idam-web-public.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     shutter_app      = false
@@ -276,6 +277,7 @@ frontends = [
     name          = "hmcts-access"
     mode          = "Detection"
     custom_domain = "hmcts-access.sandbox.platform.hmcts.net"
+    dns_zone_name = "sandbox.platform.hmcts.net"
     shutter_app   = false
 
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
@@ -286,6 +288,7 @@ frontends = [
     product                     = "idam"
     name                        = "idam-web-admin"
     custom_domain               = "idam-web-admin.sandbox.platform.hmcts.net"
+    dns_zone_name               = "sandbox.platform.hmcts.net"
     shutter_app                 = false
     backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name            = "wildcard-sandbox-platform-hmcts-net"
@@ -423,6 +426,7 @@ frontends = [
     product          = "idam"
     name             = "idam-user-dashboard"
     custom_domain    = "idam-user-dashboard.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
@@ -585,6 +589,11 @@ frontends = [
         selector       = "rxvt"
       },
       {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "_csrf"
@@ -622,6 +631,7 @@ frontends = [
     product          = "hmi"
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
@@ -631,25 +641,39 @@ frontends = [
     product          = "cft-api-mgmt"
     name             = "cft-api-mgmt"
     custom_domain    = "cft-api-mgmt.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-cftapimgmt.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     cache_enabled    = "false"
   },
   {
-    product                     = "reform"
-    name                        = "reformscan"
-    custom_domain               = "reformscan.sandbox.platform.hmcts.net"
-    shutter_app                 = false
-    backend_domain              = ["firewall-prod-int-palo-reformscansbox.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-sandbox-platform-hmcts-net"
-    appgw_cookie_based_affinity = "Enabled"
-    cache_enabled               = "false"
+    product                        = "reform"
+    name                           = "reformscan"
+    custom_domain                  = "reformscan.sandbox.platform.hmcts.net"
+    dns_zone_name                  = "sandbox.platform.hmcts.net"
+    shutter_app                    = false
+    backend_domain                 = ["firewall-prod-int-palo-reformscansbox.uksouth.cloudapp.azure.com"]
+    certificate_name               = "wildcard-sandbox-platform-hmcts-net"
+    appgw_cookie_based_affinity    = "Enabled"
+    cache_enabled                  = "false"
+    certificate_name_check_enabled = false
   },
   {
     product          = "labs"
     name             = "labs-rhodrif-nodejs"
     custom_domain    = "labs-rhodrif-nodejs.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    shutter_app      = false
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+  },
+
+  {
+    product          = "labs-hub-ngfw"
+    name             = "hub-ngfw-poc"
+    custom_domain    = "labs-hub-ngfw.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"

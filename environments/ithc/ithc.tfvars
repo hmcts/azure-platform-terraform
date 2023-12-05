@@ -1330,7 +1330,7 @@ frontends = [
   {
     product          = "et-pet-et1"
     name             = "et-pet-et1"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "et-pet-et1.ithc.platform.hmcts.net"
     dns_zone_name    = "ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
@@ -1351,7 +1351,7 @@ frontends = [
   {
     product          = "et-pet-et3"
     name             = "et-pet-et3"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "et-pet-et3.ithc.platform.hmcts.net"
     dns_zone_name    = "ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
@@ -1392,7 +1392,7 @@ frontends = [
   {
     product          = "et-pet-admin"
     name             = "et-pet-admin"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "et-pet-admin.ithc.platform.hmcts.net"
     dns_zone_name    = "ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]

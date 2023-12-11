@@ -8,16 +8,16 @@ const APP_NAME =
 
 
 // TEST_URL will be set to ${product}.${environment}.platform.hmcts.net
-const TEST_URL =
-  process.env.TEST_URL
+const APIM_TEST_URL =
+  process.env.APIM_TEST_URL
 
 describe("Test Name", () => {
-  describe(`Test case ${TEST_URL}`, () => {
+  describe(`Test case ${APIM_TEST_URL}`, () => {
     test(`Success message`, async () => {
       try {
 
         // Placeholder test to check TEST_URL is defined
-        expect(TEST_URL).toBeDefined();
+        expect(APIM_TEST_URL).toBeDefined();
 
         // Example test: perform a GET request against your applications liveness endpoint
         // const url = `https://${TEST_URL}/health/liveness`;

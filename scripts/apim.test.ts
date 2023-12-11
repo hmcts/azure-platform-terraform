@@ -15,7 +15,7 @@ describe("Test Name", () => {
   describe(`Test case ${APIM_TEST_URL}`, () => {
     test(`apim is healthy (${APIM_TEST_URL}/health/liveness)`, async () => {
       try {
-        const url = `https://${APIM_TEST_URL}/health/liveness`;
+        const url = `https://${APIM_TEST_URL}/health/liveness1`;
         const response: AxiosResponse = await axios
           .request({
             method: "GET",

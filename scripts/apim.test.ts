@@ -12,7 +12,7 @@ const TEST_URL =
   process.env.TEST_URL
 
 describe("Test Name", () => {
-  describe(`Test case`, () => {
+  describe(`Test case ${TEST_URL}`, () => {
     test(`Success message`, async () => {
       try {
 

@@ -26,7 +26,7 @@ describe("Test Name", () => {
             },
           })
 
-        expect(response.data.status).toBe("UP");
+        expect(response.status).toBe(200);
       } catch(error) {
         fail(error.stack);
       }

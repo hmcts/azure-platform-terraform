@@ -13,24 +13,20 @@ const APIM_TEST_URL =
 
 describe("Test Name", () => {
   describe(`Test case ${APIM_TEST_URL}`, () => {
-    test(`Success message`, async () => {
+    test(`apim is healthy (${APIM_TEST_URL}/health/liveness)`, async () => {
       try {
+        const url = `https://${APIM_TEST_URL}/health/liveness`;
+        const response: AxiosResponse = await axios
+          .request({
+            method: "GET",
+            url: url,
+            headers: {
+              Accept: "application/json, text/plain, */*",
+              "Accept-Encoding": "gzip",
+            },
+          })
 
-        // Placeholder test to check TEST_URL is defined
-        expect(APIM_TEST_URL).toBeDefined();
-
-        // Example test: perform a GET request against your applications liveness endpoint
-        // const url = `https://${TEST_URL}/health/liveness`;
-        // const response: AxiosResponse = await axios
-        //   .request({
-        //     method: "GET",
-        //     url: url,
-        //     headers: {
-        //       "Accept-Encoding": "gzip",
-        //     },
-        //   })
-        // Example response: expect the HTTP status code 200
-        // expect(response.status).toBe(200);
+        expect(response.data.status).toBe("UP");
       } catch(error) {
         fail(error.stack);
       }

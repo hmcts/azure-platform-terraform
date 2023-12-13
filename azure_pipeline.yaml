@@ -22,7 +22,7 @@ variables:
     value: 'ubuntu-latest'
   - name: build
     value: $(Build.BuildNumber)
-  - name: project
+  - name: businessArea
     value: cft
   - name: product
     value: cft-platform
@@ -372,7 +372,7 @@ stages:
               keyvaultSecret: 'azure-devops-sp-token'
               serviceConnection: 'azurerm-sandbox'
               overrideAction: ${{ parameters.overrideAction }}
-              projectName: ${{ variables.project }}
+              projectName: ${{ variables.businessArea }}
               cluster: '00'
               environment: 'sbox'
 

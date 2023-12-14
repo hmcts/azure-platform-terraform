@@ -3032,11 +3032,12 @@ frontends = [
     product          = "sptribs"
     name             = "sptribs-frontend"
     mode             = "Prevention"
-    custom_domain    = "www.special-tribunals.service.gov.uk"
+    custom_domain    = "special-tribunals.service.gov.uk"
     dns_zone_name    = "special-tribunals.service.gov.uk"
     ssl_mode         = "AzureKeyVault"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "special-tribunals-service-gov-uk"
+    www_redirect     = true
   },
   {
     name             = "dtsse-ardoq-adapter"

@@ -1495,7 +1495,7 @@ frontends = [
     name             = "help-with-fees-staffapp"
     mode             = "Prevention"
     custom_domain    = "hwf-staffapp.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
@@ -1515,7 +1515,7 @@ frontends = [
     name             = "help-with-fees-publicapp"
     mode             = "Prevention"
     custom_domain    = "hwf-publicapp.ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {

@@ -1489,6 +1489,48 @@ frontends = [
         selector       = "rf"
       },
     ]
-  }
+  },
+  {
+    product          = "help-with-fees-staffapp"
+    name             = "help-with-fees-staffapp"
+    mode             = "Prevention"
+    custom_domain    = "hwf-staffapp.ithc.platform.hmcts.net"
+    dns_zone_name    = "ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookie_setting"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_app_session"
+      },
+    ]
+  },
+  {
+    product          = "help-with-fees-publicapp"
+    name             = "help-with-fees-publicapp"
+    mode             = "Prevention"
+    custom_domain    = "hwf-publicapp.ithc.platform.hmcts.net"
+    dns_zone_name    = "ithc.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookie_setting"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_app_session"
+      },
+    ]
+  },
 ]
 

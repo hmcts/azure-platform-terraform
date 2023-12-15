@@ -3118,7 +3118,7 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "sptribs-cookie-preferences"
-      },      {
+        }, {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "_csrf"

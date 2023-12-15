@@ -3114,6 +3114,11 @@ frontends = [
         operator       = "Equals"
         selector       = "rf"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "sptribs-cookie-preferences"
+      }
     ]
   },
   {

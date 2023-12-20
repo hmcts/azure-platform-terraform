@@ -3176,6 +3176,13 @@ frontends = [
     redirect      = "static-build.hmcts.net"
   },
   {
+    name          = "portal-beta"
+    custom_domain = "portal-beta.platform.hmcts.net"
+    dns_zone_name = "platform.hmcts.net"
+    shutter_app   = false
+    redirect      = "portal.platform.hmcts.net"
+  },
+  {
     name             = "et-pet"
     product          = "et-pet"
     mode             = "Prevention"

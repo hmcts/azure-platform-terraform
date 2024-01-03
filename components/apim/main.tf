@@ -8,13 +8,13 @@ module "ctags" {
 }
 
 module "api-mgmt" {
-  source                         = "git::https://github.com/hmcts/terraform-module-application-insights?ref=main"
-  location                       = var.location
-  common_tags                    = module.ctags.common_tags
-  env                            = var.env
-  product                        = var.product
-  name                           = "${var.department}-api-mgmt"
-  resource_group_name            = var.virtual_network_resource_group
+  source              = "git::https://github.com/hmcts/terraform-module-application-insights?ref=main"
+  location            = var.location
+  common_tags         = module.ctags.common_tags
+  env                 = var.env
+  product             = var.product
+  name                = "${var.department}-api-mgmt"
+  resource_group_name = var.virtual_network_resource_group
 }
 
 resource "azurerm_api_management_named_value" "environment" {

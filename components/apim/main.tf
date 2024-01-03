@@ -15,9 +15,9 @@ module "api-mgmt" {
   virtual_network_name           = local.vnet_name
   environment                    = var.env
   virtual_network_type           = "Internal"
-  department                     = var.department	
-  common_tags                    = module.ctags.common_tags	
-  route_next_hop_in_ip_address   = local.hub[var.hub].ukSouth.next_hop_ip	
+  department                     = var.department
+  common_tags                    = module.ctags.common_tags
+  route_next_hop_in_ip_address   = local.hub[var.hub].ukSouth.next_hop_ip
   publisher_email                = var.publisher_email
 
 resource "azurerm_api_management_named_value" "environment" {

@@ -6,6 +6,8 @@ variable "subscription" {
   default = []
 }
 
+variable "department" {}
+
 variable "key_vault_subscription" {
   default = []
 }

@@ -13,6 +13,7 @@ module "api-mgmt" {
   sku_name                       = var.apim_sku_name
   virtual_network_resource_group = local.vnet_rg
   virtual_network_name           = local.vnet_name
+  environment                    = var.env
   env                            = var.env
   virtual_network_type           = "Internal"
   department                     = var.department

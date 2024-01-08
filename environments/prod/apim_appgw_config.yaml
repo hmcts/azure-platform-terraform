@@ -1,0 +1,39 @@
+---
+
+gateways:
+  - gateway_configuration:
+      exclude_env_in_app_name: true
+      private_ip_address: 10.11.8.192
+    ssl_certificates:
+      - certificate_name: wildcard-platform-hmcts-net
+    app_configuration:
+      - product: cft-mtls
+        component: api-mgmt-appgw
+        ssl_enabled: true
+        use_public_ip: true
+        health_path_override: "/status-0123456789abcdef"
+        add_ssl_profile: true
+        verify_client_cert_issuer_dn: true
+        rootca_certificate_name: civil_sdt_root_ca
+        ssl_certificate_name: wildcard-platform-hmcts-net
+        host_name_suffix: platform.hmcts.net
+        ssl_host_name_suffix: platform.hmcts.net
+        add_rewrite_rule: true
+        rewrite_rules:
+          - name: "SdtAddCustomHeadersRule"
+            sequence: "100"
+            request_headers:
+              - header_name: "CLIENT-IP-AGW"
+                header_value: "{var_client_ip}"
+              - header_name: "X-ARR-ClientCertSub-AGW"
+                header_value: "{var_client_certificate_subject}"
+              - header_name: "URI-PATH-AGW"
+                header_value: "{var_uri_path}"
+          - name: "SdtUrlRewriteRule"
+            sequence: "200"
+            conditions:
+              - variable: "var_uri_path"
+                pattern: ".*/producers(?>-comx)?/service/sdtapi"
+            url:
+              components: "path_only"
+              path: "/sdt-gateway"

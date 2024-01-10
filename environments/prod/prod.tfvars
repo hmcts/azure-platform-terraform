@@ -30,7 +30,7 @@ apim_sku_name = "Premium"
 publisher_email = "DTSPlatformOps@HMCTS.NET"
 
 key_vault_subscription        = "8cbc6f36-7c56-4963-9d36-739db5d00b27"
-hub_app_gw_private_ip_address = ["10.11.8.192"]
+hub_app_gw_private_ip_address = ["10.11.8.196"]
 apim_appgw_backend_pool_fqdns = ["firewall-prod-int-palo-cftapimgmtprod.uksouth.cloudapp.azure.com"]
 
 frontends = [

@@ -3414,7 +3414,7 @@ frontends = [
       },
       {
         match_variable = "QueryStringArgNames"
-        operator       = "Equals"
+        operator       = "Contains"
         selector       = "PostParamName"
       }
     ]

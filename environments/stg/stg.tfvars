@@ -195,28 +195,28 @@ frontends = [
     mode           = "Prevention"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     disabled_rules = {
-          SQLI = [
-            "942100",
-            "942150",
-            "942200",
-            "942210",
-            "942230",
-            "942310",
-            "942340",
-            "942360",
-            "942361",
-            "942380",
-            "942400",
-            "942430"
-          ]
-          LFI = [
-            "930100", // false positive on multi-part uploads
-            "930110", // false positive on multi-part uploads
-          ]
-          RCE = [
-            "932100"
-          ]
-        }
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942310",
+        "942340",
+        "942360",
+        "942361",
+        "942380",
+        "942400",
+        "942430"
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+      RCE = [
+        "932100"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

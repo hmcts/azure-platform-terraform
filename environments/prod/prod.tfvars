@@ -3180,6 +3180,13 @@ frontends = [
     redirect      = "static-build.hmcts.net"
   },
   {
+    name          = "backstage"
+    custom_domain = "backstage.platform.hmcts.net"
+    dns_zone_name = "platform.hmcts.net"
+    shutter_app   = false
+    redirect      = "backstage.hmcts.net"
+  },
+  {
     name          = "portal-beta"
     custom_domain = "portal-beta.platform.hmcts.net"
     dns_zone_name = "platform.hmcts.net"

@@ -50,7 +50,7 @@ gateways:
         verify_client_cert_issuer_dn: true
         rootca_certificate_name: civil_sdt_root_ca
         ssl_certificate_name: civil-sdt-commissioning-nle
-        host-name-prefix: cft-mtls-api-mgmt-appgw
+        host_name_prefix: cft-mtls-api-mgmt-appgw
         host_name_suffix: perftest.platform.hmcts.net
         ssl_host_name_suffix: perftest.platform.hmcts.net
         listener_host_name_prefix: sdtcomm
@@ -85,7 +85,7 @@ gateways:
         verify_client_cert_issuer_dn: true
         rootca_certificate_name: civil_sdt_root_ca
         ssl_certificate_name: civil-sdt-nle
-        host-name-prefix: cft-mtls-api-mgmt-appgw
+        host_name_prefix: cft-mtls-api-mgmt-appgw
         host_name_suffix: perftest.platform.hmcts.net
         ssl_host_name_suffix: perftest.platform.hmcts.net
         listener_host_name_prefix: sdt

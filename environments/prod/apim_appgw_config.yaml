@@ -16,6 +16,7 @@ gateways:
         verify_client_cert_issuer_dn: true
         rootca_certificate_name: civil_sdt_root_ca
         ssl_certificate_name: wildcard-platform-hmcts-net
+        host-name-prefix: cft-mtls-api-mgmt-appgw
         host_name_suffix: platform.hmcts.net
         ssl_host_name_suffix: platform.hmcts.net
         listener_host_name_prefix: commissioning.sdt
@@ -50,6 +51,7 @@ gateways:
         verify_client_cert_issuer_dn: true
         rootca_certificate_name: civil_sdt_root_ca
         ssl_certificate_name: wildcard-platform-hmcts-net
+        host-name-prefix: cft-mtls-api-mgmt-appgw
         host_name_suffix: platform.hmcts.net
         ssl_host_name_suffix: platform.hmcts.net
         listener_host_name_prefix: sdt

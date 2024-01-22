@@ -19,7 +19,7 @@ cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-prod-rg"
 
 
-cft_apps_cluster_ips            = ["10.90.79.250"]
+cft_apps_cluster_ips            = ["10.90.79.250", "10.90.95.250"]
 frontend_agw_private_ip_address = "10.90.96.12"
 frontend_agw_min_capacity       = 10
 frontend_agw_max_capacity       = 15

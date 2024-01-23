@@ -56,7 +56,7 @@ gateways:
         listener_host_name_prefix: sdtcomm
         listener_host_name_suffix: apps-nle.hmcts.net
         listener_ssl_host_name_suffix: apps-nle.hmcts.net
-        backend_host_name_override: cft-mtls-api-mgmt-appgw.perftest.hmcts.net
+        backend_host_name_override: cft-mtls-api-mgmt-appgw.perftest.platform.hmcts.net
         add_rewrite_rule: true
         rewrite_rules:
           - name: "SdtAddCustomHeadersRule"
@@ -91,7 +91,7 @@ gateways:
         listener_host_name_prefix: sdt
         listener_host_name_suffix: apps-nle.hmcts.net
         listener_ssl_host_name_suffix: apps-nle.hmcts.net
-        backend_host_name_override: cft-mtls-api-mgmt-appgw.perftest.hmcts.net
+        backend_host_name_override: cft-mtls-api-mgmt-appgw.perftest.platform.hmcts.net
         add_rewrite_rule: true
         rewrite_rules:
           - name: "SdtAddCustomHeadersRule"

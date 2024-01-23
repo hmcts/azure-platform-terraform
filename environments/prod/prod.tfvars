@@ -3418,13 +3418,28 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "StartsWith"
         selector       = "steps_details_documents_upload_form"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Contains"
-        selector       = "PostParamName"
       }
     ]
+    custom_rules = [
+      {
+        name     = "PostParamName"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Allow"
+        match_conditions = [
+          {
+            match_variable     = "PostArgs"
+            selector           = "PostParamName"
+            negation_condition = false
+            operator           = "Contains"
+            match_values = [
+              "steps_closure_support_documents_form",
+              "steps_details_documents_upload_form",
+            ]
+          }
+        ]
+      },
+    ],
   },
   {
     name             = "hwf-staff-pet"

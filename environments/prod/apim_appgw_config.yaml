@@ -5,7 +5,8 @@ gateways:
       exclude_env_in_app_name: true
       private_ip_address: 10.11.8.196
     ssl_certificates:
-      - certificate_name: wildcard-platform-hmcts-net
+      - certificate_name: civil-sdt-commissioning-prod
+      - certificate_name: civil-sdt-prod
     app_configuration:
       - product: civil
         component: sdt-commissioning
@@ -15,7 +16,7 @@ gateways:
         add_ssl_profile: true
         verify_client_cert_issuer_dn: true
         rootca_certificate_name: civil_sdt_root_ca
-        ssl_certificate_name: wildcard-platform-hmcts-net
+        ssl_certificate_name: civil-sdt-commissioning-prod
         host_name_prefix: cft-mtls-api-mgmt-appgw
         host_name_suffix: platform.hmcts.net
         ssl_host_name_suffix: platform.hmcts.net
@@ -50,7 +51,7 @@ gateways:
         add_ssl_profile: true
         verify_client_cert_issuer_dn: true
         rootca_certificate_name: civil_sdt_root_ca
-        ssl_certificate_name: wildcard-platform-hmcts-net
+        ssl_certificate_name: civil-sdt-prod
         host_name_prefix: cft-mtls-api-mgmt-appgw
         host_name_suffix: platform.hmcts.net
         ssl_host_name_suffix: platform.hmcts.net

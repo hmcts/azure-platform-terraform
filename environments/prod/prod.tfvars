@@ -3428,9 +3428,9 @@ frontends = [
         action   = "Allow"
         match_conditions = [
           {
-            match_variable     = "PostArgs"
-            selector           = "PostParamName"
-            operator           = "contains"
+            match_variable = "PostArgs"
+            selector       = "PostParamName"
+            operator       = "contains"
             match_values = [
               "steps_closure_support_documents_form",
               "steps_details_documents_upload_form",

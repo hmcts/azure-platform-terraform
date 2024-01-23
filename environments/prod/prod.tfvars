@@ -3430,6 +3430,7 @@ frontends = [
           {
             match_variable     = "PostArgs"
             selector           = "PostParamName"
+            negation_condition = false
             operator           = "contains"
             match_values = [
               "steps_closure_support_documents_form",

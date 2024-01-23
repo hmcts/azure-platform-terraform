@@ -3431,7 +3431,7 @@ frontends = [
             match_variable     = "PostArgs"
             selector           = "PostParamName"
             negation_condition = false
-            operator           = "contains"
+            operator           = "Contains"
             match_values = [
               "steps_closure_support_documents_form",
               "steps_details_documents_upload_form",

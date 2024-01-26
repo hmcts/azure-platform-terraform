@@ -23,7 +23,6 @@ gateways:
         listener_host_name_prefix: commissioning.sdt
         listener_host_name_suffix: justice.gov.uk
         listener_ssl_host_name_suffix: justice.gov.uk
-        backend_host_name_override: cft-mtls-api-mgmt-appgw.platform.hmcts.net
         add_rewrite_rule: true
         rewrite_rules:
           - name: "SdtAddCustomHeadersRule"
@@ -58,7 +57,6 @@ gateways:
         listener_host_name_prefix: sdt
         listener_host_name_suffix: justice.gov.uk
         listener_ssl_host_name_suffix: justice.gov.uk
-        backend_host_name_override: cft-mtls-api-mgmt-appgw.platform.hmcts.net
         add_rewrite_rule: true
         rewrite_rules:
           - name: "SdtAddCustomHeadersRule"

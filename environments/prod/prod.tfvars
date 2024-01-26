@@ -3250,7 +3250,7 @@ frontends = [
         match_conditions = [
           {
             match_variable     = "RequestUri"
-            operator           = "StartsWith"
+            operator           = "BeginsWith"
             negation_condition = false
             match_values = [
               "/apply/admin"

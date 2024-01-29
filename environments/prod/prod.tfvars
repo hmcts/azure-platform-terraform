@@ -3250,10 +3250,10 @@ frontends = [
         match_conditions = [
           {
             match_variable     = "RequestPath"
-            operator           = "BeginsWith"
+            operator           = "RegEx"
             negation_condition = false
             match_values = [
-              "/apply/admin"
+              "^https://[a-zA-Z0-9.-]*.gov.uk/apply/admin[/]?.*"
             ]
           },
           {

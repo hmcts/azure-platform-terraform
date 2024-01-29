@@ -3249,7 +3249,7 @@ frontends = [
         action   = "Block"
         match_conditions = [
           {
-            match_variable     = "RequestUri"
+            match_variable     = "RequestPath"
             operator           = "BeginsWith"
             negation_condition = false
             match_values = [

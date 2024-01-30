@@ -3363,6 +3363,10 @@ frontends = [
     ssl_mode         = "AzureKeyVault"
     certificate_name = "appeal-tax-tribunal-service-gov-uk"
     shutter_app      = true
+    disabled_rules = {
+      SQLI = [
+        "942110",
+      ]
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -3420,26 +3424,6 @@ frontends = [
         selector       = "steps_details_documents_upload_form"
       }
     ]
-    custom_rules = [
-      {
-        name     = "PostParamName"
-        priority = 1
-        type     = "MatchRule"
-        action   = "Allow"
-        match_conditions = [
-          {
-            match_variable     = "PostArgs"
-            selector           = "PostParamName"
-            negation_condition = false
-            operator           = "Contains"
-            match_values = [
-              "steps_closure_support_documents_form",
-              "steps_details_documents_upload_form",
-            ]
-          }
-        ]
-      },
-    ],
   },
   {
     name             = "hwf-staff-pet"

@@ -3367,6 +3367,7 @@ frontends = [
       SQLI = [
         "942110",
       ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

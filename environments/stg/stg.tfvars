@@ -2001,6 +2001,12 @@ frontends = [
     dns_zone_name    = "aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-aat-platform-hmcts-net"
+    disabled_rules = {
+      SQLI = [
+        "942110",
+        "942230",
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

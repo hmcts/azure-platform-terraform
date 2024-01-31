@@ -2041,6 +2041,12 @@ frontends = [
     dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
+    disabled_rules = {
+      SQLI = [
+        "942110",
+        "942230",
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

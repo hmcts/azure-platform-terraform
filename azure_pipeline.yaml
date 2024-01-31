@@ -349,14 +349,14 @@ parameters:
       dependsOn: 'stg_apim'
       pipeline_tests: true
 
-    #- deployment: 'prod_apim_appgw'
-    #  environment: 'prod'
-    #  component: 'apim-appgw'
-    #  service_connection: 'dcd-cftapps-prod'
-    #  storage_account_rg: 'core-infra-prod-rg'
-    #  storage_account_name: 'cftappsprod'
-    #  dependsOn: 'sbox_apim_appgw'
-    #  pipeline_tests: true
+    - deployment: 'prod_apim_appgw'
+      environment: 'prod'
+      component: 'apim-appgw'
+      service_connection: 'dcd-cftapps-prod'
+      storage_account_rg: 'core-infra-prod-rg'
+      storage_account_name: 'cftappsprod'
+      dependsOn: 'sbox_apim_appgw'
+      pipeline_tests: true
 
     - deployment: 'prod_global'
       environment: 'prod'

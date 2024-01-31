@@ -15,5 +15,3 @@ gateways:
         ssl_certificate_name: wildcard-sandbox-platform-hmcts-net
         host_name_suffix: sandbox.platform.hmcts.net
         ssl_host_name_suffix: sandbox.platform.hmcts.net
-        listener_host_name_suffix: sandbox.platform.hmcts.net
-        listener_ssl_host_name_suffix: sandbox.platform.hmcts.net

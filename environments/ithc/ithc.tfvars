@@ -1269,6 +1269,12 @@ frontends = [
     dns_zone_name    = "ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
+    disabled_rules = {
+      SQLI = [
+        "942110",
+        "942230",
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

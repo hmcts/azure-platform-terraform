@@ -672,7 +672,7 @@ frontends = [
   {
     product          = "labs-hub-ngfw"
     name             = "labs-hub-ngfw-poc"
-    custom_domain    = "labs-hub-ngfw.sandbox.platform.hmcts.net"
+    custom_domain    = "labs-hub-ngfw-poc.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]

@@ -671,7 +671,7 @@ frontends = [
 
   {
     product          = "labs-hub-ngfw"
-    name             = "hub-ngfw-poc"
+    name             = "labs-hub-ngfw-poc"
     custom_domain    = "labs-hub-ngfw.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false

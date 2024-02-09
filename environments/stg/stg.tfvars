@@ -1818,6 +1818,7 @@ frontends = [
     ]
   },
   {
+    product        = "sptribs-dss-update-case-web"
     name           = "sptribs-dss-update-case-web"
     custom_domain  = "sptribs-dss-update-case-web.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"

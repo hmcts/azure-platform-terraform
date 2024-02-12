@@ -91,6 +91,8 @@ gateways:
         component: peterpilgrim-v2
       - product: "labs"
         component: darrenbayliss-dev2
+      - product: "labs"
+        component: labs-hub-ngfw-poc
 
     # SIDAM 
       - product: idam

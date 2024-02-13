@@ -92,7 +92,7 @@ gateways:
       - product: "labs"
         component: darrenbayliss-dev2
       - product: "labs"
-        component: labs-hub-ngfw-poc
+        component: hub-ngfw-poc
 
     # SIDAM 
       - product: idam

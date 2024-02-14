@@ -683,7 +683,7 @@ frontends = [
     name             = "labs-goldenpath-connor-okane"
     custom_domain    = "labs-goldenpath-connor-okane.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-connor-okane.uksouth.cloudapp.azure.com/"]
+    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-connor-okane.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   },
@@ -694,5 +694,5 @@ apim_appgw_exclusions = [
     match_variable = "RequestArgNames"
     operator       = "Equals"
     selector       = "iss"
-  },
+  }
 ]

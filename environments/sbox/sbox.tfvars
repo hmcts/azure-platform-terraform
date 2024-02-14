@@ -675,7 +675,7 @@ frontends = [
     custom_domain    = "labs-hub-ngfw-poc.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["nfgw-plum.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
   },
 
@@ -685,7 +685,7 @@ frontends = [
     custom_domain    = "labs-apps-njs.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["labs-apps-njs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
   }
 ]

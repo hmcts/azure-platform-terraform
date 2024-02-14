@@ -678,15 +678,6 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
   },
-]
-
-apim_appgw_exclusions = [
-  {
-    match_variable = "RequestArgNames"
-    operator       = "Equals"
-    selector       = "iss"
-  },
-
   {
     product          = "labs-goldenpath-connor-okane"
     name             = "labs-goldenpath-connor-okane"
@@ -695,7 +686,13 @@ apim_appgw_exclusions = [
     backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-connor-okane.uksouth.cloudapp.azure.com/"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
-  }
-
+  },
 ]
 
+apim_appgw_exclusions = [
+  {
+    match_variable = "RequestArgNames"
+    operator       = "Equals"
+    selector       = "iss"
+  },
+]

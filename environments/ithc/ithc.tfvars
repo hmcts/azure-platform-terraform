@@ -1247,6 +1247,22 @@ frontends = [
     ]
   },
   {
+    product          = "sptribs-dss-update-case-web"
+    name             = "sptribs-dss-update-case-web"
+    custom_domain    = "sptribs-dss-update-case-web.ithc.platform.hmcts.net"
+    dns_zone_name    = "ithc.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
     product          = "dss-update-case"
     name             = "dss-update-case"
     custom_domain    = "dss-update-case.ithc.platform.hmcts.net"

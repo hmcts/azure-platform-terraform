@@ -1818,6 +1818,21 @@ frontends = [
     ]
   },
   {
+    product        = "sptribs-dss-update-case-web"
+    name           = "sptribs-dss-update-case-web"
+    custom_domain  = "sptribs-dss-update-case-web.aat.platform.hmcts.net"
+    dns_zone_name  = "aat.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
     name           = "privatelaw"
     custom_domain  = "privatelaw.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"

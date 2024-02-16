@@ -1415,6 +1415,22 @@ frontends = [
     ]
   },
   {
+    product          = "sptribs-dss-update-case-web"
+    name             = "sptribs-dss-update-case-web"
+    custom_domain    = "sptribs-dss-update-case-web.perftest.platform.hmcts.net"
+    dns_zone_name    = "perftest.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-perftest-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
     product          = "dss-update-case"
     name             = "dss-update-case"
     custom_domain    = "dss-update-case.perftest.platform.hmcts.net"

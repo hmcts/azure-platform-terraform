@@ -1128,6 +1128,22 @@ frontends = [
     ]
   },
   {
+    product          = "sptribs-dss-update-case-web"
+    name             = "sptribs-dss-update-case-web"
+    custom_domain    = "sptribs-dss-update-case-web.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
     name           = "sscs-cor"
     mode           = "Detection"
     custom_domain  = "sscs-cor.demo.platform.hmcts.net"

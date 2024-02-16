@@ -671,13 +671,32 @@ frontends = [
 
   {
     product          = "labs-hub-ngfw"
-    name             = "hub-ngfw-poc"
-    custom_domain    = "labs-hub-ngfw.sandbox.platform.hmcts.net"
+    name             = "labs-hub-ngfw-poc"
+    custom_domain    = "labs-hub-ngfw-poc.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["nfgw-plum.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-  }
+  },
+
+  {
+    product          = "labs-apps-njs"
+    name             = "labs-apps-njs"
+    custom_domain    = "labs-apps-njs.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    shutter_app      = false
+    backend_domain   = ["labs-apps-njs.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+  },
+  {
+    product          = "labs-goldenpath-connor-okane"
+    name             = "labs-goldenpath-connor-okane"
+    custom_domain    = "labs-goldenpath-connor-okane.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-connor-okane.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
 ]
 
 apim_appgw_exclusions = [

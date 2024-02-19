@@ -687,7 +687,7 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["labs-apps-njs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-  },
+  }
 ]
 
 apim_appgw_exclusions = [

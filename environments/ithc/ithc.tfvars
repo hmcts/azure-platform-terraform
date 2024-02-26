@@ -1469,6 +1469,22 @@ frontends = [
     custom_domain  = "cui-ra.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"],
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942110",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942370",
+        "942380",
+        "942390",
+        "942400",
+        "942440"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

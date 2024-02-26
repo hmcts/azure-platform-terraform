@@ -59,40 +59,6 @@ gateways:
       - product: plum
         component: frontend
     #labs
-      - product: labs
-        component: mokainosspringboot
-      - product: labs
-        component: mokainosjavaapp
-      - product: "labs"
-        component: msl8r
-      - product: "labs"
-        component: ssian2
-      - product: "labs"
-        component: zc-hmcts
-      - product: "labs"
-        component: endakelly
-      - product: "labs"
-        component: ozzyib
-      - product: "labs"
-        component: rajivkapoor1
-      - product: "labs"
-        component: matthewsearle01-v3
-      - product: "labs"
-        component: jefex7
-      - product: "labs"
-        component: hw469
-      - product: "labs"
-        component: StuartBJustice
-      - product: "labs"
-        component: raraybould
-      - product: "labs"
-        component: rhodrif
-      - product: "labs"
-        component: peterpilgrim-v2
-      - product: "labs"
-        component: darrenbayliss-dev2
-      - product: "labs"
-        component: hub-ngfw-poc
       - product: "labs"
         component: apps-njs
 

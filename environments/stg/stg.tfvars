@@ -1902,7 +1902,24 @@ frontends = [
     name           = "cui-ra"
     custom_domain  = "cui-ra.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
+    mode           = "Prevention"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"],
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942110",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942370",
+        "942380",
+        "942390",
+        "942400",
+        "942440"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -2219,6 +2236,16 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "user[password_confirmation]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "application[first_name]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "application[ni_number]"
       }
     ]
   }

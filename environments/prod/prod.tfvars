@@ -3506,8 +3506,17 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "user[password_confirmation]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "application[first_name]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "application[ni_number]"
       }
-
     ]
     custom_rules = [
       {
@@ -3703,6 +3712,22 @@ frontends = [
     certificate_name = "manage-your-support-for-hmcts-services-service-gov-uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     www_redirect     = true
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942110",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942370",
+        "942380",
+        "942390",
+        "942400",
+        "942440"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

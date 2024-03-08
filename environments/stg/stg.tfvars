@@ -2099,6 +2099,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "StartsWith"
         selector       = "steps_details_documents_upload_form"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "steps_"
       }
     ]
   },

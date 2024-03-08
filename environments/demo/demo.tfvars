@@ -13,6 +13,10 @@ oms_env                 = "nonprod"
 #trigger precommit
 hub = "nonprod"
 
+# Applications associated with default storage account shutter static website.
+# Teams that need a default shutter page should add their app frontend names to the list below.
+shutter_apps = [ {'cui-ra'}]
+
 frontends = [
   {
     name                           = "reformscan"
@@ -758,19 +762,19 @@ frontends = [
 
   },
   {
-    name           = "lau"
-    mode           = "Detection"
-    custom_domain  = "lau.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-  },
-  {
-    name           = "lau-int"
-    mode           = "Detection"
-    custom_domain  = "lau-int.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-  },
+      name           = "lau"
+      mode           = "Detection"
+      custom_domain  = "lau.demo.platform.hmcts.net"
+      dns_zone_name  = "demo.platform.hmcts.net"
+      backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    },
+    {
+      name           = "lau-int"
+      mode           = "Detection"
+      custom_domain  = "lau-int.demo.platform.hmcts.net"
+      dns_zone_name  = "demo.platform.hmcts.net"
+      backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    },
   {
     name           = "civil-citizen-ui"
     mode           = "Detection"
@@ -2272,6 +2276,7 @@ frontends = [
     custom_domain  = "cui-ra.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"],
+    shutter-app    = true
     disabled_rules = {
       SQLI = [
         "942100",

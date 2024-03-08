@@ -762,18 +762,18 @@ frontends = [
 
   },
   {
-     name           = "lau"
-     mode           = "Detection"
-     custom_domain  = "lau.demo.platform.hmcts.net"
-     dns_zone_name  = "demo.platform.hmcts.net"
-     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    name           = "lau"
+    mode           = "Detection"
+    custom_domain  = "lau.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   },
   {
-     name           = "lau-int"
-     mode           = "Detection"
-     custom_domain  = "lau-int.demo.platform.hmcts.net"
-     dns_zone_name  = "demo.platform.hmcts.net"
-     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    name           = "lau-int"
+    mode           = "Detection"
+    custom_domain  = "lau-int.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "civil-citizen-ui"

@@ -1807,7 +1807,7 @@ frontends = [
     name           = "sptribs-frontend"
     custom_domain  = "sptribs-frontend.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
@@ -1822,7 +1822,7 @@ frontends = [
     name           = "sptribs-dss-update-case-web"
     custom_domain  = "sptribs-dss-update-case-web.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {

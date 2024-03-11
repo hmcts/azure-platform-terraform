@@ -681,7 +681,7 @@ frontends = [
   },
   {
     name           = "nfdiv"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "nfdiv.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
@@ -689,7 +689,7 @@ frontends = [
   },
   {
     name          = "nfdiv-apply"
-    mode          = "Detection"
+    mode          = "Prevention"
     custom_domain = "nfdiv-apply-for-divorce.aat.platform.hmcts.net"
     dns_zone_name = "aat.platform.hmcts.net"
     backend       = "nfdiv"
@@ -697,7 +697,7 @@ frontends = [
   },
   {
     name          = "nfdiv-civil"
-    mode          = "Detection"
+    mode          = "Prevention"
     custom_domain = "nfdiv-end-civil-partnership.aat.platform.hmcts.net"
     dns_zone_name = "aat.platform.hmcts.net"
     backend       = "nfdiv"

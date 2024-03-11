@@ -24,4 +24,3 @@ frontends = [
     certificate_name_check_enabled = false
   }
 ]
-

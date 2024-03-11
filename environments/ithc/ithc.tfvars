@@ -1289,6 +1289,7 @@ frontends = [
       SQLI = [
         "942110",
         "942230",
+        "942361",
       ]
     }
     global_exclusions = [

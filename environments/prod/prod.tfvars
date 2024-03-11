@@ -3706,12 +3706,11 @@ frontends = [
     product          = "cui"
     name             = "cui-ra"
     mode             = "Prevention"
-    custom_domain    = "manage-your-support-for-hmcts-services.service.gov.uk"
+    custom_domain    = "www.manage-your-support-for-hmcts-services.service.gov.uk"
     dns_zone_name    = "manage-your-support-for-hmcts-services.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "manage-your-support-for-hmcts-services-service-gov-uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    www_redirect     = true
     disabled_rules = {
       SQLI = [
         "942100",

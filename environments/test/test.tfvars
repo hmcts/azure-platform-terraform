@@ -275,7 +275,7 @@ frontends = [
     disabled_rules = {
       RFI = [
         "931130"
-        ]
+      ]
     }
     global_exclusions = [
       {

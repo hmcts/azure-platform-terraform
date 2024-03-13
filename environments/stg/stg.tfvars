@@ -688,7 +688,7 @@ frontends = [
     disabled_rules = {
       RFI = [
         "931130"
-        ]
+      ]
     }
   },
   {

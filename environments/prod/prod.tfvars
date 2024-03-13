@@ -3367,6 +3367,7 @@ frontends = [
       SQLI = [
         "942110",
         "942230",
+        "942361",
       ]
     }
     global_exclusions = [
@@ -3711,7 +3712,6 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "manage-your-support-for-hmcts-services-service-gov-uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    www_redirect     = true
     disabled_rules = {
       SQLI = [
         "942100",

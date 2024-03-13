@@ -270,7 +270,7 @@ frontends = [
     name           = "nfdiv"
     custom_domain  = "nfdiv.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
@@ -285,28 +285,186 @@ frontends = [
     name          = "nfdiv-apply"
     custom_domain = "nfdiv-apply-for-divorce.perftest.platform.hmcts.net"
     dns_zone_name = "perftest.platform.hmcts.net"
-    mode          = "Detection"
+    mode          = "Prevention"
     backend       = "nfdiv"
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+        "942430",
+        "942260"
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+      RCE = [
+        "932100"
+      ]
+      RFI = [
+        "931130"
+      ]
+    },
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "connect.sid"
-      }
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "nfdiv-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "nfdiv-session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "lng"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1UploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2UploadedFiles"
+      },
     ]
   },
   {
     name          = "nfdiv-civil"
     custom_domain = "nfdiv-end-civil-partnership.perftest.platform.hmcts.net"
     dns_zone_name = "perftest.platform.hmcts.net"
-    mode          = "Detection"
+    mode          = "Prevention"
     backend       = "nfdiv"
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+        "942430",
+        "942260"
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+      RCE = [
+        "932100"
+      ]
+      RFI = [
+        "931130"
+      ]
+    },
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "connect.sid"
-      }
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "nfdiv-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "nfdiv-session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "lng"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1UploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2UploadedFiles"
+      },
     ]
   },
   {

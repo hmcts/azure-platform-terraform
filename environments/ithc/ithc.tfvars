@@ -547,6 +547,11 @@ frontends = [
     custom_domain  = "nfdiv.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    disabled_rules = {
+      RFI = [
+        "931130"
+        ]
+    }
   },
   {
     name           = "nfdiv-apply"

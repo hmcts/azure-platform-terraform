@@ -2282,7 +2282,6 @@ frontends = [
         operator       = "Equals"
         selector       = "rf"
       },
-
     ]
   },
   {

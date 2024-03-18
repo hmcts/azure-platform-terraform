@@ -2290,7 +2290,7 @@ frontends = [
     custom_domain  = "sptribs-frontend.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
     mode           = "Prevention"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"],
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     disabled_rules = {
       SQLI = [
         "942200",

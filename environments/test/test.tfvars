@@ -1556,6 +1556,7 @@ frontends = [
     name           = "cui-ra"
     custom_domain  = "cui-ra.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"],
     global_exclusions = [
       {

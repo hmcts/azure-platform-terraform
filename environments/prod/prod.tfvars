@@ -462,7 +462,7 @@ frontends = [
   {
     product          = "nfdiv"
     name             = "nfdiv-civil-partnership"
-    mode             = "Prevention"
+    mode             = "Detection"
     custom_domain    = "www.end-civil-partnership.service.gov.uk"
     dns_zone_name    = "end-civil-partnership.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
@@ -478,7 +478,6 @@ frontends = [
         "942380",
         "942400",
         "942430",
-        "942260"
       ]
       LFI = [
         "930100", // false positive on multi-part uploads
@@ -486,9 +485,6 @@ frontends = [
       ]
       RCE = [
         "932100"
-      ]
-      RFI = [
-        "931130"
       ]
     },
     custom_rules = [

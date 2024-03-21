@@ -1055,7 +1055,7 @@ frontends = [
   },
   {
     name           = "pcq"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "pcq.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]

@@ -2,8 +2,8 @@ project                        = "hmcts"
 location                       = "uksouth"
 env                            = "sbox"
 subscription                   = "sbox"
-sku_tier                       = "Free"
-sku_size                       = "Free"
+# sku_tier                       = "Free"
+# sku_size                       = "Free"
 hub_app_gw_private_ip_address  = ["10.10.200.212"]
 backend_agw_private_ip_address = ["10.2.13.112"]
 data_subscription              = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
@@ -610,11 +610,10 @@ frontends = [
     name             = "plum"
     custom_domain    = "plum.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com", "lb-sbox-int-plum.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
-
   },
   {
     product          = "plumclassic"

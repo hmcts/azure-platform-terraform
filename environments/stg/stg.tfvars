@@ -2514,10 +2514,17 @@ frontends = [
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     disabled_rules = {
       SQLI = [
-        "942260"
+        "942260",
+        "942340"
       ]
       RFI = [
         "931130"
+      ]
+      LFI = [
+        "930130"
+      ]
+      RCE = [
+        "932115"
       ]
     }
     global_exclusions = [

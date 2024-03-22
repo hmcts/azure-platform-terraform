@@ -1778,6 +1778,15 @@ frontends = [
 
   },
   {
+    product        = "idam"
+    name           = "hmcts-access-staging"
+    mode           = "Prevention"
+    custom_domain  = "hmcts-access-staging.aat.platform.hmcts.net"
+    dns_zone_name  = "aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+
+  },
+  {
     name           = "paybubble"
     custom_domain  = "paybubble.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
@@ -2039,6 +2048,150 @@ frontends = [
         ]
       }
     ],
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.AuthId"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.Session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "idam-user-dashboard-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "idam_user_dashboard_session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "auth_verification"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "jwt"
+      },
+      {
+        match_variable = "QueryStringArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "refresh_token"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "refresh_token"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "response_type"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "scope"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      }
+    ]
+  },
+  {
+    name             = "idam-user-dashboard-staging"
+    custom_domain    = "idam-user-dashboard-staging.aat.platform.hmcts.net"
+    dns_zone_name    = "aat.platform.hmcts.net"
+    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-aat-platform-hmcts-net"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

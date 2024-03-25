@@ -932,7 +932,7 @@ frontends = [
   },
   {
     name           = "lau"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "lau.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]

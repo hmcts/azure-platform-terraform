@@ -879,7 +879,7 @@ frontends = [
   },
   {
     name           = "lau"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "lau.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]

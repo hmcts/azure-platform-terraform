@@ -1138,6 +1138,16 @@ frontends = [
         operator       = "Equals"
         selector       = "lau-session"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
     ]
   },
   {

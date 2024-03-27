@@ -276,7 +276,7 @@ frontends = [
   {
     product       = "idam"
     name          = "hmcts-access"
-    mode          = "Detection"
+    mode          = "Prevention"
     custom_domain = "hmcts-access.sandbox.platform.hmcts.net"
     dns_zone_name = "sandbox.platform.hmcts.net"
     shutter_app   = false

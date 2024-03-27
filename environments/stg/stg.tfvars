@@ -1781,7 +1781,7 @@ frontends = [
   {
     product        = "idam"
     name           = "hmcts-access"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "hmcts-access.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]

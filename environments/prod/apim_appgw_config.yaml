@@ -76,37 +76,3 @@ gateways:
             url:
               components: "path_only"
               path: "/sdt-gateway"
-      - product: civil
-        component: sdt-test
-        ssl_enabled: true
-        use_public_ip: true
-        health_path_override: "/status-0123456789abcdef"
-        add_ssl_profile: true
-        verify_client_cert_issuer_dn: true
-        rootca_certificate_name: civil_sdt_root_ca
-        ssl_certificate_name: civil-sdt-commissioning-prod
-        host_name_prefix: cft-mtls-api-mgmt-appgw
-        host_name_suffix: platform.hmcts.net
-        ssl_host_name_suffix: platform.hmcts.net
-        listener_host_name_prefix: testdt
-        listener_host_name_suffix: justice.gov.uk
-        listener_ssl_host_name_suffix: justice.gov.uk
-        add_rewrite_rule: true
-        rewrite_rules:
-          - name: "SdtAddCustomHeadersRule"
-            sequence: "100"
-            request_headers:
-              - header_name: "CLIENT-IP-AGW"
-                header_value: "{var_client_ip}"
-              - header_name: "X-ARR-ClientCertSub-AGW"
-                header_value: "{var_client_certificate_subject}"
-              - header_name: "URI-PATH-AGW"
-                header_value: "{var_uri_path}"
-          - name: "SdtUrlRewriteRule"
-            sequence: "200"
-            conditions:
-              - variable: "var_uri_path"
-                pattern: ".*/producers(?>-comx)?/service/sdtapi"
-            url:
-              components: "path_only"
-              path: "/sdt-gateway"

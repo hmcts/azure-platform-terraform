@@ -2368,7 +2368,7 @@ frontends = [
   {
     product          = "lau"
     name             = "lau"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "log-and-audit.platform.hmcts.net"
     dns_zone_name    = "platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
@@ -2393,6 +2393,16 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "lau-session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
       },
     ]
   },

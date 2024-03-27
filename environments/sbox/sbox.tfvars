@@ -30,6 +30,7 @@ frontends = [
     product          = "idam"
     name             = "idam-web-public"
     custom_domain    = "idam-web-public.sandbox.platform.hmcts.net"
+    mode             = "Prevention"
     dns_zone_name    = "sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
@@ -285,147 +286,10 @@ frontends = [
 
   },
   {
-    product                     = "idam"
-    name                        = "idam-web-admin"
-    custom_domain               = "idam-web-admin.sandbox.platform.hmcts.net"
-    dns_zone_name               = "sandbox.platform.hmcts.net"
-    shutter_app                 = false
-    backend_domain              = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-sandbox-platform-hmcts-net"
-    appgw_cookie_based_affinity = "Enabled"
-    custom_rules = [
-      {
-        name     = "IPMatchWhitelist"
-        priority = 1
-        type     = "MatchRule"
-        action   = "Block"
-        match_conditions = [
-          {
-            match_variable     = "RemoteAddr"
-            operator           = "IPMatch"
-            negation_condition = true
-            match_values = [
-              "52.151.96.225/32",
-              "81.134.202.29/32",
-              "51.145.6.230/32",
-              "51.145.4.100/32",
-              "194.33.192.0/25",
-              "51.149.249.0/27",
-              "194.33.196.0/25",
-              "51.149.249.32/27",
-              "52.210.206.51/32",
-              "62.25.109.201/32",
-              "62.25.109.203/32",
-              "20.39.161.231/32",
-              "20.49.137.7/32",
-              "20.49.137.196/32",
-              "130.41.221.91/32",
-              "130.41.221.93/32",
-              "130.41.128.253/32",
-              "130.41.221.92/32",
-              "130.41.221.94/32",
-            ]
-          }
-        ]
-      },
-    ],
-    global_exclusions = [
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "activationRedirectUrl"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "activationRedirectUrl"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "description"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "dtSa"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "Idam.AuthId"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "Idam.Session"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "jwt"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "label"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "oauth2ClientId"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "oauth2ClientSecret"
-      },
-      {
-        match_variable = "QueryStringArgNames",
-        operator       = "Equals",
-        selector       = "oauth2RedirectUris"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "oauth2RedirectUris"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "StartsWith",
-        selector       = "password"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "redirectUri"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "refresh_token"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "refresh_token"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "token"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "token"
-      },
-    ]
-  },
-  {
     product          = "idam"
     name             = "idam-user-dashboard"
     custom_domain    = "idam-user-dashboard.sandbox.platform.hmcts.net"
+    mode             = "Prevention"
     dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
@@ -610,11 +474,10 @@ frontends = [
     name             = "plum"
     custom_domain    = "plum.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com", "lb-sbox-int-plum.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
-
   },
   {
     product          = "plumclassic"
@@ -674,7 +537,7 @@ frontends = [
     custom_domain    = "labs-apps-njs.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false
-    backend_domain   = ["labs-apps-njs.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["lb-sbox-int-labs-apps-njs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
   },
 ]

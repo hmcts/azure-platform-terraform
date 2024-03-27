@@ -759,14 +759,26 @@ frontends = [
   },
   {
     name           = "lau"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "lau.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+    ]
   },
   {
     name           = "lau-int"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "lau-int.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
@@ -793,6 +805,87 @@ frontends = [
     custom_domain  = "nfdiv.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+        "942430",
+        "942260"
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+      RCE = [
+        "932100"
+      ]
+      RFI = [
+        "931130"
+      ]
+    },
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "nfdiv-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "nfdiv-session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "lng"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1UploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2UploadedFiles"
+      },
+    ]
   },
   {
     name             = "nfdiv-apply"
@@ -974,7 +1067,7 @@ frontends = [
   },
   {
     name           = "pcq"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "pcq.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
@@ -1355,14 +1448,121 @@ frontends = [
     name             = "sptribs-frontend"
     custom_domain    = "sptribs-frontend.demo.platform.hmcts.net"
     dns_zone_name    = "demo.platform.hmcts.net"
-    mode             = "Detection"
+    mode             = "Prevention"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
+    disabled_rules = {
+      SQLI = [
+        "942200",
+        "942450",
+        "942260",
+        "942440"
+      ]
+      LFI = [
+        "930130"
+      ]
+      RCE = [
+        "932115"
+      ]
+      RFI = [
+        "931130"
+      ]
+    },
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "rf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "sptribs-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "sptribs-frontend-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "lng"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "tribunalFormDocuments"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "supportingDocuments"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "otherInformationDocuments"
       },
     ]
   },
@@ -1371,14 +1571,109 @@ frontends = [
     name             = "sptribs-dss-update-case-web"
     custom_domain    = "sptribs-dss-update-case-web.demo.platform.hmcts.net"
     dns_zone_name    = "demo.platform.hmcts.net"
-    mode             = "Detection"
+    mode             = "Prevention"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
+    disabled_rules = {
+      SQLI = [
+        "942260",
+        "942340"
+      ]
+      RFI = [
+        "931130"
+      ]
+      LFI = [
+        "930130"
+      ]
+      RCE = [
+        "932115"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "rf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "sptribs-dss-update-case-web-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "sptribs-dss-update-case-web-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "lng"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "OtherInfoDocuments"
       },
     ]
   },
@@ -1613,6 +1908,7 @@ frontends = [
   {
     name             = "idam-user-dashboard"
     custom_domain    = "idam-user-dashboard.demo.platform.hmcts.net"
+    mode             = "Prevention"
     dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
@@ -1768,6 +2064,7 @@ frontends = [
   {
     name           = "idam-web-public"
     custom_domain  = "idam-web-public.demo.platform.hmcts.net"
+    mode           = "Prevention"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     global_exclusions = [
@@ -2006,106 +2303,6 @@ frontends = [
         operator       = "Equals"
         selector       = "code_verifier"
       }
-    ]
-  },
-  {
-    name                        = "idam-web-admin"
-    custom_domain               = "idam-web-admin.demo.platform.hmcts.net"
-    dns_zone_name               = "demo.platform.hmcts.net"
-    backend_domain              = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-demo-platform-hmcts-net"
-    appgw_cookie_based_affinity = "Enabled"
-    global_exclusions = [
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "activationRedirectUrl"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "activationRedirectUrl"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "description"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "dtSa"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "Idam.AuthId"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "Idam.Session"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "jwt"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "label"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "oauth2ClientId"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "oauth2ClientSecret"
-      },
-      {
-        match_variable = "QueryStringArgNames",
-        operator       = "Equals",
-        selector       = "oauth2RedirectUris"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "oauth2RedirectUris"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "StartsWith",
-        selector       = "password"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "redirectUri"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "refresh_token"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "refresh_token"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "token"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "token"
-      },
     ]
   },
   {

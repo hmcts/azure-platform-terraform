@@ -272,13 +272,91 @@ frontends = [
     dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
-
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+        "942430",
+        "942260"
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+      RCE = [
+        "932100"
+      ]
+      RFI = [
+        "931130"
+      ]
+    },
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "connect.sid"
-      }
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "nfdiv-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "nfdiv-session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "lng"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1UploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2UploadedFiles"
+      },
     ]
   },
   {
@@ -469,7 +547,7 @@ frontends = [
   },
   {
     name           = "idam-web-public"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "idam-web-public.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
@@ -795,16 +873,28 @@ frontends = [
     name           = "pcq"
     custom_domain  = "pcq.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
   },
   {
     name           = "lau"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "lau.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+    ]
   },
   {
     name           = "paybubble"
@@ -1062,138 +1152,6 @@ frontends = [
     cache_enabled  = "false"
   },
   {
-    name                        = "idam-web-admin"
-    custom_domain               = "idam-web-admin.perftest.platform.hmcts.net"
-    dns_zone_name               = "perftest.platform.hmcts.net"
-    backend_domain              = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
-    certificate_name            = "wildcard-perftest-platform-hmcts-net"
-    appgw_cookie_based_affinity = "Enabled"
-    custom_rules = [
-      {
-        name     = "IPMatchWhitelist"
-        priority = 1
-        type     = "MatchRule"
-        action   = "Block"
-        match_conditions = [
-          {
-            match_variable     = "RemoteAddr"
-            operator           = "IPMatch"
-            negation_condition = true
-            match_values = [
-              "81.134.202.29/32",
-              "51.145.6.230/32",
-              "51.145.4.100/32",
-              "194.33.192.0/25",
-              "51.149.249.0/27",
-              "194.33.196.0/25",
-              "51.149.249.32/27",
-              "52.210.206.51/32",
-              "62.25.109.201/32",
-              "62.25.109.203/32",
-              "51.143.139.240/32",
-              "20.50.109.148/32",
-              "20.50.108.242/32",
-              "51.11.124.205/32",
-              "51.11.124.216/32"
-            ]
-          }
-        ]
-      },
-    ],
-    global_exclusions = [
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "activationRedirectUrl"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "activationRedirectUrl"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "description"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "dtSa"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "Idam.AuthId"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "Idam.Session"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "jwt"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "label"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "oauth2ClientId"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "oauth2ClientSecret"
-      },
-      {
-        match_variable = "QueryStringArgNames",
-        operator       = "Equals",
-        selector       = "oauth2RedirectUris"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "oauth2RedirectUris"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "StartsWith",
-        selector       = "password"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "redirectUri"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "refresh_token"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "refresh_token"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "token"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "token"
-      },
-    ]
-  },
-  {
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.test.platform.hmcts.net"
     dns_zone_name    = "test.platform.hmcts.net"
@@ -1218,6 +1176,7 @@ frontends = [
   {
     name             = "idam-user-dashboard"
     custom_domain    = "idam-user-dashboard.perftest.platform.hmcts.net"
+    mode             = "Prevention"
     dns_zone_name    = "perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
@@ -1561,14 +1520,121 @@ frontends = [
     name             = "sptribs-frontend"
     custom_domain    = "sptribs-frontend.perftest.platform.hmcts.net"
     dns_zone_name    = "perftest.platform.hmcts.net"
-    mode             = "Detection"
+    mode             = "Prevention"
     backend_domain   = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
+    disabled_rules = {
+      SQLI = [
+        "942200",
+        "942450",
+        "942260",
+        "942440"
+      ]
+      LFI = [
+        "930130"
+      ]
+      RCE = [
+        "932115"
+      ]
+      RFI = [
+        "931130"
+      ]
+    },
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "rf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "sptribs-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "sptribs-frontend-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "lng"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "tribunalFormDocuments"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "supportingDocuments"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "otherInformationDocuments"
       },
     ]
   },
@@ -1577,14 +1643,109 @@ frontends = [
     name             = "sptribs-dss-update-case-web"
     custom_domain    = "sptribs-dss-update-case-web.perftest.platform.hmcts.net"
     dns_zone_name    = "perftest.platform.hmcts.net"
-    mode             = "Detection"
+    mode             = "Prevention"
     backend_domain   = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
+    disabled_rules = {
+      SQLI = [
+        "942260",
+        "942340"
+      ]
+      RFI = [
+        "931130"
+      ]
+      LFI = [
+        "930130"
+      ]
+      RCE = [
+        "932115"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "rf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "sptribs-dss-update-case-web-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "sptribs-dss-update-case-web-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "lng"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "OtherInfoDocuments"
       },
     ]
   },
@@ -1609,6 +1770,7 @@ frontends = [
     name           = "cui-ra"
     custom_domain  = "cui-ra.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"],
     global_exclusions = [
       {

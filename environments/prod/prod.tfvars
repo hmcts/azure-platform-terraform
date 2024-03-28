@@ -3041,6 +3041,13 @@ frontends = [
     dns_zone_name    = "claim-employment-tribunals.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "claim-employment-tribunals-service-gov-uk"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-sya-cookie-preferences"
+      }
+    ]
   },
   {
     product          = "sptribs"
@@ -3142,11 +3149,6 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "_csrf"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "et-sya-cookie-preferences"
       }
     ]
   },

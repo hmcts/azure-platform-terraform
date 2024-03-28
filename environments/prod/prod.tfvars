@@ -3142,6 +3142,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-sya-cookie-preferences"
       }
     ]
   },
@@ -3250,6 +3255,11 @@ frontends = [
         operator       = "Equals"
         selector       = "_ga"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-sya-cookie-preferences"
+      }
     ]
     custom_rules = [
       {
@@ -3307,6 +3317,11 @@ frontends = [
         operator       = "Equals"
         selector       = "_super_session"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-sya-cookie-preferences"
+      },
     ]
     custom_rules = [
       {
@@ -3361,6 +3376,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "_app_session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-sya-cookie-preferences"
       },
     ]
   },

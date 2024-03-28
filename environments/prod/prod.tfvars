@@ -3323,7 +3323,7 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-sya-cookie-preferences"
-      },
+      }
     ]
     custom_rules = [
       {
@@ -3383,7 +3383,7 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-sya-cookie-preferences"
-      },
+      }
     ]
   },
   {

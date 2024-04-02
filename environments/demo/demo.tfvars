@@ -331,7 +331,13 @@ frontends = [
     custom_domain  = "et-sya.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-sya-cookie-preferences"
+      }
+    ]
   },
   {
     name           = "paybubble"
@@ -2611,6 +2617,11 @@ frontends = [
         operator       = "Equals"
         selector       = "_app_session"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-sya-cookie-preferences"
+      }
     ]
   },
   {
@@ -2632,6 +2643,11 @@ frontends = [
         operator       = "Equals"
         selector       = "_app_session"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-sya-cookie-preferences"
+      }
     ]
   },
   {
@@ -2642,6 +2658,13 @@ frontends = [
     dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-sya-cookie-preferences"
+      }
+    ]
   },
   {
     product          = "tax-tribunals-datacapture"

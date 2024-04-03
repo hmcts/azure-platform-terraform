@@ -1013,7 +1013,7 @@ frontends = [
   },
   {
     name           = "ia-aip"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "immigration-appeal.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]

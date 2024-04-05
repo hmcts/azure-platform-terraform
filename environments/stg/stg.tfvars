@@ -957,6 +957,11 @@ frontends = [
     custom_domain  = "immigration-appeal.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    disabled_rules = {
+      LFI = [
+        "930130"
+      ]
+    }
 
   },
   {

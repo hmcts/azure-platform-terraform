@@ -105,14 +105,6 @@ parameters:
       dependsOn: 'Precheck'
       pipeline_tests: true
 
-    - deployment: 'ptl_dynatrace_activegate'
-      environment: 'ptl'
-      component: 'dynatrace_activegate'
-      service_connection: 'DTS-CFTPTL-INTSVC'
-      storage_account_rg: 'core-infra-intsvc-rg'
-      storage_account_name: 'cftptlintsvc'
-      dependsOn: 'Precheck'
-
     - deployment: 'dev_global'
       environment: 'dev'
       component: 'global'

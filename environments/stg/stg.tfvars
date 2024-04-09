@@ -966,17 +966,22 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "__auth-token"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
         selector       = "connect.sid"
       },
       {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "_ga"
+        selector       = "session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "__auth-token"
       },
       {
         match_variable = "RequestCookieNames"
@@ -991,23 +996,58 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "_ga_MEFEMV5R7K"
+        selector       = "_ga"
       },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "_ga_GZZSV7ZR34"
+        selector       = "_gid"
       },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "_ga_8YXPSC4L3Z"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookies_policy"
       },
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
-        selector       = "iss"
-      }
+        selector       = "rf"
+      },
     ]
   },
   {

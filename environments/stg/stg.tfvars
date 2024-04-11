@@ -965,29 +965,39 @@ frontends = [
         "930110"
       ]
       RCE = [
-        "932100",
-        "932150",
-        "932115",
-        "932130",
         "932105",
-        "932120"
+        "932110"
+        "932115",
+        "932120",
+        "932130",
+        "932150",
+        "932160",
+        "932100",
       ]
       RFI = [
         "931130",
         "931100"
       ]
       SQLI = [
-        "942440",
-        "942450",
-        "942110",
         "942100",
-        "942280",
+        "942110",
         "942150",
-        "942430",
-        "942400",
-        "942370",
+        "942160",
+        "942180",
+        "942190",
+        "942200",
+        "942240"
+        "942260",
+        "942280",
+        "942300",
+        "942330",
         "942340",
-        "942190"
+        "942370",
+        "942400",
+        "942410",
+        "942430",
+        "942450",
+        "942440",
       ]
     }
     global_exclusions = [
@@ -1000,6 +1010,16 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "\'analytics\'"
       },
       {
         match_variable = "QueryStringArgNames"

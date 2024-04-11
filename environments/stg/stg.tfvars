@@ -1019,7 +1019,7 @@ frontends = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
-        selector       = "\'analytics\'"
+        selector       = "\\'analytics\\'"
       },
       {
         match_variable = "QueryStringArgNames"

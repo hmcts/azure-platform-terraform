@@ -2,7 +2,7 @@ name: CI PR Summary Pipeline
 on:
   pull_request:
     branches:
-      - main
+      - master
   workflow_dispatch:
     inputs:
       API_HOST:

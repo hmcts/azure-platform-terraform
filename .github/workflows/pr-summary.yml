@@ -4,11 +4,6 @@ on:
     branches:
       - master
   workflow_dispatch:
-    inputs:
-      API_HOST:
-        description: 'API Host'     
-        required: true
-        default: 'https://app-gippi-api-s-latest-uksouth.azurewebsites.net'
 
 jobs: 
   review:
@@ -16,7 +11,7 @@ jobs:
     env: 
       X_API_KEY: ${{ secrets.SYSTEM_API_KEY }}
       X_API_CONSUMER: ${{ secrets.SYSTEM_CONSUMER_UUID }}
-      API_HOST: ${{ github.event.inputs.API_HOST }}
+      API_HOST: "https://app-gippi-api-s-latest-uksouth.azurewebsites.net/"
       WORKING_DIRECTORY: ${{ github.workspace }}/
     steps:
       - name: Checkout code

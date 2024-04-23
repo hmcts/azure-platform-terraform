@@ -26,7 +26,7 @@ jobs:
 
       - name: Create a diff file
         run: |
-          git diff origin/main > ${{ env.working_directory }}diff.txt && cat ${{ env.working_directory }}diff.txt
+          git diff origin/master > ${{ env.working_directory }}diff.txt && cat ${{ env.working_directory }}diff.txt
 
       - name: Generate a response
         run: |

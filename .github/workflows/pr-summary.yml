@@ -9,10 +9,6 @@ on:
         description: 'API Host'     
         required: true
         default: 'https://app-gippi-api-s-latest-uksouth.azurewebsites.net'
-      WORKING_DIRECTORY:
-        description: 'Working Directory'     
-        required: true
-        default: '${{ github.workspace }}/'
 
 jobs: 
   review:
@@ -21,7 +17,7 @@ jobs:
       X_API_KEY: ${{ secrets.SYSTEM_API_KEY }}
       X_API_CONSUMER: ${{ secrets.SYSTEM_CONSUMER_UUID }}
       API_HOST: ${{ github.event.inputs.API_HOST }}
-      WORKING_DIRECTORY: ${{ github.event.inputs.WORKING_DIRECTORY }}
+      WORKING_DIRECTORY: ${{ github.workspace }}/
     steps:
       - name: Checkout code
         uses: actions/checkout@v2

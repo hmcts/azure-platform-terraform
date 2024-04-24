@@ -1692,9 +1692,6 @@ frontends = [
       RCE = [
         "932115"
       ]
-      RFI = [
-        "931130"
-      ]
     },
     global_exclusions = [
       {
@@ -1806,9 +1803,6 @@ frontends = [
       SQLI = [
         "942260",
         "942340"
-      ]
-      RFI = [
-        "931130"
       ]
       LFI = [
         "930130"

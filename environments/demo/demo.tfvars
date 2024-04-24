@@ -2633,7 +2633,49 @@ frontends = [
     custom_domain  = "gateway-ccd.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
+    disabled_rules = {
+      LFI = [
+        "930120",
+        "930100",
+        "930130",
+        "930110"
+      ]
+      RCE = [
+        "932105",
+        "932110",
+        "932115",
+        "932120",
+        "932130",
+        "932150",
+        "932160",
+        "932100"
+      ]
+      RFI = [
+        "931130",
+        "931100"
+      ]
+      SQLI = [
+        "942100",
+        "942110",
+        "942150",
+        "942160",
+        "942180",
+        "942190",
+        "942200",
+        "942240",
+        "942260",
+        "942280",
+        "942300",
+        "942330",
+        "942340",
+        "942370",
+        "942400",
+        "942410",
+        "942430",
+        "942450",
+        "942440"
+      ]
+    }
   },
   {
     name           = "gateway-ccd-int"

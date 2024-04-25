@@ -1,6 +1,6 @@
 env                    = "demo"
 subscription           = "demo"
-cft_apps_cluster_ips   = ["10.50.95.221"]
+cft_apps_cluster_ips   = ["10.50.79.221", "10.50.95.221"]
 certificate_name_check = false
 autoShutdown           = true
 
@@ -757,11 +757,170 @@ frontends = [
   },
   {
     name           = "ia-aip"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "immigration-appeal.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
+    disabled_rules = {
+      LFI = [
+        "930120",
+        "930100",
+        "930130",
+        "930110"
+      ]
+      RCE = [
+        "932105",
+        "932110",
+        "932115",
+        "932120",
+        "932130",
+        "932150",
+        "932160",
+        "932100"
+      ]
+      RFI = [
+        "931130",
+        "931100"
+      ]
+      SQLI = [
+        "942100",
+        "942110",
+        "942150",
+        "942160",
+        "942180",
+        "942190",
+        "942200",
+        "942240",
+        "942260",
+        "942280",
+        "942300",
+        "942330",
+        "942340",
+        "942370",
+        "942400",
+        "942410",
+        "942430",
+        "942450",
+        "942440"
+      ]
+    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "\\'analytics\\'"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "questionId"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "answer"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "analytics_consent"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "apm_consent"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookies_policy"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
   },
   {
     name           = "lau"
@@ -2474,7 +2633,49 @@ frontends = [
     custom_domain  = "gateway-ccd.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
+    disabled_rules = {
+      LFI = [
+        "930120",
+        "930100",
+        "930130",
+        "930110"
+      ]
+      RCE = [
+        "932105",
+        "932110",
+        "932115",
+        "932120",
+        "932130",
+        "932150",
+        "932160",
+        "932100"
+      ]
+      RFI = [
+        "931130",
+        "931100"
+      ]
+      SQLI = [
+        "942100",
+        "942110",
+        "942150",
+        "942160",
+        "942180",
+        "942190",
+        "942200",
+        "942240",
+        "942260",
+        "942280",
+        "942300",
+        "942330",
+        "942340",
+        "942370",
+        "942400",
+        "942410",
+        "942430",
+        "942450",
+        "942440"
+      ]
+    }
   },
   {
     name           = "gateway-ccd-int"
@@ -2506,7 +2707,49 @@ frontends = [
     custom_domain  = "manage-case-ac-int.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
+    disabled_rules = {
+      LFI = [
+        "930120",
+        "930100",
+        "930130",
+        "930110"
+      ]
+      RCE = [
+        "932105",
+        "932110",
+        "932115",
+        "932120",
+        "932130",
+        "932150",
+        "932160",
+        "932100"
+      ]
+      RFI = [
+        "931130",
+        "931100"
+      ]
+      SQLI = [
+        "942100",
+        "942110",
+        "942150",
+        "942160",
+        "942180",
+        "942190",
+        "942200",
+        "942240",
+        "942260",
+        "942280",
+        "942300",
+        "942330",
+        "942340",
+        "942370",
+        "942400",
+        "942410",
+        "942430",
+        "942450",
+        "942440"
+      ]
+    }
   },
   {
     name           = "xui-webapp-int"
@@ -2514,7 +2757,49 @@ frontends = [
     custom_domain  = "manage-case-int.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
+    disabled_rules = {
+      LFI = [
+        "930120",
+        "930100",
+        "930130",
+        "930110"
+      ]
+      RCE = [
+        "932105",
+        "932110",
+        "932115",
+        "932120",
+        "932130",
+        "932150",
+        "932160",
+        "932100"
+      ]
+      RFI = [
+        "931130",
+        "931100"
+      ]
+      SQLI = [
+        "942100",
+        "942110",
+        "942150",
+        "942160",
+        "942180",
+        "942190",
+        "942200",
+        "942240",
+        "942260",
+        "942280",
+        "942300",
+        "942330",
+        "942340",
+        "942370",
+        "942400",
+        "942410",
+        "942430",
+        "942450",
+        "942440"
+      ]
+    }
   },
   {
     name           = "xui-webapp-caa-ac"
@@ -2580,7 +2865,49 @@ frontends = [
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     cache_enabled  = "false"
-
+    disabled_rules = {
+      LFI = [
+        "930120",
+        "930100",
+        "930130",
+        "930110"
+      ]
+      RCE = [
+        "932105",
+        "932110",
+        "932115",
+        "932120",
+        "932130",
+        "932150",
+        "932160",
+        "932100"
+      ]
+      RFI = [
+        "931130",
+        "931100"
+      ]
+      SQLI = [
+        "942100",
+        "942110",
+        "942150",
+        "942160",
+        "942180",
+        "942190",
+        "942200",
+        "942240",
+        "942260",
+        "942280",
+        "942300",
+        "942330",
+        "942340",
+        "942370",
+        "942400",
+        "942410",
+        "942430",
+        "942450",
+        "942440"
+      ]
+    }
   },
   {
     name           = "xui-webapp-srt"

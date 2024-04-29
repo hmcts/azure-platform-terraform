@@ -7,10 +7,10 @@ module "ctags" {
 }
 
 resource "azurerm_subnet" "temp_subnet" {
-  name = "temp-migration-subnet"
+  name                 = "temp-migration-subnet"
   virtual_network_name = local.vnet_name
-  resource_group_name = local.vnet_rg
-  address_prefixes = [""] // var this
+  resource_group_name  = local.vnet_rg
+  address_prefixes     = [""] // var this
 }
 
 resource "azurerm_public_ip" "temp_pip" {

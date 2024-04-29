@@ -6,11 +6,17 @@ module "ctags" {
   expiresAfter = var.expiresAfter
 }
 
-resource "azurerm_subnet" "temp_subnet" {
-  name                 = "temp-migration-subnet"
+# resource "azurerm_subnet" "temp_subnet" {
+#   name = "temp-migration-subnet"
+#   virtual_network_name = local.vnet_name
+#   resource_group_name = local.vnet_rg
+#   address_prefixes = [""] // var this
+# }
+
+data "azurerm_subnet" "temp_subnet" {
+  name = "iaas"
+  resource_group_name = local.vnet_rg
   virtual_network_name = local.vnet_name
-  resource_group_name  = local.vnet_rg
-  address_prefixes     = [""] // var this
 }
 
 resource "azurerm_public_ip" "temp_pip" {
@@ -36,7 +42,7 @@ module "api-mgmt" {
   common_tags                    = module.ctags.common_tags
   route_next_hop_in_ip_address   = local.hub[var.hub].ukSouth.next_hop_ip
   publisher_email                = var.publisher_email
-  temp_subnet_id                 = var.trigger_migration == true ? azurerm_subnet.temp_subnet.id : null
+  temp_subnet_id                 = var.trigger_migration == true ? data.temp_subnet.id : null
   temp_pip_id                    = var.trigger_migration == true ? azurerm_public_ip.temp_pip.id : null
 }
 

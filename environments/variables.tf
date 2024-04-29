@@ -175,3 +175,7 @@ variable "autoShutdown" {
 variable "apim_appgw_max_capacity" {
   default = 2
 }
+
+variable "trigger_migration" {
+  default = false
+}

@@ -14,8 +14,8 @@ module "ctags" {
 # }
 
 data "azurerm_subnet" "temp_subnet" {
-  name = "iaas"
-  resource_group_name = local.vnet_rg
+  name                 = "iaas"
+  resource_group_name  = local.vnet_rg
   virtual_network_name = local.vnet_name
 }
 

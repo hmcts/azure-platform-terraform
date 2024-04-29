@@ -42,7 +42,7 @@ module "api-mgmt" {
   common_tags                    = module.ctags.common_tags
   route_next_hop_in_ip_address   = local.hub[var.hub].ukSouth.next_hop_ip
   publisher_email                = var.publisher_email
-  temp_subnet_id                 = var.trigger_migration == true ? data.temp_subnet.id : null
+  temp_subnet_id                 = var.trigger_migration == true ? data.azurerm_subnet.temp_subnet.id : null
   temp_pip_id                    = var.trigger_migration == true ? azurerm_public_ip.temp_pip.id : null
 }
 

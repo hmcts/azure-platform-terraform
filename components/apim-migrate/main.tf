@@ -34,8 +34,8 @@ module "api-mgmt" {
   source                         = "git::https://github.com/hmcts/cnp-module-api-mgmt-private.git?ref=DTSPO-17136-apim-upgrade"
   location                       = var.location
   sku_name                       = var.apim_sku_name
-  virtual_network_resource_group = var.vnet_rg
-  virtual_network_name           = var.vnet_name
+  virtual_network_resource_group = local.vnet_rg
+  virtual_network_name           = local.vnet_name
   environment                    = var.env
   virtual_network_type           = "Internal"
   department                     = var.department

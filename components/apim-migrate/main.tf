@@ -41,9 +41,9 @@ module "api-mgmt" {
   sku_name                       = data.azurerm_api_management.apim.apim_sku_name
   virtual_network_resource_group = data.azurerm_api_management.apim.vnet_rg
   virtual_network_name           = data.azurerm_api_management.apim.vnet_name
-  environment                    = data.azurerm_api_management.apim.env
+  environment                    = var.env
   virtual_network_type           = "Internal"
-  department                     = data.azurerm_api_management.apim.department
+  department                     = var.department
   common_tags                    = module.ctags.common_tags
   route_next_hop_in_ip_address   = local.hub[var.hub].ukSouth.next_hop_ip
   publisher_email                = data.azurerm_api_management.apim.publisher_email

@@ -87,18 +87,9 @@ parameters:
   #     dependsOn: 'Precheck'
   #     pipeline_tests: false
 
-  #   - deployment: 'sbox_apim'
-  #     environment: 'sbox'
-  #     component: 'apim'
-  #     service_connection: 'dcd-cftapps-sbox'
-  #     storage_account_rg: 'core-infra-sbox-rg'
-  #     storage_account_name: 'cftappssbox'
-  #     dependsOn: 'Precheck'
-  #     pipeline_tests: true
-    
-    - deployment: 'sbox_apim_migration'
+    - deployment: 'sbox_apim'
       environment: 'sbox'
-      component: 'apim-migrate'
+      component: 'apim'
       service_connection: 'dcd-cftapps-sbox'
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'

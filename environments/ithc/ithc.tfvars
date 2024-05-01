@@ -1670,6 +1670,14 @@ frontends = [
     dns_zone_name    = "ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
+    disabled_rules = {
+      SQLI = [
+        "942260"
+      ]
+      RFI = [
+        "931130"
+      ]
+    }
   },
   {
     product          = "sptribs-frontend"

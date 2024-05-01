@@ -472,11 +472,55 @@ frontends = [
   },
   {
     name           = "sscs-tya"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "track-appeal.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
-
+    disabled_rules = {
+          SQLI = [
+            "942100",
+            "942150",
+            "942200",
+            "942210",
+            "942230",
+            "942361",
+            "942380",
+            "942400",
+            "942440",
+          ]
+    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "tya-surname-appeal-validated"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+    ]
   },
   {
     name           = "xui-webapp"

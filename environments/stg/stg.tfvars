@@ -477,17 +477,17 @@ frontends = [
     dns_zone_name  = "aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     disabled_rules = {
-          SQLI = [
-            "942100",
-            "942150",
-            "942200",
-            "942210",
-            "942230",
-            "942361",
-            "942380",
-            "942400",
-            "942440",
-          ]
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+        "942440",
+      ]
     }
     global_exclusions = [
       {

@@ -1244,7 +1244,14 @@ frontends = [
     dns_zone_name  = "ithc.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
-
+    disabled_rules = {
+      SQLI = [
+        "942260"
+      ]
+      RFI = [
+        "931130"
+      ]
+    }
   },
   {
     name           = "lau"

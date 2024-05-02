@@ -738,6 +738,60 @@ frontends = [
     ]
   },
   {
+      product          = "sscs"
+      name             = "sscs-tya"
+      mode             = "Prevention"
+      custom_domain    = "www.track-benefit-appeal.service.gov.uk"
+      dns_zone_name    = "track-benefit-appeal.service.gov.uk"
+      backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+      certificate_name = "www-track-benefit-appeal-service-gov-uk"
+      disabled_rules = {
+        SQLI = [
+          "942100",
+          "942150",
+          "942200",
+          "942210",
+          "942230",
+          "942361",
+          "942380",
+          "942400",
+          "942440",
+        ]
+      }
+      global_exclusions = [
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "dtSa"
+        },
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "session"
+        },
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "__auth-token"
+        },
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "tya-surname-appeal-validated"
+        },
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "__state"
+        },
+        {
+          match_variable = "QueryStringArgNames"
+          operator       = "Equals"
+          selector       = "iss"
+        },
+      ]
+    },
+  {
     product          = "sscs"
     name             = "sscs-cor"
     mode             = "Prevention"

@@ -20,7 +20,6 @@ module "api-mgmt" {
   publisher_email                = var.publisher_email
   trigger_migration              = var.trigger_migration
   trigger_migration_temp_pip     = var.trigger_migration_temp_pip
-  migration_env                  = var.migration_env
 }
 
 resource "azurerm_api_management_named_value" "environment" {

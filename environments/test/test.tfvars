@@ -3,6 +3,7 @@ location               = "uksouth"
 env                    = "perftest"
 subscription           = "test"
 certificate_name_check = false
+trigger_migration = false
 
 backend_agw_private_ip_address = ["10.48.96.111", "10.48.96.114"]
 data_subscription              = "1c4f0704-a29e-403d-b719-b90c34ef14c9"

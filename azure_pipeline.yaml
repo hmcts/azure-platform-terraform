@@ -42,50 +42,50 @@ parameters:
   - name: environment_components
     type: object
     default:
-  #   - deployment: 'sbox_frontendappgateway'
-  #     environment: 'sbox'
-  #     component: 'frontendappgateway'
-  #     service_connection: 'dcd-cftapps-sbox'
-  #     storage_account_rg: 'core-infra-sbox-rg'
-  #     storage_account_name: 'cftappssbox'
-  #     dependsOn: 'Precheck'
-  #     pipeline_tests: false
+    - deployment: 'sbox_frontendappgateway'
+      environment: 'sbox'
+      component: 'frontendappgateway'
+      service_connection: 'dcd-cftapps-sbox'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+      pipeline_tests: false
 
-  #   - deployment: 'sbox_global'
-  #     environment: 'sbox'
-  #     component: 'global'
-  #     service_connection: 'dcd-cftapps-sbox'
-  #     storage_account_rg: 'core-infra-sbox-rg'
-  #     storage_account_name: 'cftappssbox'
-  #     dependsOn: 'Precheck'
-  #     pipeline_tests: true
+    - deployment: 'sbox_global'
+      environment: 'sbox'
+      component: 'global'
+      service_connection: 'dcd-cftapps-sbox'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+      pipeline_tests: true
 
-  #   - deployment: 'sbox_backendappgateway'
-  #     environment: 'sbox'
-  #     component: 'backendappgateway'
-  #     service_connection: 'dcd-cftapps-sbox'
-  #     storage_account_rg: 'core-infra-sbox-rg'
-  #     storage_account_name: 'cftappssbox'
-  #     dependsOn: 'Precheck'
-  #     pipeline_tests: false
+    - deployment: 'sbox_backendappgateway'
+      environment: 'sbox'
+      component: 'backendappgateway'
+      service_connection: 'dcd-cftapps-sbox'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+      pipeline_tests: false
 
-  #   - deployment: 'sbox_shutter_webapp'
-  #     environment: 'sbox'
-  #     component: 'shutter_static_webapp'
-  #     service_connection: 'dcd-cftapps-sbox'
-  #     storage_account_rg: 'core-infra-sbox-rg'
-  #     storage_account_name: 'cftappssbox'
-  #     dependsOn: 'Precheck'
-  #     pipeline_tests: false
+    - deployment: 'sbox_shutter_webapp'
+      environment: 'sbox'
+      component: 'shutter_static_webapp'
+      service_connection: 'dcd-cftapps-sbox'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+      pipeline_tests: false
 
-  #   - deployment: 'sbox_private_dns'
-  #     environment: 'sbox'
-  #     component: 'cftapps_private_dns'
-  #     service_connection: 'dcd-cftapps-sbox'
-  #     storage_account_rg: 'core-infra-sbox-rg'
-  #     storage_account_name: 'cftappssbox'
-  #     dependsOn: 'Precheck'
-  #     pipeline_tests: false
+    - deployment: 'sbox_private_dns'
+      environment: 'sbox'
+      component: 'cftapps_private_dns'
+      service_connection: 'dcd-cftapps-sbox'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+      pipeline_tests: false
 
     - deployment: 'sbox_apim'
       environment: 'sbox'
@@ -96,14 +96,14 @@ parameters:
       dependsOn: 'Precheck'
       pipeline_tests: true
 
-    # - deployment: 'sbox_apim_appgw'
-    #   environment: 'sbox'
-    #   component: 'apim-appgw'
-    #   service_connection: 'HMCTS-HUB-SBOX-INTSVC'
-    #   storage_account_rg: 'core-infra-sbox-rg'
-    #   storage_account_name: 'cftappssbox'
-    #   dependsOn: 'Precheck'
-    #   pipeline_tests: true
+    - deployment: 'sbox_apim_appgw'
+      environment: 'sbox'
+      component: 'apim-appgw'
+      service_connection: 'HMCTS-HUB-SBOX-INTSVC'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+      pipeline_tests: true
 
     # - deployment: 'dev_global'
     #   environment: 'dev'

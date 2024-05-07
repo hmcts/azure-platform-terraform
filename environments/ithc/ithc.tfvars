@@ -14,6 +14,8 @@ shutter_storage = "TODO"
 cdn_sku         = "TODO"
 shutter_rg      = "TODO"
 
+trigger_migration = false
+
 # Applications associated with default storage account shutter static website.
 # Teams that need a default shutter page should add their app frontend names to the list below.
 shutter_apps = [

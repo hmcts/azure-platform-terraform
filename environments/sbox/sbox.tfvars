@@ -11,6 +11,7 @@ key_vault_subscription         = "b72ab7b7-723f-4b18-b6f6-03b0f2c6a1bb"
 privatedns_subscription        = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
 oms_env                        = "sandbox"
 trigger_migration = false
+trigger_migration_temp_pip = true
 
 #FrontDoor access policy
 add_access_policy = true

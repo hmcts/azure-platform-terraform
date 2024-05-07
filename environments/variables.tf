@@ -179,3 +179,7 @@ variable "apim_appgw_max_capacity" {
 variable "trigger_migration" {
   default = false
 }
+
+variable "migration_env" {
+  default = "sbox"
+}

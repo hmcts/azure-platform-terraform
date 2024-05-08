@@ -7,7 +7,7 @@ module "ctags" {
 }
 
 module "api-mgmt" {
-  source                         = "git::https://github.com/hmcts/cnp-module-api-mgmt-private.git?ref=main"
+  source                         = "git::https://github.com/hmcts/cnp-module-api-mgmt-private.git?ref=DTSPO-17136-apim-upgrade"
   location                       = var.location
   sku_name                       = var.apim_sku_name
   virtual_network_resource_group = local.vnet_rg

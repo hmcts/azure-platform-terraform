@@ -2,7 +2,6 @@ project           = "hmcts"
 location          = "uksouth"
 env               = "ithc"
 subscription      = "ithc"
-trigger_migration = false
 
 backend_agw_private_ip_address = ["10.11.225.111", "10.11.225.115"]
 data_subscription              = "1c4f0704-a29e-403d-b719-b90c34ef14c9"

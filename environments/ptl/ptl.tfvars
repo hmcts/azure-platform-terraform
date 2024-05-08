@@ -1,6 +1,5 @@
 env               = "ptl"
 subscription      = "ptl"
-trigger_migration = false
 
 # BFA variables
 mgmt_vnet_name = "core-cftptl-intsvc-vnet"

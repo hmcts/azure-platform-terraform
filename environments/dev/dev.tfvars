@@ -2,7 +2,6 @@ project           = "hmcts"
 location          = "uksouth"
 env               = "preview"
 subscription      = "dev"
-trigger_migration = false
 
 data_subscription = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 oms_env           = "nonprod"

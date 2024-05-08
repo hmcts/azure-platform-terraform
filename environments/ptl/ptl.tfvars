@@ -1,5 +1,5 @@
-env          = "ptl"
-subscription = "ptl"
+env               = "ptl"
+subscription      = "ptl"
 trigger_migration = false
 
 # BFA variables

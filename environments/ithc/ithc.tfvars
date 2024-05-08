@@ -1,7 +1,7 @@
-project      = "hmcts"
-location     = "uksouth"
-env          = "ithc"
-subscription = "ithc"
+project           = "hmcts"
+location          = "uksouth"
+env               = "ithc"
+subscription      = "ithc"
 trigger_migration = false
 
 backend_agw_private_ip_address = ["10.11.225.111", "10.11.225.115"]

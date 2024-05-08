@@ -1,5 +1,5 @@
-env               = "ptl"
-subscription      = "ptl"
+env          = "ptl"
+subscription = "ptl"
 
 # BFA variables
 mgmt_vnet_name = "core-cftptl-intsvc-vnet"

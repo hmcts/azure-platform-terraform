@@ -1976,7 +1976,7 @@ frontends = [
   {
     product          = "sptribs-dss-update-case-web"
     name             = "sptribs-dss-update-case-web"
-    custom_domain    = "update.sptribs-frontend.ithc.platform.hmcts.net"
+    custom_domain    = "sptribs-dss-update-case-web.ithc.platform.hmcts.net"
     dns_zone_name    = "ithc.platform.hmcts.net"
     mode             = "Prevention"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]

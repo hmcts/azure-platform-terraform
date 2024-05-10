@@ -21,7 +21,7 @@ jobs:
 
       - name: Create a diff file
         run: |
-          git diff origin/master > ${{ env.working_directory }}diff.txt && cat ${{ env.working_directory }}diff.txt
+          git diff origin/master...remotes/origin/${{ github.head_ref }} > ${{ env.working_directory }}diff.txt && cat ${{ env.working_directory }}diff.txt
 
       - name: Generate a response
         run: |
@@ -38,7 +38,7 @@ jobs:
           fi
 
           file_contents=$(cat "${WORKING_DIRECTORY}${DIFF_FILE}")
-          json_body=$(jq -n --arg pt "pullrequest-summary" --arg p "$file_contents" '{prompt_type: $pt, prompt: $p}')
+          json_body=$(jq -n --arg pt "pullrequest-summary-perfile" --arg p "$file_contents" '{prompt_type: $pt, prompt: $p}')
 
           response=$(curl -s -i -X POST "${API_HOST}/predefined" \
               -H "Content-Type: application/json" \
@@ -67,7 +67,7 @@ jobs:
               echo -e "$response_body" > "${WORKING_DIRECTORY}${RESPONSE_MD_FILE}"
           else
               echo "Error sending file contents: $response_code"
-              echo -e "Request to gippi failed to process" > "${WORKING_DIRECTORY}${RESPONSE_MD_FILE}"
+              echo -e "Request to AEP failed to process" > "${WORKING_DIRECTORY}${RESPONSE_MD_FILE}"
           fi
 
           if [ $? -eq 0 ]; then
@@ -90,9 +90,9 @@ jobs:
         with:
           script: |
             const prBody = context.payload.pull_request.body || '';
-            const updatedBody = prBody.includes('## 🤖GIPPI PR SUMMARY🤖')
-              ? prBody.replace(/## 🤖GIPPI PR SUMMARY🤖[\s\S]*/, '') + '\n\n## 🤖GIPPI PR SUMMARY🤖\n\n' + process.env.response
-              : prBody + '\n\n## 🤖GIPPI PR SUMMARY🤖\n\n' + process.env.response;
+            const updatedBody = prBody.includes('## 🤖AEP PR SUMMARY🤖')
+              ? prBody.replace(/## 🤖AEP PR SUMMARY🤖[\s\S]*/, '') + '\n\n## 🤖AEP PR SUMMARY🤖\n\n' + process.env.response
+              : prBody + '\n\n## 🤖AEP PR SUMMARY🤖\n\n' + process.env.response;
             github.rest.pulls.update({
               pull_number: context.issue.number,
               owner: context.repo.owner,

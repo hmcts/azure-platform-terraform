@@ -1689,11 +1689,54 @@ frontends = [
   {
     product          = "ia"
     name             = "ia-aip"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.appeal-immigration-asylum-decision.service.gov.uk"
     dns_zone_name    = "appeal-immigration-asylum-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "appeal-immigration-asylum-decision-service-gov-uk"
+    disabled_rules = {
+      LFI = [
+        "930120",
+        "930100",
+        "930130",
+        "930110"
+      ]
+      RCE = [
+        "932105",
+        "932110",
+        "932115",
+        "932120",
+        "932130",
+        "932150",
+        "932160",
+        "932100"
+      ]
+      RFI = [
+        "931130",
+        "931100"
+      ]
+      SQLI = [
+        "942100",
+        "942110",
+        "942150",
+        "942160",
+        "942180",
+        "942190",
+        "942200",
+        "942240",
+        "942260",
+        "942280",
+        "942300",
+        "942330",
+        "942340",
+        "942370",
+        "942400",
+        "942410",
+        "942430",
+        "942450",
+        "942440"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -1706,6 +1749,36 @@ frontends = [
         selector       = "iss"
       },
       {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "\\'analytics\\'"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "questionId"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "answer"
+      },
+      {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "session"
@@ -1714,6 +1787,16 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "StartsWith"
         selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "analytics_consent"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "apm_consent"
       },
       {
         match_variable = "RequestCookieNames"
@@ -2555,136 +2638,6 @@ frontends = [
         "942400",
       ]
     }
-  },
-  {
-    product                     = "idam"
-    name                        = "idam-web-admin"
-    custom_domain               = "idam-web-admin.platform.hmcts.net"
-    dns_zone_name               = "platform.hmcts.net"
-    backend_domain              = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name            = "idam-web-admin-platform-hmcts-net"
-    appgw_cookie_based_affinity = "Enabled"
-    cache_enabled               = "false"
-    custom_rules = [
-      {
-        name     = "IPMatchWhitelist"
-        priority = 1
-        type     = "MatchRule"
-        action   = "Block"
-        match_conditions = [
-          {
-            match_variable     = "RemoteAddr"
-            operator           = "IPMatch"
-            negation_condition = true
-            match_values = [
-              "51.145.34.88/32",
-              "81.134.202.29/32",
-              "51.145.6.230/32",
-              "51.145.4.100/32",
-              "194.33.192.0/25",
-              "51.149.249.0/27",
-              "194.33.196.0/25",
-              "51.149.249.32/27",
-              "52.210.206.51/32",
-              "62.25.109.201/32",
-              "62.25.109.203/32"
-            ]
-          }
-        ]
-      },
-    ],
-    global_exclusions = [
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "activationRedirectUrl"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "activationRedirectUrl"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "description"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "dtSa"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "Idam.AuthId"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "Idam.Session"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "jwt"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "label"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "oauth2ClientId"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "oauth2ClientSecret"
-      },
-      {
-        match_variable = "QueryStringArgNames",
-        operator       = "Equals",
-        selector       = "oauth2RedirectUris"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "oauth2RedirectUris"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "StartsWith",
-        selector       = "password"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames",
-        operator       = "Equals",
-        selector       = "redirectUri"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "refresh_token"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "refresh_token"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "token"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "token"
-      },
-    ]
   },
   {
     product          = "idam"

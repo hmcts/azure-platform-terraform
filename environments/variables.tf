@@ -185,6 +185,6 @@ variable "trigger_migration_temp_pip" {
 }
 
 variable "temp_subnet_address_prefixes" {
-  type = string
+  type    = string
   default = ""
 }

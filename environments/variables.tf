@@ -183,3 +183,8 @@ variable "trigger_migration" {
 variable "trigger_migration_temp_pip" {
   default = false
 }
+
+variable "temp_subnet_address_prefixes" {
+  type = string
+  default = ""
+}

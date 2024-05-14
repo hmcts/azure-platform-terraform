@@ -7,7 +7,7 @@ module "ctags" {
 }
 
 module "api-mgmt" {
-  source                         = "git::https://github.com/hmcts/cnp-module-api-mgmt-private.git?ref=main"
+  source                         = "git::https://github.com/hmcts/cnp-module-api-mgmt-private.git?ref=DTSPO-17136-apim-upgrade-ithc"
   location                       = var.location
   sku_name                       = var.apim_sku_name
   virtual_network_resource_group = local.vnet_rg
@@ -20,6 +20,7 @@ module "api-mgmt" {
   publisher_email                = var.publisher_email
   trigger_migration              = var.trigger_migration
   trigger_migration_temp_pip     = var.trigger_migration_temp_pip
+  temp_subnet_address_prefixes   = var.temp_subnet_address_prefixes
 }
 
 resource "azurerm_api_management_named_value" "environment" {

@@ -14,8 +14,8 @@ shutter_storage = "TODO"
 cdn_sku         = "TODO"
 shutter_rg      = "TODO"
 
-trigger_migration            = true
-trigger_migration_temp_pip   = true
+trigger_migration            = false
+trigger_migration_temp_pip   = false
 temp_subnet_address_prefixes = "10.11.226.0/24"
 
 # Applications associated with default storage account shutter static website.

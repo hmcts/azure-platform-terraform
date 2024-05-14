@@ -176,15 +176,12 @@ variable "apim_appgw_max_capacity" {
   default = 2
 }
 
-variable "trigger_migration" {
-  default = false
-}
-
-variable "trigger_migration_temp_pip" {
-  default = false
-}
-
-variable "temp_subnet_address_prefixes" {
-  type    = string
-  default = ""
+variable "migration_variables" {
+  description = "Migration related variables"
+  type = object({
+    trigger_migration            = optional(bool, false)
+    trigger_migration_temp_pip   = optional(bool, false)
+    temp_subnet_address_prefixes = optional(string, "")
+  })
+  default = {}
 }

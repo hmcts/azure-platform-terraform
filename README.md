@@ -1,4 +1,4 @@
-# azure-platform-terraform
+# azure-platform-terraformt
 All things terraform
 
 ## Pre-commit Installation

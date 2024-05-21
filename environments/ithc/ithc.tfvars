@@ -4,7 +4,7 @@ env          = "ithc"
 subscription = "ithc"
 
 migration_variables = {
-  trigger_migration            = true
+  trigger_migration            = false
   trigger_migration_temp_pip   = true
   temp_subnet_address_prefixes = "10.11.226.0/24"
 }

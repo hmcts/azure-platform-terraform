@@ -175,3 +175,13 @@ variable "autoShutdown" {
 variable "apim_appgw_max_capacity" {
   default = 2
 }
+
+variable "migration_variables" {
+  description = "Migration related variables"
+  type = object({
+    trigger_migration            = optional(bool, false)
+    trigger_migration_temp_pip   = optional(bool, false)
+    temp_subnet_address_prefixes = optional(string, "")
+  })
+  default = {}
+}

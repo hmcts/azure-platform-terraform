@@ -230,6 +230,9 @@ gateways:
       - product: idam
         component: user-dashboard
         ssl_enabled: true
+      - product: idam
+        component: user-profile-bridge
+        ssl_enabled: true
 
  # FACT
       - product: fact

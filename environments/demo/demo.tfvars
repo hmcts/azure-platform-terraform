@@ -13,6 +13,12 @@ oms_env                 = "nonprod"
 #trigger precommit
 hub = "nonprod"
 
+migration_variables = {
+  trigger_migration            = false
+  trigger_migration_temp_pip   = true
+  temp_subnet_address_prefixes = "10.50.98.0/24"
+}
+
 frontends = [
   {
     name                           = "reformscan"

@@ -17,7 +17,7 @@ resources:
 
 variables:
   - name: timeoutInMinutes
-    value: 60
+    value: 90
   - name: agentPool
     value: 'ubuntu-latest'
   - name: build

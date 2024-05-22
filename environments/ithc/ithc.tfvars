@@ -3,12 +3,6 @@ location     = "uksouth"
 env          = "ithc"
 subscription = "ithc"
 
-migration_variables = {
-  trigger_migration            = false
-  trigger_migration_temp_pip   = false
-  temp_subnet_address_prefixes = "10.11.226.0/24"
-}
-
 backend_agw_private_ip_address = ["10.11.225.111", "10.11.225.115"]
 data_subscription              = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"

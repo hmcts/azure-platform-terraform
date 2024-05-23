@@ -30,7 +30,7 @@ jobs:
         with:
           python-version: '3.10'
       - name: yq - portable yaml processor
-        uses: mikefarah/yq@v4.43.1
+        uses: mikefarah/yq@v4.44.1
 
       - uses: pre-commit/action@v3.0.1
         with: 

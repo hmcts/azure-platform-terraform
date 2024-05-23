@@ -3114,7 +3114,7 @@ frontends = [
     dns_zone_name    = "special-tribunals.service.gov.uk"
     ssl_mode         = "AzureKeyVault"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "special-tribunals-service-gov-uk"
+    certificate_name = "update-special-tribunals-service-gov-uk"
     www_redirect     = true
     global_exclusions = [
       {

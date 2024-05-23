@@ -21,9 +21,9 @@ shutter_apps = [
 ]
 
 migration_variables = {
-trigger_migration = true
-trigger_migration_temp_pip = true 
-temp_subnet_address_prefixes = "10.10.162.0/24"
+  trigger_migration            = true
+  trigger_migration_temp_pip   = true
+  temp_subnet_address_prefixes = "10.10.162.0/24"
 }
 
 

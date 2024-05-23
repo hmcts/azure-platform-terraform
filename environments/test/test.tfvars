@@ -19,6 +19,13 @@ shutter_apps = [
   "TODO"
 ]
 
+migration_variables = {
+  trigger_migration            = true
+  trigger_migration_temp_pip   = true
+  temp_subnet_address_prefixes = "10.48.98.0/24"
+}
+
+
 cft_apps_ag_ip_address          = "10.48.96.123"
 frontend_agw_private_ip_address = "10.48.96.113"
 cft_apps_cluster_ips            = ["10.48.79.250", "10.48.95.250"]
@@ -2109,6 +2116,16 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "cui-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cui-ra-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "_ga_"
       },
       {
         match_variable = "RequestCookieNames"

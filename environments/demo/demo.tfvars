@@ -15,7 +15,7 @@ hub = "nonprod"
 
 migration_variables = {
   trigger_migration            = false
-  trigger_migration_temp_pip   = true
+  trigger_migration_temp_pip   = false
   temp_subnet_address_prefixes = "10.50.98.0/24"
 }
 
@@ -3104,6 +3104,16 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "cui-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cui-ra-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "_ga_"
       },
       {
         match_variable = "RequestCookieNames"

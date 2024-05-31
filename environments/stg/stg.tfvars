@@ -21,13 +21,6 @@ shutter_apps = [
   "TODO"
 ]
 
-migration_variables = {
-  trigger_migration            = false
-  trigger_migration_temp_pip   = false
-  temp_subnet_address_prefixes = "10.10.162.0/24"
-}
-
-
 frontend_agw_private_ip_address = "10.10.161.102"
 cft_apps_cluster_ips            = ["10.10.143.250", "10.10.159.250"]
 

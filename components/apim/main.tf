@@ -18,7 +18,6 @@ module "api-mgmt" {
   common_tags                    = module.ctags.common_tags
   route_next_hop_in_ip_address   = local.hub[var.hub].ukSouth.next_hop_ip
   publisher_email                = var.publisher_email
-  migration_variables            = var.migration_variables
 }
 
 resource "azurerm_api_management_named_value" "environment" {

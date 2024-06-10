@@ -3371,6 +3371,7 @@ frontends = [
     certificate_name = "employmenttribunals-service-gov-uk"
     shutter_app      = true
     dns_zone_name    = "employmenttribunals.service.gov.uk"
+    ssl_mode         = "AzureKeyVault"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

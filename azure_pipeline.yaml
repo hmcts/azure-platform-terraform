@@ -11,7 +11,7 @@ resources:
   repositories:
   - repository: cnp-azuredevops-libraries
     type: github
-    ref: refs/heads/master
+    ref: refs/heads/dtspo-17345-reinstate-nagger-jg
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
 
@@ -384,6 +384,7 @@ stages:
               cluster: '00'
               environment: 'sbox'
               runManualStart: true
+              environment_components: ${{ parameters.environment_components }}
 
 
   - ${{ each deployment in parameters.environment_components }}:

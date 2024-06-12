@@ -387,40 +387,40 @@ stages:
               environment_components: ${{ parameters.environment_components }}
 
 
-  - ${{ each deployment in parameters.environment_components }}:
-    - stage: ${{ deployment.deployment }}
-      dependsOn: ${{ deployment.dependsOn }}
-      jobs:
-        - job: TerraformPlanApply
-          pool:
-            vmImage: ${{ variables.agentPool }}
-          timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-          steps:
-          - template: steps/terraform.yaml@cnp-azuredevops-libraries
-            parameters:
-              overrideAction: ${{ parameters.overrideAction }}
-              environment: ${{ deployment.environment }}
-              component: ${{ deployment.component }}
-              serviceConnection: ${{ deployment.service_connection }}
-              terraformInitSubscription: ${{ variables.terraformInitSubscription }}
-              product: ${{ variables.product }}
+  # - ${{ each deployment in parameters.environment_components }}:
+  #   - stage: ${{ deployment.deployment }}
+  #     dependsOn: ${{ deployment.dependsOn }}
+  #     jobs:
+  #       - job: TerraformPlanApply
+  #         pool:
+  #           vmImage: ${{ variables.agentPool }}
+  #         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+  #         steps:
+  #         - template: steps/terraform.yaml@cnp-azuredevops-libraries
+  #           parameters:
+  #             overrideAction: ${{ parameters.overrideAction }}
+  #             environment: ${{ deployment.environment }}
+  #             component: ${{ deployment.component }}
+  #             serviceConnection: ${{ deployment.service_connection }}
+  #             terraformInitSubscription: ${{ variables.terraformInitSubscription }}
+  #             product: ${{ variables.product }}
 
-        - job: PipelineTests
-          pool:
-            vmImage: ${{ variables.agentPool }}
-          timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-          dependsOn: TerraformPlanApply
-          condition: and(succeeded(), eq(variables['isMain'], true), eq('${{ deployment.pipeline_tests }}', 'true'))
-          steps:
-            - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
-              parameters:
-                workingDirectory: $(Pipeline.Workspace)/s/azure-platform-terraform/scripts
-                junit_output_dir: $(Pipeline.Workspace)/s/azure-platform-terraform/environments/${{ deployment.environment }}/junit
-                environment: ${{ deployment.environment }}
-                product: ${{ variables.product }}
-                test_title: '${{ deployment.environment }}_${{ deployment.component }}'
-                ${{ if eq(deployment.component, 'apim') }}:
-                  test_pattern: apim.test.ts
-                ${{ else }}:
-                  test_pattern: pipeline.test.ts
+  #       - job: PipelineTests
+  #         pool:
+  #           vmImage: ${{ variables.agentPool }}
+  #         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+  #         dependsOn: TerraformPlanApply
+  #         condition: and(succeeded(), eq(variables['isMain'], true), eq('${{ deployment.pipeline_tests }}', 'true'))
+  #         steps:
+  #           - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
+  #             parameters:
+  #               workingDirectory: $(Pipeline.Workspace)/s/azure-platform-terraform/scripts
+  #               junit_output_dir: $(Pipeline.Workspace)/s/azure-platform-terraform/environments/${{ deployment.environment }}/junit
+  #               environment: ${{ deployment.environment }}
+  #               product: ${{ variables.product }}
+  #               test_title: '${{ deployment.environment }}_${{ deployment.component }}'
+  #               ${{ if eq(deployment.component, 'apim') }}:
+  #                 test_pattern: apim.test.ts
+  #               ${{ else }}:
+  #                 test_pattern: pipeline.test.ts
 

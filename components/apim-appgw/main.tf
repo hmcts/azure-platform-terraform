@@ -53,6 +53,9 @@ module "app-gw" {
     "civil_sdt_root_ca" = {
       path = data.azurerm_key_vault_secret.civil-sdt-root-ca.value
     }
+    "reform_scan_sscs_ca" = {
+      path = data.azurerm_key_vault_secret.reform-scan-sscs-ca.value
+    }
   }
 
   depends_on = [data.external.bash_script]

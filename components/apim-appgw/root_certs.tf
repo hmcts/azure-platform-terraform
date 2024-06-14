@@ -11,3 +11,10 @@ data "azurerm_key_vault_secret" "civil-sdt-root-ca" {
 
   provider = azurerm.kv
 }
+
+data "azurerm_key_vault_secret" "reform-scan-sscs-ca" {
+  name         = "reform-scan-sscs-ca"
+  key_vault_id = data.azurerm_key_vault.key_vault.id
+
+  provider = azurerm.kv
+}

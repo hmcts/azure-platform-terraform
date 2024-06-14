@@ -20,6 +20,7 @@ gateways:
         verify_client_cert_issuer_dn: true
         add_ssl_profile: true
         rootca_certificate_name: reform_scan_sscs_ca
+        add_rewrite_rule: true
         rewrite_rules:
           - name: "AddCustomHeadersRule"
             sequence: "100"

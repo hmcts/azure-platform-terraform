@@ -17,6 +17,15 @@ gateways:
         ssl_certificate_name: wildcard-perftest-platform-hmcts-net
         host_name_suffix: perftest.platform.hmcts.net
         ssl_host_name_suffix: perftest.platform.hmcts.net
+        verify_client_cert_issuer_dn: true
+        add_ssl_profile: true
+        rootca_certificate_name: reform-scan-sscs-ca
+        rewrite_rules:
+          - name: "AddCustomHeadersRule"
+            sequence: "100"
+            request_headers:
+              - header_name: "X-ARR-ClientCertThumbprint"
+                header_value: "{var_client_certificate_fingerprint}"
       - product: civil
         component: sdt-commissioning
         ssl_enabled: true

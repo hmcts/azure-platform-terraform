@@ -19,7 +19,7 @@ gateways:
         ssl_host_name_suffix: perftest.platform.hmcts.net
         verify_client_cert_issuer_dn: true
         add_ssl_profile: true
-        rootca_certificate_name: reform-scan-sscs-ca
+        rootca_certificate_name: reform_scan_sscs_ca
         rewrite_rules:
           - name: "AddCustomHeadersRule"
             sequence: "100"

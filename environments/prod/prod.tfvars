@@ -1577,6 +1577,7 @@ frontends = [
     dns_zone_name    = "apply-for-probate.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-for-probate-service-gov-uk"
+    cache_enabled    = "false"
     custom_rules = [
       {
         name     = "RumBeaconExclusion"

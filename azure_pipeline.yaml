@@ -384,7 +384,6 @@ stages:
               cluster: '00'
               environment: 'sbox'
               runManualStart: true
-              environment_components: ${{ parameters.environment_components }}
 
 
   # - ${{ each deployment in parameters.environment_components }}:

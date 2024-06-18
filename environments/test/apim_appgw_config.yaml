@@ -21,6 +21,9 @@ gateways:
         add_ssl_profile: true
         ssl_profile_certificates:
          - rootca_certificate_name: reform_scan_sscs_ca
+         - rootca_certificate_name: dts_bsp_team_ca
+         - rootca_certificate_name: exela_uat_ca
+         - rootca_certificate_name: iron_mountain_ca
         add_rewrite_rule: true
         rewrite_rules:
           - name: "AddCustomHeadersRule"

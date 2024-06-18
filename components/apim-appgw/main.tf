@@ -56,6 +56,15 @@ module "app-gw" {
     "reform_scan_sscs_ca" = {
       path = data.azurerm_key_vault_secret.reform-scan-sscs-ca.value
     }
+    "dts_bsp_team_ca" = {
+      path = data.azurerm_key_vault_secret.dts-bsp-team-ca.value
+    }
+    "exela_uat_ca" = {
+      path = data.azurerm_key_vault_secret.exela-uat-ca.value
+    }
+    "iron_mountain_ca" = {
+      path = data.azurerm_key_vault_secret.iron-mountain-ca.value
+    }
   }
 
   depends_on = [data.external.bash_script]

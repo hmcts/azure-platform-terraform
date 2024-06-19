@@ -1,3 +1,47 @@
+locals {
+  trusted_client_certificates = {
+    sbox = {
+      "lets_encrypt" = {
+          path = file("${path.module}/merged.pem")
+        }
+    }
+    test = {
+      "lets_encrypt" = {
+          path = file("${path.module}/merged.pem")
+        }
+      "civil_sdt_root_ca" = {
+        path = data.azurerm_key_vault_secret.civil-sdt-root-ca.value
+      }
+      "reform_scan_sscs_ca" = {
+        path = data.azurerm_key_vault_secret.reform-scan-sscs-ca.value
+      }
+      "dts_bsp_team_ca" = {
+        path = data.azurerm_key_vault_secret.dts-bsp-team-ca.value
+      }
+      "exela_uat_ca" = {
+        path = data.azurerm_key_vault_secret.exela-uat-ca.value
+      }
+      "iron_mountain_ca" = {
+        path = data.azurerm_key_vault_secret.iron-mountain-ca.value
+      }
+  }
+    prod = {
+      "civil_sdt_root_ca" = {
+          path = data.azurerm_key_vault_secret.civil-sdt-root-ca.value
+        }
+    }
+    dev = {
+    }
+    ithc = {
+    }
+    demo = {
+    }
+    stg = {
+    }
+  }
+}
+
+
 data "azurerm_key_vault" "key_vault" {
   name                = local.key_vault_name
   resource_group_name = local.key_vault_resource_group

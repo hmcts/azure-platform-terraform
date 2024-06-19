@@ -17,6 +17,7 @@ data "azurerm_subscription" "current" {}
 locals {
   key_vault_name = "acmedcdcftapps${var.subscription}"
   dns_zone       = (var.env == "sbox") ? "sandbox" : var.env
+  trusted_client_certificate_data = lookup(local.trusted_client_certificates, local.env, {})
 }
 
 module "app-gw" {
@@ -46,26 +47,7 @@ module "app-gw" {
   public_ip_enable_multiple_availability_zones = true
   min_capacity                                 = var.apim_appgw_min_capacity
   max_capacity                                 = var.apim_appgw_max_capacity
-  trusted_client_certificate_data = {
-    "lets_encrypt" = {
-      path = file("${path.module}/merged.pem")
-    }
-    "civil_sdt_root_ca" = {
-      path = data.azurerm_key_vault_secret.civil-sdt-root-ca.value
-    }
-    "reform_scan_sscs_ca" = {
-      path = data.azurerm_key_vault_secret.reform-scan-sscs-ca.value
-    }
-    "dts_bsp_team_ca" = {
-      path = data.azurerm_key_vault_secret.dts-bsp-team-ca.value
-    }
-    "exela_uat_ca" = {
-      path = data.azurerm_key_vault_secret.exela-uat-ca.value
-    }
-    "iron_mountain_ca" = {
-      path = data.azurerm_key_vault_secret.iron-mountain-ca.value
-    }
-  }
+  trusted_client_certificate_data              = local.trusted_client_certificate_data
 
   depends_on = [data.external.bash_script]
 }

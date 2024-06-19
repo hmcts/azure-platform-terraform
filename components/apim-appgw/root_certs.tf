@@ -2,13 +2,13 @@ locals {
   trusted_client_certificates = {
     sbox = {
       "lets_encrypt" = {
-          path = file("${path.module}/merged.pem")
-        }
+        path = file("${path.module}/merged.pem")
+      }
     }
     test = {
       "lets_encrypt" = {
-          path = file("${path.module}/merged.pem")
-        }
+        path = file("${path.module}/merged.pem")
+      }
       "civil_sdt_root_ca" = {
         path = data.azurerm_key_vault_secret.civil-sdt-root-ca.value
       }
@@ -24,11 +24,11 @@ locals {
       "iron_mountain_ca" = {
         path = data.azurerm_key_vault_secret.iron-mountain-ca.value
       }
-  }
+    }
     prod = {
       "civil_sdt_root_ca" = {
-          path = data.azurerm_key_vault_secret.civil-sdt-root-ca.value
-        }
+        path = data.azurerm_key_vault_secret.civil-sdt-root-ca.value
+      }
     }
     dev = {
     }

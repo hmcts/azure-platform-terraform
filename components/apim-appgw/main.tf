@@ -15,8 +15,8 @@ module "logworkspace" {
 data "azurerm_subscription" "current" {}
 
 locals {
-  key_vault_name = "acmedcdcftapps${var.subscription}"
-  dns_zone       = (var.env == "sbox") ? "sandbox" : var.env
+  key_vault_name                  = "acmedcdcftapps${var.subscription}"
+  dns_zone                        = (var.env == "sbox") ? "sandbox" : var.env
   trusted_client_certificate_data = lookup(local.trusted_client_certificates, local.env, {})
 }
 

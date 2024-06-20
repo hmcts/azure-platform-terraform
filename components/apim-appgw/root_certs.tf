@@ -71,12 +71,15 @@ data "azurerm_key_vault" "key_vault" {
 
 data "azurerm_key_vault_secret" "secrets" {
   for_each     = toset(local.cert_names)
-  name         = lookup(local.trusted_client_certificate_data, each.value)
+  name         = lookup(local.trusted_client_certificate_data, each.key)
   key_vault_id = data.azurerm_key_vault.key_vault.id
 
   provider = azurerm.kv
 }
 
+output "secrets" {
+  value = data.azurerm_key_vault_secret.secrets
+}
 
 # data "azurerm_key_vault_secret" "civil-sdt-root-ca" {
 #   name         = "civil-sdt-root-ca"

@@ -71,7 +71,7 @@ data "azurerm_key_vault" "key_vault" {
 
 data "azurerm_key_vault_secret" "secrets" {
   for_each     = toset(local.cert_names)
-  name         = lookup(local.trusted_client_certificate_data, each.key)
+  name         = lookup(local.trusted_client_certificate_data, each.value)
   key_vault_id = data.azurerm_key_vault.key_vault.id
 
   provider = azurerm.kv

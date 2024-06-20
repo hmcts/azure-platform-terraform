@@ -48,7 +48,7 @@ module "app-gw" {
   max_capacity                                 = var.apim_appgw_max_capacity
   trusted_client_certificate_data = merge(
     {
-      for cert_name, _ in local.cert_names :
+      for cert_name in local.cert_names :
       cert_name => {
         path = data.azurerm_key_vault_secret.secrets[cert_name].value
       }

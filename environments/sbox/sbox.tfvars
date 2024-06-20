@@ -698,6 +698,15 @@ frontends = [
     backend_domain   = ["lb-sbox-int-labs-apps-njs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
   },
+  {
+    product          = "labs-goldenpath-khaled"
+    name             = "labs-goldenpath-khaled"
+    custom_domain    = "labs-goldenpath-khaled.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-khaled.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
 ]
 
 apim_appgw_exclusions = [

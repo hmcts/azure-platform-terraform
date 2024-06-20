@@ -1,51 +1,8 @@
 locals {
-  # trusted_client_certificates = {
-  #   sbox = {
-  #     "lets_encrypt" = {
-  #       path = file("${path.module}/merged.pem")
-  #     }
-  #   }
-  #   test = {
-  #     "lets_encrypt" = {
-  #       path = file("${path.module}/merged.pem")
-  #     }
-  #     "civil_sdt_root_ca" = {
-  #       path = data.azurerm_key_vault_secret.civil-sdt-root-ca.value
-  #     }
-  #     "reform_scan_sscs_ca" = {
-  #       path = data.azurerm_key_vault_secret.reform-scan-sscs-ca.value
-  #     }
-  #     "dts_bsp_team_ca" = {
-  #       path = data.azurerm_key_vault_secret.dts-bsp-team-ca.value
-  #     }
-  #     "exela_uat_ca" = {
-  #       path = data.azurerm_key_vault_secret.exela-uat-ca.value
-  #     }
-  #     "iron_mountain_ca" = {
-  #       path = data.azurerm_key_vault_secret.iron-mountain-ca.value
-  #     }
-  #   }
-  #   prod = {
-  #     "civil_sdt_root_ca" = {
-  #       path = data.azurerm_key_vault_secret.civil-sdt-root-ca.value
-  #     }
-  #   }
-  #   dev = {
-  #   }
-  #   ithc = {
-  #   }
-  #   demo = {
-  #   }
-  #   stg = {
-  #   }
-  # }
-
   trusted_client_certificates = {
     sbox = {
-      lets_encrypt = file("${path.module}/merged.pem")
     }
     test = {
-      lets_encrypt        = file("${path.module}/merged.pem")
       civil_sdt_root_ca   = "civil-sdt-root-ca"
       reform_scan_sscs_ca = "reform-scan-sscs-ca"
       dts_bsp_team_ca     = "dts-bsp-team-ca"
@@ -79,6 +36,10 @@ data "azurerm_key_vault_secret" "secrets" {
 
 output "secrets" {
   value = data.azurerm_key_vault_secret.secrets
+}
+
+output "cert_data" {
+  value = local.trusted_client_certificate_data
 }
 
 # data "azurerm_key_vault_secret" "civil-sdt-root-ca" {

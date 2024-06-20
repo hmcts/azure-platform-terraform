@@ -46,9 +46,16 @@ module "app-gw" {
   public_ip_enable_multiple_availability_zones = true
   min_capacity                                 = var.apim_appgw_min_capacity
   max_capacity                                 = var.apim_appgw_max_capacity
-  trusted_client_certificate_data = {
-    for cert_name, cert_value in local.trusted_client_certificate_data : cert_name => data.azurerm_key_vault_secret.secrets[cert_name].value
-  }
+  trusted_client_certificate_data = merge(
+    {
+      for cert_name, cert_value in local.trusted_client_certificate_data : cert_name => data.azurerm_key_vault_secret.secrets[cert_name].value
+    },
+    {
+      "lets_encrypt" = {
+        path = file("${path.module}/merged.pem")
+      }
+    }
+  )
 
   depends_on = [data.external.bash_script]
 }

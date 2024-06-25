@@ -37,6 +37,7 @@ gateways:
         verify_client_cert_issuer_dn: true
         rootca_certificates:
           - rootca_certificate_name: civil_sdt_root_ca
+          - rootca_certificate_name: civil_dupe_testing_ca
         ssl_certificate_name: civil-sdt-commissioning-nle
         host_name_prefix: cft-mtls-api-mgmt-appgw
         host_name_suffix: perftest.platform.hmcts.net

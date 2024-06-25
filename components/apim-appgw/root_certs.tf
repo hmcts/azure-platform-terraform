@@ -3,11 +3,12 @@ locals {
     sbox = {
     }
     test = {
-      civil_sdt_root_ca   = "civil-sdt-root-ca"
-      reform_scan_sscs_ca = "reform-scan-sscs-ca"
-      dts_bsp_team_ca     = "dts-bsp-team-ca"
-      exela_uat_ca        = "exela-uat-ca"
-      iron_mountain_ca    = "iron-mountain-ca"
+      civil_sdt_root_ca     = "civil-sdt-root-ca"
+      civil_dupe_testing_ca = "civil-dupe-testing-ca"
+      reform_scan_sscs_ca   = "reform-scan-sscs-ca"
+      dts_bsp_team_ca       = "dts-bsp-team-ca"
+      exela_uat_ca          = "exela-uat-ca"
+      iron_mountain_ca      = "iron-mountain-ca"
     }
     prod = {
       civil_sdt_root_ca = "civil-sdt-root-ca"

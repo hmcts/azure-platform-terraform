@@ -22,7 +22,7 @@ gateways:
         rootca_certificates:
          - rootca_certificate_name: civil_sdt_root_ca
          - rootca_certificate_name: civil_dupe_testing_ca
-         - rootca_certificate_name: exela_uat_ca
+         - rootca_certificate_name: reform_scan_sscs_ca
         add_rewrite_rule: true
         rewrite_rules:
           - name: "AddCustomHeadersRule"

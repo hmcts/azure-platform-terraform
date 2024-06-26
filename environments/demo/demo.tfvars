@@ -1253,6 +1253,11 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "returnUrl"
+      },
+      {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "connect.sid"
@@ -2847,6 +2852,11 @@ frontends = [
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_super_session"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"

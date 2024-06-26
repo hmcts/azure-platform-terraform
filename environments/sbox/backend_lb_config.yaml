@@ -1,5 +1,4 @@
 ---
-
 gateways:
   - gateway_configuration:
       host_name_suffix: service.core-compute-sandbox.internal
@@ -7,17 +6,17 @@ gateways:
       certificate_name: wildcard-sandbox-platform-hmcts-net
       private_ip_address: 10.2.13.112
     app_configuration:
-    # RPE
+      # RPE
       - product: draft-store
         component: service
-    # Probate
+      # Probate
       - product: probate
         component: business-service
       - product: probate
         component: orchestrator-service
       - product: probate
         component: submit-service
-    # I&A
+      # I&A
       - product: ia
         component: case-api
       - product: ia
@@ -29,7 +28,7 @@ gateways:
       - product: ia
         component: hearings-api
 
-    # Reference DATA
+      # Reference DATA
       - product: rd
         component: professional-api
       - product: rd
@@ -37,34 +36,34 @@ gateways:
       - product: rd
         component: profile-sync
 
-    # Divorce
+      # Divorce
       - product: div
         component: emca
 
-    # SSCS
+      # SSCS
       - product: sscs
         component: tribunals-api
       - product: sscs
         component: evidence-share
 
-    # FPLA
+      # FPLA
       - product: fpl
         component: case-service
 
-    # Fees and Pay
+      # Fees and Pay
       - product: payment
         component: api
 
-    # Plum Frontend
+      # Plum Frontend
       - product: plum
         component: frontend
-    #labs
+      #labs
       - product: "labs"
         component: apps-njs
       - product: "labs"
         component: dj-khaled
 
-    # SIDAM 
+      # SIDAM
       - product: idam
         component: api
         ssl_enabled: true
@@ -117,3 +116,13 @@ gateways:
         ssl_enabled: true
         host_name_prefix: docmosis
         http_to_https_redirect: true
+        add_rewrite_rule: true
+        rewrite_rules:
+          - name: "DocmosisApiRewriteRule"
+            sequence: "200"
+            conditions:
+              - variable: "var_uri_path"
+                pattern: ".*/rs"
+            url:
+              components: "path_only"
+              path: "/api"

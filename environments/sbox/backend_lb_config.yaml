@@ -61,6 +61,8 @@ gateways:
     #labs
       - product: "labs"
         component: apps-njs
+      - product: "labs"
+        component: dj-khaled
 
     # SIDAM 
       - product: idam

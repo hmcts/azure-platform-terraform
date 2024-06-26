@@ -19,7 +19,8 @@ gateways:
         ssl_host_name_suffix: perftest.platform.hmcts.net
         verify_client_cert_issuer_dn: true
         add_ssl_profile: true
-        rootca_certificate_name: reform_scan_sscs_ca
+        rootca_certificates:
+         - rootca_certificate_name: reform_scan_sscs_ca
         add_rewrite_rule: true
         rewrite_rules:
           - name: "AddCustomHeadersRule"
@@ -34,7 +35,8 @@ gateways:
         health_path_override: "/status-0123456789abcdef"
         add_ssl_profile: true
         verify_client_cert_issuer_dn: true
-        rootca_certificate_name: civil_sdt_root_ca
+        rootca_certificates:
+          - rootca_certificate_name: civil_sdt_root_ca
         ssl_certificate_name: civil-sdt-commissioning-nle
         host_name_prefix: cft-mtls-api-mgmt-appgw
         host_name_suffix: perftest.platform.hmcts.net
@@ -68,7 +70,8 @@ gateways:
         health_path_override: "/status-0123456789abcdef"
         add_ssl_profile: true
         verify_client_cert_issuer_dn: true
-        rootca_certificate_name: civil_sdt_root_ca
+        rootca_certificates:
+          - rootca_certificate_name: civil_sdt_root_ca
         ssl_certificate_name: civil-sdt-nle
         host_name_prefix: cft-mtls-api-mgmt-appgw
         host_name_suffix: perftest.platform.hmcts.net

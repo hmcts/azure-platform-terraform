@@ -15,7 +15,8 @@ gateways:
         health_path_override: "/status-0123456789abcdef"
         add_ssl_profile: true
         verify_client_cert_issuer_dn: true
-        rootca_certificate_name: civil_sdt_root_ca
+        rootca_certificates:
+          - rootca_certificate_name: civil_sdt_root_ca
         ssl_certificate_name: civil-sdt-commissioning-prod
         host_name_prefix: cft-mtls-api-mgmt-appgw
         host_name_suffix: platform.hmcts.net
@@ -49,7 +50,8 @@ gateways:
         health_path_override: "/status-0123456789abcdef"
         add_ssl_profile: true
         verify_client_cert_issuer_dn: true
-        rootca_certificate_name: civil_sdt_root_ca
+        rootca_certificates:
+          - rootca_certificate_name: civil_sdt_root_ca
         ssl_certificate_name: civil-sdt-prod
         host_name_prefix: cft-mtls-api-mgmt-appgw
         host_name_suffix: platform.hmcts.net
@@ -83,7 +85,8 @@ gateways:
         health_path_override: "/status-0123456789abcdef"
         add_ssl_profile: true
         verify_client_cert_issuer_dn: true
-        rootca_certificate_name: civil_sdt_root_ca
+        rootca_certificates:
+          - rootca_certificate_name: civil_sdt_root_ca
         ssl_certificate_name: civil-sdt-commissioning-prod
         host_name_prefix: cft-mtls-api-mgmt-appgw
         host_name_suffix: platform.hmcts.net

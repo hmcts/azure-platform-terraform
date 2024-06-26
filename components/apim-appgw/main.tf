@@ -27,7 +27,7 @@ module "app-gw" {
     azurerm.kv  = azurerm.kv
   }
 
-  source                                       = "git::https://github.com/hmcts/terraform-module-apim-application-gateway.git?ref=main"
+  source                                       = "git::https://github.com/hmcts/terraform-module-apim-application-gateway.git?ref=allow-multiple-certs-on-listener"
   yaml_path                                    = "${path.cwd}/../../environments/${local.env}/apim_appgw_config.yaml"
   env                                          = local.dns_zone
   location                                     = var.location
@@ -46,17 +46,19 @@ module "app-gw" {
   public_ip_enable_multiple_availability_zones = true
   min_capacity                                 = var.apim_appgw_min_capacity
   max_capacity                                 = var.apim_appgw_max_capacity
-  trusted_client_certificate_data = {
-    "lets_encrypt" = {
-      path = file("${path.module}/merged.pem")
+  trusted_client_certificate_data = merge(
+    {
+      for cert_name in local.cert_names :
+      cert_name => {
+        path = data.azurerm_key_vault_secret.secrets[cert_name].value
+      }
+    },
+    {
+      "lets_encrypt" = {
+        path = file("${path.module}/merged.pem")
+      }
     }
-    "civil_sdt_root_ca" = {
-      path = data.azurerm_key_vault_secret.civil-sdt-root-ca.value
-    }
-    "reform_scan_sscs_ca" = {
-      path = data.azurerm_key_vault_secret.reform-scan-sscs-ca.value
-    }
-  }
+  )
 
   depends_on = [data.external.bash_script]
 }

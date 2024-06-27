@@ -21,7 +21,7 @@ locals {
 }
 
 module "backendappgateway" {
-  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=master"
+  source = "git::https://github.com/hmcts/terraform-module-application-backend.git?ref=DTSPO-18048-add-rewrite-rule"
 
   yaml_path                          = "${path.cwd}/../../environments/${local.env}/backend_lb_config.yaml"
   env                                = local.dns_zone

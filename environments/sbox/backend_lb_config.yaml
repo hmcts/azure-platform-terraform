@@ -122,7 +122,8 @@ gateways:
             sequence: "200"
             conditions:
               - variable: "var_uri_path"
-                pattern: ".*/rs(.*)"
+                pattern: ".*/rs/(.*)"
+                ignore_case: true
             url:
               components: "path_only"
-              path: "/api{var_uri_path_1}"
+              path: "/api/{var_uri_path_1}"

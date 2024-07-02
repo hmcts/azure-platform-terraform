@@ -954,6 +954,21 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "code_verifier"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "StartsWith",
+        selector       = "password"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "StartsWith",
+        selector       = "username"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "StartsWith",
+        selector       = "email"
       }
     ]
   },

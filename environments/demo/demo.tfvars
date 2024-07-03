@@ -3170,7 +3170,7 @@ frontends = [
         selector       = "rf"
       },
     ]
-  }
+  },
    {
     product        = "em"
     name           = "em-icp"

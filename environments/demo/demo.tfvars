@@ -3177,6 +3177,6 @@ frontends = [
     mode           = "Detection"
     custom_domain  = "em-icp.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-cftdemo.uksouth.cloudapp.azure.com"]
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   }
 ]

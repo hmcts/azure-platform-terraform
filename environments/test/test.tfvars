@@ -2171,5 +2171,14 @@ frontends = [
         selector       = "rf"
       },
     ]
-  }
+  },
+  {
+    product        = "em"
+    name           = "em-icp"
+    mode           = "Detection"
+    custom_domain  = "em-icp.test.platform.hmcts.net"
+    dns_zone_name  = "test.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cfttest.uksouth.cloudapp.azure.com"]
+
+  },
 ]

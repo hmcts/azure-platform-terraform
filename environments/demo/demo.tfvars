@@ -3171,7 +3171,7 @@ frontends = [
       },
     ]
   },
-   {
+  {
     product        = "em"
     name           = "em-icp"
     mode           = "Detection"

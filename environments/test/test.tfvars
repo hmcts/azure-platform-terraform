@@ -2171,5 +2171,13 @@ frontends = [
         selector       = "rf"
       },
     ]
-  }
+  },
+  {
+    product        = "em"
+    name           = "em-icp"
+    mode           = "Detection"
+    custom_domain  = "em-icp.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+  },
 ]

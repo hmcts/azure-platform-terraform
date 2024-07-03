@@ -3169,15 +3169,15 @@ frontends = [
         operator       = "Equals"
         selector       = "rf"
       },
-      {
+    ]
+  }
+   {
     product        = "em"
     name           = "em-icp"
     mode           = "Detection"
-    custom_domain  = "em-icp.aat.platform.hmcts.net"
-    dns_zone_name  = "aat.platform.hmcts.net"
+    custom_domain  = "em-icp.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
   },
-    ]
-  }
 ]

@@ -319,7 +319,7 @@ frontends = [
   },
   {
     name           = "fact-admin"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "fact-admin.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]

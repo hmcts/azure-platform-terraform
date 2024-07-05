@@ -2606,6 +2606,11 @@ frontends = [
         selector       = "state"
       },
       {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = “state”
+      },
+      {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "token"
@@ -2633,6 +2638,11 @@ frontends = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
+        selector       = "nonce"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
         selector       = "nonce"
       },
       {

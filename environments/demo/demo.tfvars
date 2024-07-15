@@ -3189,4 +3189,18 @@ frontends = [
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   }
+  {
+    name           = "et-syr"
+    mode           = "Detection"
+    custom_domain  = "et-syr.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-syr-cookie-preferences"
+      }
+    ]
+  },
 ]

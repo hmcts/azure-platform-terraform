@@ -1971,6 +1971,21 @@ frontends = [
     ]
   },
   {
+    name             = "dss"
+    custom_domain    = "dss.ithc.platform.hmcts.net"
+    dns_zone_name    = "ithc.platform.hmcts.net"
+    mode             = "Detection"
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  }
+  {
     product          = "tax-tribunals-datacapture"
     name             = "tax-tribunals-datacapture"
     custom_domain    = "tax-tribunals-datacapture.ithc.platform.hmcts.net"

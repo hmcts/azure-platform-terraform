@@ -1980,11 +1980,32 @@ frontends = [
   },
   {
     name           = "sscs-cor"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "sscs-cor.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+    }
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -2081,10 +2102,38 @@ frontends = [
     name           = "sscs-tribunals"
     custom_domain  = "benefit-appeal.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942310",
+        "942340",
+        "942360",
+        "942361",
+        "942380",
+        "942400",
+        "942430"
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+      RCE = [
+        "932100"
+      ]
+    }
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -2104,6 +2153,21 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Contains"
+        selector       = "whatYouDisagreeWith"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Contains"
+        selector       = "reasonForAppealing"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "otherReasonForAppealing"
       },
       {
         match_variable = "QueryStringArgNames"

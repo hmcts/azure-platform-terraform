@@ -1984,7 +1984,7 @@ frontends = [
         selector       = "rf"
       },
     ]
-  }
+  },
   {
     product          = "tax-tribunals-datacapture"
     name             = "tax-tribunals-datacapture"

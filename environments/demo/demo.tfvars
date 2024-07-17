@@ -82,7 +82,7 @@ frontends = [
         selector       = "rf"
       },
     ]
-  }
+  },
   {
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.demo.platform.hmcts.net"

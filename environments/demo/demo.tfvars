@@ -70,6 +70,20 @@ frontends = [
     ]
   },
   {
+    name           = "dss"
+    custom_domain  = "dss.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.demo.platform.hmcts.net"
     dns_zone_name    = "demo.platform.hmcts.net"
@@ -319,11 +333,128 @@ frontends = [
   },
   {
     name           = "fact-admin"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "fact-admin.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookies_policy"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "i18next"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "fact-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_oauth2_proxy"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "auth_verification"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "info"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "types"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "areaOfLaw[external_link]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "courtFacilities[1][description]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "localAuthorities"
+      }
+    ]
   },
   {
     name           = "et-sya"
@@ -1864,11 +1995,32 @@ frontends = [
   },
   {
     name           = "sscs-cor"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "sscs-cor.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942380",
+        "942400",
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+    }
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -1965,10 +2117,38 @@ frontends = [
     name           = "sscs-tribunals"
     custom_domain  = "benefit-appeal.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942310",
+        "942340",
+        "942360",
+        "942361",
+        "942380",
+        "942400",
+        "942430"
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+      RCE = [
+        "932100"
+      ]
+    }
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -1988,6 +2168,21 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Contains"
+        selector       = "whatYouDisagreeWith"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Contains"
+        selector       = "reasonForAppealing"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "otherReasonForAppealing"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -3188,5 +3383,19 @@ frontends = [
     custom_domain  = "em-icp.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-  }
+  },
+  {
+    name           = "et-syr"
+    mode           = "Detection"
+    custom_domain  = "et-syr.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-syr-cookie-preferences"
+      }
+    ]
+  },
 ]

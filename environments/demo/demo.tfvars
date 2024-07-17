@@ -1687,6 +1687,16 @@ frontends = [
         operator       = "Equals"
         selector       = "addressLine3"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "firstName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "lastName"
+      }
     ]
   },
   {

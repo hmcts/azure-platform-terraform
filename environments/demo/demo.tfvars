@@ -431,33 +431,13 @@ frontends = [
       },
       {
         match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
+        operator       = "StartsWith"
         selector       = "PostParamValue"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "PostParamValue:info"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "PostParamValue:types"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "PostParamValue:courtFacilities[1][description]"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
         selector       = "localAuthorities"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "PostParamValue:areaOfLaw[external_link]"
       }
     ]
   },

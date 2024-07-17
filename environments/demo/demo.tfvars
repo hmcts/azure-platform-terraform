@@ -70,6 +70,20 @@ frontends = [
     ]
   },
   {
+    name           = "dss"
+    custom_domain  = "dss.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
+    mode           = "Detection"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+    ]
+  },
+  {
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.demo.platform.hmcts.net"
     dns_zone_name    = "demo.platform.hmcts.net"

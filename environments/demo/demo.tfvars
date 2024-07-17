@@ -428,6 +428,16 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "auth_verification"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "PostParamValue"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "localAuthorities"
       }
     ]
   },

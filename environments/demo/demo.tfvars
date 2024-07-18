@@ -431,8 +431,23 @@ frontends = [
       },
       {
         match_variable = "RequestBodyPostArgNames"
-        operator       = "StartsWith"
-        selector       = "PostParamValue"
+        operator       = "Equals"
+        selector       = "info"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "types"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "areaOfLaw[external_link]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "courtFacilities[1][description]"
       },
       {
         match_variable = "RequestBodyPostArgNames"

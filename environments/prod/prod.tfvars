@@ -1707,9 +1707,7 @@ frontends = [
     certificate_name = "appeal-immigration-asylum-decision-service-gov-uk"
     disabled_rules = {
       LFI = [
-        "930120",
         "930100",
-        "930130",
         "930110"
       ]
       RCE = [

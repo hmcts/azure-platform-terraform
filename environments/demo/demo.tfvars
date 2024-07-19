@@ -1075,7 +1075,23 @@ frontends = [
     custom_domain  = "moneyclaims.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
+    global_exclusions = [
+          {
+            match_variable = "RequestCookieNames"
+            operator       = "Equals"
+            selector       = "cmc-cookie-preferences"
+          },
+          {
+            match_variable = "QueryStringArgNames"
+            operator       = "Equals"
+            selector       = "\\'analytics\\'"
+          },
+          {
+            match_variable = "QueryStringArgNames"
+            operator       = "Equals"
+            selector       = "\\'apm\\'"
+          },
+      ]
   },
   {
     name           = "cmc"
@@ -1128,6 +1144,21 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "rows"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cmc-cookie-preferences"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "\\'analytics\\'"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "\\'apm\\'"
       },
     ]
   },

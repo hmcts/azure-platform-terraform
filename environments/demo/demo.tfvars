@@ -1117,6 +1117,11 @@ frontends = [
         selector       = "apm_consent"
       },
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookies_policy"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"

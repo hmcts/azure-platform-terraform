@@ -1107,14 +1107,19 @@ frontends = [
         selector       = "cmc-cookie-preferences"
       },
       {
-        match_variable = "QueryStringArgNames"
+        match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "\\'analytics\\'"
+        selector       = "analytics_consent"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "apm_consent"
       },
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
-        selector       = "\\'apm\\'"
+        selector       = "iss"
       },
     ]
   },
@@ -1176,16 +1181,15 @@ frontends = [
         selector       = "cmc-cookie-preferences"
       },
       {
-        match_variable = "QueryStringArgNames"
+        match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "\\'analytics\\'"
+        selector       = "analytics_consent"
       },
       {
-        match_variable = "QueryStringArgNames"
+        match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "\\'apm\\'"
+        selector       = "apm_consent"
       },
-
     ]
   },
   {

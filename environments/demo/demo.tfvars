@@ -428,6 +428,31 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "auth_verification"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "info"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "types"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "areaOfLaw[external_link]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "courtFacilities[1][description]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "localAuthorities"
       }
     ]
   },
@@ -1160,6 +1185,7 @@ frontends = [
         operator       = "Equals"
         selector       = "\\'apm\\'"
       },
+
     ]
   },
   {
@@ -1764,6 +1790,16 @@ frontends = [
         operator       = "Equals"
         selector       = "addressLine3"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "firstName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "lastName"
+      }
     ]
   },
   {

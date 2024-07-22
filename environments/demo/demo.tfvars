@@ -466,7 +466,7 @@ frontends = [
       },
       {
         match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
+        operator       = "StartsWith"
         selector       = "localAuthorities"
       }
     ]

@@ -468,6 +468,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "StartsWith"
         selector       = "localAuthorities"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "progression"
       }
     ]
   },

@@ -21,6 +21,7 @@ gateways:
         add_ssl_profile: true
         rootca_certificates:
          - rootca_certificate_name: reform_scan_sscs_ca
+         - rootca_certificate_name: liberata_ca
         add_rewrite_rule: true
         rewrite_rules:
           - name: "AddCustomHeadersRule"

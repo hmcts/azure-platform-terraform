@@ -505,14 +505,14 @@ frontends = [
   },
   {
     name           = "civil-citizen-ui"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "civil-citizen-ui.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "cmc"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "moneyclaims.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]

@@ -431,8 +431,8 @@ frontends = [
       },
       {
         match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "info"
+        operator       = "StartsWith"
+        selector       = "info_"
       },
       {
         match_variable = "RequestBodyPostArgNames"
@@ -451,8 +451,28 @@ frontends = [
       },
       {
         match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "alert_"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "sc_intro_paragraph_"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
+        selector       = "name"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
         selector       = "localAuthorities"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "progression"
       }
     ]
   },

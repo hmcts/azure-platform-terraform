@@ -1685,6 +1685,16 @@ frontends = [
         operator       = "Equals"
         selector       = "addressLine3"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "firstName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "lastName"
+      }
     ]
   },
   {
@@ -1697,9 +1707,7 @@ frontends = [
     certificate_name = "appeal-immigration-asylum-decision-service-gov-uk"
     disabled_rules = {
       LFI = [
-        "930120",
         "930100",
-        "930130",
         "930110"
       ]
       RCE = [

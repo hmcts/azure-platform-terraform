@@ -5,6 +5,7 @@ locals {
     test = {
       civil_sdt_root_ca   = "civil-sdt-root-ca"
       reform_scan_sscs_ca = "reform-scan-sscs-ca"
+      liberata_ca         = "liberata-ca"
     }
     prod = {
       civil_sdt_root_ca = "civil-sdt-root-ca"

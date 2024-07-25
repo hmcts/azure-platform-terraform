@@ -431,8 +431,8 @@ frontends = [
       },
       {
         match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "info"
+        operator       = "StartsWith"
+        selector       = "info_"
       },
       {
         match_variable = "RequestBodyPostArgNames"
@@ -451,8 +451,28 @@ frontends = [
       },
       {
         match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "alert_"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "sc_intro_paragraph_"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
+        selector       = "name"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
         selector       = "localAuthorities"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "progression"
       }
     ]
   },
@@ -1096,19 +1116,102 @@ frontends = [
   },
   {
     name           = "civil-citizen-ui"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "moneyclaims.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cmc-cookie-preferences"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "\\'analytics\\'"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "\\'apm\\'"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "money-claims-cookie-preferences"
+      },
+    ]
   },
   {
     name           = "cmc"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "moneyclaims1.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "SESSION_ID"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "signerRole"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reason"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "rows"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cmc-cookie-preferences"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "\\'analytics\\'"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "\\'apm\\'"
+      },
 
+    ]
   },
   {
     name           = "nfdiv"
@@ -1712,6 +1815,16 @@ frontends = [
         operator       = "Equals"
         selector       = "addressLine3"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "firstName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "lastName"
+      }
     ]
   },
   {

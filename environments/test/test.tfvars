@@ -354,7 +354,7 @@ frontends = [
     name           = "rpts"
     custom_domain  = "rpts.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
     custom_rules = [
@@ -384,6 +384,8 @@ frontends = [
               "20.50.108.242/32",
               "51.11.124.205/32",
               "51.11.124.216/32",
+              "20.108.187.55/32",
+              "20.58.23.145/32",
             ]
           }
         ]

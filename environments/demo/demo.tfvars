@@ -11,7 +11,10 @@ data_subscription       = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                 = "nonprod"
 #trigger precommit
-hub = "nonprod"
+hub                           = "nonprod"
+key_vault_subscription        = "d025fece-ce99-4df2-b7a9-b649d3ff2060"
+hub_app_gw_private_ip_address = ["10.11.72.256"]
+apim_appgw_backend_pool_fqdns = ["firewall-nonprodi-palo-cftapimgmtdemo.uksouth.cloudapp.azure.com"]
 
 frontends = [
   {

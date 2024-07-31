@@ -204,6 +204,15 @@ parameters:
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_apim'
       pipeline_tests: true
+    
+    - deployment: 'demo_apim_appgw'
+      environment: 'demo'
+      component: 'apim-appgw'
+      service_connection: 'dcd-cftapps-demo'
+      storage_account_rg: 'core-infra-demo-rg'
+      storage_account_name: 'cftappsdemo'
+      dependsOn: 'Precheck'
+      pipeline_tests: true
 
     - deployment: 'test_frontendappgateway'
       environment: 'test'

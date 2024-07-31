@@ -6,6 +6,7 @@ locals {
       civil_sdt_root_ca   = "civil-sdt-root-ca"
       reform_scan_sscs_ca = "reform-scan-sscs-ca"
       liberata_ca         = "liberata-ca"
+      exela_ca            = "exela-ca"
     }
     prod = {
       civil_sdt_root_ca = "civil-sdt-root-ca"

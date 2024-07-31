@@ -2088,8 +2088,8 @@ frontends = [
         match_conditions = [
           {
             match_variable = "RequestUri"
-             operator      = "Contains"
-             values        = ["/reform-scan"]
+            operator       = "Contains"
+            values         = ["/reform-scan"]
           }
         ]
       },

@@ -2087,9 +2087,10 @@ frontends = [
         action   = "Block"
         match_conditions = [
           {
-            match_variable = "RequestUri"
-            operator       = "Contains"
-            match_values   = ["/reform-scan"]
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["/reform-scan"]
           }
         ]
       },

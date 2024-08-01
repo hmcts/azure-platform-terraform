@@ -12,9 +12,9 @@ gateways:
         ssl_enabled: true
         use_public_ip: true
         health_path_override: "/status-0123456789abcdef"
-        ssl_certificate_name: wildcard-perftest-platform-hmcts-net
-        host_name_suffix: perftest.platform.hmcts.net
-        ssl_host_name_suffix: perftest.platform.hmcts.net
+        ssl_certificate_name: wildcard-demo-platform-hmcts-net
+        host_name_suffix: demo.platform.hmcts.net
+        ssl_host_name_suffix: demo.platform.hmcts.net
         verify_client_cert_issuer_dn: true
         add_ssl_profile: true
         rootca_certificates:

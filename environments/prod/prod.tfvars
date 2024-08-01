@@ -2518,6 +2518,23 @@ frontends = [
     certificate_name = "wildcard-platform-hmcts-net"
     cache_enabled    = "false"
     shutter_app      = false
+
+    custom_rules = [
+      {
+        name     = "BlockReformScanEndpoint"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["/reform-scan"]
+          }
+        ]
+      },
+    ],
   },
   {
     product          = "fact"

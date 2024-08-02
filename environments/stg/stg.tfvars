@@ -12,7 +12,7 @@ autoShutdown                   = true
 hub                            = "prod"
 key_vault_subscription         = "96c274ce-846d-4e48-89a7-d528432298a7"
 hub_app_gw_private_ip_address  = ["10.11.8.216"]
-apim_appgw_backend_pool_fqdns  = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+apim_appgw_backend_pool_fqdns  = ["firewall-prod-int-palo-cftapimgmtstg.uksouth.cloudapp.azure.com"]
 
 shutter_storage = "TODO"
 cdn_sku         = "TODO"

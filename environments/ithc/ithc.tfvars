@@ -1885,6 +1885,26 @@ frontends = [
           }
         ]
       },
+      {
+        name     = "BlockFeeAndPaymentEndpoints"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestUri"
+            operator           = "StartsWith"
+            negation_condition = false
+            match_values = [
+              "/bulk-scanning-payment",
+              "/telephony-api",
+              "/payments-api",
+              "/refunds-api",
+              "/feeRegister-api"
+            ]
+          }
+        ]
+      },
     ],
   },
   {

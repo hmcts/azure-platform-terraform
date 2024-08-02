@@ -2542,7 +2542,7 @@ frontends = [
         match_conditions = [
           {
             match_variable     = "RequestUri"
-            operator           = "StartsWith"
+            operator           = "Contains"
             negation_condition = false
             match_values = [
               "/bulk-scanning-payment",

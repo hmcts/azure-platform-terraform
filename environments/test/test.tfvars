@@ -2208,6 +2208,23 @@ frontends = [
     backend_domain   = ["firewall-nonprodi-palo-cftapimgmtperftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
     cache_enabled    = "false"
+
+    custom_rules = [
+      {
+        name     = "BlockReformScanEndpoint"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["/reform-scan"]
+          }
+        ]
+      },
+    ],
   },
   {
     name           = "adoption-web"

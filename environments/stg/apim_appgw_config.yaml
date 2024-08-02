@@ -1,0 +1,30 @@
+---
+
+gateways:
+  - gateway_configuration:
+      exclude_env_in_app_name: true
+      private_ip_address: 10.11.8.216
+    ssl_certificates:
+      - certificate_name: wildcard-aat-platform-hmcts-net
+    app_configuration:
+      - product: cft-mtls
+        component: api-mgmt-appgw
+        ssl_enabled: true
+        use_public_ip: true
+        health_path_override: "/status-0123456789abcdef"
+        ssl_certificate_name: wildcard-aat-platform-hmcts-net
+        host_name_suffix: aat.platform.hmcts.net
+        ssl_host_name_suffix: aat.platform.hmcts.net
+        verify_client_cert_issuer_dn: true
+        add_ssl_profile: true
+        rootca_certificates:
+         - rootca_certificate_name: reform_scan_sscs_ca
+         - rootca_certificate_name: liberata_ca
+         - rootca_certificate_name: exela_ca
+        add_rewrite_rule: true
+        rewrite_rules:
+          - name: "AddCustomHeadersRule"
+            sequence: "100"
+            request_headers:
+              - header_name: "X-ARR-ClientCertThumbprint"
+                header_value: "{var_client_certificate_fingerprint}"

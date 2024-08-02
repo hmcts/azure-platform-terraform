@@ -10,6 +10,9 @@ privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                        = "nonprod"
 autoShutdown                   = true
 hub                            = "prod"
+key_vault_subscription        = "96c274ce-846d-4e48-89a7-d528432298a7"
+hub_app_gw_private_ip_address = ["10.11.8.216"]
+apim_appgw_backend_pool_fqdns = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
 
 shutter_storage = "TODO"
 cdn_sku         = "TODO"

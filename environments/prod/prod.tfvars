@@ -1149,33 +1149,24 @@ frontends = [
     certificate_name = "moneyclaims-service-gov-uk"
     disabled_rules = {
       SQLI = [
-        "942100",
-        "942110",
-        "942150",
         "942200",
-        "942210",
-        "942230",
         "942260",
-        "942300",
-        "942310",
-        "942330",
         "942340",
-        "942361",
         "942370",
-        "942380",
-        "942390",
-        "942400",
-        "942410",
         "942430",
+        "942440",
         "942450",
       ]
-      RCE = [
-        "932105",
-        "932115",
-        "932150",
+      LFI = [
+        "930100",
+        "930130"
       ]
-      PROTOCOL-ATTACK = [
-        "921110"
+      RCE = [
+        "932100",
+        "932115"
+      ]
+      RFI = [
+        "931130"
       ]
     }
     global_exclusions = [
@@ -1224,8 +1215,32 @@ frontends = [
         operator       = "StartsWith"
         selector       = "rows"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cmc-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "citizen-ui-session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "\\'analytics\\'"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "\\'apm\\'"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "money-claims-cookie-preferences"
+      },
     ]
-
   },
   {
     product          = "cmc"
@@ -1237,33 +1252,24 @@ frontends = [
     certificate_name = "moneyclaims-service-gov-uk"
     disabled_rules = {
       SQLI = [
-        "942100",
-        "942110",
-        "942150",
         "942200",
-        "942210",
-        "942230",
         "942260",
-        "942300",
-        "942310",
-        "942330",
         "942340",
-        "942361",
         "942370",
-        "942380",
-        "942390",
-        "942400",
-        "942410",
         "942430",
+        "942440",
         "942450",
       ]
-      RCE = [
-        "932105",
-        "932115",
-        "932150",
+      LFI = [
+        "930100",
+        "930130"
       ]
-      PROTOCOL-ATTACK = [
-        "921110"
+      RCE = [
+        "932100",
+        "932115"
+      ]
+      RFI = [
+        "931130"
       ]
     }
     global_exclusions = [
@@ -1309,11 +1315,25 @@ frontends = [
       },
       {
         match_variable = "RequestBodyPostArgNames"
-        operator       = "StartsWith"
+        operator       = "Equals"
         selector       = "rows"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cmc-cookie-preferences"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "\\'analytics\\'"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "\\'apm\\'"
+      },
     ]
-
   },
   {
     product          = "cmc"

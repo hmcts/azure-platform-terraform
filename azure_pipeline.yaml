@@ -205,14 +205,14 @@ parameters:
 #      dependsOn: 'sbox_apim'
 #      pipeline_tests: true
 
-#    - deployment: 'demo_apim_appgw'
-#      environment: 'demo'
-#      component: 'apim-appgw'
-#      service_connection: 'dcd-cftapps-demo'
-#      storage_account_rg: 'core-infra-demo-rg'
-#      storage_account_name: 'cftappsdemo'
-#      dependsOn: 'sbox_apim_appgw'
-#      pipeline_tests: true
+    - deployment: 'demo_apim_appgw'
+      environment: 'demo'
+      component: 'apim-appgw'
+      service_connection: 'dcd-cftapps-demo'
+      storage_account_rg: 'core-infra-demo-rg'
+      storage_account_name: 'cftappsdemo'
+      dependsOn: 'sbox_apim_appgw'
+      pipeline_tests: true
 
     - deployment: 'test_frontendappgateway'
       environment: 'test'
@@ -250,14 +250,14 @@ parameters:
 #      dependsOn: 'sbox_apim'
 #      pipeline_tests: true
 #
-#    - deployment: 'test_apim_appgw'
-#      environment: 'test'
-#      component: 'apim-appgw'
-#      service_connection: 'dcd-cftapps-test'
-#      storage_account_rg: 'core-infra-test-rg'
-#      storage_account_name: 'cftappstest'
-#      dependsOn: 'sbox_apim_appgw'
-#      pipeline_tests: true
+    - deployment: 'test_apim_appgw'
+      environment: 'test'
+      component: 'apim-appgw'
+      service_connection: 'dcd-cftapps-test'
+      storage_account_rg: 'core-infra-test-rg'
+      storage_account_name: 'cftappstest'
+      dependsOn: 'sbox_apim_appgw'
+      pipeline_tests: true
 
     - deployment: 'perftest_global'
       environment: 'test'
@@ -286,14 +286,14 @@ parameters:
 #      dependsOn: 'sbox_apim'
 #      pipeline_tests: true
 #
-#    - deployment: 'stg_apim_appgw'
-#      environment: 'stg'
-#      component: 'apim-appgw'
-#      service_connection: 'dcd-cftapps-stg'
-#      storage_account_rg: 'core-infra-stg-rg'
-#      storage_account_name: 'cftappsstg'
-#      dependsOn: 'sbox_apim_appgw'
-#      pipeline_tests: true
+    - deployment: 'stg_apim_appgw'
+      environment: 'stg'
+      component: 'apim-appgw'
+      service_connection: 'dcd-cftapps-stg'
+      storage_account_rg: 'core-infra-stg-rg'
+      storage_account_name: 'cftappsstg'
+      dependsOn: 'sbox_apim_appgw'
+      pipeline_tests: true
 
     - deployment: 'stg_frontendappgateway'
       environment: 'stg'
@@ -366,14 +366,14 @@ parameters:
 #      dependsOn: 'stg_apim'
 #      pipeline_tests: true
 #
-#    - deployment: 'prod_apim_appgw'
-#      environment: 'prod'
-#      component: 'apim-appgw'
-#      service_connection: 'dcd-cftapps-prod'
-#      storage_account_rg: 'core-infra-prod-rg'
-#      storage_account_name: 'cftappsprod'
-#      dependsOn: 'sbox_apim_appgw'
-#      pipeline_tests: true
+    - deployment: 'prod_apim_appgw'
+      environment: 'prod'
+      component: 'apim-appgw'
+      service_connection: 'dcd-cftapps-prod'
+      storage_account_rg: 'core-infra-prod-rg'
+      storage_account_name: 'cftappsprod'
+      dependsOn: 'sbox_apim_appgw'
+      pipeline_tests: true
 
     - deployment: 'prod_global'
       environment: 'prod'

@@ -286,6 +286,15 @@ parameters:
       dependsOn: 'sbox_apim'
       pipeline_tests: true
 
+    - deployment: 'stg_apim_appgw'
+      environment: 'stg'
+      component: 'apim-appgw'
+      service_connection: 'dcd-cftapps-stg'
+      storage_account_rg: 'core-infra-stg-rg'
+      storage_account_name: 'cftappsstg'
+      dependsOn: 'sbox_apim_appgw'
+      pipeline_tests: true
+
     - deployment: 'stg_frontendappgateway'
       environment: 'stg'
       component: 'frontendappgateway'

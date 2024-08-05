@@ -3,7 +3,7 @@
 gateways:
   - gateway_configuration:
       exclude_env_in_app_name: true
-      private_ip_address: 10.11.8.219
+      private_ip_address: 10.11.8.203
     ssl_certificates:
       - certificate_name: wildcard-aat-platform-hmcts-net
     app_configuration:

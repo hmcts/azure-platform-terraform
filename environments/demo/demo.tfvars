@@ -452,7 +452,7 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "StartsWith"
-        selector       = "info_"
+        selector       = "info"
       },
       {
         match_variable = "RequestBodyPostArgNames"
@@ -461,23 +461,23 @@ frontends = [
       },
       {
         match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "areaOfLaw[external_link]"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "courtFacilities[1][description]"
+        operator       = "StartsWith"
+        selector       = "areaOfLaw"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "StartsWith"
-        selector       = "alert_"
+        selector       = "courtFacilities"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "StartsWith"
-        selector       = "sc_intro_paragraph_"
+        selector       = "alert"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "sc_intro_paragraph"
       },
       {
         match_variable = "RequestBodyPostArgNames"
@@ -493,6 +493,16 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "StartsWith"
         selector       = "progression"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "additionalLinks"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "secondaryAddress"
       }
     ]
   },

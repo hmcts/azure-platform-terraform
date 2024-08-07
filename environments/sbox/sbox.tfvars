@@ -718,6 +718,16 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   },
+  {
+    product          = "labs-endakelly-nodejs"
+    name             = "labs-endakelly-nodejs"
+    custom_domain    = "labs-endakelly-nodejs.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    shutter_app      = false
+    backend_domain   = ["firewall-sbox-int-palo-labs-endakelly-nodejs.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
 ]
 
 apim_appgw_exclusions = [

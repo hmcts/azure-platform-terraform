@@ -7,7 +7,27 @@ gateways:
     ssl_certificates:
       - certificate_name: civil-sdt-commissioning-prod
       - certificate_name: civil-sdt-prod
+      - certificate_name: wildcard-platform-hmcts-net
     app_configuration:
+      - product: cft-mtls
+        component: api-mgmt-appgw
+        ssl_enabled: true
+        use_public_ip: true
+        health_path_override: "/status-0123456789abcdef"
+        ssl_certificate_name: wildcard-platform-hmcts-net
+        host_name_suffix: platform.hmcts.net
+        ssl_host_name_suffix: platform.hmcts.net
+        verify_client_cert_issuer_dn: true
+        add_ssl_profile: true
+        rootca_certificates:
+         - rootca_certificate_name: liberata_ca
+        add_rewrite_rule: true
+        rewrite_rules:
+          - name: "AddCustomHeadersRule"
+            sequence: "100"
+            request_headers:
+              - header_name: "X-ARR-ClientCertThumbprint"
+                header_value: "{var_client_certificate_fingerprint}"
       - product: civil
         component: sdt-commissioning
         ssl_enabled: true

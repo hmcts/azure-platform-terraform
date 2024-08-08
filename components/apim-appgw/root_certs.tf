@@ -20,6 +20,7 @@ locals {
     }
     prod = {
       civil_sdt_root_ca = "civil-sdt-root-ca"
+      liberata_ca         = "liberata-ca"
     }
   }
 

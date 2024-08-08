@@ -156,13 +156,13 @@ parameters:
       dependsOn: 'sbox_private_dns'
       pipeline_tests: true
 
-#    - deployment: 'ithc_apim'
-#      environment: 'ithc'
-#      component: 'apim'
-#      service_connection: 'dcd-cftapps-ithc'
-#      storage_account_rg: 'core-infra-ithc-rg'
-#      storage_account_name: 'cftappsithc'
-#      dependsOn: 'sbox_apim'
+    - deployment: 'ithc_apim'
+      environment: 'ithc'
+      component: 'apim'
+      service_connection: 'dcd-cftapps-ithc'
+      storage_account_rg: 'core-infra-ithc-rg'
+      storage_account_name: 'cftappsithc'
+      dependsOn: 'sbox_apim'
 
     - deployment: 'demo_global'
       environment: 'demo'
@@ -196,14 +196,14 @@ parameters:
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_private_dns'
 
-#    - deployment: 'demo_apim'
-#      environment: 'demo'
-#      component: 'apim'
-#      service_connection: 'dcd-cftapps-demo'
-#      storage_account_rg: 'core-infra-demo-rg'
-#      storage_account_name: 'cftappsdemo'
-#      dependsOn: 'sbox_apim'
-#      pipeline_tests: true
+    - deployment: 'demo_apim'
+      environment: 'demo'
+      component: 'apim'
+      service_connection: 'dcd-cftapps-demo'
+      storage_account_rg: 'core-infra-demo-rg'
+      storage_account_name: 'cftappsdemo'
+      dependsOn: 'sbox_apim'
+      pipeline_tests: true
 
     - deployment: 'demo_apim_appgw'
       environment: 'demo'
@@ -241,15 +241,15 @@ parameters:
       dependsOn: 'sbox_private_dns'
       pipeline_tests: true
 
-#    - deployment: 'test_apim'
-#      environment: 'test'
-#      component: 'apim'
-#      service_connection: 'dcd-cftapps-test'
-#      storage_account_rg: 'core-infra-test-rg'
-#      storage_account_name: 'cftappstest'
-#      dependsOn: 'sbox_apim'
-#      pipeline_tests: true
-#
+    - deployment: 'test_apim'
+      environment: 'test'
+      component: 'apim'
+      service_connection: 'dcd-cftapps-test'
+      storage_account_rg: 'core-infra-test-rg'
+      storage_account_name: 'cftappstest'
+      dependsOn: 'sbox_apim'
+      pipeline_tests: true
+
     - deployment: 'test_apim_appgw'
       environment: 'test'
       component: 'apim-appgw'
@@ -277,15 +277,15 @@ parameters:
       dependsOn: 'sbox_private_dns'
       pipeline_tests: true
 
-#    - deployment: 'stg_apim'
-#      environment: 'stg'
-#      component: 'apim'
-#      service_connection: 'dcd-cftapps-stg'
-#      storage_account_rg: 'core-infra-stg-rg'
-#      storage_account_name: 'cftappsstg'
-#      dependsOn: 'sbox_apim'
-#      pipeline_tests: true
-#
+    - deployment: 'stg_apim'
+      environment: 'stg'
+      component: 'apim'
+      service_connection: 'dcd-cftapps-stg'
+      storage_account_rg: 'core-infra-stg-rg'
+      storage_account_name: 'cftappsstg'
+      dependsOn: 'sbox_apim'
+      pipeline_tests: true
+
     - deployment: 'stg_apim_appgw'
       environment: 'stg'
       component: 'apim-appgw'

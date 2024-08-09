@@ -1,6 +1,7 @@
 locals {
   trusted_client_certificates = {
     sbox = {
+      reform_scan_sscs_ca = "reform-scan-sscs-ca"
     }
     test = {
       civil_sdt_root_ca   = "civil-sdt-root-ca"

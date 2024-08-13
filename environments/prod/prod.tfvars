@@ -2561,7 +2561,7 @@ frontends = [
       },
       {
         name     = "BlockFeeAndPaymentEndpoints"
-        priority = 1
+        priority = 2
         type     = "MatchRule"
         action   = "Block"
         match_conditions = [

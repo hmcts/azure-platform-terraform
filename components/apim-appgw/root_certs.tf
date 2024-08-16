@@ -24,6 +24,7 @@ locals {
       liberata_ca         = "liberata-ca"
       exela_ca            = "exela-ca"
       reform_scan_sscs_ca = "reform-scan-sscs-ca"
+      pcipal_ca           = "pcipal-ca"
     }
   }
 

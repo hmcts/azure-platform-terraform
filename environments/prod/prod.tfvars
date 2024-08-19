@@ -1714,6 +1714,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "lastName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "executorName"
       }
     ]
   },
@@ -2556,7 +2561,7 @@ frontends = [
       },
       {
         name     = "BlockFeeAndPaymentEndpoints"
-        priority = 1
+        priority = 2
         type     = "MatchRule"
         action   = "Block"
         match_conditions = [

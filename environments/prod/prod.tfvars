@@ -2687,6 +2687,7 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "find-court-tribunal-service-gov-uk"
 
+
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

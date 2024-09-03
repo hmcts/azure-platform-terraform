@@ -1971,7 +1971,7 @@ frontends = [
       },
       {
         match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
+        operator       = "Contains"
         selector       = "executorName"
       }
     ]

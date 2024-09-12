@@ -22,6 +22,6 @@ provider "azurerm" {
 }
 
 provider "local" {
-  version = "2.5.1"
+  version = "2.5.2"
 }
 

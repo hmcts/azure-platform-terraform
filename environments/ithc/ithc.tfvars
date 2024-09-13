@@ -3133,4 +3133,19 @@ frontends = [
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
   },
+  {
+    product        = "et"
+    name           = "et-syr"
+    mode           = "Detection"
+    custom_domain  = "et-syr.ithc.platform.hmcts.net"
+    dns_zone_name  = "ithc.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-syr-cookie-preferences"
+      }
+    ]
+  }
 ]

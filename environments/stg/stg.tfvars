@@ -354,6 +354,168 @@ frontends = [
     ]
   },
   {
+    name           = "sscs-iba"
+    custom_domain  = "infected-blood-appeal.aat.platform.hmcts.net"
+    dns_zone_name  = "aat.platform.hmcts.net"
+    mode           = "Prevention"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942310",
+        "942340",
+        "942360",
+        "942361",
+        "942380",
+        "942400",
+        "942430"
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+      RCE = [
+        "932100"
+      ]
+    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Contains"
+        selector       = "whatYouDisagreeWith"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Contains"
+        selector       = "reasonForAppealing"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "otherReasonForAppealing"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reasonForNoMRN"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reasonForBeingLate"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "nino"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "signer"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "selection.signLanguage.language"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "selection.anythingElse.language"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookies_policy"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      }
+    ]
+  },
+  {
     name           = "sscs-cor"
     mode           = "Prevention"
     custom_domain  = "sscs-cor.aat.platform.hmcts.net"

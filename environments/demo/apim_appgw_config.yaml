@@ -22,6 +22,7 @@ gateways:
          - rootca_certificate_name: liberata_ca
          - rootca_certificate_name: exela_ca
          - rootca_certificate_name: pcipal_ca
+         - rootca_certificate_name: pcipal_cav2
         add_rewrite_rule: true
         rewrite_rules:
           - name: "AddCustomHeadersRule"

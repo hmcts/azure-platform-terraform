@@ -13,7 +13,7 @@ locals {
       liberata_ca         = "liberata-ca"
       exela_ca            = "exela-ca"
       pcipal_ca           = "pcipal-ca"
-      pcipal_cav2         = "pcipal-cav2"
+      pcipalv2_ca         = "pcipalv2-ca"
     }
     stg = {
       reform_scan_sscs_ca = "reform-scan-sscs-ca"

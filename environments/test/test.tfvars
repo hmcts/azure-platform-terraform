@@ -523,7 +523,13 @@ frontends = [
     dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
-
+    disabled_rules = {
+      SQLI = [
+        "942260",
+        "942400",
+        "942210"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

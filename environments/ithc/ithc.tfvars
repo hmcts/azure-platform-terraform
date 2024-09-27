@@ -858,7 +858,13 @@ frontends = [
     custom_domain  = "fact-admin.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
-
+    disabled_rules = {
+      SQLI = [
+        "942260",
+        "942400",
+        "942210"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

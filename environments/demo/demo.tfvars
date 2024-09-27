@@ -377,7 +377,13 @@ frontends = [
     custom_domain  = "fact-admin.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
+    disabled_rules = {
+      SQLI = [
+        "942260",
+        "942400",
+        "942210"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

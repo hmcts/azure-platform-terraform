@@ -13,8 +13,8 @@ locals {
       liberata_ca                    = "liberata-ca"
       exela_ca                       = "exela-ca"
       pcipal_ca                      = "pcipal-ca"
-      pcipal-ssl-com-intermediate-ca = "pcipal-ssl-com-intermediate-ca"
-      pcipal-ssl-com-root-ca         = "pcipal-ssl-com-root-ca"
+      pcipal_ssl_com_intermediate_ca = "pcipal-ssl-com-intermediate-ca"
+      pcipal_ssl_com_root_ca         = "pcipal-ssl-com-root-ca"
     }
     stg = {
       reform_scan_sscs_ca = "reform-scan-sscs-ca"

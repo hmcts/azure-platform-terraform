@@ -9,11 +9,12 @@ locals {
       exela_ca            = "exela-ca"
     }
     demo = {
-      reform_scan_sscs_ca = "reform-scan-sscs-ca"
-      liberata_ca         = "liberata-ca"
-      exela_ca            = "exela-ca"
-      pcipal_ca           = "pcipal-ca"
-      pcipalv2_ca         = "pcipalv2-ca"
+      reform_scan_sscs_ca            = "reform-scan-sscs-ca"
+      liberata_ca                    = "liberata-ca"
+      exela_ca                       = "exela-ca"
+      pcipal_ca                      = "pcipal-ca"
+      pcipal_ssl_com_intermediate_ca = "pcipal-ssl-com-intermediate-ca"
+      pcipal_ssl_com_root_ca         = "pcipal-ssl-com-root-ca"
     }
     stg = {
       reform_scan_sscs_ca = "reform-scan-sscs-ca"

@@ -4107,5 +4107,21 @@ frontends = [
         selector       = "rf"
       },
     ]
+  },
+  {
+    product          = "et"
+    name             = "et-syr"
+    mode             = "Detection"
+    custom_domain    = "www.respond-employment-tribunals.service.gov.uk"
+    dns_zone_name    = "respond-employment-tribunals.service.gov.uk"
+    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name = "respond-employment-tribunals-service-gov-uk"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-syr-cookie-preferences"
+      }
+    ]
   }
 ]

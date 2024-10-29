@@ -22,11 +22,13 @@ locals {
       exela_ca            = "exela-ca"
     }
     prod = {
-      civil_sdt_root_ca   = "civil-sdt-root-ca"
-      liberata_ca         = "liberata-ca"
-      exela_ca            = "exela-ca"
-      reform_scan_sscs_ca = "reform-scan-sscs-ca"
-      pcipal_ca           = "pcipal-ca"
+      civil_sdt_root_ca              = "civil-sdt-root-ca"
+      liberata_ca                    = "liberata-ca"
+      exela_ca                       = "exela-ca"
+      reform_scan_sscs_ca            = "reform-scan-sscs-ca"
+      pcipal_ca                      = "pcipal-ca"
+      pcipal_ssl_com_intermediate_ca = "pcipal-ssl-com-intermediate-ca"
+      pcipal_ssl_com_root_ca         = "pcipal-ssl-com-root-ca"
     }
   }
 

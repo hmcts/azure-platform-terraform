@@ -399,7 +399,6 @@ stages:
               serviceConnection: 'azurerm-sandbox'
               overrideAction: ${{ parameters.overrideAction }}
               projectName: ${{ variables.businessArea }}
-              cluster: '00'
               environment: 'sbox'
               runManualStart: true
 

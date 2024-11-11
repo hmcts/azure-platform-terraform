@@ -405,3 +405,7 @@ gateways:
     # Evidence Management
       - product: em
         component: media-viewer
+
+    # PCS
+    - product: pcs
+      component: api

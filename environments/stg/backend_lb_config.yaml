@@ -406,6 +406,6 @@ gateways:
       - product: em
         component: media-viewer
 
-    # PCS
-    - product: pcs
-      component: api
+    # pcs
+      - product: pcs
+        component: api

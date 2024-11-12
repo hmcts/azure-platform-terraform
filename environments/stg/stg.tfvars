@@ -3975,8 +3975,7 @@ frontends = [
     ]
   },
   {
-    product        = "pcs"
-    name           = "frontend"
+    name           = "pcs-frontend"
     mode           = "Prevention"
     custom_domain  = "pcs.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"

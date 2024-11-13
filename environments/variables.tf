@@ -176,9 +176,6 @@ variable "apim_appgw_max_capacity" {
   default = 2
 }
 
-variable "compression_enabled" {
-}
-
-variable "caching_behavior" {
-  default = "UseQueryString"
+variable "enable_cache" {
+  type    = bool
 }

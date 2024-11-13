@@ -177,5 +177,5 @@ variable "apim_appgw_max_capacity" {
 }
 
 variable "enable_cache" {
-  type    = bool
+  type = bool
 }

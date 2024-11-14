@@ -180,5 +180,6 @@ variable "caching_compression" {
 }
 
 variable "enable_cache" {
-  default = bool
+  type    = bool
+  default = false
 }

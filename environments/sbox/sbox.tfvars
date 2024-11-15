@@ -747,7 +747,6 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    cache_enabled    = false
   },
   {
     product          = "labs-apps-njs"
@@ -757,7 +756,6 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["lb-sbox-int-labs-apps-njs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    cache_enabled    = false
   },
   {
     product          = "labs-goldenpath-khaled"
@@ -768,7 +766,6 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-khaled.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
-    cache_enabled    = false
   },
   {
     product          = "labs-endakelly-nodejs"
@@ -779,7 +776,6 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labs-endakelly-nodejs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
-    cache_enabled   = false
   },
 ]
 

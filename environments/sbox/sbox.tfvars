@@ -715,8 +715,13 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    cache_enabled    = false
-  },
+    cache_enabled = {
+      enabled                       = false
+      compression_enabled           = false
+      query_string_caching_behavior = ""
+      query_strings                 = []
+      content_types_to_compress     = []
+    }  },
   {
     product          = "cft-api-mgmt"
     name             = "cft-api-mgmt"
@@ -725,8 +730,13 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-cftapimgmt.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    cache_enabled    = false
-  },
+    cache_enabled = {
+      enabled                       = false
+      compression_enabled           = false
+      query_string_caching_behavior = ""
+      query_strings                 = []
+      content_types_to_compress     = []
+    }  },
   {
     product                        = "reform"
     name                           = "reformscan"
@@ -736,8 +746,13 @@ frontends = [
     backend_domain                 = ["firewall-prod-int-palo-reformscansbox.uksouth.cloudapp.azure.com"]
     certificate_name               = "wildcard-sandbox-platform-hmcts-net"
     appgw_cookie_based_affinity    = "Enabled"
-    cache_enabled                  = false
-    certificate_name_check_enabled = false
+    cache_enabled = {
+      enabled                       = false
+      compression_enabled           = false
+      query_string_caching_behavior = ""
+      query_strings                 = []
+      content_types_to_compress     = []
+    }    certificate_name_check_enabled = false
   },
   {
     product          = "labs"

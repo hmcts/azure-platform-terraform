@@ -37,8 +37,8 @@ frontends = [
     shutter_app      = false
 
     cache_enabled = {
-      enabled                       = "true"
-      compression_enabled           = "true"
+      enabled                       = true
+      compression_enabled           = true
       query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
       query_strings                 = ["account", "settings"]
       content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]

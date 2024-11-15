@@ -39,9 +39,6 @@ frontends = [
     cache_enabled = {
       enabled                       = true
       compression_enabled           = true
-      query_string_caching_behavior = []
-      query_strings                 = []
-      content_types_to_compress     = []
     }
 
     global_exclusions = [

@@ -27,8 +27,6 @@ module "premium_front_door" {
 
   diagnostics_storage_account_id    = azurerm_storage_account.diagnostics.id
   send_access_logs_to_log_analytics = false
-  enable_cache                      = var.enable_cache
-  caching_compression               = var.caching_compression
 }
 
 module "ctags" {

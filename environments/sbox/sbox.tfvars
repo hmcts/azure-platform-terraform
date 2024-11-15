@@ -37,8 +37,8 @@ frontends = [
     shutter_app      = false
 
     cache_enabled = {
-      enabled                       = true
-      compression_enabled           = true
+      enabled                       = "true"
+      compression_enabled           = "true"
       query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
       query_strings                 = ["account", "settings"]
       content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
@@ -303,8 +303,8 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
 
     cache_enabled = {
-      enabled                       = true
-      compression_enabled           = true
+      enabled                       = "true"
+      compression_enabled           = "true"
       query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
       query_strings                 = ["account", "settings"]
       content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
@@ -505,8 +505,8 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
 
     cache_enabled = {
-      enabled                       = true
-      compression_enabled           = true
+      enabled                       = "true"
+      compression_enabled           = "true"
       query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
       query_strings                 = ["account", "settings"]
       content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
@@ -695,13 +695,6 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
-    cache_enabled = {
-      enabled                       = true
-      compression_enabled           = true
-      query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
-      query_strings                 = ["account", "settings"]
-      content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
-    }
   },
   {
     product          = "plumclassic"
@@ -712,14 +705,7 @@ frontends = [
     certificate_name = "frontdoor-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
-    ssl_mode         = "AzureKeyVault"
-    cache_enabled = {
-      enabled                       = true
-      compression_enabled           = true
-      query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
-      query_strings                 = ["account", "settings"]
-      content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
-    }   
+    ssl_mode         = "AzureKeyVault"  
   },
   {
     product          = "hmi"

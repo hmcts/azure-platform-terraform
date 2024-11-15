@@ -299,8 +299,10 @@ frontends = [
     custom_domain = "hmcts-access.sandbox.platform.hmcts.net"
     dns_zone_name = "sandbox.platform.hmcts.net"
     shutter_app   = false
+
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
+
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -494,6 +496,7 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
+
     custom_rules = [
       {
         name     = "IPMatchWhitelist"
@@ -687,7 +690,7 @@ frontends = [
     certificate_name = "frontdoor-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
-    ssl_mode         = "AzureKeyVault"  
+    ssl_mode         = "AzureKeyVault"
   },
   {
     product          = "hmi"

@@ -35,13 +35,15 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     shutter_app      = false
-    cache_enabled = true
-    cache_config = {
+
+    cache_enabled = {
+      enabled                       = true
       compression_enabled           = true
       query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
       query_strings                 = ["account", "settings"]
       content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
     }
+
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -297,12 +299,11 @@ frontends = [
     custom_domain = "hmcts-access.sandbox.platform.hmcts.net"
     dns_zone_name = "sandbox.platform.hmcts.net"
     shutter_app   = false
-
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
 
-    cache_enabled = true
-    cache_config = {
+    cache_enabled = {
+      enabled                       = true
       compression_enabled           = true
       query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
       query_strings                 = ["account", "settings"]
@@ -502,13 +503,15 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    cache_enabled = true
-    cache_config = {
+
+    cache_enabled = {
+      enabled                       = true
       compression_enabled           = true
       query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
       query_strings                 = ["account", "settings"]
       content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
     }
+
     custom_rules = [
       {
         name     = "IPMatchWhitelist"
@@ -692,13 +695,6 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
-    cache_enabled = true
-    cache_config = {
-      compression_enabled           = true
-      query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
-      query_strings                 = ["account", "settings"]
-      content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
-    }
   },
   {
     product          = "plumclassic"
@@ -710,13 +706,6 @@ frontends = [
     disabled_rules   = {}
     shutter_app      = true
     ssl_mode         = "AzureKeyVault"
-    cache_enabled = true
-    cache_config = {
-      compression_enabled           = true
-      query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
-      query_strings                 = ["account", "settings"]
-      content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
-    }
   },
   {
     product          = "hmi"

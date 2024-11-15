@@ -746,13 +746,14 @@ frontends = [
     backend_domain                 = ["firewall-prod-int-palo-reformscansbox.uksouth.cloudapp.azure.com"]
     certificate_name               = "wildcard-sandbox-platform-hmcts-net"
     appgw_cookie_based_affinity    = "Enabled"
+    certificate_name_check_enabled = false
     cache_enabled = {
       enabled                       = false
       compression_enabled           = false
       query_string_caching_behavior = ""
       query_strings                 = []
       content_types_to_compress     = []
-    }    certificate_name_check_enabled = false
+    }    
   },
   {
     product          = "labs"

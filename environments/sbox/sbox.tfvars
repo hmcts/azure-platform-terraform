@@ -301,6 +301,13 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
 
+    cache_enabled = {
+      compression_enabled           = true
+      query_string_caching_behavior = "UseQueryString"
+      query_strings                 = ["param1", "param2"]
+      content_types_to_compress     = ["text/html", "application/json"]
+    }
+
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -495,6 +502,13 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
 
+    cache_enabled = {
+      compression_enabled           = true
+      query_string_caching_behavior = "UseQueryString"
+      query_strings                 = ["param1", "param2"]
+      content_types_to_compress     = ["text/html", "application/json"]
+    }
+
     custom_rules = [
       {
         name     = "IPMatchWhitelist"
@@ -678,6 +692,13 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
+  
+    cache_enabled = {
+      compression_enabled           = true
+      query_string_caching_behavior = "UseQueryString"
+      query_strings                 = ["param1", "param2"]
+      content_types_to_compress     = ["text/html", "application/json"]
+    }
   },
   {
     product          = "plumclassic"
@@ -689,6 +710,12 @@ frontends = [
     disabled_rules   = {}
     shutter_app      = true
     ssl_mode         = "AzureKeyVault"
+    cache_enabled = {
+      compression_enabled           = true
+      query_string_caching_behavior = "UseQueryString"
+      query_strings                 = ["param1", "param2"]
+      content_types_to_compress     = ["text/html", "application/json"]
+    }
   },
   {
     product          = "hmi"
@@ -730,6 +757,13 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
+        
+    cache_enabled = {
+      compression_enabled           = true
+      query_string_caching_behavior = "UseQueryString"
+      query_strings                 = ["param1", "param2"]
+      content_types_to_compress     = ["text/html", "application/json"]
+    }
   },
   {
     product          = "labs-apps-njs"
@@ -739,6 +773,13 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["lb-sbox-int-labs-apps-njs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
+        
+    cache_enabled = {
+      compression_enabled           = true
+      query_string_caching_behavior = "UseQueryString"
+      query_strings                 = ["param1", "param2"]
+      content_types_to_compress     = ["text/html", "application/json"]
+    }
   },
   {
     product          = "labs-goldenpath-khaled"
@@ -749,6 +790,13 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-khaled.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
+
+    cache_enabled = {
+      compression_enabled           = true
+      query_string_caching_behavior = "UseQueryString"
+      query_strings                 = ["param1", "param2"]
+      content_types_to_compress     = ["text/html", "application/json"]
+    }
   },
   {
     product          = "labs-endakelly-nodejs"
@@ -759,6 +807,13 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labs-endakelly-nodejs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
+        
+    cache_enabled = {
+      compression_enabled           = true
+      query_string_caching_behavior = "UseQueryString"
+      query_strings                 = ["param1", "param2"]
+      content_types_to_compress     = ["text/html", "application/json"]
+    }
   },
 ]
 

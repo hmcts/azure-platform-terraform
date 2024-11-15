@@ -301,15 +301,6 @@ frontends = [
     shutter_app   = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-
-    cache_enabled = {
-      enabled                       = true
-      compression_enabled           = true
-      query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
-      query_strings                 = ["account", "settings"]
-      content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
-    }
-
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -503,15 +494,6 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-
-    cache_enabled = {
-      enabled                       = true
-      compression_enabled           = true
-      query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
-      query_strings                 = ["account", "settings"]
-      content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
-    }
-
     custom_rules = [
       {
         name     = "IPMatchWhitelist"
@@ -715,13 +697,7 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    cache_enabled = {
-      enabled                       = false
-      compression_enabled           = false
-      query_string_caching_behavior = ""
-      query_strings                 = []
-      content_types_to_compress     = []
-    }  },
+    cache_enabled    = false
   {
     product          = "cft-api-mgmt"
     name             = "cft-api-mgmt"
@@ -730,13 +706,7 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-cftapimgmt.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    cache_enabled = {
-      enabled                       = false
-      compression_enabled           = false
-      query_string_caching_behavior = ""
-      query_strings                 = []
-      content_types_to_compress     = []
-    }  
+    cache_enabled    = false
   },
   {
     product                        = "reform"
@@ -748,13 +718,7 @@ frontends = [
     certificate_name               = "wildcard-sandbox-platform-hmcts-net"
     appgw_cookie_based_affinity    = "Enabled"
     certificate_name_check_enabled = false
-    cache_enabled = {
-      enabled                       = false
-      compression_enabled           = false
-      query_string_caching_behavior = ""
-      query_strings                 = []
-      content_types_to_compress     = []
-    }    
+    cache_enabled                  = false  
   },
   {
     product          = "labs"

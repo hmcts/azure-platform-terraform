@@ -10,8 +10,6 @@ data_subscription              = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
 key_vault_subscription         = "b72ab7b7-723f-4b18-b6f6-03b0f2c6a1bb"
 privatedns_subscription        = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
 oms_env                        = "sandbox"
-enable_cache                   = "true"
-caching_compression            = "true"
 #FrontDoor access policy
 add_access_policy = true
 
@@ -36,6 +34,12 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     shutter_app      = false
+    cache_enabled = {
+      compression_enabled           = true
+      query_string_caching_behavior = "Include"
+      query_strings                 = ["param1", "param2"]
+      content_types_to_compress     = ["text/html", "application/json"]
+    }
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"

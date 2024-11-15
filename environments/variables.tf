@@ -176,10 +176,13 @@ variable "apim_appgw_max_capacity" {
   default = 2
 }
 
-variable "caching_compression" {
-}
-
-variable "enable_cache" {
-  type    = bool
-  default = false
+variable "app_cache_settings" {
+  description = "Cache settings for each application"
+  type = map(object({
+    query_parameter_strip_directive = string
+    dynamic_compression_enable      = bool
+    cache_behavior                  = string
+    cache_duration                   = string
+  }))
+  default = {}
 }

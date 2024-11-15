@@ -303,8 +303,8 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
 
     cache_enabled = {
-      enabled                       = "true"
-      compression_enabled           = "true"
+      enabled                       = true
+      compression_enabled           = true
       query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
       query_strings                 = ["account", "settings"]
       content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
@@ -505,8 +505,8 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
 
     cache_enabled = {
-      enabled                       = "true"
-      compression_enabled           = "true"
+      enabled                       = true
+      compression_enabled           = true
       query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
       query_strings                 = ["account", "settings"]
       content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
@@ -715,7 +715,7 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-hmiapimsbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    cache_enabled    = "false"
+    cache_enabled    = false
   },
   {
     product          = "cft-api-mgmt"
@@ -725,7 +725,7 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-cftapimgmt.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    cache_enabled    = "false"
+    cache_enabled    = false
   },
   {
     product                        = "reform"
@@ -736,7 +736,7 @@ frontends = [
     backend_domain                 = ["firewall-prod-int-palo-reformscansbox.uksouth.cloudapp.azure.com"]
     certificate_name               = "wildcard-sandbox-platform-hmcts-net"
     appgw_cookie_based_affinity    = "Enabled"
-    cache_enabled                  = "false"
+    cache_enabled                  = false
     certificate_name_check_enabled = false
   },
   {
@@ -747,7 +747,7 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    cache_enabled    = "false"
+    cache_enabled    = false
   },
   {
     product          = "labs-apps-njs"
@@ -757,7 +757,7 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["lb-sbox-int-labs-apps-njs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    cache_enabled    = "false"
+    cache_enabled    = false
   },
   {
     product          = "labs-goldenpath-khaled"
@@ -768,7 +768,7 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-khaled.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
-    cache_enabled    = "false"
+    cache_enabled    = false
   },
   {
     product          = "labs-endakelly-nodejs"
@@ -779,7 +779,7 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labs-endakelly-nodejs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
-    cache_enabled   = "false"
+    cache_enabled   = false
   },
 ]
 

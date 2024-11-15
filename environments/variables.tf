@@ -39,7 +39,7 @@ variable "location" {
 
 variable "frontends" {
   default = []
-  
+
 }
 
 

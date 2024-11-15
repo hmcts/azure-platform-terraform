@@ -37,8 +37,7 @@ frontends = [
     shutter_app      = false
 
     cache_enabled = {
-      enabled                       = true
-      compression_enabled           = true
+      enabled = true
     }
 
     global_exclusions = [

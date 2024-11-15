@@ -10,6 +10,7 @@ data_subscription              = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
 key_vault_subscription         = "b72ab7b7-723f-4b18-b6f6-03b0f2c6a1bb"
 privatedns_subscription        = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
 oms_env                        = "sandbox"
+
 #FrontDoor access policy
 add_access_policy = true
 
@@ -34,14 +35,13 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     shutter_app      = false
-    
-    cache_enabled = {
+    cache_enabled = true
+    cache_config = {
       compression_enabled           = true
-      query_string_caching_behavior = "UseQueryString"
-      query_strings                 = ["param1", "param2"]
-      content_types_to_compress     = ["text/html", "application/json"]
+      query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
+      query_strings                 = ["account", "settings"]
+      content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
     }
-
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -301,11 +301,12 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
 
-    cache_enabled = {
+    cache_enabled = true
+    cache_config = {
       compression_enabled           = true
-      query_string_caching_behavior = "UseQueryString"
-      query_strings                 = ["param1", "param2"]
-      content_types_to_compress     = ["text/html", "application/json"]
+      query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
+      query_strings                 = ["account", "settings"]
+      content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
     }
 
     global_exclusions = [
@@ -501,14 +502,13 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-
-    cache_enabled = {
+    cache_enabled = true
+    cache_config = {
       compression_enabled           = true
-      query_string_caching_behavior = "UseQueryString"
-      query_strings                 = ["param1", "param2"]
-      content_types_to_compress     = ["text/html", "application/json"]
+      query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
+      query_strings                 = ["account", "settings"]
+      content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
     }
-
     custom_rules = [
       {
         name     = "IPMatchWhitelist"
@@ -692,12 +692,12 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
-  
-    cache_enabled = {
+    cache_enabled = true
+    cache_config = {
       compression_enabled           = true
-      query_string_caching_behavior = "UseQueryString"
-      query_strings                 = ["param1", "param2"]
-      content_types_to_compress     = ["text/html", "application/json"]
+      query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
+      query_strings                 = ["account", "settings"]
+      content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
     }
   },
   {
@@ -710,11 +710,12 @@ frontends = [
     disabled_rules   = {}
     shutter_app      = true
     ssl_mode         = "AzureKeyVault"
-    cache_enabled = {
+    cache_enabled = true
+    cache_config = {
       compression_enabled           = true
-      query_string_caching_behavior = "UseQueryString"
-      query_strings                 = ["param1", "param2"]
-      content_types_to_compress     = ["text/html", "application/json"]
+      query_string_caching_behavior = "IgnoreSpecifiedQueryStrings"
+      query_strings                 = ["account", "settings"]
+      content_types_to_compress     = ["text/html", "text/javascript", "text/xml"]
     }
   },
   {
@@ -757,13 +758,6 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-        
-    cache_enabled = {
-      compression_enabled           = true
-      query_string_caching_behavior = "UseQueryString"
-      query_strings                 = ["param1", "param2"]
-      content_types_to_compress     = ["text/html", "application/json"]
-    }
   },
   {
     product          = "labs-apps-njs"
@@ -773,13 +767,6 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["lb-sbox-int-labs-apps-njs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
-        
-    cache_enabled = {
-      compression_enabled           = true
-      query_string_caching_behavior = "UseQueryString"
-      query_strings                 = ["param1", "param2"]
-      content_types_to_compress     = ["text/html", "application/json"]
-    }
   },
   {
     product          = "labs-goldenpath-khaled"
@@ -790,13 +777,6 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-khaled.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
-
-    cache_enabled = {
-      compression_enabled           = true
-      query_string_caching_behavior = "UseQueryString"
-      query_strings                 = ["param1", "param2"]
-      content_types_to_compress     = ["text/html", "application/json"]
-    }
   },
   {
     product          = "labs-endakelly-nodejs"
@@ -807,13 +787,6 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labs-endakelly-nodejs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
-        
-    cache_enabled = {
-      compression_enabled           = true
-      query_string_caching_behavior = "UseQueryString"
-      query_strings                 = ["param1", "param2"]
-      content_types_to_compress     = ["text/html", "application/json"]
-    }
   },
 ]
 

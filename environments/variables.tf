@@ -38,8 +38,25 @@ variable "location" {
 }
 
 variable "frontends" {
+  description = "List of frontend configurations."
+
+  type = list(object({
+    name             = string
+    custom_domain    = string
+    dns_zone_name    = string
+    shutter_app      = bool
+    backend_domain   = list(string)
+    certificate_name = string
+    cache_enabled = optional(object({
+      enabled                       = bool
+      compression_enabled           = bool
+      query_string_caching_behavior = optional(string)
+      query_strings                 = optional(list(string))
+      content_types_to_compress     = optional(list(string))
+    }), null)
+  }))
+
   default = []
-  
 }
 
 

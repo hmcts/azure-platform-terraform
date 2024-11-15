@@ -37,7 +37,11 @@ frontends = [
     shutter_app      = false
 
     cache_enabled = {
-      enabled = true
+      enabled                       = true
+      compression_enabled           = true
+      query_string_caching_behavior = "UseQueryString"
+      query_strings                 = [""]
+      content_types_to_compress     = [""]
     }
 
     global_exclusions = [

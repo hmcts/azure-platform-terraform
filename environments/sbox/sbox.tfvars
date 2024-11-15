@@ -736,7 +736,8 @@ frontends = [
       query_string_caching_behavior = ""
       query_strings                 = []
       content_types_to_compress     = []
-    }  },
+    }  
+  },
   {
     product                        = "reform"
     name                           = "reformscan"

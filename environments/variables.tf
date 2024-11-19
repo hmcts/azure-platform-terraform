@@ -39,7 +39,9 @@ variable "location" {
 
 variable "frontends" {
   default = []
+
 }
+
 
 variable "shutter_storage" {
   default = "TODO" // Is this even used?

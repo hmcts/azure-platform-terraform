@@ -9,7 +9,7 @@ moved {
   to   = module.premium_front_door
 }
 module "premium_front_door" {
-  source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=master"
+  source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=DTSPO-22339-Enable-asset-caching-and-compression-in-front-door"
 
   common_tags                = module.ctags.common_tags
   env                        = var.env
@@ -36,4 +36,3 @@ module "ctags" {
   builtFrom    = var.builtFrom
   expiresAfter = var.expiresAfter
 }
-

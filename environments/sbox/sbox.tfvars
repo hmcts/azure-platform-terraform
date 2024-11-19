@@ -35,6 +35,16 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     shutter_app      = false
+
+    caching = {
+      url_file_extension_conditions = [{}]
+      route_configuration_override_action = [
+        {
+          compression_enabled = true
+        }
+      ]
+    }
+
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"

@@ -37,6 +37,7 @@ frontends = [
     shutter_app      = false
 
     caching = {
+      url_file_extension_conditions = [{}]
       route_configuration_override_action = [
         {
           compression_enabled           = true

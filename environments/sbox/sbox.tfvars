@@ -40,7 +40,7 @@ frontends = [
       url_file_extension_conditions = [{}]
       route_configuration_override_action = [
         {
-          compression_enabled           = true
+          compression_enabled = true
         }
       ]
     }

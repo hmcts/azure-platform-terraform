@@ -39,7 +39,7 @@ frontends = [
     caching = {
       route_configuration_override_action = [
         {
-          compression_enabled           = true
+          compression_enabled = true
         }
       ]
     }

@@ -36,7 +36,7 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     shutter_app      = false
 
-    caching = {
+    asset_caching = {
       compression_enabled           = true
       query_string_caching_behavior = "UseQueryString"
       query_strings                 = []

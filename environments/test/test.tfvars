@@ -429,6 +429,15 @@ frontends = [
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
+    caching = {
+      url_file_extension_conditions = [{}]
+      route_configuration_override_action = [
+        {
+          compression_enabled = true
+        }
+      ]
+    }
+
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

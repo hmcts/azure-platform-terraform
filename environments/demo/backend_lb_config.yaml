@@ -441,3 +441,7 @@ gateways:
       # help-with-fees
       - product: help-with-fees
         component: benefit-checker-api
+
+      # pcs
+      - product: pcs
+        component: api

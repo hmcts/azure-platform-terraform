@@ -373,3 +373,7 @@ gateways:
         component: repl-docmosis-backend
       - product: ethos
         component: ecm-consumer
+
+    # pcs
+      - product: pcs
+        component: api

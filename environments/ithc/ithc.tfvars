@@ -3233,5 +3233,13 @@ frontends = [
         selector       = "et-syr-cookie-preferences"
       }
     ]
-  }
+  },
+  {
+    name              = "pcs-frontend"
+    mode              = "Prevention"
+    custom_domain     = "pcs.perftest.platform.hmcts.net"
+    dns_zone_name     = "perftest.platform.hmcts.net"
+    backend_domain    = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    global_exclusions = []
+  },
 ]

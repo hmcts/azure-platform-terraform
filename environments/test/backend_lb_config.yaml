@@ -368,3 +368,6 @@ gateways:
     # jps
       - product: jps
         component: judicial-payment-service
+    # pcs
+      - product: pcs
+        component: api

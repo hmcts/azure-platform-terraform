@@ -763,6 +763,15 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   },
+  {
+    product          = "labs-goldenpath-ashleigh"
+    name             = "labs-goldenpath-ashleigh"
+    custom_domain    = "labs-goldenpath-ashleigh.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labsgoldenpathashleigh.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  }
 ]
 
 apim_appgw_exclusions = [

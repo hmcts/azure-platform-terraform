@@ -726,43 +726,14 @@ frontends = [
     certificate_name_check_enabled = false
   },
   {
-    product          = "labs"
-    name             = "labs-rhodrif-nodejs"
-    custom_domain    = "labs-rhodrif-nodejs.sandbox.platform.hmcts.net"
+    product          = "labs-goldenpath-ashleigh"
+    name             = "labs-goldenpath-ashleigh"
+    custom_domain    = "labs-goldenpath-ashleigh.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
-    shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-  },
-  {
-    product          = "labs-apps-njs"
-    name             = "labs-apps-njs"
-    custom_domain    = "labs-apps-njs.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    shutter_app      = false
-    backend_domain   = ["lb-sbox-int-labs-apps-njs.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-  },
-  {
-    product          = "labs-goldenpath-khaled"
-    name             = "labs-goldenpath-khaled"
-    custom_domain    = "labs-goldenpath-khaled.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-khaled.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-sbox-int-palo-labsgoldenpathashleigh.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
-  },
-  {
-    product          = "labs-endakelly-nodejs"
-    name             = "labs-endakelly-nodejs"
-    custom_domain    = "labs-endakelly-nodejs.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-labs-endakelly-nodejs.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
+  }
 ]
 
 apim_appgw_exclusions = [

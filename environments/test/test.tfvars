@@ -429,6 +429,15 @@ frontends = [
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
 
+    caching = {
+      url_file_extension_conditions = [{}]
+      route_configuration_override_action = [
+        {
+          compression_enabled = true
+        }
+      ]
+    }
+
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -2710,5 +2719,13 @@ frontends = [
         selector       = "et-syr-cookie-preferences"
       }
     ]
-  }
+  },
+  {
+    name              = "pcs-frontend"
+    mode              = "Prevention"
+    custom_domain     = "pcs.perftest.platform.hmcts.net"
+    dns_zone_name     = "perftest.platform.hmcts.net"
+    backend_domain    = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+    global_exclusions = []
+  },
 ]

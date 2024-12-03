@@ -2859,6 +2859,11 @@ frontends = [
         selector       = "_ga"
       },
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "authenticity_token"

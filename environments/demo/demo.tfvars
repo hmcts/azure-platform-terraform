@@ -3556,7 +3556,7 @@ frontends = [
         match_variable = "RequestCookies"
         operator       = "StartsWith"
         selector       = "dtSa=true|C|"
-      }
+      },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"

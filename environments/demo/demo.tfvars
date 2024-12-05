@@ -3555,11 +3555,6 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "CookieValue:dtSa"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
         selector       = "authenticity_token"
       },
       {

@@ -124,6 +124,8 @@ gateways:
         component: message-publisher
       - product: ccd
         component: case-document-am-api
+      - product: ccd
+        component: case-print-service
 
     # AAC (CDM)
       - product: aac

@@ -184,7 +184,7 @@ gateways:
         component: message-publisher
       - product: ccd
         component: case-document-am-api
-       - product: ccd
+      - product: ccd
         component: test-stubs-service
 
     # AAC (CDM)

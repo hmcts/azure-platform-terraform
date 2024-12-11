@@ -10,6 +10,10 @@ variable "key_vault_subscription" {
   default = []
 }
 
+variable "enable_waf" {
+  default = false
+}
+
 variable "env" {
   default = []
 }

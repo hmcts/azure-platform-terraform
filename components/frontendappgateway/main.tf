@@ -36,7 +36,7 @@ module "frontendappgateway" {
   diagnostics_storage_account_id     = data.azurerm_storage_account.diagnostics.id
 }
 
-module "frontendappgateway" {
+module "frontendappgateway_waf_enabled" {
   source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=WAF_Setup2"
 
   env                                = var.env

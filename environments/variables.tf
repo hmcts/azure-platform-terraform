@@ -14,16 +14,6 @@ variable "enable_waf" {
   default = false
 }
 
-variable "app_gateway_name" {
-  description = "The name of the Application Gateway"
-  type        = string
-  default     = null
-}
-
-variable "waf_app_gateway_name" {
-  default = "${local.resource_prefix}fe-${format("%02d", count.index)}-${var.env}-agw-waf"
-}
-
 variable "env" {
   default = []
 }

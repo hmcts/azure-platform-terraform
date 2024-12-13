@@ -59,5 +59,5 @@ module "frontendappgateway_waf_enabled" {
   max_capacity                       = var.frontend_agw_max_capacity
   diagnostics_storage_account_id     = data.azurerm_storage_account.diagnostics.id
   enable_waf                         = true
-  app_gateway_name                   = var.waf_app_gateway_name
+  app_gateway_name                   = "${local.resource_prefix}fe-${format("%02d", count.index)}-${var.env}-agw-waf"
 }

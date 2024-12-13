@@ -39,7 +39,7 @@ module "frontendappgateway" {
 module "frontendappgateway_waf_enabled" {
   source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=WAF_Setup2"
 
-  count = (var.enable_waf && var.env == "demo") ? 1 : 0
+  count = var.env == "demo" ? 1 : 0
 
   env                                = var.env
   subscription                       = var.subscription

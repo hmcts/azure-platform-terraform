@@ -11,7 +11,6 @@ variable "key_vault_subscription" {
 }
 
 variable "enable_waf" {
-  type    = bool
   default = false
 }
 

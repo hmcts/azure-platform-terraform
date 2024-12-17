@@ -742,7 +742,7 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-lukasz.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
-  }
+  },
   {
     product          = "lab-jamiemcconnell-goldenpath"
     name             = "lab-jamiemcconnell-goldenpath"

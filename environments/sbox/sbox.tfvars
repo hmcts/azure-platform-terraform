@@ -733,6 +733,15 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-ashleigh.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
+  },
+  {
+    product          = "labs-goldenpath-lukasz"
+    name             = "labs-goldenpath-lukasz"
+    custom_domain    = "labs-goldenpath-lukasz.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-lukasz.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
   }
 ]
 

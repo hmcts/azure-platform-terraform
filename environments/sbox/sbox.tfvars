@@ -743,6 +743,15 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   }
+  {
+    product          = "lab-jamiemcconnell-goldenpath"
+    name             = "lab-jamiemcconnell-goldenpath"
+    custom_domain    = "lab-jamiemcconnell-goldenpath.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-lab-jamiemcconnell-goldenpath.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  }
 ]
 
 apim_appgw_exclusions = [

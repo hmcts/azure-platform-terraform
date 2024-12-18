@@ -744,11 +744,11 @@ frontends = [
     disabled_rules   = {}
   },
   {
-    product          = "lab-jamiemcconnell-goldenpath"
-    name             = "lab-jamiemcconnell-goldenpath"
-    custom_domain    = "lab-jamiemcconnell-goldenpath.sandbox.platform.hmcts.net"
+    product          = "labs-goldenpath-jamie"
+    name             = "labs-goldenpath-jamie"
+    custom_domain    = "labs-goldenpath-jamie.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-lab-jamiemcconnell-goldenpath.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-jamie.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   },

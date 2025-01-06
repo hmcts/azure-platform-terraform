@@ -3833,12 +3833,5 @@ frontends = [
 ]
 
 pubsub_frontends = [
-  {
-    product        = "em"
-    name           = "em-icp"
-    mode           = "Detection"
-    custom_domain  = "em-icp.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-  }
+  {}
 ]

@@ -66,6 +66,9 @@ variable "cft_apps_cluster_ips" {
 variable "frontend_agw_private_ip_address" {
   default = []
 }
+variable "pubsub_frontend_agw_private_ip_address" {
+  default = []
+}
 variable "sscssya_shutter" {
   default = []
 }

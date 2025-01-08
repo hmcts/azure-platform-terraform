@@ -769,6 +769,15 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labs-dawidstrozak-nodejs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
+  },
+  {
+    product          = "labs-jamiemcconnell-nodejs"
+    name             = "labs-jamiemcconnell-nodejs"
+    custom_domain    = "labs-jamiemcconnell-nodejs.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labs-jamiemcconnell-nodejs.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
   }
 ]
 

@@ -1,9 +1,9 @@
-env                      = "demo"
-subscription             = "demo"
-cft_apps_cluster_ips     = ["10.50.79.221", "10.50.95.221"]
-pubsub_frontend_endpoint = "10.50.100.50"
-certificate_name_check   = false
-autoShutdown             = true
+env                    = "demo"
+subscription           = "demo"
+cft_apps_cluster_ips   = ["10.50.79.221", "10.50.95.221"]
+pubsub_endpoint        = ["10.50.100.50"]
+certificate_name_check = false
+autoShutdown           = true
 
 frontend_agw_private_ip_address        = "10.50.97.122"
 backend_agw_private_ip_address         = ["10.50.97.118", "10.50.97.119"]

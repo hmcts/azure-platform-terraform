@@ -49,7 +49,7 @@ variable "pubsub_frontends" {
   default = []
 }
 
-variable "pubsub_frontend_endpoint" {
+variable "pubsub_endpoint" {
   default = []
 }
 

@@ -771,6 +771,15 @@ frontends = [
     disabled_rules   = {}
   },
   {
+    product          = "labs-ashleigh31-nodejs"
+    name             = "labs-ashleigh31-nodejs"
+    custom_domain    = "labs-ashleigh31-nodejs.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labs-ashleigh31-nodejs.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
+  {
     product          = "labs-jamiemcconnell-nodejs"
     name             = "labs-jamiemcconnell-nodejs"
     custom_domain    = "labs-jamiemcconnell-nodejs.sandbox.platform.hmcts.net"
@@ -779,6 +788,7 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   }
+
 ]
 
 apim_appgw_exclusions = [

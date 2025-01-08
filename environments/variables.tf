@@ -49,6 +49,10 @@ variable "pubsub_frontends" {
   default = []
 }
 
+variable "pubsub_frontend_endpoint" {
+  default = []
+}
+
 variable "shutter_storage" {
   default = "TODO" // Is this even used?
 }

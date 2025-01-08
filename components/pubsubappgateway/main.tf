@@ -23,7 +23,7 @@ module "pubsubappgateway" {
   subscription                       = var.subscription
   location                           = var.location
   private_ip_address                 = var.pubsub_frontend_agw_private_ip_address
-  destinations                       = var.cft_apps_cluster_ips
+  destinations                       = var.pubsub_frontend_endpoint
   frontends                          = var.pubsub_frontends
   common_tags                        = module.ctags.common_tags
   oms_env                            = var.oms_env
@@ -39,4 +39,5 @@ module "pubsubappgateway" {
   enable_waf                         = true
   app_gateway_name                   = "cft-fe-${format("%02d", count.index)}-${var.env}-agw-pubsub"
   waf_policy_name                    = "pubsub-waf-policy"
+  waf_managed_rules                  = var.pubsub_waf_managed_rules
 }

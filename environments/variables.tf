@@ -186,3 +186,11 @@ variable "autoShutdown" {
 variable "apim_appgw_max_capacity" {
   default = 2
 }
+
+variable "pubsub_waf_managed_rules" {
+  default = []
+}
+
+variable "pubsub_waf_custom_rules" {
+  default = []
+}

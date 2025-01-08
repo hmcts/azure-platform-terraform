@@ -1,8 +1,9 @@
-env                    = "demo"
-subscription           = "demo"
-cft_apps_cluster_ips   = ["10.50.79.221", "10.50.95.221"]
-certificate_name_check = false
-autoShutdown           = true
+env                      = "demo"
+subscription             = "demo"
+cft_apps_cluster_ips     = ["10.50.79.221", "10.50.95.221"]
+pubsub_frontend_endpoint = "10.50.100.50"
+certificate_name_check   = false
+autoShutdown             = true
 
 frontend_agw_private_ip_address        = "10.50.97.122"
 backend_agw_private_ip_address         = ["10.50.97.118", "10.50.97.119"]
@@ -3841,4 +3842,28 @@ pubsub_frontends = [
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   },
+]
+
+pubsub_waf_managed_rules = [
+  {
+    type    = "OWASP"
+    version = "3.2"
+    rule_group_override = [
+      {
+        rule_group_name = "REQUEST-920-PROTOCOL-ENFORCEMENT"
+        rule = [
+          {
+            id      = "920300"
+            enabled = true
+            action  = "Log"
+          },
+          {
+            id      = "920440"
+            enabled = true
+            action  = "Block"
+          }
+        ]
+      }
+    ]
+  }
 ]

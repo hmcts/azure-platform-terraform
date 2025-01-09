@@ -180,6 +180,14 @@ parameters:
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_frontendappgateway'
 
+    - deployment: 'demo_pubsubappgateway'
+      environment: 'demo'
+      component: 'pubsubappgateway'
+      service_connection: 'dcd-cftapps-demo'
+      storage_account_rg: 'core-infra-demo-rg'
+      storage_account_name: 'cftappsdemo'
+      dependsOn: 'sbox_frontendappgateway'
+
     - deployment: 'demo_backendappgateway'
       environment: 'demo'
       component: 'backendappgateway'

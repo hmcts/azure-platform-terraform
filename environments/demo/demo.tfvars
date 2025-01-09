@@ -1,11 +1,13 @@
 env                    = "demo"
 subscription           = "demo"
 cft_apps_cluster_ips   = ["10.50.79.221", "10.50.95.221"]
+pubsub_endpoint        = ["10.50.100.50"]
 certificate_name_check = false
 autoShutdown           = true
 
-frontend_agw_private_ip_address = "10.50.97.122"
-backend_agw_private_ip_address  = ["10.50.97.118", "10.50.97.119"]
+frontend_agw_private_ip_address        = "10.50.97.122"
+backend_agw_private_ip_address         = ["10.50.97.118", "10.50.97.119"]
+pubsub_frontend_agw_private_ip_address = "10.50.98.8"
 
 data_subscription       = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
@@ -3829,4 +3831,39 @@ frontends = [
     backend_domain    = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     global_exclusions = []
   },
+]
+
+pubsub_frontends = [
+  {
+    product        = "em"
+    name           = "em-icp-webpubsub"
+    mode           = "Detection"
+    custom_domain  = "em-icp-webpubsub.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+  },
+]
+
+pubsub_waf_managed_rules = [
+  {
+    type    = "OWASP"
+    version = "3.2"
+    rule_group_override = [
+      {
+        rule_group_name = "REQUEST-920-PROTOCOL-ENFORCEMENT"
+        rule = [
+          {
+            id      = "920300"
+            enabled = true
+            action  = "Log"
+          },
+          {
+            id      = "920440"
+            enabled = true
+            action  = "Block"
+          }
+        ]
+      }
+    ]
+  }
 ]

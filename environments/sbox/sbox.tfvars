@@ -733,7 +733,71 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-ashleigh.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
-  }
+  },
+  {
+    product          = "labs-goldenpath-lukasz"
+    name             = "labs-goldenpath-lukasz"
+    custom_domain    = "labs-goldenpath-lukasz.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-lukasz.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
+  {
+    product          = "labs-goldenpath-jamie"
+    name             = "labs-goldenpath-jamie"
+    custom_domain    = "labs-goldenpath-jamie.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-jamie.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
+  {
+    product          = "labs-goldenpath-dawid"
+    name             = "labs-goldenpath-dawid"
+    custom_domain    = "labs-goldenpath-dawid.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-dawid.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
+  {
+    product          = "labs-dawidstrozak-nodejs"
+    name             = "labs-dawidstrozak-nodejs"
+    custom_domain    = "labs-dawidstrozak-nodejs.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labs-dawidstrozak-nodejs.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
+  {
+    product          = "labs-ashleigh31-nodejs"
+    name             = "labs-ashleigh31-nodejs"
+    custom_domain    = "labs-ashleigh31-nodejs.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labs-ashleigh31-nodejs.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
+  {
+    product          = "labs-jamiemcconnell-nodejs"
+    name             = "labs-jamiemcconnell-nodejs"
+    custom_domain    = "labs-jamiemcconnell-nodejs.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labs-jamiemcconnell-nodejs.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
+  {
+    product          = "labs-lukaszk-hmcts-nodejs"
+    name             = "labs-lukaszk-hmcts-nodejs"
+    custom_domain    = "labs-lukaszk-hmcts-nodejs.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labs-lukaszk-hmcts-nodejs.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
+
 ]
 
 apim_appgw_exclusions = [

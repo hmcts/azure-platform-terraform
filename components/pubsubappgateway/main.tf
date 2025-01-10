@@ -39,6 +39,7 @@ module "pubsubappgateway" {
   enable_waf                         = true
   app_gateway_name                   = "cft-fe-${format("%02d", count.index)}-${var.env}-agw-pubsub"
   pip_name                           = "cft-pubsub-fe-appgw-${var.env}-pip"
+  pubsub_subnet                      = true
   waf_policy_name                    = "pubsub-waf-policy"
   waf_managed_rules                  = var.pubsub_waf_managed_rules
 }

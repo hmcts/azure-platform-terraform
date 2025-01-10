@@ -1534,12 +1534,12 @@ frontends = [
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     global_exclusions = [
-          {
-            match_variable = "QueryStringArgNames"
-            operator       = "Equals"
-            selector       = "returnUrl"
-          }
-      ]
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "returnUrl"
+      }
+    ]
 
   },
   {

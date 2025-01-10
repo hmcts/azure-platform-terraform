@@ -1533,7 +1533,106 @@ frontends = [
     dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
-
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "returnUrl"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "pcq-cookie-preferences"
+      },
+      // Google Analytics Exclusions
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      // Dynatrace Exclusions
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      }
+    ],
+    custom_rules = [
+      {
+        name     = "RumBeaconExclusion"
+        priority = 100
+        type     = "MatchRule"
+        action   = "Allow"
+        match_conditions = [
+          {
+            match_variable     = "RequestMethod"
+            operator           = "Equal"
+            negation_condition = false
+            match_values = [
+              "POST"
+            ]
+          },
+          {
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values = [
+              "/rb_"
+            ]
+          }
+        ]
+      },
+    ]
   },
   {
     name           = "lau"

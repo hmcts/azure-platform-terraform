@@ -1888,7 +1888,7 @@ frontends = [
     ],
     disabled_rules = {
       SQLI = [
-            "942110"
+        "942110"
       ]
       RCE = [
         "932115",

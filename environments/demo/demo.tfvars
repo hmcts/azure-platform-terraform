@@ -1887,8 +1887,12 @@ frontends = [
       },
     ],
     disabled_rules = {
+      SQLI = [
+        "942110"
+      ]
       RCE = [
-        "932115"
+        "932115",
+        "932130"
       ]
     }
     global_exclusions = [

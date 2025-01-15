@@ -724,52 +724,7 @@ frontends = [
     appgw_cookie_based_affinity    = "Enabled"
     cache_enabled                  = "false"
     certificate_name_check_enabled = false
-  },
-  {
-    product          = "labs-goldenpath-ashleigh"
-    name             = "labs-goldenpath-ashleigh"
-    custom_domain    = "labs-goldenpath-ashleigh.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-ashleigh.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
-  {
-    product          = "labs-goldenpath-jamie"
-    name             = "labs-goldenpath-jamie"
-    custom_domain    = "labs-goldenpath-jamie.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-jamie.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
-  {
-    product          = "labs-ashleigh31-nodejs"
-    name             = "labs-ashleigh31-nodejs"
-    custom_domain    = "labs-ashleigh31-nodejs.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-labs-ashleigh31-nodejs.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
-  {
-    product          = "labs-jamiemcconnell-nodejs"
-    name             = "labs-jamiemcconnell-nodejs"
-    custom_domain    = "labs-jamiemcconnell-nodejs.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-labs-jamiemcconnell-nodejs.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
-  {
-    product          = "labs-lukaszk-hmcts-nodejs"
-    name             = "labs-lukaszk-hmcts-nodejs"
-    custom_domain    = "labs-lukaszk-hmcts-nodejs.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-labs-lukaszk-hmcts-nodejs.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
+  }
 
 ]
 

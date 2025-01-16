@@ -17,7 +17,6 @@ data "azurerm_subscription" "current" {}
 module "pubsubappgateway" {
   source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
 
-  count = var.env == "demo" ? 1 : 0
 
   env                                = var.env
   subscription                       = var.subscription

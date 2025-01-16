@@ -8,12 +8,14 @@ sku_tier               = "Standard"
 sku_size               = "Standard"
 
 
-backend_agw_private_ip_address = ["10.90.96.20", "10.90.96.21"]
-backend_agw_min_capacity       = 10
-backend_agw_max_capacity       = 15
-data_subscription              = "8999dec3-0104-4a27-94ee-6588559729d1"
-privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
-oms_env                        = "prod"
+backend_agw_private_ip_address         = ["10.90.96.20", "10.90.96.21"]
+backend_agw_min_capacity               = 10
+backend_agw_max_capacity               = 15
+data_subscription                      = "8999dec3-0104-4a27-94ee-6588559729d1"
+privatedns_subscription                = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
+oms_env                                = "prod"
+pubsub_endpoint                        = ["10.50.100.50"]
+pubsub_frontend_agw_private_ip_address = "10.50.98.8"
 
 cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-prod-rg"
@@ -4240,6 +4242,41 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-syr-cookie-preferences"
+      }
+    ]
+  }
+]
+
+pubsub_frontends = [
+  {
+    product        = "em"
+    name           = "em-icp-webpubsub"
+    mode           = "Detection"
+    custom_domain  = "em-icp-webpubsub.prod.platform.hmcts.net"
+    dns_zone_name  = "prod.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+  },
+]
+
+pubsub_waf_managed_rules = [
+  {
+    type    = "OWASP"
+    version = "3.2"
+    rule_group_override = [
+      {
+        rule_group_name = "REQUEST-920-PROTOCOL-ENFORCEMENT"
+        rule = [
+          {
+            id      = "920300"
+            enabled = true
+            action  = "Log"
+          },
+          {
+            id      = "920440"
+            enabled = true
+            action  = "Block"
+          }
+        ]
       }
     ]
   }

@@ -14,8 +14,8 @@ backend_agw_max_capacity               = 15
 data_subscription                      = "8999dec3-0104-4a27-94ee-6588559729d1"
 privatedns_subscription                = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                                = "prod"
-pubsub_endpoint                        = ["10.50.100.50"]
-pubsub_frontend_agw_private_ip_address = "10.50.98.8"
+pubsub_endpoint                        = ["10.90.100.50"]
+pubsub_frontend_agw_private_ip_address = "10.90.98.8"
 
 cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-prod-rg"

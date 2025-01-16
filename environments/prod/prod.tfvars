@@ -1714,8 +1714,30 @@ frontends = [
       },
     ],
     disabled_rules = {
+      SQLI = [
+        "942100",
+        "942110",
+        "942120",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942370",
+        "942380",
+        "942390",
+        "942400",
+        "942430",
+        "942440"
+            ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+            ]
       RCE = [
         "932115"
+        "932105",
+        "932150"
       ]
     }
     global_exclusions = [

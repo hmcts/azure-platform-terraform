@@ -56,11 +56,11 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
-      pipeline_tests: false
+      pipeline_tests: false'
 
-    - deployment: 'sbox_pubsubfrontendappgateway'
+    - deployment: 'sbox_pubsubappgateway'
       environment: 'sbox'
-      component: 'pubsubfrontendappgateway'
+      component: 'pubsubappgateway'
       service_connection: 'dcd-cftapps-sbox'
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
@@ -138,9 +138,9 @@ parameters:
       dependsOn: 'sbox_frontendappgateway'
       pipeline_tests: true
 
-    - deployment: 'ithc_pubsubfrontendappgateway'
+    - deployment: 'ithc_pubsubappgateway'
       environment: 'ithc'
-      component: 'pubsubfrontendappgateway'
+      component: 'pubsubappgateway'
       service_connection: 'dcd-cftapps-ithc'
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
@@ -249,9 +249,9 @@ parameters:
       dependsOn: 'sbox_frontendappgateway'
       pipeline_tests: true
 
-    - deployment: 'test_pubsubfrontendappgateway'
+    - deployment: 'test_pubsubappgateway'
       environment: 'test'
-      component: 'pubsubfrontendappgateway'
+      component: 'pubsubappgateway'
       service_connection: 'dcd-cftapps-test'
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
@@ -339,9 +339,9 @@ parameters:
       dependsOn: 'sbox_frontendappgateway'
       pipeline_tests: true
 
-    - deployment: 'stg_pubsubfrontendappgateway'
+    - deployment: 'stg_pubsubappgateway'
       environment: 'stg'
-      component: 'pubsubfrontendappgateway'
+      component: 'pubsubappgateway'
       service_connection: 'dcd-cftapps-stg'
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
@@ -383,9 +383,9 @@ parameters:
       dependsOn: 'sbox_frontendappgateway'
       pipeline_tests: false
 
-    - deployment: 'prod_pubsubfrontendappgateway'
+    - deployment: 'prod_pubsubappgateway'
       environment: 'prod'
-      component: 'pubsubfrontendappgateway'
+      component: 'pubsubappgateway'
       service_connection: 'dcd-cftapps-prod'
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'

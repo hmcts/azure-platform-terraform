@@ -56,7 +56,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
-      pipeline_tests: false'
+      pipeline_tests: false
 
     - deployment: 'sbox_pubsubappgateway'
       environment: 'sbox'

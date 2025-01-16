@@ -1656,10 +1656,23 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     disabled_rules = {
       SQLI = [
-        "942260"
+        "942100",
+        "942110",
+        "942120",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942361",
+        "942370",
+        "942380",
+        "942390",
+        "942400",
+        "942430",
+        "942440",
       ]
-      RFI = [
-        "931130"
+      RCE = [
+        "932115"
       ]
     }
   },

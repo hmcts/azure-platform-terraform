@@ -1728,16 +1728,10 @@ frontends = [
         "942390",
         "942400",
         "942430",
-        "942440"
-            ]
-      LFI = [
-        "930100", // false positive on multi-part uploads
-        "930110", // false positive on multi-part uploads
-            ]
+        "942440",
+      ]
       RCE = [
         "932115"
-        "932105",
-        "932150"
       ]
     }
     global_exclusions = [

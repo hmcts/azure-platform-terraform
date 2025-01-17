@@ -12,7 +12,7 @@ autoShutdown                           = true
 shutter_storage                        = "TODO"
 cdn_sku                                = "TODO"
 shutter_rg                             = "TODO"
-pubsub_endpoint                        = ["10.48.96.50"]
+pubsub_endpoint                        = ["10.48.98.50"]
 pubsub_frontend_agw_private_ip_address = "10.48.100.8"
 
 # Applications associated with default storage account shutter static website.

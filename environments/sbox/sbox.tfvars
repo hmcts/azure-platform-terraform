@@ -1,17 +1,15 @@
-project                                = "hmcts"
-location                               = "uksouth"
-env                                    = "sbox"
-subscription                           = "sbox"
-sku_tier                               = "Standard"
-sku_size                               = "Standard"
-hub_app_gw_private_ip_address          = ["10.10.200.212"]
-backend_agw_private_ip_address         = ["10.2.13.112"]
-data_subscription                      = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
-key_vault_subscription                 = "b72ab7b7-723f-4b18-b6f6-03b0f2c6a1bb"
-privatedns_subscription                = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
-oms_env                                = "sandbox"
-pubsub_endpoint                        = ["10.2.15.50"]
-pubsub_frontend_agw_private_ip_address = "10.2.12.132"
+project                        = "hmcts"
+location                       = "uksouth"
+env                            = "sbox"
+subscription                   = "sbox"
+sku_tier                       = "Standard"
+sku_size                       = "Standard"
+hub_app_gw_private_ip_address  = ["10.10.200.212"]
+backend_agw_private_ip_address = ["10.2.13.112"]
+data_subscription              = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
+key_vault_subscription         = "b72ab7b7-723f-4b18-b6f6-03b0f2c6a1bb"
+privatedns_subscription        = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
+oms_env                        = "sandbox"
 
 #FrontDoor access policy
 add_access_policy = true
@@ -735,40 +733,5 @@ apim_appgw_exclusions = [
     match_variable = "RequestArgNames"
     operator       = "Equals"
     selector       = "iss"
-  }
-]
-
-pubsub_frontends = [
-  {
-    product        = "em"
-    name           = "em-icp-webpubsub"
-    mode           = "Detection"
-    custom_domain  = "em-icp-webpubsub.sandbox.platform.hmcts.net"
-    dns_zone_name  = "sandbox.platform.hmcts.net"
-    backend_domain = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-  },
-]
-
-pubsub_waf_managed_rules = [
-  {
-    type    = "OWASP"
-    version = "3.2"
-    rule_group_override = [
-      {
-        rule_group_name = "REQUEST-920-PROTOCOL-ENFORCEMENT"
-        rule = [
-          {
-            id      = "920300"
-            enabled = true
-            action  = "Log"
-          },
-          {
-            id      = "920440"
-            enabled = true
-            action  = "Block"
-          }
-        ]
-      }
-    ]
   }
 ]

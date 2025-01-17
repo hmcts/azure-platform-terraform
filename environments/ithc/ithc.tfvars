@@ -20,8 +20,10 @@ shutter_apps = [
   "TODO"
 ]
 
-frontend_agw_private_ip_address = "10.11.225.113"
-cft_apps_cluster_ips            = ["10.11.207.250", "10.11.223.250"]
+frontend_agw_private_ip_address        = "10.11.225.113"
+cft_apps_cluster_ips                   = ["10.11.207.250", "10.11.223.250"]
+pubsub_endpoint                        = ["10.11.228.50"]
+pubsub_frontend_agw_private_ip_address = "10.11.226.8"
 
 frontends = [
   {
@@ -3264,4 +3266,39 @@ frontends = [
     backend_domain    = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     global_exclusions = []
   },
+]
+
+pubsub_frontends = [
+  {
+    product        = "em"
+    name           = "em-icp-webpubsub"
+    mode           = "Detection"
+    custom_domain  = "em-icp-webpubsub.ithc.platform.hmcts.net"
+    dns_zone_name  = "ithc.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+  },
+]
+
+pubsub_waf_managed_rules = [
+  {
+    type    = "OWASP"
+    version = "3.2"
+    rule_group_override = [
+      {
+        rule_group_name = "REQUEST-920-PROTOCOL-ENFORCEMENT"
+        rule = [
+          {
+            id      = "920300"
+            enabled = true
+            action  = "Log"
+          },
+          {
+            id      = "920440"
+            enabled = true
+            action  = "Block"
+          }
+        ]
+      }
+    ]
+  }
 ]

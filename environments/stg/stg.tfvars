@@ -4,15 +4,17 @@ env                    = "aat"
 subscription           = "stg"
 certificate_name_check = false
 
-backend_agw_private_ip_address = ["10.10.161.100", "10.10.161.101"]
-data_subscription              = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
-privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
-oms_env                        = "nonprod"
-autoShutdown                   = true
-hub                            = "prod"
-key_vault_subscription         = "96c274ce-846d-4e48-89a7-d528432298a7"
-hub_app_gw_private_ip_address  = ["10.11.8.215"]
-apim_appgw_backend_pool_fqdns  = ["firewall-prod-int-palo-cftapimgmtstg.uksouth.cloudapp.azure.com"]
+backend_agw_private_ip_address         = ["10.10.161.100", "10.10.161.101"]
+data_subscription                      = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
+privatedns_subscription                = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
+oms_env                                = "nonprod"
+autoShutdown                           = true
+hub                                    = "prod"
+key_vault_subscription                 = "96c274ce-846d-4e48-89a7-d528432298a7"
+hub_app_gw_private_ip_address          = ["10.11.8.215"]
+apim_appgw_backend_pool_fqdns          = ["firewall-prod-int-palo-cftapimgmtstg.uksouth.cloudapp.azure.com"]
+pubsub_endpoint                        = ["10.10.164.50"]
+pubsub_frontend_agw_private_ip_address = "10.10.169.8"
 
 shutter_storage = "TODO"
 cdn_sku         = "TODO"
@@ -4007,4 +4009,39 @@ frontends = [
     backend_domain    = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     global_exclusions = []
   },
+]
+
+pubsub_frontends = [
+  {
+    product        = "em"
+    name           = "em-icp-webpubsub"
+    mode           = "Detection"
+    custom_domain  = "em-icp-webpubsub.aat.platform.hmcts.net"
+    dns_zone_name  = "aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+  },
+]
+
+pubsub_waf_managed_rules = [
+  {
+    type    = "OWASP"
+    version = "3.2"
+    rule_group_override = [
+      {
+        rule_group_name = "REQUEST-920-PROTOCOL-ENFORCEMENT"
+        rule = [
+          {
+            id      = "920300"
+            enabled = true
+            action  = "Log"
+          },
+          {
+            id      = "920440"
+            enabled = true
+            action  = "Block"
+          }
+        ]
+      }
+    ]
+  }
 ]

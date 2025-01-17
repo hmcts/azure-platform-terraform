@@ -129,6 +129,15 @@ parameters:
       dependsOn: 'sbox_frontendappgateway'
       pipeline_tests: true
 
+    - deployment: 'ithc_pubsubappgateway'
+      environment: 'ithc'
+      component: 'pubsubappgateway'
+      service_connection: 'dcd-cftapps-ithc'
+      storage_account_rg: 'core-infra-ithc-rg'
+      storage_account_name: 'cftappsithc'
+      dependsOn: 'sbox_frontendappgateway'
+      pipeline_tests: true
+
     - deployment: 'ithc_backendappgateway'
       environment: 'ithc'
       component: 'backendappgateway'
@@ -231,6 +240,15 @@ parameters:
       dependsOn: 'sbox_frontendappgateway'
       pipeline_tests: true
 
+    - deployment: 'perftest_pubsubappgateway'
+      environment: 'test'
+      component: 'pubsubappgateway'
+      service_connection: 'dcd-cftapps-test'
+      storage_account_rg: 'core-infra-test-rg'
+      storage_account_name: 'cftappstest'
+      dependsOn: 'sbox_frontendappgateway'
+      pipeline_tests: true
+
     - deployment: 'test_backendappgateway'
       environment: 'test'
       component: 'backendappgateway'
@@ -312,6 +330,15 @@ parameters:
       dependsOn: 'sbox_frontendappgateway'
       pipeline_tests: true
 
+    - deployment: 'aat_pubsubappgateway'
+      environment: 'stg'
+      component: 'pubsubappgateway'
+      service_connection: 'dcd-cftapps-stg'
+      storage_account_rg: 'core-infra-stg-rg'
+      storage_account_name: 'cftappsstg'
+      dependsOn: 'sbox_frontendappgateway'
+      pipeline_tests: true
+
     - deployment: 'stg_backendappgateway'
       environment: 'stg'
       component: 'backendappgateway'
@@ -341,6 +368,15 @@ parameters:
     - deployment: 'prod_frontendappgateway'
       environment: 'prod'
       component: 'frontendappgateway'
+      service_connection: 'dcd-cftapps-prod'
+      storage_account_rg: 'core-infra-prod-rg'
+      storage_account_name: 'cftappsprod'
+      dependsOn: 'sbox_frontendappgateway'
+      pipeline_tests: false
+
+    - deployment: 'prod_pubsubappgateway'
+      environment: 'prod'
+      component: 'pubsubappgateway'
       service_connection: 'dcd-cftapps-prod'
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'

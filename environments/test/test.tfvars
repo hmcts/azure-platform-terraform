@@ -4,14 +4,16 @@ env                    = "perftest"
 subscription           = "test"
 certificate_name_check = false
 
-backend_agw_private_ip_address = ["10.48.96.111", "10.48.96.114"]
-data_subscription              = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
-privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
-oms_env                        = "nonprod"
-autoShutdown                   = true
-shutter_storage                = "TODO"
-cdn_sku                        = "TODO"
-shutter_rg                     = "TODO"
+backend_agw_private_ip_address         = ["10.48.96.111", "10.48.96.114"]
+data_subscription                      = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
+privatedns_subscription                = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
+oms_env                                = "nonprod"
+autoShutdown                           = true
+shutter_storage                        = "TODO"
+cdn_sku                                = "TODO"
+shutter_rg                             = "TODO"
+pubsub_endpoint                        = ["10.48.100.50"]
+pubsub_frontend_agw_private_ip_address = "10.48.98.8"
 
 # Applications associated with default storage account shutter static website.
 # Teams that need a default shutter page, should add their app frontend names to the list below.
@@ -2827,4 +2829,39 @@ frontends = [
     backend_domain    = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     global_exclusions = []
   },
+]
+
+pubsub_frontends = [
+  {
+    product        = "em"
+    name           = "em-icp-webpubsub"
+    mode           = "Detection"
+    custom_domain  = "em-icp-webpubsub.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+  },
+]
+
+pubsub_waf_managed_rules = [
+  {
+    type    = "OWASP"
+    version = "3.2"
+    rule_group_override = [
+      {
+        rule_group_name = "REQUEST-920-PROTOCOL-ENFORCEMENT"
+        rule = [
+          {
+            id      = "920300"
+            enabled = true
+            action  = "Log"
+          },
+          {
+            id      = "920440"
+            enabled = true
+            action  = "Block"
+          }
+        ]
+      }
+    ]
+  }
 ]

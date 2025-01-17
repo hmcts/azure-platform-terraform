@@ -17,7 +17,7 @@ data "azurerm_subscription" "current" {}
 module "pubsubappgateway" {
   source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
 
-  count = var.env == "demo" ? 1 : 0
+  count = var.env == "sbox" ? 0 : 1
 
   env                                = var.env
   subscription                       = var.subscription
@@ -37,9 +37,9 @@ module "pubsubappgateway" {
   max_capacity                       = var.frontend_agw_max_capacity
   diagnostics_storage_account_id     = data.azurerm_storage_account.diagnostics.id
   enable_waf                         = true
-  app_gateway_name                   = "cft-fe-${format("%02d", count.index)}-${var.env}-agw-pubsub"
-  pip_name                           = "cft-pubsub-fe-appgw-${var.env}-pip"
+  app_gateway_name                   = "em-fe-${format("%02d", count.index)}-${var.env}-agw-pubsub"
+  pip_name                           = "em-pubsub-fe-appgw-${var.env}-pip"
   pubsub_subnet                      = true
-  waf_policy_name                    = "pubsub-waf-policy"
+  waf_policy_name                    = "em-pubsub-waf-policy"
   waf_managed_rules                  = var.pubsub_waf_managed_rules
 }

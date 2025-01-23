@@ -38,7 +38,7 @@ module "pubsubappgateway" {
   diagnostics_storage_account_id     = data.azurerm_storage_account.diagnostics.id
   enable_waf                         = true
   app_gateway_name                   = "cft-fe-${format("%02d", count.index)}-${var.env}-agw-pubsub"
-  pip_name                           = "cft-pubsub-fe-appgw-${var.env}-pip"
+  pip_name                           = "cft-fe-appgw-${var.env}-pip-pubsub"
   pubsub_subnet                      = true
   waf_policy_name                    = "cft-pubsub-waf-policy"
   waf_managed_rules                  = var.pubsub_waf_managed_rules

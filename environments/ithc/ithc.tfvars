@@ -2302,6 +2302,29 @@ frontends = [
         selector       = "rf"
       },
     ]
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeaders"
+            selector           = "Content-Type"
+            operator           = "Equals"
+            negation_condition = false
+            match_values       = ["application/json;charset=UTF-8"]
+          },
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      }
+    ]
   },
   {
     name             = "hmi-apim"

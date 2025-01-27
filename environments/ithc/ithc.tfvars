@@ -1673,6 +1673,7 @@ frontends = [
         "942380",
         "942390",
         "942400",
+        "942410",
         "942430",
         "942440",
       ]
@@ -2291,7 +2292,7 @@ frontends = [
     name             = "privatelaw"
     custom_domain    = "privatelaw.ithc.platform.hmcts.net"
     dns_zone_name    = "ithc.platform.hmcts.net"
-    mode             = "Detection"
+    mode             = "Prevention"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [

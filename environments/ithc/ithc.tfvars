@@ -1673,7 +1673,6 @@ frontends = [
         "942380",
         "942390",
         "942400",
-        "942410",
         "942430",
         "942440",
       ]
@@ -2292,7 +2291,7 @@ frontends = [
     name             = "privatelaw"
     custom_domain    = "privatelaw.ithc.platform.hmcts.net"
     dns_zone_name    = "ithc.platform.hmcts.net"
-    mode             = "Detection"
+    mode             = "Prevention"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
@@ -2301,29 +2300,6 @@ frontends = [
         operator       = "Equals"
         selector       = "rf"
       },
-    ]
-    custom_rules = [
-      {
-        name     = "BlockScriptInJSON"
-        priority = 1
-        type     = "MatchRule"
-        action   = "Block"
-        match_conditions = [
-          {
-            match_variable     = "RequestHeaders"
-            selector           = "Content-Type"
-            operator           = "Equals"
-            negation_condition = false
-            match_values       = ["application/json;charset=UTF-8"]
-          },
-          {
-            match_variable     = "RequestBody"
-            operator           = "Contains"
-            negation_condition = false
-            match_values       = ["<script>"]
-          }
-        ]
-      }
     ]
   },
   {

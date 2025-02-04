@@ -4001,6 +4001,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "online_search[reference]"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_hwf-publicapp_session"
       }
     ]
     custom_rules = [

@@ -1,7 +1,7 @@
 env                    = "demo"
 subscription           = "demo"
 cft_apps_cluster_ips   = ["10.50.79.221", "10.50.95.221"]
-pubsub_endpoint        = ["10.50.100.50"]
+pubsub_endpoint        = ["10.50.100.5"]
 certificate_name_check = false
 autoShutdown           = true
 

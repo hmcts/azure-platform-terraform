@@ -2305,9 +2305,6 @@ frontends = [
     mode             = "Prevention"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
-    ruleset_type     = "Microsoft_DefaultRuleSet"
-    ruleset_value    = "2.1"
-    action           = "AnomalyScoring"
     disabled_rules = {
       General = [
         "200002",

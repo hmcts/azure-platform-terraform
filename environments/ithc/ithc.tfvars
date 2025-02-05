@@ -2306,10 +2306,6 @@ frontends = [
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     disabled_rules = {
-      General = [
-        "200002",
-        "200003"
-      ]
       SQLI = [
         "942260",
         "942340"

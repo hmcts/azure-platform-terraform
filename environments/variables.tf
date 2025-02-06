@@ -151,6 +151,10 @@ variable "apim_appgw_backend_pool_fqdns" {
   default = []
 }
 
+variable "em_pubsub_backend_pool_fqdns" {
+  default = []
+}
+
 variable "apim_appgw_exclusions" {
   default = []
 }

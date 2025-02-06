@@ -14,7 +14,6 @@ backend_agw_max_capacity               = 15
 data_subscription                      = "8999dec3-0104-4a27-94ee-6588559729d1"
 privatedns_subscription                = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                                = "prod"
-pubsub_endpoint                        = ["10.90.100.50"]
 pubsub_frontend_agw_private_ip_address = "10.90.98.8"
 
 cdn_sku    = "Standard_Verizon"
@@ -4305,12 +4304,12 @@ frontends = [
 
 pubsub_frontends = [
   {
-    product        = "em"
-    name           = "em-icp-webpubsub"
-    mode           = "Detection"
-    custom_domain  = "em-icp-webpubsub.prod.platform.hmcts.net"
-    dns_zone_name  = "prod.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    product       = "em"
+    name          = "em-icp-webpubsub"
+    mode          = "Detection"
+    custom_domain = "em-icp-webpubsub.prod.platform.hmcts.net"
+    dns_zone_name = "prod.platform.hmcts.net"
+    backend_fqdn  = ["firewall-prod-int-palo-empubsubprod.uksouth.cloudapp.azure.com"]
   },
 ]
 

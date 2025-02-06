@@ -15,7 +15,7 @@ module "ctags" {
 data "azurerm_subscription" "current" {}
 
 module "pubsubappgateway" {
-  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
+  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=pubsub-integration"
 
   count = var.env == "sbox" ? 0 : 1
 
@@ -25,7 +25,6 @@ module "pubsubappgateway" {
   private_ip_address                 = var.pubsub_frontend_agw_private_ip_address
   destinations                       = var.pubsub_endpoint
   frontends                          = var.pubsub_frontends
-  backend_pool_fqdns                 = var.em_pubsub_backend_pool_fqdns
   common_tags                        = module.ctags.common_tags
   oms_env                            = var.oms_env
   project                            = var.project

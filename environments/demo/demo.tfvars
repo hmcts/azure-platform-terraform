@@ -7,7 +7,6 @@ autoShutdown           = true
 
 frontend_agw_private_ip_address = "10.50.97.122"
 backend_agw_private_ip_address  = ["10.50.97.118", "10.50.97.119"]
-em_pubsub_backend_pool_fqdns    = ["firewall-nonprodi-palo-empubsubdemo.uksouth.cloudapp.azure.com"]
 
 data_subscription       = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
@@ -3871,7 +3870,7 @@ pubsub_frontends = [
     mode           = "Detection"
     custom_domain  = "em-icp-webpubsub.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    backend_fqdn = ["firewall-nonprodi-palo-empubsubdemo.uksouth.cloudapp.azure.com"]
   },
 ]
 

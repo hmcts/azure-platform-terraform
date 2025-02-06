@@ -1,12 +1,12 @@
 env                    = "demo"
 subscription           = "demo"
 cft_apps_cluster_ips   = ["10.50.79.221", "10.50.95.221"]
-pubsub_endpoint        = ["10.50.100.5"]
 certificate_name_check = false
 autoShutdown           = true
 
 frontend_agw_private_ip_address = "10.50.97.122"
 backend_agw_private_ip_address  = ["10.50.97.118", "10.50.97.119"]
+pubsub_frontend_agw_private_ip_address = "10.50.98.8"
 
 data_subscription       = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"

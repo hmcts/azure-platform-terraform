@@ -15,7 +15,7 @@ module "ctags" {
 data "azurerm_subscription" "current" {}
 
 module "pubsubappgateway" {
-  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=pubsub-integration"
+  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
 
   count = var.env == "sbox" ? 0 : 1
 

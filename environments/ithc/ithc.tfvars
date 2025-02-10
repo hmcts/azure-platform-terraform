@@ -2305,6 +2305,29 @@ frontends = [
     mode             = "Prevention"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeaders"
+            selector           = "Content-Type"
+            operator           = "Equals"
+            negation_condition = false
+            match_values       = ["application/json"]
+          },
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      }
+    ]
     disabled_rules = {
       SQLI = [
         "942260",
@@ -2315,6 +2338,9 @@ frontends = [
       ]
       RCE = [
         "932115"
+      ]
+      RFI = [
+        "931130"
       ]
     }
     global_exclusions = [

@@ -2312,9 +2312,9 @@ frontends = [
         action   = "Block"
         match_conditions = [
           {
-            match_variable     = "RequestHeaders"
+            match_variable     = "RequestHeader"
             selector           = "Content-Type"
-            operator           = "Equals"
+            operator           = "Equal"
             negation_condition = false
             match_values       = ["application/json"]
           },

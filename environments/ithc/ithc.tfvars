@@ -2329,7 +2329,6 @@ frontends = [
     ]
     disabled_rules = {
       SQLI = [
-        "942260",
         "942340"
       ]
       LFI = [

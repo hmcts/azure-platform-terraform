@@ -1,7 +1,6 @@
 env                    = "demo"
 subscription           = "demo"
 cft_apps_cluster_ips   = ["10.50.79.221", "10.50.95.221"]
-pubsub_endpoint        = ["10.50.100.5"]
 certificate_name_check = false
 autoShutdown           = true
 
@@ -3866,12 +3865,12 @@ frontends = [
 
 pubsub_frontends = [
   {
-    product        = "em"
-    name           = "em-icp-webpubsub"
-    mode           = "Detection"
-    custom_domain  = "em-icp-webpubsub.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    product       = "em"
+    name          = "em-icp-webpubsub"
+    mode          = "Detection"
+    custom_domain = "em-icp-webpubsub.demo.platform.hmcts.net"
+    dns_zone_name = "demo.platform.hmcts.net"
+    backend_fqdn  = ["firewall-nonprodi-palo-empubsubdemo.uksouth.cloudapp.azure.com"]
   },
 ]
 

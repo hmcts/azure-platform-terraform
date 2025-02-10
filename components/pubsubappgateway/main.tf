@@ -23,7 +23,6 @@ module "pubsubappgateway" {
   subscription                       = var.subscription
   location                           = var.location
   private_ip_address                 = var.pubsub_frontend_agw_private_ip_address
-  destinations                       = var.pubsub_endpoint
   frontends                          = var.pubsub_frontends
   common_tags                        = module.ctags.common_tags
   oms_env                            = var.oms_env

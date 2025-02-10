@@ -22,7 +22,6 @@ shutter_apps = [
 
 frontend_agw_private_ip_address        = "10.11.225.113"
 cft_apps_cluster_ips                   = ["10.11.207.250", "10.11.223.250"]
-pubsub_endpoint                        = ["10.11.228.50"]
 pubsub_frontend_agw_private_ip_address = "10.11.226.8"
 
 frontends = [
@@ -3303,12 +3302,12 @@ frontends = [
 
 pubsub_frontends = [
   {
-    product        = "em"
-    name           = "em-icp-webpubsub"
-    mode           = "Detection"
-    custom_domain  = "em-icp-webpubsub.ithc.platform.hmcts.net"
-    dns_zone_name  = "ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    product       = "em"
+    name          = "em-icp-webpubsub"
+    mode          = "Detection"
+    custom_domain = "em-icp-webpubsub.ithc.platform.hmcts.net"
+    dns_zone_name = "ithc.platform.hmcts.net"
+    backend_fqdn  = ["firewall-nonprodi-palo-empubsubithc.uksouth.cloudapp.azure.com"]
   },
 ]
 

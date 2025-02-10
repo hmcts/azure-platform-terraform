@@ -12,7 +12,6 @@ autoShutdown                           = true
 shutter_storage                        = "TODO"
 cdn_sku                                = "TODO"
 shutter_rg                             = "TODO"
-pubsub_endpoint                        = ["10.48.100.50"]
 pubsub_frontend_agw_private_ip_address = "10.48.98.8"
 
 # Applications associated with default storage account shutter static website.
@@ -2838,12 +2837,12 @@ frontends = [
 
 pubsub_frontends = [
   {
-    product        = "em"
-    name           = "em-icp-webpubsub"
-    mode           = "Detection"
-    custom_domain  = "em-icp-webpubsub.perftest.platform.hmcts.net"
-    dns_zone_name  = "perftest.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+    product       = "em"
+    name          = "em-icp-webpubsub"
+    mode          = "Detection"
+    custom_domain = "em-icp-webpubsub.perftest.platform.hmcts.net"
+    dns_zone_name = "perftest.platform.hmcts.net"
+    backend_fqdn  = ["firewall-nonprodi-palo-empubsubperftest.uksouth.cloudapp.azure.com"]
   },
 ]
 

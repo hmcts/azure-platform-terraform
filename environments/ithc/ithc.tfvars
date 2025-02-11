@@ -2309,10 +2309,10 @@ frontends = [
         name      = "BlockScriptInJSON"
         priority  = 1
         rule_type = "MatchRule"
-        action = "Block"
+        action    = "Block"
         match_conditions = [
           {
-            match_variables = "RequestHeader"
+            match_variable  = "RequestHeader"
             operator        = "Equal"
             negation_condition = false
             selector        = "Content-Type"
@@ -2327,7 +2327,7 @@ frontends = [
          action    = "Block" 
          match_conditions = [
           {
-             match_variables = "RequestBody"
+             match_variable  = "RequestBody"
              operator        = "Contains"
              negation_condition = false
              match_values       = ["<script>"]

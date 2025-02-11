@@ -2308,7 +2308,7 @@ frontends = [
       {
         name      = "BlockScriptInJSON"
         priority  = 1
-        rule_type = "MatchRule"
+        type      = "MatchRule"
         action    = "Block"
         match_conditions = [
           {
@@ -2323,7 +2323,7 @@ frontends = [
       {
          name      = "BlockScriptInJSON2"
          priority  = 1
-         rule_type = "MatchRule"
+         type      = "MatchRule"
          action    = "Block" 
          match_conditions = [
           {

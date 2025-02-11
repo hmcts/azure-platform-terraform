@@ -2304,32 +2304,37 @@ frontends = [
     mode             = "Prevention"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
-    custom_rules {
-      name      = "BlockScriptInJSON"
-      priority  = 1
-      rule_type = "MatchRule"
-      match_conditions {
-        # Match Condition 1: Block requests with "Content-Type: application/json"
-        match_variables {
-          variable_name = "RequestHeader"
-          selector      = "Content-Type"
-        }
-
-        operator           = "Equal"
-        negation_condition = false
-        match_values       = ["application/json"]
+    custom_rules = [
+      {
+        name      = "BlockScriptInJSON"
+        priority  = 1
+        rule_type = "MatchRule"
+        match_conditions = [
+          {
+            match_variables = [
+              {
+                variable_name = "RequestHeader"
+                selector      = "Content-Type"
+              }
+            ]
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          },
+          {
+            match_variables = [
+              {
+                variable_name = "RequestBody"
+              }
+            ]
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+        action = "Block"
       }
-      match_conditions {
-        # Match Condition 2: Block requests containing "<script>" in the body
-        match_variables {
-          variable_name = "RequestBody"
-        }
-        operator           = "Contains"
-        negation_condition = false
-        match_values       = ["<script>"]
-      }
-      action = "Block"
-    }
+    ]
     disabled_rules = {
       SQLI = [
         "942340"

@@ -2309,31 +2309,31 @@ frontends = [
         name      = "BlockScriptInJSON"
         priority  = 1
         rule_type = "MatchRule"
+        action = "Block"
         match_conditions = [
           {
-            match_variables = [
-              {
-                variable_name = "RequestHeader"
-                selector      = "Content-Type"
-              }
-            ]
-            operator           = "Equal"
+            match_variables = "RequestHeader"
+            operator        = "Equal"
             negation_condition = false
-            match_values       = ["application/json"]
-          },
-          {
-            match_variables = [
-              {
-                variable_name = "RequestBody"
-              }
-            ]
-            operator           = "Contains"
-            negation_condition = false
-            match_values       = ["<script>"]
+            selector        = "Content-Type"
+            match_values    = ["application/json"]
           }
         ]
-        action = "Block"
-      }
+      },
+      {
+         name      = "BlockScriptInJSON2"
+         priority  = 1
+         rule_type = "MatchRule"
+         action    = "Block" 
+         match_conditions = [
+          {
+             match_variables = "RequestBody"
+             operator        = "Contains"
+             negation_condition = false
+             match_values       = ["<script>"]
+          }
+        ]
+      },
     ]
     disabled_rules = {
       SQLI = [

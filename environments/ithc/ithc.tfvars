@@ -2321,11 +2321,11 @@ frontends = [
         ]
       },
       {
-        name     = "BlockScriptInJSON2"
-        priority = 1
-        type     = "MatchRule"
-        action   = "Block"
-        match_conditions = [
+         name      = "BlockScriptInJSON2"
+         priority  = 2
+         type      = "MatchRule"
+         action    = "Block" 
+         match_conditions = [
           {
             match_variable     = "RequestBody"
             operator           = "Contains"

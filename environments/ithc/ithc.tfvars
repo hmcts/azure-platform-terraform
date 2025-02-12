@@ -2313,8 +2313,8 @@ frontends = [
         match_conditions = [
           {
             match_variable     = "RequestHeader"
+            selector           = "content-type"
             operator           = "Equal"
-            selector           = "Content-Type"
             negation_condition = false
             match_values       = ["application/json"]
           }
@@ -2337,7 +2337,6 @@ frontends = [
     ],
     disabled_rules = {
       SQLI = [
-        "942260",
         "942340"
       ]
       LFI = [

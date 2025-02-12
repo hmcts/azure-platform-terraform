@@ -9,7 +9,7 @@ moved {
   to   = module.premium_front_door
 }
 module "premium_front_door" {
-  source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=platops/23355"
+  source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=platops/23355-FD-policyupdate"
 
   common_tags                = module.ctags.common_tags
   env                        = var.env

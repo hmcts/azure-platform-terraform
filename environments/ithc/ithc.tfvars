@@ -2314,6 +2314,7 @@ frontends = [
           {
             match_variable     = "RequestHeader"
             operator           = "Equal"
+            selector           = "Content-Type"
             negation_condition = false
             match_values       = ["application/json"]
           }

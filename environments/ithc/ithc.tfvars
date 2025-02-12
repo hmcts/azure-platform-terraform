@@ -2313,11 +2313,18 @@ frontends = [
         match_conditions = [
           {
             match_variable     = "RequestHeader"
-            selector           = "Content-Type"
             operator           = "Equal"
             negation_condition = false
             match_values       = ["application/json"]
-          },
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
           {
             match_variable     = "RequestBody"
             operator           = "Contains"
@@ -2325,8 +2332,8 @@ frontends = [
             match_values       = ["<script>"]
           }
         ]
-      }
-    ]
+      },
+    ],
     disabled_rules = {
       SQLI = [
         "942260",

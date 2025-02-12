@@ -2306,35 +2306,34 @@ frontends = [
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     custom_rules = [
       {
-        name      = "BlockScriptInJSON"
-        priority  = 1
-        rule_type = "MatchRule"
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
         match_conditions = [
           {
-            match_variables = [
-              {
-                variable_name = "RequestHeader"
-                selector      = "Content-Type"
-              }
-            ]
+            match_variable     = "RequestHeader"
             operator           = "Equal"
             negation_condition = false
             match_values       = ["application/json"]
-          },
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
           {
-            match_variables = [
-              {
-                variable_name = "RequestBody"
-              }
-            ]
+            match_variable     = "RequestBody"
             operator           = "Contains"
             negation_condition = false
             match_values       = ["<script>"]
           }
         ]
-        action = "Block"
-      }
-    ]
+      },
+    ],
     disabled_rules = {
       SQLI = [
         "942260",

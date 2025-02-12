@@ -2309,7 +2309,7 @@ frontends = [
         priority = 1
         type     = "MatchRule"
         action   = "Block"
-        match_conditions {
+        match_conditions = {
           match_variables {
             variable_name = "RequestHeaders"
             selector      = "Content-Type"

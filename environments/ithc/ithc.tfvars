@@ -2333,7 +2333,6 @@ frontends = [
           }
         ]
       },
-    ],
     disabled_rules = {
       SQLI = [
         "942260",

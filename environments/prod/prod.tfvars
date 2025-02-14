@@ -4005,6 +4005,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "_hwf-publicapp_session"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "application[deceased_name]"
       }
     ]
     custom_rules = [

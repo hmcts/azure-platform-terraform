@@ -21,3 +21,9 @@ provider "azurerm" {
   subscription_id = var.data_subscription
   features {}
 }
+
+provider "azurerm" {
+  subscription_id = var.key_vault_subscription
+  features {}
+  alias = "kv"
+}

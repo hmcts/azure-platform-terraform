@@ -41,7 +41,7 @@ module "pubsubappgateway" {
   pubsub_subnet                      = true
   waf_policy_name                    = "cft-pubsub-waf-policy"
   waf_managed_rules                  = var.pubsub_waf_managed_rules
-  ssl_enabled                        = true
+  ssl_enable                         = true
   ssl_certificate_name               = var.pubsub_ssl_certificate
   vault_name                         = local.key_vault_name
   key_vault_resource_group           = local.key_vault_resource_group

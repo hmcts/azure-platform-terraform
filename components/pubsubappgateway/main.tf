@@ -15,7 +15,7 @@ module "ctags" {
 data "azurerm_subscription" "current" {}
 
 module "pubsubappgateway" {
-  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
+  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=DTSPO-23915-updating-pubsub-gateway"
 
   count = var.env == "sbox" ? 0 : 1
 
@@ -41,4 +41,8 @@ module "pubsubappgateway" {
   pubsub_subnet                      = true
   waf_policy_name                    = "cft-pubsub-waf-policy"
   waf_managed_rules                  = var.pubsub_waf_managed_rules
+  ssl_enabled                        = true
+  ssl_certificate_name               = var.pubsub_ssl_certificate
+  vault_name                         = local.key_vault_name
+  key_vault_resource_group           = local.key_vault_resource_group
 }

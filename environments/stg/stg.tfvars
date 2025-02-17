@@ -14,6 +14,7 @@ key_vault_subscription                 = "96c274ce-846d-4e48-89a7-d528432298a7"
 hub_app_gw_private_ip_address          = ["10.11.8.215"]
 apim_appgw_backend_pool_fqdns          = ["firewall-prod-int-palo-cftapimgmtstg.uksouth.cloudapp.azure.com"]
 pubsub_frontend_agw_private_ip_address = "10.10.169.8"
+pubsub_ssl_certificate                 = "wildcard-aat-platform-hmcts-net"
 
 shutter_storage = "TODO"
 cdn_sku         = "TODO"
@@ -4041,6 +4042,8 @@ pubsub_frontends = [
     product       = "em"
     name          = "em-icp-webpubsub"
     mode          = "Detection"
+    health_path   = "/api/health"
+    host_name     = "em-icp-webpubsub-aat.webpubsub.azure.com"
     custom_domain = "em-icp-webpubsub.aat.platform.hmcts.net"
     dns_zone_name = "aat.platform.hmcts.net"
     backend_fqdn  = ["firewall-prod-int-palo-empubsubaat.uksouth.cloudapp.azure.com"]

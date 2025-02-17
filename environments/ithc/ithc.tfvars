@@ -9,6 +9,7 @@ privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                        = "nonprod"
 autoShutdown                   = true
 hub                            = "nonprod"
+pubsub_ssl_certificate         = "wildcard-ithc-platform-hmcts-net"
 
 shutter_storage = "TODO"
 cdn_sku         = "TODO"
@@ -3341,6 +3342,8 @@ pubsub_frontends = [
     product       = "em"
     name          = "em-icp-webpubsub"
     mode          = "Detection"
+    health_path   = "/api/health"
+    host_name     = "em-icp-webpubsub-ithc.webpubsub.azure.com"
     custom_domain = "em-icp-webpubsub.ithc.platform.hmcts.net"
     dns_zone_name = "ithc.platform.hmcts.net"
     backend_fqdn  = ["firewall-nonprodi-palo-empubsubithc.uksouth.cloudapp.azure.com"]

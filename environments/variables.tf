@@ -199,6 +199,6 @@ variable "pubsub_waf_custom_rules" {
   default = []
 }
 
-variable "pubsub_ssl_certificate" {
+variable "ssl_certificate" {
   default = ""
 }

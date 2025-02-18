@@ -10,6 +10,7 @@ oms_env                        = "nonprod"
 autoShutdown                   = true
 hub                            = "nonprod"
 pubsub_ssl_certificate         = "wildcard-ithc-platform-hmcts-net"
+key_vault_subscription         = "62864d44-5da9-4ae9-89e7-0cf33942fa09"
 
 shutter_storage = "TODO"
 cdn_sku         = "TODO"

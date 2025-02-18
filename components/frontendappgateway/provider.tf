@@ -28,3 +28,10 @@ provider "azurerm" {
   features {}
   alias = "kv"
 }
+
+provider "azurerm" {
+  subscription_id            = local.hub[local.hub_env].subscription
+  skip_provider_registration = "true"
+  features {}
+  alias = "hub"
+}

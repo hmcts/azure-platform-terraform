@@ -16,8 +16,9 @@ data "azurerm_subscription" "current" {}
 
 module "frontendappgateway" {
   providers = {
-    azurerm    = azurerm
-    azurerm.kv = azurerm.kv
+    azurerm     = azurerm
+    azurerm.hub = azurerm.hub
+    azurerm.kv  = azurerm.kv
   }
 
   source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=DTSPO-23915-updating-pubsub-gateway"

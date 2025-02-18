@@ -15,6 +15,11 @@ module "ctags" {
 data "azurerm_subscription" "current" {}
 
 module "frontendappgateway" {
+  providers = {
+    azurerm    = azurerm
+    azurerm.kv = azurerm.kv
+  }
+
   source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=DTSPO-23915-updating-pubsub-gateway"
 
   env                                = var.env

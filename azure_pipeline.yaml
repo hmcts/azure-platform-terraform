@@ -129,6 +129,15 @@ parameters:
       dependsOn: 'sbox_frontendappgateway'
       pipeline_tests: true
 
+    - deployment: 'ithc_pubsubappgateway'
+      environment: 'ithc'
+      component: 'pubsubappgateway'
+      service_connection: 'dcd-cftapps-ithc'
+      storage_account_rg: 'core-infra-ithc-rg'
+      storage_account_name: 'cftappsithc'
+      dependsOn: 'sbox_frontendappgateway'
+      pipeline_tests: true
+
     - deployment: 'ithc_backendappgateway'
       environment: 'ithc'
       component: 'backendappgateway'
@@ -474,4 +483,3 @@ stages:
                   test_pattern: apim.test.ts
                 ${{ else }}:
                   test_pattern: pipeline.test.ts
-

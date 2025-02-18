@@ -1,7 +1,9 @@
-project      = "hmcts"
-location     = "uksouth"
-env          = "preview"
-subscription = "dev"
+project                = "hmcts"
+location               = "uksouth"
+env                    = "preview"
+subscription           = "dev"
+ssl_certificate        = "wildcard-dev-platform-hmcts-net"
+key_vault_subscription = "8b6ea922-0862-443e-af15-6056e1c9b9a4"
 
 data_subscription = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 oms_env           = "nonprod"

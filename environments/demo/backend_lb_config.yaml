@@ -67,10 +67,6 @@ gateways:
       - product: ccpay
         component: refunds-api
 
-    # BAR
-      - product: bar
-        component: api
-
      # IA
       - product: ia
         component: case-api
@@ -375,10 +371,6 @@ gateways:
         component: bulkscanning-api-int
       - product: ccpay
         component: notifications-service-int
-
-     # BAR
-      - product: bar
-        component: api-int
 
      # TS
       - product: ts

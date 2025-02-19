@@ -21,7 +21,7 @@ module "frontendappgateway" {
     azurerm.kv  = azurerm.kv
   }
 
-  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=DTSPO-23915-updating-pubsub-gateway"
+  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
 
   env                                = var.env
   subscription                       = var.subscription

@@ -3,6 +3,7 @@ subscription           = "demo"
 cft_apps_cluster_ips   = ["10.50.79.221", "10.50.95.221"]
 certificate_name_check = false
 autoShutdown           = true
+ssl_certificate        = "wildcard-demo-platform-hmcts-net"
 
 frontend_agw_private_ip_address        = "10.50.97.122"
 backend_agw_private_ip_address         = ["10.50.97.118", "10.50.97.119"]
@@ -3740,11 +3741,6 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "online_search[reference]"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "application[deceased_name]"
       }
     ]
   },
@@ -3873,6 +3869,8 @@ pubsub_frontends = [
     product       = "em"
     name          = "em-icp-webpubsub"
     mode          = "Detection"
+    health_path   = "/api/health"
+    host_name     = "em-icp-webpubsub-demo.webpubsub.azure.com"
     custom_domain = "em-icp-webpubsub.demo.platform.hmcts.net"
     dns_zone_name = "demo.platform.hmcts.net"
     backend_fqdn  = ["firewall-nonprodi-palo-empubsubdemo.uksouth.cloudapp.azure.com"]

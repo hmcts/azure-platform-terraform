@@ -2018,22 +2018,6 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   },
   {
-    name           = "bar"
-    custom_domain  = "bar.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
-  },
-  {
-    name           = "bar-int"
-    custom_domain  = "bar-int.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
-  },
-  {
     name           = "ac-int-gateway-ccd"
     mode           = "Detection"
     custom_domain  = "ac-int-gateway-ccd.demo.platform.hmcts.net"

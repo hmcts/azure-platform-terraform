@@ -154,10 +154,6 @@ gateways:
       - product: fees-register
         component: api
 
-    # BAR
-      - product: bar
-        component: api
-
     # ccpay
       - product: ccpay
         component: bulkscanning-api

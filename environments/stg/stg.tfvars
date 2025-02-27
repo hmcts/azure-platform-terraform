@@ -2748,14 +2748,6 @@ frontends = [
     ]
   },
   {
-    name           = "bar"
-    custom_domain  = "bar.aat.platform.hmcts.net"
-    dns_zone_name  = "aat.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
-
-  },
-  {
     name           = "fees-register"
     custom_domain  = "fees-register.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"

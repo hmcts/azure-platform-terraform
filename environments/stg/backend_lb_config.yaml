@@ -189,10 +189,6 @@ gateways:
       - product: xui
         component: activity-tracker-api
 
-    # BAR
-      - product: bar
-        component: api
-
       # Professional Reference data
       - product: rd
         component: professional-api

@@ -158,10 +158,6 @@ gateways:
       - product: ccpay
         component: notifications-service
 
-    # BAR
-      - product: bar
-        component: api
-
     # Evidence Management
       - product: em
         component: anno

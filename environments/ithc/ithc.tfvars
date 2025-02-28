@@ -2102,7 +2102,7 @@ frontends = [
     name           = "sscs-iba"
     custom_domain  = "infected-blood-appeal.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [

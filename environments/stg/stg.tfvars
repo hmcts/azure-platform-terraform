@@ -3527,8 +3527,54 @@ frontends = [
     name           = "privatelaw"
     custom_domain  = "privatelaw.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
+    disabled_rules = {
+      SQLI = [
+        "942340",
+        "942440"
+      ]
+      LFI = [
+        "930130"
+      ]
+      RCE = [
+        "932115"
+      ]
+      RFI = [
+        "931130"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"

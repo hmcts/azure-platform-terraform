@@ -3295,7 +3295,7 @@ frontends = [
             selector           = "content-type"
             operator           = "Equal"
             negation_condition = false
-            match_values = ["application/json"]
+            match_values       = ["application/json"]
           }
         ]
       },
@@ -3309,7 +3309,7 @@ frontends = [
             match_variable     = "RequestBody"
             operator           = "Contains"
             negation_condition = false
-            match_values = ["<script>"]
+            match_values       = ["<script>"]
           }
         ]
       },

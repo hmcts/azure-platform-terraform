@@ -1732,14 +1732,6 @@ frontends = [
 
   },
   {
-    name           = "bar"
-    custom_domain  = "bar.ithc.platform.hmcts.net"
-    dns_zone_name  = "ithc.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
-
-  },
-  {
     name           = "fees-register"
     custom_domain  = "fees-register.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"

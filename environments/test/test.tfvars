@@ -2444,7 +2444,7 @@ frontends = [
     name           = "privatelaw"
     custom_domain  = "privatelaw.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     custom_rules = [
       {

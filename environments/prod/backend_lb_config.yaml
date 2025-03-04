@@ -163,10 +163,6 @@ gateways:
       - product: cpo
         component: case-payment-orders-api
 
-    # BAR
-      - product: bar
-        component: api
-
     # Professional Reference data
       - product: rd
         component: professional-api

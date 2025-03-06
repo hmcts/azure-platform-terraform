@@ -10,6 +10,7 @@ data_subscription              = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
 key_vault_subscription         = "b72ab7b7-723f-4b18-b6f6-03b0f2c6a1bb"
 privatedns_subscription        = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
 oms_env                        = "sandbox"
+ssl_certificate                = "wildcard-sandbox-platform-hmcts-net"
 
 #FrontDoor access policy
 add_access_policy = true
@@ -734,6 +735,25 @@ frontends = [
     appgw_cookie_based_affinity    = "Enabled"
     cache_enabled                  = "false"
     certificate_name_check_enabled = false
+  },
+  {
+    product          = "labs-goldenpath-yur"
+    name             = "labs-goldenpath-yur"
+    custom_domain    = "labs-goldenpath-yur.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labsgoldenpathyurname.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
+  {
+    product          = "labs-yur-nodejs"
+    name             = "labs-yur-nodejs"
+    custom_domain    = "labs-yur-nodejs.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    shutter_app      = false
+    backend_domain   = ["firewall-sbox-int-palo-labs-yur-nodejs.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
   }
 
 ]

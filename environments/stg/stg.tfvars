@@ -14,6 +14,7 @@ key_vault_subscription                 = "96c274ce-846d-4e48-89a7-d528432298a7"
 hub_app_gw_private_ip_address          = ["10.11.8.215"]
 apim_appgw_backend_pool_fqdns          = ["firewall-prod-int-palo-cftapimgmtstg.uksouth.cloudapp.azure.com"]
 pubsub_frontend_agw_private_ip_address = "10.10.169.8"
+ssl_certificate                        = "wildcard-aat-platform-hmcts-net"
 
 shutter_storage = "TODO"
 cdn_sku         = "TODO"
@@ -2747,14 +2748,6 @@ frontends = [
     ]
   },
   {
-    name           = "bar"
-    custom_domain  = "bar.aat.platform.hmcts.net"
-    dns_zone_name  = "aat.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
-
-  },
-  {
     name           = "fees-register"
     custom_domain  = "fees-register.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
@@ -3526,8 +3519,58 @@ frontends = [
     name           = "privatelaw"
     custom_domain  = "privatelaw.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
+    disabled_rules = {
+      SQLI = [
+        "942340",
+        "942440",
+        "942260",
+        "942200"
+      ]
+      LFI = [
+        "930130",
+        "930110",
+        "930120"
+      ]
+      RCE = [
+        "932115"
+      ]
+      RFI = [
+        "931130"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -4040,6 +4083,8 @@ pubsub_frontends = [
   {
     product       = "em"
     name          = "em-icp-webpubsub"
+    health_path   = "/api/health"
+    host_name     = "em-icp-webpubsub-aat.webpubsub.azure.com"
     custom_domain = "em-icp-webpubsub.aat.platform.hmcts.net"
     dns_zone_name = "aat.platform.hmcts.net"
     backend_fqdn  = ["firewall-prod-int-palo-empubsubaat.uksouth.cloudapp.azure.com"]

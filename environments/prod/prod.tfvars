@@ -15,9 +15,9 @@ data_subscription                      = "8999dec3-0104-4a27-94ee-6588559729d1"
 privatedns_subscription                = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                                = "prod"
 pubsub_frontend_agw_private_ip_address = "10.90.98.8"
-
-cdn_sku    = "Standard_Verizon"
-shutter_rg = "shutter-app-prod-rg"
+ssl_certificate                        = "wildcard-platform-hmcts-net"
+cdn_sku                                = "Standard_Verizon"
+shutter_rg                             = "shutter-app-prod-rg"
 
 
 cft_apps_cluster_ips            = ["10.90.79.250", "10.90.95.250"]
@@ -3161,6 +3161,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
       }
     ]
   },
@@ -4115,6 +4120,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "legal_representative_detail[legal_representative_position]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant_address[street]"
       }
     ]
   },
@@ -4311,6 +4321,8 @@ pubsub_frontends = [
   {
     product       = "em"
     name          = "em-icp-webpubsub"
+    health_path   = "/api/health"
+    host_name     = "em-icp-webpubsub-prod.webpubsub.azure.com"
     custom_domain = "em-icp-webpubsub.prod.platform.hmcts.net"
     dns_zone_name = "prod.platform.hmcts.net"
     backend_fqdn  = ["firewall-prod-int-palo-empubsubprod.uksouth.cloudapp.azure.com"]

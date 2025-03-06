@@ -15,6 +15,12 @@ module "ctags" {
 data "azurerm_subscription" "current" {}
 
 module "frontendappgateway" {
+  providers = {
+    azurerm     = azurerm
+    azurerm.hub = azurerm.hub
+    azurerm.kv  = azurerm.kv
+  }
+
   source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
 
   env                                = var.env
@@ -34,4 +40,7 @@ module "frontendappgateway" {
   min_capacity                       = var.frontend_agw_min_capacity
   max_capacity                       = var.frontend_agw_max_capacity
   diagnostics_storage_account_id     = data.azurerm_storage_account.diagnostics.id
+  vault_name                         = local.key_vault_name
+  key_vault_resource_group           = local.key_vault_resource_group
+  ssl_certificate_name               = var.ssl_certificate
 }

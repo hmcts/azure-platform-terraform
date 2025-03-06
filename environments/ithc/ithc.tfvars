@@ -9,6 +9,8 @@ privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                        = "nonprod"
 autoShutdown                   = true
 hub                            = "nonprod"
+ssl_certificate                = "wildcard-ithc-platform-hmcts-net"
+key_vault_subscription         = "62864d44-5da9-4ae9-89e7-0cf33942fa09"
 
 shutter_storage = "TODO"
 cdn_sku         = "TODO"
@@ -1730,14 +1732,6 @@ frontends = [
 
   },
   {
-    name           = "bar"
-    custom_domain  = "bar.ithc.platform.hmcts.net"
-    dns_zone_name  = "ithc.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
-
-  },
-  {
     name           = "fees-register"
     custom_domain  = "fees-register.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
@@ -2100,7 +2094,7 @@ frontends = [
     name           = "sscs-iba"
     custom_domain  = "infected-blood-appeal.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
@@ -2338,10 +2332,14 @@ frontends = [
     disabled_rules = {
       SQLI = [
         "942340",
-        "942440"
+        "942440",
+        "942260",
+        "942200"
       ]
       LFI = [
-        "930130"
+        "930130",
+        "930110",
+        "930120"
       ]
       RCE = [
         "932115"
@@ -3340,6 +3338,8 @@ pubsub_frontends = [
   {
     product       = "em"
     name          = "em-icp-webpubsub"
+    health_path   = "/api/health"
+    host_name     = "em-icp-webpubsub-ithc.webpubsub.azure.com"
     custom_domain = "em-icp-webpubsub.ithc.platform.hmcts.net"
     dns_zone_name = "ithc.platform.hmcts.net"
     backend_fqdn  = ["firewall-nonprodi-palo-empubsubithc.uksouth.cloudapp.azure.com"]

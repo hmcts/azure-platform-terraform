@@ -4120,6 +4120,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "legal_representative_detail[legal_representative_position]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant_address[street]"
       }
     ]
   },

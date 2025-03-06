@@ -4040,7 +4040,6 @@ pubsub_frontends = [
   {
     product       = "em"
     name          = "em-icp-webpubsub"
-    mode          = "Detection"
     custom_domain = "em-icp-webpubsub.aat.platform.hmcts.net"
     dns_zone_name = "aat.platform.hmcts.net"
     backend_fqdn  = ["firewall-prod-int-palo-empubsubaat.uksouth.cloudapp.azure.com"]

@@ -2839,7 +2839,6 @@ pubsub_frontends = [
   {
     product       = "em"
     name          = "em-icp-webpubsub"
-    mode          = "Detection"
     custom_domain = "em-icp-webpubsub.perftest.platform.hmcts.net"
     dns_zone_name = "perftest.platform.hmcts.net"
     backend_fqdn  = ["firewall-nonprodi-palo-empubsubperftest.uksouth.cloudapp.azure.com"]

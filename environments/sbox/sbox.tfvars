@@ -746,9 +746,9 @@ frontends = [
     disabled_rules   = {}
   },
   {
-    product          = "labs-yur-nodejs"
-    name             = "labs-yur-nodejs"
-    custom_domain    = "labs-yur-nodejs.sandbox.platform.hmcts.net"
+    product          = "labs-kainosrogery-nodejs"
+    name             = "labs-kainosrogery-nodejs"
+    custom_domain    = "labs-kainosrogery-nodejs.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-labs-yur-nodejs.uksouth.cloudapp.azure.com"]

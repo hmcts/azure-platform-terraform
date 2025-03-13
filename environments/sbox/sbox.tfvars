@@ -735,25 +735,6 @@ frontends = [
     appgw_cookie_based_affinity    = "Enabled"
     cache_enabled                  = "false"
     certificate_name_check_enabled = false
-  },
-  {
-    product          = "labs-goldenpath-yur"
-    name             = "labs-goldenpath-yur"
-    custom_domain    = "labs-goldenpath-yur.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-labsgoldenpathyurname.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
-  {
-    product          = "labs-kainosrogery-nodejs"
-    name             = "labs-kainosrogery-nodejs"
-    custom_domain    = "labs-kainosrogery-nodejs.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-labs-kainosrogery-nodejs.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
   }
 
 ]

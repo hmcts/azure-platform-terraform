@@ -10,6 +10,11 @@ data_subscription              = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
 key_vault_subscription         = "b72ab7b7-723f-4b18-b6f6-03b0f2c6a1bb"
 privatedns_subscription        = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
 oms_env                        = "sandbox"
+ssl_policy = {
+  policy_type          = "Predefined"
+  policy_name          = "AppGwSslPolicy20220101S"
+  min_protocol_version = "TLSv1_2"
+}
 ssl_certificate                = "wildcard-sandbox-platform-hmcts-net"
 
 #FrontDoor access policy

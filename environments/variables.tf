@@ -203,6 +203,6 @@ variable "ssl_certificate" {
   default = ""
 }
 
-# variable "pubsubappgw_ssl_policy" { 
-#   default = "" 
-# }
+variable "pubsubappgw_ssl_policy" { 
+  default = null 
+}

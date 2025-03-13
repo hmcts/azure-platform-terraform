@@ -4,7 +4,7 @@ module "logworkspace" {
 }
 
 module "ctags" {
-  source       = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=platops/dstpo24594module"
+  source       = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=master"
   environment  = var.env
   product      = var.product
   builtFrom    = var.builtFrom
@@ -22,7 +22,7 @@ module "pubsubappgateway" {
     azurerm.hub = azurerm.hub
   }
 
-  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
+  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=platops/dstpo24594module"
 
   count = var.env == "sbox" ? 0 : 1
 

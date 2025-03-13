@@ -3,6 +3,11 @@ subscription           = "demo"
 cft_apps_cluster_ips   = ["10.50.79.221", "10.50.95.221"]
 certificate_name_check = false
 autoShutdown           = true
+ssl_policy = {
+  policy_type          = "Predefined"
+  policy_name          = "AppGwSslPolicy20220101S"
+  min_protocol_version = "TLSv1_2"
+}
 ssl_certificate        = "wildcard-demo-platform-hmcts-net"
 
 frontend_agw_private_ip_address        = "10.50.97.122"

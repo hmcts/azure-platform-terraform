@@ -13,6 +13,11 @@ shutter_storage                        = "TODO"
 cdn_sku                                = "TODO"
 shutter_rg                             = "TODO"
 pubsub_frontend_agw_private_ip_address = "10.48.98.8"
+ssl_policy = {
+  policy_type          = "Predefined"
+  policy_name          = "AppGwSslPolicy20220101S"
+  min_protocol_version = "TLSv1_2"
+}
 ssl_certificate                        = "wildcard-perftest-platform-hmcts-net"
 
 # Applications associated with default storage account shutter static website.

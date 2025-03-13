@@ -2,6 +2,11 @@ project                = "hmcts"
 location               = "uksouth"
 env                    = "preview"
 subscription           = "dev"
+ssl_policy = {
+  policy_type          = "Predefined"
+  policy_name          = "AppGwSslPolicy20220101S"
+  min_protocol_version = "TLSv1_2"
+}
 ssl_certificate        = "wildcard-dev-platform-hmcts-net"
 key_vault_subscription = "8b6ea922-0862-443e-af15-6056e1c9b9a4"
 

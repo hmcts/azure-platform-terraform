@@ -9,6 +9,11 @@ privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                        = "nonprod"
 autoShutdown                   = true
 hub                            = "nonprod"
+ssl_policy = {
+  policy_type          = "Predefined"
+  policy_name          = "AppGwSslPolicy20220101S"
+  min_protocol_version = "TLSv1_2"
+}
 ssl_certificate                = "wildcard-ithc-platform-hmcts-net"
 key_vault_subscription         = "62864d44-5da9-4ae9-89e7-0cf33942fa09"
 

@@ -202,3 +202,7 @@ variable "pubsub_waf_custom_rules" {
 variable "ssl_certificate" {
   default = ""
 }
+
+variable "pubsubappgw_ssl_policy" { 
+  default = null 
+}

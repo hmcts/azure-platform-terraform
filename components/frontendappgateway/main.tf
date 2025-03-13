@@ -42,6 +42,6 @@ module "frontendappgateway" {
   diagnostics_storage_account_id     = data.azurerm_storage_account.diagnostics.id
   vault_name                         = local.key_vault_name
   key_vault_resource_group           = local.key_vault_resource_group
-  ssl_policy                         = var.pubsubappgw_ssl_policy
+  # ssl_policy                         = var.pubsubappgw_ssl_policy
   ssl_certificate_name               = var.ssl_certificate
 }

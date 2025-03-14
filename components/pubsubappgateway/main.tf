@@ -22,7 +22,7 @@ module "pubsubappgateway" {
     azurerm.hub = azurerm.hub
   }
 
-  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
+  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=platops/dstpo24594module"
 
   count = var.env == "sbox" ? 0 : 1
 
@@ -49,6 +49,7 @@ module "pubsubappgateway" {
   waf_policy_name                    = "cft-pubsub-waf-policy"
   waf_managed_rules                  = var.pubsub_waf_managed_rules
   ssl_enable                         = true
+  pubsubappgw_ssl_policy             = var.pubsubappgw_ssl_policy
   ssl_certificate_name               = var.ssl_certificate
   vault_name                         = local.key_vault_name
   key_vault_resource_group           = local.key_vault_resource_group

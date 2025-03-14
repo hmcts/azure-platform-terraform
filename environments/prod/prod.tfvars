@@ -1022,6 +1022,14 @@ frontends = [
     ]
   },
   {
+    product        = "em"
+    name           = "em-icp"
+    mode           = "Detection"
+    custom_domain  = "em-icp.platform.hmcts.net"
+    dns_zone_name  = "platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+  },
+  {
     product          = "xui"
     name             = "xui-webapp"
     mode             = "Detection"

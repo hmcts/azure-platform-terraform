@@ -18,7 +18,7 @@ ssl_policy = {
   policy_name          = "AppGwSslPolicy20220101S"
   min_protocol_version = "TLSv1_2"
 }
-ssl_certificate                        = "wildcard-perftest-platform-hmcts-net"
+ssl_certificate = "wildcard-perftest-platform-hmcts-net"
 
 # Applications associated with default storage account shutter static website.
 # Teams that need a default shutter page, should add their app frontend names to the list below.

@@ -15,7 +15,7 @@ ssl_policy = {
   policy_name          = "AppGwSslPolicy20220101S"
   min_protocol_version = "TLSv1_2"
 }
-ssl_certificate                = "wildcard-sandbox-platform-hmcts-net"
+ssl_certificate = "wildcard-sandbox-platform-hmcts-net"
 
 #FrontDoor access policy
 add_access_policy = true

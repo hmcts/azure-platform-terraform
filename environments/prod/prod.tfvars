@@ -20,9 +20,9 @@ ssl_policy = {
   policy_name          = "AppGwSslPolicy20220101S"
   min_protocol_version = "TLSv1_2"
 }
-ssl_certificate                        = "wildcard-platform-hmcts-net"
-cdn_sku                                = "Standard_Verizon"
-shutter_rg                             = "shutter-app-prod-rg"
+ssl_certificate = "wildcard-platform-hmcts-net"
+cdn_sku         = "Standard_Verizon"
+shutter_rg      = "shutter-app-prod-rg"
 
 
 cft_apps_cluster_ips            = ["10.90.79.250", "10.90.95.250"]

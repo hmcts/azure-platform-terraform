@@ -19,7 +19,7 @@ ssl_policy = {
   policy_name          = "AppGwSslPolicy20220101S"
   min_protocol_version = "TLSv1_2"
 }
-ssl_certificate                        = "wildcard-aat-platform-hmcts-net"
+ssl_certificate = "wildcard-aat-platform-hmcts-net"
 
 shutter_storage = "TODO"
 cdn_sku         = "TODO"

@@ -1,7 +1,7 @@
-project                = "hmcts"
-location               = "uksouth"
-env                    = "preview"
-subscription           = "dev"
+project      = "hmcts"
+location     = "uksouth"
+env          = "preview"
+subscription = "dev"
 ssl_policy = {
   policy_type          = "Predefined"
   policy_name          = "AppGwSslPolicy20220101S"

@@ -8,7 +8,7 @@ ssl_policy = {
   policy_name          = "AppGwSslPolicy20220101S"
   min_protocol_version = "TLSv1_2"
 }
-ssl_certificate        = "wildcard-demo-platform-hmcts-net"
+ssl_certificate = "wildcard-demo-platform-hmcts-net"
 
 frontend_agw_private_ip_address        = "10.50.97.122"
 backend_agw_private_ip_address         = ["10.50.97.118", "10.50.97.119"]

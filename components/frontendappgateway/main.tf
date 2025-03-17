@@ -21,7 +21,7 @@ module "frontendappgateway" {
     azurerm.kv  = azurerm.kv
   }
 
-  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=platops/dstpo24594module"
+  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=master"
 
   env                                = var.env
   subscription                       = var.subscription

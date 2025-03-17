@@ -22,7 +22,7 @@ module "pubsubappgateway" {
     azurerm.hub = azurerm.hub
   }
 
-  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=platops/dstpo24594module"
+  source = "git::https://github.com/hmcts/terraform-module-applicationgateway.git?ref=platops/master"
 
   count = var.env == "sbox" ? 0 : 1
 

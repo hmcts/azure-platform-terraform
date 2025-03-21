@@ -407,3 +407,7 @@ gateways:
     # pcs
       - product: pcs
         component: api
+
+    # enforcement
+      - product: enforcement
+        component: api

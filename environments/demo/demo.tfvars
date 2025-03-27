@@ -1372,7 +1372,7 @@ frontends = [
   },
   {
     name           = "nfdiv"
-    mode           = "Prevention"
+    mode           = "Detection"
     custom_domain  = "nfdiv.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
@@ -1460,7 +1460,7 @@ frontends = [
   },
   {
     name             = "nfdiv-apply"
-    mode             = "Prevention"
+    mode             = "Detection"
     custom_domain    = "nfdiv-apply-for-divorce.demo.platform.hmcts.net"
     dns_zone_name    = "demo.platform.hmcts.net"
     backend          = "nfdiv"

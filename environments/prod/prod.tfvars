@@ -4337,7 +4337,7 @@ pubsub_frontends = [
     mode          = "Detection"
     health_path   = "/api/health"
     host_name     = "em-icp-webpubsub-prod.webpubsub.azure.com"
-    custom_domain = "em-icp-webpubsub.prod.platform.hmcts.net"
+    custom_domain = "em-icp-webpubsub.platform.hmcts.net"
     dns_zone_name = "prod.platform.hmcts.net"
     backend_fqdn  = ["firewall-prod-int-palo-empubsubprod.uksouth.cloudapp.azure.com"]
   },

@@ -112,7 +112,7 @@ gateways:
         component: data-store-api
       - product: ccd
         component: definition-store-api
-          request_timeout: 180
+        request_timeout: 180
       - product: ccd
         component: user-profile-api
       - product: ccd

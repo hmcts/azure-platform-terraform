@@ -3669,7 +3669,7 @@ frontends = [
     ssl_mode         = "AzureKeyVault"
     www_redirect     = true
     certificate_name = "employmenttribunals-service-gov-uk"
-    shutter_app      = true
+    shutter_app      = false
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -3760,7 +3760,7 @@ frontends = [
     custom_domain    = "admin.employmenttribunals.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "employmenttribunals-service-gov-uk"
-    shutter_app      = true
+    shutter_app      = false
     dns_zone_name    = "employmenttribunals.service.gov.uk"
     global_exclusions = [
       {
@@ -3825,7 +3825,7 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     ssl_mode         = "AzureKeyVault"
     certificate_name = "employmenttribunals-service-gov-uk"
-    shutter_app      = true
+    shutter_app      = false
     dns_zone_name    = "employmenttribunals.service.gov.uk"
     global_exclusions = [
       {
@@ -3853,7 +3853,7 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     ssl_mode         = "AzureKeyVault"
     certificate_name = "appeal-tax-tribunal-service-gov-uk"
-    shutter_app      = true
+    shutter_app      = false
     disabled_rules = {
       SQLI = [
         "942110",
@@ -3931,7 +3931,7 @@ frontends = [
     custom_domain    = "staff.helpwithcourtfees.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "helpwithcourtfees-service-gov-uk"
-    shutter_app      = true
+    shutter_app      = false
     dns_zone_name    = "helpwithcourtfees.service.gov.uk"
     global_exclusions = [
       {
@@ -4077,7 +4077,7 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     ssl_mode         = "AzureKeyVault"
     certificate_name = "helpwithcourtfees-service-gov-uk"
-    shutter_app      = true
+    shutter_app      = false
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

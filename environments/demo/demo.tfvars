@@ -3,7 +3,12 @@ subscription           = "demo"
 cft_apps_cluster_ips   = ["10.50.79.221", "10.50.95.221"]
 certificate_name_check = false
 autoShutdown           = true
-ssl_certificate        = "wildcard-demo-platform-hmcts-net"
+pubsubappgw_ssl_policy = {
+  policy_type          = "Predefined"
+  policy_name          = "AppGwSslPolicy20220101S"
+  min_protocol_version = "TLSv1_2"
+}
+ssl_certificate = "wildcard-demo-platform-hmcts-net"
 
 frontend_agw_private_ip_address        = "10.50.97.122"
 backend_agw_private_ip_address         = ["10.50.97.118", "10.50.97.119"]
@@ -1367,7 +1372,7 @@ frontends = [
   },
   {
     name           = "nfdiv"
-    mode           = "Prevention"
+    mode           = "Detection"
     custom_domain  = "nfdiv.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
@@ -1455,7 +1460,7 @@ frontends = [
   },
   {
     name             = "nfdiv-apply"
-    mode             = "Prevention"
+    mode             = "Detection"
     custom_domain    = "nfdiv-apply-for-divorce.demo.platform.hmcts.net"
     dns_zone_name    = "demo.platform.hmcts.net"
     backend          = "nfdiv"
@@ -1844,8 +1849,60 @@ frontends = [
     name           = "privatelaw"
     custom_domain  = "privatelaw.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
+    disabled_rules = {
+      SQLI = [
+        "942340",
+        "942440",
+        "942260",
+        "942200",
+        "942450",
+        "942210"
+      ]
+      LFI = [
+        "930130",
+        "930110",
+        "930120"
+      ]
+      RCE = [
+        "932115"
+      ]
+      RFI = [
+        "931130"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -2016,22 +2073,6 @@ frontends = [
     custom_domain  = "rpts.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-  },
-  {
-    name           = "bar"
-    custom_domain  = "bar.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
-  },
-  {
-    name           = "bar-int"
-    custom_domain  = "bar-int.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
   },
   {
     name           = "ac-int-gateway-ccd"

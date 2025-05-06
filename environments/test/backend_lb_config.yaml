@@ -154,10 +154,6 @@ gateways:
       - product: fees-register
         component: api
 
-    # BAR
-      - product: bar
-        component: api
-
     # ccpay
       - product: ccpay
         component: bulkscanning-api
@@ -372,4 +368,7 @@ gateways:
         component: judicial-payment-service
     # pcs
       - product: pcs
+        component: api
+    # enforcement
+      - product: enforcement
         component: api

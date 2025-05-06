@@ -13,7 +13,12 @@ shutter_storage                        = "TODO"
 cdn_sku                                = "TODO"
 shutter_rg                             = "TODO"
 pubsub_frontend_agw_private_ip_address = "10.48.98.8"
-ssl_certificate                        = "wildcard-perftest-platform-hmcts-net"
+pubsubappgw_ssl_policy = {
+  policy_type          = "Predefined"
+  policy_name          = "AppGwSslPolicy20220101S"
+  min_protocol_version = "TLSv1_2"
+}
+ssl_certificate = "wildcard-perftest-platform-hmcts-net"
 
 # Applications associated with default storage account shutter static website.
 # Teams that need a default shutter page, should add their app frontend names to the list below.
@@ -1736,14 +1741,6 @@ frontends = [
     ]
   },
   {
-    name           = "bar"
-    custom_domain  = "bar.perftest.platform.hmcts.net"
-    dns_zone_name  = "perftest.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
-
-  },
-  {
     name           = "fees-register"
     custom_domain  = "fees-register.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
@@ -2452,8 +2449,60 @@ frontends = [
     name           = "privatelaw"
     custom_domain  = "privatelaw.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
+    disabled_rules = {
+      SQLI = [
+        "942340",
+        "942440",
+        "942260",
+        "942200",
+        "942450",
+        "942210"
+      ]
+      LFI = [
+        "930130",
+        "930110",
+        "930120"
+      ]
+      RCE = [
+        "932115"
+      ]
+      RFI = [
+        "931130"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"

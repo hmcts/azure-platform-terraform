@@ -274,6 +274,7 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
+        request_timeout: 180
 
     # FPRL
       - product: fprl

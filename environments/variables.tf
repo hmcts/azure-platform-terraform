@@ -10,6 +10,10 @@ variable "key_vault_subscription" {
   default = []
 }
 
+variable "enable_waf" {
+  default = false
+}
+
 variable "env" {
   default = []
 }
@@ -41,6 +45,14 @@ variable "frontends" {
   default = []
 }
 
+variable "pubsub_frontends" {
+  default = []
+}
+
+variable "pubsub_endpoint" {
+  default = []
+}
+
 variable "shutter_storage" {
   default = "TODO" // Is this even used?
 }
@@ -60,6 +72,9 @@ variable "cft_apps_cluster_ips" {
   default = []
 }
 variable "frontend_agw_private_ip_address" {
+  default = []
+}
+variable "pubsub_frontend_agw_private_ip_address" {
   default = []
 }
 variable "sscssya_shutter" {
@@ -174,4 +189,20 @@ variable "autoShutdown" {
 }
 variable "apim_appgw_max_capacity" {
   default = 2
+}
+
+variable "pubsub_waf_managed_rules" {
+  default = []
+}
+
+variable "pubsub_waf_custom_rules" {
+  default = []
+}
+
+variable "pubsubappgw_ssl_policy" {
+  default = null
+}
+
+variable "ssl_certificate" {
+  default = ""
 }

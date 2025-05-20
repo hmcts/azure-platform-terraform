@@ -8,15 +8,21 @@ sku_tier               = "Standard"
 sku_size               = "Standard"
 
 
-backend_agw_private_ip_address = ["10.90.96.20", "10.90.96.21"]
-backend_agw_min_capacity       = 10
-backend_agw_max_capacity       = 15
-data_subscription              = "8999dec3-0104-4a27-94ee-6588559729d1"
-privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
-oms_env                        = "prod"
-
-cdn_sku    = "Standard_Verizon"
-shutter_rg = "shutter-app-prod-rg"
+backend_agw_private_ip_address         = ["10.90.96.20", "10.90.96.21"]
+backend_agw_min_capacity               = 10
+backend_agw_max_capacity               = 15
+data_subscription                      = "8999dec3-0104-4a27-94ee-6588559729d1"
+privatedns_subscription                = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
+oms_env                                = "prod"
+pubsub_frontend_agw_private_ip_address = "10.90.98.8"
+pubsubappgw_ssl_policy = {
+  policy_type          = "Predefined"
+  policy_name          = "AppGwSslPolicy20220101S"
+  min_protocol_version = "TLSv1_2"
+}
+ssl_certificate = "wildcard-platform-hmcts-net"
+cdn_sku         = "Standard_Verizon"
+shutter_rg      = "shutter-app-prod-rg"
 
 
 cft_apps_cluster_ips            = ["10.90.79.250", "10.90.95.250"]
@@ -1021,6 +1027,14 @@ frontends = [
     ]
   },
   {
+    product        = "em"
+    name           = "em-icp"
+    mode           = "Detection"
+    custom_domain  = "em-icp.platform.hmcts.net"
+    dns_zone_name  = "platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+  },
+  {
     product          = "xui"
     name             = "xui-webapp"
     mode             = "Detection"
@@ -1274,10 +1288,12 @@ frontends = [
         "942400",
         "942410",
         "942430",
+        "942440",
         "942450",
       ]
       RCE = [
         "932105",
+        "932100",
         "932115",
         "932150",
       ]
@@ -1712,7 +1728,33 @@ frontends = [
       },
     ],
     disabled_rules = {
+      SQLI = [
+        "942100",
+        "942110",
+        "942120",
+        "942150",
+        "942180",
+        "942200",
+        "942210",
+        "942230",
+        "942260",
+        "942310",
+        "942361",
+        "942370",
+        "942380",
+        "942390",
+        "942400",
+        "942410",
+        "942430",
+        "942440",
+      ]
+      LFI = [
+        "930110"
+      ]
       RCE = [
+        "932100",
+        "932105",
+        "932110",
         "932115"
       ]
     }
@@ -2328,6 +2370,16 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "Idam.Register"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "x-csrf-id"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "x-csrf-token"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -3012,6 +3064,16 @@ frontends = [
               "20.58.23.145/32",
               "35.176.93.186/32",
               "161.69.71.25/32",
+              "128.77.75.64/26",
+              "194.33.249.0/29",
+              "194.33.248.0/29",
+              "20.49.214.199/32",
+              "20.49.214.228/32",
+              "20.26.11.71/32",
+              "20.26.11.108/32",
+              "194.33.200.0/21",
+              "194.33.216.0/23",
+              "194.33.218.0/24",
             ]
           }
         ]
@@ -3122,6 +3184,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
       }
     ]
   },
@@ -3744,6 +3811,16 @@ frontends = [
               "51.149.249.0/27",
               "20.108.187.55/32",
               "20.58.23.145/32",
+              "128.77.75.64/26",
+              "194.33.249.0/29",
+              "194.33.248.0/29",
+              "20.49.214.199/32",
+              "20.49.214.228/32",
+              "20.26.11.71/32",
+              "20.26.11.108/32",
+              "194.33.200.0/21",
+              "194.33.216.0/23",
+              "194.33.218.0/24",
             ]
           }
         ]
@@ -3829,6 +3906,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
       },
       {
         match_variable = "RequestBodyPostArgNames"
@@ -3946,6 +4028,16 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "online_search[reference]"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_hwf-publicapp_session"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "application[deceased_name]"
       }
     ]
     custom_rules = [
@@ -4046,6 +4138,16 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "commit"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "legal_representative_detail[legal_representative_position]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant_address[street]"
       }
     ]
   },
@@ -4213,6 +4315,11 @@ frontends = [
         operator       = "Equals"
         selector       = "rf"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
     ]
   },
   {
@@ -4228,6 +4335,43 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-syr-cookie-preferences"
+      }
+    ]
+  }
+]
+
+pubsub_frontends = [
+  {
+    product       = "em"
+    name          = "em-icp-webpubsub"
+    mode          = "Detection"
+    health_path   = "/api/health"
+    host_name     = "em-icp-webpubsub-prod.webpubsub.azure.com"
+    custom_domain = "em-icp-webpubsub.platform.hmcts.net"
+    dns_zone_name = "platform.hmcts.net"
+    backend_fqdn  = ["firewall-prod-int-palo-empubsubprod.uksouth.cloudapp.azure.com"]
+  },
+]
+
+pubsub_waf_managed_rules = [
+  {
+    type    = "OWASP"
+    version = "3.2"
+    rule_group_override = [
+      {
+        rule_group_name = "REQUEST-920-PROTOCOL-ENFORCEMENT"
+        rule = [
+          {
+            id      = "920300"
+            enabled = true
+            action  = "Log"
+          },
+          {
+            id      = "920440"
+            enabled = true
+            action  = "Block"
+          }
+        ]
       }
     ]
   }

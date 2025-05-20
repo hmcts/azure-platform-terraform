@@ -23,8 +23,7 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  subscription_id            = var.key_vault_subscription
-  skip_provider_registration = "true"
+  subscription_id = var.key_vault_subscription
   features {}
   alias = "kv"
 }

@@ -154,10 +154,6 @@ gateways:
       - product: fees-register
         component: api
 
-    # BAR
-      - product: bar
-        component: api
-
     # ccpay
       - product: ccpay
         component: bulkscanning-api
@@ -184,6 +180,8 @@ gateways:
         component: message-publisher
       - product: ccd
         component: case-document-am-api
+      - product: ccd
+        component: test-stubs-service
 
     # AAC (CDM)
       - product: aac
@@ -368,3 +366,9 @@ gateways:
     # jps
       - product: jps
         component: judicial-payment-service
+    # pcs
+      - product: pcs
+        component: api
+    # enforcement
+      - product: enforcement
+        component: api

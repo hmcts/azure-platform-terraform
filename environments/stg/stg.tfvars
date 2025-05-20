@@ -4,15 +4,22 @@ env                    = "aat"
 subscription           = "stg"
 certificate_name_check = false
 
-backend_agw_private_ip_address = ["10.10.161.100", "10.10.161.101"]
-data_subscription              = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
-privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
-oms_env                        = "nonprod"
-autoShutdown                   = true
-hub                            = "prod"
-key_vault_subscription         = "96c274ce-846d-4e48-89a7-d528432298a7"
-hub_app_gw_private_ip_address  = ["10.11.8.215"]
-apim_appgw_backend_pool_fqdns  = ["firewall-prod-int-palo-cftapimgmtstg.uksouth.cloudapp.azure.com"]
+backend_agw_private_ip_address         = ["10.10.161.100", "10.10.161.101"]
+data_subscription                      = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
+privatedns_subscription                = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
+oms_env                                = "nonprod"
+autoShutdown                           = true
+hub                                    = "prod"
+key_vault_subscription                 = "96c274ce-846d-4e48-89a7-d528432298a7"
+hub_app_gw_private_ip_address          = ["10.11.8.215"]
+apim_appgw_backend_pool_fqdns          = ["firewall-prod-int-palo-cftapimgmtstg.uksouth.cloudapp.azure.com"]
+pubsub_frontend_agw_private_ip_address = "10.10.169.8"
+pubsubappgw_ssl_policy = {
+  policy_type          = "Predefined"
+  policy_name          = "AppGwSslPolicy20220101S"
+  min_protocol_version = "TLSv1_2"
+}
+ssl_certificate = "wildcard-aat-platform-hmcts-net"
 
 shutter_storage = "TODO"
 cdn_sku         = "TODO"
@@ -1847,7 +1854,33 @@ frontends = [
       },
     ],
     disabled_rules = {
+      SQLI = [
+        "942100",
+        "942110",
+        "942120",
+        "942150",
+        "942180",
+        "942200",
+        "942210",
+        "942230",
+        "942260",
+        "942310",
+        "942361",
+        "942370",
+        "942380",
+        "942390",
+        "942400",
+        "942410",
+        "942430",
+        "942440",
+      ]
+      LFI = [
+        "930110"
+      ]
       RCE = [
+        "932105",
+        "932100",
+        "932110",
         "932115"
       ]
     }
@@ -2534,6 +2567,16 @@ frontends = [
         selector       = "cookies_policy"
       },
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "x-csrf-id"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "x-csrf-token"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
@@ -2718,14 +2761,6 @@ frontends = [
         selector       = "ccpay-bubble-cookie-preferences"
       },
     ]
-  },
-  {
-    name           = "bar"
-    custom_domain  = "bar.aat.platform.hmcts.net"
-    dns_zone_name  = "aat.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
-
   },
   {
     name           = "fees-register"
@@ -2913,6 +2948,16 @@ frontends = [
               "62.25.109.203/32",
               "20.108.187.55/32",
               "20.58.23.145/32",
+              "128.77.75.64/26",
+              "194.33.249.0/29",
+              "194.33.248.0/29",
+              "20.49.214.199/32",
+              "20.49.214.228/32",
+              "20.26.11.71/32",
+              "20.26.11.108/32",
+              "194.33.200.0/21",
+              "194.33.216.0/23",
+              "194.33.218.0/24",
             ]
           }
         ]
@@ -3489,8 +3534,60 @@ frontends = [
     name           = "privatelaw"
     custom_domain  = "privatelaw.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
+    disabled_rules = {
+      SQLI = [
+        "942340",
+        "942440",
+        "942260",
+        "942200",
+        "942450",
+        "942210"
+      ]
+      LFI = [
+        "930130",
+        "930110",
+        "930120"
+      ]
+      RCE = [
+        "932115"
+      ]
+      RFI = [
+        "931130"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -3661,6 +3758,11 @@ frontends = [
         operator       = "Equals"
         selector       = "rf"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
     ]
   },
   {
@@ -3775,6 +3877,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
       },
       {
         match_variable = "RequestBodyPostArgNames"
@@ -3957,6 +4064,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "online_search[reference]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "application[deceased_name]"
       }
     ]
   },
@@ -3982,4 +4094,41 @@ frontends = [
     backend_domain    = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     global_exclusions = []
   },
+]
+
+pubsub_frontends = [
+  {
+    product       = "em"
+    name          = "em-icp-webpubsub"
+    mode          = "Detection"
+    health_path   = "/api/health"
+    host_name     = "em-icp-webpubsub-aat.webpubsub.azure.com"
+    custom_domain = "em-icp-webpubsub.aat.platform.hmcts.net"
+    dns_zone_name = "aat.platform.hmcts.net"
+    backend_fqdn  = ["firewall-prod-int-palo-empubsubaat.uksouth.cloudapp.azure.com"]
+  },
+]
+
+pubsub_waf_managed_rules = [
+  {
+    type    = "OWASP"
+    version = "3.2"
+    rule_group_override = [
+      {
+        rule_group_name = "REQUEST-920-PROTOCOL-ENFORCEMENT"
+        rule = [
+          {
+            id      = "920300"
+            enabled = true
+            action  = "Log"
+          },
+          {
+            id      = "920440"
+            enabled = true
+            action  = "Block"
+          }
+        ]
+      }
+    ]
+  }
 ]

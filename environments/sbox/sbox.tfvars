@@ -2,14 +2,20 @@ project                        = "hmcts"
 location                       = "uksouth"
 env                            = "sbox"
 subscription                   = "sbox"
-sku_tier                       = "Free"
-sku_size                       = "Free"
+sku_tier                       = "Standard"
+sku_size                       = "Standard"
 hub_app_gw_private_ip_address  = ["10.10.200.212"]
 backend_agw_private_ip_address = ["10.2.13.112"]
 data_subscription              = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
 key_vault_subscription         = "b72ab7b7-723f-4b18-b6f6-03b0f2c6a1bb"
 privatedns_subscription        = "1497c3d7-ab6d-4bb7-8a10-b51d03189ee3"
 oms_env                        = "sandbox"
+pubsubappgw_ssl_policy = {
+  policy_type          = "Predefined"
+  policy_name          = "AppGwSslPolicy20220101S"
+  min_protocol_version = "TLSv1_2"
+}
+ssl_certificate = "wildcard-sandbox-platform-hmcts-net"
 
 #FrontDoor access policy
 add_access_policy = true
@@ -391,6 +397,16 @@ frontends = [
         selector       = "cookies_policy"
       },
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "x-csrf-id"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "x-csrf-token"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
@@ -529,6 +545,16 @@ frontends = [
               "130.41.128.253/32",
               "130.41.221.92/32",
               "130.41.221.94/32",
+              "128.77.75.64/26",
+              "194.33.249.0/29",
+              "194.33.248.0/29",
+              "20.49.214.199/32",
+              "20.49.214.228/32",
+              "20.26.11.71/32",
+              "20.26.11.108/32",
+              "194.33.200.0/21",
+              "194.33.216.0/23",
+              "194.33.218.0/24",
             ]
           }
         ]
@@ -677,7 +703,7 @@ frontends = [
     name             = "plum"
     custom_domain    = "plum.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com", "lb-sbox-int-plum.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com", "cnfgw-fe-sbox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
@@ -685,10 +711,10 @@ frontends = [
   {
     product          = "plumclassic"
     name             = "plumclassic"
-    custom_domain    = "frontdoor.sandbox.platform.hmcts.net"
-    dns_zone_name    = "frontdoor.sandbox.platform.hmcts.net"
+    custom_domain    = "plumclassic.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "frontdoor-sandbox-platform-hmcts-net"
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
     ssl_mode         = "AzureKeyVault"
@@ -724,45 +750,7 @@ frontends = [
     appgw_cookie_based_affinity    = "Enabled"
     cache_enabled                  = "false"
     certificate_name_check_enabled = false
-  },
-  {
-    product          = "labs"
-    name             = "labs-rhodrif-nodejs"
-    custom_domain    = "labs-rhodrif-nodejs.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-  },
-  {
-    product          = "labs-apps-njs"
-    name             = "labs-apps-njs"
-    custom_domain    = "labs-apps-njs.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    shutter_app      = false
-    backend_domain   = ["lb-sbox-int-labs-apps-njs.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-  },
-  {
-    product          = "labs-goldenpath-khaled"
-    name             = "labs-goldenpath-khaled"
-    custom_domain    = "labs-goldenpath-khaled.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-khaled.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
-  {
-    product          = "labs-endakelly-nodejs"
-    name             = "labs-endakelly-nodejs"
-    custom_domain    = "labs-endakelly-nodejs.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-labs-endakelly-nodejs.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
+  }
 ]
 
 apim_appgw_exclusions = [

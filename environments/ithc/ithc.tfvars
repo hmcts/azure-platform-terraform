@@ -9,6 +9,13 @@ privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                        = "nonprod"
 autoShutdown                   = true
 hub                            = "nonprod"
+pubsubappgw_ssl_policy = {
+  policy_type          = "Predefined"
+  policy_name          = "AppGwSslPolicy20220101S"
+  min_protocol_version = "TLSv1_2"
+}
+ssl_certificate        = "wildcard-ithc-platform-hmcts-net"
+key_vault_subscription = "62864d44-5da9-4ae9-89e7-0cf33942fa09"
 
 shutter_storage = "TODO"
 cdn_sku         = "TODO"
@@ -20,8 +27,9 @@ shutter_apps = [
   "TODO"
 ]
 
-frontend_agw_private_ip_address = "10.11.225.113"
-cft_apps_cluster_ips            = ["10.11.207.250", "10.11.223.250"]
+frontend_agw_private_ip_address        = "10.11.225.113"
+cft_apps_cluster_ips                   = ["10.11.207.250", "10.11.223.250"]
+pubsub_frontend_agw_private_ip_address = "10.11.226.8"
 
 frontends = [
   {
@@ -468,6 +476,16 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "cookies_policy"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "x-csrf-id"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "x-csrf-token"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -1656,10 +1674,33 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     disabled_rules = {
       SQLI = [
-        "942260"
+        "942100",
+        "942110",
+        "942120",
+        "942150",
+        "942180",
+        "942200",
+        "942210",
+        "942230",
+        "942260",
+        "942310",
+        "942361",
+        "942370",
+        "942380",
+        "942390",
+        "942400",
+        "942410",
+        "942430",
+        "942440",
       ]
-      RFI = [
-        "931130"
+      LFI = [
+        "930110"
+      ]
+      RCE = [
+        "932100",
+        "932105",
+        "932110",
+        "932115"
       ]
     }
   },
@@ -1701,25 +1742,214 @@ frontends = [
     name           = "paybubble"
     custom_domain  = "paybubble.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
-  },
-  {
-    name           = "bar"
-    custom_domain  = "bar.ithc.platform.hmcts.net"
-    dns_zone_name  = "ithc.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
-
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "referer"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__user-info"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__redirect"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "DecodedUrl"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__pcipal-info"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "ccpay-bubble-cookie-preferences"
+      },
+    ]
   },
   {
     name           = "fees-register"
     custom_domain  = "fees-register.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
+    custom_rules = [
+      {
+        name     = "IPMatchWhitelist"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestUri"
+            operator           = "EndsWith"
+            negation_condition = false
+            match_values = [
+              "/fees"
+            ]
+          },
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = true
+            match_values = [
+              "81.134.202.29/32",
+              "51.145.6.230/32",
+              "194.33.192.0/25",
+              "51.149.249.0/27",
+              "194.33.193.0/25",
+              "194.33.196.0/25",
+              "51.149.249.32/27",
+              "194.33.197.0/25",
+              "52.210.206.51/32",
+              "62.25.109.201/32",
+              "62.25.109.203/32",
+              "51.143.139.240/32",
+              "51.145.4.100/32"
+            ]
+          }
+        ]
+      },
+    ],
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "__redirect"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "fee-register-admin-web-cookie-preferences"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "DecodedUrl"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "QueryParamName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "DecodedPath"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "PostParamName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "expression"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "GroupName"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "NFuse_Application"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "banner_id"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "callback"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reply_message_template"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "name"
+      },
+      {
+        match_variable = "RequestHeaderNames"
+        operator       = "Equals"
+        selector       = "User-Agent"
+      },
+      {
+        match_variable = "RequestHeaderNames"
+        operator       = "Equals"
+        selector       = "content-type"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "csvFees"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "description"
+      },
+    ]
   },
   {
     name             = "idam-user-dashboard"
@@ -1757,6 +1987,16 @@ frontends = [
               "62.25.109.203/32",
               "20.108.187.55/32",
               "20.58.23.145/32",
+              "128.77.75.64/26",
+              "194.33.249.0/29",
+              "194.33.248.0/29",
+              "20.49.214.199/32",
+              "20.49.214.228/32",
+              "20.26.11.71/32",
+              "20.26.11.108/32",
+              "194.33.200.0/21",
+              "194.33.216.0/23",
+              "194.33.218.0/24",
             ]
           }
         ]
@@ -2066,7 +2306,7 @@ frontends = [
     name           = "sscs-iba"
     custom_domain  = "infected-blood-appeal.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
@@ -2252,6 +2492,96 @@ frontends = [
     name             = "adoption-web"
     custom_domain    = "adoption-web.ithc.platform.hmcts.net"
     dns_zone_name    = "ithc.platform.hmcts.net"
+    mode             = "Prevention"
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "rf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "adoption-web-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "adoption-web-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+    ]
+  },
+  {
+    name             = "fis-ds-web"
+    custom_domain    = "fis-ds-web.ithc.platform.hmcts.net"
+    dns_zone_name    = "ithc.platform.hmcts.net"
     mode             = "Detection"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
@@ -2267,9 +2597,61 @@ frontends = [
     name             = "privatelaw"
     custom_domain    = "privatelaw.ithc.platform.hmcts.net"
     dns_zone_name    = "ithc.platform.hmcts.net"
-    mode             = "Detection"
+    mode             = "Prevention"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
+    disabled_rules = {
+      SQLI = [
+        "942340",
+        "942440",
+        "942260",
+        "942200",
+        "942450",
+        "942210"
+      ]
+      LFI = [
+        "930130",
+        "930110",
+        "930120"
+      ]
+      RCE = [
+        "932115"
+      ]
+      RFI = [
+        "931130"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -2377,7 +2759,6 @@ frontends = [
       SQLI = [
         "942200",
         "942450",
-        "942260",
         "942440"
       ]
       LFI = [
@@ -2385,6 +2766,9 @@ frontends = [
       ]
       RCE = [
         "932115"
+      ]
+      RFI = [
+        "931130"
       ]
     },
     global_exclusions = [
@@ -2859,6 +3243,11 @@ frontends = [
         selector       = "_ga"
       },
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "authenticity_token"
@@ -3057,6 +3446,11 @@ frontends = [
         operator       = "Equals"
         selector       = "rf"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
     ]
   },
   {
@@ -3231,6 +3625,51 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-syr-cookie-preferences"
+      }
+    ]
+  },
+  {
+    name              = "pcs-frontend"
+    mode              = "Prevention"
+    custom_domain     = "pcs.ithc.platform.hmcts.net"
+    dns_zone_name     = "ithc.platform.hmcts.net"
+    backend_domain    = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    global_exclusions = []
+  },
+]
+
+pubsub_frontends = [
+  {
+    product       = "em"
+    name          = "em-icp-webpubsub"
+    mode          = "Detection"
+    health_path   = "/api/health"
+    host_name     = "em-icp-webpubsub-ithc.webpubsub.azure.com"
+    custom_domain = "em-icp-webpubsub.ithc.platform.hmcts.net"
+    dns_zone_name = "ithc.platform.hmcts.net"
+    backend_fqdn  = ["firewall-nonprodi-palo-empubsubithc.uksouth.cloudapp.azure.com"]
+  },
+]
+
+pubsub_waf_managed_rules = [
+  {
+    type    = "OWASP"
+    version = "3.2"
+    rule_group_override = [
+      {
+        rule_group_name = "REQUEST-920-PROTOCOL-ENFORCEMENT"
+        rule = [
+          {
+            id      = "920300"
+            enabled = true
+            action  = "Log"
+          },
+          {
+            id      = "920440"
+            enabled = true
+            action  = "Block"
+          }
+        ]
       }
     ]
   }

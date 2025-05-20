@@ -67,10 +67,6 @@ gateways:
       - product: ccpay
         component: refunds-api
 
-    # BAR
-      - product: bar
-        component: api
-
      # IA
       - product: ia
         component: case-api
@@ -116,6 +112,7 @@ gateways:
         component: data-store-api
       - product: ccd
         component: definition-store-api
+        request_timeout: 180
       - product: ccd
         component: user-profile-api
       - product: ccd
@@ -124,6 +121,8 @@ gateways:
         component: message-publisher
       - product: ccd
         component: case-document-am-api
+      - product: ccd
+        component: case-print-service
 
     # AAC (CDM)
       - product: aac
@@ -275,6 +274,7 @@ gateways:
       - product: ccd
         component: admin-web
         ssl_enabled: true
+        request_timeout: 180
 
     # FPRL
       - product: fprl
@@ -374,10 +374,6 @@ gateways:
       - product: ccpay
         component: notifications-service-int
 
-     # BAR
-      - product: bar
-        component: api-int
-
      # TS
       - product: ts
         component: translation-service
@@ -422,6 +418,8 @@ gateways:
 
     # CIVIL
       - product: civil
+        component: rtl-export
+      - product: civil
         component: sdt
       - product: civil
         component: sdt-commissioning
@@ -441,3 +439,11 @@ gateways:
       # help-with-fees
       - product: help-with-fees
         component: benefit-checker-api
+
+      # pcs
+      - product: pcs
+        component: api
+
+      # enforcement
+      - product: enforcement
+        component: api

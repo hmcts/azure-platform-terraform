@@ -3,9 +3,16 @@ subscription           = "demo"
 cft_apps_cluster_ips   = ["10.50.95.221"]
 certificate_name_check = false
 autoShutdown           = true
+pubsubappgw_ssl_policy = {
+  policy_type          = "Predefined"
+  policy_name          = "AppGwSslPolicy20220101S"
+  min_protocol_version = "TLSv1_2"
+}
+ssl_certificate = "wildcard-demo-platform-hmcts-net"
 
-frontend_agw_private_ip_address = "10.50.97.122"
-backend_agw_private_ip_address  = ["10.50.97.118", "10.50.97.119"]
+frontend_agw_private_ip_address        = "10.50.97.122"
+backend_agw_private_ip_address         = ["10.50.97.118", "10.50.97.119"]
+pubsub_frontend_agw_private_ip_address = "10.50.98.8"
 
 data_subscription       = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
@@ -1365,7 +1372,7 @@ frontends = [
   },
   {
     name           = "nfdiv"
-    mode           = "Prevention"
+    mode           = "Detection"
     custom_domain  = "nfdiv.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
@@ -1453,7 +1460,7 @@ frontends = [
   },
   {
     name             = "nfdiv-apply"
-    mode             = "Prevention"
+    mode             = "Detection"
     custom_domain    = "nfdiv-apply-for-divorce.demo.platform.hmcts.net"
     dns_zone_name    = "demo.platform.hmcts.net"
     backend          = "nfdiv"
@@ -1842,8 +1849,60 @@ frontends = [
     name           = "privatelaw"
     custom_domain  = "privatelaw.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
+    disabled_rules = {
+      SQLI = [
+        "942340",
+        "942440",
+        "942260",
+        "942200",
+        "942450",
+        "942210"
+      ]
+      LFI = [
+        "930130",
+        "930110",
+        "930120"
+      ]
+      RCE = [
+        "932115"
+      ]
+      RFI = [
+        "931130"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -1885,7 +1944,33 @@ frontends = [
       },
     ],
     disabled_rules = {
+      SQLI = [
+        "942100",
+        "942110",
+        "942120",
+        "942150",
+        "942180",
+        "942200",
+        "942210",
+        "942230",
+        "942260",
+        "942310",
+        "942361",
+        "942370",
+        "942380",
+        "942390",
+        "942400",
+        "942410",
+        "942430",
+        "942440",
+      ]
+      LFI = [
+        "930110"
+      ]
       RCE = [
+        "932100",
+        "932105",
+        "932110",
         "932115"
       ]
     }
@@ -1988,22 +2073,6 @@ frontends = [
     custom_domain  = "rpts.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-  },
-  {
-    name           = "bar"
-    custom_domain  = "bar.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
-  },
-  {
-    name           = "bar-int"
-    custom_domain  = "bar-int.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
   },
   {
     name           = "ac-int-gateway-ccd"
@@ -2757,6 +2826,16 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "cookies_policy"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "x-csrf-id"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "x-csrf-token"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -3548,6 +3627,11 @@ frontends = [
         selector       = "_ga"
       },
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "authenticity_token"
@@ -3792,6 +3876,11 @@ frontends = [
         operator       = "Equals"
         selector       = "rf"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
     ]
   },
   {
@@ -3816,4 +3905,49 @@ frontends = [
       }
     ]
   },
+  {
+    name              = "pcs-frontend"
+    mode              = "Prevention"
+    custom_domain     = "pcs.demo.platform.hmcts.net"
+    dns_zone_name     = "demo.platform.hmcts.net"
+    backend_domain    = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    global_exclusions = []
+  },
+]
+
+pubsub_frontends = [
+  {
+    product       = "em"
+    name          = "em-icp-webpubsub"
+    mode          = "Detection"
+    health_path   = "/api/health"
+    host_name     = "em-icp-webpubsub-demo.webpubsub.azure.com"
+    custom_domain = "em-icp-webpubsub.demo.platform.hmcts.net"
+    dns_zone_name = "demo.platform.hmcts.net"
+    backend_fqdn  = ["firewall-nonprodi-palo-empubsubdemo.uksouth.cloudapp.azure.com"]
+  },
+]
+
+pubsub_waf_managed_rules = [
+  {
+    type    = "OWASP"
+    version = "3.2"
+    rule_group_override = [
+      {
+        rule_group_name = "REQUEST-920-PROTOCOL-ENFORCEMENT"
+        rule = [
+          {
+            id      = "920300"
+            enabled = true
+            action  = "Log"
+          },
+          {
+            id      = "920440"
+            enabled = true
+            action  = "Block"
+          }
+        ]
+      }
+    ]
+  }
 ]

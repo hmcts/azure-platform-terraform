@@ -4,14 +4,21 @@ env                    = "perftest"
 subscription           = "test"
 certificate_name_check = false
 
-backend_agw_private_ip_address = ["10.48.96.111", "10.48.96.114"]
-data_subscription              = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
-privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
-oms_env                        = "nonprod"
-autoShutdown                   = true
-shutter_storage                = "TODO"
-cdn_sku                        = "TODO"
-shutter_rg                     = "TODO"
+backend_agw_private_ip_address         = ["10.48.96.111", "10.48.96.114"]
+data_subscription                      = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
+privatedns_subscription                = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
+oms_env                                = "nonprod"
+autoShutdown                           = true
+shutter_storage                        = "TODO"
+cdn_sku                                = "TODO"
+shutter_rg                             = "TODO"
+pubsub_frontend_agw_private_ip_address = "10.48.98.8"
+pubsubappgw_ssl_policy = {
+  policy_type          = "Predefined"
+  policy_name          = "AppGwSslPolicy20220101S"
+  min_protocol_version = "TLSv1_2"
+}
+ssl_certificate = "wildcard-perftest-platform-hmcts-net"
 
 # Applications associated with default storage account shutter static website.
 # Teams that need a default shutter page, should add their app frontend names to the list below.
@@ -428,6 +435,15 @@ frontends = [
     dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+
+    caching = {
+      url_file_extension_conditions = [{}]
+      route_configuration_override_action = [
+        {
+          compression_enabled = true
+        }
+      ]
+    }
 
     global_exclusions = [
       {
@@ -1308,6 +1324,16 @@ frontends = [
         selector       = "cookies_policy"
       },
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "x-csrf-id"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "x-csrf-token"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
@@ -1524,7 +1550,106 @@ frontends = [
     dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
-
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "returnUrl"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "pcq-cookie-preferences"
+      },
+      // Google Analytics Exclusions
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      // Dynatrace Exclusions
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      }
+    ],
+    custom_rules = [
+      {
+        name     = "RumBeaconExclusion"
+        priority = 100
+        type     = "MatchRule"
+        action   = "Allow"
+        match_conditions = [
+          {
+            match_variable     = "RequestMethod"
+            operator           = "Equal"
+            negation_condition = false
+            match_values = [
+              "POST"
+            ]
+          },
+          {
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values = [
+              "/rb_"
+            ]
+          }
+        ]
+      },
+    ]
   },
   {
     name           = "lau"
@@ -1624,14 +1749,6 @@ frontends = [
         selector       = "ccpay-bubble-cookie-preferences"
       },
     ]
-  },
-  {
-    name           = "bar"
-    custom_domain  = "bar.perftest.platform.hmcts.net"
-    dns_zone_name  = "perftest.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
-
   },
   {
     name           = "fees-register"
@@ -2342,8 +2459,60 @@ frontends = [
     name           = "privatelaw"
     custom_domain  = "privatelaw.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
-    mode           = "Detection"
+    mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
+    disabled_rules = {
+      SQLI = [
+        "942340",
+        "942440",
+        "942260",
+        "942200",
+        "942450",
+        "942210"
+      ]
+      LFI = [
+        "930130",
+        "930110",
+        "930120"
+      ]
+      RCE = [
+        "932115"
+      ]
+      RFI = [
+        "931130"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -2686,6 +2855,11 @@ frontends = [
         operator       = "Equals"
         selector       = "rf"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
     ]
   },
   {
@@ -2708,6 +2882,51 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-syr-cookie-preferences"
+      }
+    ]
+  },
+  {
+    name              = "pcs-frontend"
+    mode              = "Prevention"
+    custom_domain     = "pcs.perftest.platform.hmcts.net"
+    dns_zone_name     = "perftest.platform.hmcts.net"
+    backend_domain    = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+    global_exclusions = []
+  },
+]
+
+pubsub_frontends = [
+  {
+    product       = "em"
+    name          = "em-icp-webpubsub"
+    mode          = "Detection"
+    health_path   = "/api/health"
+    host_name     = "em-icp-webpubsub-perftest.webpubsub.azure.com"
+    custom_domain = "em-icp-webpubsub.perftest.platform.hmcts.net"
+    dns_zone_name = "perftest.platform.hmcts.net"
+    backend_fqdn  = ["firewall-nonprodi-palo-empubsubperftest.uksouth.cloudapp.azure.com"]
+  },
+]
+
+pubsub_waf_managed_rules = [
+  {
+    type    = "OWASP"
+    version = "3.2"
+    rule_group_override = [
+      {
+        rule_group_name = "REQUEST-920-PROTOCOL-ENFORCEMENT"
+        rule = [
+          {
+            id      = "920300"
+            enabled = true
+            action  = "Log"
+          },
+          {
+            id      = "920440"
+            enabled = true
+            action  = "Block"
+          }
+        ]
       }
     ]
   }

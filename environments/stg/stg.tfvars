@@ -2567,6 +2567,16 @@ frontends = [
         selector       = "cookies_policy"
       },
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "x-csrf-id"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "x-csrf-token"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"

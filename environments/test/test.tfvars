@@ -1334,6 +1334,11 @@ frontends = [
         selector       = "x-csrf-token"
       },
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "flowState"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"

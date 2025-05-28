@@ -476,14 +476,23 @@ frontends = [
     disabled_rules = {
       SQLI = [
         "942100",
+        "942110",
+        "942120",
         "942150",
+        "942180",
         "942200",
         "942210",
         "942230",
+        "942260",
+        "942310",
         "942361",
+        "942370",
         "942380",
+        "942390",
         "942400",
+        "942410",
         "942430",
+        "942440",
       ]
       LFI = [
         "930100", // false positive on multi-part uploads
@@ -493,34 +502,6 @@ frontends = [
         "932100"
       ]
     },
-    custom_rules = [
-      {
-        name     = "IPMatchWhitelist"
-        priority = 1
-        type     = "MatchRule"
-        action   = "Block"
-        match_conditions = [
-          {
-            match_variable     = "RemoteAddr"
-            operator           = "IPMatch"
-            negation_condition = true
-            match_values = [
-              "51.145.34.88/32",
-              "81.134.202.29/32",
-              "51.145.6.230/32",
-              "51.145.4.100/32",
-              "194.33.192.0/25",
-              "51.149.249.0/27",
-              "194.33.196.0/25",
-              "51.149.249.32/27",
-              "52.210.206.51/32",
-              "62.25.109.201/32",
-              "62.25.109.203/32"
-            ]
-          }
-        ]
-      },
-    ],
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -577,6 +558,21 @@ frontends = [
         operator       = "Equals"
         selector       = "applicant2UploadedFiles"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "coClarificationUploadDocuments"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "app1RfiDraftResponseDocs"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "app2RfiDraftResponseDocs"
+      }
     ]
   },
   {

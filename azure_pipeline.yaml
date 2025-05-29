@@ -49,14 +49,14 @@ parameters:
   - name: environment_components
     type: object
     default:
-    - deployment: 'sbox_frontendappgateway'
-      environment: 'sbox'
-      component: 'frontendappgateway'
-      service_connection: 'dcd-cftapps-sbox'
-      storage_account_rg: 'core-infra-sbox-rg'
-      storage_account_name: 'cftappssbox'
-      dependsOn: 'Precheck'
-      pipeline_tests: true
+    # - deployment: 'sbox_frontendappgateway'
+    #   environment: 'sbox'
+    #   component: 'frontendappgateway'
+    #   service_connection: 'dcd-cftapps-sbox'
+    #   storage_account_rg: 'core-infra-sbox-rg'
+    #   storage_account_name: 'cftappssbox'
+    #   dependsOn: 'Precheck'
+    #   pipeline_tests: true
 
     # - deployment: 'sbox_global'
     #   environment: 'sbox'
@@ -67,14 +67,14 @@ parameters:
     #   dependsOn: 'Precheck'
     #   pipeline_tests: false
 
-    # - deployment: 'sbox_backendappgateway'
-    #   environment: 'sbox'
-    #   component: 'backendappgateway'
-    #   service_connection: 'dcd-cftapps-sbox'
-    #   storage_account_rg: 'core-infra-sbox-rg'
-    #   storage_account_name: 'cftappssbox'
-    #   dependsOn: 'Precheck'
-    #   pipeline_tests: false
+    - deployment: 'sbox_backendappgateway'
+      environment: 'sbox'
+      component: 'backendappgateway'
+      service_connection: 'dcd-cftapps-sbox'
+      storage_account_rg: 'core-infra-sbox-rg'
+      storage_account_name: 'cftappssbox'
+      dependsOn: 'Precheck'
+      pipeline_tests: true
 
     # - deployment: 'sbox_shutter_webapp'
     #   environment: 'sbox'

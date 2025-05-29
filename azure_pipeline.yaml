@@ -46,6 +46,11 @@ parameters:
     - apply
     - destroy
 
+  - name: pipeline_tests
+    displayName: Include App test
+    type: boolean
+    default: true
+
   - name: environment_components
     type: object
     default:
@@ -56,7 +61,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
-      pipeline_tests: false
+      
 
     - deployment: 'sbox_global'
       environment: 'sbox'
@@ -65,7 +70,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
-      pipeline_tests: true
+      
 
     - deployment: 'sbox_backendappgateway'
       environment: 'sbox'
@@ -74,7 +79,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
-      pipeline_tests: false
+      
 
     - deployment: 'sbox_shutter_webapp'
       environment: 'sbox'
@@ -83,7 +88,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
-      pipeline_tests: false
+      
 
     - deployment: 'sbox_private_dns'
       environment: 'sbox'
@@ -92,7 +97,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
-      pipeline_tests: false
+      
 
     - deployment: 'sbox_apim'
       environment: 'sbox'
@@ -101,7 +106,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
-      pipeline_tests: true
+      
 
     - deployment: 'sbox_apim_appgw'
       environment: 'sbox'
@@ -110,7 +115,7 @@ parameters:
       storage_account_rg: 'core-infra-sbox-rg'
       storage_account_name: 'cftappssbox'
       dependsOn: 'Precheck'
-      pipeline_tests: true
+      
 
     - deployment: 'dev_global'
       environment: 'dev'
@@ -119,6 +124,7 @@ parameters:
       storage_account_rg: 'core-infra-dev-rg'
       storage_account_name: 'cftappsdev'
       dependsOn: 'sbox_global'
+      
 
     - deployment: 'ithc_frontendappgateway'
       environment: 'ithc'
@@ -127,7 +133,7 @@ parameters:
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_frontendappgateway'
-      pipeline_tests: true
+      
 
     - deployment: 'ithc_pubsubappgateway'
       environment: 'ithc'
@@ -136,7 +142,7 @@ parameters:
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_frontendappgateway'
-      pipeline_tests: true
+      
 
     - deployment: 'ithc_backendappgateway'
       environment: 'ithc'
@@ -145,7 +151,7 @@ parameters:
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_backendappgateway'
-      pipeline_tests: true
+      
 
     - deployment: 'ithc_global'
       environment: 'ithc'
@@ -153,7 +159,6 @@ parameters:
       service_connection: 'dcd-cftapps-ithc'
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
-      pipeline_tests: true
       dependsOn: 'sbox_global'
 
     - deployment: 'ithc_private_dns'
@@ -163,7 +168,7 @@ parameters:
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_private_dns'
-      pipeline_tests: true
+      
 
     - deployment: 'ithc_apim'
       environment: 'ithc'
@@ -172,6 +177,7 @@ parameters:
       storage_account_rg: 'core-infra-ithc-rg'
       storage_account_name: 'cftappsithc'
       dependsOn: 'sbox_apim'
+      
 
     - deployment: 'demo_global'
       environment: 'demo'
@@ -180,6 +186,7 @@ parameters:
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_global'
+      
 
     - deployment: 'demo_frontendappgateway'
       environment: 'demo'
@@ -188,6 +195,7 @@ parameters:
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_frontendappgateway'
+      
 
     - deployment: 'demo_pubsubappgateway'
       environment: 'demo'
@@ -196,6 +204,7 @@ parameters:
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_frontendappgateway'
+      
 
     - deployment: 'demo_backendappgateway'
       environment: 'demo'
@@ -204,6 +213,7 @@ parameters:
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_backendappgateway'
+      
 
     - deployment: 'demo_private_dns'
       environment: 'demo'
@@ -212,6 +222,7 @@ parameters:
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_private_dns'
+      
 
     - deployment: 'demo_apim'
       environment: 'demo'
@@ -220,7 +231,7 @@ parameters:
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_apim'
-      pipeline_tests: true
+      
 
     - deployment: 'demo_apim_appgw'
       environment: 'demo'
@@ -229,7 +240,7 @@ parameters:
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_apim_appgw'
-      pipeline_tests: true
+      
 
     - deployment: 'test_frontendappgateway'
       environment: 'test'
@@ -238,7 +249,7 @@ parameters:
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_frontendappgateway'
-      pipeline_tests: true
+      
 
     - deployment: 'perftest_pubsubappgateway'
       environment: 'test'
@@ -247,7 +258,7 @@ parameters:
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_frontendappgateway'
-      pipeline_tests: true
+      
 
     - deployment: 'test_backendappgateway'
       environment: 'test'
@@ -256,7 +267,7 @@ parameters:
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_backendappgateway'
-      pipeline_tests: true
+      
 
     - deployment: 'test_cftapps_private_dns'
       environment: 'test'
@@ -265,7 +276,7 @@ parameters:
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_private_dns'
-      pipeline_tests: true
+      
 
     - deployment: 'test_apim'
       environment: 'test'
@@ -274,7 +285,7 @@ parameters:
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_apim'
-      pipeline_tests: true
+      
 
     - deployment: 'test_apim_appgw'
       environment: 'test'
@@ -283,15 +294,14 @@ parameters:
       storage_account_rg: 'core-infra-test-rg'
       storage_account_name: 'cftappstest'
       dependsOn: 'sbox_apim_appgw'
-      pipeline_tests: true
+      
 
     - deployment: 'perftest_global'
       environment: 'test'
       component: 'global'
       service_connection: 'dcd-cftapps-test'
       storage_account_rg: 'core-infra-test-rg'
-      storage_account_name: 'cftappstest'
-      pipeline_tests: true
+      storage_account_name: 'cftappstest'      
       dependsOn: 'sbox_global'
 
     - deployment: 'stg_private_dns'
@@ -301,7 +311,7 @@ parameters:
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_private_dns'
-      pipeline_tests: true
+      
 
     - deployment: 'stg_apim'
       environment: 'stg'
@@ -310,7 +320,7 @@ parameters:
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_apim'
-      pipeline_tests: true
+      
 
     - deployment: 'stg_apim_appgw'
       environment: 'stg'
@@ -319,7 +329,7 @@ parameters:
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_apim_appgw'
-      pipeline_tests: true
+      
 
     - deployment: 'stg_frontendappgateway'
       environment: 'stg'
@@ -328,7 +338,7 @@ parameters:
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_frontendappgateway'
-      pipeline_tests: true
+      
 
     - deployment: 'aat_pubsubappgateway'
       environment: 'stg'
@@ -337,7 +347,7 @@ parameters:
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_frontendappgateway'
-      pipeline_tests: true
+      
 
     - deployment: 'stg_backendappgateway'
       environment: 'stg'
@@ -346,7 +356,7 @@ parameters:
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
       dependsOn: 'sbox_backendappgateway'
-      pipeline_tests: true
+      
 
     - deployment: 'aat_global'
       environment: 'stg'
@@ -354,7 +364,6 @@ parameters:
       service_connection: 'dcd-cftapps-stg'
       storage_account_rg: 'core-infra-stg-rg'
       storage_account_name: 'cftappsstg'
-      pipeline_tests: true
       dependsOn: 'sbox_global'
 
     - deployment: 'prod_shutter_webapp'
@@ -372,7 +381,7 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_frontendappgateway'
-      pipeline_tests: false
+      
 
     - deployment: 'prod_pubsubappgateway'
       environment: 'prod'
@@ -381,7 +390,7 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_frontendappgateway'
-      pipeline_tests: false
+      
 
     - deployment: 'prod_backendappgateway'
       environment: 'prod'
@@ -390,7 +399,7 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_backendappgateway'
-      pipeline_tests: false
+      
 
     - deployment: 'prod_private_dns'
       environment: 'prod'
@@ -399,7 +408,8 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_private_dns'
-      pipeline_tests: false
+      
+
 
 #    - deployment: 'prod_apim'
 #      environment: 'prod'
@@ -408,8 +418,9 @@ parameters:
 #      storage_account_rg: 'core-infra-prod-rg'
 #      storage_account_name: 'cftappsprod'
 #      dependsOn: 'stg_apim'
-#      pipeline_tests: true
-#
+#      
+
+
     - deployment: 'prod_apim_appgw'
       environment: 'prod'
       component: 'apim-appgw'
@@ -417,7 +428,7 @@ parameters:
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
       dependsOn: 'sbox_apim_appgw'
-      pipeline_tests: true
+      
 
     - deployment: 'prod_global'
       environment: 'prod'
@@ -425,7 +436,6 @@ parameters:
       service_connection: 'dcd-cftapps-prod'
       storage_account_rg: 'core-infra-prod-rg'
       storage_account_name: 'cftappsprod'
-      pipeline_tests: true
       dependsOn: 'sbox_global'
 
 stages:
@@ -470,7 +480,8 @@ stages:
             vmImage: ${{ variables.agentPool }}
           timeoutInMinutes: ${{ variables.timeoutInMinutes }}
           dependsOn: TerraformPlanApply
-          condition: and(succeeded(), eq(variables['isMain'], true), eq('${{ deployment.pipeline_tests }}', 'true'))
+          # condition: and(succeeded(), eq(variables['isMain'], true), eq('${{ deployment.pipeline_tests }}', 'true')) Advised by TT
+          condition: and(succeeded(), eq('${{ parameters.pipeline_tests }}', 'true'))
           steps:
             - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
               parameters:

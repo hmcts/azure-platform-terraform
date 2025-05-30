@@ -4097,13 +4097,12 @@ frontends = [
     custom_domain  = "pcs.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
-    global_exclusions = [
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "code"
-      }
-    ]
+    disabled_rules = {
+      RFI = [
+        "931130"
+      ]
+    }
+    global_exclusions = []
   },
 ]
 

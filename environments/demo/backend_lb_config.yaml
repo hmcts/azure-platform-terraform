@@ -272,6 +272,10 @@ gateways:
       - product: ccd
         component: ac-int-definition-store-api
       - product: ccd
+        component: ccd-int-data-store-api
+      - product: ccd
+        component: ccd-int-definition-store-api
+      - product: ccd
         component: admin-web
         ssl_enabled: true
         request_timeout: 180

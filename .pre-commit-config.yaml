@@ -1,10 +1,12 @@
 repos:
-- repo: https://github.com/antonbabenko/pre-commit-terraform
-  rev: v1.74.1
+- repo: local
   hooks:
     - id: terraform_fmt
-      args:
-      - --args=-write=true
+      name: Terraform fmt
+      entry: terraform fmt -recursive
+      language: system
+      files: \.tf$
+      pass_filenames: false
 - repo: https://github.com/hmcts/pre-commit-hooks
   rev: 0.0.4
   hooks:

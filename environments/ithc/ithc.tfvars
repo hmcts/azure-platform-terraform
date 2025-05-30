@@ -1111,15 +1111,23 @@ frontends = [
     disabled_rules = {
       SQLI = [
         "942100",
+        "942110",
+        "942120",
         "942150",
+        "942180",
         "942200",
         "942210",
         "942230",
+        "942260",
+        "942310",
         "942361",
+        "942370",
         "942380",
+        "942390",
         "942400",
+        "942410",
         "942430",
-        "942260"
+        "942440",
       ]
       LFI = [
         "930100", // false positive on multi-part uploads
@@ -1188,6 +1196,21 @@ frontends = [
         operator       = "Equals"
         selector       = "applicant2UploadedFiles"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "coClarificationUploadDocuments"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "app1RfiDraftResponseDocs"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "app2RfiDraftResponseDocs"
+      }
     ]
   },
   {
@@ -1199,15 +1222,23 @@ frontends = [
     disabled_rules = {
       SQLI = [
         "942100",
+        "942110",
+        "942120",
         "942150",
+        "942180",
         "942200",
         "942210",
         "942230",
+        "942260",
+        "942310",
         "942361",
+        "942370",
         "942380",
+        "942390",
         "942400",
+        "942410",
         "942430",
-        "942260"
+        "942440",
       ]
       LFI = [
         "930100", // false positive on multi-part uploads
@@ -1287,15 +1318,23 @@ frontends = [
     disabled_rules = {
       SQLI = [
         "942100",
+        "942110",
+        "942120",
         "942150",
+        "942180",
         "942200",
         "942210",
         "942230",
+        "942260",
+        "942310",
         "942361",
+        "942370",
         "942380",
+        "942390",
         "942400",
+        "942410",
         "942430",
-        "942260"
+        "942440",
       ]
       LFI = [
         "930100", // false positive on multi-part uploads
@@ -1364,6 +1403,21 @@ frontends = [
         operator       = "Equals"
         selector       = "applicant2UploadedFiles"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "coClarificationUploadDocuments"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "app1RfiDraftResponseDocs"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "app2RfiDraftResponseDocs"
+      }
     ]
   },
   {

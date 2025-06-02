@@ -4092,12 +4092,18 @@ frontends = [
     ]
   },
   {
-    name              = "pcs-frontend"
-    mode              = "Prevention"
-    custom_domain     = "pcs.aat.platform.hmcts.net"
-    dns_zone_name     = "aat.platform.hmcts.net"
-    backend_domain    = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
-    global_exclusions = []
+    name           = "pcs-frontend"
+    mode           = "Prevention"
+    custom_domain  = "pcs.aat.platform.hmcts.net"
+    dns_zone_name  = "aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      }
+    ]
   },
 ]
 

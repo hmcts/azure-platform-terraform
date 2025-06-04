@@ -2891,11 +2891,16 @@ frontends = [
     ]
   },
   {
-    name              = "pcs-frontend"
-    mode              = "Prevention"
-    custom_domain     = "pcs.perftest.platform.hmcts.net"
-    dns_zone_name     = "perftest.platform.hmcts.net"
-    backend_domain    = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+    name           = "pcs-frontend"
+    mode           = "Prevention"
+    custom_domain  = "pcs.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+    disabled_rules = {
+      RFI = [
+        "931130"
+      ]
+    }
     global_exclusions = []
   },
 ]

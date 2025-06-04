@@ -2502,6 +2502,11 @@ frontends = [
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "laUploadedFiles"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"

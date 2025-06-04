@@ -4110,7 +4110,6 @@ pubsub_frontends = [
   {
     product       = "em"
     name          = "em-icp-webpubsub"
-    mode          = "Detection"
     health_path   = "/api/health"
     host_name     = "em-icp-webpubsub-aat.webpubsub.azure.com"
     custom_domain = "em-icp-webpubsub.aat.platform.hmcts.net"

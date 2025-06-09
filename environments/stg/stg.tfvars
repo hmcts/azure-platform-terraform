@@ -1259,6 +1259,11 @@ frontends = [
         operator       = "Equals"
         selector       = "applicant2UploadedFiles"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1InterimAppsEvidenceDocs"
+      },
     ]
   },
   {
@@ -1347,6 +1352,11 @@ frontends = [
         operator       = "Equals"
         selector       = "applicant2UploadedFiles"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1InterimAppsEvidenceDocs"
+      },
     ]
   },
   {
@@ -1434,6 +1444,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "applicant2UploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1InterimAppsEvidenceDocs"
       },
     ]
   },

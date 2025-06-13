@@ -1467,7 +1467,6 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-<<<<<<< HEAD
         selector       = "coClarificationUploadDocuments"
       },
       {
@@ -1479,11 +1478,12 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "app2RfiDraftResponseDocs"
-      }
-=======
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "applicant1InterimAppsEvidenceDocs"
       },
->>>>>>> master
     ]
   },
   {
@@ -1584,7 +1584,6 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-<<<<<<< HEAD
         selector       = "coClarificationUploadDocuments"
       },
       {
@@ -1596,11 +1595,12 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "app2RfiDraftResponseDocs"
-      }
-=======
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "applicant1InterimAppsEvidenceDocs"
       },
->>>>>>> master
     ]
   },
   {
@@ -1701,7 +1701,6 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-<<<<<<< HEAD
         selector       = "coClarificationUploadDocuments"
       },
       {
@@ -1713,11 +1712,12 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "app2RfiDraftResponseDocs"
-      }
-=======
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "applicant1InterimAppsEvidenceDocs"
       },
->>>>>>> master
     ]
   },
   {

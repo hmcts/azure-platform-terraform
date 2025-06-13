@@ -488,6 +488,11 @@ frontends = [
         selector       = "x-csrf-token"
       },
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "flowState"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
@@ -1205,7 +1210,12 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "app2RfiDraftResponseDocs"
-      }
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1InterimAppsEvidenceDocs"
+      },
     ]
   },
   {
@@ -1412,7 +1422,12 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "app2RfiDraftResponseDocs"
-      }
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1InterimAppsEvidenceDocs"
+      },
     ]
   },
   {
@@ -2551,6 +2566,11 @@ frontends = [
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     global_exclusions = [
       {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "laUploadedFiles"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
@@ -3683,11 +3703,16 @@ frontends = [
     ]
   },
   {
-    name              = "pcs-frontend"
-    mode              = "Prevention"
-    custom_domain     = "pcs.ithc.platform.hmcts.net"
-    dns_zone_name     = "ithc.platform.hmcts.net"
-    backend_domain    = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    name           = "pcs-frontend"
+    mode           = "Prevention"
+    custom_domain  = "pcs.ithc.platform.hmcts.net"
+    dns_zone_name  = "ithc.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    disabled_rules = {
+      RFI = [
+        "931130"
+      ]
+    }
     global_exclusions = []
   },
 ]

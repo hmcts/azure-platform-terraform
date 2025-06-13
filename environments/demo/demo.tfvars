@@ -1467,6 +1467,7 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
+<<<<<<< HEAD
         selector       = "coClarificationUploadDocuments"
       },
       {
@@ -1479,6 +1480,10 @@ frontends = [
         operator       = "Equals"
         selector       = "app2RfiDraftResponseDocs"
       }
+=======
+        selector       = "applicant1InterimAppsEvidenceDocs"
+      },
+>>>>>>> master
     ]
   },
   {
@@ -1579,6 +1584,7 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
+<<<<<<< HEAD
         selector       = "coClarificationUploadDocuments"
       },
       {
@@ -1591,6 +1597,10 @@ frontends = [
         operator       = "Equals"
         selector       = "app2RfiDraftResponseDocs"
       }
+=======
+        selector       = "applicant1InterimAppsEvidenceDocs"
+      },
+>>>>>>> master
     ]
   },
   {
@@ -1691,6 +1701,7 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
+<<<<<<< HEAD
         selector       = "coClarificationUploadDocuments"
       },
       {
@@ -1703,6 +1714,10 @@ frontends = [
         operator       = "Equals"
         selector       = "app2RfiDraftResponseDocs"
       }
+=======
+        selector       = "applicant1InterimAppsEvidenceDocs"
+      },
+>>>>>>> master
     ]
   },
   {
@@ -2158,6 +2173,11 @@ frontends = [
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     global_exclusions = [
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "laUploadedFiles"
+      },
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
@@ -4050,11 +4070,16 @@ frontends = [
     ]
   },
   {
-    name              = "pcs-frontend"
-    mode              = "Prevention"
-    custom_domain     = "pcs.demo.platform.hmcts.net"
-    dns_zone_name     = "demo.platform.hmcts.net"
-    backend_domain    = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    name           = "pcs-frontend"
+    mode           = "Prevention"
+    custom_domain  = "pcs.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    disabled_rules = {
+      RFI = [
+        "931130"
+      ]
+    }
     global_exclusions = []
   },
 ]

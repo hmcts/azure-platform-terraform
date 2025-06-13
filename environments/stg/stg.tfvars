@@ -1281,7 +1281,7 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "app2RfiDraftResponseDocs"
-      }
+      },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"

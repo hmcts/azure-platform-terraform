@@ -4176,14 +4176,39 @@ frontends = [
         selector       = "laUploadedFiles"
       },
       {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
       },
       {
-        match_variable = "QueryStringArgNames"
+        match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "rf"
+        selector       = "session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
       },
       {
         match_variable = "RequestCookieNames"
@@ -4218,19 +4243,14 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "_ga"
+        selector       = "cookies_policy"
       },
       {
-        match_variable = "RequestCookieNames"
+        match_variable = "QueryStringArgNames"
         operator       = "Equals"
-        selector       = "_gid"
+        selector       = "rf"
       },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "_gat"
-      },
-      {
+            {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "adoption-web-cookie-preferences"
@@ -4241,11 +4261,6 @@ frontends = [
         selector       = "adoption-web-session"
       },
       {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "connect.sid"
-      },
-      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "_csrf"
@@ -4254,7 +4269,7 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "_csrf"
-      }
+      },
     ]
   },
   {

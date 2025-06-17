@@ -4162,7 +4162,7 @@ frontends = [
   {
     product          = "adoption"
     name             = "child-adoption"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "apply-to-adopt-a-child-placed-in-your-care.service.gov.uk"
     dns_zone_name    = "apply-to-adopt-a-child-placed-in-your-care.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
@@ -4170,6 +4170,11 @@ frontends = [
     certificate_name = "apply-to-adopt-a-child-placed-in-your-care-service-gov-uk"
     www_redirect     = true
     global_exclusions = [
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "laUploadedFiles"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -4244,6 +4249,26 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "rf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "adoption-web-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "adoption-web-session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
       }
     ]
   },

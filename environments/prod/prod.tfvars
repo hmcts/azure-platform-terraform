@@ -4162,7 +4162,7 @@ frontends = [
   {
     product          = "adoption"
     name             = "child-adoption"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "apply-to-adopt-a-child-placed-in-your-care.service.gov.uk"
     dns_zone_name    = "apply-to-adopt-a-child-placed-in-your-care.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
@@ -4171,9 +4171,9 @@ frontends = [
     www_redirect     = true
     global_exclusions = [
       {
-        match_variable = "RequestCookieNames"
+        match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "connect.sid"
+        selector       = "laUploadedFiles"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -4181,29 +4181,9 @@ frontends = [
         selector       = "iss"
       },
       {
-        match_variable = "RequestCookieNames"
+        match_variable = "QueryStringArgNames"
         operator       = "Equals"
-        selector       = "session"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "StartsWith"
-        selector       = "__auth-token"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "_ga"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "_gid"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "_gat"
+        selector       = "rf"
       },
       {
         match_variable = "RequestCookieNames"
@@ -4238,12 +4218,42 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "cookies_policy"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "adoption-web-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "adoption-web-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
       },
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
-        selector       = "rf"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
       }
     ]
   },

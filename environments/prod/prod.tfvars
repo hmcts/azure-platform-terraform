@@ -4250,7 +4250,7 @@ frontends = [
         operator       = "Equals"
         selector       = "rf"
       },
-            {
+      {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "adoption-web-cookie-preferences"

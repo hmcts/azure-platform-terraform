@@ -3951,6 +3951,7 @@ frontends = [
     certificate_name = "helpwithcourtfees-service-gov-uk"
     shutter_app      = true
     dns_zone_name    = "helpwithcourtfees.service.gov.uk"
+    cache_enabled    = "false"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

@@ -3627,7 +3627,7 @@ frontends = [
   {
     product          = "et-pet-et3"
     name             = "et-pet-et3"
-    mode             = "Prevention"
+    mode             = "Detection"
     custom_domain    = "et-pet-et3.demo.platform.hmcts.net"
     dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
@@ -3641,7 +3641,7 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "_app_session"
+        selector       = "_et3_session"
       },
       {
         match_variable = "RequestCookieNames"

@@ -80,7 +80,6 @@ The shuttering service currently requires an ACME certificate, you will need to 
   certificate_name = "{Certificate Name}"
 }
 ```
-
 ## Custom Data Updates
 Please note that custom_data updates will cause VMs to restart.
 

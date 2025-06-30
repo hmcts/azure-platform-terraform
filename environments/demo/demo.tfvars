@@ -3601,13 +3601,13 @@ frontends = [
   {
     product          = "et-pet-et1"
     name             = "et-pet-et1"
-    mode             = "Prevention"
+    mode             = "Detection"
     custom_domain    = "et-pet-et1.demo.platform.hmcts.net"
     dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
     global_exclusions = [
-      {
+            {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "cookie_setting"
@@ -3616,6 +3616,31 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "_app_session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_utma"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_utmb"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_utmc"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_utmz"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
       },
       {
         match_variable = "RequestCookieNames"

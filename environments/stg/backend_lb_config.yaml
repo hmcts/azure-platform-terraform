@@ -146,8 +146,6 @@ gateways:
       - product: bulk-scan
         component: processor
       - product: bulk-scan
-        component: sample-app
-      - product: bulk-scan
         component: orchestrator
       - product: reform-scan
         component: blob-router

@@ -160,8 +160,6 @@ gateways:
       - product: bulk-scan
         component: orchestrator
       - product: bulk-scan
-        component: sample-app
-      - product: bulk-scan
         component: payment-processor
     # Bulk Print
       - product: rpe

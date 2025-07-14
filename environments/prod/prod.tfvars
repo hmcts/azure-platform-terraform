@@ -3766,6 +3766,16 @@ frontends = [
               "51.149.249.0/27",
               "20.108.187.55/32",
               "20.58.23.145/32",
+              "128.77.75.64/26",
+              "194.33.249.0/29",
+              "194.33.248.0/29",
+              "20.49.214.199/32",
+              "20.49.214.228/32",
+              "20.26.11.71/32",
+              "20.26.11.108/32",
+              "194.33.200.0/21",
+              "194.33.216.0/23",
+              "194.33.218.0/24",
             ]
           }
         ]
@@ -3952,6 +3962,7 @@ frontends = [
     certificate_name = "helpwithcourtfees-service-gov-uk"
     shutter_app      = true
     dns_zone_name    = "helpwithcourtfees.service.gov.uk"
+    cache_enabled    = "false"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -4047,6 +4058,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "application[deceased_name]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "application[discretion_reason]"
       }
     ]
     custom_rules = [
@@ -4163,7 +4179,7 @@ frontends = [
   {
     product          = "adoption"
     name             = "child-adoption"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "apply-to-adopt-a-child-placed-in-your-care.service.gov.uk"
     dns_zone_name    = "apply-to-adopt-a-child-placed-in-your-care.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
@@ -4171,6 +4187,11 @@ frontends = [
     certificate_name = "apply-to-adopt-a-child-placed-in-your-care-service-gov-uk"
     www_redirect     = true
     global_exclusions = [
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "laUploadedFiles"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -4245,6 +4266,26 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "rf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "adoption-web-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "adoption-web-session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
       }
     ]
   },

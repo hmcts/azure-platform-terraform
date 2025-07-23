@@ -2749,6 +2749,12 @@ frontends = [
     dns_zone_name    = "ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftapimgmtithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
+    disabled_rules = {
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+    }
     cache_enabled    = "false"
 
     custom_rules = [

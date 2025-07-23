@@ -3780,6 +3780,12 @@ frontends = [
     dns_zone_name    = "aat.platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftapimgmtstg.uksouth.cloudapp.azure.com"]
     certificate_name = "cft-api-mgmt-aat-platform-hmcts-net"
+    disabled_rules = {
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+    }
     cache_enabled    = "false"
 
     custom_rules = [

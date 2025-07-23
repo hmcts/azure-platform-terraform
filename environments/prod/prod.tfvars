@@ -2699,6 +2699,12 @@ frontends = [
     dns_zone_name    = "platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftapimgmtprod.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-platform-hmcts-net"
+    # disabled_rules = {
+    #   LFI = [
+    #     "930100", // false positive on multi-part uploads
+    #     "930110", // false positive on multi-part uploads
+    #   ]
+    # }
     cache_enabled    = "false"
     shutter_app      = false
 

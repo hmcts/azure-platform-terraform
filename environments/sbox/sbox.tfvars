@@ -742,6 +742,12 @@ frontends = [
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-cftapimgmt.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules = {
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+    }
     cache_enabled    = "false"
   },
   {

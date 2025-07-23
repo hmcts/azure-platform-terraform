@@ -2705,8 +2705,8 @@ frontends = [
         "930110", // false positive on multi-part uploads
       ]
     }
-    cache_enabled    = "false"
-    shutter_app      = false
+    cache_enabled = "false"
+    shutter_app   = false
 
     custom_rules = [
       {

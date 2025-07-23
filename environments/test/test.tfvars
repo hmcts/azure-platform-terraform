@@ -2497,7 +2497,7 @@ frontends = [
         "930110", // false positive on multi-part uploads
       ]
     }
-    cache_enabled    = "false"
+    cache_enabled = "false"
 
     custom_rules = [
       {

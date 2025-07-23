@@ -2491,7 +2491,13 @@ frontends = [
     dns_zone_name    = "perftest.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftapimgmtperftest.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-perftest-platform-hmcts-net"
-    cache_enabled    = "false"
+    disabled_rules = {
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+    }
+    cache_enabled = "false"
 
     custom_rules = [
       {

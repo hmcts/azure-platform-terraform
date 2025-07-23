@@ -3315,11 +3315,63 @@ frontends = [
   {
     product          = "prl"
     name             = "private-law"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.apply-to-court-about-child-arrangements-c100.service.gov.uk"
     dns_zone_name    = "apply-to-court-about-child-arrangements-c100.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-to-court-about-child-arrangements-c100-service-gov-uk"
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
+    disabled_rules = {
+      SQLI = [
+        "942340",
+        "942440",
+        "942260",
+        "942200",
+        "942450",
+        "942210"
+      ]
+      LFI = [
+        "930130",
+        "930110",
+        "930120"
+      ]
+      RCE = [
+        "932115"
+      ]
+      RFI = [
+        "931130"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -3331,6 +3383,11 @@ frontends = [
         operator       = "Equals"
         selector       = "iss"
       },
+    {
+      match_variable = "QueryStringArgNames"
+      operator       = "Equals"
+      selector       = "rf"
+    },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"

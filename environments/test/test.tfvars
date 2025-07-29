@@ -796,22 +796,22 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "coClarificationUploadDocuments"
+        selector       = "coClarificationUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "app1RfiDraftResponseDocs"
+        selector       = "app1RfiDraftResponseUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "app2RfiDraftResponseDocs"
+        selector       = "app2RfiDraftResponseUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "applicant1InterimAppsEvidenceDocs"
+        selector       = "applicant1InterimAppsEvidenceUploadedFiles"
       },
     ]
   },
@@ -917,22 +917,22 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "coClarificationUploadDocuments"
+        selector       = "coClarificationUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "app1RfiDraftResponseDocs"
+        selector       = "app1RfiDraftResponseUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "app2RfiDraftResponseDocs"
+        selector       = "app2RfiDraftResponseUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "applicant1InterimAppsEvidenceDocs"
+        selector       = "applicant1InterimAppsEvidenceUploadedFiles"
       },
     ]
   },
@@ -1038,22 +1038,22 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "coClarificationUploadDocuments"
+        selector       = "coClarificationUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "app1RfiDraftResponseDocs"
+        selector       = "app1RfiDraftResponseUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "app2RfiDraftResponseDocs"
+        selector       = "app2RfiDraftResponseUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "applicant1InterimAppsEvidenceDocs"
+        selector       = "applicant1InterimAppsEvidenceUploadedFiles"
       },
     ]
   },

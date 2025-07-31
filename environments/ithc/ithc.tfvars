@@ -1062,47 +1062,6 @@ frontends = [
     ]
   },
   {
-    name           = "rpts"
-    mode           = "Prevention"
-    custom_domain  = "rpts.ithc.platform.hmcts.net"
-    dns_zone_name  = "ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
-    custom_rules = [
-      {
-        name     = "IPMatchWhitelist"
-        priority = 1
-        type     = "MatchRule"
-        action   = "Block"
-        match_conditions = [
-          {
-            match_variable     = "RemoteAddr"
-            operator           = "IPMatch"
-            negation_condition = true
-            match_values = [
-              "81.134.202.29/32",
-              "51.145.6.230/32",
-              "51.145.4.100/32",
-              "194.33.192.0/25",
-              "51.149.249.0/27",
-              "194.33.196.0/25",
-              "51.149.249.32/27",
-              "52.210.206.51/32",
-              "62.25.109.201/32",
-              "62.25.109.203/32",
-              "51.140.8.67/32",
-              "20.50.109.148/32",
-              "20.50.108.242/32",
-              "20.108.187.55/32",
-              "20.58.23.145/32",
-              "51.11.124.205/32",
-              "51.11.124.216/32"
-            ]
-          }
-        ]
-      },
-    ]
-  },
-  {
     name           = "nfdiv"
     mode           = "Prevention"
     custom_domain  = "nfdiv.ithc.platform.hmcts.net"

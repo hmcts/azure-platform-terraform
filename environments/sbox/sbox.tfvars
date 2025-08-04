@@ -764,6 +764,16 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labsgoldenpathmano.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
+  },
+  {
+    product          = "labs-manohar-hmcts-nodejs"
+    name             = "labs-manohar-hmcts-nodejs"
+    custom_domain    = "labs-manohar-hmcts-nodejs.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    shutter_app      = false
+    backend_domain   = ["firewall-sbox-int-palo-labs-manohar-hmcts-nodejs.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
   }
 ]
 

@@ -199,7 +199,7 @@ variable "pubsub_waf_custom_rules" {
   default = []
 }
 
-variable "pubsubappgw_ssl_policy" {
+variable "ssl_policy" {
   default = null
 }
 

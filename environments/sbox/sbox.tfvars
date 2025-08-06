@@ -755,25 +755,6 @@ frontends = [
     appgw_cookie_based_affinity    = "Enabled"
     cache_enabled                  = "false"
     certificate_name_check_enabled = false
-  },
-  {
-    product          = "labs-goldenpath-mano"
-    name             = "labs-goldenpath-mano"
-    custom_domain    = "labs-goldenpath-mano.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-labsgoldenpathmano.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
-  {
-    product          = "labs-manohar-hmcts-nodejs"
-    name             = "labs-manohar-hmcts-nodejs"
-    custom_domain    = "labs-manohar-hmcts-nodejs.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-labs-manohar-hmcts-nodejs.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
   }
 ]
 

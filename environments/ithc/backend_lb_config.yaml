@@ -280,10 +280,6 @@ gateways:
       - product: civil
         component: service
 
-      # RPTS
-      - product: rpts
-        component: api
-
     # Adoption COS API
       - product: adoption
         component: cos-api

@@ -14,7 +14,7 @@ key_vault_subscription                 = "96c274ce-846d-4e48-89a7-d528432298a7"
 hub_app_gw_private_ip_address          = ["10.11.8.215"]
 apim_appgw_backend_pool_fqdns          = ["firewall-prod-int-palo-cftapimgmtstg.uksouth.cloudapp.azure.com"]
 pubsub_frontend_agw_private_ip_address = "10.10.169.8"
-pubsubappgw_ssl_policy = {
+ssl_policy = {
   policy_type          = "Predefined"
   policy_name          = "AppGwSslPolicy20220101S"
   min_protocol_version = "TLSv1_2"
@@ -1270,22 +1270,22 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "coClarificationUploadDocuments"
+        selector       = "coClarificationUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "app1RfiDraftResponseDocs"
+        selector       = "app1RfiDraftResponseUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "app2RfiDraftResponseDocs"
+        selector       = "app2RfiDraftResponseUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "applicant1InterimAppsEvidenceDocs"
+        selector       = "applicant1InterimAppsEvidenceUploadedFiles"
       },
     ]
   },
@@ -1386,22 +1386,22 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "coClarificationUploadDocuments"
+        selector       = "coClarificationUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "app1RfiDraftResponseDocs"
+        selector       = "app1RfiDraftResponseUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "app2RfiDraftResponseDocs"
+        selector       = "app2RfiDraftResponseUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "applicant1InterimAppsEvidenceDocs"
+        selector       = "applicant1InterimAppsEvidenceUploadedFiles"
       },
     ]
   },
@@ -1502,22 +1502,22 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "coClarificationUploadDocuments"
+        selector       = "coClarificationUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "app1RfiDraftResponseDocs"
+        selector       = "app1RfiDraftResponseUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "app2RfiDraftResponseDocs"
+        selector       = "app2RfiDraftResponseUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "applicant1InterimAppsEvidenceDocs"
+        selector       = "applicant1InterimAppsEvidenceUploadedFiles"
       },
     ]
   },

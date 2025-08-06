@@ -235,20 +235,6 @@ gateways:
       - product: cmc
         component: claim-store
 
-    # BulkScan
-      - product: bulk-scan
-        component: processor
-      - product: bulk-scan
-        component: orchestrator
-      - product: bulk-scan
-        component: payment-processor
-
-    # ReformScan (like BulkScan but separate namespace for non-CFT members)
-      - product: reform-scan
-        component: blob-router
-      - product: reform-scan
-        component: notification-service
-
     # Send-letter
       - product: rpe
         component: send-letter-service

@@ -16,4 +16,10 @@ locals {
       subscription = "0978315c-75fe-4ada-9d11-1eb5e0e0b214"
     }
   }
+
+  # To be removed once the TLS1.0/1.1 deprecation is complete
+  current_ssl_policy = {
+    policy_type = "Predefined"
+    policy_name = "AppGwSslPolicy20150501"
+  }
 }

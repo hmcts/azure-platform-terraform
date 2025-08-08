@@ -2771,6 +2771,19 @@ frontends = [
     cache_enabled    = "false"
   },
   {
+    name                           = "reformscan"
+    custom_domain                  = "reformscan.ithc.platform.hmcts.net"
+    dns_zone_name                  = "ithc.platform.hmcts.net"
+    host_header                    = "reformscanithc.blob.core.windows.net"
+    mode                           = "Detection"
+    backend_domain                 = ["firewall-nonprodi-palo-reformscanithc.uksouth.cloudapp.azure.com"]
+    forwarding_protocol            = "MatchRequest"
+    health_path                    = "/"
+    health_protocol                = "Https"
+    cache_enabled                  = "false"
+    certificate_name_check_enabled = false
+  },
+  {
     product          = "cft-api-mgmt"
     name             = "cft-api-mgmt"
     custom_domain    = "cft-api-mgmt.ithc.platform.hmcts.net"

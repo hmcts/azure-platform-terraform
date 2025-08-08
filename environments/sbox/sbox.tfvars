@@ -755,6 +755,15 @@ frontends = [
     appgw_cookie_based_affinity    = "Enabled"
     cache_enabled                  = "false"
     certificate_name_check_enabled = false
+  },
+  {
+    product          = "labs-goldenpath-shabbir"
+    name             = "labs-goldenpath-shabbir"
+    custom_domain    = "labs-goldenpath-shabbir.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labsgoldenpathshabbir.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
   }
 ]
 

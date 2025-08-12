@@ -59,10 +59,14 @@ resource "azurerm_postgresql_flexible_server" "tamopspsql" {
 
   storage_mb = 32768
 
-  sku_name                     = "GP_Standard_D64ds_v4"
+  sku_name                     = "GP_Standard_D48ds_v4"
   geo_redundant_backup_enabled = false
-}
 
+  high_availability {
+    mode                      = "ZoneRedundant"
+    standby_availability_zone = "3"
+  }
+}
 resource "azurerm_postgresql_flexible_server_database" "tamopspsqldb" {
   name      = "tamopsdb"
   server_id = azurerm_postgresql_flexible_server.tamopspsql.id

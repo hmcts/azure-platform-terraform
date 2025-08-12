@@ -49,7 +49,7 @@ module "app-gw" {
   max_capacity                                 = var.apim_appgw_max_capacity
 
   # Control the rollout of the TLS 1.0/1.1 deprecation, the ternary should be removed once the rollout is complete
-  ssl_policy = var.env != "prod" && var.env != "stg" ? var.ssl_policy : local.current_ssl_policy
+  ssl_policy = var.env != "prod" || var.env != "stg" ? var.ssl_policy : local.current_ssl_policy
 
   trusted_client_certificate_data = merge(
     {

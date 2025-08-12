@@ -59,7 +59,7 @@ resource "azurerm_postgresql_flexible_server" "tamopspsql" {
 
   storage_mb = 32768
 
-  sku_name                     = "GP_Standard_D96s_v5"
+  sku_name                     = "GP_Standard_D64ds_v4"
   geo_redundant_backup_enabled = false
 }
 

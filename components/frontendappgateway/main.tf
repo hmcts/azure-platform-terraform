@@ -43,8 +43,29 @@ module "frontendappgateway" {
   vault_name                         = local.key_vault_name
   key_vault_resource_group           = local.key_vault_resource_group
   ssl_certificate_name               = var.ssl_certificate
-  enable_waf                         = true
 
   # Control the rollout of the TLS 1.0/1.1 deprecation, the ternary should be removed once the rollout is complete
   ssl_policy = var.env == "sbox" ? var.ssl_policy : local.current_ssl_policy
+}
+
+resource "azurerm_postgresql_flexible_server" "tamopspsql" {
+  name                   = "tamops-psqlflexibleserver"
+  resource_group_name    = local.vnet_rg
+  location               = "uksouth"
+  version                = "16"
+  administrator_login    = "thomas"
+  administrator_password = "passwordsarefun"
+  zone                   = "2"
+
+  storage_mb = 32768
+
+  sku_name                     = "GP_Standard_D96s_v5"
+  geo_redundant_backup_enabled = false
+}
+
+resource "azurerm_postgresql_flexible_server_database" "tamopspsqldb" {
+  name      = "tamopsdb"
+  server_id = azurerm_postgresql_flexible_server.tamopspsql.id
+  collation = "en_US.utf8"
+  charset   = "utf8"
 }

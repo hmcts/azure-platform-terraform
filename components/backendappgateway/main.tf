@@ -41,5 +41,5 @@ module "backendappgateway" {
   diagnostics_storage_account_id     = data.azurerm_storage_account.diagnostics.id
 
   # Control the rollout of the TLS 1.0/1.1 deprecation, the ternary should be removed once the rollout is complete
-  ssl_policy = (var.env != "stg" && var.env != "prod") ? var.ssl_policy : local.current_ssl_policy
+  ssl_policy = (local.env != "stg" && local.env != "prod") ? var.ssl_policy : local.current_ssl_policy
 }

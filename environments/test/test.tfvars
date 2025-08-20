@@ -2651,7 +2651,7 @@ frontends = [
   {
     product        = "fees"
     name           = "paymentoutcome-web"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "paymentoutcome-web.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]

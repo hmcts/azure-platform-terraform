@@ -2831,7 +2831,7 @@ frontends = [
   },
   {
     name           = "paymentoutcome-web"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "paymentoutcome-web.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]

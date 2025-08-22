@@ -47,3 +47,29 @@ module "frontendappgateway" {
   # Control the rollout of the TLS 1.0/1.1 deprecation, the ternary should be removed once the rollout is complete
   ssl_policy = (local.env != "stg" && local.env != "prod") ? var.ssl_policy : local.current_ssl_policy
 }
+
+resource "azurerm_postgresql_flexible_server" "tamopspsql" {
+  name                   = "tamops-psqlflexibleserver"
+  resource_group_name    = local.vnet_rg
+  location               = "uksouth"
+  version                = "16"
+  administrator_login    = "thomas"
+  administrator_password = "passwordsarefun"
+  zone                   = "2"
+
+  storage_mb = 32768
+
+  sku_name                     = "GP_Standard_D48ds_v4"
+  geo_redundant_backup_enabled = false
+
+  high_availability {
+    mode                      = "ZoneRedundant"
+    standby_availability_zone = "3"
+  }
+}
+resource "azurerm_postgresql_flexible_server_database" "tamopspsqldb" {
+  name      = "tamopsdb"
+  server_id = azurerm_postgresql_flexible_server.tamopspsql.id
+  collation = "en_US.utf8"
+  charset   = "utf8"
+}

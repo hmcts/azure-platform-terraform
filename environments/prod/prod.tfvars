@@ -2253,7 +2253,7 @@ frontends = [
   {
     product          = "fees"
     name             = "payment-outcome"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "paymentoutcome-web.platform.hmcts.net"
     dns_zone_name    = "platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]

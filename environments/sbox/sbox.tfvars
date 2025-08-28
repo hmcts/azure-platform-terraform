@@ -724,6 +724,16 @@ frontends = [
     shutter_app      = true
     ssl_mode         = "AzureKeyVault"
   },
+    {
+    name            = "backstage"
+    custom_domain   = "backstage.sandbox.platform.hmcts.net"
+    dns_zone_name   = "sandbox.platform.hmcts.net"
+    backend_domain  = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+    shutter_app      = true
+    ssl_mode         = "AzureKeyVault" 
+  },
   {
     product          = "hmi"
     name             = "hmi-apim"

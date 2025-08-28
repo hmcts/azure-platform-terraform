@@ -724,7 +724,7 @@ frontends = [
     shutter_app      = true
     ssl_mode         = "AzureKeyVault"
   },
-    {
+  {
     name            = "backstage"
     custom_domain   = "backstage.sandbox.platform.hmcts.net"
     dns_zone_name   = "sandbox.platform.hmcts.net"

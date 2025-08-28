@@ -732,7 +732,7 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
-    ssl_mode         = "AzureKeyVault" 
+    ssl_mode         = "AzureKeyVault"
   },
   {
     product          = "hmi"

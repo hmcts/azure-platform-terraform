@@ -1298,6 +1298,10 @@ frontends = [
         "932115",
         "932150",
       ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
       PROTOCOL-ATTACK = [
         "921110"
       ]
@@ -1385,6 +1389,10 @@ frontends = [
         "932105",
         "932115",
         "932150",
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
       ]
       PROTOCOL-ATTACK = [
         "921110"

@@ -3747,7 +3747,6 @@ frontends = [
       ]
       LFI = [
         "930130",
-        "930100",
         "930110",
         "930120"
       ]
@@ -3822,7 +3821,7 @@ frontends = [
         name     = "AllowCourtNav"
         priority = 3
         type     = "MatchRule"
-        action   = "Block"
+        action   = "Allow"
         match_conditions = [
           {
             match_variable     = "RemoteAddr"

@@ -3818,6 +3818,20 @@ frontends = [
           }
         ]
       },
+      {
+        name     = "AllowCourtNav"
+        priority = 3
+        type     = "MatchRule"
+        action   = "Allow"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = false
+            match_values       = ["165.68.148.99"]
+          }
+        ]
+      },
     ],
   },
   {

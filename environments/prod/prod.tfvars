@@ -1302,6 +1302,9 @@ frontends = [
         "930100", // false positive on multi-part uploads
         "930110", // false positive on multi-part uploads
       ]
+      RCE = [
+        "932110"
+      ]
       PROTOCOL-ATTACK = [
         "921110"
       ]
@@ -1393,6 +1396,9 @@ frontends = [
       LFI = [
         "930100", // false positive on multi-part uploads
         "930110", // false positive on multi-part uploads
+      ]
+      RCE = [
+        "932110"
       ]
       PROTOCOL-ATTACK = [
         "921110"

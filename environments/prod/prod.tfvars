@@ -3015,17 +3015,6 @@ frontends = [
     ]
   },
   {
-    product          = "fact-redirect"
-    name             = "fact-redirect"
-    mode             = "Detection"
-    custom_domain    = "courttribunalfinder.service.gov.uk"
-    dns_zone_name    = "courttribunalfinder.service.gov.uk"
-    shutter_app      = false
-    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    ssl_mode         = "AzureKeyVault"
-    certificate_name = "courttribunalfinder-service-gov-uk"
-  },
-  {
     product          = "jui"
     name             = "jui-redirect"
     mode             = "Detection"

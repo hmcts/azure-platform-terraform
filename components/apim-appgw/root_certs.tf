@@ -22,6 +22,7 @@ locals {
       exela_ca            = "exela-ca"
     }
     prod = {
+      civil_sdt_root_ca_2025         = "civil-sdt-root-ca-2025"
       civil_sdt_root_ca              = "civil-sdt-root-ca"
       liberata_ca                    = "liberata-ca"
       exela_ca                       = "exela-ca"

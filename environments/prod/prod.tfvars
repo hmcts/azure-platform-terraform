@@ -2198,7 +2198,7 @@ frontends = [
     www_redirect     = true
     disabled_rules   = {
       SQLI = [
-        "942440"
+        "942440" # Rule triggers false positives as SQL comment characters used in CSRF text.
       ]
     }
     global_exclusions = [

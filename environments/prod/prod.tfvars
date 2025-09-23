@@ -1370,7 +1370,6 @@ frontends = [
     certificate_name = "moneyclaims-service-gov-uk"
     disabled_rules = {
       SQLI = [
-        "932100",
         "942100",
         "942110",
         "942120",
@@ -1393,6 +1392,7 @@ frontends = [
         "942450",
       ]
       RCE = [
+        "932100",
         "932105",
         "932115",
         "932150",

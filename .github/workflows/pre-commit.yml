@@ -41,6 +41,9 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v6
         with:
           file_pattern: environments/* components/* modules/*
+          pull: true
+          pull_options: --rebase
+          commit_message: terraform fmt auto-fixes
 
       - uses: pre-commit/action@v3.0.1
         with: 

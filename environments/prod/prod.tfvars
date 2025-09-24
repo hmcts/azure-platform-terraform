@@ -578,6 +578,16 @@ frontends = [
         operator       = "Equals"
         selector       = "applicant1InterimAppsEvidenceUploadedFiles"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2InterimAppsEvidenceUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2LegalProceedingUploadedFiles"
+      },
     ]
   },
   {

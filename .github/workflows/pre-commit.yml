@@ -17,6 +17,7 @@ jobs:
         with:
           repository: hmcts/cnp-azuredevops-libraries
           path: cnp-azuredevops-libraries
+          fetch-depth: 0
 
       - name: Setup Script
         run: |

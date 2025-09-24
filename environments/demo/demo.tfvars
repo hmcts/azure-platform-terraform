@@ -2206,12 +2206,12 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "applicant1FirstName"
+        selector       = "applicant1FirstNames"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "applicant2FirstName"
+        selector       = "applicant2FirstNames"
       },
       {
         match_variable = "RequestBodyPostArgNames"
@@ -2231,12 +2231,12 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "birthFatherFirstName"
+        selector       = "birthFatherFirstNames"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "otherParentFirstName"
+        selector       = "otherParentFirstNames"
       },
       {
         match_variable = "RequestBodyPostArgNames"
@@ -2246,12 +2246,12 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "applicant1AdditionalNames"
+        selector       = "applicant1OtherFirstNames"
       },
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "applicant2AdditionalNames"
+        selector       = "applicant2OtherFirstNames"
       },
       {
         match_variable = "QueryStringArgNames"

@@ -2606,6 +2606,11 @@ frontends = [
         operator       = "Equals"
         selector       = "applicant2OtherFirstNames"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "kbaChildName"
+      },
       // end ADOP-2707
       {
         match_variable = "QueryStringArgNames"

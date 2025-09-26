@@ -4339,7 +4339,13 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "applicant2OtherFirstNames"
-      }, // end ADOP-2707
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "kbaChildName"
+      },
+      // end ADOP-2707
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"

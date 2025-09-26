@@ -2208,6 +2208,7 @@ frontends = [
         operator       = "Equals"
         selector       = "laUploadedFiles"
       },
+      // ADOP-2707 Prevent names starting with "Ruby" from being blocked
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
@@ -2283,6 +2284,12 @@ frontends = [
         operator       = "Equals"
         selector       = "applicant2OtherFirstNames"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "kbaChildName"
+      },
+      // end ADOP-2707
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"

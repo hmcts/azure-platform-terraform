@@ -23,6 +23,7 @@ locals {
     }
     prod = {
       civil_sdt_root_ca              = "civil-sdt-root-ca"
+      civil_sdt_root_ca_2025         = "civil-sdt-root-ca-2025"
       liberata_ca                    = "liberata-ca"
       exela_ca                       = "exela-ca"
       reform_scan_sscs_ca            = "reform-scan-sscs-ca"

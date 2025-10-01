@@ -578,6 +578,16 @@ frontends = [
         operator       = "Equals"
         selector       = "applicant1InterimAppsEvidenceUploadedFiles"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2InterimAppsEvidenceUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2LegalProceedingUploadedFiles"
+      },
     ]
   },
   {
@@ -1273,6 +1283,7 @@ frontends = [
       SQLI = [
         "942100",
         "942110",
+        "942120",
         "942150",
         "942200",
         "942210",
@@ -1293,17 +1304,15 @@ frontends = [
         "942450",
       ]
       RCE = [
-        "932105",
         "932100",
+        "932105",
+        "932110",
         "932115",
         "932150",
       ]
       LFI = [
         "930100", // false positive on multi-part uploads
         "930110", // false positive on multi-part uploads
-      ]
-      RCE = [
-        "932110"
       ]
       PROTOCOL-ATTACK = [
         "921110"
@@ -1370,6 +1379,7 @@ frontends = [
       SQLI = [
         "942100",
         "942110",
+        "942120",
         "942150",
         "942200",
         "942210",
@@ -1389,16 +1399,15 @@ frontends = [
         "942450",
       ]
       RCE = [
+        "932100",
         "932105",
+        "932110",
         "932115",
         "932150",
       ]
       LFI = [
         "930100", // false positive on multi-part uploads
         "930110", // false positive on multi-part uploads
-      ]
-      RCE = [
-        "932110"
       ]
       PROTOCOL-ATTACK = [
         "921110"
@@ -3015,17 +3024,6 @@ frontends = [
     ]
   },
   {
-    product          = "fact-redirect"
-    name             = "fact-redirect"
-    mode             = "Detection"
-    custom_domain    = "courttribunalfinder.service.gov.uk"
-    dns_zone_name    = "courttribunalfinder.service.gov.uk"
-    shutter_app      = false
-    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    ssl_mode         = "AzureKeyVault"
-    certificate_name = "courttribunalfinder-service-gov-uk"
-  },
-  {
     product          = "jui"
     name             = "jui-redirect"
     mode             = "Detection"
@@ -4262,6 +4260,87 @@ frontends = [
         operator       = "Equals"
         selector       = "laUploadedFiles"
       },
+      { // ADOP-2707 Prevent names starting with "Ruby" from being blocked
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "childrenFirstName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "childrenFirstNameAfterAdoption"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "childSocialWorkerName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicantSocialWorkerName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "adopAgencyOrLaContactName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1FirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2FirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1SotFullName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2SotFullName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "birthMotherFirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "birthFatherFirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "otherParentFirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "laSotFullName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1OtherFirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2OtherFirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "kbaChildName"
+      },
+      // end ADOP-2707
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"

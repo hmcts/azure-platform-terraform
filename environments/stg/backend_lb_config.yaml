@@ -226,6 +226,8 @@ gateways:
       # FACT
       - product: fact
         component: api
+      - product: fact
+        component: data-api
 
       # NFDIV
       - product: nfdiv

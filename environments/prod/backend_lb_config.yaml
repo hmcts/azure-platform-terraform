@@ -233,6 +233,8 @@ gateways:
  # FACT
       - product: fact
         component: api
+      - product: fact
+        component: data-api
 
  # Docmosis
       - product: dg

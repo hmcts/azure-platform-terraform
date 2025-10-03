@@ -214,6 +214,7 @@ gateways:
         component: api
       - product: fact
         component: data-api
+        ssl_enabled: true
 
       # NFDIV
       - product: nfdiv

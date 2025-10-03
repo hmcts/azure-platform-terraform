@@ -2991,7 +2991,12 @@ frontends = [
         match_variable = "RequestBodyPostArgNames",
         operator       = "StartsWith",
         selector       = "email"
-      }
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "oidc_session"
+      },
     ]
   },
   {

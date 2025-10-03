@@ -334,6 +334,21 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "dtSa"
       },
       {
@@ -404,11 +419,6 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "flowState"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
         selector       = "x-csrf-token"
       },
       {
@@ -427,14 +437,19 @@ frontends = [
         selector       = "redirect_uri"
       },
       {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "redirect_uri"
-      },
-      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "redirectUri"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "redirect_uri"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -462,6 +477,11 @@ frontends = [
         selector       = "state"
       },
       {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "state"
+      },
+      {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "token"
@@ -479,6 +499,11 @@ frontends = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
+        selector       = "nonce"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
         selector       = "nonce"
       },
       {
@@ -505,6 +530,26 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "code_verifier"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "StartsWith",
+        selector       = "password"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "StartsWith",
+        selector       = "username"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "StartsWith",
+        selector       = "email"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "oidc_session"
       }
     ]
 

@@ -2780,6 +2780,21 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "dtSa"
       },
       {
@@ -2853,11 +2868,6 @@ frontends = [
         selector       = "x-csrf-token"
       },
       {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "flowState"
-      },
-      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
@@ -2875,6 +2885,11 @@ frontends = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
         selector       = "redirectUri"
       },
       {
@@ -2908,6 +2923,11 @@ frontends = [
         selector       = "state"
       },
       {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "state"
+      },
+      {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "token"
@@ -2925,6 +2945,11 @@ frontends = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
+        selector       = "nonce"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
         selector       = "nonce"
       },
       {
@@ -2966,7 +2991,12 @@ frontends = [
         match_variable = "RequestBodyPostArgNames",
         operator       = "StartsWith",
         selector       = "email"
-      }
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "oidc_session"
+      },
     ]
   },
   {

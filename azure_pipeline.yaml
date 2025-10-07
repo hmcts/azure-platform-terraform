@@ -501,4 +501,4 @@ stages:
           - template: steps/terraform-plan-analyse.yaml@cnp-azuredevops-libraries
             parameters:
               ${{ each component in parameters.environment_components }}:
-                serviceConnection: ${{ component.service_connection }}
+                serviceConnection: DTS-CFTPTL-INTSVC

@@ -486,7 +486,7 @@ stages:
 
   - stage: Analyse_plans
     displayName: "Analyse terraform plan"
-    condition: and(eq('${{ parameters.Action }}', 'Plan'), succeededOrFailed())
+    condition: and(eq('${{ parameters.finalAction }}', 'Plan'), succeededOrFailed())
     dependsOn:
       - ${{ each component in parameters.environment_components }}:
         - ${{ component.env }}_global

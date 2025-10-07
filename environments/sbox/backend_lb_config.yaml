@@ -65,6 +65,8 @@ gateways:
         component: dj-khaled
       - product: "labs"
         component: hurricanepilot
+      - product: "labs"
+        component: rebeccahayleypickles
 
     # SIDAM 
       - product: idam

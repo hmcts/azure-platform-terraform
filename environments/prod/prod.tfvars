@@ -2205,6 +2205,11 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "paybubble-platform-hmcts-net"
     www_redirect     = true
+    disabled_rules = {
+      SQLI = [
+        "942440" # Rule triggers false positives as SQL comment characters used in CSRF text.
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -2261,6 +2266,11 @@ frontends = [
         operator       = "Equals"
         selector       = "ccpay-bubble-cookie-preferences"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      }
     ]
   },
   {

@@ -500,4 +500,5 @@ stages:
         steps:
           - template: steps/terraform-plan-analyse.yaml@cnp-azuredevops-libraries
             parameters:
-              serviceConnection: ${{ component.service_connection }}
+              - ${{ each component in parameters.environment_components }}:
+                serviceConnection: ${{ component.service_connection }}

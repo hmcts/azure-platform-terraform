@@ -499,3 +499,5 @@ stages:
       - job: AnalysePlans
         steps:
           - template: steps/terraform-plan-analyse.yaml@cnp-azuredevops-libraries
+            parameters:
+              serviceConnection: ${{ component.service_connection }}

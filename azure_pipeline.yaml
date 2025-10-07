@@ -11,7 +11,7 @@ resources:
   repositories:
   - repository: cnp-azuredevops-libraries
     type: github
-    ref: refs/heads/master
+    ref: tf-plan-json
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
 
@@ -483,3 +483,14 @@ stages:
                   test_pattern: apim.test.ts
                 ${{ else }}:
                   test_pattern: pipeline.test.ts
+
+  - stage: Analyse_plans
+    displayName: "Analyse terraform plan"
+    condition: and(eq('${{ parameters.Action }}', 'Plan'), succeededOrFailed())
+    dependsOn:
+      - ${{ each component in parameters.environment_components }}:
+        - ${{ component.env }}_global
+    jobs:
+      - job: AnalysePlans
+        steps:
+          - template: steps/terraform-plan-analyse.yaml@cnp-azuredevops-libraries

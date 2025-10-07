@@ -489,7 +489,12 @@ stages:
     condition: and(eq('${{ variables.finalAction }}', 'Plan'), succeededOrFailed())
     dependsOn:
       - ${{ each component in parameters.environment_components }}:
-        - prod_global
+        - ${{ if eq(component.environment, 'stg') }}:
+          - aat_global
+        - ${{ if eq(component.environment, 'test') }}:
+          - perftest_global
+        - ${{ if and(ne(component.environment, 'stg'), ne(component.environment, 'test')) }}:
+          - ${{ component.environment }}_global
     jobs:
       - job: AnalysePlans
         steps:

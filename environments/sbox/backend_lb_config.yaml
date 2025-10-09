@@ -67,6 +67,9 @@ gateways:
         component: hurricanepilot
       - product: "labs"
         component: rebeccahayleypickles
+      - product: "labs"
+        component: marketplace-api
+        
 
     # SIDAM 
       - product: idam

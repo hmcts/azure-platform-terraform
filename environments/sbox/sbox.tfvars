@@ -810,6 +810,16 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labs-hurricanepilot-nodejs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
+  },
+  {
+    product          = "labs-rebeccahayleypickles-nodejs"
+    name             = "labs-rebeccahayleypickles-nodejs"
+    custom_domain    = "labs-rebeccahayleypickles-nodejs.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    shutter_app      = false
+    backend_domain   = ["firewall-sbox-int-palo-labs-rebeccahayleypickles-nodejs.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
   }
 ]
 

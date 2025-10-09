@@ -86,15 +86,6 @@ jobs:
             echo EOF
           } >> "$GITHUB_ENV"
 
-      - name: Get the response as a variable 
-        id: get_response
-        run: |
-          {
-            echo 'response<<EOF'
-            cat ${WORKING_DIRECTORY}response.md
-            echo EOF
-          } >> "$GITHUB_ENV"
-
       - name: Get github-actions bot comment id (if exists)
         id: get_comment_id
         env:

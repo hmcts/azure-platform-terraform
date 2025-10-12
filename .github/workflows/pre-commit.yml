@@ -38,10 +38,9 @@ jobs:
       - name: Use yq for processing
         run: |
           yq --version
-          # Your yq commands here
     
       - name: yq - portable yaml processor
-        uses: mikefarah/yq@v4.45.1
+        uses: mikefarah/yq@v4.48.1
 
       - uses: pre-commit/action@v3.0.1
         with: 

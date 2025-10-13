@@ -29,7 +29,7 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  subscription_id            = local.hub[local.hub_env].subscription
+  subscription_id = local.hub[local.hub_env].subscription
   features {}
   alias = "hub"
 }

@@ -11,5 +11,5 @@ terraform {
 }
 provider "azurerm" {
   features {}
-  subscription_id            = var.privatedns_subscription
+  subscription_id = var.privatedns_subscription
 }

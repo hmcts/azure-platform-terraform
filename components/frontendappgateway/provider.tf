@@ -12,7 +12,6 @@ terraform {
 
 
 provider "azurerm" {
-  skip_provider_registration = true
   features {}
 }
 
@@ -24,14 +23,12 @@ provider "azurerm" {
 
 provider "azurerm" {
   subscription_id            = var.key_vault_subscription
-  skip_provider_registration = "true"
   features {}
   alias = "kv"
 }
 
 provider "azurerm" {
   subscription_id            = local.hub[local.hub_env].subscription
-  skip_provider_registration = "true"
   features {}
   alias = "hub"
 }

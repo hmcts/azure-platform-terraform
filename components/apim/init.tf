@@ -1,12 +1,12 @@
 terraform {
-  required_version = ">= 1.0.10"
+  required_version = "1.13.3"
 
   backend "azurerm" {
   }
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "4.0.0"
+      version = "4.47.0"
     }
   }
 }

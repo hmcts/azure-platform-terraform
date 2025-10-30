@@ -3695,12 +3695,13 @@ frontends = [
 
   },
   {
-    name           = "return-case-doc-ccd"
-    mode           = "Detection"
-    custom_domain  = "return-case-doc-ccd.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
+    product          = "ccd"
+    name             = "return-case-doc-ccd"
+    mode             = "Prevention"
+    custom_domain    = "return-case-doc-ccd.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
   },
   {
     name           = "return-case-doc-ccd-int"

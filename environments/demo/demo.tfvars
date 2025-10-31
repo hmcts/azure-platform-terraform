@@ -3695,7 +3695,6 @@ frontends = [
 
   },
   {
-    product          = "ccd"
     name             = "return-case-doc-ccd"
     mode             = "Prevention"
     custom_domain    = "return-case-doc-ccd.demo.platform.hmcts.net"

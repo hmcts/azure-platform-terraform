@@ -53,6 +53,8 @@ gateways:
         component: case-backend
       - product: lau
         component: idam-backend
+      - product: lau
+        component: eud-backend
 
     # I&A
       - product: ia

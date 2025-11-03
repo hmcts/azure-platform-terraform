@@ -308,9 +308,13 @@ gateways:
       - product: lau
         component: idam-backend
       - product: lau
+        component: eud-backend
+      - product: lau
         component: idam-backend-int
       - product: lau
         component: case-backend-int
+      - product: lau
+        component: eud-backend-int
 
     # Protected Characteristics Questions
       - product: pcq
@@ -434,7 +438,7 @@ gateways:
     # jps
       - product: jps
         component: judicial-payment-service
-        
+
     # et-pet
       - product: et-pet
         component: api

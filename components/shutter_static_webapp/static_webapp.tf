@@ -4,8 +4,8 @@ locals {
 module "static_webapp" {
   #providers = {
   #  azurerm         = azurerm
- #   azurerm.dnszone = azurerm.dnszone
-#  }
+  #   azurerm.dnszone = azurerm.dnszone
+  #  }
   providers = {
     azurerm     = azurerm
     azurerm.hub = azurerm.hub

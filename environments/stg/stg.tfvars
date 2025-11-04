@@ -176,7 +176,7 @@ frontends = [
         operator       = "Equals"
         selector       = "__auth-token"
       },
-            {
+      {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "_csrf"

@@ -2,14 +2,9 @@ locals {
   shutter_apps = [for k, v in var.frontends : v if lookup(v, "shutter_app", true)]
 }
 module "static_webapp" {
-  #providers = {
-  #  azurerm         = azurerm
-  #   azurerm.dnszone = azurerm.dnszone
-  #  }
   providers = {
-    azurerm     = azurerm
-    azurerm.hub = azurerm.hub
-    azurerm.kv  = azurerm.kv
+    azurerm         = azurerm
+    azurerm.dnszone = azurerm.dnszone
   }
 
   source              = "git::https://github.com/hmcts/terraform-module-shutter-static-webapp.git?ref=feature/test"

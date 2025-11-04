@@ -159,12 +159,17 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "connect.sid"
+        selector       = "dtSa"
       },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "cookies_policy"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
       },
       {
         match_variable = "RequestCookieNames"
@@ -194,7 +199,32 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "StartsWith"
-        selector       = "reasonForDivorceBehaviourDetails"
+        selector       = "reasonForDivorceBehaviourDetails" // free text field that gets pinged a lot for sql like characters
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "file" // prevent WebKitFormBoundary path traversal FPs
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "fileUrl" // this is used as a HAL ID for the document, it's a URI and a URL
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "legalProceedingsDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "petitionerNameChangedHowOtherDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "address"
       },
     ]
   },

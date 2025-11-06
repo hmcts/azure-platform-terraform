@@ -38,8 +38,12 @@ When upgrading Terraform providers, follow this systematic approach:
    - Replace deprecated properties (e.g., `skip_provider_registration` → `resource_provider_registrations`)
    - Ensure consistent versions across all modules
    - **NEVER remove provider blocks** - only update deprecated arguments within them
-   - If a provider has a deprecated `version` argument in the provider block, remove only that argument, not the entire provider block
-   - Document any deprecated syntax removed (e.g., provider block `version` arguments) with guidance on proper migration
+   - **Provider block `version` argument deprecation**:
+     - If a provider block has a deprecated `version` argument, move the version constraint to `required_providers` block
+     - Remove ONLY the `version` argument from the provider block, NOT the entire provider block
+     - The provider block itself must remain (e.g., `provider "local" {}` stays, only `version = "x.y.z"` is removed)
+     - Add the provider to `required_providers` with proper source and version
+   - Document any deprecated syntax migrations with guidance on proper configuration
    - Create concise documentation of changes made
 
 5. **Documentation**
@@ -55,6 +59,10 @@ When upgrading Terraform providers, follow this systematic approach:
 ## Best Practices
 
 - **Handle Deprecations**: Replace deprecated properties with modern equivalents (e.g., `skip_provider_registration` → `resource_provider_registrations = "none"`)
+- **Provider Block Version Arguments**: When migrating `version` arguments from provider blocks:
+  - Move the version constraint to the `required_providers` block
+  - Keep the provider block itself (it's still required for provider configuration)
+  - This is a non-breaking change - same functionality, modern syntax
 - **Concise Documentation**: Keep upgrade documentation brief and actionable, not verbose
 - **Consistency**: Ensure all modules use the same provider version
 - **Version Pinning**: Pin to exact versions (e.g., `"4.51.0"` not `"~> 4.51"`)
@@ -94,7 +102,11 @@ When creating `TERRAFORM_UPGRADE_BREAKING_CHANGES.md`, keep it **concise**:
 - **Clear and Concise**: Keep documentation brief and actionable
 - **Highlight Changes**: Clearly state what was upgraded and what was modified
 - **Deprecation Fixes**: Note when deprecated properties were replaced with modern equivalents
-- **Deprecation Removals**: When deprecated syntax is removed (e.g., provider block `version` arguments), explain the deprecation reason and provide migration guidance
+- **Deprecation Removals**: When deprecated syntax is migrated (e.g., provider block `version` arguments):
+  - Clearly indicate this is a migration, not a removal
+  - Explain the deprecation reason and the modern equivalent
+  - If moving `version` from provider block to `required_providers`, note that the provider block itself remains
+  - Specify whether the change is breaking or non-breaking
 - **Version Context**: Include when deprecations were introduced (e.g., "deprecated since Terraform 0.13")
 - **Official Documentation**: Always include links to relevant Terraform/HashiCorp documentation for transparency and user reference
 - **Next Steps**: Provide clear, minimal next steps focused on pipeline-based validation, never suggest running terraform commands directly
@@ -138,12 +150,13 @@ When creating `TERRAFORM_UPGRADE_BREAKING_CHANGES.md`, keep it **concise**:
 4. If upgrade available, call `resolveProviderDocID` then `getProviderDocs` for upgrade guide
 5. Update version constraints to latest
 6. Replace deprecated properties (e.g., `skip_provider_registration` → `resource_provider_registrations`)
-7. Create concise `TERRAFORM_UPGRADE_BREAKING_CHANGES.md` with:
+7. Migrate provider block `version` arguments to `required_providers` block (keep provider blocks themselves)
+8. Create concise `TERRAFORM_UPGRADE_BREAKING_CHANGES.md` with:
    - Pipeline-based next steps
    - Links to provider upgrade guides
    - Links to release notes
-   - Links to Terraform documentation for any deprecated features removed
-8. User commits changes and validates through their existing pipeline infrastructure
+   - Links to Terraform documentation for any deprecated features migrated
+9. User commits changes and validates through their existing pipeline infrastructure
 
 ## Documentation Reference Examples
 

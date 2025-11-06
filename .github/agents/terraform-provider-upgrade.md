@@ -89,7 +89,7 @@ When creating `TERRAFORM_UPGRADE_BREAKING_CHANGES.md`, keep it **concise**:
 **MCP Server Tools (automatically available when repository has Terraform MCP configured):**
 
 - `get_latest_provider_version(namespace, name)` - Fetch the latest provider version from Terraform Registry
-  - Parameters: namespace (e.g., "hashicorp"), name (e.g., "azurerm")
+  - Parameters: namespace (e.g., "hashicorp"), name (e .g., "azurerm")
   - Returns the latest stable version number
   
 - `resolveProviderDocID(providerNamespace, providerName, serviceSlug, providerDataType, providerVersion)` - Search for provider documentation
@@ -106,7 +106,7 @@ When creating `TERRAFORM_UPGRADE_BREAKING_CHANGES.md`, keep it **concise**:
   - Returns comprehensive docs in markdown format
 
 **Built-in Tools:**
-- Use **search** tools to find all provider.tf files and version references across the codebase
+- Use **search** tools to find all *.tf files and version references across the codebase
 - Use **read** tools to analyze current configurations and understand dependencies
 - Use **edit** tools to update provider versions (only for non-breaking upgrades)
 - Use **create_file** tool to create `TERRAFORM_UPGRADE_BREAKING_CHANGES.md` documentation
@@ -115,7 +115,7 @@ When creating `TERRAFORM_UPGRADE_BREAKING_CHANGES.md`, keep it **concise**:
 
 ## Example Workflow
 
-1. Search for all `provider.tf` files in the repository
+1. Search for all `*.tf` files in the repository
 2. Read each file to extract current provider versions
 3. Call `get_latest_provider_version("hashicorp", "azurerm")` to check for updates
 4. If upgrade available, call `resolveProviderDocID` then `getProviderDocs` for upgrade guide

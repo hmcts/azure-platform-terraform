@@ -37,15 +37,20 @@ When upgrading Terraform providers, follow this systematic approach:
    - Update `required_providers` version constraints
    - Replace deprecated properties (e.g., `skip_provider_registration` → `resource_provider_registrations`)
    - Ensure consistent versions across all modules
+   - **NEVER remove provider blocks** - only update deprecated arguments within them
+   - If a provider has a deprecated `version` argument in the provider block, remove only that argument, not the entire provider block
+   - Document any deprecated syntax removed (e.g., provider block `version` arguments) with guidance on proper migration
    - Create concise documentation of changes made
 
 5. **Documentation**
    - Create brief `TERRAFORM_UPGRADE_BREAKING_CHANGES.md` with:
      - Version change summary
-     - Key changes made
-     - Next steps for user
-     - Reference links
+     - Key changes made (including any deprecated syntax removed with migration guidance)
+     - Next steps for user (pipeline-based validation, not direct terraform commands)
+     - Reference links to official documentation (Terraform/HashiCorp upgrade guides, release notes, deprecation notices)
    - Keep documentation concise and actionable
+   - For any deprecated syntax removed, explain why it was deprecated and what the user should do if they need that functionality
+   - Always include links to relevant official Terraform/HashiCorp documentation for changes made
 
 ## Best Practices
 
@@ -54,6 +59,7 @@ When upgrading Terraform providers, follow this systematic approach:
 - **Consistency**: Ensure all modules use the same provider version
 - **Version Pinning**: Pin to exact versions (e.g., `"4.51.0"` not `"~> 4.51"`)
 - **User Control**: Do NOT run `terraform init` or `terraform plan` - let the user control execution
+- **Preserve Existing Providers**: Never remove provider blocks unless explicitly requested - they are needed even if version constraints are deprecated
 
 ## Azure Provider Specific Guidance
 
@@ -71,18 +77,27 @@ When creating `TERRAFORM_UPGRADE_BREAKING_CHANGES.md`, keep it **concise**:
 
 1. **Summary**: Version change and date
 2. **What Changed**: Bullet points of actual changes made
+   - For deprecated syntax removal, include sub-bullets explaining the deprecation and migration path
+   - Include version numbers when deprecations were introduced (e.g., "deprecated since Terraform 0.13")
 3. **Notes**: Brief notes on compatibility and deprecations handled
-4. **Next Steps**: 2-3 actionable items for the user
-5. **Reference**: Link to official upgrade guide
+4. **Next Steps**: 2-3 actionable items for pipeline-based validation (never suggest running terraform commands directly like `terraform init` or `terraform plan`)
+5. **Reference**: Links to official documentation
+   - Provider upgrade guides (e.g., "AzureRM Provider 4.0 Upgrade Guide")
+   - Release notes for the specific version
+   - Terraform documentation for deprecated features
+   - HashiCorp documentation for best practices
 
-**Keep it under 25 lines total.**
+**Keep it under 35 lines total.**
 
 ## Communication
 
 - **Clear and Concise**: Keep documentation brief and actionable
 - **Highlight Changes**: Clearly state what was upgraded and what was modified
 - **Deprecation Fixes**: Note when deprecated properties were replaced with modern equivalents
-- **Next Steps**: Provide clear, minimal next steps for the user
+- **Deprecation Removals**: When deprecated syntax is removed (e.g., provider block `version` arguments), explain the deprecation reason and provide migration guidance
+- **Version Context**: Include when deprecations were introduced (e.g., "deprecated since Terraform 0.13")
+- **Official Documentation**: Always include links to relevant Terraform/HashiCorp documentation for transparency and user reference
+- **Next Steps**: Provide clear, minimal next steps focused on pipeline-based validation, never suggest running terraform commands directly
 
 ## Tools Usage
 
@@ -111,7 +126,9 @@ When creating `TERRAFORM_UPGRADE_BREAKING_CHANGES.md`, keep it **concise**:
 - Use **edit** tools to update provider versions (only for non-breaking upgrades)
 - Use **create_file** tool to create `TERRAFORM_UPGRADE_BREAKING_CHANGES.md` documentation
 - Use **todo** tools to create structured task lists for tracking upgrade progress
-- **Do NOT use shell/terminal tools** - users will run terraform commands themselves
+- **Do NOT use shell/terminal tools** - users will validate changes through their existing pipelines
+- **Do NOT suggest terraform commands** - all validation should be pipeline-based
+- **Do NOT remove provider blocks** - they are required even if individual arguments are deprecated
 
 ## Example Workflow
 
@@ -121,5 +138,36 @@ When creating `TERRAFORM_UPGRADE_BREAKING_CHANGES.md`, keep it **concise**:
 4. If upgrade available, call `resolveProviderDocID` then `getProviderDocs` for upgrade guide
 5. Update version constraints to latest
 6. Replace deprecated properties (e.g., `skip_provider_registration` → `resource_provider_registrations`)
-7. Create concise `TERRAFORM_UPGRADE_BREAKING_CHANGES.md`
-8. User runs associated pipeline when ready
+7. Create concise `TERRAFORM_UPGRADE_BREAKING_CHANGES.md` with:
+   - Pipeline-based next steps
+   - Links to provider upgrade guides
+   - Links to release notes
+   - Links to Terraform documentation for any deprecated features removed
+8. User commits changes and validates through their existing pipeline infrastructure
+
+## Documentation Reference Examples
+
+When documenting changes, include relevant official documentation links:
+
+**Provider Upgrades:**
+- Provider upgrade guide: `https://registry.terraform.io/providers/{namespace}/{name}/latest/docs/guides/{version}-upgrade-guide`
+- Release notes: `https://github.com/{org}/terraform-provider-{name}/releases/tag/v{version}`
+
+**Terraform Core Deprecations:**
+- Provider version in provider blocks: `https://developer.hashicorp.com/terraform/language/providers/requirements`
+- Provider configuration: `https://developer.hashicorp.com/terraform/language/providers/configuration`
+
+**Azure-Specific:**
+- AzureRM resource provider registration: Link to the upgrade guide section explaining the change from `skip_provider_registration` to `resource_provider_registrations`
+
+## Next Steps Documentation Examples
+
+**Good (Pipeline-based):**
+- "Commit these changes and run your Terraform pipeline to validate"
+- "Review pipeline plan output for any unexpected changes"
+- "Validate through your CI/CD pipeline before merging"
+
+**Bad (Direct commands):**
+- ❌ "Run `terraform init -upgrade` to download the new provider"
+- ❌ "Execute `terraform plan` to verify changes"
+- ❌ "Run `terraform apply` to apply the upgrade"

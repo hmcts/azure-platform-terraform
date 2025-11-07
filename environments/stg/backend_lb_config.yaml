@@ -59,6 +59,8 @@ gateways:
         component: case-backend
       - product: lau
         component: idam-backend
+      - product: lau
+        component: eud-backend
 
     # Divorce
       - product: div
@@ -146,8 +148,6 @@ gateways:
       - product: bulk-scan
         component: processor
       - product: bulk-scan
-        component: sample-app
-      - product: bulk-scan
         component: orchestrator
       - product: reform-scan
         component: blob-router
@@ -228,6 +228,9 @@ gateways:
       # FACT
       - product: fact
         component: api
+      - product: fact
+        component: data-api
+        ssl_enabled: true
 
       # NFDIV
       - product: nfdiv

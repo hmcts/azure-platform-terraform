@@ -47,6 +47,8 @@ gateways:
         component: case-backend
       - product: lau
         component: idam-backend
+      - product: lau
+        component: eud-backend
 
     # I&A
       - product: ia
@@ -233,6 +235,9 @@ gateways:
  # FACT
       - product: fact
         component: api
+      - product: fact
+        component: data-api
+        ssl_enabled: true
 
  # Docmosis
       - product: dg

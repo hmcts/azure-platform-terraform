@@ -160,8 +160,6 @@ gateways:
       - product: bulk-scan
         component: orchestrator
       - product: bulk-scan
-        component: sample-app
-      - product: bulk-scan
         component: payment-processor
     # Bulk Print
       - product: rpe
@@ -214,6 +212,9 @@ gateways:
       # FACT
       - product: fact
         component: api
+      - product: fact
+        component: data-api
+        ssl_enabled: true
 
       # NFDIV
       - product: nfdiv
@@ -307,9 +308,13 @@ gateways:
       - product: lau
         component: idam-backend
       - product: lau
+        component: eud-backend
+      - product: lau
         component: idam-backend-int
       - product: lau
         component: case-backend-int
+      - product: lau
+        component: eud-backend-int
 
     # Protected Characteristics Questions
       - product: pcq
@@ -433,7 +438,7 @@ gateways:
     # jps
       - product: jps
         component: judicial-payment-service
-        
+
     # et-pet
       - product: et-pet
         component: api

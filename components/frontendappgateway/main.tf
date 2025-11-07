@@ -43,4 +43,5 @@ module "frontendappgateway" {
   vault_name                         = local.key_vault_name
   key_vault_resource_group           = local.key_vault_resource_group
   ssl_certificate_name               = var.ssl_certificate
+  ssl_policy                         = var.ssl_policy
 }

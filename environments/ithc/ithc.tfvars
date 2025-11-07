@@ -9,7 +9,7 @@ privatedns_subscription        = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                        = "nonprod"
 autoShutdown                   = true
 hub                            = "nonprod"
-pubsubappgw_ssl_policy = {
+ssl_policy = {
   policy_type          = "Predefined"
   policy_name          = "AppGwSslPolicy20220101S"
   min_protocol_version = "TLSv1_2"
@@ -415,6 +415,21 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "dtSa"
       },
       {
@@ -488,11 +503,6 @@ frontends = [
         selector       = "x-csrf-token"
       },
       {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "flowState"
-      },
-      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "iss"
@@ -508,14 +518,19 @@ frontends = [
         selector       = "redirect_uri"
       },
       {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
-        selector       = "redirect_uri"
-      },
-      {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "redirectUri"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "redirectUri"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "redirect_uri"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -543,6 +558,11 @@ frontends = [
         selector       = "state"
       },
       {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
+        selector       = "state"
+      },
+      {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "token"
@@ -560,6 +580,11 @@ frontends = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
+        selector       = "nonce"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames",
+        operator       = "Equals",
         selector       = "nonce"
       },
       {
@@ -601,6 +626,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames",
         operator       = "StartsWith",
         selector       = "email"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "oidc_session"
       }
     ]
   },
@@ -1062,47 +1092,6 @@ frontends = [
     ]
   },
   {
-    name           = "rpts"
-    mode           = "Prevention"
-    custom_domain  = "rpts.ithc.platform.hmcts.net"
-    dns_zone_name  = "ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
-    custom_rules = [
-      {
-        name     = "IPMatchWhitelist"
-        priority = 1
-        type     = "MatchRule"
-        action   = "Block"
-        match_conditions = [
-          {
-            match_variable     = "RemoteAddr"
-            operator           = "IPMatch"
-            negation_condition = true
-            match_values = [
-              "81.134.202.29/32",
-              "51.145.6.230/32",
-              "51.145.4.100/32",
-              "194.33.192.0/25",
-              "51.149.249.0/27",
-              "194.33.196.0/25",
-              "51.149.249.32/27",
-              "52.210.206.51/32",
-              "62.25.109.201/32",
-              "62.25.109.203/32",
-              "51.140.8.67/32",
-              "20.50.109.148/32",
-              "20.50.108.242/32",
-              "20.108.187.55/32",
-              "20.58.23.145/32",
-              "51.11.124.205/32",
-              "51.11.124.216/32"
-            ]
-          }
-        ]
-      },
-    ]
-  },
-  {
     name           = "nfdiv"
     mode           = "Prevention"
     custom_domain  = "nfdiv.ithc.platform.hmcts.net"
@@ -1111,15 +1100,23 @@ frontends = [
     disabled_rules = {
       SQLI = [
         "942100",
+        "942110",
+        "942120",
         "942150",
+        "942180",
         "942200",
         "942210",
         "942230",
+        "942260",
+        "942310",
         "942361",
+        "942370",
         "942380",
+        "942390",
         "942400",
+        "942410",
         "942430",
-        "942260"
+        "942440",
       ]
       LFI = [
         "930100", // false positive on multi-part uploads
@@ -1188,6 +1185,36 @@ frontends = [
         operator       = "Equals"
         selector       = "applicant2UploadedFiles"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "coClarificationUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "app1RfiDraftResponseUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "app2RfiDraftResponseUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1InterimAppsEvidenceUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2InterimAppsEvidenceUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2LegalProceedingUploadedFiles"
+      },
     ]
   },
   {
@@ -1199,15 +1226,23 @@ frontends = [
     disabled_rules = {
       SQLI = [
         "942100",
+        "942110",
+        "942120",
         "942150",
+        "942180",
         "942200",
         "942210",
         "942230",
+        "942260",
+        "942310",
         "942361",
+        "942370",
         "942380",
+        "942390",
         "942400",
+        "942410",
         "942430",
-        "942260"
+        "942440",
       ]
       LFI = [
         "930100", // false positive on multi-part uploads
@@ -1287,15 +1322,23 @@ frontends = [
     disabled_rules = {
       SQLI = [
         "942100",
+        "942110",
+        "942120",
         "942150",
+        "942180",
         "942200",
         "942210",
         "942230",
+        "942260",
+        "942310",
         "942361",
+        "942370",
         "942380",
+        "942390",
         "942400",
+        "942410",
         "942430",
-        "942260"
+        "942440",
       ]
       LFI = [
         "930100", // false positive on multi-part uploads
@@ -1363,6 +1406,36 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "applicant2UploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "coClarificationUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "app1RfiDraftResponseUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "app2RfiDraftResponseUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1InterimAppsEvidenceUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2InterimAppsEvidenceUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2LegalProceedingUploadedFiles"
       },
     ]
   },
@@ -2506,6 +2579,88 @@ frontends = [
         operator       = "Equals"
         selector       = "laUploadedFiles"
       },
+      // ADOP-2707 Prevent names starting with "Ruby" from being blocked
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "childrenFirstName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "childrenFirstNameAfterAdoption"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "childSocialWorkerName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicantSocialWorkerName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "adopAgencyOrLaContactName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1FirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2FirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1SotFullName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2SotFullName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "birthMotherFirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "birthFatherFirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "otherParentFirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "laSotFullName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1OtherFirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2OtherFirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "kbaChildName"
+      },
+      // end ADOP-2707
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
@@ -2641,33 +2796,102 @@ frontends = [
         ]
       },
     ],
-    disabled_rules = {
-      SQLI = [
-        "942340",
-        "942440",
-        "942260",
-        "942200",
-        "942450",
-        "942210"
-      ]
-      LFI = [
-        "930130",
-        "930110",
-        "930120"
-      ]
-      RCE = [
-        "932115"
-      ]
-      RFI = [
-        "931130"
-      ]
-    }
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "rf"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "prl-citizen-frontend-session"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "iss"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_gat"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cookies_policy"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "prl-cookie-preferences"
+      }
     ]
   },
   {
@@ -2677,6 +2901,19 @@ frontends = [
     backend_domain   = ["firewall-nonprodi-palo-hmiapimithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
     cache_enabled    = "false"
+  },
+  {
+    name                           = "reformscan"
+    custom_domain                  = "reformscan.ithc.platform.hmcts.net"
+    dns_zone_name                  = "ithc.platform.hmcts.net"
+    host_header                    = "reformscanithc.blob.core.windows.net"
+    mode                           = "Detection"
+    backend_domain                 = ["firewall-nonprodi-palo-reformscanithc.uksouth.cloudapp.azure.com"]
+    forwarding_protocol            = "MatchRequest"
+    health_path                    = "/"
+    health_protocol                = "Https"
+    cache_enabled                  = "false"
+    certificate_name_check_enabled = false
   },
   {
     product          = "cft-api-mgmt"
@@ -2726,7 +2963,7 @@ frontends = [
   },
   {
     name           = "paymentoutcome-web"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "paymentoutcome-web.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
@@ -2743,17 +2980,77 @@ frontends = [
   {
     product          = "et"
     name             = "et-sya"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "et-sya.ithc.platform.hmcts.net"
     dns_zone_name    = "ithc.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-sya-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-sya-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "i18next"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+    ]
     disabled_rules = {
       SQLI = [
         "942260"
       ]
       RFI = [
         "931130"
+      ]
+      LFI = [
+        "930130"
       ]
     }
   },

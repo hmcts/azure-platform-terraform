@@ -15,7 +15,7 @@ data_subscription                      = "8999dec3-0104-4a27-94ee-6588559729d1"
 privatedns_subscription                = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                                = "prod"
 pubsub_frontend_agw_private_ip_address = "10.90.98.8"
-pubsubappgw_ssl_policy = {
+ssl_policy = {
   policy_type          = "Predefined"
   policy_name          = "AppGwSslPolicy20220101S"
   min_protocol_version = "TLSv1_2"
@@ -476,14 +476,23 @@ frontends = [
     disabled_rules = {
       SQLI = [
         "942100",
+        "942110",
+        "942120",
         "942150",
+        "942180",
         "942200",
         "942210",
         "942230",
+        "942260",
+        "942310",
         "942361",
+        "942370",
         "942380",
+        "942390",
         "942400",
+        "942410",
         "942430",
+        "942440",
       ]
       LFI = [
         "930100", // false positive on multi-part uploads
@@ -493,34 +502,6 @@ frontends = [
         "932100"
       ]
     },
-    custom_rules = [
-      {
-        name     = "IPMatchWhitelist"
-        priority = 1
-        type     = "MatchRule"
-        action   = "Block"
-        match_conditions = [
-          {
-            match_variable     = "RemoteAddr"
-            operator           = "IPMatch"
-            negation_condition = true
-            match_values = [
-              "51.145.34.88/32",
-              "81.134.202.29/32",
-              "51.145.6.230/32",
-              "51.145.4.100/32",
-              "194.33.192.0/25",
-              "51.149.249.0/27",
-              "194.33.196.0/25",
-              "51.149.249.32/27",
-              "52.210.206.51/32",
-              "62.25.109.201/32",
-              "62.25.109.203/32"
-            ]
-          }
-        ]
-      },
-    ],
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -576,6 +557,36 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "applicant2UploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "coClarificationUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "app1RfiDraftResponseUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "app2RfiDraftResponseUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1InterimAppsEvidenceUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2InterimAppsEvidenceUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2LegalProceedingUploadedFiles"
       },
     ]
   },
@@ -1272,6 +1283,7 @@ frontends = [
       SQLI = [
         "942100",
         "942110",
+        "942120",
         "942150",
         "942200",
         "942210",
@@ -1292,10 +1304,15 @@ frontends = [
         "942450",
       ]
       RCE = [
-        "932105",
         "932100",
+        "932105",
+        "932110",
         "932115",
         "932150",
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
       ]
       PROTOCOL-ATTACK = [
         "921110"
@@ -1362,6 +1379,7 @@ frontends = [
       SQLI = [
         "942100",
         "942110",
+        "942120",
         "942150",
         "942200",
         "942210",
@@ -1381,9 +1399,15 @@ frontends = [
         "942450",
       ]
       RCE = [
+        "932100",
         "932105",
+        "932110",
         "932115",
         "932150",
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
       ]
       PROTOCOL-ATTACK = [
         "921110"
@@ -2181,6 +2205,11 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "paybubble-platform-hmcts-net"
     www_redirect     = true
+    disabled_rules = {
+      SQLI = [
+        "942440" # Rule triggers false positives as SQL comment characters used in CSRF text.
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -2237,6 +2266,11 @@ frontends = [
         operator       = "Equals"
         selector       = "ccpay-bubble-cookie-preferences"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      }
     ]
   },
   {
@@ -2252,7 +2286,7 @@ frontends = [
   {
     product          = "fees"
     name             = "payment-outcome"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "paymentoutcome-web.platform.hmcts.net"
     dns_zone_name    = "platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
@@ -2538,6 +2572,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "code_verifier"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "oidc_session"
       }
     ]
   },
@@ -3000,17 +3039,6 @@ frontends = [
     ]
   },
   {
-    product          = "fact-redirect"
-    name             = "fact-redirect"
-    mode             = "Detection"
-    custom_domain    = "courttribunalfinder.service.gov.uk"
-    dns_zone_name    = "courttribunalfinder.service.gov.uk"
-    shutter_app      = false
-    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    ssl_mode         = "AzureKeyVault"
-    certificate_name = "courttribunalfinder-service-gov-uk"
-  },
-  {
     product          = "jui"
     name             = "jui-redirect"
     mode             = "Detection"
@@ -3319,7 +3347,63 @@ frontends = [
     dns_zone_name    = "apply-to-court-about-child-arrangements-c100.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-to-court-about-child-arrangements-c100-service-gov-uk"
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
     global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "prl-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "__auth-token"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "prl-citizen-frontend-session"
+      },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -4057,6 +4141,16 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "application[deceased_name]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "application[discretion_reason]"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "online_application[case_number]"
       }
     ]
     custom_rules = [
@@ -4186,6 +4280,87 @@ frontends = [
         operator       = "Equals"
         selector       = "laUploadedFiles"
       },
+      { // ADOP-2707 Prevent names starting with "Ruby" from being blocked
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "childrenFirstName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "childrenFirstNameAfterAdoption"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "childSocialWorkerName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicantSocialWorkerName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "adopAgencyOrLaContactName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1FirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2FirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1SotFullName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2SotFullName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "birthMotherFirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "birthFatherFirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "otherParentFirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "laSotFullName"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1OtherFirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2OtherFirstNames"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "kbaChildName"
+      },
+      // end ADOP-2707
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"

@@ -44,8 +44,11 @@ module "app-gw" {
   waf_mode                                     = var.waf_mode
   exclusions                                   = var.apim_appgw_exclusions
   public_ip_enable_multiple_availability_zones = true
+  enable_multiple_availability_zones           = var.env == "sbox" ? false : true
   min_capacity                                 = var.apim_appgw_min_capacity
   max_capacity                                 = var.apim_appgw_max_capacity
+  ssl_policy                                   = var.ssl_policy
+
   trusted_client_certificate_data = merge(
     {
       for cert_name in local.cert_names :

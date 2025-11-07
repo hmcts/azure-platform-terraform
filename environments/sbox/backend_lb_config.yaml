@@ -63,6 +63,13 @@ gateways:
         component: apps-njs
       - product: "labs"
         component: dj-khaled
+      - product: "labs"
+        component: hurricanepilot
+      - product: "labs"
+        component: rebeccahayleypickles
+      - product: "labs"
+        component: marketplace-api
+        
 
     # SIDAM 
       - product: idam
@@ -98,8 +105,6 @@ gateways:
         component: processor
       - product: bulk-scan
         component: orchestrator
-      - product: bulk-scan
-        component: sample-app
       - product: bulk-scan
         component: payment-processor
       # Bulk Print (DTS)

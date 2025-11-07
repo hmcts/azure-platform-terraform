@@ -3823,7 +3823,7 @@ frontends = [
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-demo-platform-hmcts-net"
     global_exclusions = [
-            {
+      {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "cookie_setting"

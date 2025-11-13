@@ -95,6 +95,8 @@ gateways:
         component: tya-notif
       - product: sscs
         component: ccd-callback-orchestrator
+      - product: sscs
+        component: task-configuration
 
     # FPLA
       - product: fpl

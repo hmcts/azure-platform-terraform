@@ -820,7 +820,7 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   },
- {
+  {
     product          = "ab-james-matthews-goldenpath"
     name             = "ab-james-matthews-goldenpath"
     custom_domain    = "ab-james-matthews-goldenpath.sandbox.platform.hmcts.net"

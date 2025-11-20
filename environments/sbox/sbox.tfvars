@@ -821,9 +821,9 @@ frontends = [
     disabled_rules   = {}
   },
   {
-    product          = "ab-james-matthews-goldenpath"
-    name             = "ab-james-matthews-goldenpath"
-    custom_domain    = "ab-james-matthews-goldenpath.sandbox.platform.hmcts.net"
+    product          = "lab-james-matthews-goldenpath"
+    name             = "lab-james-matthews-goldenpath"
+    custom_domain    = "lab-james-matthews-goldenpath.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-labsgoldenpath<yourname>.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"

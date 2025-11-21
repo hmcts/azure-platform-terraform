@@ -38,7 +38,7 @@ rule_sets = {
 
     rules = [
       {
-        name  = "Contains_client_id"
+        name  = "ContainsClientId"
         order = 1
 
         conditions = {
@@ -63,7 +63,7 @@ rule_sets = {
               # This key must exist in local.origin_group_ids
               cdn_frontdoor_origin_group_key = "hmcts-access"
               forwarding_protocol            = "HttpOnly"    # “HTTP only”
-              cache_behavior                 = "BypassCache" # “Caching: Disabled”
+              cache_behavior                 = "HonorOrigin" # “Caching: Disabled”
             }
           ]
         }

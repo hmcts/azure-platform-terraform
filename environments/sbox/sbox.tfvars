@@ -42,47 +42,6 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     shutter_app      = false
 
-    rule_sets = {
-      hmcts-access-overrides = {
-        name      = "hmcts-access-overrides"
-        frontends = ["idam-web-public"]
-
-        rules = [
-          {
-            name  = "Contains_client_id"
-            order = 1
-
-            conditions = {
-              query_string_conditions = [
-                {
-                  operator         = "Contains"
-                  negate_condition = false
-                  match_values = [
-                    "client_id=fact_admin",
-                    "client_id=divorce",
-                    "client_id=probate",
-                    "client_id=xuiwebapp",
-                  ]
-                  transforms = ["Lowercase"]
-                }
-              ]
-            }
-
-            actions = {
-              route_configuration_override_actions = [
-                {
-                  # This key must exist in local.origin_group_ids
-                  cdn_frontdoor_origin_group_key = "hmcts-access"
-                  forwarding_protocol            = "HttpOnly"    # “HTTP only”
-                  cache_behavior                 = "BypassCache" # “Caching: Disabled”
-                }
-              ]
-            }
-          },
-        ]
-      }
-    }
-
     caching = {
       url_file_extension_conditions = [{}]
       route_configuration_override_action = [

@@ -1280,6 +1280,9 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "moneyclaims-service-gov-uk"
     disabled_rules = {
+      PHP = [
+        "933160"
+      ],
       SQLI = [
         "942100",
         "942110",
@@ -1376,6 +1379,9 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "moneyclaims-service-gov-uk"
     disabled_rules = {
+      PHP = [
+        "933160"
+      ],
       SQLI = [
         "942100",
         "942110",

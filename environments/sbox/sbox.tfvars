@@ -33,13 +33,13 @@ autoShutdown = true
 
 rule_sets = {
   hmcts-access-overrides = {
-    name = "hmcts-access-overrides"
+    name      = "hmcts-access-overrides"
     frontends = ["idam-web-public"]
 
     rules = [
       {
-        name              = "Contains_client_id"
-        order             = 1
+        name  = "Contains_client_id"
+        order = 1
 
         conditions = {
           query_string_conditions = [
@@ -62,7 +62,7 @@ rule_sets = {
             {
               # This key must exist in local.origin_group_ids
               cdn_frontdoor_origin_group_key = "hmcts-access"
-              forwarding_protocol            = "HttpOnly"   # “HTTP only”
+              forwarding_protocol            = "HttpOnly"    # “HTTP only”
               cache_behavior                 = "BypassCache" # “Caching: Disabled”
             }
           ]

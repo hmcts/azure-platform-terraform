@@ -207,6 +207,6 @@ variable "ssl_certificate" {
   default = ""
 }
 
-variable rule_sets {
+variable "rule_sets" {
   default = {}
 }

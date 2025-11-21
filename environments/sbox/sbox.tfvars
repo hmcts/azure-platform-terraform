@@ -44,14 +44,14 @@ frontends = [
 
     rule_sets = {
       hmcts-access-overrides = {
-        name = "hmcts-access-overrides"
+        name      = "hmcts-access-overrides"
         frontends = ["idam-web-public"]
 
         rules = [
           {
-            name              = "Contains_client_id"
-            order             = 1
-            
+            name  = "Contains_client_id"
+            order = 1
+
             conditions = {
               query_string_conditions = [
                 {
@@ -63,17 +63,17 @@ frontends = [
                     "client_id=probate",
                     "client_id=xuiwebapp",
                   ]
-                  transforms = ["Lowercase"]  
+                  transforms = ["Lowercase"]
                 }
               ]
             }
-  
+
             actions = {
               route_configuration_override_actions = [
                 {
                   # This key must exist in local.origin_group_ids
                   cdn_frontdoor_origin_group_key = "hmcts-access"
-                  forwarding_protocol            = "HttpOnly"   # “HTTP only”
+                  forwarding_protocol            = "HttpOnly"    # “HTTP only”
                   cache_behavior                 = "BypassCache" # “Caching: Disabled”
                 }
               ]

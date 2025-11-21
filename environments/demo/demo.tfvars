@@ -3716,6 +3716,7 @@ frontends = [
     custom_domain  = "manage-case-ac-int.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cache_enabled  = "false"
   },
   {
     name           = "xui-webapp-int"
@@ -3723,6 +3724,7 @@ frontends = [
     custom_domain  = "manage-case-int.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cache_enabled  = "false"
   },
   {
     name           = "xui-webapp-caa-ac"
@@ -3730,6 +3732,7 @@ frontends = [
     custom_domain  = "manage-case-caa-assigned-case-view.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cache_enabled  = "false"
 
   },
   {
@@ -3771,6 +3774,7 @@ frontends = [
     custom_domain  = "manage-case-int1.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cache_enabled  = "false"
 
   },
   {
@@ -3779,6 +3783,7 @@ frontends = [
     custom_domain  = "manage-case-int2.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cache_enabled  = "false"
 
   },
   {
@@ -3804,6 +3809,7 @@ frontends = [
     custom_domain  = "manage-case-srt.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cache_enabled  = "false"
 
   },
   {
@@ -3812,6 +3818,7 @@ frontends = [
     custom_domain  = "manage-case-wa-int.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cache_enabled  = "false"
 
   },
   {

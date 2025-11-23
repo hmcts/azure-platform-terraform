@@ -4473,7 +4473,7 @@ frontends = [
   },
   {
     product          = "pdda"
-    name             = "pdda-public-display-data-aggregator
+    name             = "pdda-public-display-data-aggregator"
     mode             = "Prevention"
     custom_domain    = "pdda-public-display-data-aggregator.aat.platform.hmcts.net"
     dns_zone_name    = "aat.platform.hmcts.net"

@@ -3950,7 +3950,7 @@ frontends = [
   },
   {
     product          = "pdda"
-    name             = "pdda-public-display-data-aggregator
+    name             = "pdda-public-display-data-aggregator"
     mode             = "Prevention"
     custom_domain    = "pdda-public-display-data-aggregator.ithc.platform.hmcts.net"
     dns_zone_name    = "ithc.platform.hmcts.net"

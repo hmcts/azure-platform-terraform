@@ -4472,13 +4472,13 @@ frontends = [
     global_exclusions = []
   },
   {
-    product          = "pdda"
-    name             = "pdda-public-display-data-aggregator"
-    mode             = "Prevention"
-    custom_domain    = "pdda-public-display-data-aggregator.aat.platform.hmcts.net"
-    dns_zone_name    = "aat.platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-aat-platform-hmcts-net"
+    product           = "pdda"
+    name              = "pdda-public-display-data-aggregator"
+    mode              = "Prevention"
+    custom_domain     = "pdda-public-display-data-aggregator.aat.platform.hmcts.net"
+    dns_zone_name     = "aat.platform.hmcts.net"
+    backend_domain    = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    certificate_name  = "wildcard-aat-platform-hmcts-net"
     global_exclusions = []
   },
 ]

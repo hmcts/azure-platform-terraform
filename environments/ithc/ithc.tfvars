@@ -3949,13 +3949,13 @@ frontends = [
     global_exclusions = []
   },
   {
-    product          = "pdda"
-    name             = "pdda-public-display-data-aggregator"
-    mode             = "Prevention"
-    custom_domain    = "pdda-public-display-data-aggregator.ithc.platform.hmcts.net"
-    dns_zone_name    = "ithc.platform.hmcts.net"
-    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-demo-platform-hmcts-net"
+    product           = "pdda"
+    name              = "pdda-public-display-data-aggregator"
+    mode              = "Prevention"
+    custom_domain     = "pdda-public-display-data-aggregator.ithc.platform.hmcts.net"
+    dns_zone_name     = "ithc.platform.hmcts.net"
+    backend_domain    = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    certificate_name  = "wildcard-demo-platform-hmcts-net"
     global_exclusions = []
   },
 ]

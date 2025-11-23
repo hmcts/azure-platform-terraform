@@ -4271,6 +4271,16 @@ frontends = [
     }
     global_exclusions = []
   },
+  {
+    product          = "pdda"
+    name             = "pdda-public-display-data-aggregator
+    mode             = "Prevention"
+    custom_domain    = "pdda-public-display-data-aggregator.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+    global_exclusions = []
+  },
 ]
 
 pubsub_frontends = [

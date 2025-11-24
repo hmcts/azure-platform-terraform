@@ -71,7 +71,7 @@ frontends = [
                 {
                   # This key must exist in local.origin_group_ids
                   cdn_frontdoor_origin_group_key = "hmcts-access"
-                  forwarding_protocol = "HttpOnly"    # “HTTP only”
+                  forwarding_protocol            = "HttpOnly"    # “HTTP only”
                   cache_behavior                 = "HonorOrigin" # “Caching: Disabled”
                 }
               ]

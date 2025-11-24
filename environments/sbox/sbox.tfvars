@@ -42,70 +42,6 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     shutter_app      = false
 
-    rule_sets = [
-      {
-        name = "hmcts-access-overrides"
-        rules = [
-          {
-            name  = "UseHmctsAccedsIfClientIdEMatches"
-            order = 1
-
-            conditions = {
-              query_string_conditions = [
-                {
-                  operator         = "Contains"
-                  negate_condition = false
-                  match_values = [
-                    "client_id=fact_admin",
-                    "client_id=divorce",
-                    "client_id=probate",
-                    "client_id=xuiwebapp",
-                  ]
-                  transforms = ["Lowercase"]
-                }
-              ]
-            }
-
-            actions = {
-              route_configuration_override_actions = [
-                {
-                  # This key must exist in local.origin_group_ids
-                  cdn_frontdoor_origin_group_key = "hmcts-access"
-                  forwarding_protocol            = "HttpOnly"
-                  cache_behavior                 = "Disabled"
-                }
-              ]
-            }
-          },
-          {
-            name  = "UseHmctsAccedsIfCookieExists"
-            order = 2
-            # behavior_on_match = "Stop"  # if you want to stop after this rule
-
-            conditions = {
-              cookies_conditions = [
-                {
-                  cookie_name      = "idam.request"
-                  operator         = "Any"
-                  negate_condition = false
-                }
-              ]
-            }
-
-            actions = {
-              route_configuration_override_actions = [
-                {
-                  cdn_frontdoor_origin_group_key = "hmcts-access"
-                  forwarding_protocol            = "HttpOnly"
-                  cache_behavior                 = "Disabled"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    ]
-
     caching = {
       url_file_extension_conditions = [{}]
       route_configuration_override_action = [
@@ -882,6 +818,15 @@ frontends = [
     dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-labs-rebeccahayleypickles-nodejs.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
+  {
+    product          = "ab-james-matthews-goldenpath"
+    name             = "ab-james-matthews-goldenpath"
+    custom_domain    = "ab-james-matthews-goldenpath.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labsgoldenpath-james-matthews.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   }

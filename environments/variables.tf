@@ -206,7 +206,3 @@ variable "ssl_policy" {
 variable "ssl_certificate" {
   default = ""
 }
-
-variable "rule_sets" {
-  default = {}
-}

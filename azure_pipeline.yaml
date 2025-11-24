@@ -478,11 +478,15 @@ stages:
 
               # ---- Azure Repos: validate HEAD using System.AccessToken ----
               if [[ "${REPO_PROVIDER}" == "TfsGit" ]]; then
+                # Check if OAuth token is available (required for Azure Repos HEAD validation)
                 if [[ -z "${SYSTEM_ACCESSTOKEN:-}" ]]; then
-                  echo "Error: OAuth token missing. Enable 'Allow scripts to access the OAuth token' in pipeline settings."
-                  echo "##vso[task.setvariable variable=finalAction]plan"
+                  echo "##vso[task.logissue type=error]OAuth token missing. Cannot validate HEAD."
+                  echo "##vso[task.logissue type=error]To fix: Edit pipeline → Job → Additional options → Enable 'Allow scripts to access the OAuth token'"
+                  echo "##vso[task.complete result=Failed;]DONE"
                   exit 1
                 fi
+                
+                echo "OAuth token check passed (required for Azure Repos HEAD validation)"
 
                 # Configure bearer token header for Azure DevOps git over HTTPS
                 git config --global http.extraheader "AUTHORIZATION: bearer ${SYSTEM_ACCESSTOKEN}"

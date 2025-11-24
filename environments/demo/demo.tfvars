@@ -81,23 +81,23 @@ frontends = [
           }
         ]
       },
-    {
-      name     = "AllowCourtNav"
-      priority = 3
-      type     = "MatchRule"
-      action   = "Allow"
-      match_conditions = [
+      {
+        name     = "AllowCourtNav"
+        priority = 3
+        type     = "MatchRule"
+        action   = "Allow"
+        match_conditions = [
           {
-              match_variable     = "RemoteAddr"
-              operator           = "IPMatch"
-              negation_condition = false
-              match_values       = ["165.232.96.32"]
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = false
+            match_values       = ["165.232.96.32"]
           },
           {
-              match_variable     = "RequestUri"
-              operator           = "Contains"
-              negation_condition = false
-              match_values       = ["prl-document-api/"]
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["prl-document-api/"]
           }
         ]
       },

@@ -3,10 +3,11 @@ locals {
     sbox = {
     }
     test = {
-      civil_sdt_root_ca   = "civil-sdt-root-ca"
-      reform_scan_sscs_ca = "reform-scan-sscs-ca"
-      liberata_ca         = "liberata-ca"
-      exela_ca            = "exela-ca"
+      civil_sdt_root_ca      = "civil-sdt-root-ca"
+      civil_sdt_root_ca_2025 = "civil-sdt-root-ca-2025"
+      reform_scan_sscs_ca    = "reform-scan-sscs-ca"
+      liberata_ca            = "liberata-ca"
+      exela_ca               = "exela-ca"
     }
     demo = {
       reform_scan_sscs_ca            = "reform-scan-sscs-ca"

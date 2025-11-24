@@ -71,7 +71,7 @@ frontends = [
                 {
                   # This key must exist in local.origin_group_ids
                   cdn_frontdoor_origin_group_key = "hmcts-access"
-                  forwarding_protocol = "HttpOnly"    # “HTTP only”
+                  forwarding_protocol            = "HttpOnly"    # “HTTP only”
                   cache_behavior                 = "HonorOrigin" # “Caching: Disabled”
                 }
               ]
@@ -808,16 +808,6 @@ frontends = [
     shutter_app      = true
   },
   {
-    product          = "plum-tlse2e"
-    name             = "plum-tlse2e"
-    custom_domain    = "plum-tlse2e.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com", "cnfgw-fe-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-    shutter_app      = true
-  },
-  {
     product          = "hmi"
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.sandbox.platform.hmcts.net"
@@ -866,15 +856,6 @@ frontends = [
     dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-labs-rebeccahayleypickles-nodejs.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
-  {
-    product          = "lab-james-matthews-goldenpath"
-    name             = "lab-james-matthews-goldenpath"
-    custom_domain    = "lab-james-matthews-goldenpath.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-labsgoldenpath-james-matthews.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   }

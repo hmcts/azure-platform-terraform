@@ -819,15 +819,6 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labs-rebeccahayleypickles-nodejs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
-  },
-  {
-    product          = "lab-james-matthews-goldenpath"
-    name             = "lab-james-matthews-goldenpath"
-    custom_domain    = "lab-james-matthews-goldenpath.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-labsgoldenpath-james-matthews.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
   }
 ]
 

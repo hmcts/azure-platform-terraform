@@ -206,4 +206,3 @@ variable "ssl_policy" {
 variable "ssl_certificate" {
   default = ""
 }
-

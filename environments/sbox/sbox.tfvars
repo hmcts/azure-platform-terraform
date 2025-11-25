@@ -97,7 +97,7 @@ frontends = [
                 {
                   cdn_frontdoor_origin_group_key = "hmcts-access"
                   forwarding_protocol            = "HttpOnly"
-                  cache_behavior                 = "BypassCache"
+                  cache_behavior                 = "HonorOrigin"
                 }
               ]
             }

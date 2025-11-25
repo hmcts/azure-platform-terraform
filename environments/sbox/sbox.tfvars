@@ -47,7 +47,7 @@ frontends = [
         name = "hmcts-access-overrides"
         rules = [
           {
-            name  = "ContainsClientId"
+            name  = "UseHmctsAccedsIfClientIdEMatches"
             order = 1
 
             conditions = {
@@ -71,12 +71,37 @@ frontends = [
                 {
                   # This key must exist in local.origin_group_ids
                   cdn_frontdoor_origin_group_key = "hmcts-access"
-                  forwarding_protocol            = "HttpOnly"    # “HTTP only”
-                  cache_behavior                 = "HonorOrigin" # “Caching: Disabled”
+                  forwarding_protocol            = "HttpOnly"
+                  cache_behavior                 = "HonorOrigin"
                 }
               ]
             }
           },
+          {
+            name  = "UseHmctsAccedsIfCookieExists"
+            order = 2
+            # behavior_on_match = "Stop"  # if you want to stop after this rule
+
+            conditions = {
+              cookies_conditions = [
+                {
+                  cookie_name      = "idam.request"
+                  operator         = "Any"
+                  negate_condition = false
+                }
+              ]
+            }
+
+            actions = {
+              route_configuration_override_actions = [
+                {
+                  cdn_frontdoor_origin_group_key = "hmcts-access"
+                  forwarding_protocol            = "HttpOnly"
+                  cache_behavior                 = "BypassCache"
+                }
+              ]
+            }
+          }
         ]
       }
     ]

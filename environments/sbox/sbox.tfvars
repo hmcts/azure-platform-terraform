@@ -72,7 +72,7 @@ frontends = [
                   # This key must exist in local.origin_group_ids
                   cdn_frontdoor_origin_group_key = "hmcts-access"
                   forwarding_protocol            = "HttpOnly"
-                  cache_behavior                 = "HonorOrigin"
+                  cache_behavior                 = "Disabled"
                 }
               ]
             }
@@ -97,7 +97,7 @@ frontends = [
                 {
                   cdn_frontdoor_origin_group_key = "hmcts-access"
                   forwarding_protocol            = "HttpOnly"
-                  cache_behavior                 = "HonorOrigin"
+                  cache_behavior                 = "Disabled"
                 }
               ]
             }

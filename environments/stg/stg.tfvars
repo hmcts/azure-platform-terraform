@@ -159,7 +159,7 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "connect.sid"
+        selector       = "dtSa"
       },
       {
         match_variable = "RequestCookieNames"
@@ -169,7 +169,42 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "__auth-token"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "reasonForDivorceBehaviourDetails" // this is a free text field that raises false positives a lot for sql like characters
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "file" // prevent WebKitFormBoundary boundary strings from triggering path traversal false positives.
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "legalProceedingsDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "petitionerNameChangedHowOtherDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "address"
       },
       {
         match_variable = "QueryStringArgNames"
@@ -187,14 +222,9 @@ frontends = [
         selector       = "_csrf"
       },
       {
-        match_variable = "RequestBodyPostArgNames"
+        match_variable = "QueryStringArgNames"
         operator       = "Equals"
-        selector       = "_csrf"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "StartsWith"
-        selector       = "reasonForDivorceBehaviourDetails"
+        selector       = "fileUrl" // this is used as a HAL ID for the document, it's a URI and a URL
       },
     ]
   },

@@ -11,7 +11,7 @@ resources:
   repositories:
   - repository: cnp-azuredevops-libraries
     type: github
-    ref: refs/heads/feature/test_cases
+    ref: refs/heads/master
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
 
@@ -231,7 +231,7 @@ parameters:
       storage_account_rg: 'core-infra-demo-rg'
       storage_account_name: 'cftappsdemo'
       dependsOn: 'sbox_apim_appgw'
-      pipeline_tests: true
+      pipeline_tests: false
 
     - deployment: 'test_frontendappgateway'
       environment: 'test'
@@ -473,7 +473,7 @@ stages:
             vmImage: ${{ variables.agentPool }}
           timeoutInMinutes: ${{ variables.timeoutInMinutes }}
           dependsOn: TerraformPlanApply
-          #condition: and(succeeded(), eq(variables['isMain'], true), eq('${{ deployment.pipeline_tests }}', 'true'))
+          condition: and(succeeded(), eq(variables['isMain'], true), eq('${{ deployment.pipeline_tests }}', 'true'))
           steps:
             - template: steps/pipeline-tests-jest.yaml@cnp-azuredevops-libraries
               parameters:

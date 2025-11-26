@@ -102,3 +102,4 @@ gateways:
             url:
               components: "path_only"
               path: "/sdt-gateway"
+

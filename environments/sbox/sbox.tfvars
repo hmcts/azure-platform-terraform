@@ -32,7 +32,7 @@ hub          = "sbox"
 autoShutdown = true
 
 frontends = [
-    {
+  {
     product          = "labs-goldenpath-remythompson"
     name             = "labs-goldenpath-remythompson"
     custom_domain    = "labs-goldenpath-remythompson.sandbox.platform.hmcts.net"

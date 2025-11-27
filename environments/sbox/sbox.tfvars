@@ -890,7 +890,7 @@ frontends = [
     custom_domain    = "labs-playfair-nodejs.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-labs-playfair-nodejs.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-sbox-int-palo-labsgoldenpathplayfair.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   }

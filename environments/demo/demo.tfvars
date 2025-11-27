@@ -1,6 +1,6 @@
 env                    = "demo"
 subscription           = "demo"
-cft_apps_cluster_ips   = ["10.50.79.221"]
+cft_apps_cluster_ips   = ["10.50.79.221", "10.50.95.221"]
 certificate_name_check = false
 autoShutdown           = true
 ssl_policy = {
@@ -78,6 +78,26 @@ frontends = [
               "/refunds-api",
               "/feeRegister-api"
             ]
+          }
+        ]
+      },
+      {
+        name     = "AllowCourtNav"
+        priority = 3
+        type     = "MatchRule"
+        action   = "Allow"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = false
+            match_values       = ["165.232.96.32"]
+          },
+          {
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["prl-document-api/"]
           }
         ]
       },
@@ -3716,7 +3736,6 @@ frontends = [
     custom_domain  = "manage-case-ac-int.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-    cache_enabled  = "false"
   },
   {
     name           = "xui-webapp-int"
@@ -3724,7 +3743,6 @@ frontends = [
     custom_domain  = "manage-case-int.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-    cache_enabled  = "false"
   },
   {
     name           = "xui-webapp-caa-ac"
@@ -3732,7 +3750,6 @@ frontends = [
     custom_domain  = "manage-case-caa-assigned-case-view.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-    cache_enabled  = "false"
 
   },
   {
@@ -3774,7 +3791,6 @@ frontends = [
     custom_domain  = "manage-case-int1.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-    cache_enabled  = "false"
 
   },
   {
@@ -3783,7 +3799,6 @@ frontends = [
     custom_domain  = "manage-case-int2.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-    cache_enabled  = "false"
 
   },
   {
@@ -3809,7 +3824,6 @@ frontends = [
     custom_domain  = "manage-case-srt.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-    cache_enabled  = "false"
 
   },
   {
@@ -3818,7 +3832,6 @@ frontends = [
     custom_domain  = "manage-case-wa-int.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-    cache_enabled  = "false"
 
   },
   {

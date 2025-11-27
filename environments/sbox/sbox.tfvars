@@ -32,6 +32,16 @@ hub          = "sbox"
 autoShutdown = true
 
 frontends = [
+    {
+    product          = "labs-goldenpath-remythompson"
+    name             = "labs-goldenpath-remythompson"
+    custom_domain    = "labs-goldenpath-remythompson.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labsgoldenpathremythompson.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
+
   {
     product          = "idam"
     name             = "idam-web-public"

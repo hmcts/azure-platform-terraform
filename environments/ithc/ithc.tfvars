@@ -135,6 +135,67 @@ frontends = [
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
 
+    rule_sets = [
+      {
+        name = "hmcts-access-overrides"
+        rules = [
+          {
+            name  = "UseHmctsAccessIfClientIdEMatches"
+            order = 1
+
+            conditions = {
+              query_string_conditions = [
+                {
+                  operator         = "Contains"
+                  negate_condition = false
+                  match_values = [
+                    "client_id=idam-user-dashboard",
+                  ]
+                  transforms = ["Lowercase"]
+                }
+              ]
+            }
+
+            actions = {
+              route_configuration_override_actions = [
+                {
+                  # This key must exist in local.origin_group_ids
+                  cdn_frontdoor_origin_group_key = "hmcts-access"
+                  forwarding_protocol            = "HttpOnly"
+                  cache_behavior                 = "Disabled"
+                }
+              ]
+            }
+          },
+          {
+            name  = "UseHmctsAccessIfCookieExists"
+            order = 2
+            # behavior_on_match = "Stop"  # if you want to stop after this rule
+
+            conditions = {
+              cookies_conditions = [
+                {
+                  cookie_name      = "idam.request"
+                  operator         = "Any"
+                  negate_condition = false
+                }
+              ]
+            }
+
+            actions = {
+              route_configuration_override_actions = [
+                {
+                  cdn_frontdoor_origin_group_key = "hmcts-access"
+                  forwarding_protocol            = "HttpOnly"
+                  cache_behavior                 = "Disabled"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"

@@ -451,7 +451,6 @@ frontends = [
     custom_domain  = "hmcts-access.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
-    redirect       = "idam-web-public.ithc.platform.hmcts.net"
   },
   {
     name           = "civil-citizen-ui"

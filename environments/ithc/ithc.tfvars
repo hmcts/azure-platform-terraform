@@ -164,8 +164,8 @@ frontends = [
                 {
                   # This key must exist in local.origin_group_ids
                   cdn_frontdoor_origin_group_id = "hmcts-access"
-                  forwarding_protocol            = "HttpOnly"
-                  cache_behavior                 = "Disabled"
+                  forwarding_protocol           = "HttpOnly"
+                  cache_behavior                = "Disabled"
                 }
               ]
             }
@@ -189,8 +189,8 @@ frontends = [
               route_configuration_override_actions = [
                 {
                   cdn_frontdoor_origin_group_id = "hmcts-access"
-                  forwarding_protocol            = "HttpOnly"
-                  cache_behavior                 = "Disabled"
+                  forwarding_protocol           = "HttpOnly"
+                  cache_behavior                = "Disabled"
                 }
               ]
             }

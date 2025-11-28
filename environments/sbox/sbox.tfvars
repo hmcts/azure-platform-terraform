@@ -749,14 +749,15 @@ frontends = [
     ]
   },
   {
-    product          = "plum"
-    name             = "plum"
-    custom_domain    = "plum.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com", "cnfgw-fe-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-    shutter_app      = true
+    product             = "plum"
+    name                = "plum"
+    custom_domain       = "plum.sandbox.platform.hmcts.net"
+    dns_zone_name       = "sandbox.platform.hmcts.net"
+    backend_domain      = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name    = "wildcard-sandbox-platform-hmcts-net"
+    cipher_suite_policy = "TLS12_2023"
+    disabled_rules      = {}
+    shutter_app         = true
   },
   {
     product          = "plumclassic"

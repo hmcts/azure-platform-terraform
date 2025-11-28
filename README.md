@@ -69,6 +69,30 @@ If you would like to use a certificate from the ACME Key Vaults managed by Platf
 }
 ```
 
+### TLS Policy
+By default the Frontdoor module will use `TLS12` policy, if you would like to change this then add the property to the `frontends` variable to desired minimum TLS policy:
+```terraform
+frontends = [
+  {
+    ...OTHER FRONTEND CONFIG...
+    minimum_tls_version = "...TLS POLICY.."
+  }
+]
+```
+For example, you could set this to `"TLS13"` _(if supported)_ for more recent protocols. **Note:** `tls_policy` object property is not yet supported in the terraform module.
+
+By default the Frontdoor module will use `TLS12_2022` cipher suite policy, if you would like to change this then add the property to the `frontends` variable to desired suite policy:
+```terraform
+frontends = [
+  {
+    ...OTHER FRONTEND CONFIG...
+    cipher_suite_policy = "...CIPHER SUITE POLICY.."
+  }
+]
+```
+For example, you could set this to `"TLS12_2023"`. **Note:** `tls_policy` object property is not yet supported in the terraform module.
+
+
 ## Shutter Pattern
 You can get more detail from [shutter-implementation-and-design](https://hmcts.github.io/cloud-native-platform/path-to-live/shutter.html)
 

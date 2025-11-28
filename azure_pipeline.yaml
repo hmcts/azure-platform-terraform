@@ -433,7 +433,7 @@ parameters:
 stages:
   - stage: Precheck
     jobs:
-      - job: PrecheckJob
+      - job: PreCheck-LastCommit
         pool:
           vmImage: ${{ variables.agentPool }}
         timeoutInMinutes: ${{ variables.timeoutInMinutes }}

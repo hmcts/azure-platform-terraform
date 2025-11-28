@@ -149,7 +149,7 @@ frontends = [
                   operator         = "Contains"
                   negate_condition = false
                   match_values = [
-                    "client_id=idam-user-dashboard",
+                    "client_id=idam_user_dashboard",
                   ]
                   transforms = ["Lowercase"]
                 }

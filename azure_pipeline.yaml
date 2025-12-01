@@ -459,6 +459,7 @@ stages:
                 echo "Pull Request ref detected: ${SRC_BRANCH_REF}. Skipping HEAD validation."
                 echo "Setting finalAction=plan (PR safety mode)"
                 echo "##vso[task.setvariable variable=finalAction]plan"
+                echo "##vso[task.setvariable variable=finalAction;isOutput=true]plan"
                 exit 0
               fi
 
@@ -467,6 +468,7 @@ stages:
                 echo "Non-protected branch detected (${SRC_BRANCH_REF}). Skipping HEAD validation."
                 echo "Setting finalAction=plan (non-protected branch)"
                 echo "##vso[task.setvariable variable=finalAction]plan"
+                echo "##vso[task.setvariable variable=finalAction;isOutput=true]plan"
                 exit 0
               fi
 
@@ -479,7 +481,7 @@ stages:
               fi
               echo "Validating branch: ${BRANCH}"
 
-              # ---- Azure Repos: validate HEAD using System.AccessToken ----
+              # ---- Validate HEAD for Azure Repos or GitHub ----
               if [[ "${REPO_PROVIDER}" == "TfsGit" ]]; then
                 # Check if OAuth token is available (required for Azure Repos HEAD validation)
                 if [[ -z "${SYSTEM_ACCESSTOKEN:-}" ]]; then
@@ -509,6 +511,48 @@ stages:
                   echo "HEAD validation passed (Azure Repos)."
                   echo "Setting finalAction=apply (HEAD validation passed)"
                   echo "##vso[task.setvariable variable=finalAction]apply"
+                  echo "##vso[task.setvariable variable=finalAction;isOutput=true]apply"
+                else
+                  echo "##vso[task.logissue type=error]Commit is not HEAD. Please rerun the pipeline for the latest commit."
+                  echo "##vso[task.complete result=Failed;]DONE"
+                  exit 1
+                fi
+                exit 0
+              elif [[ "${REPO_PROVIDER}" == "GitHub" ]]; then
+                # GitHub HEAD validation - use git fetch to get latest
+                echo "GitHub repository detected. Validating HEAD..."
+                
+                # Fetch the latest from origin to compare
+                git fetch origin "${BRANCH}" --depth=1 2>/dev/null || true
+                
+                # Get the latest commit SHA from origin
+                LATEST_SHA=$(git ls-remote origin "refs/heads/${BRANCH}" 2>/dev/null | awk '{print $1}')
+                
+                # Fallback: try direct remote
+                if [[ -z "${LATEST_SHA}" ]]; then
+                  LATEST_SHA=$(git rev-parse "origin/${BRANCH}" 2>/dev/null || echo "")
+                fi
+                
+                # Final fallback: use git ls-remote with the repo URL
+                if [[ -z "${LATEST_SHA}" ]]; then
+                  LATEST_SHA=$(git ls-remote "${REPO_URL}" "refs/heads/${BRANCH}" 2>/dev/null | awk '{print $1}')
+                fi
+
+                if [[ -z "${LATEST_SHA}" ]]; then
+                  echo "Warning: Could not resolve branch '${BRANCH}' via remote (GitHub). Defaulting to plan mode."
+                  echo "Setting finalAction=plan (branch resolution failed)"
+                  echo "##vso[task.setvariable variable=finalAction]plan"
+                  exit 0
+                fi
+
+                echo "Latest (HEAD) SHA: ${LATEST_SHA}"
+                echo "Current run SHA: ${RUN_SHA}"
+
+                if [[ "${LATEST_SHA}" == "${RUN_SHA}" ]]; then
+                  echo "HEAD validation passed (GitHub)."
+                  echo "Setting finalAction=apply (HEAD validation passed)"
+                  echo "##vso[task.setvariable variable=finalAction]apply"
+                  echo "##vso[task.setvariable variable=finalAction;isOutput=true]apply"
                 else
                   echo "##vso[task.logissue type=error]Commit is not HEAD. Please rerun the pipeline for the latest commit."
                   echo "##vso[task.complete result=Failed;]DONE"
@@ -517,9 +561,9 @@ stages:
                 exit 0
               fi
 
-              # ---- GitHub or other providers: skip HEAD validation, default to plan ----
-              echo "Non-Azure repository detected (${REPO_PROVIDER}). Skipping HEAD validation for ${SRC_BRANCH_REF}."
-              echo "Setting finalAction=plan (non-Azure repository)"
+              # ---- Other providers: skip HEAD validation, default to plan ----
+              echo "Unsupported repository provider detected (${REPO_PROVIDER}). Skipping HEAD validation for ${SRC_BRANCH_REF}."
+              echo "Setting finalAction=plan (unsupported repository provider)"
               echo "##vso[task.setvariable variable=finalAction]plan"
               exit 0
             displayName: "Precheck: HEAD validation (master/main only; PR-safe)"

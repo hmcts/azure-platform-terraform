@@ -580,6 +580,7 @@ stages:
           steps:
           - ${{ if eq(deployment.deployment, 'sbox_global') }}:
             - script: |
+                cd $(Build.WorkingDirectory)
                 mv components/global/import_plum-tlse2e_dns.tf.disabled components/global/import_plum-tlse2e_dns.tf
               displayName: 'Enable sbox global import file'
 
@@ -612,6 +613,7 @@ stages:
 
           - ${{ if eq(deployment.deployment, 'sbox_global') }}:
               - script: |
+                  cd $(Build.WorkingDirectory)
                   mv components/global/import_plum-tlse2e_dns.tf components/global/import_plum-tlse2e_dns.tf.disabled
                 displayName: 'Disable sbox global import file'
                 condition: always()

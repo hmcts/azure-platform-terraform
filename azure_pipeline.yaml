@@ -458,6 +458,11 @@ stages:
             vmImage: ${{ variables.agentPool }}
           timeoutInMinutes: ${{ variables.timeoutInMinutes }}
           steps:
+          - ${{ if eq(deployment.deployment, 'sbox_global') }}:
+            - script: |
+                mv components/global/import_plum-tlse2e_dns.tf.disabled components/global/import_plum-tlse2e_dns.tf
+              displayName: 'Enable sbox global import file'
+
           - template: steps/terraform.yaml@cnp-azuredevops-libraries
             parameters:
               overrideAction: ${{ parameters.overrideAction }}
@@ -467,6 +472,12 @@ stages:
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
               publishPlanResults: ${{ variables.publishPlanResults }}
+
+          - ${{ if eq(deployment.deployment, 'sbox_global') }}:
+              - script: |
+                  mv components/global/import_plum-tlse2e_dns.tf components/global/import_plum-tlse2e_dns.tf.disabled
+                displayName: 'Disable sbox global import file'
+                condition: always()
 
         - job: PipelineTests
           pool:

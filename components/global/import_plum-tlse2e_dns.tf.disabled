@@ -1,0 +1,11 @@
+# NOTE: This file should be deleted or its content commented out after the first successful import run.
+
+import {
+  # The Terraform resource address you want to link the existing resource to.
+  to = module.premium_front_door.azurerm_dns_txt_record.public_dns_record["plum-tlse2e"]
+
+  # The exact Azure Resource ID of the resource that already exists in the cloud.
+  # Assuming AZURE_DATA_SUBSCRIPTION_ID maps to a variable named 'data_subscription'
+  # in your Terraform configuration.
+  id = "/subscriptions/${var.data_subscription}/resourceGroups/reformmgmtrg/providers/Microsoft.Network/dnsZones/sandbox.platform.hmcts.net/TXT/_dnsauth.plum-tlse2e"
+}

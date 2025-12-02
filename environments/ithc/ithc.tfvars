@@ -134,6 +134,7 @@ frontends = [
     mode           = "Prevention"
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    cache_enabled  = "false"
 
     rule_sets = [
       {
@@ -149,7 +150,7 @@ frontends = [
                   operator         = "Contains"
                   negate_condition = false
                   match_values = [
-                    "client_id=idam-user-dashboard",
+                    "client_id=idam_user_dashboard"
                   ]
                   transforms = ["Lowercase"]
                 }

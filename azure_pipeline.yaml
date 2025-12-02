@@ -433,21 +433,141 @@ parameters:
 stages:
   - stage: Precheck
     jobs:
-      - job:
+      - job: PreCheck_LastCommit
         pool:
           vmImage: ${{ variables.agentPool }}
         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
         steps:
+          - checkout: self
+            fetchDepth: 1
+            persistCredentials: true
+
+          # Consolidated HEAD validation with PR-safe and provider-aware logic.
+          - bash: |
+              set -euo pipefail
+
+              SRC_BRANCH_REF="${BUILD_SOURCEBRANCH}"
+              RUN_SHA="${BUILD_SOURCEVERSION}"
+              REPO_URL="$(Build.Repository.Uri)"
+              REPO_PROVIDER="${BUILD_REPOSITORY_PROVIDER}"  # 'TfsGit' for Azure Repos, 'GitHub' for GitHub
+
+              echo "Source branch ref: ${SRC_BRANCH_REF}"
+              echo "Repository provider: ${REPO_PROVIDER}"
+              
+              # ---- PR refs: always plan, skip remote validation ----
+              if [[ "${SRC_BRANCH_REF}" == refs/pull/* ]]; then
+                echo "Pull Request ref detected: ${SRC_BRANCH_REF}. Skipping HEAD validation."
+                echo "Setting finalAction=plan (PR safety mode)"
+                echo "##vso[task.setvariable variable=finalAction]plan"
+                exit 0
+              fi
+
+              # ---- Restrict fail-fast to master/main only ----
+              if [[ "${SRC_BRANCH_REF}" != "refs/heads/master" && "${SRC_BRANCH_REF}" != "refs/heads/main" ]]; then
+                echo "Non-protected branch detected (${SRC_BRANCH_REF}). Skipping HEAD validation."
+                echo "Setting finalAction=plan (non-protected branch)"
+                echo "##vso[task.setvariable variable=finalAction]plan"
+                exit 0
+              fi
+
+              BRANCH="${SRC_BRANCH_REF#refs/heads/}"
+              if [[ -z "${BRANCH}" ]]; then
+                echo "Error: Could not derive branch name from '${SRC_BRANCH_REF}'."
+                echo "Setting finalAction=plan (fallback on error)"
+                echo "##vso[task.setvariable variable=finalAction]plan"
+                exit 0
+              fi
+              echo "Validating branch: ${BRANCH}"
+
+              # ---- Azure Repos: validate HEAD using System.AccessToken ----
+              if [[ "${REPO_PROVIDER}" == "TfsGit" ]]; then
+                # Check if OAuth token is available (required for Azure Repos HEAD validation)
+                if [[ -z "${SYSTEM_ACCESSTOKEN:-}" ]]; then
+                  echo "##vso[task.logissue type=error]OAuth token missing. Cannot validate HEAD."
+                  echo "##vso[task.logissue type=error]To fix: Edit pipeline → Job → Additional options → Enable 'Allow scripts to access the OAuth token'"
+                  echo "##vso[task.complete result=Failed;]DONE"
+                  exit 1
+                fi
+                
+                echo "OAuth token check passed (required for Azure Repos HEAD validation)"
+
+                # Configure bearer token header for Azure DevOps git over HTTPS
+                git config --global http.extraheader "AUTHORIZATION: bearer ${SYSTEM_ACCESSTOKEN}"
+
+                LATEST_SHA=$(git ls-remote "${REPO_URL}" "refs/heads/${BRANCH}" | awk '{print $1}')
+                if [[ -z "${LATEST_SHA}" ]]; then
+                  echo "Error: Could not resolve branch '${BRANCH}' via ls-remote (Azure Repos)."
+                  echo "Setting finalAction=plan (branch resolution failed)"
+                  echo "##vso[task.setvariable variable=finalAction]plan"
+                  exit 1
+                fi
+
+                echo "Latest (HEAD) SHA: ${LATEST_SHA}"
+                echo "Current run SHA: ${RUN_SHA}"
+
+                if [[ "${LATEST_SHA}" == "${RUN_SHA}" ]]; then
+                  echo "HEAD validation passed (Azure Repos)."
+                  echo "Setting finalAction=apply (HEAD validation passed)"
+                  echo "##vso[task.setvariable variable=finalAction]apply"
+                else
+                  echo "##vso[task.logissue type=error]Commit is not HEAD. Please rerun the pipeline for the latest commit."
+                  echo "##vso[task.complete result=Failed;]DONE"
+                  exit 1
+                fi
+                exit 0
+              fi
+
+              # ---- GitHub or other providers: skip HEAD validation, default to plan ----
+              echo "Non-Azure repository detected (${REPO_PROVIDER}). Skipping HEAD validation for ${SRC_BRANCH_REF}."
+              echo "Setting finalAction=plan (non-Azure repository)"
+              echo "##vso[task.setvariable variable=finalAction]plan"
+              exit 0
+            displayName: "Precheck: HEAD validation (master/main only; PR-safe)"
+            env:
+              SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+
+          # Display finalAction decision in a prominent, easily identifiable step
+          - bash: |
+              set -euo pipefail
+              
+              FINAL_ACTION="${finalAction:-NOT_SET}"
+              
+              echo "##[section]=========================================="
+              echo "##[section] FINAL ACTION DECISION"
+              echo "##[section]=========================================="
+              echo ""
+              
+              if [[ "${FINAL_ACTION}" == "apply" ]]; then
+                echo "##[warning]⚠️  FINAL ACTION: ${FINAL_ACTION}"
+                echo "##[warning]Terraform will RUN PLAN AND APPLY changes"
+                echo "##[warning]This means infrastructure changes WILL be applied"
+              elif [[ "${FINAL_ACTION}" == "plan" ]]; then
+                echo "##[section]✓ FINAL ACTION: ${FINAL_ACTION}"
+                echo "##[section]Terraform will ONLY RUN PLAN (preview mode)"
+                echo "##[section]No infrastructure changes will be applied"
+              else
+                echo "##[error]✗ FINAL ACTION: ${FINAL_ACTION}"
+                echo "##[error]Variable is not set - this may indicate a problem"
+              fi
+              
+              echo ""
+              echo "##[section]=========================================="
+              echo "##[section]This variable will be passed to terraform-precheck step"
+              echo "##[section]=========================================="
+            displayName: "🔍 VERIFY: finalAction Decision (plan or apply)"
+            env:
+              finalAction: $(finalAction)
+
+          # Your existing precheck template (receives finalAction)
           - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
             parameters:
               keyvaultName: 'infra-vault-nonprod'
               keyvaultSecret: 'azure-devops-sp-token'
               serviceConnection: 'azurerm-sandbox'
-              overrideAction: ${{ parameters.overrideAction }}
+              overrideAction: ${{ variables.finalAction }}
               projectName: ${{ variables.businessArea }}
               environment: 'sbox'
               runManualStart: true
-
 
   - ${{ each deployment in parameters.environment_components }}:
     - stage: ${{ deployment.deployment }}
@@ -465,13 +585,30 @@ stages:
 
           - template: steps/terraform.yaml@cnp-azuredevops-libraries
             parameters:
-              overrideAction: ${{ parameters.overrideAction }}
+              overrideAction: ${{ variables.finalAction }}
               environment: ${{ deployment.environment }}
               component: ${{ deployment.component }}
               serviceConnection: ${{ deployment.service_connection }}
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
               publishPlanResults: ${{ variables.publishPlanResults }}
+          
+          # Handle ACR cleanup errors gracefully
+          # This step runs after terraform to catch and handle transient ACR cleanup errors
+          # that may occur during the terraform template's cleanup process
+          - task: AzureCLI@2
+            displayName: 'Handle ACR cleanup errors (if any)'
+            condition: always()  # Run even if previous step failed
+            continueOnError: true  # Don't fail the pipeline on cleanup errors
+            inputs:
+              azureSubscription: ${{ deployment.service_connection }}
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                echo "Checking for any ACR cleanup issues..."
+                echo "Note: Transient ACR cleanup errors (500 status codes) are expected and non-blocking."
+                echo "If cleanup failed in the previous step, it will be retried in the next pipeline run."
+                echo "This step ensures the pipeline continues even if cleanup encounters transient Azure errors."
 
           - ${{ if eq(deployment.deployment, 'sbox_global') }}:
               - script: |

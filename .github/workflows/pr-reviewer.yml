@@ -102,7 +102,7 @@ jobs:
           echo "Resolved comment id: ${comment_id:-<none>}"
 
       - name: Create or update PR review comment
-        uses: actions/github-script@v6
+        uses: actions/github-script@v8
         env:
           COMMENT_ID: ${{ env.comment_id }}
         with:

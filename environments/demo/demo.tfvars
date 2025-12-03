@@ -81,6 +81,26 @@ frontends = [
           }
         ]
       },
+      {
+        name     = "AllowCourtNav"
+        priority = 3
+        type     = "MatchRule"
+        action   = "Allow"
+        match_conditions = [
+          {
+            match_variable     = "RemoteAddr"
+            operator           = "IPMatch"
+            negation_condition = false
+            match_values       = ["165.232.96.32"]
+          },
+          {
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["prl-document-api/"]
+          }
+        ]
+      },
     ],
   },
   {
@@ -3756,12 +3776,12 @@ frontends = [
 
   },
   {
-    name           = "return-case-doc-ccd"
-    mode           = "Detection"
-    custom_domain  = "return-case-doc-ccd.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-
+    name             = "return-case-doc-ccd"
+    mode             = "Prevention"
+    custom_domain    = "return-case-doc-ccd.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
   },
   {
     name           = "return-case-doc-ccd-int"

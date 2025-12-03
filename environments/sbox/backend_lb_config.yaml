@@ -63,8 +63,6 @@ gateways:
       - product: plum-tlse2e
         component: frontend
         host_name_prefix: plum-tlse2e
-        ssl_enabled: true
-        http_to_https_redirect: true
 
     #labs
       - product: "labs"

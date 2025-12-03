@@ -141,8 +141,34 @@ frontends = [
         name = "hmcts-access-overrides"
         rules = [
           {
+            name              = "StopIfClientIdExistsButDoesNotMatch"
+            order             = 1
+            behavior_on_match = "Stop"
+
+            conditions = {
+              query_string_conditions = [
+                {
+                  operator         = "Contains"
+                  negate_condition = false
+                  match_values = [
+                    "client_id="
+                  ]
+                  transforms = ["Lowercase"]
+                },
+                {
+                  operator         = "Contains"
+                  negate_condition = true
+                  match_values = [
+                    "client_id=idam_user_dashboard"
+                  ]
+                  transforms = ["Lowercase"]
+                }
+              ]
+            }
+          },
+          {
             name  = "UseHmctsAccessIfClientIdEMatches"
-            order = 1
+            order = 2
 
             conditions = {
               query_string_conditions = [
@@ -169,15 +195,15 @@ frontends = [
             }
           },
           {
-            name  = "UseHmctsAccessIfCookieExists"
-            order = 2
-            # behavior_on_match = "Stop"  # if you want to stop after this rule
+            name  = "UseHmctsAccessIfIdamUiCookie"
+            order = 3
 
             conditions = {
               cookies_conditions = [
                 {
-                  cookie_name      = "idam.request"
-                  operator         = "Any"
+                  cookie_name      = "idam.ui"
+                  operator         = "Equal"
+                  match_values     = ["hmcts-access"]
                   negate_condition = false
                 }
               ]

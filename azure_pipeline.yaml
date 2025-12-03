@@ -459,7 +459,7 @@ stages:
           steps:
           - template: steps/terraform.yaml@cnp-azuredevops-libraries
             parameters:
-              ooverrideAction: ${{ parameters.overrideAction }}
+              overrideAction: ${{ parameters.overrideAction }}
               environment: ${{ deployment.environment }}
               component: ${{ deployment.component }}
               serviceConnection: ${{ deployment.service_connection }}

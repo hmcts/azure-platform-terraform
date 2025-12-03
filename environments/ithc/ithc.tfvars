@@ -141,7 +141,7 @@ frontends = [
         name = "hmcts-access-overrides"
         rules = [
           {
-            name              = "StopIfClientIdExistsAndNotDashboard"
+            name              = "StopIfClientIdExistsButDoesNotMatch"
             order             = 1
             behavior_on_match = "Stop"
 

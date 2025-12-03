@@ -893,7 +893,47 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labs-rebeccahayleypickles-nodejs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
-  }
+  },
+  {
+    product          = "dtsse-richui"
+    name             = "devextreme-poc-spa"
+    custom_domain    = "devextreme-poc-spa.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+    shutter_app      = true
+  },
+  {
+    product          = "dtsse-richui"
+    name             = "devextreme-poc-ssr"
+    custom_domain    = "devextreme-poc-ssr.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+    shutter_app      = true
+  },
+  {
+    product          = "dtsse-richui"
+    name             = "telerik-poc-spa"
+    custom_domain    = "telerik-poc-spa.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+    shutter_app      = true
+  },
+  {
+    product          = "dtsse-richui"
+    name             = "telerik-poc-ssr"
+    custom_domain    = "telerik-poc-ssr.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+    shutter_app      = true
+  },
 ]
 
 apim_appgw_exclusions = [

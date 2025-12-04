@@ -210,7 +210,7 @@ frontends = [
             conditions = {
               cookies_conditions = [
                 {
-                  cookie_name      = "idam.ui"
+                  cookie_name      = "Idam.UI"
                   operator         = "Equal"
                   match_values     = ["hmcts-access"]
                   negate_condition = false

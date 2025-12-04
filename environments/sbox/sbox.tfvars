@@ -832,16 +832,16 @@ frontends = [
     disabled_rules   = {}
     shutter_app      = true
   },
-  {
-    product          = "plum-tlse2e"
-    name             = "plum-tlse2e"
-    custom_domain    = "plum-tlse2e.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["cnfgw-fe-sbox.uksouth.cloudapp.azure.com", "firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-    shutter_app      = true
-  },
+  #{
+  #  product          = "plum-tlse2e"
+  #  name             = "plum-tlse2e"
+  #  custom_domain    = "plum-tlse2e.sandbox.platform.hmcts.net"
+  #  dns_zone_name    = "sandbox.platform.hmcts.net"
+  #  backend_domain   = ["cnfgw-fe-sbox.uksouth.cloudapp.azure.com", "firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+  #  certificate_name = "wildcard-sandbox-platform-hmcts-net"
+  #  disabled_rules   = {}
+  #  shutter_app      = true
+  #},
   {
     product          = "hmi"
     name             = "hmi-apim"

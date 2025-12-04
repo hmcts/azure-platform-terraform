@@ -433,171 +433,17 @@ parameters:
 stages:
   - stage: Precheck
     jobs:
-      - job: PreCheck_LastCommit
+      - job:
         pool:
           vmImage: ${{ variables.agentPool }}
         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-        steps:
-          - checkout: self
-            fetchDepth: 1
-            persistCredentials: true
-
-          # HEAD validation: Fail pipeline if commit is not the latest on master/main
-          # Does not control plan/apply - that is determined by the pipeline parameter
-          - bash: |
-              set -euo pipefail
-
-              SRC_BRANCH_REF="${BUILD_SOURCEBRANCH}"
-              RUN_SHA="${BUILD_SOURCEVERSION}"
-              REPO_URL="$(Build.Repository.Uri)"
-              REPO_PROVIDER="${BUILD_REPOSITORY_PROVIDER}"  # 'TfsGit' for Azure Repos, 'GitHub' for GitHub
-
-              echo "Source branch ref: ${SRC_BRANCH_REF}"
-              echo "Repository provider: ${REPO_PROVIDER}"
-              
-              # ---- PR refs: skip HEAD validation (PRs always run) ----
-              if [[ "${SRC_BRANCH_REF}" == refs/pull/* ]]; then
-                echo "Pull Request ref detected: ${SRC_BRANCH_REF}. Skipping HEAD validation."
-                echo "✓ HEAD validation skipped for PR"
-                exit 0
-              fi
-
-              # ---- Only validate HEAD on master/main branches ----
-              if [[ "${SRC_BRANCH_REF}" != "refs/heads/master" && "${SRC_BRANCH_REF}" != "refs/heads/main" ]]; then
-                echo "Non-protected branch detected (${SRC_BRANCH_REF}). Skipping HEAD validation."
-                echo "✓ HEAD validation skipped for non-protected branch"
-                exit 0
-              fi
-
-              BRANCH="${SRC_BRANCH_REF#refs/heads/}"
-              if [[ -z "${BRANCH}" ]]; then
-                echo "Error: Could not derive branch name from '${SRC_BRANCH_REF}'."
-                echo "✓ HEAD validation skipped (branch name error)"
-                exit 0
-              fi
-              echo "Validating HEAD for protected branch: ${BRANCH}"
-
-              # ---- Azure Repos: validate HEAD using System.AccessToken ----
-              if [[ "${REPO_PROVIDER}" == "TfsGit" ]]; then
-                # Check if OAuth token is available (required for Azure Repos HEAD validation)
-                if [[ -z "${SYSTEM_ACCESSTOKEN:-}" ]]; then
-                  echo "##vso[task.logissue type=error]OAuth token missing. Cannot validate HEAD."
-                  echo "##vso[task.logissue type=error]To fix: Edit pipeline → Job → Additional options → Enable 'Allow scripts to access the OAuth token'"
-                  echo "##vso[task.complete result=Failed;]DONE"
-                  exit 1
-                fi
-                
-                echo "OAuth token check passed (required for Azure Repos HEAD validation)"
-
-                # Configure bearer token header for Azure DevOps git over HTTPS
-                git config --global http.extraheader "AUTHORIZATION: bearer ${SYSTEM_ACCESSTOKEN}"
-
-                LATEST_SHA=$(git ls-remote "${REPO_URL}" "refs/heads/${BRANCH}" | awk '{print $1}')
-                if [[ -z "${LATEST_SHA}" ]]; then
-                  echo "##vso[task.logissue type=error]Could not resolve branch '${BRANCH}' via ls-remote (Azure Repos)."
-                  echo "##vso[task.complete result=Failed;]DONE"
-                  exit 1
-                fi
-
-                echo "Latest (HEAD) SHA: ${LATEST_SHA}"
-                echo "Current run SHA: ${RUN_SHA}"
-
-                if [[ "${LATEST_SHA}" == "${RUN_SHA}" ]]; then
-                  echo "✓ HEAD validation passed (Azure Repos) - commit is latest on ${BRANCH}"
-                else
-                  echo "##vso[task.logissue type=error]Commit is not HEAD. Please rerun the pipeline for the latest commit."
-                  echo "##vso[task.logissue type=error]Latest: ${LATEST_SHA} | Current: ${RUN_SHA}"
-                  echo "##vso[task.complete result=Failed;]DONE"
-                  exit 1
-                fi
-                exit 0
-              fi
-
-              # ---- GitHub: validate HEAD using git ls-remote ----
-              if [[ "${REPO_PROVIDER}" == "GitHub" ]]; then
-                echo "GitHub repository detected. Validating HEAD..."
-                
-                # For public GitHub repos, git ls-remote works without auth
-                # For private repos in Azure Pipelines, the checkout has already authenticated
-                LATEST_SHA=$(git ls-remote origin "refs/heads/${BRANCH}" 2>/dev/null | awk '{print $1}')
-                
-                if [[ -z "${LATEST_SHA}" ]]; then
-                  # Fallback: try with the repo URL
-                  LATEST_SHA=$(git ls-remote "${REPO_URL}" "refs/heads/${BRANCH}" 2>/dev/null | awk '{print $1}')
-                fi
-
-                if [[ -z "${LATEST_SHA}" ]]; then
-                  echo "##vso[task.logissue type=error]Could not resolve branch '${BRANCH}' via ls-remote (GitHub)."
-                  echo "##vso[task.complete result=Failed;]DONE"
-                  exit 1
-                fi
-
-                echo "Latest (HEAD) SHA: ${LATEST_SHA}"
-                echo "Current run SHA: ${RUN_SHA}"
-
-                if [[ "${LATEST_SHA}" == "${RUN_SHA}" ]]; then
-                  echo "✓ HEAD validation passed (GitHub) - commit is latest on ${BRANCH}"
-                else
-                  echo "##vso[task.logissue type=error]Commit is not HEAD. Please rerun the pipeline for the latest commit."
-                  echo "##vso[task.logissue type=error]Latest: ${LATEST_SHA} | Current: ${RUN_SHA}"
-                  echo "##vso[task.complete result=Failed;]DONE"
-                  exit 1
-                fi
-                exit 0
-              fi
-
-              # ---- Other providers: skip HEAD validation ----
-              echo "Unsupported repository provider (${REPO_PROVIDER}). Skipping HEAD validation for ${SRC_BRANCH_REF}."
-              echo "✓ HEAD validation skipped for unsupported provider"
-              exit 0
-            displayName: "Precheck: HEAD validation (master/main only; PR-safe)"
-            env:
-              SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-
-          # Display pipeline action (determined by parameter selection)
-          - bash: |
-              set -euo pipefail
-              
-              FINAL_ACTION="${finalAction:-NOT_SET}"
-              
-              echo "##[section]=========================================="
-              echo "##[section] PIPELINE ACTION (from parameter)"
-              echo "##[section]=========================================="
-              echo ""
-              
-              if [[ "${FINAL_ACTION}" == "apply" ]]; then
-                echo "##[warning]⚠️  ACTION: ${FINAL_ACTION}"
-                echo "##[warning]Terraform will RUN PLAN AND APPLY changes"
-                echo "##[warning]This means infrastructure changes WILL be applied"
-              elif [[ "${FINAL_ACTION}" == "plan" ]]; then
-                echo "##[section]✓ ACTION: ${FINAL_ACTION}"
-                echo "##[section]Terraform will ONLY RUN PLAN (preview mode)"
-                echo "##[section]No infrastructure changes will be applied"
-              elif [[ "${FINAL_ACTION}" == "destroy" ]]; then
-                echo "##[error]⚠️  ACTION: ${FINAL_ACTION}"
-                echo "##[error]Terraform will DESTROY infrastructure"
-                echo "##[error]This is a destructive operation!"
-              else
-                echo "##[error]✗ ACTION: ${FINAL_ACTION}"
-                echo "##[error]No action specified"
-              fi
-              
-              echo ""
-              echo "##[section]=========================================="
-              echo "##[section]Note: Action is controlled by the 'overrideAction' parameter"
-              echo "##[section]HEAD validation ensures only latest commits run on master/main"
-              echo "##[section]=========================================="
-            displayName: "📋 Pipeline Action Summary"
-            env:
-              finalAction: $(finalAction)
-
-          # Your existing precheck template (receives finalAction)
+        steps:  
           - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
             parameters:
               keyvaultName: 'infra-vault-nonprod'
               keyvaultSecret: 'azure-devops-sp-token'
               serviceConnection: 'azurerm-sandbox'
-              overrideAction: ${{ variables.finalAction }}
+              overrideAction: ${{ parameters.overrideAction }}
               projectName: ${{ variables.businessArea }}
               environment: 'sbox'
               runManualStart: true
@@ -613,7 +459,7 @@ stages:
           steps:
           - template: steps/terraform.yaml@cnp-azuredevops-libraries
             parameters:
-              overrideAction: ${{ variables.finalAction }}
+              overrideAction: ${{ parameters.overrideAction }}
               environment: ${{ deployment.environment }}
               component: ${{ deployment.component }}
               serviceConnection: ${{ deployment.service_connection }}

@@ -58,6 +58,12 @@ gateways:
     # Plum Frontend
       - product: plum
         component: frontend
+
+    # Plum TLSe2e Frontend
+      - product: plum-tlse2e
+        component: frontend
+        host_name_prefix: plum-tlse2e
+
     #labs
       - product: "labs"
         component: apps-njs

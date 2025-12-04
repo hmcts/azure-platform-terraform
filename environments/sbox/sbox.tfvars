@@ -833,6 +833,16 @@ frontends = [
     shutter_app      = true
   },
   {
+    product          = "plum-tlse2e"
+    name             = "plum-tlse2e"
+    custom_domain    = "plum-tlse2e.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["cnfgw-fe-sbox.uksouth.cloudapp.azure.com", "firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+    shutter_app      = true
+  },
+  {
     product          = "hmi"
     name             = "hmi-apim"
     custom_domain    = "hmi-apim.sandbox.platform.hmcts.net"
@@ -881,16 +891,6 @@ frontends = [
     dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false
     backend_domain   = ["firewall-sbox-int-palo-labs-rebeccahayleypickles-nodejs.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
-  {
-    product          = "labs-playfair-nodejs"
-    name             = "labs-playfair-nodejs"
-    custom_domain    = "labs-playfair-nodejs.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-labsgoldenpathplayfair.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   }

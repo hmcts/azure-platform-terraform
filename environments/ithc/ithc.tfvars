@@ -165,9 +165,19 @@ frontends = [
                 }
               ]
             }
+
+            actions = {
+              route_configuration_override_actions = [
+                {
+                  cdn_frontdoor_origin_group_key = "idam-web-public"
+                  forwarding_protocol            = "HttpOnly"
+                  cache_behavior                 = "Disabled"
+                }
+              ]
+            }
           },
           {
-            name  = "UseHmctsAccessIfClientIdEMatches"
+            name  = "UseHmctsAccessIfClientIdMatches"
             order = 2
 
             conditions = {
@@ -186,7 +196,6 @@ frontends = [
             actions = {
               route_configuration_override_actions = [
                 {
-                  # This key must exist in local.origin_group_ids
                   cdn_frontdoor_origin_group_key = "hmcts-access"
                   forwarding_protocol            = "HttpOnly"
                   cache_behavior                 = "Disabled"
@@ -201,7 +210,7 @@ frontends = [
             conditions = {
               cookies_conditions = [
                 {
-                  cookie_name      = "idam.ui"
+                  cookie_name      = "Idam.UI"
                   operator         = "Equal"
                   match_values     = ["hmcts-access"]
                   negate_condition = false

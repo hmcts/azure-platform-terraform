@@ -2356,7 +2356,7 @@ frontends = [
     mode           = "Prevention"
     dns_zone_name  = "aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
-
+    cache_enabled    = "false"
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"

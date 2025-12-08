@@ -3503,7 +3503,7 @@ frontends = [
     mode           = "Prevention"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-    cache_enabled    = "false"
+    cache_enabled  = "false"
     rule_sets = [
       {
         name = "hmcts-access-overrides"

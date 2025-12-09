@@ -2583,21 +2583,6 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "oidc_session"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "Idam.Request"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
-        selector       = "connect.sid"
-      },
-      {
-        match_variable = "QueryStringArgNames"
-        operator       = "Equals"
-        selector       = "id_token_hint"
       }
     ]
   },

@@ -1583,11 +1583,78 @@ frontends = [
   },
   {
     name           = "et-sya"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "et-sya.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
-
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-sya-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-sya-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "i18next"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+    ]
+    disabled_rules = {
+      SQLI = [
+        "942260"
+      ]
+      RFI = [
+        "931130"
+      ]
+      LFI = [
+        "930130"
+      ]
+    }
   },
   {
     name           = "ia-aip"
@@ -2529,7 +2596,102 @@ frontends = [
     mode           = "Prevention"
     dns_zone_name  = "aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    cache_enabled  = "false"
+    rule_sets = [
+      {
+        name = "hmcts-access-overrides"
+        rules = [
+          {
+            name              = "StopIfClientIdExistsButDoesNotMatch"
+            order             = 1
+            behavior_on_match = "Stop"
 
+            conditions = {
+              query_string_conditions = [
+                {
+                  operator         = "Contains"
+                  negate_condition = false
+                  match_values = [
+                    "client_id="
+                  ]
+                  transforms = ["Lowercase"]
+                },
+                {
+                  operator         = "Contains"
+                  negate_condition = true
+                  match_values = [
+                    "client_id=idam_user_dashboard"
+                  ]
+                  transforms = ["Lowercase"]
+                }
+              ]
+            }
+
+            actions = {
+              route_configuration_override_actions = [
+                {
+                  cdn_frontdoor_origin_group_key = "idam-web-public"
+                  forwarding_protocol            = "HttpOnly"
+                  cache_behavior                 = "Disabled"
+                }
+              ]
+            }
+          },
+          {
+            name  = "UseHmctsAccessIfClientIdMatches"
+            order = 2
+
+            conditions = {
+              query_string_conditions = [
+                {
+                  operator         = "Contains"
+                  negate_condition = false
+                  match_values = [
+                    "client_id=idam_user_dashboard"
+                  ]
+                  transforms = ["Lowercase"]
+                }
+              ]
+            }
+
+            actions = {
+              route_configuration_override_actions = [
+                {
+                  cdn_frontdoor_origin_group_key = "hmcts-access"
+                  forwarding_protocol            = "HttpOnly"
+                  cache_behavior                 = "Disabled"
+                }
+              ]
+            }
+          },
+          {
+            name  = "UseHmctsAccessIfIdamUiCookie"
+            order = 3
+
+            conditions = {
+              cookies_conditions = [
+                {
+                  cookie_name      = "Idam.UI"
+                  operator         = "Equal"
+                  match_values     = ["hmcts-access"]
+                  negate_condition = false
+                }
+              ]
+            }
+
+            actions = {
+              route_configuration_override_actions = [
+                {
+                  cdn_frontdoor_origin_group_key = "hmcts-access"
+                  forwarding_protocol            = "HttpOnly"
+                  cache_behavior                 = "Disabled"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"

@@ -2594,7 +2594,7 @@ frontends = [
     dns_zone_name    = "platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
 
-    global_exclusions = [
+    global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
@@ -2836,7 +2836,7 @@ frontends = [
         selector       = "oidc_session"
       },
     ]
-  },
+  },
   {
     product          = "pcq"
     name             = "pcq"

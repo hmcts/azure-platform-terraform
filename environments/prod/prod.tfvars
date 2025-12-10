@@ -2587,12 +2587,13 @@ frontends = [
     ]
   },
   {
-    product        = "idam"
-    name           = "hmcts-access"
-    mode           = "Prevention"
-    custom_domain  = "hmcts-access.platform.hmcts.net"
-    dns_zone_name  = "platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    product          = "idam"
+    name             = "hmcts-access"
+    mode             = "Prevention"
+    custom_domain    = "hmcts-access.platform.hmcts.net"
+    dns_zone_name    = "platform.hmcts.net"
+    certificate_name = "wildcard-platform-hmcts-net"
+    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
       {

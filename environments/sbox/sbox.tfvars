@@ -894,7 +894,7 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   },
-    {
+  {
     product          = "labs-goldenpath-kamilb"
     name             = "labs-goldenpath-kamilb"
     custom_domain    = "labs-goldenpath-kamilb.sandbox.platform.hmcts.net"

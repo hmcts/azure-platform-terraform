@@ -1594,6 +1594,11 @@ frontends = [
         selector       = "dtCookie"
       },
       {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "tribunalRecommendationRequest"
+      },
+      {
         match_variable = "RequestCookieNames"
         operator       = "StartsWith"
         selector       = "_ga"

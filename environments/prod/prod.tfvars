@@ -2308,6 +2308,101 @@ frontends = [
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "hmcts-access-service-gov-uk"
     cache_enabled    = "false"
+    rule_sets = [
+      {
+        name = "hmcts-access-overrides"
+        rules = [
+          {
+            name              = "StopIfClientIdExistsButDoesNotMatch"
+            order             = 1
+            behavior_on_match = "Stop"
+
+            conditions = {
+              query_string_conditions = [
+                {
+                  operator         = "Contains"
+                  negate_condition = false
+                  match_values = [
+                    "client_id="
+                  ]
+                  transforms = ["Lowercase"]
+                },
+                {
+                  operator         = "Contains"
+                  negate_condition = true
+                  match_values = [
+                    "client_id=idam_user_dashboard"
+                  ]
+                  transforms = ["Lowercase"]
+                }
+              ]
+            }
+
+            actions = {
+              route_configuration_override_actions = [
+                {
+                  cdn_frontdoor_origin_group_key = "idam-web-public"
+                  forwarding_protocol            = "HttpOnly"
+                  cache_behavior                 = "Disabled"
+                }
+              ]
+            }
+          },
+          {
+            name  = "UseHmctsAccessIfClientIdMatches"
+            order = 2
+
+            conditions = {
+              query_string_conditions = [
+                {
+                  operator         = "Contains"
+                  negate_condition = false
+                  match_values = [
+                    "client_id=idam_user_dashboard"
+                  ]
+                  transforms = ["Lowercase"]
+                }
+              ]
+            }
+
+            actions = {
+              route_configuration_override_actions = [
+                {
+                  cdn_frontdoor_origin_group_key = "hmcts-access"
+                  forwarding_protocol            = "HttpOnly"
+                  cache_behavior                 = "Disabled"
+                }
+              ]
+            }
+          },
+          {
+            name  = "UseHmctsAccessIfIdamUiCookie"
+            order = 3
+
+            conditions = {
+              cookies_conditions = [
+                {
+                  cookie_name      = "Idam.UI"
+                  operator         = "Equal"
+                  match_values     = ["hmcts-access"]
+                  negate_condition = false
+                }
+              ]
+            }
+
+            actions = {
+              route_configuration_override_actions = [
+                {
+                  cdn_frontdoor_origin_group_key = "hmcts-access"
+                  forwarding_protocol            = "HttpOnly"
+                  cache_behavior                 = "Disabled"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"
@@ -2583,6 +2678,21 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "oidc_session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.Request"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "id_token_hint"
       }
     ]
   },

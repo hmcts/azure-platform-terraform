@@ -899,7 +899,7 @@ frontends = [
     name             = "labs-goldenpath-kamilb"
     custom_domain    = "labs-goldenpath-kamilb.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-labsgoldenpathkamilb.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-kamilb.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   }

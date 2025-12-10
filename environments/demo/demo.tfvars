@@ -592,6 +592,11 @@ frontends = [
         selector       = "et-sya-session"
       },
       {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "tribunalRecommendationRequest"
+      },
+      {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-sya-cookie-preferences"

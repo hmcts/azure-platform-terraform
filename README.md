@@ -81,6 +81,29 @@ The shuttering service currently requires an ACME certificate, you will need to 
 }
 ```
 
+### TLS Policy
+By default the Frontdoor module will use `TLS12` policy, if you would like to change this then add the property to the `frontends` variable to desired minimum TLS policy:
+```terraform
+frontends = [
+  {
+    ...OTHER FRONTEND CONFIG...
+    minimum_tls_version = "...TLS POLICY.."
+  }
+]
+```
+For example, you could set this to `"TLS13"` _(if supported)_ for more recent protocols. **Note:** `tls_policy` object property is not yet supported in the terraform module.
+
+Azure will use it's default, in the portal that seems to be `"TLS v1.2_2022"` cipher suite policy, if you would like to change this then add the property to the `frontends` variable to desired suite policy:
+```terraform
+frontends = [
+  {
+    ...OTHER FRONTEND CONFIG...
+    cipher_suite_policy = "...CIPHER SUITE POLICY.."
+  }
+]
+```
+For example, you could set this to `"TLS v1.2_2023"` (a stronger sipher suite). **Note:** `tls_policy` object property is not yet supported in the terraform module.
+
 ## Custom Data Updates
 Please note that custom_data updates will cause VMs to restart.
 

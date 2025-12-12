@@ -93,7 +93,7 @@ frontends = [
 ```
 For example, you could set this to `"TLS13"` _(if supported)_ for more recent protocols. **Note:** `tls_policy` object property is not yet supported in the terraform module.
 
-Azure will use it's default, in the portal that seems to be `"TLS12_2023"` cipher suite policy, if you would like to change this then add the property to the `frontends` variable to desired suite policy:
+Azure will use it's default, in the portal that seems to be `"TLS12_2022"` cipher suite policy, if you would like to change this then add the property to the `frontends` variable to desired suite policy:
 ```terraform
 frontends = [
   {

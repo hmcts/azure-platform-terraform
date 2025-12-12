@@ -824,7 +824,7 @@ frontends = [
     dns_zone_name       = "sandbox.platform.hmcts.net"
     backend_domain      = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
     certificate_name    = "wildcard-sandbox-platform-hmcts-net"
-    cipher_suite_policy = "TLS v1.2_2023"
+    cipher_suite_policy = "TLS12_2023"
     disabled_rules      = {}
     shutter_app         = true
   },

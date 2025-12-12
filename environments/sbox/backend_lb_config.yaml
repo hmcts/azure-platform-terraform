@@ -66,10 +66,6 @@ gateways:
 
     #labs
       - product: "labs"
-        component: apps-njs
-      - product: "labs"
-        component: dj-khaled
-      - product: "labs"
         component: hurricanepilot
       - product: "labs"
         component: rebeccahayleypickles

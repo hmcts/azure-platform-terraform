@@ -210,7 +210,7 @@ frontends = [
             conditions = {
               cookies_conditions = [
                 {
-                  cookie_name      = "idam.ui"
+                  cookie_name      = "Idam.UI"
                   operator         = "Equal"
                   match_values     = ["hmcts-access"]
                   negate_condition = false
@@ -477,6 +477,21 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "code_verifier"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Idam.Request"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "id_token_hint"
       }
     ]
   },
@@ -2201,6 +2216,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "idam_user_dashboard_sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "auth_verification"
       },
       {
@@ -3127,6 +3147,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "tribunalRecommendationRequest"
       },
       {
         match_variable = "RequestBodyPostArgNames"

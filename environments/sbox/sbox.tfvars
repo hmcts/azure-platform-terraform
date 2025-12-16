@@ -910,18 +910,20 @@ frontends = [
     disabled_rules   = {}
   },
   {
-    name           = "csds-active"
-    custom_domain  = "csds.sandbox.apps.hmcts.net"
-    dns_zone_name  = "sandbox.apps.hmcts.net"
-    backend_domain = ["firewall-sbox-int-palo-csds-sandbox.uksouth.cloudapp.azure.com"]
-    disabled_rules = {}
+    name                   = "csds-active"
+    custom_domain          = "csds.sandbox.apps.hmcts.net"
+    dns_zone_name          = "sandbox.apps.hmcts.net"
+    backend_domain         = ["firewall-sbox-int-palo-csds-sandbox.uksouth.cloudapp.azure.com"]
+    disabled_rules         = {}
+    disable_frontend_appgw = true
   },
   {
-    name           = "csds-passive"
-    custom_domain  = "csds-passive.sandbox.apps.hmcts.net"
-    dns_zone_name  = "sandbox.apps.hmcts.net"
-    backend_domain = ["firewall-sbox-int-palo-csds-sandbox.uksouth.cloudapp.azure.com"]
-    disabled_rules = {}
+    name                   = "csds-passive"
+    custom_domain          = "csds-passive.sandbox.apps.hmcts.net"
+    dns_zone_name          = "sandbox.apps.hmcts.net"
+    backend_domain         = ["firewall-sbox-int-palo-csds-sandbox.uksouth.cloudapp.azure.com"]
+    disabled_rules         = {}
+    disable_frontend_appgw = true
   }
 ]
 

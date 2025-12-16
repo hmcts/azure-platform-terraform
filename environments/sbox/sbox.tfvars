@@ -915,7 +915,7 @@ frontends = [
     dns_zone_name          = "sandbox.apps.hmcts.net"
     backend_domain         = ["firewall-sbox-int-palo-csds-sandbox.uksouth.cloudapp.azure.com"]
     disabled_rules         = {}
-    disable_frontend_appgw = true
+    disable_frontend_appgw = false
   },
   {
     name                   = "csds-passive"

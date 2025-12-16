@@ -916,6 +916,7 @@ frontends = [
     backend_domain         = ["firewall-sbox-int-palo-csds-sandbox.uksouth.cloudapp.azure.com"]
     disabled_rules         = {}
     disable_frontend_appgw = true
+    host_header            = "csds-active.sandbox.platform.hmcts.net"
   },
   {
     name                   = "csds-passive"
@@ -924,6 +925,7 @@ frontends = [
     backend_domain         = ["firewall-sbox-int-palo-csds-sandbox.uksouth.cloudapp.azure.com"]
     disabled_rules         = {}
     disable_frontend_appgw = true
+    host_header            = "csds-passive.sandbox.platform.hmcts.net"
   }
 ]
 

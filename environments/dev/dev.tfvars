@@ -41,7 +41,7 @@ frontends = [
   },
   {
     name                   = "csds-passive"
-    custom_domain          = "csds-dev.sandbox.apps.hmcts.net"
+    custom_domain          = "csds-passive.dev.apps.hmcts.net"
     dns_zone_name          = "dev.apps.hmcts.net"
     backend_domain         = ["firewall-nonprodi-palo-csds-dev.uksouth.cloudapp.azure.com"]
     disabled_rules         = {}

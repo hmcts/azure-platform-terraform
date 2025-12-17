@@ -29,5 +29,23 @@ frontends = [
     appgw_cookie_based_affinity    = "Enabled"
     cache_enabled                  = "false"
     certificate_name_check_enabled = false
+  },
+  {
+    name                   = "csds-active"
+    custom_domain          = "csds.dev.apps.hmcts.net"
+    dns_zone_name          = "dev.apps.hmcts.net"
+    backend_domain         = ["firewall-nonprodi-palo-csds-dev.uksouth.cloudapp.azure.com"]
+    disabled_rules         = {}
+    disable_frontend_appgw = true
+    host_header            = "csds-active.dev.platform.hmcts.net"
+  },
+  {
+    name                   = "csds-passive"
+    custom_domain          = "csds-dev.sandbox.apps.hmcts.net"
+    dns_zone_name          = "dev.apps.hmcts.net"
+    backend_domain         = ["firewall-nonprodi-palo-csds-dev.uksouth.cloudapp.azure.com"]
+    disabled_rules         = {}
+    disable_frontend_appgw = true
+    host_header            = "csds-passive.dev.platform.hmcts.net"
   }
 ]

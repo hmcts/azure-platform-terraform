@@ -4949,6 +4949,42 @@ frontends = [
         selector       = "et-syr-cookie-preferences"
       }
     ]
+  },
+  {
+    name                   = "csds-active-stg"
+    custom_domain          = "csds.staging.apps.hmcts.net"
+    dns_zone_name          = "staging.apps.hmcts.net"
+    backend_domain         = ["firewall-prod-int-palo-csds-staging.uksouth.cloudapp.azure.com"]
+    disabled_rules         = {}
+    disable_frontend_appgw = true
+    host_header            = "csds-active.staging.platform.hmcts.net"
+  },
+  {
+    name                   = "csds-passive-stg"
+    custom_domain          = "csds.staging.apps.hmcts.net"
+    dns_zone_name          = "staging.apps.hmcts.net"
+    backend_domain         = ["firewall-prod-int-palo-csds-staging.uksouth.cloudapp.azure.com"]
+    disabled_rules         = {}
+    disable_frontend_appgw = true
+    host_header            = "csds-passive.staging.platform.hmcts.net"
+  },
+  {
+    name                   = "csds-active-prod"
+    custom_domain          = "csds.apps.hmcts.net"
+    dns_zone_name          = "apps.hmcts.net"
+    backend_domain         = ["firewall-prod-int-palo-csds-prod.uksouth.cloudapp.azure.com"]
+    disabled_rules         = {}
+    disable_frontend_appgw = true
+    host_header            = "csds-active.prod.platform.hmcts.net"
+  },
+  {
+    name                   = "csds-passive-prod"
+    custom_domain          = "csds.apps.hmcts.net"
+    dns_zone_name          = "apps.hmcts.net"
+    backend_domain         = ["firewall-prod-int-palo-csds-prod.uksouth.cloudapp.azure.com"]
+    disabled_rules         = {}
+    disable_frontend_appgw = true
+    host_header            = "csds-passive.prod.platform.hmcts.net"
   }
 ]
 

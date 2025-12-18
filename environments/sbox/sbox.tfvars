@@ -698,6 +698,11 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "idam_user_dashboard_sid"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "auth_verification"
       },
       {
@@ -838,10 +843,14 @@ frontends = [
     name             = "plum-tlse2e"
     custom_domain    = "plum-tlse2e.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["cnfgw-fe-sbox.uksouth.cloudapp.azure.com", "firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["plum-tlse2e.sandbox.platform.hmcts.net"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
+    private_link = {
+      target_id = "/subscriptions/ea3a8c1e-af9d-4108-bc86-a7e2d267f49c/resourceGroups/hmcts-hub-sbox-int/providers/Microsoft.Network/privateLinkServices/privatelink-palo-sbox-int"
+      location  = "uksouth"
+    }
   },
   {
     product          = "hmi"
@@ -903,6 +912,24 @@ frontends = [
     backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-kamilb.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
+  },
+  {
+    name                   = "csds-active"
+    custom_domain          = "csds.sandbox.apps.hmcts.net"
+    dns_zone_name          = "sandbox.apps.hmcts.net"
+    backend_domain         = ["firewall-sbox-int-palo-csds-sandbox.uksouth.cloudapp.azure.com"]
+    disabled_rules         = {}
+    disable_frontend_appgw = true
+    host_header            = "csds-active.sandbox.platform.hmcts.net"
+  },
+  {
+    name                   = "csds-passive"
+    custom_domain          = "csds-passive.sandbox.apps.hmcts.net"
+    dns_zone_name          = "sandbox.apps.hmcts.net"
+    backend_domain         = ["firewall-sbox-int-palo-csds-sandbox.uksouth.cloudapp.azure.com"]
+    disabled_rules         = {}
+    disable_frontend_appgw = true
+    host_header            = "csds-passive.sandbox.platform.hmcts.net"
   }
 ]
 

@@ -28,7 +28,7 @@ module "frontendappgateway" {
   location                           = var.location
   private_ip_address                 = var.frontend_agw_private_ip_address
   destinations                       = var.cft_apps_cluster_ips
-  frontends                          = var.frontends
+  frontends                          = [for app in var.frontends : app if lookup(app, "disable_frontend_appgw", false) == false]
   common_tags                        = module.ctags.common_tags
   oms_env                            = var.oms_env
   project                            = var.project

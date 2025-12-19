@@ -124,3 +124,12 @@ gateways:
         ssl_enabled: true
         host_name_prefix: docmosis
         http_to_https_redirect: true
+
+      - product: dtsse-richui
+        component: devextreme-poc-spa
+      - product: dtsse-richui
+        component: devextreme-poc-ssr
+      - product: dtsse-richui
+        component: telerik-poc-spa
+      - product: dtsse-richui
+        component: telerik-poc-ssr

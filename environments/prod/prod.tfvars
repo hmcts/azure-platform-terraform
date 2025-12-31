@@ -1711,7 +1711,6 @@ frontends = [
     product          = "ccd"
     name             = "return-case-doc-ccd"
     mode             = "Detection"
-    todo check
     custom_domain    = "return-case-doc.ccd.platform.hmcts.net"
     dns_zone_name    = "platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]

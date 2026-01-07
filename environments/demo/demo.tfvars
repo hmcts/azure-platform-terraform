@@ -560,6 +560,13 @@ frontends = [
     ]
   },
   {
+    name           = "fact-public-frontend"
+    mode           = "Prevention"
+    custom_domain  = "fact-public-frontend.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "et-sya"
     mode           = "Prevention"
     custom_domain  = "et-sya.demo.platform.hmcts.net"

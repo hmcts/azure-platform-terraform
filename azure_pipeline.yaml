@@ -14,7 +14,7 @@ resources:
     ref: refs/heads/DTSPO-28968
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
-# change for testing PR
+# change for testing PR2
 
 variables:
   - name: timeoutInMinutes

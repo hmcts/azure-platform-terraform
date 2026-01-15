@@ -660,6 +660,13 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
   },
   {
+    name           = "fact-admin-frontend"
+    custom_domain  = "fact-admin-frontend.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
+    mode           = "Prevention"
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "nfdiv"
     custom_domain  = "nfdiv.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"

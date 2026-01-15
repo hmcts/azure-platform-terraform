@@ -492,6 +492,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "id_token_hint"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
       }
     ]
   },
@@ -743,6 +748,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "oidc_session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
       }
     ]
   },
@@ -1207,6 +1217,13 @@ frontends = [
     name           = "fact-public-frontend"
     mode           = "Prevention"
     custom_domain  = "fact-public-frontend.ithc.platform.hmcts.net"
+    dns_zone_name  = "ithc.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+  },
+  {
+    name           = "fact-admin-frontend"
+    mode           = "Prevention"
+    custom_domain  = "fact-admin-frontend.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
   },

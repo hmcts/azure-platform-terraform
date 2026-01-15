@@ -660,6 +660,13 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
   },
   {
+    name           = "fact-admin-frontend"
+    custom_domain  = "fact-admin-frontend.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
+    mode           = "Prevention"
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "nfdiv"
     custom_domain  = "nfdiv.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
@@ -1305,6 +1312,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "code_verifier"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
       }
     ]
   },
@@ -1556,6 +1568,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "oidc_session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
       }
     ]
   },

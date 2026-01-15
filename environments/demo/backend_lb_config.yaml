@@ -200,8 +200,6 @@ gateways:
         component: terms-and-conditions-int
       - product: xui
         component: activity-tracker-api
-      - product: xui
-        component: case-activity-api
 
     # Access Management
       - product: am
@@ -458,3 +456,7 @@ gateways:
       # enforcement
       - product: enforcement
         component: api
+    
+     # xui
+      - product: xui
+        component: case-activity-api

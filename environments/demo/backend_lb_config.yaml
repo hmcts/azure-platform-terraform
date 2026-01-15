@@ -124,10 +124,6 @@ gateways:
       - product: ccd
         component: case-print-service
 
-    # RPX
-      - product: rpx
-        component: case-activity-api
-
     # AAC (CDM)
       - product: aac
         component: manage-case-assignment
@@ -204,6 +200,8 @@ gateways:
         component: terms-and-conditions-int
       - product: xui
         component: activity-tracker-api
+      - product: xui
+        component: case-activity-api
 
     # Access Management
       - product: am

@@ -469,7 +469,7 @@ stages:
 
               # Fetch the latest master branch from origin
               echo "Fetching latest from origin/master..."
-              git fetch origin master
+              git fetch --depth=1 origin master
 
               # Get the latest commit SHA on master
               LATEST_COMMIT=$(git rev-parse FETCH_HEAD)

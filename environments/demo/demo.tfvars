@@ -1471,11 +1471,12 @@ frontends = [
     ]
   },
   {
-    name           = "nfdiv"
-    mode           = "Prevention"
-    custom_domain  = "nfdiv.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    name                = "nfdiv"
+    mode                = "Prevention"
+    custom_domain       = "nfdiv.demo.platform.hmcts.net"
+    dns_zone_name       = "demo.platform.hmcts.net"
+    backend_domain      = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
     disabled_rules = {
       SQLI = [
         "942100",

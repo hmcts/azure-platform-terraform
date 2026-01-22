@@ -1228,11 +1228,12 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
   },
   {
-    name           = "nfdiv"
-    mode           = "Prevention"
-    custom_domain  = "nfdiv.ithc.platform.hmcts.net"
-    dns_zone_name  = "ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    name                = "nfdiv"
+    mode                = "Prevention"
+    custom_domain       = "nfdiv.ithc.platform.hmcts.net"
+    dns_zone_name       = "ithc.platform.hmcts.net"
+    backend_domain      = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
     disabled_rules = {
       SQLI = [
         "942100",

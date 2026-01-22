@@ -1162,6 +1162,20 @@ frontends = [
     ]
   },
   {
+    name           = "fact-public-frontend"
+    mode           = "Prevention"
+    custom_domain  = "fact-public-frontend.aat.platform.hmcts.net"
+    dns_zone_name  = "aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+  },
+  {
+    name           = "fact-admin-frontend"
+    mode           = "Prevention"
+    custom_domain  = "fact-admin-frontend.aat.platform.hmcts.net"
+    dns_zone_name  = "aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "rpts"
     mode           = "Prevention"
     custom_domain  = "rpts.aat.platform.hmcts.net"
@@ -1204,11 +1218,12 @@ frontends = [
 
   },
   {
-    name           = "nfdiv"
-    mode           = "Prevention"
-    custom_domain  = "nfdiv.aat.platform.hmcts.net"
-    dns_zone_name  = "aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    name                = "nfdiv"
+    mode                = "Prevention"
+    custom_domain       = "nfdiv.aat.platform.hmcts.net"
+    dns_zone_name       = "aat.platform.hmcts.net"
+    backend_domain      = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
     disabled_rules = {
       SQLI = [
         "942100",
@@ -2957,6 +2972,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "id_token_hint"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
       }
     ]
   },
@@ -3209,6 +3229,11 @@ frontends = [
         operator       = "Equals"
         selector       = "oidc_session"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
+      }
     ]
   },
   {
@@ -4633,7 +4658,7 @@ frontends = [
   },
   {
     name           = "et-syr"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "et-syr.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
@@ -4642,8 +4667,64 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-syr-cookie-preferences"
-      }
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-syr-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "i18next"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
     ]
+    disabled_rules = {
+      SQLI = [
+        "942260"
+      ]
+      RFI = [
+        "931130"
+      ]
+      LFI = [
+        "930130"
+      ]
+    }
   },
   {
     name           = "pcs-frontend"

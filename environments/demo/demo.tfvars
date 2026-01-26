@@ -4546,9 +4546,9 @@ pubsub_frontends = [
     product       = "xui"
     name          = "xui-case-activity-api"
     mode          = "Detection"
-    health_path   = "/api/health"
-    host_name     = "xui-case-activity-api-demo.webpubsub.azure.com"
-    custom_domain = "xui-case-activity-api.demo.platform.hmcts.net"
+    health_path   = "/health/liveness"
+    host_name     = "rpx-case-activity-api-demo.service.core-compute-demo.internal"
+    custom_domain = "rpx-case-activity-api-demo.service.core-compute-demo.internal"
     dns_zone_name = "demo.platform.hmcts.net"
     destinations  = var.cft_apps_cluster_ips
   }

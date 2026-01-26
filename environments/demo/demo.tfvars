@@ -4548,7 +4548,7 @@ pubsub_frontends = [
     mode          = "Detection"
     health_path   = "/health/liveness"
     host_name     = "rpx-case-activity-api-demo.service.core-compute-demo.internal"
-    custom_domain = "rpx-case-activity-api-demo.service.core-compute-demo.internal"
+    custom_domain = "xui-case-activity-api.demo.platform.hmcts.net"
     dns_zone_name = "demo.platform.hmcts.net"
     destinations  = var.cft_apps_cluster_ips
   }

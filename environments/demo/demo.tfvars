@@ -4542,7 +4542,18 @@ pubsub_frontends = [
     dns_zone_name = "demo.platform.hmcts.net"
     backend_fqdn  = ["firewall-nonprodi-palo-empubsubdemo.uksouth.cloudapp.azure.com"]
   },
+  {
+    product       = "xui"
+    name          = "xui-case-activity-api"
+    mode          = "Detection"
+    health_path   = "/api/health"
+    host_name     = "xui-case-activity-api-demo.webpubsub.azure.com"
+    custom_domain = "xui-case-activity-api.demo.platform.hmcts.net"
+    dns_zone_name = "demo.platform.hmcts.net"
+    destinations  = var.cft_apps_cluster_ips
+  }
 ]
+
 
 pubsub_waf_managed_rules = [
   {

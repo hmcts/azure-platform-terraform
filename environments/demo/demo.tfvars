@@ -4568,7 +4568,7 @@ pubsub_frontends = [
     host_name     = "rpx-case-activity-api-demo.service.core-compute-demo.internal"
     custom_domain = "xui-case-activity-api.demo.platform.hmcts.net"
     dns_zone_name = "demo.platform.hmcts.net"
-    destinations  = ["10.50.79.221", "10.50.95.221"]
+    backend_fqdn = firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com
   }
 ]
 

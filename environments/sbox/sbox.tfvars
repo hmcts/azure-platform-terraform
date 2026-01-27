@@ -974,6 +974,15 @@ frontends = [
     disabled_rules   = {}
   },
   {
+    product          = "labs-goldenpath-michaelfox"
+    name             = "labs-goldenpath-michaelfox"
+    custom_domain    = "labs-goldenpath-michaelfox.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-michaelfox.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
+  {
     name                   = "csds-active"
     custom_domain          = "csds.sandbox.apps.hmcts.net"
     dns_zone_name          = "sandbox.apps.hmcts.net"

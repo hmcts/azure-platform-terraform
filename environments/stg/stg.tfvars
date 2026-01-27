@@ -4771,6 +4771,57 @@ frontends = [
     }
     global_exclusions = []
   },
+  {
+    name           = "finrem-citizen-ui"
+    mode           = "Prevention"
+    custom_domain  = "finrem-citizen-ui.aat.platform.hmcts.net"
+    dns_zone_name  = "aat.platform.hmcts.net"
+    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    disabled_rules = {
+      SQLI = [
+        "942200",
+        "942260",
+        "942340",
+        "942370",
+        "942430",
+        "942440",
+        "942450",
+      ]
+      LFI = [
+        "930100",
+        "930130"
+      ]
+      RCE = [
+        "932100",
+        "932115"
+      ]
+      RFI = [
+        "931130"
+      ]
+    }
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "SESSION_ID"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      }
+    ]
+  },
 ]
 
 pubsub_frontends = [

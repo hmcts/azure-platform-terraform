@@ -266,7 +266,7 @@ frontends = [
   {
     product          = "div"
     name             = "div-pfe"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.apply-divorce.service.gov.uk"
     dns_zone_name    = "apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
@@ -367,7 +367,7 @@ frontends = [
   {
     product          = "div"
     name             = "div-amend"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.manage-application.apply-divorce.service.gov.uk"
     dns_zone_name    = "apply-divorce.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]

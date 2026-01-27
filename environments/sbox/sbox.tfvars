@@ -24,7 +24,7 @@ cdn_sku    = "Standard_Verizon"
 shutter_rg = "shutter-app-sbox-rg"
 
 frontend_agw_private_ip_address = "10.2.13.114"
-cft_apps_cluster_ips            = ["10.2.9.250", "10.2.11.250"]
+cft_apps_cluster_ips            = ["10.2.11.250"]
 
 apim_appgw_backend_pool_fqdns = ["firewall-sbox-int-palo-cftapimgmt.uksouth.cloudapp.azure.com"]
 
@@ -360,6 +360,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "code_verifier"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
       }
     ]
   },
@@ -614,6 +619,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "oidc_session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
       }
     ]
 
@@ -905,6 +915,16 @@ frontends = [
     disabled_rules   = {}
   },
   {
+    product          = "labs-kamil-biegaj-hm-nodejs"
+    name             = "labs-kamil-biegaj-hm-nodejs"
+    custom_domain    = "labs-kamil-biegaj-hm-nodejs.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    shutter_app      = false
+    backend_domain   = ["firewall-sbox-int-palo-labs-kamil-biegaj-hm-nodejs.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
+  {
     product          = "dtsse-richui"
     name             = "devextreme-poc-spa"
     custom_domain    = "devextreme-poc-spa.sandbox.platform.hmcts.net"
@@ -950,6 +970,15 @@ frontends = [
     custom_domain    = "labs-goldenpath-kamilb.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-kamilb.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
+  {
+    product          = "labs-goldenpath-michaelfox"
+    name             = "labs-goldenpath-michaelfox"
+    custom_domain    = "labs-goldenpath-michaelfox.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-michaelfox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   },

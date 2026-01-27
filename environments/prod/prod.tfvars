@@ -274,14 +274,23 @@ frontends = [
     disabled_rules = {
       SQLI = [
         "942100",
+        "942110",
+        "942120",
         "942150",
+        "942180",
         "942200",
         "942210",
         "942230",
+        "942260",
+        "942310",
         "942361",
+        "942370",
         "942380",
+        "942390",
         "942400",
+        "942410",
         "942430",
+        "942440",
       ]
       LFI = [
         "930100", // false positive on multi-part uploads
@@ -290,7 +299,10 @@ frontends = [
       RCE = [
         "932100"
       ]
-    }
+      RFI = [
+        "931130"
+      ]
+    },
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -500,6 +512,9 @@ frontends = [
       ]
       RCE = [
         "932100"
+      ]
+      RFI = [
+        "931130"
       ]
     },
     global_exclusions = [
@@ -2693,6 +2708,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "id_token_hint"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
       }
     ]
   },
@@ -2946,6 +2966,11 @@ frontends = [
         operator       = "Equals"
         selector       = "oidc_session"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
+      }
     ]
   },
   {

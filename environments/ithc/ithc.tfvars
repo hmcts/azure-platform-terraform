@@ -492,6 +492,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "id_token_hint"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
       }
     ]
   },
@@ -743,6 +748,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "oidc_session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
       }
     ]
   },
@@ -1211,11 +1221,19 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
   },
   {
-    name           = "nfdiv"
+    name           = "fact-admin-frontend"
     mode           = "Prevention"
-    custom_domain  = "nfdiv.ithc.platform.hmcts.net"
+    custom_domain  = "fact-admin-frontend.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+  },
+  {
+    name                = "nfdiv"
+    mode                = "Prevention"
+    custom_domain       = "nfdiv.ithc.platform.hmcts.net"
+    dns_zone_name       = "ithc.platform.hmcts.net"
+    backend_domain      = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
     disabled_rules = {
       SQLI = [
         "942100",
@@ -3520,6 +3538,37 @@ frontends = [
         selector       = "OtherInfoDocuments"
       },
     ]
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
   },
   {
     name             = "dss"

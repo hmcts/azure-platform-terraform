@@ -567,6 +567,13 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   },
   {
+    name           = "fact-admin-frontend"
+    mode           = "Prevention"
+    custom_domain  = "fact-admin-frontend.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "et-sya"
     mode           = "Prevention"
     custom_domain  = "et-sya.demo.platform.hmcts.net"
@@ -1464,11 +1471,12 @@ frontends = [
     ]
   },
   {
-    name           = "nfdiv"
-    mode           = "Prevention"
-    custom_domain  = "nfdiv.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    name                = "nfdiv"
+    mode                = "Prevention"
+    custom_domain       = "nfdiv.demo.platform.hmcts.net"
+    dns_zone_name       = "demo.platform.hmcts.net"
+    backend_domain      = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
     disabled_rules = {
       SQLI = [
         "942100",
@@ -3350,6 +3358,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "oidc_session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
       }
     ]
   },
@@ -3876,6 +3889,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "id_token_hint"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
       }
     ]
   },

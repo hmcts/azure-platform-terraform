@@ -4568,7 +4568,7 @@ pubsub_frontends = [
     host_name     = "manage-case-int1.demo.platform.hmcts.net"
     custom_domain = "xui-case-activity-api.demo.platform.hmcts.net"
     dns_zone_name = "demo.platform.hmcts.net"
-    backend_fqdn = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    backend_fqdn  = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   }
 ]
 

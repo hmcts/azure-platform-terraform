@@ -3902,7 +3902,7 @@ frontends = [
   {
     product          = "et"
     name             = "et-sya"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.claim-employment-tribunals.service.gov.uk"
     dns_zone_name    = "claim-employment-tribunals.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
@@ -3912,8 +3912,74 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-sya-cookie-preferences"
-      }
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "tribunalRecommendationRequest"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-sya-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "i18next"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
     ]
+    disabled_rules = {
+      SQLI = [
+        "942260"
+      ]
+      RFI = [
+        "931130"
+      ]
+      LFI = [
+        "930130"
+      ]
+    }
   },
   {
     product          = "sptribs"

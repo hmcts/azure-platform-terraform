@@ -10,7 +10,6 @@ moved {
 }
 module "premium_front_door" {
   source = "git::https://github.com/hmcts/terraform-module-frontdoor.git?ref=fix-tf-inconsistent-plan"
-
   common_tags                = module.ctags.common_tags
   env                        = var.env
   project                    = var.project

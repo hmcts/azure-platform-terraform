@@ -36,6 +36,8 @@ variables:
       value: ${{ parameters.overrideAction }}
   - name: publishPlanResults
     value: false
+  - name: backendServiceConnection
+  value: 'HMCTS-CONTROL'
 
 name: "$(finalAction) - Azure Platform"
 

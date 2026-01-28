@@ -28,6 +28,8 @@ variables:
     value: cft-platform
   - name: terraformInitSubscription
     value: '04d27a32-7a07-48b3-95b8-3c8691e1a263'
+  - name: backendServiceConnection
+    value: 'HMCTS-CONTROL'
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
   - name: finalAction
     ${{ if and(in(variables['Build.SourceBranch'], 'refs/heads/main', 'refs/heads/master'), in(variables['Build.Reason'], 'BatchedCI', 'IndividualCI', 'PullRequest', 'Schedule'))  }}:
@@ -519,7 +521,7 @@ stages:
                 environment: ${{ deployment.environment }}
                 component: ${{ deployment.component }}
                 serviceConnection: ${{ deployment.service_connection }}
-                #ßbackendServiceConnection: 'HMCTS-CONTROL' 
+                #backendServiceConnection: 'HMCTS-CONTROL' 
                 terraformInitSubscription: ${{ variables.terraformInitSubscription }}
                 product: ${{ variables.product }}
                 publishPlanResults: ${{ variables.publishPlanResults }}

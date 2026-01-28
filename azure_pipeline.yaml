@@ -14,7 +14,6 @@ resources:
     ref: refs/heads/feature/terraform-migration
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
-    backendServiceConnection: 'HMCTS-CONTROL'
 
 variables:
   - name: timeoutInMinutes
@@ -520,6 +519,7 @@ stages:
                 environment: ${{ deployment.environment }}
                 component: ${{ deployment.component }}
                 serviceConnection: ${{ deployment.service_connection }}
+                backendServiceConnection: 'HMCTS-CONTROL' 
                 terraformInitSubscription: ${{ variables.terraformInitSubscription }}
                 product: ${{ variables.product }}
                 publishPlanResults: ${{ variables.publishPlanResults }}

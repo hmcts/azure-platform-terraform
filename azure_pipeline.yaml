@@ -37,7 +37,7 @@ variables:
   - name: publishPlanResults
     value: false
   - name: backendServiceConnection
-  value: 'HMCTS-CONTROL'
+    value: 'HMCTS-CONTROL'
 
 name: "$(finalAction) - Azure Platform"
 

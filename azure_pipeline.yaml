@@ -14,6 +14,7 @@ resources:
     ref: refs/heads/feature/terraform-migration
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
+    backendServiceConnection: 'HMCTS-CONTROL'
 
 variables:
   - name: timeoutInMinutes
@@ -36,8 +37,6 @@ variables:
       value: ${{ parameters.overrideAction }}
   - name: publishPlanResults
     value: false
-  - name: backendServiceConnection
-    value: 'HMCTS-CONTROL'
 
 name: "$(finalAction) - Azure Platform"
 

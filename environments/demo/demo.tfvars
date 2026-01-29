@@ -4106,7 +4106,7 @@ frontends = [
   {
     product          = "et-pet-et1"
     name             = "et-pet-et1"
-    mode             = "Prevention"
+    mode             = "Detection"
     custom_domain    = "et-pet-et1.demo.platform.hmcts.net"
     dns_zone_name    = "demo.platform.hmcts.net"
     backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]

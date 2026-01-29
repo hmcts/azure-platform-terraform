@@ -832,7 +832,7 @@ frontends = [
     name                = "plum"
     custom_domain       = "plum.sandbox.platform.hmcts.net"
     dns_zone_name       = "sandbox.platform.hmcts.net"
-    backend_domain      = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    backend_domain      = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com", "lb-sbox-int-plum.uksouth.cloudapp.azure.com"]
     certificate_name    = "wildcard-sandbox-platform-hmcts-net"
     cipher_suite_policy = "TLS12_2023"
     disabled_rules      = {}
@@ -974,9 +974,9 @@ frontends = [
     disabled_rules   = {}
   },
   {
-    product          = "labs-goldenpath-michaelfox"
-    name             = "labs-goldenpath-michaelfox"
-    custom_domain    = "labs-goldenpath-michaelfox.sandbox.platform.hmcts.net"
+    product          = "labs-goldenpath-mf"
+    name             = "labs-goldenpath-mf"
+    custom_domain    = "labs-goldenpath-mf.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-michaelfox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"

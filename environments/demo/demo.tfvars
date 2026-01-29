@@ -1920,7 +1920,7 @@ frontends = [
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     global_exclusions = [
-        /*Updated from QueryStringArgNames to PostParamValue as in azure frontend it was blocking with DefaultRuleSet-1.0-RFI-931130
+      /*Updated from QueryStringArgNames to PostParamValue as in azure frontend it was blocking with DefaultRuleSet-1.0-RFI-931130
         Testing on demo first if successful will apply to other WAFs*/
       {
         match_variable = "PostParamValue"

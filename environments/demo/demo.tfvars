@@ -1921,7 +1921,7 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     global_exclusions = [
       {
-        match_variable = "QueryStringArgNames"
+        match_variable = "PostParamValue"
         operator       = "Equals"
         selector       = "returnUrl"
       },

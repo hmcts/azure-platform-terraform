@@ -1920,7 +1920,7 @@ frontends = [
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     global_exclusions = [
-        //Updated from QueryStringArgNames to PostParamValue due to in azure frontend it was showing as DefaultRuleSet-1.0-RFI-931130
+      //Updated from QueryStringArgNames to PostParamValue due to in azure frontend it was showing as DefaultRuleSet-1.0-RFI-931130
       {
         match_variable = "PostParamValue"
         operator       = "Equals"

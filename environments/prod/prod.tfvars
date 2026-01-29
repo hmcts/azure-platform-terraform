@@ -3924,6 +3924,16 @@ frontends = [
         selector       = "tribunalRecommendationRequest"
       },
       {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "compensationOutcome"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "jobTitle"
+      },
+      {
         match_variable = "RequestCookieNames"
         operator       = "StartsWith"
         selector       = "_ga"

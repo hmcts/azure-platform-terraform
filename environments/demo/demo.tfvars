@@ -91,7 +91,7 @@ frontends = [
             match_variable     = "RemoteAddr"
             operator           = "IPMatch"
             negation_condition = false
-            match_values       = ["165.232.96.32"]
+            match_values       = ["165.232.96.32", "89.107.56.22"]
           },
           {
             match_variable     = "RequestUri"

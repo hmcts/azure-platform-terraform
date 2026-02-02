@@ -629,6 +629,7 @@ frontends = [
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
     global_exclusions = [
+<<<<<<< HEAD
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
@@ -689,6 +690,13 @@ frontends = [
         operator       = "Equals"
         selector       = "fact-cookie-preferences"
       }
+=======
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "fact-cookie-preferences"
+        }
+>>>>>>> 030323b5 (trying with just cookie)
     ]
   },
   {

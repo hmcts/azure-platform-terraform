@@ -3934,6 +3934,31 @@ frontends = [
         selector       = "jobTitle"
       },
       {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "benefitsCharCount"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reasonableAdjustmentsDetail"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "otherClaim"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "responseText"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "address1"
+      },
+      {
         match_variable = "RequestCookieNames"
         operator       = "StartsWith"
         selector       = "_ga"

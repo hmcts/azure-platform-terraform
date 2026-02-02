@@ -4642,7 +4642,7 @@ pubsub_frontends = [
     health_path   = "/health/liveness"
     custom_domain = "manage-case-int1.demo.platform.hmcts.net"
     dns_zone_name = "demo.platform.hmcts.net"
-    backend_fqdn = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    backend_fqdn  = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   }
 ]
 

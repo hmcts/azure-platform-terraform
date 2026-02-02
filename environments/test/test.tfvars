@@ -658,6 +658,76 @@ frontends = [
     dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+
+    global_exclusions = [
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "connect.sid"
+        },
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "_ga"
+        },
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "_gid"
+        },
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "_gat"
+        },
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "dtCookie"
+        },
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "dtLatC"
+        },
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "dtPC"
+        },
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "dtSa"
+        },
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "rxVisitor"
+        },
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "rxvt"
+        },
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "i18next"
+        },
+        {
+          match_variable = "RequestCookieNames"
+          operator       = "Equals"
+          selector       = "fact-cookie-preferences"
+        }
+    ]
+  },
+  {
+    name           = "fact-admin-frontend"
+    custom_domain  = "fact-admin-frontend.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
+    mode           = "Prevention"
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
   },
   {
     name           = "fact-admin-frontend"

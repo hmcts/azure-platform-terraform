@@ -832,7 +832,7 @@ frontends = [
     name                = "plum"
     custom_domain       = "plum.sandbox.platform.hmcts.net"
     dns_zone_name       = "sandbox.platform.hmcts.net"
-    backend_domain      = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    backend_domain      = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com", "lb-sbox-int-plum.uksouth.cloudapp.azure.com"]
     certificate_name    = "wildcard-sandbox-platform-hmcts-net"
     cipher_suite_policy = "TLS12_2023"
     disabled_rules      = {}
@@ -915,12 +915,12 @@ frontends = [
     disabled_rules   = {}
   },
   {
-    product          = "labs-Kamil-Biegaj-HM-nodejs"
-    name             = "labs-Kamil-Biegaj-HM-nodejs"
-    custom_domain    = "labs-Kamil-Biegaj-HM-nodejs.sandbox.platform.hmcts.net"
+    product          = "labs-kamil-biegaj-hm-nodejs"
+    name             = "labs-kamil-biegaj-hm-nodejs"
+    custom_domain    = "labs-kamil-biegaj-hm-nodejs.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
     shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-labs-Kamil-Biegaj-HM-nodejs.uksouth.cloudapp.azure.com"]
+    backend_domain   = ["firewall-sbox-int-palo-labs-kamil-biegaj-hm-nodejs.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   },
@@ -970,6 +970,15 @@ frontends = [
     custom_domain    = "labs-goldenpath-kamilb.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-kamilb.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
+  },
+  {
+    product          = "labs-goldenpath-mf"
+    name             = "labs-goldenpath-mf"
+    custom_domain    = "labs-goldenpath-mf.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-michaelfox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
   },

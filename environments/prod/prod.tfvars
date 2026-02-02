@@ -264,13 +264,14 @@ frontends = [
     ]
   },
   {
-    product          = "div"
-    name             = "div-pfe"
-    mode             = "Detection"
-    custom_domain    = "www.apply-divorce.service.gov.uk"
-    dns_zone_name    = "apply-divorce.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "apply-divorce-service-gov-uk"
+    product             = "div"
+    name                = "div-pfe"
+    mode                = "Detection"
+    custom_domain       = "www.apply-divorce.service.gov.uk"
+    dns_zone_name       = "apply-divorce.service.gov.uk"
+    backend_domain      = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name    = "apply-divorce-service-gov-uk"
+    cipher_suite_policy = "TLS12_2023"
     disabled_rules = {
       SQLI = [
         "942100",

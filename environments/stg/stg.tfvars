@@ -1271,13 +1271,6 @@ frontends = [
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
   },
   {
-    name           = "fact-admin-frontend"
-    mode           = "Prevention"
-    custom_domain  = "fact-admin-frontend.aat.platform.hmcts.net"
-    dns_zone_name  = "aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
-  },
-  {
     name           = "rpts"
     mode           = "Prevention"
     custom_domain  = "rpts.aat.platform.hmcts.net"

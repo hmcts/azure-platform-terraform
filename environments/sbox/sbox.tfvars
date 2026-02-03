@@ -976,7 +976,7 @@ frontends = [
   {
     product          = "labs-goldenpath-mf"
     name             = "labs-goldenpath-mf"
-    custom_domain    = "labs-goldenpath-mf.sandbox.platform.hmcts.net"
+    custom_domain    = "labs-goldenpath-michaelfox.sandbox.platform.hmcts.net"
     dns_zone_name    = "sandbox.platform.hmcts.net"
     backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-michaelfox.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-sandbox-platform-hmcts-net"

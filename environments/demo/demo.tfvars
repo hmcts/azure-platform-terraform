@@ -91,7 +91,7 @@ frontends = [
             match_variable     = "RemoteAddr"
             operator           = "IPMatch"
             negation_condition = false
-            match_values       = ["165.232.96.32"]
+            match_values       = ["165.232.96.32", "89.107.56.22"]
           },
           {
             match_variable     = "RequestUri"
@@ -260,16 +260,53 @@ frontends = [
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
 
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942110",
+        "942120",
+        "942150",
+        "942180",
+        "942200",
+        "942210",
+        "942230",
+        "942260",
+        "942310",
+        "942361",
+        "942370",
+        "942380",
+        "942390",
+        "942400",
+        "942410",
+        "942430",
+        "942440",
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+      RCE = [
+        "932100"
+      ]
+      RFI = [
+        "931130"
+      ]
+    },
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "connect.sid"
+        selector       = "dtSa"
       },
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "cookies_policy"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
       },
       {
         match_variable = "RequestCookieNames"
@@ -299,7 +336,32 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "StartsWith"
-        selector       = "reasonForDivorceBehaviourDetails"
+        selector       = "reasonForDivorceBehaviourDetails" // free text field that gets pinged a lot for sql like characters
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "file" // prevent WebKitFormBoundary path traversal FPs
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "fileUrl" // this is used as a HAL ID for the document, it's a URI and a URL
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "legalProceedingsDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "petitionerNameChangedHowOtherDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "StartsWith"
+        selector       = "address"
       },
     ]
   },
@@ -563,6 +625,26 @@ frontends = [
     name           = "fact-public-frontend"
     mode           = "Prevention"
     custom_domain  = "fact-public-frontend.demo.platform.hmcts.net"
+    dns_zone_name  = "demo.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "fact-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      }
+    ]
+  },
+  {
+    name           = "fact-admin-frontend"
+    mode           = "Prevention"
+    custom_domain  = "fact-admin-frontend.demo.platform.hmcts.net"
     dns_zone_name  = "demo.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   },
@@ -1464,11 +1546,12 @@ frontends = [
     ]
   },
   {
-    name           = "nfdiv"
-    mode           = "Prevention"
-    custom_domain  = "nfdiv.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    name                = "nfdiv"
+    mode                = "Prevention"
+    custom_domain       = "nfdiv.demo.platform.hmcts.net"
+    dns_zone_name       = "demo.platform.hmcts.net"
+    backend_domain      = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
     disabled_rules = {
       SQLI = [
         "942100",
@@ -4552,7 +4635,17 @@ pubsub_frontends = [
     dns_zone_name = "demo.platform.hmcts.net"
     backend_fqdn  = ["firewall-nonprodi-palo-empubsubdemo.uksouth.cloudapp.azure.com"]
   },
+  {
+    product       = "xui"
+    name          = "xui-webapp-int1"
+    mode          = "Detection"
+    health_path   = "/health/liveness"
+    custom_domain = "manage-case-int1.demo.platform.hmcts.net"
+    dns_zone_name = "demo.platform.hmcts.net"
+    backend_fqdn  = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+  }
 ]
+
 
 pubsub_waf_managed_rules = [
   {

@@ -28,7 +28,7 @@ shutter_apps = [
 ]
 
 frontend_agw_private_ip_address        = "10.11.225.113"
-cft_apps_cluster_ips                   = ["10.11.207.250", "10.11.223.250"]
+cft_apps_cluster_ips                   = ["10.11.223.250"]
 pubsub_frontend_agw_private_ip_address = "10.11.226.8"
 
 frontends = [
@@ -1219,13 +1219,34 @@ frontends = [
     custom_domain  = "fact-public-frontend.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "fact-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      }
+    ]
   },
   {
-    name           = "nfdiv"
+    name           = "fact-admin-frontend"
     mode           = "Prevention"
-    custom_domain  = "nfdiv.ithc.platform.hmcts.net"
+    custom_domain  = "fact-admin-frontend.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+  },
+  {
+    name                = "nfdiv"
+    mode                = "Prevention"
+    custom_domain       = "nfdiv.ithc.platform.hmcts.net"
+    dns_zone_name       = "ithc.platform.hmcts.net"
+    backend_domain      = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
     disabled_rules = {
       SQLI = [
         "942100",
@@ -3530,6 +3551,37 @@ frontends = [
         selector       = "OtherInfoDocuments"
       },
     ]
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
   },
   {
     name             = "dss"

@@ -264,24 +264,34 @@ frontends = [
     ]
   },
   {
-    product          = "div"
-    name             = "div-pfe"
-    mode             = "Detection"
-    custom_domain    = "www.apply-divorce.service.gov.uk"
-    dns_zone_name    = "apply-divorce.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "apply-divorce-service-gov-uk"
+    product             = "div"
+    name                = "div-pfe"
+    mode                = "Detection"
+    custom_domain       = "www.apply-divorce.service.gov.uk"
+    dns_zone_name       = "apply-divorce.service.gov.uk"
+    backend_domain      = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name    = "apply-divorce-service-gov-uk"
+    cipher_suite_policy = "TLS12_2023"
     disabled_rules = {
       SQLI = [
         "942100",
+        "942110",
+        "942120",
         "942150",
+        "942180",
         "942200",
         "942210",
         "942230",
+        "942260",
+        "942310",
         "942361",
+        "942370",
         "942380",
+        "942390",
         "942400",
+        "942410",
         "942430",
+        "942440",
       ]
       LFI = [
         "930100", // false positive on multi-part uploads
@@ -290,7 +300,10 @@ frontends = [
       RCE = [
         "932100"
       ]
-    }
+      RFI = [
+        "931130"
+      ]
+    },
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -500,6 +513,9 @@ frontends = [
       ]
       RCE = [
         "932100"
+      ]
+      RFI = [
+        "931130"
       ]
     },
     global_exclusions = [
@@ -3887,7 +3903,7 @@ frontends = [
   {
     product          = "et"
     name             = "et-sya"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.claim-employment-tribunals.service.gov.uk"
     dns_zone_name    = "claim-employment-tribunals.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
@@ -3897,8 +3913,87 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-sya-cookie-preferences"
-      }
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "tribunalRecommendationRequest"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "compensationOutcome"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "jobTitle"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-sya-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "i18next"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
     ]
+    disabled_rules = {
+      SQLI = [
+        "942260",
+        "942400",
+        "942430",
+      ]
+      RFI = [
+        "931130"
+      ]
+      LFI = [
+        "930130",
+        "930110",
+      ]
+    }
   },
   {
     product          = "sptribs"

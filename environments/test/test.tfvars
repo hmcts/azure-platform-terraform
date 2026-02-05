@@ -658,13 +658,34 @@ frontends = [
     dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "fact-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      }
+    ]
   },
   {
-    name           = "nfdiv"
-    custom_domain  = "nfdiv.perftest.platform.hmcts.net"
+    name           = "fact-admin-frontend"
+    custom_domain  = "fact-admin-frontend.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+  },
+  {
+    name                = "nfdiv"
+    custom_domain       = "nfdiv.perftest.platform.hmcts.net"
+    dns_zone_name       = "perftest.platform.hmcts.net"
+    mode                = "Prevention"
+    backend_domain      = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
     disabled_rules = {
       SQLI = [
         "942100",

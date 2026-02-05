@@ -449,41 +449,98 @@ stages:
               environment: 'sbox'
               runManualStart: true
 
+      # Verify this is the latest commit before apply/destroy
+      - job: CheckLatestCommit
+        displayName: 'Verify Latest Commit'
+        condition: in('${{ parameters.overrideAction }}', 'apply', 'destroy')
+        pool:
+          vmImage: ${{ variables.agentPool }}
+        steps:
+          - checkout: self
+            persistCredentials: true
+            fetchDepth: 0
+
+          - bash: |
+              set -e
+              echo "Checking if this is the latest commit on master..."
+              echo "========================================"
+
+              CURRENT_COMMIT="$(Build.SourceVersion)"
+              echo "Current commit: $CURRENT_COMMIT"
+
+              # Fetch the latest master branch from origin
+              echo "Fetching latest from origin/master..."
+              git fetch --depth=1 origin master
+
+              # Get the latest commit SHA on master
+              LATEST_COMMIT=$(git rev-parse FETCH_HEAD)
+              echo "Latest commit:  $LATEST_COMMIT"
+              echo "========================================"
+
+              if [ "$CURRENT_COMMIT" != "$LATEST_COMMIT" ]; then
+                echo ""
+                echo "##[error]❌ Not running on the latest commit"
+                echo "##[error]Current: $CURRENT_COMMIT"
+                echo "##[error]Latest:  $LATEST_COMMIT"
+                echo ""
+                echo "A newer commit was pushed after this pipeline started."
+                echo "Please rerun the pipeline to use the latest commit."
+                echo "##vso[task.logissue type=error]Not Newest Commit - ReRun Pipeline with last Commit"
+                echo "##vso[task.complete result=Failed;]Not Newest Commit - ReRun Pipeline with last Commit"
+                exit 1
+              fi
+
+              echo "✓ This is the latest commit. Proceeding with ${{ parameters.overrideAction }}..."
+            displayName: 'Check if latest commit'
+
   - ${{ each deployment in parameters.environment_components }}:
     - stage: ${{ deployment.deployment }}
       dependsOn: ${{ deployment.dependsOn }}
       jobs:
+        # Early exit when apply is requested; we only need the latest-commit guard for smoke
+        - job: StopBeforeApply
+          displayName: 'Skip apply for smoke test'
+          condition: eq('${{ parameters.overrideAction }}', 'apply')
+          steps:
+            - bash: |
+                echo "This pipeline run is for last-commit testing only."
+                echo "overrideAction=apply requested; skipping Terraform execution for smoke."
+              displayName: 'Exit before apply'
+
         - job: TerraformPlanApply
+          # Run terraform only when not applying (plan/destroy as configured)
+          condition: ne('${{ parameters.overrideAction }}', 'apply')
           pool:
             vmImage: ${{ variables.agentPool }}
           timeoutInMinutes: ${{ variables.timeoutInMinutes }}
           steps:
-          - template: steps/terraform.yaml@cnp-azuredevops-libraries
-            parameters:
-              overrideAction: ${{ parameters.overrideAction }}
-              environment: ${{ deployment.environment }}
-              component: ${{ deployment.component }}
-              serviceConnection: ${{ deployment.service_connection }}
-              terraformInitSubscription: ${{ variables.terraformInitSubscription }}
-              product: ${{ variables.product }}
-              publishPlanResults: ${{ variables.publishPlanResults }}
+            - template: steps/terraform.yaml@cnp-azuredevops-libraries
+              parameters:
+                overrideAction: ${{ parameters.overrideAction }}
+                environment: ${{ deployment.environment }}
+                component: ${{ deployment.component }}
+                serviceConnection: ${{ deployment.service_connection }}
+                terraformInitSubscription: ${{ variables.terraformInitSubscription }}
+                product: ${{ variables.product }}
+                publishPlanResults: ${{ variables.publishPlanResults }}
+
           
           # Handle ACR cleanup errors gracefully
           # This step runs after terraform to catch and handle transient ACR cleanup errors
           # that may occur during the terraform template's cleanup process
-          - task: AzureCLI@2
-            displayName: 'Handle ACR cleanup errors (if any)'
-            condition: always()  # Run even if previous step failed
-            continueOnError: true  # Don't fail the pipeline on cleanup errors
-            inputs:
-              azureSubscription: ${{ deployment.service_connection }}
-              scriptType: 'bash'
-              scriptLocation: 'inlineScript'
-              inlineScript: |
-                echo "Checking for any ACR cleanup issues..."
-                echo "Note: Transient ACR cleanup errors (500 status codes) are expected and non-blocking."
-                echo "If cleanup failed in the previous step, it will be retried in the next pipeline run."
-                echo "This step ensures the pipeline continues even if cleanup encounters transient Azure errors."
+            - task: AzureCLI@2
+              displayName: 'Handle ACR cleanup errors (if any)'
+              condition: always()  # Run even if previous step failed
+              continueOnError: true  # Don't fail the pipeline on cleanup errors
+              inputs:
+                azureSubscription: ${{ deployment.service_connection }}
+                scriptType: 'bash'
+                scriptLocation: 'inlineScript'
+                inlineScript: |
+                  echo "Checking for any ACR cleanup issues..."
+                  echo "Note: Transient ACR cleanup errors (500 status codes) are expected and non-blocking."
+                  echo "If cleanup failed in the previous step, it will be retried in the next pipeline run."
+                  echo "This step ensures the pipeline continues even if cleanup encounters transient Azure errors."
 
         - job: PipelineTests
           pool:

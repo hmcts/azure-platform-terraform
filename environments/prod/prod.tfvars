@@ -1739,14 +1739,15 @@ frontends = [
     ]
   },
   {
-    product          = "probate"
-    name             = "probate"
-    mode             = "Prevention"
-    custom_domain    = "www.apply-for-probate.service.gov.uk"
-    dns_zone_name    = "apply-for-probate.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "apply-for-probate-service-gov-uk"
-    cache_enabled    = "false"
+    product             = "probate"
+    name                = "probate"
+    mode                = "Prevention"
+    custom_domain       = "www.apply-for-probate.service.gov.uk"
+    dns_zone_name       = "apply-for-probate.service.gov.uk"
+    backend_domain      = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name    = "apply-for-probate-service-gov-uk"
+    cipher_suite_policy = "TLS12_2023"
+    cache_enabled       = "false"
     custom_rules = [
       {
         name     = "RumBeaconExclusion"

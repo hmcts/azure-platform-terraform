@@ -1043,3 +1043,5 @@ apim_appgw_exclusions = [
     selector       = "iss"
   }
 ]
+
+disable_trusted_service_connectivity = true

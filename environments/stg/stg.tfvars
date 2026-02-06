@@ -4873,3 +4873,5 @@ pubsub_waf_managed_rules = [
     ]
   }
 ]
+
+disable_trusted_service_connectivity = true

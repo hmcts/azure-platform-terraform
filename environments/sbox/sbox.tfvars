@@ -849,18 +849,15 @@ frontends = [
     shutter_app      = true
   },
   {
-    product          = "plum-tlse2e"
-    name             = "plum-tlse2e"
-    custom_domain    = "plum-tlse2e.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["plum-tlse2e.sandbox.platform.hmcts.net"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-    shutter_app      = true
-    private_link = {
-      target_id = "/subscriptions/ea3a8c1e-af9d-4108-bc86-a7e2d267f49c/resourceGroups/hmcts-hub-sbox-int/providers/Microsoft.Network/privateLinkServices/privatelink-palo-sbox-int"
-      location  = "uksouth"
-    }
+    product             = "plum-tlse2e"
+    name                = "plum-tlse2e"
+    custom_domain       = "plum-tlse2e.sandbox.platform.hmcts.net"
+    dns_zone_name       = "sandbox.platform.hmcts.net"
+    backend_domain      = ["lb-sbox-int-plum-tlse2e.uksouth.cloudapp.azure.com"]
+    certificate_name    = "wildcard-sandbox-platform-hmcts-net"
+    cipher_suite_policy = "TLS12_2023"
+    disabled_rules      = {}
+    shutter_app         = true
   },
   {
     product          = "hmi"
@@ -1043,3 +1040,5 @@ apim_appgw_exclusions = [
     selector       = "iss"
   }
 ]
+
+disable_trusted_service_connectivity = true

@@ -206,3 +206,9 @@ variable "ssl_policy" {
 variable "ssl_certificate" {
   default = ""
 }
+
+variable "disable_trusted_service_connectivity" {
+  description = "Disable Trusted Service Connectivity for APIM"
+  type        = bool
+  default     = false
+}

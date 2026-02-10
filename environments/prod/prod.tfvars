@@ -3936,6 +3936,31 @@ frontends = [
         selector       = "jobTitle"
       },
       {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "responseText"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "linkedCasesDetail"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "copyToOtherPartyText"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reasonableAdjustmentsDetail"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "bundlesRespondentAgreedDocWithNo"
+      },
+      {
         match_variable = "RequestCookieNames"
         operator       = "StartsWith"
         selector       = "_ga"
@@ -3986,6 +4011,7 @@ frontends = [
         "942260",
         "942400",
         "942430",
+        "942110",
       ]
       RFI = [
         "931130"
@@ -3993,6 +4019,7 @@ frontends = [
       LFI = [
         "930130",
         "930110",
+        "930100",
       ]
     }
   },
@@ -5158,8 +5185,99 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-syr-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-syr-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "i18next"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "caseReferenceId"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "ethosCaseReference"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "et3ResponseRespondentSupportDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "et3ResponseEmployerClaimDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "et3ResponseContestClaimDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "responseText"
       }
     ]
+    disabled_rules = {
+      SQLI = [
+        "942260",
+        "942400",
+        "942430",
+        "942110",
+      ]
+      RFI = [
+        "931130"
+      ]
+      LFI = [
+        "930130",
+        "930110",
+        "930100",
+      ]
+    }
   },
   {
     name                   = "csds-active-stg"

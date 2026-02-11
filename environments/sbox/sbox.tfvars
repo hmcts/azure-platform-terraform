@@ -892,36 +892,6 @@ frontends = [
     certificate_name_check_enabled = false
   },
   {
-    product          = "labs-hurricanepilot-nodejs"
-    name             = "labs-hurricanepilot-nodejs"
-    custom_domain    = "labs-hurricanepilot-nodejs.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-labs-hurricanepilot-nodejs.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
-  {
-    product          = "labs-rebeccahayleypickles-nodejs"
-    name             = "labs-rebeccahayleypickles-nodejs"
-    custom_domain    = "labs-rebeccahayleypickles-nodejs.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-labs-rebeccahayleypickles-nodejs.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
-  {
-    product          = "labs-kamil-biegaj-hm-nodejs"
-    name             = "labs-kamil-biegaj-hm-nodejs"
-    custom_domain    = "labs-kamil-biegaj-hm-nodejs.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    shutter_app      = false
-    backend_domain   = ["firewall-sbox-int-palo-labs-kamil-biegaj-hm-nodejs.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
-  },
-  {
     product          = "dtsse-richui"
     name             = "devextreme-poc-spa"
     custom_domain    = "devextreme-poc-spa.sandbox.platform.hmcts.net"
@@ -960,15 +930,6 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
-  },
-  {
-    product          = "labs-goldenpath-kamilb"
-    name             = "labs-goldenpath-kamilb"
-    custom_domain    = "labs-goldenpath-kamilb.sandbox.platform.hmcts.net"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-labs-goldenpath-kamilb.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules   = {}
   },
   {
     product          = "labs-goldenpath-mf"

@@ -946,6 +946,11 @@ frontends = [
         operator       = "Equals"
         selector       = "\\'apm\\'"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "cmc-citizen-session"
+      },
     ]
   },
   {

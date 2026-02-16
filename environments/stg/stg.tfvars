@@ -4840,6 +4840,58 @@ frontends = [
       }
     ]
   },
+  {
+    name                   = "csds-active"
+    custom_domain          = "csds.staging.apps.hmcts.net"
+    dns_zone_name          = "staging.apps.hmcts.net"
+    backend_domain         = ["csds-active.staging.platform.hmcts.net"]
+    disabled_rules         = {}
+    disable_frontend_appgw = true
+    forwarding_protocol    = "HttpsOnly"
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "session_state"
+      },
+    ]
+  },
+  {
+    name                   = "csds-passive"
+    custom_domain          = "csds-passive.staging.apps.hmcts.net"
+    dns_zone_name          = "staging.apps.hmcts.net"
+    backend_domain         = ["csds-passive.staging.platform.hmcts.net"]
+    disabled_rules         = {}
+    disable_frontend_appgw = true
+    forwarding_protocol    = "HttpsOnly"
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "session_state"
+      },
+    ]
+  },
 ]
 
 pubsub_frontends = [

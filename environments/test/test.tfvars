@@ -653,11 +653,39 @@ frontends = [
     ]
   },
   {
-    name           = "nfdiv"
-    custom_domain  = "nfdiv.perftest.platform.hmcts.net"
+    name           = "fact-public-frontend"
+    custom_domain  = "fact-public-frontend.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+
+    global_exclusions = [
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "fact-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "connect.sid"
+      }
+    ]
+  },
+  {
+    name           = "fact-admin-frontend"
+    custom_domain  = "fact-admin-frontend.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
+    mode           = "Prevention"
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+  },
+  {
+    name                = "nfdiv"
+    custom_domain       = "nfdiv.perftest.platform.hmcts.net"
+    dns_zone_name       = "perftest.platform.hmcts.net"
+    mode                = "Prevention"
+    backend_domain      = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
     disabled_rules = {
       SQLI = [
         "942100",
@@ -1301,6 +1329,11 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "code_verifier"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
       }
     ]
   },
@@ -1552,6 +1585,11 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "oidc_session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
       }
     ]
   },
@@ -2261,7 +2299,8 @@ frontends = [
               "51.11.124.216/32",
               "20.108.187.55/32",
               "20.58.23.145/32",
-              "172.167.189.254/32"
+              "172.167.189.254/32",
+              "150.171.109.208/28"
             ]
           }
         ]
@@ -3150,7 +3189,7 @@ frontends = [
   {
     product        = "et"
     name           = "et-syr"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "et-syr.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
@@ -3159,8 +3198,64 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-syr-cookie-preferences"
-      }
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-syr-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "i18next"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
     ]
+    disabled_rules = {
+      SQLI = [
+        "942260"
+      ]
+      RFI = [
+        "931130"
+      ]
+      LFI = [
+        "930130"
+      ]
+    }
   },
   {
     name           = "pcs-frontend"
@@ -3213,3 +3308,5 @@ pubsub_waf_managed_rules = [
     ]
   }
 ]
+
+disable_trusted_service_connectivity = true

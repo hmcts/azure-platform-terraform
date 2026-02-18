@@ -264,13 +264,14 @@ frontends = [
     ]
   },
   {
-    product          = "div"
-    name             = "div-pfe"
-    mode             = "Detection"
-    custom_domain    = "www.apply-divorce.service.gov.uk"
-    dns_zone_name    = "apply-divorce.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "apply-divorce-service-gov-uk"
+    product             = "div"
+    name                = "div-pfe"
+    mode                = "Detection"
+    custom_domain       = "www.apply-divorce.service.gov.uk"
+    dns_zone_name       = "apply-divorce.service.gov.uk"
+    backend_domain      = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name    = "apply-divorce-service-gov-uk"
+    cipher_suite_policy = "TLS12_2023"
     disabled_rules = {
       SQLI = [
         "942100",
@@ -955,7 +956,29 @@ frontends = [
     dns_zone_name    = "appeal-infected-blood-compensation-decision.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "appeal-infected-blood-compensation-decision-service-gov-uk"
-    # disabled_rules
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942150",
+        "942200",
+        "942210",
+        "942230",
+        "942310",
+        "942340",
+        "942360",
+        "942361",
+        "942380",
+        "942400",
+        "942430"
+      ]
+      LFI = [
+        "930100", // false positive on multi-part uploads
+        "930110", // false positive on multi-part uploads
+      ]
+      RCE = [
+        "932100"
+      ]
+    }
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"
@@ -1322,6 +1345,7 @@ frontends = [
         "942430",
         "942440",
         "942450",
+        "942360"
       ]
       RCE = [
         "932100",
@@ -1740,14 +1764,15 @@ frontends = [
     ]
   },
   {
-    product          = "probate"
-    name             = "probate"
-    mode             = "Prevention"
-    custom_domain    = "www.apply-for-probate.service.gov.uk"
-    dns_zone_name    = "apply-for-probate.service.gov.uk"
-    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "apply-for-probate-service-gov-uk"
-    cache_enabled    = "false"
+    product             = "probate"
+    name                = "probate"
+    mode                = "Prevention"
+    custom_domain       = "www.apply-for-probate.service.gov.uk"
+    dns_zone_name       = "apply-for-probate.service.gov.uk"
+    backend_domain      = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name    = "apply-for-probate-service-gov-uk"
+    cipher_suite_policy = "TLS12_2023"
+    cache_enabled       = "false"
     custom_rules = [
       {
         name     = "RumBeaconExclusion"
@@ -2710,6 +2735,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "id_token_hint"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
       }
     ]
   },
@@ -2963,6 +2993,11 @@ frontends = [
         operator       = "Equals"
         selector       = "oidc_session"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "error_description"
+      }
     ]
   },
   {
@@ -3515,6 +3550,7 @@ frontends = [
               "194.33.200.0/21",
               "194.33.216.0/23",
               "194.33.218.0/24",
+              "150.171.109.208/28"
             ]
           }
         ]
@@ -3894,7 +3930,7 @@ frontends = [
   {
     product          = "et"
     name             = "et-sya"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "www.claim-employment-tribunals.service.gov.uk"
     dns_zone_name    = "claim-employment-tribunals.service.gov.uk"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
@@ -3904,8 +3940,114 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-sya-cookie-preferences"
-      }
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "tribunalRecommendationRequest"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "compensationOutcome"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "jobTitle"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "responseText"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "linkedCasesDetail"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "copyToOtherPartyText"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reasonableAdjustmentsDetail"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "bundlesRespondentAgreedDocWithNo"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-sya-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "i18next"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
     ]
+    disabled_rules = {
+      SQLI = [
+        "942260",
+        "942400",
+        "942430",
+        "942110",
+      ]
+      RFI = [
+        "931130"
+      ]
+      LFI = [
+        "930130",
+        "930110",
+        "930100",
+      ]
+    }
   },
   {
     product          = "sptribs"
@@ -4222,6 +4364,41 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-sya-cookie-preferences"
+      }, // Dynatrace Exclusions
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
       }
     ]
     custom_rules = [
@@ -4294,6 +4471,41 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-sya-cookie-preferences"
+      }, // Dynatrace Exclusions
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
       }
     ]
     custom_rules = [
@@ -4364,6 +4576,41 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-sya-cookie-preferences"
+      }, // Dynatrace Exclusions
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtLatC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
       }
     ]
   },
@@ -4964,44 +5211,151 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-syr-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "_ga"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtPC"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et-syr-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "i18next"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxVisitor"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "rxvt"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "_csrf"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "caseReferenceId"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "ethosCaseReference"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "et3ResponseRespondentSupportDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "et3ResponseEmployerClaimDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "et3ResponseContestClaimDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "responseText"
       }
+    ]
+    disabled_rules = {
+      SQLI = [
+        "942260",
+        "942400",
+        "942430",
+        "942110",
+      ]
+      RFI = [
+        "931130"
+      ]
+      LFI = [
+        "930130",
+        "930110",
+        "930100",
+      ]
+    }
+  },
+  {
+    name                   = "csds-active"
+    custom_domain          = "csds.apps.hmcts.net"
+    dns_zone_name          = "apps.hmcts.net"
+    backend_domain         = ["csds-active.prod.platform.hmcts.net"]
+    disabled_rules         = {}
+    disable_frontend_appgw = true
+    forwarding_protocol    = "HttpsOnly"
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "session_state"
+      },
     ]
   },
   {
-    name                   = "csds-active-stg"
-    custom_domain          = "csds.staging.apps.hmcts.net"
-    dns_zone_name          = "staging.apps.hmcts.net"
-    backend_domain         = ["firewall-prod-int-palo-csds-staging.uksouth.cloudapp.azure.com"]
-    disabled_rules         = {}
-    disable_frontend_appgw = true
-    host_header            = "csds-active.staging.platform.hmcts.net"
-  },
-  {
-    name                   = "csds-passive-stg"
-    custom_domain          = "csds-passive.staging.apps.hmcts.net"
-    dns_zone_name          = "staging.apps.hmcts.net"
-    backend_domain         = ["firewall-prod-int-palo-csds-staging.uksouth.cloudapp.azure.com"]
-    disabled_rules         = {}
-    disable_frontend_appgw = true
-    host_header            = "csds-passive.staging.platform.hmcts.net"
-  },
-  {
-    name                   = "csds-active-prod"
-    custom_domain          = "csds.apps.hmcts.net"
-    dns_zone_name          = "apps.hmcts.net"
-    backend_domain         = ["firewall-prod-int-palo-csds-prod.uksouth.cloudapp.azure.com"]
-    disabled_rules         = {}
-    disable_frontend_appgw = true
-    host_header            = "csds-active.prod.platform.hmcts.net"
-  },
-  {
-    name                   = "csds-passive-prod"
+    name                   = "csds-passive"
     custom_domain          = "csds-passive.apps.hmcts.net"
     dns_zone_name          = "apps.hmcts.net"
-    backend_domain         = ["firewall-prod-int-palo-csds-prod.uksouth.cloudapp.azure.com"]
+    backend_domain         = ["csds-passive.prod.platform.hmcts.net"]
     disabled_rules         = {}
     disable_frontend_appgw = true
-    host_header            = "csds-passive.prod.platform.hmcts.net"
+    forwarding_protocol    = "HttpsOnly"
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "session_state"
+      },
+    ]
   }
 ]
 

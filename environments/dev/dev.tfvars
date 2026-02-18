@@ -34,18 +34,52 @@ frontends = [
     name                   = "csds-active"
     custom_domain          = "csds.dev.apps.hmcts.net"
     dns_zone_name          = "dev.apps.hmcts.net"
-    backend_domain         = ["firewall-nonprodi-palo-csds-dev.uksouth.cloudapp.azure.com"]
+    backend_domain         = ["csds-active.dev.platform.hmcts.net"]
     disabled_rules         = {}
     disable_frontend_appgw = true
-    host_header            = "csds-active.dev.platform.hmcts.net"
+    forwarding_protocol    = "HttpsOnly"
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "session_state"
+      },
+    ]
   },
   {
     name                   = "csds-passive"
     custom_domain          = "csds-passive.dev.apps.hmcts.net"
     dns_zone_name          = "dev.apps.hmcts.net"
-    backend_domain         = ["firewall-nonprodi-palo-csds-dev.uksouth.cloudapp.azure.com"]
+    backend_domain         = ["csds-passive.dev.platform.hmcts.net"]
     disabled_rules         = {}
     disable_frontend_appgw = true
-    host_header            = "csds-passive.dev.platform.hmcts.net"
+    forwarding_protocol    = "HttpsOnly"
+    global_exclusions = [
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "session_state"
+      },
+    ]
   }
 ]

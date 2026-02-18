@@ -456,3 +456,7 @@ gateways:
       # enforcement
       - product: enforcement
         component: api
+    
+     # xui
+      - product: xui
+        component: case-activity-api

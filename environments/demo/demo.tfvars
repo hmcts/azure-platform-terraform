@@ -4555,6 +4555,13 @@ frontends = [
     ]
   },
   {
+    product          = "help-with-fees-benefit-checker-api"
+    name             = "help-with-fees-benefit-checker-api"
+    custom_domain    = "help-with-fees-benefit-checker-api.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+  },
+  {
     name           = "judicial-payments"
     mode           = "Detection"
     custom_domain  = "judicial-payments.demo.platform.hmcts.net"

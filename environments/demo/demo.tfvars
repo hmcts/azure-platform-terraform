@@ -4749,15 +4749,6 @@ pubsub_frontends = [
     custom_domain = "em-icp-webpubsub.demo.platform.hmcts.net"
     dns_zone_name = "demo.platform.hmcts.net"
     backend_fqdn  = ["firewall-nonprodi-palo-empubsubdemo.uksouth.cloudapp.azure.com"]
-  },
-  {
-    product       = "xui"
-    name          = "xui-webapp-int1"
-    mode          = "Detection"
-    health_path   = "/health/liveness"
-    custom_domain = "manage-case-int1.demo.platform.hmcts.net"
-    dns_zone_name = "demo.platform.hmcts.net"
-    backend_fqdn  = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
   }
 ]
 

@@ -15,8 +15,8 @@ resource "azurerm_api_management_product" "gob" {
   api_management_name = spnl-sit-apim-int
   resource_group_name = RG-SIT-APIM-01
 
-  display_name = "gob"
-  published    = true
+  display_name          = "gob"
+  published             = true
   subscription_required = true
   approval_required     = false
 }

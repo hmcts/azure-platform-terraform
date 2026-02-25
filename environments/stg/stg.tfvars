@@ -931,7 +931,12 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "cmc-citizen-session"
-      }
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "citizen-ui-session"
+      },
     ]
   },
   {

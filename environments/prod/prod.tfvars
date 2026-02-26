@@ -3702,7 +3702,7 @@ frontends = [
   {
     product          = "adoption"
     name             = "adoption"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "apply-for-adoption.platform.hmcts.net"
     dns_zone_name    = "platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]

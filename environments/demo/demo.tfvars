@@ -2392,36 +2392,36 @@ frontends = [
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     custom_rules = [
-        {
-            name     = "BlockScriptInJSON"
-            priority = 1
-            type     = "MatchRule"
-            action   = "Block"
-            match_conditions = [
-              {
-                match_variable     = "RequestHeader"
-                selector           = "content-type"
-                operator           = "Equal"
-                negation_condition = false
-                match_values       = ["application/json"]
-              }
-            ]
-          },
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
           {
-            name     = "BlockScriptInJSON2"
-            priority = 2
-            type     = "MatchRule"
-            action   = "Block"
-            match_conditions = [
-              {
-                match_variable     = "RequestBody"
-                operator           = "Contains"
-                negation_condition = false
-                match_values       = ["<script>"]
-              }
-            ]
-          },
-        ],
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
     global_exclusions = [
       {
         match_variable = "RequestBodyPostArgNames"

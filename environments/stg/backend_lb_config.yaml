@@ -416,3 +416,7 @@ gateways:
     # enforcement
       - product: enforcement
         component: api
+
+    # expressjs-monorepo-template
+      - product: expressjs-monorepo-template
+        component: api

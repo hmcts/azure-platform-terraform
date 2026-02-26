@@ -381,7 +381,7 @@ frontends = [
   },
   {
     name           = "return-case-doc-ccd"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "return-case-doc-ccd.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]

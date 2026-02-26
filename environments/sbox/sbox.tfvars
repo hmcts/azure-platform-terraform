@@ -933,13 +933,13 @@ frontends = [
     shutter_app      = true
   },
   {
-    product             = "labs-goldenpath-mf"
-    name                = "labs-goldenpath-mf"
-    custom_domain       = "labs-goldenpath-michaelfox.sandbox.platform.hmcts.net"
-    dns_zone_name       = "sandbox.platform.hmcts.net"
-    backend_domain      = ["lb-sbox-int-lab-mf.uksouth.cloudapp.azure.com", "lb-sbox-int-lab-mf-2.uksouth.cloudapp.azure.com"]
-    certificate_name    = "wildcard-sandbox-platform-hmcts-net"
-    disabled_rules      = {}
+    product          = "labs-goldenpath-mf"
+    name             = "labs-goldenpath-mf"
+    custom_domain    = "labs-goldenpath-michaelfox.sandbox.platform.hmcts.net"
+    dns_zone_name    = "sandbox.platform.hmcts.net"
+    backend_domain   = ["lb-sbox-int-lab-mf.uksouth.cloudapp.azure.com", "lb-sbox-int-lab-mf-2.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    disabled_rules   = {}
   },
   {
     name                   = "csds-active"

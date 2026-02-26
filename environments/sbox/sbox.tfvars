@@ -940,12 +940,6 @@ frontends = [
     backend_domain      = ["lb-sbox-int-lab-mf.uksouth.cloudapp.azure.com", "lb-sbox-int-lab-mf-2.uksouth.cloudapp.azure.com"]
     certificate_name    = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules      = {}
-    priority            = 3
-    priority_secondary  = 1
-    weight              = 1
-    weight_secondary    = 90
-    http_port           = 8021
-    http_port_secondary = 8021
   },
   {
     name                   = "csds-active"

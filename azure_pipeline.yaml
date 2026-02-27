@@ -11,7 +11,7 @@ resources:
   repositories:
   - repository: cnp-azuredevops-libraries
     type: github
-    ref: refs/heads/master
+    ref: refs/heads/feature/terraform-migration
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
 
@@ -449,48 +449,48 @@ stages:
               runManualStart: true
 
       # Verify this is the latest commit before apply/destroy
-      - job: CheckLatestCommit
-        displayName: 'Verify Latest Commit'
-        condition: in('${{ parameters.overrideAction }}', 'apply', 'destroy')
-        pool:
-          vmImage: ${{ variables.agentPool }}
-        steps:
-          - checkout: self
-            persistCredentials: true
-            fetchDepth: 0
+        # - job: CheckLatestCommit
+        #   displayName: 'Verify Latest Commit'
+        #   condition: in('${{ parameters.overrideAction }}', 'apply', 'destroy')
+        #   pool:
+        #     vmImage: ${{ variables.agentPool }}
+        #   steps:
+        #     - checkout: self
+        #       persistCredentials: true
+        #       fetchDepth: 0
 
-          - bash: |
-              set -e
-              echo "Checking if this is the latest commit on master..."
-              echo "========================================"
+        #     - bash: |
+        #         set -e
+        #         echo "Checking if this is the latest commit on master..."
+        #         echo "========================================"
 
-              CURRENT_COMMIT="$(Build.SourceVersion)"
-              echo "Current commit: $CURRENT_COMMIT"
+        #         CURRENT_COMMIT="$(Build.SourceVersion)"
+        #         echo "Current commit: $CURRENT_COMMIT"
 
-              # Fetch the latest master branch from origin
-              echo "Fetching latest from origin/master..."
-              git fetch --depth=1 origin master
+        #         # Fetch the latest master branch from origin
+        #         echo "Fetching latest from origin/master..."
+        #         git fetch --depth=1 origin master
 
-              # Get the latest commit SHA on master
-              LATEST_COMMIT=$(git rev-parse FETCH_HEAD)
-              echo "Latest commit:  $LATEST_COMMIT"
-              echo "========================================"
+        #         # Get the latest commit SHA on master
+        #         LATEST_COMMIT=$(git rev-parse FETCH_HEAD)
+        #         echo "Latest commit:  $LATEST_COMMIT"
+        #         echo "========================================"
 
-              if [ "$CURRENT_COMMIT" != "$LATEST_COMMIT" ]; then
-                echo ""
-                echo "##[error]❌ Not running on the latest commit"
-                echo "##[error]Current: $CURRENT_COMMIT"
-                echo "##[error]Latest:  $LATEST_COMMIT"
-                echo ""
-                echo "A newer commit was pushed after this pipeline started."
-                echo "Please rerun the pipeline to use the latest commit."
-                echo "##vso[task.logissue type=error]Not Newest Commit - ReRun Pipeline with last Commit"
-                echo "##vso[task.complete result=Failed;]Not Newest Commit - ReRun Pipeline with last Commit"
-                exit 1
-              fi
+        #         if [ "$CURRENT_COMMIT" != "$LATEST_COMMIT" ]; then
+        #           echo ""
+        #           echo "##[error]❌ Not running on the latest commit"
+        #           echo "##[error]Current: $CURRENT_COMMIT"
+        #           echo "##[error]Latest:  $LATEST_COMMIT"
+        #           echo ""
+        #           echo "A newer commit was pushed after this pipeline started."
+        #           echo "Please rerun the pipeline to use the latest commit."
+        #           echo "##vso[task.logissue type=error]Not Newest Commit - ReRun Pipeline with last Commit"
+        #           echo "##vso[task.complete result=Failed;]Not Newest Commit - ReRun Pipeline with last Commit"
+        #           exit 1
+        #         fi
 
-              echo "✓ This is the latest commit. Proceeding with ${{ parameters.overrideAction }}..."
-            displayName: 'Check if latest commit'
+        #         echo "✓ This is the latest commit. Proceeding with ${{ parameters.overrideAction }}..."
+        #       displayName: 'Check if latest commit'
 
   - ${{ each deployment in parameters.environment_components }}:
     - stage: ${{ deployment.deployment }}

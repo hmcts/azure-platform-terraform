@@ -932,7 +932,12 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "cmc-citizen-session"
-      }
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "citizen-ui-session"
+      },
     ]
   },
   {
@@ -2086,18 +2091,43 @@ frontends = [
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
   },
   {
-    name           = "adoption"
-    custom_domain  = "adoption.aat.platform.hmcts.net"
-    dns_zone_name  = "aat.platform.hmcts.net"
-    mode           = "Detection"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
-  },
-  {
-    name           = "adoption-web"
-    custom_domain  = "adoption-web.aat.platform.hmcts.net"
-    dns_zone_name  = "aat.platform.hmcts.net"
-    mode           = "Prevention"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    name                = "adoption-web"
+    custom_domain       = "adoption-web.aat.platform.hmcts.net"
+    dns_zone_name       = "aat.platform.hmcts.net"
+    mode                = "Prevention"
+    backend_domain      = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
     global_exclusions = [
       {
         match_variable = "RequestBodyPostArgNames"
@@ -4900,6 +4930,14 @@ frontends = [
     name              = "wa-reporting-frontend"
     mode              = "Detection"
     custom_domain     = "wa-reporting-frontend.aat.platform.hmcts.net"
+    dns_zone_name     = "aat.platform.hmcts.net"
+    backend_domain    = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    disabled_rules    = {}
+    global_exclusions = []
+  },
+  {
+    name              = "expressjs-monorepo-template-web"
+    custom_domain     = "expressjs-monorepo-template-web.aat.platform.hmcts.net"
     dns_zone_name     = "aat.platform.hmcts.net"
     backend_domain    = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     disabled_rules    = {}

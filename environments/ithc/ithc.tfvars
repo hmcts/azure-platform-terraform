@@ -2735,12 +2735,12 @@ frontends = [
     ]
   },
   {
-    name             = "adoption-web"
-    custom_domain    = "adoption-web.ithc.platform.hmcts.net"
-    dns_zone_name    = "ithc.platform.hmcts.net"
-    mode             = "Prevention"
-    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    name                = "adoption-web"
+    custom_domain       = "adoption-web.ithc.platform.hmcts.net"
+    dns_zone_name       = "ithc.platform.hmcts.net"
+    mode                = "Prevention"
+    backend_domain      = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    certificate_name    = "wildcard-ithc-platform-hmcts-net"
     cipher_suite_policy = "TLS12_2023"
     global_exclusions = [
       {

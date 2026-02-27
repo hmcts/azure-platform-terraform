@@ -2741,6 +2741,7 @@ frontends = [
     mode             = "Prevention"
     backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name = "wildcard-ithc-platform-hmcts-net"
+    cipher_suite_policy = "TLS12_2023"
     global_exclusions = [
       {
         match_variable = "RequestBodyPostArgNames"

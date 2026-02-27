@@ -3707,6 +3707,7 @@ frontends = [
     dns_zone_name    = "platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     certificate_name = "apply-for-adoption-platform-hmcts-net"
+    cipher_suite_policy = "TLS12_2023"
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

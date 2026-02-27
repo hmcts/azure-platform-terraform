@@ -2601,6 +2601,7 @@ frontends = [
     dns_zone_name  = "perftest.platform.hmcts.net"
     mode           = "Prevention"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
     global_exclusions = [
       {
         match_variable = "RequestBodyPostArgNames"

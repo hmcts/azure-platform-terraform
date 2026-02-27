@@ -2128,30 +2128,30 @@ frontends = [
         ]
       },
       {
-          "name": "RateLimitKBA",
-          "enabledState": "Enabled",
-          "priority": 3,
-          "ruleType": "RateLimitRule",
-          "rateLimitThreshold": 6,
-          "rateLimitDurationInMinutes": 1,
-          "matchConditions": [
-              {
-                  "matchVariable": "RequestUri",
-                  "operator": "BeginsWith",
-                  "matchValue": [
-                      "/la-portal/kba-case-ref"
-                      ]
-                  },
-              {
-                    "matchVariable": "RequestMethod",
-                    "operator": "Equal",
-                    "matchValue": [
-                      "POST"
-                    ]
-                  }
-              ],
-          "action": "Block"
+        "name" : "RateLimitKBA",
+        "enabledState" : "Enabled",
+        "priority" : 3,
+        "ruleType" : "RateLimitRule",
+        "rateLimitThreshold" : 6,
+        "rateLimitDurationInMinutes" : 1,
+        "matchConditions" : [
+          {
+            "matchVariable" : "RequestUri",
+            "operator" : "BeginsWith",
+            "matchValue" : [
+              "/la-portal/kba-case-ref"
+            ]
           },
+          {
+            "matchVariable" : "RequestMethod",
+            "operator" : "Equal",
+            "matchValue" : [
+              "POST"
+            ]
+          }
+        ],
+        "action" : "Block"
+      },
     ],
     global_exclusions = [
       {

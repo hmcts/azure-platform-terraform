@@ -2127,6 +2127,30 @@ frontends = [
           }
         ]
       },
+      {
+        name                           = "RateLimitKBA",
+        priority                       = 3,
+        type                           = "RateLimitRule",
+        rate_limit_threshold           = 6, // rateLimitThreshold
+        rate_limit_duration_in_minutes = 1, // rateLimitDurationInMinutes
+        match_conditions = [                // matchConditions
+          {
+            match_variable = "RequestUri", // matchVariable
+            operator       = "BeginsWith",
+            match_values = [ // matchValue
+              "/la-portal/kba-case-ref"
+            ]
+          },
+          {
+            match_variable = "RequestMethod",
+            operator       = "Equal",
+            match_values = [
+              "POST"
+            ]
+          }
+        ],
+        action = "Block"
+      },
     ],
     global_exclusions = [
       {

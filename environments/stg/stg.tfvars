@@ -2137,7 +2137,7 @@ frontends = [
           {
             match_variable = "RequestUri", // matchVariable
             operator       = "BeginsWith",
-            negation_condition = false
+            negation_condition = false,
             match_values = [ // matchValue
               "/la-portal/kba-case-ref"
             ]
@@ -2145,7 +2145,7 @@ frontends = [
           {
             match_variable     = "RequestMethod",
             operator           = "Equal",
-            negation_condition = false
+            negation_condition = false,
             match_values = [
               "POST"
             ]

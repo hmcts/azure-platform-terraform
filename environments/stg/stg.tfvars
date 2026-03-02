@@ -2135,8 +2135,8 @@ frontends = [
         rate_limit_duration_in_minutes = 1, // rateLimitDurationInMinutes
         match_conditions = [                // matchConditions
           {
-            match_variable = "RequestUri", // matchVariable
-            operator       = "BeginsWith",
+            match_variable     = "RequestUri", // matchVariable
+            operator           = "BeginsWith",
             negation_condition = false,
             match_values = [ // matchValue
               "/la-portal/kba-case-ref"

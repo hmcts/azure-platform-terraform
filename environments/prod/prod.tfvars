@@ -25,7 +25,7 @@ cdn_sku         = "Standard_Verizon"
 shutter_rg      = "shutter-app-prod-rg"
 
 
-cft_apps_cluster_ips            = ["10.90.95.250"]
+cft_apps_cluster_ips            = ["10.90.79.250", "10.90.95.250"]
 frontend_agw_private_ip_address = "10.90.96.12"
 frontend_agw_min_capacity       = 10
 frontend_agw_max_capacity       = 15
@@ -5356,7 +5356,16 @@ frontends = [
         selector       = "session_state"
       },
     ]
-  }
+  },
+  {
+    name              = "wa-reporting-frontend"
+    mode              = "Detection"
+    custom_domain     = "wa-live-reporting.platform.hmcts.net"
+    dns_zone_name     = "platform.hmcts.net"
+    backend_domain    = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    disabled_rules    = {}
+    global_exclusions = []
+  },
 ]
 
 pubsub_frontends = [

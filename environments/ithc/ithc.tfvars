@@ -4313,6 +4313,15 @@ frontends = [
     }
     global_exclusions = []
   },
+  {
+    name              = "wa-reporting-frontend"
+    mode              = "Detection"
+    custom_domain     = "wa-reporting-frontend.ithc.platform.hmcts.net"
+    dns_zone_name     = "ithc.platform.hmcts.net"
+    backend_domain    = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    disabled_rules    = {}
+    global_exclusions = []
+  },
 ]
 
 pubsub_frontends = [

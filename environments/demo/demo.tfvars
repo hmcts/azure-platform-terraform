@@ -4742,6 +4742,15 @@ frontends = [
     }
     global_exclusions = []
   },
+  {
+    name              = "wa-reporting-frontend"
+    mode              = "Detection"
+    custom_domain     = "wa-reporting-frontend.demo.platform.hmcts.net"
+    dns_zone_name     = "demo.platform.hmcts.net"
+    backend_domain    = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    disabled_rules    = {}
+    global_exclusions = []
+  },
 ]
 
 pubsub_frontends = [

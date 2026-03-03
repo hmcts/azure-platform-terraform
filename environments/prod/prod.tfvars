@@ -5358,7 +5358,7 @@ frontends = [
     ]
   },
   {
-    name              = "wa-reporting-frontend"
+    name              = "wa-live-reporting"
     mode              = "Detection"
     custom_domain     = "wa-live-reporting.platform.hmcts.net"
     dns_zone_name     = "platform.hmcts.net"

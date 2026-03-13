@@ -161,7 +161,9 @@ frontends = [
                   match_values = [
                     "client_id=idam_user_dashboard",
                     "client_id=ccd_admin",
-                    "client_id=fact_admin"
+                    "client_id=fact_admin",
+                    "client_id=paybubble",
+                    "client_id=fees_admin_frontend"
                   ]
                   transforms = ["Lowercase"]
                 }
@@ -190,7 +192,9 @@ frontends = [
                   match_values = [
                     "client_id=idam_user_dashboard",
                     "client_id=ccd_admin",
-                    "client_id=fact_admin"
+                    "client_id=fact_admin",
+                    "client_id=paybubble",
+                    "client_id=fees_admin_frontend"
                   ]
                   transforms = ["Lowercase"]
                 }

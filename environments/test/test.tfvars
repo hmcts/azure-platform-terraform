@@ -3281,6 +3281,7 @@ frontends = [
   },
   {
     name           = "ia-home-office-integration-api"
+    mode           = "Detection"
     custom_domain  = "ia-home-office-integration-api.perftest.platform.hmcts.net"
     dns_zone_name  = "perftest.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]

@@ -3279,6 +3279,12 @@ frontends = [
     disabled_rules    = {}
     global_exclusions = []
   },
+  {
+    name           = "ia-home-office-integration-api"
+    custom_domain  = "ia-home-office-integration-api.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+  },
 ]
 
 pubsub_frontends = [

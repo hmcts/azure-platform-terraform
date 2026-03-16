@@ -4780,6 +4780,14 @@ frontends = [
     disabled_rules    = {}
     global_exclusions = []
   },
+  {
+    name             = "ia-home-office-integration-api"
+    custom_domain    = "ia-home-office-integration-api.demo.platform.hmcts.net"
+    dns_zone_name    = "demo.platform.hmcts.net"
+    backend_domain   = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-demo-platform-hmcts-net"
+    cache_enabled    = "false"
+  },
 ]
 
 pubsub_frontends = [

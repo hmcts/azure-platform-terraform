@@ -4330,6 +4330,12 @@ frontends = [
     disabled_rules    = {}
     global_exclusions = []
   },
+  {
+    name           = "ia-home-office-integration-api"
+    custom_domain  = "ia-home-office-integration-api.ithc.platform.hmcts.net"
+    dns_zone_name  = "ithc.platform.hmcts.net"
+    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+  },
 ]
 
 pubsub_frontends = [

@@ -1910,7 +1910,7 @@ frontends = [
   },
   {
     name           = "return-case-doc-ccd"
-    mode           = "Detection"
+    mode           = "Prevention"
     custom_domain  = "return-case-doc-ccd.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]

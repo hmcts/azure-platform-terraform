@@ -1508,21 +1508,16 @@ frontends = [
         match_conditions = [
           {
             match_variable     = "RequestUri"
-            operator           = "RegEx"
+            operator           = "Contains"
             negation_condition = false
             match_values = [
-              # /assignment/reference/{caseReference}
-              "^https://[a-zA-Z0-9.-]*.demo.platform.hmcts.net/assignment/reference/[^/]+$",
-              # /assignment/reference/{caseReference}/ocmc
-              "^https://[a-zA-Z0-9.-]*.demo.platform.hmcts.net/assignment/reference/[^/]+/ocmc$",
-              # /assignment/reference/{caseReference}/defendant-link-status
-              "^https://[a-zA-Z0-9.-]*.demo.platform.hmcts.net/assignment/reference/[^/]+/defendant-link-status$",
-              # /assignment/case/{caseId}/{caseRole}
-              "^https://[a-zA-Z0-9.-]*.demo.platform.hmcts.net/assignment/case/[^/]+/[^/]+$"
-            ]
+              "/first-contact/pin",
+              "/first-contact/claim-reference"
+            ],
+            transforms = ["Lowercase"]
           }
-        ]
-        action = "Block"
+        ],
+        action = "Log"
       }
     ]
   },

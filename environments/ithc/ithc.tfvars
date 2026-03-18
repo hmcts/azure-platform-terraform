@@ -3166,7 +3166,57 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "et-sya-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "tribunalRecommendationRequest"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "otherClaim"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "compensationOutcome"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "jobTitle"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "responseText"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "linkedCasesDetail"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "copyToOtherPartyText"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "reasonableAdjustmentsDetail"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "bundlesRespondentAgreedDocWithNo"
       },
       {
         match_variable = "RequestCookieNames"
@@ -3191,11 +3241,6 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
-        selector       = "et-sya-cookie-preferences"
-      },
-      {
-        match_variable = "RequestCookieNames"
-        operator       = "Equals"
         selector       = "i18next"
       },
       {
@@ -3211,11 +3256,6 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
-        selector       = "tribunalRecommendationRequest"
-      },
-      {
-        match_variable = "RequestBodyPostArgNames"
-        operator       = "Equals"
         selector       = "_csrf"
       },
       {
@@ -3226,13 +3266,18 @@ frontends = [
     ]
     disabled_rules = {
       SQLI = [
-        "942260"
+        "942260",
+        "942400",
+        "942430",
+        "942110",
       ]
       RFI = [
         "931130"
       ]
       LFI = [
-        "930130"
+        "930130",
+        "930110",
+        "930100",
       ]
     }
   },
@@ -4274,6 +4319,16 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "et3ResponseClaimantCorrectHours"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et3ResponsePensionCorrectDetails"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "i18next"
       },
       {
@@ -4296,16 +4351,51 @@ frontends = [
         operator       = "Equals"
         selector       = "_csrf"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "caseReferenceId"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "ethosCaseReference"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "et3ResponseRespondentSupportDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "et3ResponseEmployerClaimDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "et3ResponseContestClaimDetails"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "responseText"
+      }
     ]
     disabled_rules = {
       SQLI = [
-        "942260"
+        "942260",
+        "942400",
+        "942430",
+        "942110",
       ]
       RFI = [
         "931130"
       ]
       LFI = [
-        "930130"
+        "930130",
+        "930110",
+        "930100",
       ]
     }
   },

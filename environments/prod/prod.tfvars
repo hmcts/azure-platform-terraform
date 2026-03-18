@@ -4025,6 +4025,11 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
+        selector       = "otherClaim"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "compensationOutcome"
       },
       {
@@ -5302,6 +5307,16 @@ frontends = [
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "et-syr-session"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et3ResponseClaimantCorrectHours"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "et3ResponsePensionCorrectDetails"
       },
       {
         match_variable = "RequestCookieNames"

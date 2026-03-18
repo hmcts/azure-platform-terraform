@@ -314,6 +314,36 @@ frontends = [
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
+        selector       = "nfdiv-cookie-preferences"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtCookie"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "nfdiv-session"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "lng"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "client_id"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
         selector       = "cookies_policy"
       },
       {
@@ -376,6 +406,46 @@ frontends = [
         operator       = "StartsWith"
         selector       = "address"
       },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1UploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2UploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "coClarificationUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "app1RfiDraftResponseUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "app2RfiDraftResponseUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1InterimAppsEvidenceUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2InterimAppsEvidenceUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2LegalProceedingUploadedFiles"
+      }
     ]
   },
   {
@@ -5330,6 +5400,16 @@ frontends = [
         operator       = "Equals"
         selector       = "session_state"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "quickFilter"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "crit"
+      },
     ]
   },
   {
@@ -5356,8 +5436,27 @@ frontends = [
         operator       = "Equals"
         selector       = "session_state"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "quickFilter"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "crit"
+      },
     ]
-  }
+  },
+  {
+    name              = "wa-live-reporting"
+    mode              = "Detection"
+    custom_domain     = "wa-live-reporting.platform.hmcts.net"
+    dns_zone_name     = "platform.hmcts.net"
+    backend_domain    = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    disabled_rules    = {}
+    global_exclusions = []
+  },
 ]
 
 pubsub_frontends = [

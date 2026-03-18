@@ -3271,6 +3271,15 @@ frontends = [
     }
     global_exclusions = []
   },
+  {
+    name              = "wa-reporting-frontend"
+    mode              = "Detection"
+    custom_domain     = "wa-reporting-frontend.perftest.platform.hmcts.net"
+    dns_zone_name     = "perftest.platform.hmcts.net"
+    backend_domain    = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+    disabled_rules    = {}
+    global_exclusions = []
+  },
 ]
 
 pubsub_frontends = [

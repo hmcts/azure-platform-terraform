@@ -5,6 +5,8 @@ subscription           = "stg"
 certificate_name_check = false
 
 backend_agw_private_ip_address         = ["10.10.161.100", "10.10.161.101"]
+frontend_agw_min_capacity              = 5
+frontend_agw_max_capacity              = 10
 data_subscription                      = "1c4f0704-a29e-403d-b719-b90c34ef14c9"
 privatedns_subscription                = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
 oms_env                                = "nonprod"
@@ -856,6 +858,7 @@ frontends = [
       ]
       LFI = [
         "930100",
+        "930110",
         "930130"
       ]
       RCE = [
@@ -2090,11 +2093,12 @@ frontends = [
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
   },
   {
-    name           = "adoption-web"
-    custom_domain  = "adoption-web.aat.platform.hmcts.net"
-    dns_zone_name  = "aat.platform.hmcts.net"
-    mode           = "Prevention"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    name                = "adoption-web"
+    custom_domain       = "adoption-web.aat.platform.hmcts.net"
+    dns_zone_name       = "aat.platform.hmcts.net"
+    mode                = "Prevention"
+    backend_domain      = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
     custom_rules = [
       {
         name     = "BlockScriptInJSON"
@@ -2124,6 +2128,32 @@ frontends = [
             match_values       = ["<script>"]
           }
         ]
+      },
+      {
+        name                           = "RateLimitKBA",
+        priority                       = 3,
+        type                           = "RateLimitRule",
+        rate_limit_threshold           = 6, // rateLimitThreshold
+        rate_limit_duration_in_minutes = 1, // rateLimitDurationInMinutes
+        match_conditions = [                // matchConditions
+          {
+            match_variable     = "RequestUri", // matchVariable
+            operator           = "BeginsWith",
+            negation_condition = false,
+            match_values = [ // matchValue
+              "/la-portal/kba-case-ref"
+            ]
+          },
+          {
+            match_variable     = "RequestMethod",
+            operator           = "Equal",
+            negation_condition = false,
+            match_values = [
+              "POST"
+            ]
+          }
+        ],
+        action = "Block"
       },
     ],
     global_exclusions = [
@@ -4896,6 +4926,16 @@ frontends = [
         operator       = "Equals"
         selector       = "session_state"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "quickFilter"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "crit"
+      },
     ]
   },
   {
@@ -4922,12 +4962,30 @@ frontends = [
         operator       = "Equals"
         selector       = "session_state"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "quickFilter"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "crit"
+      },
     ]
   },
   {
     name              = "wa-reporting-frontend"
     mode              = "Detection"
     custom_domain     = "wa-reporting-frontend.aat.platform.hmcts.net"
+    dns_zone_name     = "aat.platform.hmcts.net"
+    backend_domain    = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    disabled_rules    = {}
+    global_exclusions = []
+  },
+  {
+    name              = "expressjs-monorepo-template-web"
+    custom_domain     = "expressjs-monorepo-template-web.aat.platform.hmcts.net"
     dns_zone_name     = "aat.platform.hmcts.net"
     backend_domain    = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     disabled_rules    = {}

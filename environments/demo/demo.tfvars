@@ -1452,6 +1452,28 @@ frontends = [
         operator       = "Equals"
         selector       = "money-claims-cookie-preferences"
       },
+    ],
+    custom_rules = [
+      {
+        name                           = "assignmentRateLimitRule"
+        priority                       = 1
+        type                           = "RateLimitRule"
+        rate_limit_threshold           = 5
+        rate_limit_duration_in_minutes = 1
+        match_conditions = [
+          {
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values = [
+              "/first-contact/pin",
+              "/first-contact/claim-reference"
+            ],
+            transforms = ["Lowercase"]
+          }
+        ],
+        action = "Log"
+      }
     ]
   },
   {
@@ -3676,7 +3698,8 @@ frontends = [
                   operator         = "Contains"
                   negate_condition = true
                   match_values = [
-                    "client_id=idam_user_dashboard"
+                    "client_id=idam_user_dashboard",
+                    "client_id=lau"
                   ]
                   transforms = ["Lowercase"]
                 }
@@ -3703,7 +3726,8 @@ frontends = [
                   operator         = "Contains"
                   negate_condition = false
                   match_values = [
-                    "client_id=idam_user_dashboard"
+                    "client_id=idam_user_dashboard",
+                    "client_id=lau"
                   ]
                   transforms = ["Lowercase"]
                 }
@@ -4771,6 +4795,15 @@ frontends = [
         "931130"
       ]
     }
+    global_exclusions = []
+  },
+  {
+    name              = "wa-reporting-frontend"
+    mode              = "Detection"
+    custom_domain     = "wa-reporting-frontend.demo.platform.hmcts.net"
+    dns_zone_name     = "demo.platform.hmcts.net"
+    backend_domain    = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    disabled_rules    = {}
     global_exclusions = []
   },
 ]

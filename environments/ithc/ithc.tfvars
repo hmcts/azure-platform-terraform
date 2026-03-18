@@ -159,7 +159,11 @@ frontends = [
                   operator         = "Contains"
                   negate_condition = true
                   match_values = [
-                    "client_id=idam_user_dashboard"
+                    "client_id=idam_user_dashboard",
+                    "client_id=ccd_admin",
+                    "client_id=fact_admin",
+                    "client_id=paybubble",
+                    "client_id=fees_admin_frontend"
                   ]
                   transforms = ["Lowercase"]
                 }
@@ -186,7 +190,11 @@ frontends = [
                   operator         = "Contains"
                   negate_condition = false
                   match_values = [
-                    "client_id=idam_user_dashboard"
+                    "client_id=idam_user_dashboard",
+                    "client_id=ccd_admin",
+                    "client_id=fact_admin",
+                    "client_id=paybubble",
+                    "client_id=fees_admin_frontend"
                   ]
                   transforms = ["Lowercase"]
                 }
@@ -4342,6 +4350,15 @@ frontends = [
         "931130"
       ]
     }
+    global_exclusions = []
+  },
+  {
+    name              = "wa-reporting-frontend"
+    mode              = "Detection"
+    custom_domain     = "wa-reporting-frontend.ithc.platform.hmcts.net"
+    dns_zone_name     = "ithc.platform.hmcts.net"
+    backend_domain    = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    disabled_rules    = {}
     global_exclusions = []
   },
 ]

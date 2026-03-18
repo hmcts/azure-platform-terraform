@@ -1455,7 +1455,7 @@ frontends = [
     ],
     custom_rules = [
       {
-        name                           = "assignmentRateLimitRule"
+        name                           = "firstContactRateLimitRule"
         priority                       = 1
         type                           = "RateLimitRule"
         rate_limit_threshold           = 5

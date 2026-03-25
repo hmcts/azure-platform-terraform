@@ -103,10 +103,10 @@ frontends = [
     ]
   },
   {
-    name                           = "courtstranscribe"
-    custom_domain                  = "courtstranscribe.dev.apps.hmcts.net"
-    dns_zone_name                  = "dev.apps.hmcts.net"
-    backend_domain                 = [
+    name          = "courtstranscribe"
+    custom_domain = "courtstranscribe.dev.apps.hmcts.net"
+    dns_zone_name = "dev.apps.hmcts.net"
+    backend_domain = [
       "hmcts-transcribe-frontend-dev.azurewebsites.net"
     ]
     appgw_cookie_based_affinity    = "Enabled"

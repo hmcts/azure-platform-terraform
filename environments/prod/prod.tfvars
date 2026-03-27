@@ -1820,7 +1820,7 @@ frontends = [
   {
     product          = "ccd"
     name             = "return-case-doc-ccd"
-    mode             = "Detection"
+    mode             = "Prevention"
     custom_domain    = "return-case-doc.ccd.platform.hmcts.net"
     dns_zone_name    = "platform.hmcts.net"
     backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]

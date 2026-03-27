@@ -14,6 +14,7 @@ resources:
     ref: refs/heads/master
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts'
+# change for testing PR2
 
 variables:
   - name: timeoutInMinutes

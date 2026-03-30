@@ -109,9 +109,11 @@ frontends = [
     backend_domain = [
       "hmcts-transcribe-frontend-dev.azurewebsites.net"
     ]
+    host_header                    = "hmcts-transcribe-frontend-dev.azurewebsites.net"
     appgw_cookie_based_affinity    = "Enabled"
     cache_enabled                  = "false"
-    certificate_name_check_enabled = false
+    forwarding_protocol            = "HttpsOnly"
+    certificate_name_check_enabled = true
     private_link = {
       target_id   = "/subscriptions/8b6ea922-0862-443e-af15-6056e1c9b9a4/resourceGroups/courtstranscribe-dev-rg/providers/Microsoft.Web/sites/hmcts-transcribe-frontend-dev"
       location    = "uksouth"

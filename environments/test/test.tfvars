@@ -2596,12 +2596,51 @@ frontends = [
     ],
   },
   {
+<<<<<<< ADOP-2747
     name                = "adoption-web"
     custom_domain       = "adoption-web.perftest.platform.hmcts.net"
     dns_zone_name       = "perftest.platform.hmcts.net"
     mode                = "Prevention"
     backend_domain      = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
     cipher_suite_policy = "TLS12_2023"
+=======
+    name           = "adoption-web"
+    custom_domain  = "adoption-web.perftest.platform.hmcts.net"
+    dns_zone_name  = "perftest.platform.hmcts.net"
+    mode           = "Prevention"
+    backend_domain = ["firewall-nonprodi-palo-cft-perftest.uksouth.cloudapp.azure.com"]
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
+>>>>>>> master
     global_exclusions = [
       {
         match_variable = "RequestBodyPostArgNames"

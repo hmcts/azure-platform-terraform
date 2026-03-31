@@ -2743,6 +2743,7 @@ frontends = [
     ]
   },
   {
+<<<<<<< ADOP-2747
     name                = "adoption-web"
     custom_domain       = "adoption-web.ithc.platform.hmcts.net"
     dns_zone_name       = "ithc.platform.hmcts.net"
@@ -2750,6 +2751,45 @@ frontends = [
     backend_domain      = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
     certificate_name    = "wildcard-ithc-platform-hmcts-net"
     cipher_suite_policy = "TLS12_2023"
+=======
+    name             = "adoption-web"
+    custom_domain    = "adoption-web.ithc.platform.hmcts.net"
+    dns_zone_name    = "ithc.platform.hmcts.net"
+    mode             = "Prevention"
+    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
+>>>>>>> master
     global_exclusions = [
       {
         match_variable = "RequestBodyPostArgNames"

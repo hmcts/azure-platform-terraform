@@ -2452,11 +2452,12 @@ frontends = [
 
   },
   {
-    name           = "adoption-web"
-    custom_domain  = "adoption-web.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    mode           = "Prevention"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    name                = "adoption-web"
+    custom_domain       = "adoption-web.demo.platform.hmcts.net"
+    dns_zone_name       = "demo.platform.hmcts.net"
+    mode                = "Prevention"
+    backend_domain      = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
     custom_rules = [
       {
         name     = "BlockScriptInJSON"

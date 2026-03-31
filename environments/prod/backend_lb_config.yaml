@@ -202,6 +202,7 @@ gateways:
       # Send-letter
       - product: rpe
         component: send-letter-service
+        request_timeout: 600
 
     # ccpay
       - product: ccpay

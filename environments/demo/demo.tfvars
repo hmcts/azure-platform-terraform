@@ -1511,8 +1511,7 @@ frontends = [
             operator           = "Contains"
             negation_condition = false
             match_values = [
-              "/first-contact/pin",
-              "/first-contact/claim-reference"
+              "/first-contact"
             ],
             transforms = ["Lowercase"]
           }

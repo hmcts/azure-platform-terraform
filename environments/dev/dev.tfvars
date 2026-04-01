@@ -122,6 +122,7 @@ frontends = [
     disabled_rules = {
       SQLI = [
         "942430",
+        "942440",
       ]
     }
   },

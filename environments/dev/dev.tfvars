@@ -109,6 +109,7 @@ frontends = [
     backend_domain = [
       "hmcts-transcribe-frontend-dev.azurewebsites.net"
     ]
+    mode                           = "Detection"
     appgw_cookie_based_affinity    = "Enabled"
     cache_enabled                  = "false"
     forwarding_protocol            = "HttpsOnly"

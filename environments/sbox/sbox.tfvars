@@ -861,7 +861,7 @@ frontends = [
               url_path_conditions = [
                 {
                   operator     = "BeginsWith"
-                  match_values = ["/health/"]
+                  match_values = ["/health"]
                 }
               ]
             }

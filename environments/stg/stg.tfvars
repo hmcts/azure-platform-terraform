@@ -838,6 +838,27 @@ frontends = [
         operator       = "Equals"
         selector       = "money-claims-cookie-preferences"
       },
+    ],
+    custom_rules = [
+      {
+        name                           = "firstContactRateLimitRule"
+        priority                       = 1
+        type                           = "RateLimitRule"
+        rate_limit_threshold           = 100
+        rate_limit_duration_in_minutes = 1
+        match_conditions = [
+          {
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values = [
+              "/first-contact",
+            ],
+            transforms = ["Lowercase"]
+          }
+        ],
+        action = "Log"
+      }
     ]
   },
   {

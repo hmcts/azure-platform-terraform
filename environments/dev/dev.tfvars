@@ -247,9 +247,9 @@ frontends = [
     }
   },
   {
-    name          = "courtstranscribe-storage"
-    custom_domain = "courtstranscribe.dev.apps.hmcts.net"
-    dns_zone_name = "dev.apps.hmcts.net"
+    name           = "courtstranscribe-storage"
+    custom_domain  = "courtstranscribe.dev.apps.hmcts.net"
+    dns_zone_name  = "dev.apps.hmcts.net"
     backend_domain = ["hmctstranscribedevsa.blob.core.windows.net"]
     host_header    = "hmctstranscribedevsa.blob.core.windows.net"
 

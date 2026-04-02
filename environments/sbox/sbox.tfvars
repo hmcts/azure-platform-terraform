@@ -849,6 +849,35 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
+    rule_sets = [
+      {
+        name = "pathroutingrules"
+        rules = [
+          {
+            name              = "healthRedirect"
+            order             = 1
+            behavior_on_match = "Continue"
+            conditions = {
+              url_path_conditions = [
+                {
+                  operator     = "BeginsWith"
+                  match_values = ["/health"]
+                }
+              ]
+            }
+            actions = {
+              url_redirect_actions = [
+                {
+                  redirect_type        = "Moved"
+                  redirect_protocol    = "Https"
+                  destination_hostname = "plum.sandbox.platform.hmcts.net"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
   },
   {
     product             = "plum-tlse2e"

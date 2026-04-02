@@ -104,7 +104,7 @@ frontends = [
   },
   {
     name          = "courtstranscribe"
-    custom_domain = "courtstranscribe.dev.apps.hmcts.net"
+    custom_domain = "courtstranscribe-api.dev.apps.hmcts.net"
     dns_zone_name = "dev.apps.hmcts.net"
     backend_domain = [
       "hmcts-transcribe-frontend-dev.azurewebsites.net"
@@ -136,96 +136,6 @@ frontends = [
         operator       = "Equals"
         selector       = "id_token"
       },
-    ],
-    rule_sets = [
-      {
-        name = "courtstranscribe-backend"
-        rules = [
-          {
-            name              = "HMCTSCourtsTranscribeBackend"
-            order             = 1
-            behavior_on_match = "Stop"
-            conditions = {
-              url_path_conditions = [
-                {
-                  operator         = "BeginsWith"
-                  negate_condition = false
-                  match_values = [
-                    "api/"
-                  ]
-                  transforms = ["Lowercase"]
-                }
-              ]
-            }
-            actions = {
-              route_configuration_override_actions = [
-                {
-                  cdn_frontdoor_origin_group_key = "courtstranscribe-backend"
-                  forwarding_protocol            = "HttpsOnly"
-                  cache_behavior                 = "Disabled"
-                }
-              ]
-            }
-          },
-          {
-            name              = "HMCTSCourtsTranscribeStorage"
-            order             = 2
-            behavior_on_match = "Stop"
-            conditions = {
-              url_path_conditions = [
-                {
-                  operator         = "BeginsWith"
-                  negate_condition = false
-                  match_values = [
-                    "application-data/",
-                    "transcription-processing/",
-                    "storage/",
-                  ]
-                  transforms = ["Lowercase"]
-                }
-              ]
-            }
-            actions = {
-              route_configuration_override_actions = [
-                {
-                  cdn_frontdoor_origin_group_key = "courtstranscribe-storage"
-                  forwarding_protocol            = "HttpOnly"
-                  cache_behavior                 = "Disabled"
-                }
-              ]
-            }
-          },
-          {
-            name              = "HMCTSCourtsTranscribeFrontend"
-            order             = 3
-            behavior_on_match = "Stop"
-            conditions = {
-              url_path_conditions = [
-                {
-                  operator         = "BeginsWith"
-                  negate_condition = true
-                  match_values = [
-                    "api/",
-                    "application-data/",
-                    "transcription-processing/",
-                    "storage/",
-                  ]
-                  transforms = ["Lowercase"]
-                }
-              ]
-            }
-            actions = {
-              route_configuration_override_actions = [
-                {
-                  cdn_frontdoor_origin_group_key = "courtstranscribe"
-                  forwarding_protocol            = "HttpOnly"
-                  cache_behavior                 = "Disabled"
-                }
-              ]
-            }
-          }
-        ]
-      }
     ]
   },
   {
@@ -245,10 +155,28 @@ frontends = [
       location    = "uksouth"
       target_type = "sites"
     }
+    disabled_rules = {
+      SQLI = [
+        "942430",
+        "942440",
+      ]
+    }
+    global_exclusions = [
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "id_token"
+      },
+    ]
   },
   {
     name           = "courtstranscribe-storage"
-    custom_domain  = "courtstranscribe.dev.apps.hmcts.net"
+    custom_domain  = "courtstranscribe-storage.dev.apps.hmcts.net"
     dns_zone_name  = "dev.apps.hmcts.net"
     backend_domain = ["hmctstranscribedevsa.blob.core.windows.net"]
     host_header    = "hmctstranscribedevsa.blob.core.windows.net"

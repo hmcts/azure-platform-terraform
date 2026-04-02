@@ -158,11 +158,11 @@ frontends = [
               ]
             }
             actions = {
-              route_configuration_override_actions = [
+              url_redirect_actions = [
                 {
-                  cdn_frontdoor_origin_group_key = "courtstranscribe-backend"
-                  forwarding_protocol            = "HttpsOnly"
-                  cache_behavior                 = "Disabled"
+                  redirect_type        = "Moved"
+                  redirect_protocol    = "Https"
+                  destination_hostname = "hmcts-transcribe-backend-dev.azurewebsites.net"
                 }
               ]
             }
@@ -186,40 +186,11 @@ frontends = [
               ]
             }
             actions = {
-              route_configuration_override_actions = [
+              url_redirect_actions = [
                 {
-                  cdn_frontdoor_origin_group_key = "courtstranscribe-storage"
-                  forwarding_protocol            = "HttpOnly"
-                  cache_behavior                 = "Disabled"
-                }
-              ]
-            }
-          },
-          {
-            name              = "HMCTSCourtsTranscribeFrontend"
-            order             = 3
-            behavior_on_match = "Stop"
-            conditions = {
-              url_path_conditions = [
-                {
-                  operator         = "BeginsWith"
-                  negate_condition = true
-                  match_values = [
-                    "api/",
-                    "application-data/",
-                    "transcription-processing/",
-                    "storage/",
-                  ]
-                  transforms = ["Lowercase"]
-                }
-              ]
-            }
-            actions = {
-              route_configuration_override_actions = [
-                {
-                  cdn_frontdoor_origin_group_key = "courtstranscribe"
-                  forwarding_protocol            = "HttpOnly"
-                  cache_behavior                 = "Disabled"
+                  redirect_type        = "Moved"
+                  redirect_protocol    = "Https"
+                  destination_hostname = "hmctstranscribedevsa.privatelink.blob.core.windows.net"
                 }
               ]
             }

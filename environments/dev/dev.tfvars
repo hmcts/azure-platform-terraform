@@ -125,5 +125,141 @@ frontends = [
         "942440",
       ]
     }
+    global_exclusions = [
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "id_token"
+      },
+    ],
+    rule_sets = [
+      {
+        name = "courtstranscribe-backend"
+        rules = [
+          {
+            name              = "HMCTSCourtsTranscribeBackend"
+            order             = 1
+            behavior_on_match = "Stop"
+            conditions = {
+              url_path_conditions = [
+                {
+                  operator         = "BeginsWith"
+                  negate_condition = false
+                  match_values = [
+                    "api/"
+                  ]
+                  transforms = ["Lowercase"]
+                }
+              ]
+            }
+            actions = {
+              route_configuration_override_actions = [
+                {
+                  cdn_frontdoor_origin_group_key = "courtstranscribe-backend"
+                  forwarding_protocol            = "HttpsOnly"
+                  cache_behavior                 = "Disabled"
+                }
+              ]
+            }
+          },
+          {
+            name              = "HMCTSCourtsTranscribeStorage"
+            order             = 2
+            behavior_on_match = "Stop"
+            conditions = {
+              url_path_conditions = [
+                {
+                  operator         = "BeginsWith"
+                  negate_condition = false
+                  match_values = [
+                    "application-data/",
+                    "transcription-processing/",
+                    "storage/",
+                  ]
+                  transforms = ["Lowercase"]
+                }
+              ]
+            }
+            actions = {
+              route_configuration_override_actions = [
+                {
+                  cdn_frontdoor_origin_group_key = "courtstranscribe-storage"
+                  forwarding_protocol            = "HttpOnly"
+                  cache_behavior                 = "Disabled"
+                }
+              ]
+            }
+          },
+          {
+            name              = "HMCTSCourtsTranscribeFrontend"
+            order             = 3
+            behavior_on_match = "Stop"
+            conditions = {
+              url_path_conditions = [
+                {
+                  operator         = "BeginsWith"
+                  negate_condition = true
+                  match_values = [
+                    "api/",
+                    "application-data/",
+                    "transcription-processing/",
+                    "storage/",
+                  ]
+                  transforms = ["Lowercase"]
+                }
+              ]
+            }
+            actions = {
+              route_configuration_override_actions = [
+                {
+                  cdn_frontdoor_origin_group_key = "courtstranscribe"
+                  forwarding_protocol            = "HttpOnly"
+                  cache_behavior                 = "Disabled"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
   },
+  {
+    name          = "courtstranscribe-backend"
+    custom_domain = "courtstranscribe.dev.apps.hmcts.net"
+    dns_zone_name = "dev.apps.hmcts.net"
+    backend_domain = [
+      "hmcts-transcribe-backend-dev.azurewebsites.net"
+    ]
+    mode                           = "Detection"
+    appgw_cookie_based_affinity    = "Enabled"
+    cache_enabled                  = "false"
+    forwarding_protocol            = "HttpsOnly"
+    certificate_name_check_enabled = true
+    private_link = {
+      target_id   = "/subscriptions/8b6ea922-0862-443e-af15-6056e1c9b9a4/resourceGroups/courtstranscribe-dev-rg/providers/Microsoft.Web/sites/hmcts-transcribe-backend-dev"
+      location    = "uksouth"
+      target_type = "sites"
+    }
+  },
+  {
+    name          = "courtstranscribe-storage"
+    custom_domain = "courtstranscribe.dev.apps.hmcts.net"
+    dns_zone_name = "dev.apps.hmcts.net"
+    backend_domain = ["hmctstranscribedevsa.blob.core.windows.net"]
+    host_header    = "hmctstranscribedevsa.blob.core.windows.net"
+
+    private_link = {
+      target_id   = "/subscriptions/8b6ea922-0862-443e-af15-6056e1c9b9a4/resourceGroups/courtstranscribe-dev-rg/providers/Microsoft.Storage/storageAccounts/hmctstranscribedevsa"
+      location    = "uksouth"
+      target_type = "blob"
+    }
+
+    forwarding_protocol = "HttpsOnly"
+    cache_enabled       = "false"
+  }
 ]

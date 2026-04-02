@@ -125,5 +125,83 @@ frontends = [
         "942440",
       ]
     }
-  },
+    rule_sets = [
+      {
+        name = "pathroutingrules"
+        rules = [
+          # priority 20: /storage/* -> Azure Blob Storage  (most specific, evaluated first)
+          {
+            name              = "storageRedirect"
+            order             = 1
+            behavior_on_match = "Continue"
+            conditions = {
+              url_path_conditions = [
+                {
+                  operator     = "BeginsWith"
+                  match_values = ["/storage/"]
+                }
+              ]
+            }
+            actions = {
+              url_redirect_actions = [
+                {
+                  redirect_type        = "Moved"
+                  redirect_protocol    = "Https"
+                  destination_hostname = "mystorageaccount.blob.core.windows.net"
+                }
+              ]
+            }
+          },
+
+          # priority 10: /api/* -> backend
+          {
+            name              = "apiRedirect"
+            order             = 2
+            behavior_on_match = "Continue"
+            conditions = {
+              url_path_conditions = [
+                {
+                  operator     = "BeginsWith"
+                  match_values = ["/api/"]
+                }
+              ]
+            }
+            actions = {
+              url_redirect_actions = [
+                {
+                  redirect_type        = "Moved"
+                  redirect_protocol    = "Https"
+                  destination_hostname = "api.backend.example.com"
+                }
+              ]
+            }
+          },
+
+          # priority 5: /* -> frontend  (catch-all, evaluated last)
+          {
+            name              = "frontendRedirect"
+            order             = 3
+            behavior_on_match = "Continue"
+            conditions = {
+              url_path_conditions = [
+                {
+                  operator     = "BeginsWith"
+                  match_values = ["/"]
+                }
+              ]
+            }
+            actions = {
+              url_redirect_actions = [
+                {
+                  redirect_type        = "Moved"
+                  redirect_protocol    = "Https"
+                  destination_hostname = "frontend.example.com"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
 ]

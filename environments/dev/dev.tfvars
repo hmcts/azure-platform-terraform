@@ -177,7 +177,9 @@ frontends = [
                   operator         = "BeginsWith"
                   negate_condition = false
                   match_values = [
-                    "storage/"
+                    "application-data/",
+                    "transcription-processing/",
+                    "storage/",
                   ]
                   transforms = ["Lowercase"]
                 }
@@ -186,8 +188,7 @@ frontends = [
             actions = {
               route_configuration_override_actions = [
                 {
-                  # TODO - change to Azure Blob Storage origin group
-                  cdn_frontdoor_origin_group_key = "courtstranscribe-backend"
+                  cdn_frontdoor_origin_group_key = "courtstranscribe-storage"
                   forwarding_protocol            = "HttpOnly"
                   cache_behavior                 = "Disabled"
                 }
@@ -205,6 +206,8 @@ frontends = [
                   negate_condition = true
                   match_values = [
                     "api/",
+                    "application-data/",
+                    "transcription-processing/",
                     "storage/",
                   ]
                   transforms = ["Lowercase"]
@@ -242,5 +245,21 @@ frontends = [
       location    = "uksouth"
       target_type = "sites"
     }
+  },
+  {
+    name          = "courtstranscribe-storage"
+    custom_domain = "courtstranscribe.dev.apps.hmcts.net"
+    dns_zone_name = "dev.apps.hmcts.net"
+    backend_domain = ["hmctstranscribedevsa.blob.core.windows.net"]
+    host_header    = "hmctstranscribedevsa.blob.core.windows.net"
+
+    private_link = {
+      target_id   = "/subscriptions/8b6ea922-0862-443e-af15-6056e1c9b9a4/resourceGroups/courtstranscribe-dev-rg/providers/Microsoft.Storage/storageAccounts/hmctstranscribedevsa"
+      location    = "uksouth"
+      target_type = "blob"
+    }
+
+    forwarding_protocol = "HttpsOnly"
+    cache_enabled       = "false"
   }
 ]

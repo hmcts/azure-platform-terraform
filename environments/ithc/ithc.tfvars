@@ -134,6 +134,7 @@ frontends = [
     mode           = "Prevention"
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
     cache_enabled  = "false"
 
     rule_sets = [
@@ -515,6 +516,7 @@ frontends = [
     custom_domain  = "hmcts-access.ithc.platform.hmcts.net"
     dns_zone_name  = "ithc.platform.hmcts.net"
     backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
 
     global_exclusions = [
       {

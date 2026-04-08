@@ -4390,7 +4390,7 @@ frontends = [
             match_variable     = "RemoteAddr"
             operator           = "IPMatch"
             negation_condition = false
-            match_values       = ["138.68.148.99"]
+            match_values       = ["138.68.148.99", "165.22.118.72"]
           },
           {
             match_variable     = "RequestUri"

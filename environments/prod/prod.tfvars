@@ -2432,14 +2432,15 @@ frontends = [
     www_redirect     = true
   },
   {
-    product          = "idam"
-    name             = "idam-web-public"
-    custom_domain    = "hmcts-access.service.gov.uk"
-    dns_zone_name    = "hmcts-access.service.gov.uk"
-    ssl_mode         = "AzureKeyVault"
-    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "hmcts-access-service-gov-uk"
-    cache_enabled    = "false"
+    product             = "idam"
+    name                = "idam-web-public"
+    custom_domain       = "hmcts-access.service.gov.uk"
+    dns_zone_name       = "hmcts-access.service.gov.uk"
+    ssl_mode            = "AzureKeyVault"
+    backend_domain      = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
+    certificate_name    = "hmcts-access-service-gov-uk"
+    cache_enabled       = "false"
     rule_sets = [
       {
         name = "hmcts-access-overrides"
@@ -2834,13 +2835,14 @@ frontends = [
     ]
   },
   {
-    product          = "idam"
-    name             = "hmcts-access"
-    mode             = "Prevention"
-    custom_domain    = "hmcts-access.platform.hmcts.net"
-    dns_zone_name    = "platform.hmcts.net"
-    certificate_name = "wildcard-platform-hmcts-net"
-    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    product             = "idam"
+    name                = "hmcts-access"
+    mode                = "Prevention"
+    custom_domain       = "hmcts-access.platform.hmcts.net"
+    dns_zone_name       = "platform.hmcts.net"
+    certificate_name    = "wildcard-platform-hmcts-net"
+    backend_domain      = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
 
     global_exclusions = [
       {

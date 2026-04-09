@@ -103,8 +103,8 @@ frontends = [
     ]
   },
   {
-    name          = "courtstranscribe"
-    custom_domain = "courtstranscribe.dev.apps.hmcts.net"
+    name          = "judicialtranscribe"
+    custom_domain = "judicialtranscribe.dev.apps.hmcts.net"
     dns_zone_name = "dev.apps.hmcts.net"
     backend_domain = [
       "hmcts-transcribe-frontend-dev.azurewebsites.net"

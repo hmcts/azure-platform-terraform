@@ -33,14 +33,15 @@ autoShutdown = true
 
 frontends = [
   {
-    product          = "idam"
-    name             = "idam-web-public"
-    custom_domain    = "idam-web-public.sandbox.platform.hmcts.net"
-    mode             = "Prevention"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    shutter_app      = false
+    product             = "idam"
+    name                = "idam-web-public"
+    custom_domain       = "idam-web-public.sandbox.platform.hmcts.net"
+    mode                = "Prevention"
+    dns_zone_name       = "sandbox.platform.hmcts.net"
+    backend_domain      = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
+    certificate_name    = "wildcard-sandbox-platform-hmcts-net"
+    shutter_app         = false
 
     rule_sets = [
       {
@@ -376,8 +377,9 @@ frontends = [
     dns_zone_name = "sandbox.platform.hmcts.net"
     shutter_app   = false
 
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    backend_domain      = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
+    certificate_name    = "wildcard-sandbox-platform-hmcts-net"
 
     global_exclusions = [
       {

@@ -2789,12 +2789,13 @@ frontends = [
     ]
   },
   {
-    name           = "idam-web-public"
-    custom_domain  = "idam-web-public.aat.platform.hmcts.net"
-    mode           = "Prevention"
-    dns_zone_name  = "aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
-    cache_enabled  = "false"
+    name                = "idam-web-public"
+    custom_domain       = "idam-web-public.aat.platform.hmcts.net"
+    mode                = "Prevention"
+    dns_zone_name       = "aat.platform.hmcts.net"
+    backend_domain      = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
+    cache_enabled       = "false"
     rule_sets = [
       {
         name = "hmcts-access-overrides"
@@ -3159,12 +3160,13 @@ frontends = [
     ]
   },
   {
-    product        = "idam"
-    name           = "hmcts-access"
-    mode           = "Prevention"
-    custom_domain  = "hmcts-access.aat.platform.hmcts.net"
-    dns_zone_name  = "aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    product             = "idam"
+    name                = "hmcts-access"
+    mode                = "Prevention"
+    custom_domain       = "hmcts-access.aat.platform.hmcts.net"
+    dns_zone_name       = "aat.platform.hmcts.net"
+    backend_domain      = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
 
     global_exclusions = [
       {

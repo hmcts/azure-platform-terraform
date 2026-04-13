@@ -1034,6 +1034,16 @@ frontends = [
         operator       = "Equals"
         selector       = "crit"
       },
+      {
+        product          = "labs-njk-debolina-seal"
+        name             = "labs-njk-debolina-seal"
+        custom_domain    = "labs-njk-debolina-seal.sandbox.platform.hmcts.net"
+        dns_zone_name    = "sandbox.platform.hmcts.net"
+        shutter_app      = false
+        backend_domain   = ["firewall-sbox-int-palo-labs-njk-debolina-seal.uksouth.cloudapp.azure.com"]
+        certificate_name = "wildcard-sandbox-platform-hmcts-net"
+        disabled_rules   = {}
+      },
     ]
   }
 ]

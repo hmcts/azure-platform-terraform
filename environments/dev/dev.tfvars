@@ -103,13 +103,13 @@ frontends = [
     ]
   },
   {
-    name          = "courtstranscribe"
-    custom_domain = "courtstranscribe.dev.apps.hmcts.net"
+    name          = "judicialtranscribe"
+    custom_domain = "judicialtranscribe.dev.apps.hmcts.net"
     dns_zone_name = "dev.apps.hmcts.net"
     backend_domain = [
       "hmcts-transcribe-frontend-dev.azurewebsites.net"
     ]
-    host_header                    = "hmcts-transcribe-frontend-dev.azurewebsites.net"
+    mode                           = "Detection"
     appgw_cookie_based_affinity    = "Enabled"
     cache_enabled                  = "false"
     forwarding_protocol            = "HttpsOnly"
@@ -119,5 +119,23 @@ frontends = [
       location    = "uksouth"
       target_type = "sites"
     }
+    disabled_rules = {
+      SQLI = [
+        "942430",
+        "942440",
+      ]
+    }
+    global_exclusions = [
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "id_token"
+      },
+    ],
   },
 ]

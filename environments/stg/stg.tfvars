@@ -909,6 +909,27 @@ frontends = [
         operator       = "Equals"
         selector       = "money-claims-cookie-preferences"
       },
+    ],
+    custom_rules = [
+      {
+        name                           = "firstContactRateLimitRule"
+        priority                       = 1
+        type                           = "RateLimitRule"
+        rate_limit_threshold           = 100
+        rate_limit_duration_in_minutes = 1
+        match_conditions = [
+          {
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values = [
+              "/first-contact",
+            ],
+            transforms = ["Lowercase"]
+          }
+        ],
+        action = "Log"
+      }
     ]
   },
   {
@@ -2839,12 +2860,13 @@ frontends = [
     ]
   },
   {
-    name           = "idam-web-public"
-    custom_domain  = "idam-web-public.aat.platform.hmcts.net"
-    mode           = "Prevention"
-    dns_zone_name  = "aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
-    cache_enabled  = "false"
+    name                = "idam-web-public"
+    custom_domain       = "idam-web-public.aat.platform.hmcts.net"
+    mode                = "Prevention"
+    dns_zone_name       = "aat.platform.hmcts.net"
+    backend_domain      = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
+    cache_enabled       = "false"
     rule_sets = [
       {
         name = "hmcts-access-overrides"
@@ -3209,12 +3231,13 @@ frontends = [
     ]
   },
   {
-    product        = "idam"
-    name           = "hmcts-access"
-    mode           = "Prevention"
-    custom_domain  = "hmcts-access.aat.platform.hmcts.net"
-    dns_zone_name  = "aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    product             = "idam"
+    name                = "hmcts-access"
+    mode                = "Prevention"
+    custom_domain       = "hmcts-access.aat.platform.hmcts.net"
+    dns_zone_name       = "aat.platform.hmcts.net"
+    backend_domain      = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
 
     global_exclusions = [
       {
@@ -4440,7 +4463,7 @@ frontends = [
             match_variable     = "RemoteAddr"
             operator           = "IPMatch"
             negation_condition = false
-            match_values       = ["138.68.148.99"]
+            match_values       = ["138.68.148.99", "165.22.118.72"]
           },
           {
             match_variable     = "RequestUri"
@@ -5151,6 +5174,42 @@ frontends = [
     backend_domain    = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     disabled_rules    = {}
     global_exclusions = []
+  },
+  {
+    name          = "judicialtranscribe"
+    custom_domain = "judicialtranscribe.staging.apps.hmcts.net"
+    dns_zone_name = "staging.apps.hmcts.net"
+    backend_domain = [
+      "hmcts-transcribe-frontend-stg.azurewebsites.net"
+    ]
+    mode                           = "Detection"
+    appgw_cookie_based_affinity    = "Enabled"
+    cache_enabled                  = "false"
+    forwarding_protocol            = "HttpsOnly"
+    certificate_name_check_enabled = true
+    private_link = {
+      target_id   = "/subscriptions/96c274ce-846d-4e48-89a7-d528432298a7/resourceGroups/courtstranscribe-stg-rg/providers/Microsoft.Web/sites/hmcts-transcribe-frontend-stg"
+      location    = "uksouth"
+      target_type = "sites"
+    }
+    disabled_rules = {
+      SQLI = [
+        "942430",
+        "942440",
+      ]
+    }
+    global_exclusions = [
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "id_token"
+      },
+    ],
   },
 ]
 

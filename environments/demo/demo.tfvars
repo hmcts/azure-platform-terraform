@@ -91,7 +91,7 @@ frontends = [
             match_variable     = "RemoteAddr"
             operator           = "IPMatch"
             negation_condition = false
-            match_values       = ["165.232.96.32", "89.107.56.22"]
+            match_values       = ["165.232.96.32", "89.107.56.22", "165.22.118.72"]
           },
           {
             match_variable     = "RequestUri"
@@ -2452,11 +2452,43 @@ frontends = [
 
   },
   {
-    name           = "adoption-web"
-    custom_domain  = "adoption-web.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    mode           = "Prevention"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    name                = "adoption-web"
+    custom_domain       = "adoption-web.demo.platform.hmcts.net"
+    dns_zone_name       = "demo.platform.hmcts.net"
+    mode                = "Prevention"
+    backend_domain      = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
     global_exclusions = [
       {
         match_variable = "RequestBodyPostArgNames"
@@ -3265,12 +3297,13 @@ frontends = [
     ]
   },
   {
-    product        = "idam"
-    name           = "hmcts-access"
-    mode           = "Prevention"
-    custom_domain  = "hmcts-access.demo.platform.hmcts.net"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    product             = "idam"
+    name                = "hmcts-access"
+    mode                = "Prevention"
+    custom_domain       = "hmcts-access.demo.platform.hmcts.net"
+    dns_zone_name       = "demo.platform.hmcts.net"
+    backend_domain      = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
 
     global_exclusions = [
       {
@@ -3682,12 +3715,13 @@ frontends = [
 
   },
   {
-    name           = "idam-web-public"
-    custom_domain  = "idam-web-public.demo.platform.hmcts.net"
-    mode           = "Prevention"
-    dns_zone_name  = "demo.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-    cache_enabled  = "false"
+    name                = "idam-web-public"
+    custom_domain       = "idam-web-public.demo.platform.hmcts.net"
+    mode                = "Prevention"
+    dns_zone_name       = "demo.platform.hmcts.net"
+    backend_domain      = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
+    cache_enabled       = "false"
     rule_sets = [
       {
         name = "hmcts-access-overrides"

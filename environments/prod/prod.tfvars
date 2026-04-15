@@ -1478,8 +1478,28 @@ frontends = [
         operator       = "StartsWith"
         selector       = "rows"
       },
+    ],
+    custom_rules = [
+      {
+        name                           = "firstContactRateLimitRule"
+        priority                       = 1
+        type                           = "RateLimitRule"
+        rate_limit_threshold           = 100
+        rate_limit_duration_in_minutes = 1
+        match_conditions = [
+          {
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values = [
+              "/first-contact",
+            ],
+            transforms = ["Lowercase"]
+          }
+        ],
+        action = "Log"
+      }
     ]
-
   },
   {
     product          = "cmc"
@@ -2412,14 +2432,15 @@ frontends = [
     www_redirect     = true
   },
   {
-    product          = "idam"
-    name             = "idam-web-public"
-    custom_domain    = "hmcts-access.service.gov.uk"
-    dns_zone_name    = "hmcts-access.service.gov.uk"
-    ssl_mode         = "AzureKeyVault"
-    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "hmcts-access-service-gov-uk"
-    cache_enabled    = "false"
+    product             = "idam"
+    name                = "idam-web-public"
+    custom_domain       = "hmcts-access.service.gov.uk"
+    dns_zone_name       = "hmcts-access.service.gov.uk"
+    ssl_mode            = "AzureKeyVault"
+    backend_domain      = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
+    certificate_name    = "hmcts-access-service-gov-uk"
+    cache_enabled       = "false"
     rule_sets = [
       {
         name = "hmcts-access-overrides"
@@ -2814,13 +2835,14 @@ frontends = [
     ]
   },
   {
-    product          = "idam"
-    name             = "hmcts-access"
-    mode             = "Prevention"
-    custom_domain    = "hmcts-access.platform.hmcts.net"
-    dns_zone_name    = "platform.hmcts.net"
-    certificate_name = "wildcard-platform-hmcts-net"
-    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    product             = "idam"
+    name                = "hmcts-access"
+    mode                = "Prevention"
+    custom_domain       = "hmcts-access.platform.hmcts.net"
+    dns_zone_name       = "platform.hmcts.net"
+    certificate_name    = "wildcard-platform-hmcts-net"
+    backend_domain      = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
 
     global_exclusions = [
       {
@@ -3275,7 +3297,7 @@ frontends = [
             match_variable     = "RemoteAddr"
             operator           = "IPMatch"
             negation_condition = false
-            match_values       = ["165.22.118.72", "165.232.96.32"]
+            match_values       = ["165.22.118.72", "165.232.96.32", "139.59.178.229"]
           },
           {
             match_variable     = "RequestUri"
@@ -3770,13 +3792,45 @@ frontends = [
     certificate_name_check_enabled = false
   },
   {
-    product          = "adoption"
-    name             = "adoption"
-    mode             = "Prevention"
-    custom_domain    = "apply-for-adoption.platform.hmcts.net"
-    dns_zone_name    = "platform.hmcts.net"
-    backend_domain   = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
-    certificate_name = "apply-for-adoption-platform-hmcts-net"
+    product             = "adoption"
+    name                = "adoption"
+    mode                = "Prevention"
+    custom_domain       = "apply-for-adoption.platform.hmcts.net"
+    dns_zone_name       = "platform.hmcts.net"
+    backend_domain      = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    certificate_name    = "apply-for-adoption-platform-hmcts-net"
+    cipher_suite_policy = "TLS12_2023"
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
     global_exclusions = [
       {
         match_variable = "RequestCookieNames"

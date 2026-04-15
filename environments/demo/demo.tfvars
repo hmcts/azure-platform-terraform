@@ -4889,6 +4889,17 @@ frontends = [
     }
     global_exclusions = []
   },
+  
+   {
+    product                     = "pt"
+    name                        = "pt-frontend"
+    mode                        = "Prevention"
+    custom_domain               = "pt.aat.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    dns_zone_name               = "aat.platform.hmcts.net"
+    global_exclusions           = []
+  },
+
   {
     name              = "wa-reporting-frontend"
     mode              = "Detection"
@@ -4937,5 +4948,6 @@ pubsub_waf_managed_rules = [
     ]
   }
 ]
+
 
 disable_trusted_service_connectivity = true

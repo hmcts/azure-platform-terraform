@@ -4936,7 +4936,7 @@ pubsub_waf_managed_rules = [
       }
     ]
   }
-]
+],
 
   {
     product                     = "pt"
@@ -4945,6 +4945,7 @@ pubsub_waf_managed_rules = [
     custom_domain               = "pt.aat.platform.hmcts.net"
     backend_domain              = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
     dns_zone_name               = "aat.platform.hmcts.net"
+    global_exclusions           = []
   }
 
 disable_trusted_service_connectivity = true

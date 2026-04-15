@@ -4938,4 +4938,13 @@ pubsub_waf_managed_rules = [
   }
 ]
 
+  {
+    product                     = "pt"
+    name                        = "pt-frontend"
+    mode                        = "Prevention"
+    custom_domain               = "pt.aat.platform.hmcts.net"
+    backend_domain              = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    dns_zone_name               = "aat.platform.hmcts.net"
+  }
+
 disable_trusted_service_connectivity = true

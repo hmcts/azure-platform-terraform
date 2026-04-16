@@ -112,8 +112,6 @@ frontends = [
     mode                           = "Prevention"
     appgw_cookie_based_affinity    = "Enabled"
     cache_enabled                  = "false"
-    forwarding_protocol            = "HttpsOnly"
-    certificate_name_check_enabled = true
     disabled_rules = {
       SQLI = [
         "942430",

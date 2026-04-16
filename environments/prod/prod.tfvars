@@ -5532,7 +5532,7 @@ frontends = [
     backend_domain = [
       "hmcts-transcribe-frontend-prod.azurewebsites.net"
     ]
-    mode                           = "Detection"
+    mode                           = "Prevention"
     appgw_cookie_based_affinity    = "Enabled"
     cache_enabled                  = "false"
     forwarding_protocol            = "HttpsOnly"
@@ -5558,6 +5558,28 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "id_token"
+      },
+      # Posthog cookies set off AFD firewall so better if excluded.
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "ph_phc"
+      },
+      {
+        match_variable = "RequestCookieKeys"
+        operator       = "StartsWith"
+        selector       = "ph_phc"
+      },
+      # This cookie is used by the AzureAD auth flow
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Nonce"
+      },
+      {
+        match_variable = "RequestCookieKeys"
+        operator       = "Equals"
+        selector       = "Nonce"
       },
     ],
   },

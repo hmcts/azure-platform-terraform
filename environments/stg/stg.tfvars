@@ -1420,6 +1420,16 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
+        selector       = "applicant1GenAppPartnerAgreesUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2GenAppPartnerAgreesUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "applicant2LegalProceedingUploadedFiles"
       },
     ]
@@ -1547,6 +1557,16 @@ frontends = [
       {
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
+        selector       = "applicant1GenAppPartnerAgreesUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2GenAppPartnerAgreesUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
         selector       = "applicant2LegalProceedingUploadedFiles"
       },
     ]
@@ -1670,6 +1690,16 @@ frontends = [
         match_variable = "RequestBodyPostArgNames"
         operator       = "Equals"
         selector       = "applicant2InterimAppsEvidenceUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant1GenAppPartnerAgreesUploadedFiles"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "applicant2GenAppPartnerAgreesUploadedFiles"
       },
       {
         match_variable = "RequestBodyPostArgNames"

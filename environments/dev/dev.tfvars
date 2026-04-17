@@ -64,6 +64,16 @@ frontends = [
         operator       = "Equals"
         selector       = "crit"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "newFilter"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "amp;newFilter"
+      },
     ]
   },
   {
@@ -84,6 +94,16 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "state"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "newFilter"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "amp;newFilter"
       },
       {
         match_variable = "QueryStringArgNames"

@@ -5550,7 +5550,7 @@ frontends = [
     custom_domain = "judicialtranscribe.apps.hmcts.net"
     dns_zone_name = "apps.hmcts.net"
     backend_domain = [
-      "firewall-prod-palo-courts-transcribe-prod.uksouth.cloudapp.azure.com"
+      "firewall-prod-int-palo-courts-transcribe-prod.uksouth.cloudapp.azure.com"
     ]
     mode                           = "Prevention"
     appgw_cookie_based_affinity    = "Enabled"

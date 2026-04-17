@@ -5111,9 +5111,11 @@ frontends = [
     backend_domain = [
       "firewall-nonprodi-palo-courts-transcribe-stg.uksouth.cloudapp.azure.com"
     ]
-    mode                        = "Prevention"
-    appgw_cookie_based_affinity = "Enabled"
-    cache_enabled               = "false"
+    mode                           = "Prevention"
+    appgw_cookie_based_affinity    = "Enabled"
+    cache_enabled                  = "false"
+    forwarding_protocol            = "HttpsOnly"
+    certificate_name_check_enabled = false
     disabled_rules = {
       SQLI = [
         "942430",

@@ -5016,11 +5016,15 @@ frontends = [
     ]
   },
   {
-    name                   = "csds-active"
-    custom_domain          = "csds.staging.apps.hmcts.net"
-    dns_zone_name          = "staging.apps.hmcts.net"
-    backend_domain         = ["csds-active.staging.platform.hmcts.net"]
-    disabled_rules         = {}
+    name           = "csds-active"
+    custom_domain  = "csds.staging.apps.hmcts.net"
+    dns_zone_name  = "staging.apps.hmcts.net"
+    backend_domain = ["csds-active.staging.platform.hmcts.net"]
+    disabled_rules = {
+      SQLI = [
+        "942200",
+      ]
+    }
     disable_frontend_appgw = true
     forwarding_protocol    = "HttpsOnly"
     global_exclusions = [
@@ -5062,11 +5066,15 @@ frontends = [
     ]
   },
   {
-    name                   = "csds-passive"
-    custom_domain          = "csds-passive.staging.apps.hmcts.net"
-    dns_zone_name          = "staging.apps.hmcts.net"
-    backend_domain         = ["csds-passive.staging.platform.hmcts.net"]
-    disabled_rules         = {}
+    name           = "csds-passive"
+    custom_domain  = "csds-passive.staging.apps.hmcts.net"
+    dns_zone_name  = "staging.apps.hmcts.net"
+    backend_domain = ["csds-passive.staging.platform.hmcts.net"]
+    disabled_rules = {
+      SQLI = [
+        "942200",
+      ]
+    }
     disable_frontend_appgw = true
     forwarding_protocol    = "HttpsOnly"
     global_exclusions = [

@@ -113,7 +113,7 @@ frontends = [
     appgw_cookie_based_affinity    = "Enabled"
     cache_enabled                  = "false"
     forwarding_protocol            = "HttpsOnly"
-    certificate_name_check_enabled = true
+    certificate_name_check_enabled = false
     disabled_rules = {
       SQLI = [
         "942430",

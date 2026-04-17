@@ -5530,18 +5530,13 @@ frontends = [
     custom_domain = "judicialtranscribe.apps.hmcts.net"
     dns_zone_name = "apps.hmcts.net"
     backend_domain = [
-      "hmcts-transcribe-frontend-prod.azurewebsites.net"
+      "firewall-prod-palo-courts-transcribe-prod.uksouth.cloudapp.azure.com"
     ]
     mode                           = "Prevention"
     appgw_cookie_based_affinity    = "Enabled"
     cache_enabled                  = "false"
     forwarding_protocol            = "HttpsOnly"
-    certificate_name_check_enabled = true
-    private_link = {
-      target_id   = "/subscriptions/96c274ce-846d-4e48-89a7-d528432298a7/resourceGroups/courtstranscribe-prod-rg/providers/Microsoft.Web/sites/hmcts-transcribe-frontend-prod"
-      location    = "uksouth"
-      target_type = "sites"
-    }
+    certificate_name_check_enabled = false
     disabled_rules = {
       SQLI = [
         "942430",

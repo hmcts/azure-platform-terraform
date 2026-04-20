@@ -4895,7 +4895,7 @@ frontends = [
     name              = "pt-frontend"
     mode              = "Prevention"
     custom_domain     = "pt.demo.platform.hmcts.net"
-    backend_domain    = ["firewall-prod-int-palo-cftprod.uksouth.cloudapp.azure.com"]
+    backend_domain    = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
     dns_zone_name     = "demo.platform.hmcts.net"
     global_exclusions = []
   },

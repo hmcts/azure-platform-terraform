@@ -4972,6 +4972,7 @@ frontends = [
     backend_domain    = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     dns_zone_name     = "aat.platform.hmcts.net"
     global_exclusions = []
+    
   },
   {
     name           = "finrem-citizen-ui"

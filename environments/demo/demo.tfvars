@@ -4891,16 +4891,6 @@ frontends = [
   },
 
   {
-    product           = "pt"
-    name              = "pt-frontend"
-    mode              = "Prevention"
-    custom_domain     = "pt.demo.platform.hmcts.net"
-    backend_domain    = ["firewall-nonprodi-palo-cftdemoappgateway.uksouth.cloudapp.azure.com"]
-    dns_zone_name     = "demo.platform.hmcts.net"
-    global_exclusions = []
-  },
-
-  {
     name              = "wa-reporting-frontend"
     mode              = "Detection"
     custom_domain     = "wa-reporting-frontend.demo.platform.hmcts.net"

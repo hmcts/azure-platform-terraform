@@ -165,11 +165,21 @@ frontends = [
         operator       = "StartsWith"
         selector       = "ph_phc"
       },
-      # This cookie is used by the AzureAD auth flow
+      # These cookies are used by the AzureAD auth flow
       {
         match_variable = "RequestCookieNames"
         operator       = "Equals"
         selector       = "Nonce"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "AppServiceAuthSession"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "AppServiceAuthSessionKey"
       },
     ],
   },

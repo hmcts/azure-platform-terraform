@@ -4965,6 +4965,16 @@ frontends = [
     global_exclusions = []
   },
   {
+    product           = "pt"
+    name              = "pt-frontend"
+    mode              = "Prevention"
+    custom_domain     = "pt.aat.platform.hmcts.net"
+    backend_domain    = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    dns_zone_name     = "aat.platform.hmcts.net"
+    global_exclusions = []
+  },
+  
+  {
     name           = "finrem-citizen-ui"
     mode           = "Prevention"
     custom_domain  = "finrem-citizen-ui.aat.platform.hmcts.net"

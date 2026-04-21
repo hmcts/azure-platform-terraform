@@ -4973,7 +4973,6 @@ frontends = [
     dns_zone_name     = "aat.platform.hmcts.net"
     global_exclusions = []
   },
-
   {
     name           = "finrem-citizen-ui"
     mode           = "Prevention"

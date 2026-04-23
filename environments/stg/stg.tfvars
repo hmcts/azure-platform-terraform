@@ -5031,7 +5031,11 @@ frontends = [
     backend_domain = ["csds-active.staging.platform.hmcts.net"]
     disabled_rules = {
       SQLI = [
+        "942100",
+        "942110",
+        "942120",
         "942200",
+        "942390",
       ]
     }
     disable_frontend_appgw = true
@@ -5071,6 +5075,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "amp;newFilter"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
       },
     ]
   },
@@ -5081,7 +5090,11 @@ frontends = [
     backend_domain = ["csds-passive.staging.platform.hmcts.net"]
     disabled_rules = {
       SQLI = [
+        "942100",
+        "942110",
+        "942120",
         "942200",
+        "942390",
       ]
     }
     disable_frontend_appgw = true
@@ -5121,6 +5134,11 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "amp;newFilter"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
       },
     ]
   },

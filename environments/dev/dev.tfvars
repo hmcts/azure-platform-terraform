@@ -199,6 +199,12 @@ frontends = [
         operator       = "Equals"
         selector       = "AppServiceAuthSessionKey"
       },
+      # The Authorization query param is required in some Azure Speech-to-text flows.
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "Authorization"
+      },
     ],
   },
 ]

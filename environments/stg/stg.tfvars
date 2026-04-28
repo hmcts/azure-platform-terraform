@@ -4267,7 +4267,7 @@ frontends = [
     name           = "privatelaw"
     custom_domain  = "privatelaw.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
-    mode           = "Prevention"
+    mode           = "Detection"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     custom_rules = [
       {

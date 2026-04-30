@@ -1085,6 +1085,101 @@ frontends = [
     cipher_suite_policy = "TLS12_2023"
 
     disabled_rules = {}
+    rule_sets = [
+      {
+        name = "hmcts-access-overrides"
+        rules = [
+          {
+            name              = "StopIfClientIdExistsButDoesNotMatch"
+            order             = 1
+            behavior_on_match = "Stop"
+
+            conditions = {
+              query_string_conditions = [
+                {
+                  operator         = "Contains"
+                  negate_condition = false
+                  match_values = [
+                    "client_id="
+                  ]
+                  transforms = ["Lowercase"]
+                },
+                {
+                  operator         = "Contains"
+                  negate_condition = true
+                  match_values = [
+                    "client_id=lau"
+                  ]
+                  transforms = ["Lowercase"]
+                }
+              ]
+            }
+
+            actions = {
+              route_configuration_override_actions = [
+                {
+                  cdn_frontdoor_origin_group_key = "idam-web-public"
+                  forwarding_protocol            = "HttpOnly"
+                  cache_behavior                 = "Disabled"
+                }
+              ]
+            }
+          },
+          {
+            name  = "UseHmctsAccessIfClientIdMatches"
+            order = 2
+
+            conditions = {
+              query_string_conditions = [
+                {
+                  operator         = "Contains"
+                  negate_condition = false
+                  match_values = [
+                    "client_id=lau"
+                  ]
+                  transforms = ["Lowercase"]
+                }
+              ]
+            }
+
+            actions = {
+              route_configuration_override_actions = [
+                {
+                  cdn_frontdoor_origin_group_key = "hmcts-access"
+                  forwarding_protocol            = "HttpOnly"
+                  cache_behavior                 = "Disabled"
+                }
+              ]
+            }
+          },
+          {
+            name  = "UseHmctsAccessIfIdamUiCookie"
+            order = 3
+
+            conditions = {
+              cookies_conditions = [
+                {
+                  cookie_name      = "Idam.UI"
+                  operator         = "Equal"
+                  match_values     = ["hmcts-access"]
+                  negate_condition = false
+                }
+              ]
+            }
+
+            actions = {
+              route_configuration_override_actions = [
+                {
+                  cdn_frontdoor_origin_group_key = "hmcts-access"
+                  forwarding_protocol            = "HttpOnly"
+                  cache_behavior                 = "Disabled"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
     global_exclusions = [
       {
         match_variable = "QueryStringArgNames"

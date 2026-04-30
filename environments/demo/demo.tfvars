@@ -4889,7 +4889,7 @@ frontends = [
     }
     global_exclusions = []
   },
-    {
+  {
     product           = "pt"
     name              = "pt-frontend"
     mode              = "Prevention"

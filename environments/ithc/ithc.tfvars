@@ -164,7 +164,8 @@ frontends = [
                     "client_id=ccd_admin",
                     "client_id=fact_admin",
                     "client_id=paybubble",
-                    "client_id=fees_admin_frontend"
+                    "client_id=fees_admin_frontend",
+                    "client_id=lau"
                   ]
                   transforms = ["Lowercase"]
                 }
@@ -195,7 +196,8 @@ frontends = [
                     "client_id=ccd_admin",
                     "client_id=fact_admin",
                     "client_id=paybubble",
-                    "client_id=fees_admin_frontend"
+                    "client_id=fees_admin_frontend",
+                    "client_id=lau"
                   ]
                   transforms = ["Lowercase"]
                 }

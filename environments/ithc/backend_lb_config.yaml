@@ -392,3 +392,7 @@ gateways:
         component: blob-router
       - product: reform-scan
         component: notification-service
+
+    # pt
+      - product: pt
+        component: api

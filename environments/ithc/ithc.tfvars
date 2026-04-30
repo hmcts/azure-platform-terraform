@@ -129,12 +129,13 @@ frontends = [
     ]
   },
   {
-    name           = "idam-web-public"
-    custom_domain  = "idam-web-public.ithc.platform.hmcts.net"
-    mode           = "Prevention"
-    dns_zone_name  = "ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
-    cache_enabled  = "false"
+    name                = "idam-web-public"
+    custom_domain       = "idam-web-public.ithc.platform.hmcts.net"
+    mode                = "Prevention"
+    dns_zone_name       = "ithc.platform.hmcts.net"
+    backend_domain      = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
+    cache_enabled       = "false"
 
     rule_sets = [
       {
@@ -509,12 +510,13 @@ frontends = [
     ]
   },
   {
-    product        = "idam"
-    name           = "hmcts-access"
-    mode           = "Prevention"
-    custom_domain  = "hmcts-access.ithc.platform.hmcts.net"
-    dns_zone_name  = "ithc.platform.hmcts.net"
-    backend_domain = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    product             = "idam"
+    name                = "hmcts-access"
+    mode                = "Prevention"
+    custom_domain       = "hmcts-access.ithc.platform.hmcts.net"
+    dns_zone_name       = "ithc.platform.hmcts.net"
+    backend_domain      = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
 
     global_exclusions = [
       {
@@ -2763,12 +2765,44 @@ frontends = [
     ]
   },
   {
-    name             = "adoption-web"
-    custom_domain    = "adoption-web.ithc.platform.hmcts.net"
-    dns_zone_name    = "ithc.platform.hmcts.net"
-    mode             = "Prevention"
-    backend_domain   = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-ithc-platform-hmcts-net"
+    name                = "adoption-web"
+    custom_domain       = "adoption-web.ithc.platform.hmcts.net"
+    dns_zone_name       = "ithc.platform.hmcts.net"
+    mode                = "Prevention"
+    backend_domain      = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    certificate_name    = "wildcard-ithc-platform-hmcts-net"
+    cipher_suite_policy = "TLS12_2023"
+    custom_rules = [
+      {
+        name     = "BlockScriptInJSON"
+        priority = 1
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestHeader"
+            selector           = "content-type"
+            operator           = "Equal"
+            negation_condition = false
+            match_values       = ["application/json"]
+          }
+        ]
+      },
+      {
+        name     = "BlockScriptInJSON2"
+        priority = 2
+        type     = "MatchRule"
+        action   = "Block"
+        match_conditions = [
+          {
+            match_variable     = "RequestBody"
+            operator           = "Contains"
+            negation_condition = false
+            match_values       = ["<script>"]
+          }
+        ]
+      },
+    ],
     global_exclusions = [
       {
         match_variable = "RequestBodyPostArgNames"

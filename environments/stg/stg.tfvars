@@ -838,6 +838,27 @@ frontends = [
         operator       = "Equals"
         selector       = "money-claims-cookie-preferences"
       },
+    ],
+    custom_rules = [
+      {
+        name                           = "firstContactRateLimitRule"
+        priority                       = 1
+        type                           = "RateLimitRule"
+        rate_limit_threshold           = 100
+        rate_limit_duration_in_minutes = 1
+        match_conditions = [
+          {
+            match_variable     = "RequestUri"
+            operator           = "Contains"
+            negation_condition = false
+            match_values = [
+              "/first-contact",
+            ],
+            transforms = ["Lowercase"]
+          }
+        ],
+        action = "Log"
+      }
     ]
   },
   {
@@ -2798,12 +2819,13 @@ frontends = [
     ]
   },
   {
-    name           = "idam-web-public"
-    custom_domain  = "idam-web-public.aat.platform.hmcts.net"
-    mode           = "Prevention"
-    dns_zone_name  = "aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
-    cache_enabled  = "false"
+    name                = "idam-web-public"
+    custom_domain       = "idam-web-public.aat.platform.hmcts.net"
+    mode                = "Prevention"
+    dns_zone_name       = "aat.platform.hmcts.net"
+    backend_domain      = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
+    cache_enabled       = "false"
     rule_sets = [
       {
         name = "hmcts-access-overrides"
@@ -3168,12 +3190,13 @@ frontends = [
     ]
   },
   {
-    product        = "idam"
-    name           = "hmcts-access"
-    mode           = "Prevention"
-    custom_domain  = "hmcts-access.aat.platform.hmcts.net"
-    dns_zone_name  = "aat.platform.hmcts.net"
-    backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    product             = "idam"
+    name                = "hmcts-access"
+    mode                = "Prevention"
+    custom_domain       = "hmcts-access.aat.platform.hmcts.net"
+    dns_zone_name       = "aat.platform.hmcts.net"
+    backend_domain      = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
 
     global_exclusions = [
       {
@@ -4274,7 +4297,7 @@ frontends = [
     name           = "privatelaw"
     custom_domain  = "privatelaw.aat.platform.hmcts.net"
     dns_zone_name  = "aat.platform.hmcts.net"
-    mode           = "Prevention"
+    mode           = "Detection"
     backend_domain = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     custom_rules = [
       {
@@ -4399,7 +4422,7 @@ frontends = [
             match_variable     = "RemoteAddr"
             operator           = "IPMatch"
             negation_condition = false
-            match_values       = ["138.68.148.99"]
+            match_values       = ["138.68.148.99", "165.22.118.72"]
           },
           {
             match_variable     = "RequestUri"
@@ -4972,6 +4995,15 @@ frontends = [
     global_exclusions = []
   },
   {
+    product           = "pt"
+    name              = "pt-frontend"
+    mode              = "Prevention"
+    custom_domain     = "pt.aat.platform.hmcts.net"
+    backend_domain    = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
+    dns_zone_name     = "aat.platform.hmcts.net"
+    global_exclusions = []
+  },
+  {
     name           = "finrem-citizen-ui"
     mode           = "Prevention"
     custom_domain  = "finrem-citizen-ui.aat.platform.hmcts.net"
@@ -5023,11 +5055,19 @@ frontends = [
     ]
   },
   {
-    name                   = "csds-active"
-    custom_domain          = "csds.staging.apps.hmcts.net"
-    dns_zone_name          = "staging.apps.hmcts.net"
-    backend_domain         = ["csds-active.staging.platform.hmcts.net"]
-    disabled_rules         = {}
+    name           = "csds-active"
+    custom_domain  = "csds.staging.apps.hmcts.net"
+    dns_zone_name  = "staging.apps.hmcts.net"
+    backend_domain = ["csds-active.staging.platform.hmcts.net"]
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942110",
+        "942120",
+        "942200",
+        "942390",
+      ]
+    }
     disable_frontend_appgw = true
     forwarding_protocol    = "HttpsOnly"
     global_exclusions = [
@@ -5055,15 +5095,38 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "crit"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "newFilter"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "amp;newFilter"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
       },
     ]
   },
   {
-    name                   = "csds-passive"
-    custom_domain          = "csds-passive.staging.apps.hmcts.net"
-    dns_zone_name          = "staging.apps.hmcts.net"
-    backend_domain         = ["csds-passive.staging.platform.hmcts.net"]
-    disabled_rules         = {}
+    name           = "csds-passive"
+    custom_domain  = "csds-passive.staging.apps.hmcts.net"
+    dns_zone_name  = "staging.apps.hmcts.net"
+    backend_domain = ["csds-passive.staging.platform.hmcts.net"]
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942110",
+        "942120",
+        "942200",
+        "942390",
+      ]
+    }
     disable_frontend_appgw = true
     forwarding_protocol    = "HttpsOnly"
     global_exclusions = [
@@ -5091,6 +5154,21 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "crit"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "newFilter"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "amp;newFilter"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
       },
     ]
   },
@@ -5110,6 +5188,65 @@ frontends = [
     backend_domain    = ["firewall-prod-int-palo-cftaat.uksouth.cloudapp.azure.com"]
     disabled_rules    = {}
     global_exclusions = []
+  },
+  {
+    name          = "judicialtranscribe"
+    custom_domain = "judicialtranscribe.staging.apps.hmcts.net"
+    dns_zone_name = "staging.apps.hmcts.net"
+    backend_domain = [
+      "firewall-prod-int-palo-courts-transcribe-stg.uksouth.cloudapp.azure.com"
+    ]
+    mode                           = "Prevention"
+    appgw_cookie_based_affinity    = "Enabled"
+    cache_enabled                  = "false"
+    forwarding_protocol            = "HttpsOnly"
+    certificate_name_check_enabled = false
+    disabled_rules = {
+      SQLI = [
+        "942430",
+        "942440",
+      ]
+    }
+    global_exclusions = [
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "id_token"
+      },
+      # Posthog cookies set off AFD firewall so better if excluded.
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "ph_phc"
+      },
+      # These cookies are used by the AzureAD auth flow
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Nonce"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "AppServiceAuthSession"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "AppServiceAuthSessionKey"
+      },
+      # The Authorization query param is required in some Azure Speech-to-text flows.
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "Authorization"
+      },
+    ],
   },
 ]
 

@@ -460,3 +460,7 @@ gateways:
      # xui
       - product: xui
         component: case-activity-api
+
+     # pt
+      - product: pt
+        component: api

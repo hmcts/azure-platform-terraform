@@ -375,3 +375,6 @@ gateways:
     # enforcement
       - product: enforcement
         component: api
+     # pt
+      - product: pt
+        component: api

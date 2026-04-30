@@ -33,14 +33,15 @@ autoShutdown = true
 
 frontends = [
   {
-    product          = "idam"
-    name             = "idam-web-public"
-    custom_domain    = "idam-web-public.sandbox.platform.hmcts.net"
-    mode             = "Prevention"
-    dns_zone_name    = "sandbox.platform.hmcts.net"
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
-    shutter_app      = false
+    product             = "idam"
+    name                = "idam-web-public"
+    custom_domain       = "idam-web-public.sandbox.platform.hmcts.net"
+    mode                = "Prevention"
+    dns_zone_name       = "sandbox.platform.hmcts.net"
+    backend_domain      = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
+    certificate_name    = "wildcard-sandbox-platform-hmcts-net"
+    shutter_app         = false
 
     rule_sets = [
       {
@@ -376,8 +377,9 @@ frontends = [
     dns_zone_name = "sandbox.platform.hmcts.net"
     shutter_app   = false
 
-    backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-    certificate_name = "wildcard-sandbox-platform-hmcts-net"
+    backend_domain      = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
+    cipher_suite_policy = "TLS12_2023"
+    certificate_name    = "wildcard-sandbox-platform-hmcts-net"
 
     global_exclusions = [
       {
@@ -849,6 +851,35 @@ frontends = [
     certificate_name = "wildcard-sandbox-platform-hmcts-net"
     disabled_rules   = {}
     shutter_app      = true
+    rule_sets = [
+      {
+        name = "pathroutingrules"
+        rules = [
+          {
+            name              = "healthRedirect"
+            order             = 1
+            behavior_on_match = "Continue"
+            conditions = {
+              url_path_conditions = [
+                {
+                  operator     = "BeginsWith"
+                  match_values = ["/health"]
+                }
+              ]
+            }
+            actions = {
+              url_redirect_actions = [
+                {
+                  redirect_type        = "Moved"
+                  redirect_protocol    = "Https"
+                  destination_hostname = "plum.sandbox.platform.hmcts.net"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
   },
   {
     product             = "plum-tlse2e"
@@ -934,11 +965,19 @@ frontends = [
     shutter_app      = true
   },
   {
-    name                   = "csds-active"
-    custom_domain          = "csds.sandbox.apps.hmcts.net"
-    dns_zone_name          = "sandbox.apps.hmcts.net"
-    backend_domain         = ["csds-active.sandbox.platform.hmcts.net"]
-    disabled_rules         = {}
+    name           = "csds-active"
+    custom_domain  = "csds.sandbox.apps.hmcts.net"
+    dns_zone_name  = "sandbox.apps.hmcts.net"
+    backend_domain = ["csds-active.sandbox.platform.hmcts.net"]
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942110",
+        "942120",
+        "942200",
+        "942390",
+      ]
+    }
     disable_frontend_appgw = true
     forwarding_protocol    = "HttpsOnly"
     global_exclusions = [
@@ -966,15 +1005,38 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "crit"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "newFilter"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "amp;newFilter"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
       },
     ]
   },
   {
-    name                   = "csds-passive"
-    custom_domain          = "csds-passive.sandbox.apps.hmcts.net"
-    dns_zone_name          = "sandbox.apps.hmcts.net"
-    backend_domain         = ["csds-passive.sandbox.platform.hmcts.net"]
-    disabled_rules         = {}
+    name           = "csds-passive"
+    custom_domain  = "csds-passive.sandbox.apps.hmcts.net"
+    dns_zone_name  = "sandbox.apps.hmcts.net"
+    backend_domain = ["csds-passive.sandbox.platform.hmcts.net"]
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942110",
+        "942120",
+        "942200",
+        "942390",
+      ]
+    }
     disable_frontend_appgw = true
     forwarding_protocol    = "HttpsOnly"
     global_exclusions = [
@@ -1002,6 +1064,21 @@ frontends = [
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
         selector       = "crit"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "newFilter"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "amp;newFilter"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
       },
     ]
   }

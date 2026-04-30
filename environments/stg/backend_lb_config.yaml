@@ -420,3 +420,7 @@ gateways:
     # expressjs-monorepo-template
       - product: expressjs-monorepo-template
         component: api
+
+    # pt
+      - product: pt
+        component: api

@@ -31,11 +31,19 @@ frontends = [
     certificate_name_check_enabled = false
   },
   {
-    name                   = "csds-active"
-    custom_domain          = "csds.dev.apps.hmcts.net"
-    dns_zone_name          = "dev.apps.hmcts.net"
-    backend_domain         = ["csds-active.dev.platform.hmcts.net"]
-    disabled_rules         = {}
+    name           = "csds-active"
+    custom_domain  = "csds.dev.apps.hmcts.net"
+    dns_zone_name  = "dev.apps.hmcts.net"
+    backend_domain = ["csds-active.dev.platform.hmcts.net"]
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942110",
+        "942120",
+        "942200",
+        "942390",
+      ]
+    }
     disable_frontend_appgw = true
     forwarding_protocol    = "HttpsOnly"
     global_exclusions = [
@@ -64,14 +72,37 @@ frontends = [
         operator       = "Equals"
         selector       = "crit"
       },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "newFilter"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "amp;newFilter"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
     ]
   },
   {
-    name                   = "csds-passive"
-    custom_domain          = "csds-passive.dev.apps.hmcts.net"
-    dns_zone_name          = "dev.apps.hmcts.net"
-    backend_domain         = ["csds-passive.dev.platform.hmcts.net"]
-    disabled_rules         = {}
+    name           = "csds-passive"
+    custom_domain  = "csds-passive.dev.apps.hmcts.net"
+    dns_zone_name  = "dev.apps.hmcts.net"
+    backend_domain = ["csds-passive.dev.platform.hmcts.net"]
+    disabled_rules = {
+      SQLI = [
+        "942100",
+        "942110",
+        "942120",
+        "942200",
+        "942390",
+      ]
+    }
     disable_frontend_appgw = true
     forwarding_protocol    = "HttpsOnly"
     global_exclusions = [
@@ -88,6 +119,16 @@ frontends = [
       {
         match_variable = "QueryStringArgNames"
         operator       = "Equals"
+        selector       = "newFilter"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "amp;newFilter"
+      },
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
         selector       = "session_state"
       },
       {
@@ -100,17 +141,70 @@ frontends = [
         operator       = "Equals"
         selector       = "crit"
       },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "dtSa"
+      },
     ]
   },
   {
-    name          = "courtstranscribe"
-    custom_domain = "courtstranscribe.dev.apps.hmcts.net"
+    name          = "judicialtranscribe"
+    custom_domain = "judicialtranscribe.dev.apps.hmcts.net"
     dns_zone_name = "dev.apps.hmcts.net"
     backend_domain = [
-      "hmcts-transcribe-frontend-dev.azurewebsites.net"
+      "firewall-nonprodi-palo-courts-transcribe-dev.uksouth.cloudapp.azure.com"
     ]
+    mode                           = "Prevention"
     appgw_cookie_based_affinity    = "Enabled"
     cache_enabled                  = "false"
+    forwarding_protocol            = "HttpsOnly"
     certificate_name_check_enabled = false
+    disabled_rules = {
+      SQLI = [
+        "942430",
+        "942440",
+      ]
+    }
+    global_exclusions = [
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "code"
+      },
+      {
+        match_variable = "RequestBodyPostArgNames"
+        operator       = "Equals"
+        selector       = "id_token"
+      },
+      # Posthog cookies set off AFD firewall so better if excluded.
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "StartsWith"
+        selector       = "ph_phc"
+      },
+      # These cookies are used by the AzureAD auth flow
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "Nonce"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "AppServiceAuthSession"
+      },
+      {
+        match_variable = "RequestCookieNames"
+        operator       = "Equals"
+        selector       = "AppServiceAuthSessionKey"
+      },
+      # The Authorization query param is required in some Azure Speech-to-text flows.
+      {
+        match_variable = "QueryStringArgNames"
+        operator       = "Equals"
+        selector       = "Authorization"
+      },
+    ],
   },
 ]

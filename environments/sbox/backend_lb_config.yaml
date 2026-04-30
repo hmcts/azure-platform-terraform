@@ -71,6 +71,8 @@ gateways:
         component: rebeccahayleypickles
       - product: "labs"
         component: marketplace-api
+      - product: "labs"
+        component: debolina-seal
         
 
     # SIDAM 

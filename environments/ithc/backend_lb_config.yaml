@@ -198,6 +198,9 @@ gateways:
         component: message-publisher
       - product: ccd
         component: case-document-am-api
+      - product: ccd
+        component: et-pet-ccd-export
+        request_timeout: 180
 
     # CPO (CDM)
       - product: cpo

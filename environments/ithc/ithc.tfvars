@@ -4448,6 +4448,15 @@ frontends = [
     global_exclusions = []
   },
   {
+    product           = "pt"
+    name              = "pt-frontend"
+    mode              = "Prevention"
+    custom_domain     = "pt.ithc.platform.hmcts.net"
+    backend_domain    = ["firewall-nonprodi-palo-cftithc.uksouth.cloudapp.azure.com"]
+    dns_zone_name     = "ithc.platform.hmcts.net"
+    global_exclusions = []
+  },
+  {
     name              = "wa-reporting-frontend"
     mode              = "Detection"
     custom_domain     = "wa-reporting-frontend.ithc.platform.hmcts.net"
